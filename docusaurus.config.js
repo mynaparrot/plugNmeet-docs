@@ -9,7 +9,7 @@ const config = {
   title: 'plugNmeet',
   tagline: 'Scalable, High Performance, Open source web conferencing system',
   url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  baseUrl: '/plugNmeet-docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
