@@ -1,7 +1,7 @@
 {
-  "name": "plug-nmeet",
-  "version": "0.0.0",
-  "private": true,
+  "name": "plugnmeet-documentation",
+  "version": "1.0.0",
+  "private": false,
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
