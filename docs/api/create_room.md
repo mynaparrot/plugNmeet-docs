@@ -9,7 +9,9 @@ End point: `/room/create`
 | Field                       | Type    | Position                 | Required | Description                                                            |
 | --------------------------- | ------- | ------------------------ | :------- | ---------------------------------------------------------------------- |
 | room_id                     | string  | root                     | Yes      | Room Id should be unique for every room/session/meeting                |
-| metadata                    | string  | root                     | Yes      | It has sub-elements                                                    |
+| max_participants            | number  | root                     | No       | Limit number of participants that can be join in this room.            |
+| empty_timeout               | number  | root                     | No       | Number of seconds to keep the room open if no one joins                |
+| metadata                    | string  | root                     | Yes      |                                                                        |
 | room_title                  | string  | metadata                 | Yes      | Title of the room/meeting                                              |
 | welcome_message             | string  | metadata                 | No       | If you want to show some message at start up.                          |
 | room_features               | string  | metadata                 | Yes      | Various room features.                                                 |
