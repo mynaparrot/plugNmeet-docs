@@ -1,6 +1,6 @@
 # plugNmeet documentation
 
-[plugnmeet.org](http://plugnmeet.org) website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+[plugnmeet.org](https://www.plugnmeet.org) website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
 
 ### Installation
 
