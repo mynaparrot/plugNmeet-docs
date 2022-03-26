@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'plugNmeet',
   tagline: 'Scalable, High Performance, Open source web conferencing system',
-  url: 'https://plugnmeet.org/',
+  url: 'https://www.plugnmeet.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -61,11 +61,15 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Quick links',
             items: [
               {
                 label: 'Docs',
                 to: '/docs/intro',
+              },
+              {
+                label: 'API',
+                to: '/docs/api/intro',
               },
             ],
           },
@@ -73,17 +77,9 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
+                label: 'Forum',
+                href: 'https://github.com/mynaparrot/plugNmeet-server/discussions',
+              }
             ],
           },
           {
@@ -96,7 +92,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
