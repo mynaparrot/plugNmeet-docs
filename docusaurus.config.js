@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'plugNmeet',
   tagline: 'Scalable, High Performance, Open source web conferencing system',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/plugNmeet-docs/',
+  url: 'https://plugnmeet.org/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
