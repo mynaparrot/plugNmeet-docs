@@ -10,11 +10,11 @@ When we enter the room, two options will appear: "**Microphone**" and "**Only li
 
 Whereas, if we only select "**Only listen**", you can only hear what the other participants say, but you will not be able to participate by audio.
 
-1. [ ] **Microphone**
+1. **Microphone**
 
    * After having selected the "Microphone" option, it will tell you through a box to select the microphone you want to use. It is here, where you can select either the microphone of the device you use or the headphones you have connected.
    * Finally, you place "Join" and you will be able to talk in the meeting.
-2. [ ] **Just listen**
+2. **Just listen**
 
    If you click on the "only listen" option, immediately afterwards it will direct you to the meeting so that you can only listen to the interventions of the other participants.
 
@@ -24,20 +24,20 @@ Whereas, if we only select "**Only listen**", you can only hear what the other p
 
 ## 2. Audio
 
-1. [ ] **Turn Microphone on or Off**
+1. **Turn Microphone on or Off**
 
    Being inside the meeting, we can choose whether to activate or deactivate the microphone. How one can do this will depend on how one entered the room.
 
-   1. [ ] If "**Microphone**" was chosen at the time of entering the Room
+   1. If "**Microphone**" was chosen at the time of entering the Room
       * What you will have to do is go to the bottom left, locate the microphone symbol, and press on it.
       * Then, you will need to select "Muted Microphone" to stop having your microphone on.
       * And in case you want to use it again, you will have to go back to the microphone icon, press it, and then select "Unmute on Microphone".
-   2. [ ] If "**Only listen**" was chosen at the time of entering the Room
+   2. If "**Only listen**" was chosen at the time of entering the Room
       * What you will have to do is go to the lower left part, locate the microphone symbol, and press on it.
       * A box will immediately appear in which you will need to select the microphone of your preference. Finally, you will need to click on "Join".
       * At that point your microphone will already be activated.
       * And if you want to deactivate it, you must go to the microphone icon, press it, and then select "Mute microphone". However, if after that, you want to turn it off again, the option to choose is "Unmute on Microphone".
-2. [ ] **Select the microphone of preference**
+2. **Select the microphone of preference**
 
    While by the time you entered the meeting, you may have already set up the microphone of preference, you can do it again while the meeting is being held.
    For that, you need to go to the microphone icon and then select within the first options of the drop-down list, the microphone you prefer to use.
@@ -50,7 +50,7 @@ Whereas, if we only select "**Only listen**", you can only hear what the other p
 
 When the meeting is taking place, you can choose to turn on the webcam.
 
-1. [ ] **Activate webcam**
+1. **Activate webcam**
 
    * To do this you need to go to the bottom left and press on the camera icon.
    * After that, you will be asked which plugNmeet requires you to give it access to your camera, in which you will have to select "Allow".
@@ -60,7 +60,7 @@ When the meeting is taking place, you can choose to turn on the webcam.
 
 This is how you will have already activated your webcam.
 
-2. [ ] **Turn off webcam**
+2. **Turn off webcam**
    * In case you no longer want to share your webcam, what you will have to do is go to the camera icon.
    * After that a drop-down list will appear, from which you will select "Leave Webcam".
    * Your webcam will no longer be shared immediately.
@@ -81,11 +81,11 @@ This is how you will have already activated your webcam.
 
 In the meeting it is possible to use a shared whiteboard among all participants.
 
-1. [ ] **Activate whiteboard**
+1. **Activate whiteboard**
 
    To activate the **whiteboard**, you have to go to the bottom center and click on the **whiteboard** icon.
    And the **whiteboard** will have already been activated.
-2. [ ] **Use whiteboard**
+2. **Use whiteboard**
 
    Within the whiteboard, various tools will appear to use, but they will only be available if the moderator has given participants access. 
 
@@ -97,7 +97,7 @@ In the meeting it is possible to use a shared whiteboard among all participants.
    * **Images**: Its location is in the upper right. Allows you to attach images to display on the board. You will only have to click on the "Clip" icon and select the image you want to appear on the whiteboard and then be able to enlarge or shrink it.
    * **Delete**:  Your location is at the top left. With the icon of a bin. Pressing will cause everything that was done on the whiteboard to be erased.
    * **Export**: Its location is in the upper left. With the icon of an image with an arrow to the right. When clicked, it will lead to a window in which you can choose the type of format in which you want to export the content of the whiteboard (PNG or SVG), as well as the scale (1x, 2x 3x) and whether you want to place a white or transparent background. To finally export it, the final step should be to choose the format to export, which will lead to a window in which one must select the location of where you want the file to be exported.
-3. [ ] **Hide whiteboard**
+3. **Hide whiteboard**
 
    In case you no longer want to use the whiteboard, what you will have to do is go to the bottom center and click on the whiteboard icon.<br />
    And if there are still traces on the board, they will not be eliminated, but can continue to be used in the same place that was left when the board is reactivated.
@@ -106,14 +106,14 @@ In the meeting it is possible to use a shared whiteboard among all participants.
 
 ## 6. Share Notepad
 
-1. [ ] **Activate notepad**<br />
+1. **Activate notepad**<br />
    The moderator has to activate the notepad and the functions.
-2. [ ] **Use notepad**<br />
+2. **Use notepad**<br />
    Within the notepad, several tools will appear to use. <br />
    In the upper left you can see the options to put the text in bold, italic, underlined and strikethrough. In addition, you can enumerate, list the text, modify the alignment of the text and make use of undo or redo. <br />
    Also, in the central part, where you can see a blank sheet, is where you can write the text. <br />
    Finally, to export the document or import an existing one, you have to go to the top right and click on the arrow icon to choose the option you want.
-3. [ ] **Hide notepad**
+3. **Hide notepad**
    In case you no longer want to use the notepad, the moderator will have to deactivate it. 
 
 ![An image from the static](/img/moderator/notepad-min.png)
@@ -147,13 +147,13 @@ To be able to make general configurations of the meeting, what must be done is t
 
 Three sections will appear here: 
 
-1. [ ] **Application settings:** <br />
+1. **Application settings:** <br />
    Here you can choose the preferred language. 
 
-2. [ ] **Data saving:** <br />
+2. **Data saving:** <br />
    It can be activated if you want to show webcams or screen sharing in the meeting. 
 
-3. [ ] **Notifications:** <br />
+3. **Notifications:** <br />
    You can choose whether to allow an audio notification. 
 
 ![An image from the static](/img/moderator/settingsoption-min.png)
