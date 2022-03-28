@@ -38,10 +38,9 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'plugNmeet',
         logo: {
           alt: 'plugNmeet',
-          src: 'img/logo.svg',
+          src: 'img/plugNmeet-logo.png',
         },
         items: [
           {
