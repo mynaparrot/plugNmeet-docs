@@ -37,3 +37,125 @@
 [data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  padding: 0 15px;
+}
+.landing-banner {
+  background: rgb(36,174,247);
+  background: linear-gradient(333deg, rgba(0,77,144,1) 0%, rgba(36,174,247,1) 84%);
+  padding: 150px 0;
+  text-align: center;
+}
+.landing-banner p {
+  font-size: 35px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+}
+section.features-section .headline {
+  margin-bottom: 50px;
+}
+.headline {
+  text-align: center;
+  font-size: 40px;
+}
+.features-wrapper .item {
+  display: flex;
+  align-items: center;
+}
+.features-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 50px 30px;
+}
+section.features-section {
+  padding: 70px 0;
+}
+.icon-wrap {
+  border: 2px solid rgb(36,174,247);
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: auto;
+}
+.icon-wrap svg {
+  width: 40px;
+  height: 40px;
+}
+.icon-wrap h3 {
+  position: absolute;
+  top: 0;
+  background-color: rgb(0, 77, 144);
+  right: 0;
+  color: #fff;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.features-wrapper .item .description {
+  width: calc(100% - 80px);
+  padding-left: 30px;
+}
+.features-wrapper .item .description p {
+  margin: 0;
+}
+
+
+
+@media screen and (max-width:1280px) {
+  .features-wrapper {
+    gap: 40px 10px;
+  }
+  .features-wrapper .item .description {
+    padding-left: 20px;
+    font-size: 14px;
+    width: calc(100% - 60px);
+  }
+  .icon-wrap {
+    height: 60px;
+    width: 60px;
+  }
+  .icon-wrap svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media screen and (max-width:1023px) {
+  .features-wrapper {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .headline {
+    font-size: 25px;
+  }
+  .landing-banner {
+    padding: 100px 0;
+  }
+}
+@media screen and (max-width:767px) {
+  .landing-banner {
+    padding: 70px 0;
+  }
+  .landing-banner p {
+    font-size: 20px;
+  }
+  section.features-section {
+    padding: 50px 0;
+  }
+}
+@media screen and (max-width:640px) {
+  .features-wrapper {
+    grid-template-columns: repeat(1,minmax(0,1fr));
+  }
+}
+

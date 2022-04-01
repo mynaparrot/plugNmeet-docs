@@ -103,7 +103,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL.`,
       },
       prism: {
         theme: lightCodeTheme,
