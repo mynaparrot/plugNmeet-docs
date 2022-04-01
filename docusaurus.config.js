@@ -46,8 +46,20 @@ const config = {
           {
             type: 'doc',
             docId: 'intro',
-            position: 'left',
-            label: 'Docs',
+            position: 'right',
+            label: 'Getting Started',
+          },
+          {
+            type: 'doc',
+            docId: 'User Guide/Overview',
+            position: 'right',
+            label: 'User Guide',
+          },
+          {
+            type: 'doc',
+            docId: 'api/intro',
+            position: 'right',
+            label: 'API',
           },
           {
             href: 'https://github.com/mynaparrot/plugNmeet-server',
