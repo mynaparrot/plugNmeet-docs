@@ -1,6 +1,6 @@
 ---
 description: plugNmeet interface design customisation using external CSS
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 # Design Customisation
