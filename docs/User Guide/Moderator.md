@@ -1,4 +1,5 @@
 ---
+description: plugNmeet user guide for moderator/admin
 sidebar_position: 2
 ---
 

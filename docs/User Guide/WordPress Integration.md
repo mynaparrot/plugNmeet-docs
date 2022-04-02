@@ -1,4 +1,5 @@
 ---
+description: plugNmeet user guide for wordpress integration
 sidebar_position: 4
 ---
 

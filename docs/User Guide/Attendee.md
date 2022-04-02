@@ -1,4 +1,5 @@
 ---
+description: plugNmeet user guide for attendee/student
 sidebar_position: 3
 ---
 
