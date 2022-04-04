@@ -12,6 +12,7 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 
 ![moodle-1.png](/img/moodle/moodle-1.png)
 
+
 2. After we have the file already downloaded, we go to the section of our **Moodle** where we can install Plugins. 
 
 ![moodle-2.png](/img/moodle/moodle-2.png)
