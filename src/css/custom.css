@@ -37,6 +37,9 @@
 [data-theme='dark'] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
+.navbar__logo {
+  height: 3rem;
+}
 
 .container {
   width: 100%;

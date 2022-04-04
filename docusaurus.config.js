@@ -40,7 +40,7 @@ const config = {
       navbar: {
         logo: {
           alt: 'plugNmeet',
-          src: 'img/plugNmeet-logo.png',
+          src: 'img/logo.png',
         },
         items: [
           {

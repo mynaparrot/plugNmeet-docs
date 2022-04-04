@@ -27,11 +27,23 @@ Brand Color 2
 
 ![brand-color2-min.png](/img/design-customisation/brand-color2-min.png)
 
+
+Brand Background Color 1
+
+```
+.brand-bg1 {
+    background: #004D90;
+}
+```
+
+![bg-brand1.png](/img/design-customisation/bg-brand1.png)
+
+
 ## Header
 
 For your need, You can change header Background, Logo, Color etc.
 
-To change **Header Background Color** use this class: see screenshot below.
+To change **Header Background Color** style use this class: see screenshot below.
 
 ```
 header#main-header {
@@ -55,7 +67,7 @@ Change **Logo** using this class name:
 
 <div style={{marginBottom: 100 + 'px'}}></div>
 
-Change **Header Start and End Shape** using these class:
+Change **Header Start and End Shape** style using these class:
 
 ```
 .header-before-start {
@@ -70,7 +82,7 @@ Change **Header Start and End Shape** using these class:
 
 <div style={{marginBottom: 100 + 'px'}}></div>
 
-Change **Header Title** using these class:
+Change **Header Title** style using these class:
 
 ```
 h2.header-title {
@@ -83,7 +95,7 @@ h2.header-title {
 
 ## Participants
 
-You can change **participants Background, width, padding** etc. Using this class name:
+You can change **participants Background, width, padding** etc. Style Using this class name:
 
 ```
 .participants-wrapper {
@@ -95,7 +107,7 @@ You can change **participants Background, width, padding** etc. Using this class
 
 ![participants-min.png](/img/design-customisation/participants-min.png)
 
-You can change **participants Headline** using this class name:
+You can change **participants Headline** style using this class name:
 
 ```
 .participants-wrapper .top p {
@@ -106,7 +118,7 @@ You can change **participants Headline** using this class name:
 
 ![participants-headline-min.png](/img/design-customisation/participants-headline-min.png)
 
-You can change **participant name** using this class name:
+You can change **participant name** style using this class name:
 
 ```
 .all-participants-wrap p {
@@ -117,7 +129,7 @@ You can change **participant name** using this class name:
 
 ![participants-name-min.png](/img/design-customisation/participants-name-min.png)
 
-You can change **participant thumb** using this class name:
+You can change **participant thumb** style using this class name:
 
 ```
 .all-participants-wrap .thumb {
@@ -131,7 +143,7 @@ You can change **participant thumb** using this class name:
 
 ## Messages
 
-You can change **Messages Background, width, padding** etc. Using this class name:
+You can change **Messages Background, width, padding** etc. Style Using this class name:
 
 ```
 .MessageModule-wrapper {
@@ -143,7 +155,7 @@ You can change **Messages Background, width, padding** etc. Using this class nam
 
 ![messages.png](/img/design-customisation/messages.png)
 
-You can change **Welcome Messages** using this class name:
+You can change **Welcome Messages** style using this class name:
 
 ```
 .all-MessageModule-wrap .message-item .system p.message-content {
@@ -154,3 +166,62 @@ You can change **Welcome Messages** using this class name:
 ```
 
 ![message-welcome.png](/img/design-customisation/message-welcome.png)
+
+
+You can change **Others Participants Messages** stylke using this class name:
+
+```
+.message-item p.message-content {
+    background-color: forestgreen;
+    color: #fff;
+}
+```
+
+![others-messages.png](/img/design-customisation/others-messages.png)
+
+
+You can change **Own Messages** style using this class name:
+
+```
+.message-item .content.me p.message-content {
+    background-color: #004D90;
+    color: aliceblue;
+}
+```
+
+![own-messages.png](/img/design-customisation/own-messages.png)
+
+
+## Start-Up Page
+
+You can change **Start-Up page** style using this class name:
+
+```
+#startupJoinModal {
+    background-color: aqua;
+}
+```
+
+![startup-page.png](/img/design-customisation/startup-page.png)
+
+
+## Error Page
+
+You can change **Error Page** style using this class name:
+
+```
+.error-app-bg {
+    background-image: url("./assets/imgs/header-before2.png") !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+```
+Or 
+```
+.error-app-bg {
+    background: aliceblue !important;
+}
+```
+
+![error-page.png](/img/design-customisation/error-page.png)

@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from "@docusaurus/Link";
-import Logo from "../../static/img/plugNmeet-logo.png"
+// import Logo from "../../static/img/plugNmeet-logo.png"
 
 const HeroBanner = () => {
     return (
