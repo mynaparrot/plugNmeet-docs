@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
   organizationName: 'mynaparrot', // Usually your GitHub org/user name.
   projectName: 'plugNmeet-server', // Usually your repo name.
   trailingSlash: false,
@@ -40,7 +40,7 @@ const config = {
       navbar: {
         logo: {
           alt: 'plugNmeet',
-          src: 'img/plugNmeet-logo.png',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -103,7 +103,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL.`,
       },
       prism: {
         theme: lightCodeTheme,

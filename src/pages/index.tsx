@@ -1,41 +1,26 @@
 import React from "react";
-import clsx from "clsx";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import styles from "./index.module.css";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
-
-function HomepageHeader() {
-  const { siteConfig } = useDocusaurusContext();
-  return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
-      <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
-        <div className={styles.buttons}>
-          <Link
-            className="button button--secondary button--lg"
-            to="/docs/intro"
-          >
-            Setup Tutorial - 5min ⏱️
-          </Link>
-        </div>
-      </div>
-    </header>
-  );
-}
+import HeroBanner from "../components/HeroBanner";
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      // title={`${siteConfig.title}`}
       description="Scalable, High Performance, Open source web conferencing system <head />"
     >
-      <HomepageHeader />
+      <HeroBanner />
       <main>
         <HomepageFeatures />
+        {/* <div className="desktop-banner">
+          <div className="container">
+            <h1 className='headline'>plugNmeet that feel like Classroom</h1>
+            <p>Our next-gen event platform and mobile apps connect attendees, sponsors, exhibitors and speakers for a meaningful virtual event experience.</p>
+          </div>
+          <div className="image-intro"></div>
+        </div> */}
       </main>
     </Layout>
   );

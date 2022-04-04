@@ -1,4 +1,5 @@
 ---
+description: plugNmeet create room using API
 sidebar_position: 2
 ---
 
