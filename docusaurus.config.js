@@ -62,6 +62,11 @@ const config = {
             label: 'API',
           },
           {
+            href: 'https://demo.plugnmeet.com/login.html',
+            label: 'Demo',
+            position: 'right',
+          },
+          {
             href: 'https://github.com/mynaparrot/plugNmeet-server',
             label: 'GitHub',
             position: 'right',
