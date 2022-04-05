@@ -17,3 +17,10 @@ End point: `/recording/delete`
   "record_id": "RM_RKD4jeiFMZDS-1645753430902"
 }
 ```
+
+## Response
+
+| Field  | Type    | Position | Description               |
+| :----- | ------- | -------- | :------------------------ |
+| status | boolean | root     | The status of the request |
+| msg    | string  | root     | Response message          |
