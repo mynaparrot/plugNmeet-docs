@@ -78,3 +78,19 @@ End point: `/room/create`
   }
 }
 ```
+
+## Response
+
+| Field            | Type    | Position | Description                                |
+| :--------------- | ------- | -------- | :----------------------------------------- |
+| status           | boolean | root     | The status of the request                  |
+| msg              | string  | root     | Response message                           |
+| roomInfo         | string  | root     |                                            |
+| sid              | string  | roomInfo | Room sid                                   |
+| name             | string  | roomInfo | Room Id                                    |
+| max_participants | number  | roomInfo | Maximum participants for this room         |
+| empty_timeout    | number  | roomInfo | Maximum duration before closing empty room |
+| creation_time    | number  | roomInfo | Room creation time in unix time format     |
+| turn_password    | string  | roomInfo | Turn password                              |
+| enabled_codecs   | Array   | roomInfo | Video codecs for this room                 |
+| metadata         | string  | roomInfo | Room metadata                              |

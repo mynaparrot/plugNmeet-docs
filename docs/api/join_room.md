@@ -50,6 +50,14 @@ End point: `/room/getJoinToken`
 }
 ```
 
+## Response
+
+| Field  | Type    | Position | Description               |
+| :----- | ------- | -------- | :------------------------ |
+| status | boolean | root     | The status of the request |
+| msg    | string  | root     | Response message          |
+| token  | string  | root     | Join token                |
+
 When you'll receive token during that time you can pass that token to plugNmeet-client. If you've setup it with plugNmeet-server then:
 `https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>`
 

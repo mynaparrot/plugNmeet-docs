@@ -17,3 +17,10 @@ End point: `/room/endRoom`
   "room_id": "room01"
 }
 ```
+
+## Response
+
+| Field  | Type    | Position | Description               |
+| :----- | ------- | -------- | :------------------------ |
+| status | boolean | root     | The status of the request |
+| msg    | string  | root     | Response message          |
