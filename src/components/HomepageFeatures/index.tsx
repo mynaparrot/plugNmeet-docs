@@ -9,28 +9,28 @@ type FeatureItem = {
 const FeatureList: FeatureItem[] = [
   {
     title: '1',
-    Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
     description: (
       <>
-        Compatible with all devices. Browser recommendation: Google Chrome, Firefox. For iOS: Safari.
+        Simple to install and quickly integrate with any existing website, apps, and software. 
       </>
     ),
   },
   {
     title: '2',
-    Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/component-customization-svgrepo-com.svg').default,
     description: (
       <>
-        WebRTC based secured & encrypted communication.
+        You can personalize everything, from URLs to logos and branding colors, as well as features with ease. 
       </>
     ),
   },
   {
     title: '3',
-    Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/video-call-svgrepo-com.svg').default,
     description: (
       <>
-        Scalable and high performance system written in Go programming language which made it possible to distributed as a <a href="https://github.com/mynaparrot/plugNmeet-server/releases">single binary</a> file!
+        It supports all the functions of a video call, including High-Definition Audio/Video/Screen Sharing; Virtual background; file-sharing, and MP4 Recordings. 
       </>
     ),
   },
@@ -39,52 +39,52 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg').default,
     description: (
       <>
-        <strong>Simulcast</strong> and <strong>Dynacast</strong> features will allow you to continue online conferencing even if your internet connection is slow!
+        Extended Functions, RTMP Broadcasting, which can enable users to broadcast their meetings to YouTube, Facebook, or any other third-party RTMP-supported live streaming platform. 
       </>
     ),
   },
   {
     title: '5',
-    Svg: require('@site/static/img/features/data-integration-hub-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/whiteboard-svgrepo-com.svg').default,
     description: (
       <>
-        Easy integration with any existing website or system.
+        Collaboration was made easy with the use of a shared notepad and whiteboard for real-time collaboration. 
       </>
     ),
   },
   {
     title: '6',
-    Svg: require('@site/static/img/features/component-customization-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
-        Easy customization with functionality, URL, logo, and branding colors.
+        WebRTC-based,  secured, and encrypted communication can make your online meeting private and safe at the top level. 
       </>
     ),
   },
   {
     title: '7',
-    Svg: require('@site/static/img/features/video-call-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
     description: (
       <>
-        HD audio, video call and Screen sharing.
+        Compatible with all devices. For browsers, Google Chrome and Firefox are recommended. For iOS, Safari is recommended. 
       </>
     ),
   },
   {
     title: '8',
-    Svg: require('@site/static/img/features/whiteboard-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/data-integration-hub-svgrepo-com.svg').default,
     description: (
       <>
-        Shared notepad and Whiteboard for live collaboration.
+        Simulcast and Dynacast features will allow you to continue online conferencing even if your internet connection is slow! 
       </>
     ),
   },
   {
     title: '9',
-    Svg: require('@site/static/img/features/webcam-svgrepo-com.svg').default,
+    Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
     description: (
       <>
-        Virtual background for webcams.
+        Scalable and high-performance system written in the Go programming language which made it possible to distribute as a single binary file! 
       </>
     ),
   },
