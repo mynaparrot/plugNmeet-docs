@@ -31,12 +31,23 @@ Brand Color 2
 Brand Background Color 1
 
 ```
-.brand-bg1 {
+.bg-brandColor1 {
     background: #004D90;
 }
 ```
 
 ![bg-brand1.png](/img/design-customisation/bg-brand1.png)
+
+
+Brand Background Color 2
+
+```
+.bg-brandColor2 {
+    background: #24AEF7;
+}
+```
+
+![bg-brand1.png](/img/design-customisation/bg-brand2.png)
 
 
 ## Header
@@ -154,42 +165,6 @@ You can change **Messages Background, width, padding** etc. Style Using this cla
 ```
 
 ![messages.png](/img/design-customisation/messages.png)
-
-You can change **Welcome Messages** style using this class name:
-
-```
-.all-MessageModule-wrap .message-item .system p.message-content {
-    background-color: grey;
-    color: aqua;
-    font-size: 15px;
-}
-```
-
-![message-welcome.png](/img/design-customisation/message-welcome.png)
-
-
-You can change **Others Participants Messages** stylke using this class name:
-
-```
-.message-item p.message-content {
-    background-color: forestgreen;
-    color: #fff;
-}
-```
-
-![others-messages.png](/img/design-customisation/others-messages.png)
-
-
-You can change **Own Messages** style using this class name:
-
-```
-.message-item .content.me p.message-content {
-    background-color: #004D90;
-    color: aliceblue;
-}
-```
-
-![own-messages.png](/img/design-customisation/own-messages.png)
 
 
 ## Start-Up Page
