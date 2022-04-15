@@ -46,6 +46,14 @@ In this tutorial, we will show you how to integrate it:
 
 That is demo server information, it may have some limitations, please replace with your own server **_API_** information later.
 
+## Update Client Version 
+
+Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._** 
+
+
+![server-settings-client-update.png](/img/wordpress/server-settings-client-update.png)
+
+
 ## Create Meeting Room
 
 1. To create a conference room, you need to be on your WordPress dashboard, go to Plug-N-Meet, and then choose "Rooms".
@@ -112,6 +120,82 @@ That is demo server information, it may have some limitations, please replace wi
 11. Finally, we publish it by clicking on "Submit".
 
 ![room-submit-min.png](/img/wordpress/room-submit-min.png)
+
+## Design Customization
+
+In PlugNMeet it is possible to customize the color and logo of all rooms to fit with your branding. 
+
+Here's how.
+
+### Global customization 
+
+1.	Enter the WordPress admin, select Plug-N-Meet and then click "Settings".
+
+<img src="/img/wordpress/plugin-settings.png" width="600" alt="/img/wordpress/plugin-settings.png" loading="lazy" /> 
+
+2.	You swipe down and head to the "Design Customization" section.
+<img src="/img/wordpress/plugin-design-customization.png" width="600" alt="/img/wordpress/plugin-design-customization.png" loading="lazy" /> 
+
+Below, we will explain each option:
+
+| Option               | What does it mean?       |                                               
+| ---------------------- | ------------------------------   | 
+| Primary Color       | It is the color of the icons of the tools when it is active |
+| Secondary Color      | It is the color of the icons of the tools when it is inactive |
+| Background Color     | Color of the wallpaper in case you do not use an image. |
+| Background Image     | Image to be used as wallpaper. If used, it will replace the wallpaper color. |
+| Header Color     | Header bar color |
+| Footer Color    | Color of the bottom bar of the room. |
+| Left Bar Color     | Background color when the list of participants is displayed. |
+| Right Bar Color    | Background color when chat is displayed. |
+
+To select the desired color, click the column and it will pop up the color picker:
+<img src="/img/wordpress/plugin-color-picker.png" width="600" alt="/img/wordpress/plugin-color-picker.png" loading="lazy" /> 
+
+3.	Finally, you click on "Save changes" so that all the changes are saved.
+<img src="/img/wordpress/plugin-savechanges.png" width="600" alt="/img/wordpress/plugin-savechanges.png" loading="lazy" /> 
+
+### Customization for a single meeting room
+In PlugNMeet it is possible to customize the color and logo for singal room to fit with your business needs. 
+
+1.	Enter the WordPress manager, select Plug-N-Meet and then click on "Rooms".
+
+<img src="/img/wordpress/plugin-rooms-setting.png" width="600" alt="/img/wordpress/plugin-rooms-setting.png" loading="lazy" /> 
+
+2.	Choose the room you want to personalize.
+
+<img src="/img/wordpress/plugin-selectroom.png" width="600" alt="/img/wordpress/plugin-selectroom.png" loading="lazy" /> 
+
+
+3.	Select "Design Customization".
+
+<img src="/img/wordpress/plugin-roomsettings-customization.png" width="600" alt="/img/wordpress/plugin-roomsettings-customization.png" loading="lazy" /> 
+
+4.	The list of options will appear to customize the color and layout of the room. 
+
+<img src="/img/wordpress/plugin-room-customization-page.png" width="600" alt="/img/wordpress/plugin-room-customization-page.png" loading="lazy" /> 
+
+Below, we will explain each option:
+
+| Option               | What does it mean?       |                                               
+| ---------------------- | ------------------------------   | 
+| Primary Color       | It is the color of the icons of the tools when it is active |
+| Secondary Color      | It is the color of the icons of the tools when it is inactive |
+| Background Color     | Color of the wallpaper in case you do not use an image. |
+| Background Image     | Image to be used as wallpaper. If used, it will replace the wallpaper color. |
+| Header Color     | Header bar color |
+| Footer Color    | Color of the bottom bar of the room. |
+| Left Bar Color     | Background color when the list of participants is displayed. |
+| Right Bar Color    | Background color when chat is displayed. |
+
+To select the desired color, click the column and it will pop up the color picker:
+
+5.	Finally, you click "Submit" so that all the changes are saved.
+
+<img src="/img/wordpress/plugin-click-submit.png" width="600" alt="/img/wordpress/plugin-click-submit.png" loading="lazy" /> 
+
+
+
 
 ## Create a meeting room page
 
