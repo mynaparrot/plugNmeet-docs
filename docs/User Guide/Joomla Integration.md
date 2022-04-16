@@ -5,11 +5,11 @@ sidebar_position: 6
 
 # Joomla Integration
 
-With this tutorial, you will be able to know how to install and use **Plugnmeet** in **Joomla**.
+With this tutorial, you will be able to know how to install and use **plugNmeet** in **Joomla**.
 
-## Installing PlugNmeet for Joomla
+## Installing plugNmeet for Joomla
 
-1. First, you have to download the **Plugnmeet Zip file** from this link:<br /> https://github.com/mynaparrot/plugNmeet-Joomla/releases
+1. First, you have to download the **plugnmeet Zip file** from this link:<br /> https://github.com/mynaparrot/plugNmeet-Joomla/releases
 
 ![Joomla-1.png](/img/Joomla/Joomla-1.png)
 
@@ -25,7 +25,143 @@ With this tutorial, you will be able to know how to install and use **Plugnmeet*
 
 ![Joomla-4.png](/img/Joomla/Joomla-4.png)
 
-## Create a Plug N Meet room in Joomla
+## Plugin Configuration 
+
+After the plugin is successfully installed, you can go to the plugin configuration page by clicking System==>Global Configration==> plugNmeet 
+
+<img src="/img/Joomla/Joomla-plugin-config.png" width="600" alt="/img/Joomla/Joomla-plugin-config.png" loading="lazy" /> 
+
+
+Then click plugNmeet config 
+
+It will automatically be filled with demo API information. If you have a self-hosting installation, then you can replace it with your own server API information here. 
+
+
+<img src="/img/Joomla/Joomla-plugnmeet-config.png" width="600" alt="/img/Joomla/Joomla-plugnmeet-config.png" loading="lazy" />
+
+Don´t forget to click **_save_**  after you made any changes. 
+
+That is demo server information, it may have some limitations, please replace it with your own server **_API_** information later.
+
+
+
+## Update Client Version 
+
+
+
+Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._** 
+
+
+
+
+<img src="/img/Joomla/Joomla-client-update.png" width="600" alt="/img/Joomla/Joomla-client-update.png" loading="lazy" />
+
+## Design Customization
+
+In PlugNMeet it is possible to customize the color and logo of all rooms to fit with your branding. 
+
+
+
+Here's how.
+
+
+
+### Global customization 
+
+
+
+1. Go to the clobal customization page by clicking System==>Global Configration==> plugNmeet ==> Design Customization 
+
+
+
+<img src="/img/Joomla/Joomla-globalcust.png" width="600" alt="/img/Joomla/Joomla-globalcust.png" loading="lazy" /> 
+
+
+
+Below, we will explain each option:
+
+
+
+| Option               | What does it mean?       |                                               
+| ---------------------- | ------------------------------   | 
+| Primary Color       | It is the color of the icons of the tools when it is active |
+| Secondary Color      | It is the color of the icons of the tools when it is inactive |
+| Background Color     | Color of the wallpaper in case you do not use an image. |
+| Background Image     | Image to be used as wallpaper. If used, it will replace the wallpaper color. |
+| Header Color     | Header bar color |
+| Footer Color    | Color of the bottom bar of the room. |
+| Left Bar Color     | Background color when the list of participants is displayed. |
+| Right Bar Color    | Background color when chat is displayed. |
+
+
+
+To select the desired color, click the column and it will pop up the color picker:
+
+<img src="/img/Joomla/Joomla-globalcolor.png" width="600" alt="/img/Joomla/Joomla-globalcolor.png" loading="lazy" /> 
+
+
+
+2. Finally, you click on **_Save_** so that all the changes are saved.
+
+
+
+### Customization for a single meeting room
+
+In PlugNMeet it is possible to customize the color and logo for a single room to fit your business needs. 
+
+
+
+1. Go to the single room customization page by Componenets ==> plugNmeet ==> Manage Rooms
+
+<img src="/img/Joomla/Joomla-mamageroom.png" width="600" alt="/img/Joomla/Joomla-mamageroom.png" loading="lazy" /> 
+
+
+
+2. Choose the room you want to personalize.
+
+
+
+<img src="/img/Joomla/Joomla-selectroom.png" width="600" alt="/img/Joomla/Joomla-selectroom.png" loading="lazy" /> 
+
+
+
+
+
+3. Click "Design Customization" and the list of options will appear to customize the room.
+
+
+
+<img src="/img/Joomla/Joomla-roomdesigncust.png" width="600" alt="/img/Joomla/Joomla-roomdesigncust.png" loading="lazy" /> 
+
+
+
+Below, we will explain each option:
+
+
+
+| Option               | What does it mean?       |                                               
+| ---------------------- | ------------------------------   | 
+| Primary Color       | It is the color of the icons of the tools when it is active |
+| Secondary Color      | It is the color of the icons of the tools when it is inactive |
+| Background Color     | Color of the wallpaper in case you do not use an image. |
+| Background Image     | Image to be used as wallpaper. If used, it will replace the wallpaper color. |
+| Header Color     | Header bar color |
+| Footer Color    | Color of the bottom bar of the room. |
+| Left Bar Color     | Background color when the list of participants is displayed. |
+| Right Bar Color    | Background color when chat is displayed. |
+
+
+
+To select the desired color, click the column and it will pop up the color picker:
+
+Image-room-color picker
+
+<img src="/img/Joomla/Joomla-roomcolor.png" width="600" alt="/img/Joomla/Joomla-roomcolor.png" loading="lazy" /> 
+
+4. Finally, you click on **_Save_** so that all the changes are saved.
+
+
+## Create a plugNmeet room in Joomla
 
 1. First, you need to create a category. To do this, you go to the "**Components**" section, select "**Plug N Meet**" and finally "**Manage Rooms**".
 
@@ -136,7 +272,7 @@ With this tutorial, you will be able to know how to install and use **Plugnmeet*
 
 ![Joomla-22.png](/img/Joomla/Joomla-22.png)
 
-## Access a Plug N Meet room on Joomla
+## Access a plugNmeet room in Joomla
 
 1. To access the room, we go to the "**Menus**" section, then, "**Main Menu**" and select "**Add New Menu Item**".
 
