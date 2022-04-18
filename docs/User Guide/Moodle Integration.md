@@ -9,7 +9,7 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 
 ## Installing plugNmeet for Moodle
 
-1. First, you have to download the **PlugNmeet** Zip file from this link: <br />https://github.com/mynaparrot/plugNmeet-Moodle/releases
+1. First, you have to download the **plugNmeet** Zip file from this link: <br />https://github.com/mynaparrot/plugNmeet-Moodle/releases
 
 ![Moodle-1.png](/img/moodle/Moodle-1.png)
 
@@ -37,6 +37,65 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 7. At the plugin configuration page, you can configure server API information and some of global customization options. You can upload your logs, enable and disable some features. After that, click on "**Save changes**"
 
 ![Moodle-8.png](/img/moodle/Moodle-8.png)
+
+
+## Update Client Version 
+
+
+
+Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._** 
+
+
+<img src="/img/moodle/Moodle-clientupdate.png" width="600" alt="/img/moodle/Moodle-clientupdate.png" loading="lazy" /> 
+
+
+## Design Customization
+
+In plugNmeet it is possible to customize the color of the rooms to fit with your branding. 
+
+
+
+Here's how.
+
+
+
+### Global customization 
+
+
+
+1. Go to the global customization page by clicking Dashboard==>Site administration==>Plugins==>Activity modules==>plugNmeet==> Design Customization 
+
+Here is how the section looks like
+
+
+<img src="/img/moodle/Moodle-designcust.png" width="600" alt="/img/moodle/Moodle-designcust.png" loading="lazy" /> 
+
+
+
+Below, we will explain each option:
+
+
+
+| Option               | What does it mean?       |                                               
+| ---------------------- | ------------------------------   | 
+| Primary Color       | It is the color of the icons of the tools when it is active |
+| Secondary Color      | It is the color of the icons of the tools when it is inactive |
+| Background Color     | Color of the wallpaper in case you do not use an image. |
+| Background Image     | Image to be used as wallpaper. If used, it will replace the wallpaper color. |
+| Header Color     | Header bar color |
+| Footer Color    | Color of the bottom bar of the room. |
+| Left Bar Color     | Background color when the list of participants is displayed. |
+| Right Bar Color    | Background color when chat is displayed. |
+
+
+
+You can select the desired color, from color picker or imput your color code. 
+
+<img src="/img/moodle/Moodle-colorpicker.png" width="600" alt="/img/moodle/Moodle-colorpicker.png" loading="lazy" /> 
+
+
+2. Finally, you click on **_Save changes_** so that all the changes are saved.
+
 
 ## Add a plugNmeet activity in a Moodle course
 

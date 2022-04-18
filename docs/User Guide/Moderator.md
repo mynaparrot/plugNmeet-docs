@@ -7,38 +7,39 @@ sidebar_position: 2
 
 ## 1. Entering the room
 
-When we enter the room, two options will appear: "**Microphone**" and "**Only listen**". If we press on "**Microphone**", it means that we want to actively participate by audio in the meeting.
+When we enter the room, two options will appear: "**Microphone**" and "**Listen only**". If we press on "**Microphone**", it means that we want to actively participate by audio in the meeting.
 
-Whereas, if we only select "**Only listen**", you can only hear what the other participants say, but you will not be able to participate by audio.
+Whereas, if we select "**Listen only**", you can only hear what the other participants say, but you will not be able to participate by audio.
 
 1. **Microphone**
 
-   - After having selected the "Microphone" option, it will tell you through a box to select the microphone you want to use. It is here, where you can select either the microphone of the device you use or the headphones you have connected.
-   - Finally, you place "Join" and you will be able to talk in the meeting.
+   - After having selected the "Microphone" option, it will tell you through a box to select the microphone you want to use. It is here, where you can select the source of your microphone, either the microphone of the device you use or the headphones you have connected.
+   - Finally, you click "Join" and you will be able to talk in the meeting.
 
-2. **Just listen**
+2. **Listen only**
 
-   If you click on the "only listen" option, immediately afterwards it will direct you to the meeting so that you can only listen to the interventions of the other participants.
+   If you click on the "listen only" option, immediately afterwards it will direct you to the meeting so that you can only listen to the interventions of the other participants.
 
-   Important: The option you choose at the start of the meeting, either "Microphone" or "Only listen", does not mean that it will be final for the entire meeting. Since, then you can change your decision again about the option you decided.
+   Important: The option you choose at the start of the meeting, either "Microphone" or "listen only", does not mean that it will be final for the entire meeting. Since, then you can change the settings again during the meeting. 
 
 ![enter-the-room-min.png](/img/moderator/enter-the-room-min.png)
 
 ## 2. Audio
 
-1. **Turn Microphone on or Off**
+1. **Turn Microphone on or off**
 
-   Being inside the meeting, we can choose whether to activate or deactivate the microphone. How one can do this will depend on how one entered the room.
+   Being inside the meeting, we can choose whether to activate or deactivate the microphone. How you can do this will depend on how you entered the room.
 
    1. If "**Microphone**" was chosen at the time of entering the Room
-      - What you will have to do is go to the bottom left, locate the microphone symbol, and press on it.
-      - Then, you will need to select "Muted Microphone" to stop having your microphone on.
-      - And in case you want to use it again, you will have to go back to the microphone icon, press it, and then select "Unmute on Microphone".
-   2. If "**Only listen**" was chosen at the time of entering the Room
-      - What you will have to do is go to the lower left part, locate the microphone symbol, and press on it.
+      - What you will have to do is go to the bottom left, find the microphone icon.
+      - Then, you can mute/unmute the microphone by click the Microphone icon. 
+      - And in case you want to do more settings on your microphone, you can click that small down arrow icon to see more options.
+   2. If "**listen only**" was chosen at the time of entering the Room
+      - What you will have to do is go to the lower left part, locate the microphone icon, and click on it.
       - A box will immediately appear in which you will need to select the microphone of your preference. Finally, you will need to click on "Join".
-      - At that point your microphone will already be activated.
-      - And if you want to deactivate it, you must go to the microphone icon, press it, and then select "Mute microphone". However, if after that, you want to turn it off again, the option to choose is "Unmute on Microphone".
+      - At that point your microphone will be activated.
+      - Then you can mute/unmute the microphone by click the Microphone icon or click that down arrow icon to see more options.
+   
 
 2. **Select the microphone of preference**
 
@@ -56,16 +57,16 @@ When the meeting is taking place, you can choose to turn on the webcam.
 1. **Activate webcam**
 
    - To do this you need to go to the bottom left and press on the camera icon.
-   - After that, you will be asked which plugNmeet requires you to give it access to your camera, in which you will have to select "Allow".
+   - After that, you will be asked “ plugNmeet requires you to give it access permission to your camera ”, in which you will have to select "Allow".
    - Immediately afterwards, it will be able to display you on your screen.
-   - Below your video image, you will see some options, these are virtual **background options**. You can choose a **background options** or if you don't want any, you tap on the lock icon.
+   - Below your video image, you will see some options, these are **virtual background options**. You can choose a **virtual background options** if you want.
    - Finally, you click on "Share".
 
 This is how you will have already activated your webcam.
 
 2. **Turn off webcam**
    - In case you no longer want to share your webcam, what you will have to do is go to the camera icon.
-   - After that a drop-down list will appear, from which you will select "Leave Webcam".
+   - Just click the camera icon once 
    - Your webcam will no longer be shared immediately.
 
 ![camera-min.png](/img/moderator/camera-min.png)
@@ -217,7 +218,17 @@ Three sections will appear here:
 
 ![logout-min.png](/img/moderator/logout-min.png)
 
-## 16. End the meeting
+## 16. Software Version 
+
+If you want to know which version of the software you are using now, you can go to the top left, select the icon of three vertical dots, and then choose "Settings".
+From the pop up window, at the bottom area, you will see the current version of the software. 
+
+<img src="/img/softwareversion.png" width="600" alt="/img/softwareversion.png" loading="lazy" /> 
+
+This information is useful when you want to report a problem about the software. 
+
+
+## 17. End the meeting
 
 1.  To be able to end the meeting, what must be done is to go to the top right, select the icon of three vertical dots, and then choose "End".
 2.  A confirmation box will then appear to ensure that you want to end the meeting, because when the action is performed, all participants will be disconnected.

@@ -58,7 +58,7 @@ Notes: You need to update the client version by clicking this button. This is ne
 
 ## Design Customization
 
-In PlugNMeet it is possible to customize the color and logo of all rooms to fit with your branding. 
+In plugNmeet it is possible to customize the color and logo of all rooms to fit with your branding. 
 
 
 
@@ -70,7 +70,7 @@ Here's how.
 
 
 
-1. Go to the clobal customization page by clicking System==>Global Configration==> plugNmeet ==> Design Customization 
+1. Go to the global customization page by clicking System==>Global Configration==> plugNmeet ==> Design Customization 
 
 
 
