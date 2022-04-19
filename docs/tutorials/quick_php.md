@@ -64,41 +64,39 @@ $isRoomActive = false;
 $output = new stdClass();
 $output->status = false;
 
-// first we'll check if room is active or not.
 try {
     $res = $connect->isRoomActive($roomId);
-    $isRoomActive = $res->status;
+    $isRoomActive = $res->getStatus();
     $output->status = true;
-    $output->msg = $res->msg;
+    $output->msg = $res->getResponseMsg();
 } catch (Exception $e) {
     $output->msg = $e->getMessage();
 }
 
-// if not active then create it
 if (!$isRoomActive && $output->status) {
     try {
         $create = $connect->createRoom($roomId, "Test room", "Welcome to room", $max_participants, "", $roomMetadata);
 
-        $isRoomActive = $create->status;
-        $output->status = $create->status;
-        $output->msg = $create->msg;
+        $isRoomActive = $create->getStatus();
+        $output->status = $create->getStatus();
+        $output->msg = $create->getResponseMsg();
     } catch (Exception $e) {
         $output->msg = $e->getMessage();
     }
 }
 
-// if room active then generate join token
 if ($isRoomActive && $output->status) {
     try {
         $join = $connect->getJoinToken($roomId, $user_full_name, $userId, true);
 
-        $output->url = $config->plugnmeet_server_url . "?access_token=" . $join->token;
-        $output->status = $join->status;
-        $output->msg = $join->msg;
+        $output->url = $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
+        $output->status = $join->getStatus();
+        $output->msg = $join->getResponseMsg();
     } catch (Exception $e) {
         $output->msg = $e->getMessage();
     }
 }
+
 ```
 
 When we'll get value of `$output->url` that time we can redirect user like this:

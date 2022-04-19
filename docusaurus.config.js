@@ -55,7 +55,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'User Guide/Overview',
+            docId: 'user-guide/overview',
             position: 'right',
             label: 'User Guide',
           },
