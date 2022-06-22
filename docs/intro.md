@@ -20,5 +20,4 @@ Demo API Info:
 plugNmeet server URL: https://demo.plugnmeet.com
 plugNmeet API KEY: plugnmeet
 plugNmeet API SECRET: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
-Livekit server URL: https://lk.plugnmeet.com
 ```
