@@ -33,4 +33,4 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ##### **Student/Attendee view**
 
-![lti2.png](/img/lti/lti3.png)
+![lti3.png](/img/lti/lti3.png)
