@@ -24,3 +24,13 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 ```
 
 **Note:** Allowing `launcher's name` is recommended; otherwise, the user will see an empty name.
+
+##### **Moderator/Admin view**
+
+![lti1.png](/img/lti/lti1.png)
+
+![lti2.png](/img/lti/lti2.png)
+
+##### **Student/Attendee view**
+
+![lti2.png](/img/lti/lti3.png)
