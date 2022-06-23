@@ -4,9 +4,9 @@ sidebar_position: 2
 
 # Installation
 
-We've created an easy to install script which can be used to install all the necessary components in few minutes. Please check [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repo.
+Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet into any platform. We've created an easy to install script which can be used to install all the necessary components in few minutes. Please check [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repo.
 
-## Requirements
+## Requirements (using automatic script)
 
 You'll need a clean **Ubuntu or Debian** server with a **public IP address**. If you have a firewall, the following ports must be
 opened:
@@ -27,7 +27,7 @@ generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
 
 **_Note:_** If DNS fails for those three domains, the installation will be aborted.
 
-## Usage
+## Install (using automatic script)
 
 Using SSH, connect to your Ubuntu/Debian server. Download and run the installation script as the root user.
 
@@ -43,10 +43,23 @@ sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNm
 Now, follow the steps in terminal. It will ask you to enter information when necessary. You'll receive the relevant
 information at the end of the installation.
 
-**_Note:_** If you get a 404 error or the recorder stops working, you can restart service
-by `systemctl restart plugnmeet && systemctl restart plugnmeet-recorder`.
+To manage services:
 
-#### Fonts installation
+```bash
+# to start
+systemctl start plugnmeet
+systemctl start plugnmeet-recorder
+
+# to restart
+systemctl restart plugnmeet
+systemctl restart plugnmeet-recorder
+
+# to stop
+systemctl stop plugnmeet
+systemctl stop plugnmeet-recorder
+```
+
+## Fonts installation (optional)
 
 When exporting or importing Microsoft Word files that contain characters other than English, you may run into issues because of font missing. You may install additional fonts in the Ubuntu/Debian server using the commands below:
 
