@@ -147,7 +147,54 @@ In the meeting it is possible to use a shared whiteboard among all participants.
 
 ![raise-hand-min.png](/img/moderator/raise-hand-min.png)
 
-## 9. Chat
+## 9. Share videos
+
+To present videos to all participants and be able to watch them at the same time, you must do the following:
+
+<img src="/img/moderator/sharevideo-min.png" alt="/img/moderator/sharevideo-min.png" loading="lazy"/>  
+
+1. Go to the bottom center and click on "...".
+2. Then, select the "Start external Media Player" option.
+3. Next, a dialog box will appear in which you can insert the URL of the video you want to share. The video can be one from Youtube,Vimeo or any other direct video url link.
+4. You click "Play".
+5. The video will automatically appear in the center of the room.
+6. Now you can play or stop the video whenever you want.
+
+If you no longer want to continue sharing the video, you must do the following:
+
+1. Go to the bottom center and click on "...".
+2. Then, select the "Stop external Media Player" option.
+3. A box will appear, and you will have to click "Ok".
+
+That way you will stop sharing the video.
+
+## 10. Breakout room
+
+The meeting can be divided into groups, which are rooms with the same functionalities. To do this you must do the following:
+
+<img src="/img/moderator/breakout-room-min.png" alt="/img/moderator/breakout-room-min.png" loading="lazy"/>   
+
+1. Go to the bottom center and click on "...".
+2. Select the "Manage breakout room" option.
+3. A dialog box will open in which you can select:
+- The number of groups 
+- Duration of the group session in minutes
+- Welcome message when they enter your group
+- Which participant will go in each group or if you prefer a random distribution, you can click on "Random selection”.
+4. Finally, you will click on "Start breakout rooms".
+
+The breakout rooms will start and while they are in progress, you can also perform additional actions:
+
+1. To do this, you will have to go back to the bottom center and click on "..." and choosethe option "Manage breakout room".
+2. A dialog box will open in which you can select:
+- A message for all groups with "Broadcast message".
+- Extend the duration of time in breakout rooms.
+- Join one of the groups by clicking "Join"
+- End all breakout rooms with the "End all rooms" button.
+
+
+
+## 11. Public Chat
 
 1. To be able to view the chat, you must go to the bottom center and select the icon of a message.
 2. Then, you will be able to see that you can write messages in the chat.
@@ -156,7 +203,67 @@ In the meeting it is possible to use a shared whiteboard among all participants.
 
 ![chatroom-min.png](/img/moderator/chatroom-min.png)
 
-## 10. Room lock features
+## 12. Private Chat
+
+During the meeting you can send private messages to the users who are present in the video call:
+
+<img src="/img/moderator/privatemessage-min.png" alt="/img/moderator/privatemessage-min.png" loading="lazy"/>   
+
+1. To do this you first have to make sure you can view the list of participants. 
+2. Then identify the user to whom you will want to write a private message.
+3. You will see that on the side of his name there is a symbol of "...". You'll have to click in those three points.
+4. Then you will select the option "Send private message". 
+5. Next, the chat will be set up so that you only talk to the user you wanted to send a private message to.  
+6. In the chat the name of the user will appear, and the chat will already be enabled to be able to send a private message. 
+If you no longer want to send private messages, you can change it to public chat: 
+1. You'll have to go to the chat and tap on the username.
+2. A drop-down list will appear, and you will select "Public chat".
+3. That way you can return to the public chat. 
+
+## 13. Waiting Room
+
+To be able to manage who can enter the meeting, you can use the waiting room. 
+
+To configure it, you must do the following:
+
+<img src="/img/moderator/waittingroom-min.png"alt="/img/moderator/waittingroom-min.png" loading="lazy"/> 
+ 
+
+1. Click the "..." which is located at the bottom center of the room. 
+2. Then select the "Manage waiting room" option.
+3. Then, a dialog box will open in which you can make all the configurations for the waiting room. 
+4. In the first part of the configuration, you can edit what the waiting message will be while users are in the waiting room. To be able to modify it you will have to click on "Update".
+5. Then, under the waiting room message, there are the options to accept everyone as reject all users who are on hold.
+6. Finally, in the final part of the dialog box you can accept, reject, or block users who want to enter the room. 
+7. That way you can configure the waiting room. 
+
+Likewise, it is also possible to accept or reject the entry of a participant from the list of participants with the options "Approve" or "Reject" that will be seen on the right side of the user's name. 
+
+## 14. Poll
+
+To know the opinions of the participants within the meeting, there is the option to make polls.
+
+To configure it, you must do the following:
+
+<img src="/img/moderator/createpoll-min.png"alt="/img/moderator/createpoll-min.png" loading="lazy"/> 
+
+1. First you will have to visualize the list of participants. 
+2. Then, next to the "Participants" tab, you will be able to see another tab that says "Polls". You have to click on "Polls". 
+3. After you have selected in the tab, you will have to click on the "Create new Poll" button, which is located at the bottom left.
+4. A dialog box will then open where you can edit which questions and answer options you want. 
+5. After you have selected your question and answer options, you will click on "Create poll".
+
+That way other users will be notified that a poll was created and will have to vote.
+
+Once the participants finish voting, you can finish the poll and publish the results:
+
+1. You will go to the "Polls" tab.
+2. You will identify the survey you created and select "View details".
+3. Then, you will click on "End poll" to be able to finish the survey. 
+4. Next, a button will be displayed that will say "Publish result", and if you select it, the results will be shared in the public chat, otherwise they will not appear in the chat. 
+
+
+## 15. Room lock features
 
 To access lock functions, what needs to be done is to go to the bottom center, select the three-dot icon and press "Room Lock Settings".
 ![roomlockmenu-min.png](/img/moderator/roomlockmenu-min.png)
@@ -173,19 +280,19 @@ In the new box, you can turn the following on or off:
 These blocking functions are aimed at the participants; therefore, the moderators are not affected.
 ![romlocko-min.png](/img/moderator/romlocko-min.png)
 
-## 11. Mute all users
+## 16. Mute all users
 
 In case you want to silence all the participants, what you must do is go to the bottom center, select the icon of the three points and press "Mute all users". **This will only mute attendees role users, for moderator will not be muted.**  
 ![muteall-min.png](/img/moderator/muteall-min.png)
 
-## 12. See list of participants
+## 17. See list of participants
 
 1.  To see the list of participants, what must be done is to go to the bottom center, select the icon on which two people appear.
 2.  In case you no longer want to see, you press again on the same icon.
 
 ![participants-min.png](/img/moderator/participants-min.png)
 
-## 13. Record the meeting
+## 18. Record the meeting
 
 1.  To record the meeting, what needs to be done is to go to the bottom center, select the REC icon.
 2.  Then, it will be notified that you are already recording, and the REC icon will have a circle that shrinks and increases around it.
@@ -193,7 +300,7 @@ In case you want to silence all the participants, what you must do is go to the 
 
 ![recording-min.png](/img/moderator/recording-min.png)
 
-## 14. Access general settings
+## 19. Access general settings
 
 To be able to make general configurations of the meeting, what must be done is to go to the top left, select the icon of three vertical dots, and then choose "Settings".
 ![settingsmenu-min.png](/img/moderator/settingsmenu-min.png)
@@ -211,14 +318,14 @@ Three sections will appear here:
 
 ![settingsoption-min.png](/img/moderator/settingsoption-min.png)
 
-## 15. Logout the meeting
+## 20. Logout the meeting
 
 1.  To be able to leave the meeting without the other participants disconnecting and staying in the meeting, you have to go to the top right, select the icon of the three vertical dots, and then choose “Log out”.
 2.  A confirmation box will then appear to make sure you want to leave the meeting.
 
 ![logout-min.png](/img/moderator/logout-min.png)
 
-## 16. Software Version 
+## 21. Software Version 
 
 If you want to know which version of the software you are using now, you can go to the top left, select the icon of three vertical dots, and then choose "Settings".
 From the pop up window, at the bottom area, you will see the current version of the software. 
@@ -228,7 +335,7 @@ From the pop up window, at the bottom area, you will see the current version of 
 This information is useful when you want to report a problem about the software. 
 
 
-## 17. End the meeting
+## 22. End the meeting
 
 1.  To be able to end the meeting, what must be done is to go to the top right, select the icon of three vertical dots, and then choose "End".
 2.  A confirmation box will then appear to ensure that you want to end the meeting, because when the action is performed, all participants will be disconnected.

@@ -132,7 +132,22 @@ In the meeting it is possible to use a shared whiteboard among all participants.
 
 ![raise-hand-min.png](/img/moderator/raise-hand-min.png)
 
-## 8. Chat
+## 8. Breakout room
+
+The moderator may divide the session into groups:
+
+<img src="/img/moderator/attendee-breakoutroom-min.png" alt="/img/moderator/attendee-breakoutroom-min.png" loading="lazy"/>  
+
+1. You will look a notification at the bottom right indicating that you have been invited to a breakout room. There you will have to click on "Join".
+2. Then a new tab will open to enter your group. 
+3. Your room will have a duration of minutes that the moderator will set.
+4. Once the time is up, a message will appear saying, "Room disconnected".
+5. Then, you will have to close that tab and return to the tab where the main room is. 
+
+Each breakout room has the same functionalities as the main room.
+
+
+## 9. Public Chat
 
 1. To be able to view the chat, you must go to the bottom center and select the icon of a message.
 2. Then, you will be able to see that you can write messages in the chat.
@@ -141,14 +156,57 @@ In the meeting it is possible to use a shared whiteboard among all participants.
 
 ![chatroom-min.png](/img/moderator/chatroom-min.png)
 
-## 9. See list of participants
+## 10. Private Chat
+
+During the meeting you can send private messages to the users who are present in the video call:
+
+<img src="/img/moderator/attendee-message-min.png" alt="/img/moderator/attendee-message-min.png" loading="lazy"/>
+
+
+1. To do this you first have to make sure you can view the list of participants. 
+2. Then identify the user to whom you will want to write a private message.
+3. You will see that on the side of his name there is a symbol of "...". You'll have to click in those three points.
+4. Then you will select the option "Send private message". 
+5. Next, the chat will be set up so that you only talk to the user you wanted to send a private message to.  
+6. In the chat the name of the user will appear, and the chat will already be enabled to be able to send a private message. 
+If you no longer want to send private messages, you can change it to public chat: 
+1. You'll have to go to the chat and tap on the username.
+2. A drop-down list will appear, and you will select "Public chat".
+3. That way you can return to the public chat. 
+
+## 11. Waiting Room
+
+The meeting can be configured with a waiting room so that users wait before entering. So a message will appear while you are waiting. The approval of your admission will depend on the moderator.
+
+<img src="/img/moderator/attendee-waitting-min.png" alt="/img/moderator/attendee-waitting-min.png" loading="lazy"/> 
+
+## 12. Poll
+The moderator will be able to make polls to know the opinions of the participants within the meeting.
+
+<img src="/img/moderator/attendee-poll-min.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+
+1. When the moderator creates a new poll, a notification will appear on the upper right side indicating that there is a new poll and you will have to click on "Open". 
+2. Then, it will direct you to the "Polls" tab.
+3. You will select the survey that has just been created.
+4. You will click on "Vote" from the survey. 
+5. A dialog box will appear in which you can select your answer and click on "Submit". That way you will record your vote. 
+6. The moderator will then define when the poll will end. 
+7. After the survey is over, you will be able to see the results in the section where you voted, because now a button will be enabled that dries "view result".
+8. It should be noted that the moderator will also be able to publish the results in the public chat, so you may be able to see them there. 
+
+
+
+
+## 13. See list of participants
 
 1.  To see the list of participants, what must be done is to go to the bottom center, select the icon on which two people appear.
 2.  In case you no longer want to see, you press again on the same icon.
 
 ![participants-min.png](/img/moderator/participants-min.png)
 
-## 10. Access general settings
+## 14. Access general settings
 
 To be able to make general configurations of the meeting, what must be done is to go to the top left, select the icon of three vertical dots, and then choose "Settings".
 ![settingsmenu-min.png](/img/moderator/settingsmenu-min.png)
@@ -166,7 +224,7 @@ Three sections will appear here:
 
 ![settingsoption-min.png](/img/moderator/settingsoption-min.png)
 
-## 11. Software Version 
+## 15. Software Version 
 
 If you want to know which version of the software you are using now, you can go to the top left, select the icon of three vertical dots, and then choose "Settings".
 From the pop up window, at the bottom area, you will see the current version of the software. 
@@ -176,7 +234,7 @@ From the pop up window, at the bottom area, you will see the current version of 
 This information is useful when you want to report a problem about the software. 
 
 
-## 12. Logout the meeting
+## 16. Logout the meeting
 
 1.  To be able to leave the meeting, you must go to the upper right, select the icon of the three vertical points, and then choose “Log out”.
 2.  A confirmation box will then appear to make sure you want to leave the meeting.
