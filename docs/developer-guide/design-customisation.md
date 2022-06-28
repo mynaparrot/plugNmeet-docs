@@ -5,50 +5,85 @@ sidebar_position: 3
 
 # Design Customisation
 
-## Global Changes
+## Using config.js
 
-Brand Color 1
+Open `config.js` file which is located under `dist/assets/config.js` of `plugNmeet-client`. You'll notice one field `window.DESIGN_CUSTOMIZATION` which accept JSON value like this:
+
+```js
+window.DESIGN_CUSTOMIZATION = `{
+  "primary_color": "#004D90",
+  "secondary_color": "#24AEF7",
+  "background_color": "#0b7db4",
+  "background_image": "https:\/\/mydomain.com\/custom_bg.png",
+  "header_bg_color": "#45b3ec",
+  "footer_bg_color": "#45b3ec",
+  "left_side_bg_color": "#04a2f3",
+  "right_side_bg_color": "#04a2f3",
+  "custom_css_url": "https:\/\/mydomain.com\/plugNmeet_desing.css"
+}`;
+```
+
+You can use custom value for any or all of above options. You can also pass the above JSON format by URL too. In that case you'll require to use `custom_design` as URL parameter.
+
+| Field               | Description                                                                                                                                                            |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| primary_color       | The primary color code in hex format                                                                                                                                   |
+| secondary_color     | The secondary color code in hex format                                                                                                                                 |
+| background_color    | If you want to change default background color of room then you can supply color code                                                                                  |
+| background_image    | You can add custom background image. The link will require to direct https link. If you use value for `background_image` then `background_color` value will be ignore. |
+| header_bg_color     | Header background color                                                                                                                                                |
+| footer_bg_color     | Footer background color                                                                                                                                                |
+| left_side_bg_color  | Left side panel's background color                                                                                                                                     |
+| right_side_bg_color | Right side panel's background color                                                                                                                                    |
+| custom_css_url      | You also can use your own custom CSS file for further advance customization. The link should be direct https link                                                      |
+
+## Global Changes using CSS
+
+Primary Color
 
 ```
-.brand-color1 {
+.primaryColor {
+    color: #004D90;
+}
+.text-primaryColor {
     color: #004D90;
 }
 ```
 
 ![brand-color1-min.png](/img/design-customisation/brand-color1-min.png)
 
-Brand Color 2
+Secondary Color
 
 ```
-.brand-color2 {
+.secondaryColor {
+    color: #24AEF7;
+}
+.text-secondaryColor {
     color: #24AEF7;
 }
 ```
 
 ![brand-color2-min.png](/img/design-customisation/brand-color2-min.png)
 
-
-Brand Background Color 1
+Primary Background
 
 ```
-.bg-brandColor1 {
+.bg-primaryColor {
     background: #004D90;
 }
 ```
 
 ![bg-brand1.png](/img/design-customisation/bg-brand1.png)
 
-
-Brand Background Color 2
+Secondary Background Color
 
 ```
-.bg-brandColor2 {
+.bg-secondaryColor {
     background: #24AEF7;
 }
 ```
 
 ![bg-brand1.png](/img/design-customisation/bg-brand2.png)
-
 
 ## Header
 
@@ -166,7 +201,6 @@ You can change **Messages Background, width, padding** etc. Style Using this cla
 
 ![messages.png](/img/design-customisation/messages.png)
 
-
 ## Start-Up Page
 
 You can change **Start-Up page** style using this class name:
@@ -178,7 +212,6 @@ You can change **Start-Up page** style using this class name:
 ```
 
 ![startup-page.png](/img/design-customisation/startup-page.png)
-
 
 ## Error Page
 
@@ -192,7 +225,9 @@ You can change **Error Page** style using this class name:
     background-size: cover;
 }
 ```
-Or 
+
+Or
+
 ```
 .error-app-bg {
     background: aliceblue !important;
