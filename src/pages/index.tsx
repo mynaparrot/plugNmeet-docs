@@ -5,12 +5,8 @@ import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import HeroBanner from "../components/HeroBanner";
 
 export default function Home(): JSX.Element {
-  const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout
-      // title={`${siteConfig.title}`}
-      description="Scalable, High Performance, Open source web conferencing system <head />"
-    >
+    <Layout description="Scalable, High Performance, Open source web conferencing system <head />">
       <HeroBanner />
       <main>
         <HomepageFeatures />
