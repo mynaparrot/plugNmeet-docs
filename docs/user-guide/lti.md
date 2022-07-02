@@ -25,6 +25,24 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 **Note:** Allowing `launcher's name` is recommended; otherwise, the user will see an empty name.
 
+## Custom parameters
+
+| Field                       | Type    | Description                                                                                           |
+| :-------------------------- | ------- | :---------------------------------------------------------------------------------------------------- |
+| room_duration               | Number  | If you want to set duration for the session. The should be in minutes. Default 0 which mean no limit. |
+| allow_polls                 | Boolean | Default: true                                                                                         |
+| allow_shared_note_pad       | Boolean | Default: true                                                                                         |
+| allow_breakout_room         | Boolean | Default: true                                                                                         |
+| allow_recording             | Boolean | Default: true                                                                                         |
+| allow_rtmp                  | Boolean | Default: true                                                                                         |
+| allow_view_other_webcams    | Boolean | Default: true                                                                                         |
+| allow_view_other_users_list | Boolean | Default: true                                                                                         |
+| mute_on_start               | Boolean | Default: false                                                                                        |
+| primary_color               | String  | Interface primary color in hash format. Example: #004D90                                              |
+| secondary_color             | String  | Interface secondary color in hash format. Example: #004D90                                            |
+| background_color            | String  | Interface background color in hash format. Example: #004D90                                           |
+| custom_logo                 | String  | This should be direct https link. Example: https://mydomain.com/logo.png                              |
+
 ##### **Moderator/Admin view**
 
 ![lti1.png](/img/lti/lti1.png)
