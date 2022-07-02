@@ -5,7 +5,7 @@ import HeroBanner from "../components/HeroBanner";
 
 export default function Home(): JSX.Element {
   return (
-    <Layout description="Scalable, High Performance, Open source web conferencing system <head />">
+    <Layout description="WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable.<head />">
       <HeroBanner />
       <main>
         <HomepageFeatures />

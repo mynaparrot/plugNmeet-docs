@@ -17,7 +17,7 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;
   --ifm-color-primary-darker: #1fa588;
@@ -34,7 +34,7 @@
   padding: 0 var(--ifm-pre-padding);
 }
 
-[data-theme='dark'] .docusaurus-highlight-code-line {
+[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
 }
 .navbar__logo {
@@ -47,13 +47,17 @@
   padding: 0 15px;
 }
 .landing-banner {
-  background: rgb(36,174,247);
-  background: linear-gradient(333deg, rgba(0,77,144,1) 0%, rgba(36,174,247,1) 84%);
+  background: rgb(36, 174, 247);
+  background: linear-gradient(
+    333deg,
+    rgba(0, 77, 144, 1) 0%,
+    rgba(36, 174, 247, 1) 84%
+  );
   padding: 150px 0;
   text-align: center;
 }
 .landing-banner p {
-  font-size: 35px;
+  font-size: 28px;
   color: #fff;
   font-weight: 600;
   line-height: 1.2;
@@ -71,14 +75,14 @@ section.features-section .headline {
 }
 .features-wrapper {
   display: grid;
-  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 50px 30px;
 }
 section.features-section {
   padding: 70px 0;
 }
 .icon-wrap {
-  border: 2px solid rgb(36,174,247);
+  border: 2px solid rgb(36, 174, 247);
   border-radius: 50%;
   height: 80px;
   width: 80px;
@@ -114,9 +118,7 @@ section.features-section {
   margin: 0;
 }
 
-
-
-@media screen and (max-width:1280px) {
+@media screen and (max-width: 1280px) {
   .features-wrapper {
     gap: 40px 10px;
   }
@@ -134,9 +136,9 @@ section.features-section {
     height: 30px;
   }
 }
-@media screen and (max-width:1023px) {
+@media screen and (max-width: 1023px) {
   .features-wrapper {
-    grid-template-columns: repeat(2,minmax(0,1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .headline {
     font-size: 25px;
@@ -145,7 +147,7 @@ section.features-section {
     padding: 100px 0;
   }
 }
-@media screen and (max-width:767px) {
+@media screen and (max-width: 767px) {
   .landing-banner {
     padding: 70px 0;
   }
@@ -156,9 +158,8 @@ section.features-section {
     padding: 50px 0;
   }
 }
-@media screen and (max-width:640px) {
+@media screen and (max-width: 640px) {
   .features-wrapper {
-    grid-template-columns: repeat(1,minmax(0,1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
-

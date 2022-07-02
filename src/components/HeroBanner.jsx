@@ -9,7 +9,7 @@ const HeroBanner = () => {
                 {/* <div className="logo">
                     <img src={Logo} alt="plugNmeet" />
                 </div> */}
-                <p>Scalable, High Performance, Open source web conferencing system</p>
+                <p>WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable</p>
                 <Link
                     className="button button--secondary button--lg"
                     to="/docs/intro"
