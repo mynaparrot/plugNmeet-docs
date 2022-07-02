@@ -38,9 +38,9 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 | allow_view_other_webcams    | Boolean | Default: true                                                                                         |
 | allow_view_other_users_list | Boolean | Default: true                                                                                         |
 | mute_on_start               | Boolean | Default: false                                                                                        |
-| primary_color               | String  | Interface primary color in hash format. Example: #004D90                                              |
-| secondary_color             | String  | Interface secondary color in hash format. Example: #004D90                                            |
-| background_color            | String  | Interface background color in hash format. Example: #004D90                                           |
+| primary_color               | String  | Interface primary color in hex code. Example: #004D90                                                 |
+| secondary_color             | String  | Interface secondary color in hex code. Example: #004D90                                               |
+| background_color            | String  | Interface background color in hex code. Example: #004D90                                              |
 | custom_logo                 | String  | This should be direct https link. Example: https://mydomain.com/logo.png                              |
 
 ##### **Moderator/Admin view**
