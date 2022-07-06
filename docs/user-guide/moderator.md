@@ -168,6 +168,20 @@ If you no longer want to continue sharing the video, you must do the following:
 
 That way you will stop sharing the video.
 
+**You also can share video via external video file.**
+
+To play a video that is in a file on your computer, you must do the following:
+
+1. Click on "...".
+2. Select "Start external Media Player".
+3. Click on "Upload".
+4. Select the file to play. Can be in mp4, mp3 or webm format.
+5. Click on "Upload and play".
+
+This way you can play the video for all meeting participants.
+
+<img src="/img/moderator/moderator-sharevideofile.jpg" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+
 ## 10. Breakout room
 
 The meeting can be divided into groups, which are rooms with the same functionalities. To do this you must do the following:

@@ -5,7 +5,47 @@ sidebar_position: 7
 
 # LTI
 
+## Intro
+
 plugNmeet support LTI **v1.0/1.1** as Provider. Users can join/manage sessions and download recordings from any LTI supported platform without changing any code.
+
+## Canvas LMS Example 
+
+Here we take Canvas LMS as an example to show you how it works. 
+
+1. Go to the Settings section and select **"Apps"**.
+
+<img src="/img/lti/lti-add-apps.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+2. Then click on **"View App Configurations"**.
+
+<img src="/img/lti/lti-app-config.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+3. Select **"+App"**.
+
+<img src="/img/lti/lti-click-add.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+4. Fill in the API information. 
+You can use following demo api information for testing:
+
+```
+Name: plugNmeet
+Launch URL: https://demo.plugnmeet.com/lti/v1
+Consumer key: plugnmeet
+Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
+```
+<img src="/img/lti/lti-add-api.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+5. Click **"Submit"** to save the changes.
+
+<img src="/img/lti/lti-click-submit.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+
+6. A **notification** will appear that the plugNmeet app has been installed.
+You are able to join plugNmeet meetings via LTI now. 
+
+<img src="/img/lti/lti-sucess.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+## plugNmeet API info
 
 Following information will require:
 
@@ -43,12 +83,12 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 | background_color            | String  | Interface background color in hex code. Example: #004D90                                              |
 | custom_logo                 | String  | This should be direct https link. Example: https://mydomain.com/logo.png                              |
 
-##### **Moderator/Admin view**
+## **Moderator/Admin view**
 
 ![lti1.png](/img/lti/lti1.png)
 
 ![lti2.png](/img/lti/lti2.png)
 
-##### **Student/Attendee view**
+## **Student/Attendee view**
 
 ![lti3.png](/img/lti/lti3.png)

@@ -9,32 +9,60 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 
 ## Installing plugNmeet for Moodle
 
-1. First, you have to download the **plugNmeet** Zip file from this link: <br />https://github.com/mynaparrot/plugNmeet-Moodle/releases
+1. First, you must go to the Moodle section where plugins can be installed. Then, click on the **button "Install plugins from the Moodle plugins directory".**
 
-![Moodle-1.png](/img/moodle/Moodle-1.png)
+<img src="/img/moodle/Moodle-plugin-install-page.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
 
-2. After we have the file already downloaded, we go to the section of our **Moodle** where we can install Plugins.
 
-![Moodle-2.png](/img/moodle/Moodle-2.png)
+2. Next, a new tab will openin your browser and redirect you to the Moodle plugin directory, on this page you will type in its search box **"plugnmeet"**  and then click on **"Search".**
 
-3. Click on "**choose a file**" and select the downloaded file to finally click on "**Install plugin from the ZIP file**".
+<img src="/img/moodle/Moodle-plugin-search.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
 
-![Moodle-3.png](/img/moodle/Moodle-3.png)
+3. After you find the plugin and go to the plugin page and click the **"Install Now"** button.
 
-4. We expect you to load and squeeze in "**Continue**" in the following steps until a page with the title "**Plugins check**" appears.
+<img src="/img/moodle/Moodle-install-plugnmeet.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
 
-![Moodle-4.png](/img/moodle/Moodle-4.png)
-![Moodle-5.png](/img/moodle/Moodle-5.png)
+4. click on **"Install Now"** again
 
-5. Click on the "**Upgrade Moodle database now**" button.
+<img src="/img/moodle/Moodle-install-2.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
 
-![Moodle-6.png](/img/moodle/Moodle-6.png)
+
+5. A text window will pop up to confirm the installation and you need to select the **"Continue"** button.
+
+<img src="/img/moodle/Moodle-continue.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>  
+
 
 6. Select "**Continue**"
 
-![Moodle-7.png](/img/moodle/Moodle-7.png)
+<img src="/img/moodle/Moodle-continue-2.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>  
 
-7. At the plugin configuration page, you can configure server API information and some of global customization options. You can upload your logs, enable and disable some features. After that, click on "**Save changes**"
+
+7. Keep click on "**Continue**"
+
+<img src="/img/moodle/Moodle-continue-3.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+
+8. Click the **"Update Moodle database now"** button.
+
+<img src="/img/moodle/Moodle-continue-4.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/> 
+
+
+
+9. Click the **"Continue"** again
+
+<img src="/img/moodle/Moodle-continue-5.png
+" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+
+
+10. At the plugin configuration page, you can configure server API information and some of global customization options. You can upload your logs, enable and disable some features. After that, click on "**Save changes**"
 
 ![Moodle-8.png](/img/moodle/Moodle-8.png)
 
