@@ -75,5 +75,5 @@ https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 It's possible to add extra query parameter `custom_design` with the join link. This way you can use seperate design for indivisual user. The value of `custom_design` will need to be **url encoded json value**. You can view supported parameters from [design-parameters](/docs/developer-guide/design-customisation#design-parameters). Example:
 
 ```
-https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design={"primary_color"%3A"%23004D90"%2C"secondary_color"%3A"%2324AEF7"}
+https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design=%7B%22primary_color%22%3A%22%23004D90%22%2C%22secondary_color%22%3A%22%2324AEF7%22%7D
 ```
