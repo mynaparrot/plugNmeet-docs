@@ -59,7 +59,10 @@ End point: `/room/getJoinToken`
 | token  | string  | root     | Join token                |
 
 When you'll receive token during that time you can pass that token to plugNmeet-client. If you've setup it with plugNmeet-server then:
-`https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>`
+
+```
+https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>
+```
 
 If you are using `plugNmeet-client` build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case:
 
