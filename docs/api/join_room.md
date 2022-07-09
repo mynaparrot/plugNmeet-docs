@@ -64,7 +64,7 @@ When you'll receive token during that time you can pass that token to plugNmeet-
 https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>
 ```
 
-If you are using `plugNmeet-client` build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case:
+If you are using [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-client) build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case:
 
 ```
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
