@@ -25,6 +25,8 @@ window.DESIGN_CUSTOMIZATION = `{
 
 You can use custom value for any or all of above options. You can also pass the above JSON format by URL too. In that case you'll require to use `custom_design` as URL parameter.
 
+## Design parameters
+
 | Field               | Description                                                                                                                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | primary_color       | The primary color code in hex format                                                                                                                                   |

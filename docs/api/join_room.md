@@ -61,4 +61,16 @@ End point: `/room/getJoinToken`
 When you'll receive token during that time you can pass that token to plugNmeet-client. If you've setup it with plugNmeet-server then:
 `https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>`
 
-If you are using `plugNmeet-client` build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case: `https://Your-Domain.com/conference/?access_token=<TOKEN HERE>`
+If you are using `plugNmeet-client` build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case:
+
+```
+https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
+```
+
+## Custom design
+
+It's possible to add extra query parameter `custom_design` with the join link. This way you can use seperate design for indivisual user. The value of `custom_design` will need to be **url encoded json value**. You can view supported parameters from [design-parameters](/docs/developer-guide/design-customisation#design-parameters). Example:
+
+```
+https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design={"primary_color"%3A"%23004D90"%2C"secondary_color"%3A"%2324AEF7"}
+```
