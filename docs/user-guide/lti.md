@@ -84,8 +84,7 @@ Launch URL: https://demo.plugnmeet.com/lti/v1
 Consumer key: plugnmeet
 Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 ```
-
-<img src="/img/lti/lti-add-api.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+<img src="/img/lti/lti-canvas-1.png"loading="lazy"/> 
 
 5. Click **"Submit"** to save the changes.
 
@@ -95,3 +94,46 @@ Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
    You are able to join plugNmeet meetings via LTI now.
 
 <img src="/img/lti/lti-sucess.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+
+## Chamilo LMS Example
+To install plugNmeet, the following steps must be performed:
+
+1. Go to the "Portal” section and select "Plugins".
+
+<img src="/img/lti/lti-chamilo-1.png"loading="lazy"/>   
+
+
+2. Search for "IMS/LTI" and select its checkbox and then click on "Enable the selected plugins".
+
+<img src="/img/lti/lti-chamilo-2.png"loading="lazy"/>  
+
+3. Then, the "Plugins" page will load again and in the "IMS/LTI" section you will select "Configure".
+
+<img src="/img/lti/lti-chamilo-3.png"loading="lazy"/> 
+
+4. Select "Yes" and click on "Save".
+
+<img src="/img/lti/lti-chamilo-4.png"loading="lazy"/>  
+
+5. Now that "IMS/LTI" is enabled, you must go to "My Courses".
+
+<img src="/img/lti/lti-chamilo-5.png"loading="lazy"/>  
+
+6. You choose the course where you want to add plugNmeet and click the pencil icon to edit the course.
+
+<img src="/img/lti/lti-chamilo-6.png"loading="lazy"/> 
+
+7. Go to the "IMS/LTI" section and click on "Configure external tools".
+
+<img src="/img/lti/lti-chamilo-7.png"loading="lazy"/>  
+
+8. You fill in the following data and then select "Add external tool".
+
+<img src="/img/lti/lti-chamilo-8.png"loading="lazy"/> 
+
+9. You select the title of your course.
+
+<img src="/img/lti/lti-chamilo-9.png"loading="lazy"/>  
+
+10. You go to the "Interaction" section, and you can view "plugNmeet" to use it.
+<img src="/img/lti/lti-chamilo-10.png"loading="lazy"/>  

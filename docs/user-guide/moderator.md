@@ -99,7 +99,8 @@ In the meeting it is possible to use a shared whiteboard among all participants.
    - **Shapes**: Its location is in the upper central part. The shape that is selected is the one that can be drawn on the board and customized depending on the size and color you want.
    - **Pencil**: Its location is in the upper central part. With the icon of a pencil. It will allow you to write freely, with the color you want.
    - **Text**: Its location is in the upper central part. With the "A" icon. It will allow you to write text, with the color, size, and font you want.
-   - **Images**: Its location is in the upper right. Allows you to attach images to display on the board. You will only have to click on the "Clip" icon and select the image you want to appear on the whiteboard and then be able to enlarge or shrink it.
+   - **Upload Multi-Files**:In the meeting you can upload different files (PDF, Word, Excel, or Power Point) on the board. These files can be quickly switched between them.
+   - **Images**: Its location is in the upper right. Allows you to attach images to display on the board. You will only have to click on the "Clip" icon and select the image you want to appear on the whiteboard and then be able to zoom in and out.
    - **Delete**: Your location is at the top left. With the icon of a bin. Pressing will cause everything that was done on the whiteboard to be erased.
    - **Export**: Its location is in the upper left. With the icon of an image with an arrow to the right. When clicked, it will lead to a window in which you can choose the type of format in which you want to export the content of the whiteboard (PNG or SVG), as well as the scale (1x, 2x 3x) and whether you want to place a white or transparent background. To finally export it, the final step should be to choose the format to export, which will lead to a window in which one must select the location of where you want the file to be exported.
 
