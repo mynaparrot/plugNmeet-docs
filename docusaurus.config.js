@@ -6,8 +6,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'plugNmeet',
-  tagline: 'Scalable, High Performance, Open source web conferencing system',
+  title: 'plugNmeet - Open source web conferencing system',
+  tagline: 'WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable',
   url: 'https://www.plugnmeet.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
