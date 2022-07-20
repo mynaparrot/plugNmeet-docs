@@ -16,7 +16,7 @@ You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debi
 Example: `plugnmeet.example.com, turn.example.com`. A valid email address is also required to
 generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
 
-**_Note:_** If DNS fails for those three domains, the installation will be aborted.
+**_Note:_** If DNS fails for those 2 domains, the installation will be aborted.
 
 ## Install (using automatic script)
 
