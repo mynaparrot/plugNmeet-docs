@@ -68,7 +68,7 @@ Next, we need to test that UDP connections in the range 50000-60000 are forwarde
 nc -u -l 50008
 ```
 
-Again, on a computer outside the firewall, replace YOUR_SERVER_IP your plugNmeet domain or IP address of your plugNmeet server and run the command
+Again, on a computer outside the firewall, replace YOUR_SERVER_IP with your plugNmeet domain or IP address of your plugNmeet server and run the command
 
 ```bash
 nc -u YOUR_SERVER_IP 50008
