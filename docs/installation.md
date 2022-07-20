@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Installation
@@ -8,16 +8,7 @@ Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet in
 
 ## Requirements (using automatic script)
 
-You'll need a clean **Ubuntu or Debian** server with a **public IP address**. If you have a firewall, the following ports must be
-opened:
-
-```
-80/tcp
-443/tcp
-7881/tcp
-443/udp
-50000:60000/udp
-```
+You'll need a clean **Ubuntu or Debian** server with a **public IP address**. If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall.md) before proceeding.
 
 Make sure your Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
 
