@@ -18,11 +18,20 @@ When installing plugNmeet behind a firewall, make sure the following ports are o
 | 50000-60000 | UDP  | Yes      | LiveKit advertises these ports as WebRTC host candidates (each participant in the room will use two ports) |
 | 443         | UDP  | No       | Optional                                                                                                   |
 
+## Configure firewall
+
+Based on your server provider you can follow:
+
+- Amazon AWS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html
+- Google Cloud: https://cloud.google.com/vpc/docs/using-firewalls
+- Azure: https://docs.microsoft.com/en-us/azure/virtual-machines/windows/nsg-quickstart-portal
+- DigitalOcean: https://docs.digitalocean.com/products/networking/firewalls/how-to/configure-rules/
+
 ## Testing the firewall
 
 After you have made the changes to you firewall settings, before proceeding to the installation, take a moment and test that you have configured the firewall correctly.
 
-To test connections on various ports needed by plugNmeet, you will use a tool called `netcat` to listen for connections. You’ll use `netcat` on the plugNmeet server and on external server (outside the firewall) to generate connections. If the connections test fails, the firewall configuration is incorrect.
+To test connections on various ports needed by plugNmeet, you will use a tool called `netcat` to listen for connections. You'll use `netcat` on the plugNmeet server and on external server (outside the firewall) to generate connections. If the connections test fails, the firewall configuration is incorrect.
 
 First, install `netcat` on the plugNmeet server using the following command:
 
@@ -37,7 +46,7 @@ systemctl stop plugnmeet
 systemctl stop haproxy
 ```
 
-We can now run netcat to listen on ports and try connecting from an external computer. As root, run the following command:
+We can now run netcat in our plugNmeet server to listen on ports and try connecting from an external computer. As root, run the following command:
 
 ```bash
 nc -l 80
@@ -45,22 +54,22 @@ nc -l 80
 
 `netcat` is now going to echo to the terminal any text it receives on port 80 (you can quit the command later using Ctrl/Control + c).
 
-Next, on a second computer that is outside of the firewall, it must go through the firewall to access the plugNmeet server – install `netcat` as well. If you're using **Windows**, you can get netcat [here](https://eternallybored.org/misc/netcat/). Replace YOUR_SERVER_IP with your plugNmeet domain or IP address of your plugNmeet server, run the following command
+Next, on a second computer that is outside of the firewall, it must go through the firewall to access the plugNmeet server – install `netcat` as well. If you're using **Windows**, you can get netcat from [here](https://eternallybored.org/misc/netcat/). Replace YOUR_SERVER_IP with your plugNmeet domain or IP address of your plugNmeet server, run the following command
 
 ```bash
 nc YOUR_SERVER_IP 80
 ```
 
-and type type the word `test` and press ENTER. If the firewall is forwarding incoming connections on port 80 to the internal plugNmeet server, you should see the word `test` appear after the `nc -l 80` command, as in
+and type the word `test` and press ENTER. If the firewall is forwarding incoming connections on port 80 to the internal plugNmeet server, you should see the word `test` appear after the `nc -l 80` command, as in
 
 ```bash
 nc -l 80
 test
 ```
 
-If the word `test` does not appear, double-check the firewall configuration to ensure its forwarding connections on port 80 and then test again.
+If the word `test` does not appear, double-check the firewall configuration to ensure it's forwarding connections on port 80 and then test again.
 
-Repeat these tests with port `443` & `7881`. That covers the TCP ports.
+Repeat these tests with port `443` & `7881` as well as. That covers the TCP ports testing.
 
 Next, we need to test that UDP connections in the range 50000-60000 are forwarded as well. On your plugNmeet server, run the following netcat command to listen for incoming data via UDP on port 50008 (here, we’re picking a port in the range 50000-60000).
 
