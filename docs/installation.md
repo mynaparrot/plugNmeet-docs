@@ -22,12 +22,17 @@ generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
 
 Using SSH, connect to your Ubuntu/Debian server. Download and run the installation script as the root user.
 
-```
+```bash
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh
+```
+
+```bash
 sudo bash install.sh
+```
 
 OR
 
+```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh)" root
 ```
 
@@ -83,11 +88,16 @@ ttf-mscorefonts-installer
 
 To update you can use `update.sh` script. This will update all the docker images, client & recorder (if installed).
 
-```
+```bash
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh
+```
+
+```bash
 sudo bash update.sh
+```
 
 OR
 
+```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh)" root
 ```
