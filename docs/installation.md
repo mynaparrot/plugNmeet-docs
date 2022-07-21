@@ -8,13 +8,12 @@ Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet in
 
 ## Requirements (using automatic script)
 
-You'll need a clean **Ubuntu or Debian** server with a **public IP address**. If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall.md) before proceeding.
-
-Make sure your Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
-
-You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server.
-Example: `plugnmeet.example.com, turn.example.com`. A valid email address is also required to
-generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
+- You'll need a clean **Ubuntu or Debian** server with a **public IP address**.
+- If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall.md) before proceeding.
+- Make sure your Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
+- You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server. One for plugNmeet main URL (Example: `plugnmeet.example.com`); another for TURN server (Example: `turn.example.com`).
+- A valid email address is also required to
+  generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
 
 **_Note:_** If DNS fails for those 2 domains, the installation will be aborted.
 
@@ -59,7 +58,7 @@ systemctl stop plugnmeet-recorder
 
 When exporting or importing Microsoft Word files that contain characters other than English, you may run into issues because of font missing. You may install additional fonts in the Ubuntu/Debian server using the commands below:
 
-```
+```bash
 sudo apt update && sudo apt -y install --no-install-recommends \
 culmus \
 fonts-beng \
