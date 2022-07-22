@@ -4,20 +4,22 @@ sidebar_position: 3
 
 # Installation
 
-Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet into any platform. We've created an easy to install script which can be used to install all the necessary components in few minutes. Please check [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repo.
+Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet into any platform. We've created an easy to install script which can be used to install all the necessary components in few minutes. The source code can be found in the [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repository.
 
-## Requirements (using automatic script)
+In this article, we'll go over how simple it is to set up your own plugNmeet web conferencing system using the plugNmeet installation script and immediately begin video conferencing.
+
+## Requirements
 
 - You'll need a clean **Ubuntu or Debian** server with a **public IP address**.
 - If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall.md) before proceeding.
-- Make sure your Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
-- You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server. One for plugNmeet main URL (Example: `plugnmeet.example.com`); another for TURN server (Example: `turn.example.com`).
+- Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
+- You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server. One for plugNmeet main URL (example: `plugnmeet.example.com`); another for TURN server (example: `turn.example.com`).
 - A valid email address is also required to
   generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
 
 **_Note:_** If DNS fails for those 2 domains, the installation will be aborted.
 
-## Install (using automatic script)
+## Install
 
 Using SSH, connect to your Ubuntu/Debian server. Download and run the installation script as the root user.
 
