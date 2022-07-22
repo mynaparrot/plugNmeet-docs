@@ -36,7 +36,7 @@ sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNm
 ```
 
 Now, follow the steps in terminal. It will ask you to enter information when necessary. You'll receive the relevant
-information at the end of the installation.
+information at the end of the installation. This script will create a directory under `/opt` called `plugNmeet` and create all directories and configuration files there.
 
 To manage services:
 
