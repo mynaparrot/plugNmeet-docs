@@ -102,3 +102,7 @@ OR
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh)" root
 ```
+
+## Scalable/Distributed setup
+
+PlugNmeet can be set up on multiple hosts to support a large distribution. The setup procedures were discussed in [this article](./developer-guide//scalable-setup.md).
