@@ -13,11 +13,11 @@ I'm assuming we've following servers. You can have any number based on your requ
 
 | Component                                                              | IPs                                                      | Ports                                       | Domain                                   | Description                                                                                                             |
 | :--------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------- | :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| [plugNmeet-server](https://github.com/mynaparrot/plugNmeet-server)     | 100.100.100.1<br />100.100.100.1                         | 8080/tcp                                    | plugnmeet.example.com                    | We'll use 2 servers for plugNmeet. Ports open only for Haproxy,**not public**                                           |
-| [livekit](https://github.com/livekit/livekit)                          | 100.100.100.10<br /> 100.100.100.11<br /> 100.100.100.12 | 7881/tcp<br />5349/tcp<br />50000-60000/UDP | livekit.example.com<br/>turn.example.com | We'll use 3 servers for livekit. 7881/tcp & 5349/tcp open only for Haproxy, not public. 50000-60000/UDP open for public |
+| [plugNmeet-server](https://github.com/mynaparrot/plugNmeet-server)     | 100.100.100.1<br />100.100.100.1                         | 8080/tcp                                    | plugnmeet.example.com                    | We'll use 2 servers for plugNmeet. Ports open only for HAProxy,**not public**                                           |
+| [livekit](https://github.com/livekit/livekit)                          | 100.100.100.10<br /> 100.100.100.11<br /> 100.100.100.12 | 7881/tcp<br />5349/tcp<br />50000-60000/udp | livekit.example.com<br/>turn.example.com | We'll use 3 servers for livekit. 7881/tcp & 5349/tcp open only for HAProxy, not public. 50000-60000/udp open for public |
 | [plugNmeet-recorder](https://github.com/mynaparrot/plugNmeet-recorder) | 100.100.100.20<br /> 100.100.100.21 <br />100.100.100.22 |                                             | n/a                                      | We'll use 3 servers for recorder                                                                                        |
-| [plugNmeet-etherpad](https://github.com/mynaparrot/plugNmeet-etherpad) | 100.100.100.30                                           | <br />9001/tcp                              | ether.example.com                        | We'll use 1 servers for etherpad. 9001/tcp open only for Haproxy, not public.                                           |
-| Haproxy                                                                | 100.100.100.35                                           | 80/tcp<br />443/tcp                         | n/a                                      | We'll install haproxy in one server. Both ports are open for public                                                     |
+| [plugNmeet-etherpad](https://github.com/mynaparrot/plugNmeet-etherpad) | 100.100.100.30                                           | 9001/tcp                                    | ether.example.com                        | We'll use 1 servers for etherpad. 9001/tcp open only for HAProxy, not public.                                           |
+| HAProxy                                                                | 100.100.100.35                                           | 80/tcp<br />443/tcp                         | n/a                                      | We'll install HAProxy in one server. Both ports are open for public                                                     |
 | Mariadb                                                                | 100.100.100.40                                           |                                             | n/a                                      | We've a Mariadb cluster from provider                                                                                   |
 | Redis                                                                  | 100.100.100.50                                           |                                             | n/a                                      | We've a Redis cluster from provider                                                                                     |
 | NFS                                                                    | 100.100.100.60                                           |                                             | n/a                                      | We've a NFS storage from provider                                                                                       |
@@ -384,7 +384,10 @@ systemctl enable plugnmeet-recorder@websocket
 
 wget https://github.com/mynaparrot/plugNmeet-recorder/releases/latest/download/recorder.zip -O recorder.zip
 unzip recorder.zip
+
 cp recorder/config_sample.yaml recorder/config.yaml
+npm install --ignore-scripts --production -C recorder
+rm recorder.zip
 ```
 
 Now open `recorder/config.yaml` & replace `PLUG_N_MEET_SERVER_DOMAIN`, `PLUG_N_MEET_API_KEY`, `PLUG_N_MEET_SECRET` & `redis` info. Make sure you're using same info as above setups into all recording servers.
@@ -416,9 +419,9 @@ Now start server:
 systemctl start plugnmeet-recorder
 ```
 
-## Setup Haproxy
+## Setup HAProxy
 
-Login to your haproxy server & follow:
+Login to your HAProxy server & follow:
 
 ```bash
 apt update && apt install -y --no-install-recommends software-properties-common
