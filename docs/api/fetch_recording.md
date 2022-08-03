@@ -17,7 +17,7 @@ End point: `/recording/fetch`
 
 ```
 {
-  "room_ids": "room01",
+  "room_ids": ["room01"],
   "from": 0,
   "limit": 20,
   "order_by": "DESC"
