@@ -448,7 +448,7 @@ service haproxy stop
 ```bash
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg_bk
 mkdir -p /etc/haproxy/ssl
-wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files//haproxy_lets_encrypt.cfg -O /etc/haproxy/haproxy.cfg
+wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files/haproxy_lets_encrypt.cfg -O /etc/haproxy/haproxy.cfg
 service haproxy start
 ```
 
@@ -471,6 +471,8 @@ ln -s /etc/letsencrypt/live/PLUG_N_MEET_SERVER_DOMAIN/fullchain.pem /etc/haproxy
 ln -s /etc/letsencrypt/live/PLUG_N_MEET_SERVER_DOMAIN/privkey.pem /etc/haproxy/ssl/PLUG_N_MEET_SERVER_DOMAIN.pem.key
 
 openssl dhparam -out /etc/haproxy/dhparams-2048.pem 2048
+wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files/001-restart-haproxy -O /etc/letsencrypt/renewal-hooks/post/001-restart-haproxy
+chmod +x /etc/letsencrypt/renewal-hooks/post/001-restart-haproxy
 
 service haproxy stop
 ```
