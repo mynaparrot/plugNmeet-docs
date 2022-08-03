@@ -11,16 +11,16 @@ plugNmeet allows you to install its components on multiple servers. We'll go ove
 
 I'm assuming we've following servers. You can have any number based on your requirements. For the services of Redis, MariaDB, and NFS, we will use a third-party provider. If you'd like, you can set up your own, but we won't go into that setup in this article.
 
-| Component                                                              | IPs                                                      | Ports                                       | Domain                                   | Description                                                                                                             |
-| :--------------------------------------------------------------------- | -------------------------------------------------------- | ------------------------------------------- | :--------------------------------------- | :---------------------------------------------------------------------------------------------------------------------- |
-| [plugNmeet-server](https://github.com/mynaparrot/plugNmeet-server)     | 100.100.100.1<br />100.100.100.1                         | 8080/tcp                                    | plugnmeet.example.com                    | We'll use 2 servers for plugNmeet. Ports open only for HAProxy,**not public**                                           |
-| [livekit](https://github.com/livekit/livekit)                          | 100.100.100.10<br /> 100.100.100.11<br /> 100.100.100.12 | 7881/tcp<br />5349/tcp<br />50000-60000/udp | livekit.example.com<br/>turn.example.com | We'll use 3 servers for livekit. 7881/tcp & 5349/tcp open only for HAProxy, not public. 50000-60000/udp open for public |
-| [plugNmeet-recorder](https://github.com/mynaparrot/plugNmeet-recorder) | 100.100.100.20<br /> 100.100.100.21 <br />100.100.100.22 |                                             | n/a                                      | We'll use 3 servers for recorder                                                                                        |
-| [plugNmeet-etherpad](https://github.com/mynaparrot/plugNmeet-etherpad) | 100.100.100.30                                           | 9001/tcp                                    | ether.example.com                        | We'll use 1 servers for etherpad. 9001/tcp open only for HAProxy, not public.                                           |
-| HAProxy                                                                | 100.100.100.35                                           | 80/tcp<br />443/tcp                         | n/a                                      | We'll install HAProxy in one server. Both ports are open for public                                                     |
-| Mariadb                                                                | 100.100.100.40                                           |                                             | n/a                                      | We've a Mariadb cluster from provider                                                                                   |
-| Redis                                                                  | 100.100.100.50                                           |                                             | n/a                                      | We've a Redis cluster from provider                                                                                     |
-| NFS                                                                    | 100.100.100.60                                           |                                             | n/a                                      | We've a NFS storage from provider                                                                                       |
+| Component                                                              | IPs                                                      | Ports                                                     | Domain                                   | Description                                                                                                                                |
+| :--------------------------------------------------------------------- | -------------------------------------------------------- | --------------------------------------------------------- | :--------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------- |
+| [plugNmeet-server](https://github.com/mynaparrot/plugNmeet-server)     | 100.100.100.1<br />100.100.100.2                         | 8080/tcp                                                  | plugnmeet.example.com                    | We'll use 2 servers for plugNmeet. Ports open only for HAProxy,**not public**                                                              |
+| [livekit](https://github.com/livekit/livekit)                          | 100.100.100.10<br /> 100.100.100.11<br /> 100.100.100.12 | 7880/tcp<br />7881/tcp<br />5349/tcp<br />50000-60000/udp | livekit.example.com<br/>turn.example.com | We'll use 3 servers for livekit. 7880/tcp & 5349/tcp open only for HAProxy, **not public**. 7881/tcp & 50000-60000/udp **open for public** |
+| [plugNmeet-recorder](https://github.com/mynaparrot/plugNmeet-recorder) | 100.100.100.20<br /> 100.100.100.21 <br />100.100.100.22 |                                                           | n/a                                      | We'll use 3 servers for recorder. Recorder doesn't need any port.                                                                          |
+| [plugNmeet-etherpad](https://github.com/mynaparrot/plugNmeet-etherpad) | 100.100.100.30                                           | 9001/tcp                                                  | ether.example.com                        | We'll use 1 servers for etherpad. 9001/tcp open only for HAProxy, not public.                                                              |
+| HAProxy                                                                | 100.100.100.35                                           | 80/tcp<br />443/tcp                                       | n/a                                      | We'll install HAProxy in one server. Both ports are open for public                                                                        |
+| Mariadb                                                                | 100.100.100.40                                           |                                                           | n/a                                      | We've a Mariadb cluster from provider                                                                                                      |
+| Redis                                                                  | 100.100.100.50                                           |                                                           | n/a                                      | We've a Redis cluster from provider                                                                                                        |
+| NFS                                                                    | 100.100.100.60                                           |                                                           | n/a                                      | We've a NFS storage from provider                                                                                                          |
 
 ## OS
 
@@ -149,6 +149,8 @@ Login to `etherpad` server & follow:
 
 ```bash
 sudo mkdir -p /opt/plugNmeet/etherpad
+sudo mkdir -p /opt/plugNmeet/redis-data
+sudo chmod 777 /opt/plugNmeet/redis-data
 cd /opt/plugNmeet
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files/settings.json -O etherpad/settings.json
 touch etherpad/APIKEY.txt
@@ -212,6 +214,19 @@ sudo mkdir -p /opt/plugNmeet/recording_files
 cd /opt/plugNmeet
 touch docker-compose.yaml
 touch config.yaml
+```
+
+[plugNmeet-client](https://github.com/mynaparrot/plugNmeet-client) configuration. Replace `plugnmeet.example.com` with correct domain.
+
+```bash
+wget https://github.com/mynaparrot/plugNmeet-client/releases/latest/download/client.zip -O client.zip
+unzip client.zip
+cp client/dist/assets/config_sample.js client/dist/assets/config.js
+
+sed -i "s/window.PLUG_N_MEET_SERVER_URL.*/window.PLUG_N_MEET_SERVER_URL = 'https:\/\/plugnmeet.example.com'\;/g" \
+    client/dist/assets/config.js
+
+rm client.zip
 ```
 
 Open `docker-compose.yaml` & write:
