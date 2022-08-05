@@ -9,21 +9,21 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 
 ## Installing plugNmeet for Joomla
 
-1. First, you have to download the **plugnmeet Zip file** from this link:<br /> https://github.com/mynaparrot/plugNmeet-Joomla/releases
-
-![Joomla-1.png](/img/Joomla/Joomla-1.png)
-
-2. After we have the file already downloaded, we go to the section of our **Joomla** where we can **install Extensions** (Extensions>Manage>Install).
+1. Go to the section of our **Joomla** where we can **install Extensions** (Extensions>Manage>Install).
 
 ![Joomla-2.png](/img/Joomla/Joomla-2.png)
 
-3. Click on "**or browse for file**" and select the downloaded file. It will then start charging.
+2. Select "**Install from web**" option and search "**plugNmeet**" then you will find the extension.
 
-![Joomla-3.png](/img/Joomla/Joomla-3.png)
+<img src="/img/Joomla/joomla-installweb-search.png"loading="lazy"/>  
 
-4. We wait for it to load, and we will see a message saying that the installation has been completed.
+3. Go to the detail page of plugNmeet extension and click "**Install**" 
 
-![Joomla-4.png](/img/Joomla/Joomla-4.png)
+<img src="/img/Joomla/Joomla-install.png"loading="lazy"/> 
+
+4. You will see the final successful installation page like this 
+
+<img src="/img/Joomla/Joomla-success.png"loading="lazy"/> 
 
 ## Plugin Configuration 
 

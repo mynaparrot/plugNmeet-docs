@@ -118,7 +118,7 @@ Notes: You need to update the client version by clicking this button. This is ne
 
 ![room-submit-min.png](/img/wordpress/room-submit-min.png)
 
-## Design Customization
+## Customization
 
 In PlugNMeet it is possible to customize the color and logo of all rooms to fit with your branding.
 
@@ -187,9 +187,21 @@ Below, we will explain each option:
 
 To select the desired color, click the column and it will pop up the color picker:
 
-5. Finally, you click "Submit" so that all the changes are saved.
+### Permission Customization 
 
-<img src="/img/wordpress/plugin-click-submit.png" width="600" alt="/img/wordpress/plugin-click-submit.png" loading="lazy" />
+For WordPress, you also can configure the permission based on different user roles. To do this , click the **Permission** tab on the setting page. 
+
+<img src="/img/wordpress/wordpress-permission.png"loading="lazy"/> 
+
+Here is how the details permission configuration page looks like. You can configure how users will join the meeting room, require a password or not, or join as moderator or attendee. You can also grant users to manage recordings as well.
+
+<img src="/img/wordpress/wordpress-permission-config.png"loading="lazy"/> 
+
+### Save all the configurations 
+
+ Finally, don´t forget to click "**Submit**" so that all the changes are saved. and the meeting room is created.
+
+<img src="/img/wordpress/wordpress-submit.png"loading="lazy"/>  
 
 ## Create a meeting room page
 
@@ -225,6 +237,13 @@ To select the desired color, click the column and it will pop up the color picke
 
 Share the meeting room page link to your attendees and they will see the following page.
 Just input the name and password, and click login,they will join you in the same room.
-![last.png](/img/wordpress/last.png)
+ 
+<img src="/img/wordpress/wordpress-join-pass.png"loading="lazy"/> 
+
+If you configured no require password to join the meeting room, then the page will look like this, and user only need to imput the **name** and click **join**
+
+<img src="/img/wordpress/wordpress-join-nopass.png"loading="lazy"/>  
+
+
 For how to use plugNmeet as moderator , check this tutorial
 For how to use plugNmeet as attendee , check this tutorial
