@@ -20,7 +20,7 @@ Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, O
 10. [Waiting Room](https://www.plugnmeet.org/docs/user-guide/moderator#13-waiting-room)
 11. [Poll](https://www.plugnmeet.org/docs/user-guide/moderator#14-poll)
 12. [Various user's lock settings](https://www.plugnmeet.org/docs/user-guide/moderator#15-room-lock-features)
-13. External content sharing
+13. [External content sharing(iframe)](http://www.plugnmeet.org/docs/user-guide/moderator#19-external-content-sharing-iframe)
 
 ## Demo
 

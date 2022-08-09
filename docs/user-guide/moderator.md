@@ -315,7 +315,29 @@ In case you want to silence all the participants, what you must do is go to the 
 
 ![recording-min.png](/img/moderator/recording-min.png)
 
-## 19. Access general settings
+## 19.External content sharing (iframe)
+To share external internet content, you must do the following:
+1. Click on "...".
+2. Select "Display external link".
+3. Insert the URL of the external content you want to present.
+4. Select if you want extra values:
+- Name: User’s full name
+- User Id: User’s unique Id
+- User role: User’s current role. Either admin or participant
+- Meeting Id: Meeting’s origin ID
+5. Click on “Display”
+
+In this way, each member of the meeting will be able to access the external content.
+In case you want to finish sharing, you must do the following:
+1. Click on "...".
+2. Select "Stop display external link".
+
+** This feature only support the url/website you shared which allow the iframe feature. otherwise, it won´t work. 
+
+<img src="/img/moderator/moderator-iframe.png"loading="lazy"/> 
+
+
+## 20. Access general settings
 
 To be able to make general configurations of the meeting, what must be done is to go to the top left, select the icon of three vertical dots, and then choose "Settings".
 ![settingsmenu-min.png](/img/moderator/settingsmenu-min.png)
@@ -333,14 +355,14 @@ Three sections will appear here:
 
 ![settingsoption-min.png](/img/moderator/settingsoption-min.png)
 
-## 20. Logout the meeting
+## 21. Logout the meeting
 
 1.  To be able to leave the meeting without the other participants disconnecting and staying in the meeting, you have to go to the top right, select the icon of the three vertical dots, and then choose “Log out”.
 2.  A confirmation box will then appear to make sure you want to leave the meeting.
 
 ![logout-min.png](/img/moderator/logout-min.png)
 
-## 21. Software Version 
+## 22. Software Version 
 
 If you want to know which version of the software you are using now, you can go to the top left, select the icon of three vertical dots, and then choose "Settings".
 From the pop up window, at the bottom area, you will see the current version of the software. 
@@ -350,7 +372,7 @@ From the pop up window, at the bottom area, you will see the current version of 
 This information is useful when you want to report a problem about the software. 
 
 
-## 22. End the meeting
+## 23. End the meeting
 
 1.  To be able to end the meeting, what must be done is to go to the top right, select the icon of three vertical dots, and then choose "End".
 2.  A confirmation box will then appear to ensure that you want to end the meeting, because when the action is performed, all participants will be disconnected.
