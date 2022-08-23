@@ -48,13 +48,12 @@ That is demo server information, it may have some limitations, please replace it
 ## Update Client Version 
 
 
+By default, the client load will choose the **remote** option. In this option, the client version will update automatically with the plugin update. Normally users don´t need to do anything with this. 
 
-Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._** 
+If you want to use some customized version of the client, you need to choose the **local** option, in this way you can manually update the client version. 
 
+<img src="/img/Joomla/Joomla-client-version.png"loading="lazy"/>   
 
-
-
-<img src="/img/Joomla/Joomla-client-update.png" width="600" alt="/img/Joomla/Joomla-client-update.png" loading="lazy" />
 
 ## Design Customization
 

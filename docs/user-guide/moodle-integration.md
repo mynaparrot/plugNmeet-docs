@@ -69,12 +69,11 @@ With this tutorial, you will be able to know how to install and use **plugNmeet*
 
 ## Update Client Version 
 
+By default, the client load will choose the **remote** option. In this option, the client version will update automatically with the plugin update. Normally users don´t need to do anything with this. 
 
+If you want to use some customized version of the client, you need to choose the **local** option, in this way you can manually update the client version. 
 
-Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._** 
-
-
-<img src="/img/moodle/Moodle-clientupdate.png" width="600" alt="/img/moodle/Moodle-clientupdate.png" loading="lazy" /> 
+<img src="/img/moodle/Moodle-client-version.png"loading="lazy"/> 
 
 
 ## Design Customization

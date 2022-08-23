@@ -47,9 +47,11 @@ That is demo server information, it may have some limitations, please replace wi
 
 ## Update Client Version
 
-Notes: You need to update the client version by clicking this button. This is necessary for installing the plugin and for every time the plugin is updated to a new version. **_If you don't do this, you won't be able to use the service properly._**
+By default, the client load will choose the **remote** option. In this option, the client version will update automatically with the plugin update. Normally users don´t need to do anything with this. 
 
-![server-settings-client-update.png](/img/wordpress/server-settings-client-update.png)
+If you want to use some customized version of the client, you need to choose the **local** option, in this way you can manually update the client version. 
+
+<img src="/img/wordpress/client-version.png"loading="lazy"/> 
 
 ## Create Meeting Room
 
