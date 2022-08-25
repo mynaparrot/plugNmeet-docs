@@ -104,6 +104,10 @@ const config = {
               {
                 label: 'Forum',
                 href: 'https://github.com/mynaparrot/plugNmeet-server/discussions',
+              },
+              {
+                label: 'Slack',
+                href: 'https://join.slack.com/t/plugnmeet/shared_invite/zt-1ex9xaydu-RiN6VunWBHo8UDn2P1XQRg',
               }
             ],
           },
