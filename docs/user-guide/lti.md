@@ -137,3 +137,41 @@ To install plugNmeet, the following steps must be performed:
 
 10. You go to the "Interaction" section, and you can view "plugNmeet" to use it.
 <img src="/img/lti/lti-chamilo-10.png"loading="lazy"/>  
+
+## Moodle LMS Example
+
+To use plugNmeet via LTI, the following steps must be performed:
+
+1. Go to "Site administration".
+
+<img src="/img/lti/lti-moodle-1.png"loading="lazy"/> 
+
+2. Click on "Plugins".
+
+<img src="/img/lti/lti-moodle-2.png"loading="lazy"/>  
+
+3. Scroll down and select "Manage tools".
+
+<img src="/img/lti/lti-moodle-3.png"loading="lazy"/>  
+
+4. Click on "Configure a tool manually".
+
+<img src="/img/lti/lti-moodle-4.png"loading="lazy"/>    
+
+5. Fill in the following data and then select "Save changes".
+
+```
+Name: plugNmeet
+Tool URL: https://your-plug-n-meet/lti/v1
+Consumer key: plug-n-meet API Key
+Shared secret: plug-n-meet API Secret
+
+```
+**Replace with your own API key and Secret**
+
+<img src="/img/lti/lti-moodle-5.png"loading="lazy"/>  
+
+
+6. PlugNmeet is now ready to use via LTI tools on Moodle.
+
+<img src="/img/lti/lti-moodle-6.png"loading="lazy"/>   
