@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<"svg">>;
+  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
   description: JSX.Element;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: "1",
-    Svg: require("@site/static/img/features/install-svgrepo-com.svg").default,
+    title: '1',
+    Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
     description: (
       <>
         Simple to install and quickly integrate with any existing website, apps,
@@ -18,8 +18,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "2",
-    Svg: require("@site/static/img/features/component-customization-svgrepo-com.svg")
+    title: '2',
+    Svg: require('@site/static/img/features/component-customization-svgrepo-com.svg')
       .default,
     description: (
       <>
@@ -29,8 +29,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "3",
-    Svg: require("@site/static/img/features/video-call-svgrepo-com.svg")
+    title: '3',
+    Svg: require('@site/static/img/features/video-call-svgrepo-com.svg')
       .default,
     description: (
       <>
@@ -41,8 +41,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "4",
-    Svg: require("@site/static/img/features/video-call-tv-svgrepo-com.svg")
+    title: '4',
+    Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg')
       .default,
     description: (
       <>
@@ -53,8 +53,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "5",
-    Svg: require("@site/static/img/features/whiteboard-svgrepo-com.svg")
+    title: '5',
+    Svg: require('@site/static/img/features/whiteboard-svgrepo-com.svg')
       .default,
     description: (
       <>
@@ -64,8 +64,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "6",
-    Svg: require("@site/static/img/features/webrtc-svgrepo-com.svg").default,
+    title: '6',
+    Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
         WebRTC-based, secured, and encrypted communication can make your online
@@ -74,8 +74,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "7",
-    Svg: require("@site/static/img/features/devices-svgrepo-com.svg").default,
+    title: '7',
+    Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
     description: (
       <>
         Compatible with all devices. For browsers, Google Chrome and Firefox are
@@ -84,8 +84,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "8",
-    Svg: require("@site/static/img/features/data-integration-hub-svgrepo-com.svg")
+    title: '8',
+    Svg: require('@site/static/img/features/data-integration-hub-svgrepo-com.svg')
       .default,
     description: (
       <>
@@ -95,8 +95,8 @@ const FeatureList: FeatureItem[] = [
     ),
   },
   {
-    title: "9",
-    Svg: require("@site/static/img/features/go-svgrepo-com.svg").default,
+    title: '9',
+    Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
     description: (
       <>
         Scalable and high-performance system written in the Go programming
