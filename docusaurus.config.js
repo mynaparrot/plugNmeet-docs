@@ -96,10 +96,6 @@ const config = {
                 label: 'API',
                 to: '/docs/api/intro',
               },
-              {
-                label: 'Demo',
-                to: 'https://demo.plugnmeet.com/login.html',
-              },
             ],
           },
           {
