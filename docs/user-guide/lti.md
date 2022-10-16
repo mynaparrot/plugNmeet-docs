@@ -140,7 +140,7 @@ To install plugNmeet, the following steps must be performed:
 
 ## Moodle LMS Example
 
-To use plugNmeet via LTI, the following steps must be performed:
+If your Moodle provider doesn’t support to install custom plugins, then you can use LTI tools to join the plugNmeet meeting. Here is how you can do it. 
 
 1. Go to "Site administration".
 
@@ -175,3 +175,36 @@ Shared secret: plug-n-meet API Secret
 6. PlugNmeet is now ready to use via LTI tools on Moodle.
 
 <img src="/img/lti/lti-moodle-6.png"loading="lazy"/>   
+
+7. After the LTI tool is ready,then you can go to My course page to add a new course with LTI. 
+
+8. Create a course or choose an existing one by going to the "My courses" section. In this case, a course will be created by clicking on "Create new course". "Edit mode" needs to be enabled.
+<img src="/img/lti/lti-moodle-8.png"loading="lazy"/>
+
+9. We input the name of the course
+
+<img src="/img/lti/lti-moodle-9.png"loading="lazy"/>
+
+10. Click on "Save and display".then we come to the course page. 
+
+<img src="/img/lti/lti-moodle-10.png"loading="lazy"/>
+
+11. Select "Add an activity or resource".
+
+<img src="/img/lti/lti-moodle-11.png"loading="lazy"/>
+
+12. Click on "External tool".
+
+<img src="/img/lti/lti-moodle-12.png"loading="lazy"/>
+
+13. Type the name of the activity and select in Preconfigured tool: "plugNmeet".
+
+<img src="/img/lti/lti-moodle-13.png"loading="lazy"/>
+
+14. Click on "Save and display".
+
+<img src="/img/lti/lti-moodle-14.png"loading="lazy"/>
+
+15. Then user can click the activity and join the plugNmeet meeting. 
+
+<img src="/img/lti/lti-moodle-15.png"loading="lazy"/>
