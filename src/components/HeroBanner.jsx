@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import MobilePortrait from '../../static/img/slider/MobilePortrait.png';
+import Banner from '../../static/img/slider/BannerOne2-min.png';
 import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
 import DesktopCam from '../../static/img/slider/Desktop_version_cam.png';
 import DesktopWhiteBoard from '../../static/img/slider/Desktop_version_whiteboard.png';
@@ -12,22 +12,24 @@ const HeroBanner = () => {
   return (
     <>
       <div className="landing-banner">
-        <div className="container">
-          <div className="content">
-            <p>
-              WebRTC based Scalable, High Performance, Open source web
-              conferencing that is simple to use and customizable
-            </p>
-            <Link
-              className="button button--secondary button--lg"
-              to="/docs/intro"
-            >
-              Get Started
-            </Link>
+        <div className="text-wrap">
+          <div className="container">
+            <div className="content">
+              <p>
+                WebRTC based Scalable, High Performance, Open source web
+                conferencing that is simple to use and customizable
+              </p>
+              <Link
+                className="button button--secondary button--lg"
+                to="/docs/intro"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
-          <div className="logo">
-            <img src={MobilePortrait} alt="MobilePortrait" />
-          </div>
+        </div>
+        <div className="banner">
+          <img src={Banner} alt="Banner" />
         </div>
       </div>
       <section className="features-section slider-section">
@@ -38,7 +40,6 @@ const HeroBanner = () => {
             <Carousel
               autoPlay
               infiniteLoop
-              showArrows={false}
               showStatus={false}
               showIndicators={false}
               showThumbs={false}
