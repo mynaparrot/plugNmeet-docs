@@ -53,8 +53,23 @@
     rgba(0, 77, 144, 1) 0%,
     rgba(36, 174, 247, 1) 84%
   );
-  padding: 150px 0;
+  padding: 20px 0;
   text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.landing-banner .banner {
+  max-width: 50%;
+  margin-left: auto;
+}
+.landing-banner .text-wrap {
+  position: absolute;
+  width: 100%;
+}
+.landing-banner .container .content {
+  width: 45%;
 }
 .landing-banner p {
   font-size: 28px;
@@ -124,6 +139,37 @@ html[data-theme='dark'] .icon-wrap svg.stroke path {
 html[data-theme='dark'] .icon-wrap svg.fill path {
   fill: #fff !important;
 }
+.slider-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+.slider-wrapper .carousel-root {
+  padding: 0 10px;
+  position: absolute;
+  top: 10px;
+}
+.slider-wrapper .carousel .control-next.control-arrow:before {
+  border-left: 8px solid #000;
+}
+.slider-wrapper .carousel.carousel-slider .control-arrow {
+  opacity: 1;
+}
+.slider-wrapper .carousel .control-next.control-arrow {
+  right: -40px;
+}
+.slider-wrapper .carousel-root .carousel.carousel-slider {
+  overflow: inherit;
+}
+section.features-section.slider-section .container {
+  padding: 0 25px;
+}
+.slider-wrapper .carousel .control-prev.control-arrow {
+  left: -40px;
+}
+.slider-wrapper .carousel .control-prev.control-arrow:before {
+  border-right: 8px solid #000;
+}
 
 @media screen and (max-width: 1280px) {
   .features-wrapper {
@@ -150,19 +196,37 @@ html[data-theme='dark'] .icon-wrap svg.fill path {
   .headline {
     font-size: 25px;
   }
-  .landing-banner {
-    padding: 100px 0;
+  .landing-banner .text-wrap {
+    position: relative;
+  }
+  .landing-banner .container .content {
+    width: 100%;
+    padding: 40px 0 !important;
+  }
+  .landing-banner .banner {
+    max-width: 100%;
+    padding: 0 20px;
   }
 }
 @media screen and (max-width: 767px) {
-  .landing-banner {
-    padding: 70px 0;
-  }
   .landing-banner p {
     font-size: 20px;
   }
   section.features-section {
     padding: 50px 0;
+  }
+  .landing-banner .container .content,
+  .landing-banner .container .logo {
+    width: 100%;
+    padding: 0;
+  }
+  .landing-banner .container .logo img {
+    max-width: 180px;
+    margin: auto;
+    margin-top: 25px;
+  }
+  section.features-section.slider-section .headline {
+    margin-bottom: 20px;
   }
 }
 @media screen and (max-width: 640px) {
