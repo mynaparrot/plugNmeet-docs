@@ -42,7 +42,7 @@ End point: `/recording/fetch`
 | from                                | number                 | Requested from point                     |
 | limit                               | number                 | Requested limit of records               |
 | order_by                            | string                 | Record order                             |
-| [recordings_list](#recordings-list) | Array<[recording_list](#recording-list)> |                                          |
+| [recordings_list](#recording-list) | Array<[recording_list](#recording-list)> |                                          |
 
 ### Recording list
 
