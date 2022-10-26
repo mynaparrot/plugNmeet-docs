@@ -7,48 +7,112 @@ sidebar_position: 2
 
 End point: `/room/create`
 
-| Field                          | Type    | Position                       | Required | Description                                                                                                                                                                                                                                                                                       |
-| ------------------------------ | ------- | ------------------------------ | :------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| room_id                        | string  | root                           | Yes      | Room Id should be unique for every room/session/meeting                                                                                                                                                                                                                                           |
-| max_participants               | number  | root                           | No       | Limit number of participants that can be join in this room.                                                                                                                                                                                                                                       |
-| empty_timeout                  | number  | root                           | No       | Number of seconds to keep the room open if no one joins                                                                                                                                                                                                                                           |
-| metadata                       | string  | root                           | Yes      |                                                                                                                                                                                                                                                                                                   |
-| room_title                     | string  | metadata                       | Yes      | Title of the room/meeting                                                                                                                                                                                                                                                                         |
-| welcome_message                | string  | metadata                       | No       | If you want to show some message at start up.                                                                                                                                                                                                                                                     |
-| room_features                  | string  | metadata                       | Yes      | Various room features.                                                                                                                                                                                                                                                                            |
-| allow_webcams                  | boolean | room_features                  | Yes      | If you want to enable webcam support.                                                                                                                                                                                                                                                             |
-| mute_on_start                  | boolean | room_features                  | Yes      | If you want to mute microphone automatically after share.                                                                                                                                                                                                                                         |
-| allow_screen_share             | boolean | room_features                  | Yes      | Enable or disable screen share for the meeting.                                                                                                                                                                                                                                                   |
-| allow_recording                | boolean | room_features                  | Yes      | Enable or disable recording for the meeting.                                                                                                                                                                                                                                                      |
-| allow_rtmp                     | boolean | room_features                  | Yes      | Enable or disable RTMP for the meeting.                                                                                                                                                                                                                                                           |
-| admin_only_webcams             | boolean | room_features                  | Yes      | If you want to allow webcams only for admin                                                                                                                                                                                                                                                       |
-| allow_view_other_webcams       | boolean | room_features                  | Yes      | If you want to disable to display other users camera except moderator.                                                                                                                                                                                                                            |
-| allow_view_other_users_list    | boolean | room_features                  | Yes      | If you want to disable to display users list except moderator.                                                                                                                                                                                                                                    |
-| chat_features                  | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| allow_chat                     | boolean | chat_features                  | Yes      | Enable or disable chat for the meeting.                                                                                                                                                                                                                                                           |
-| allow_file_upload              | boolean | chat_features                  | Yes      | Enable or disable file upload in chat for the meeting.                                                                                                                                                                                                                                            |
-| shared_note_pad_features       | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| allowed_shared_note_pad        | boolean | shared_note_pad_features       | Yes      | Enable or disable shared notepad for the meeting.                                                                                                                                                                                                                                                 |
-| whiteboard_features            | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| allowed_whiteboard             | boolean | whiteboard_features            | Yes      | Enable or disable whiteboard for the meeting.                                                                                                                                                                                                                                                     |
-| external_media_player_features | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| allowed_external_media_player  | boolean | external_media_player_features | Yes      | Enable or disable to allow to play video/audio from external source. Moderator can upload local video/audio too.                                                                                                                                                                                  |
-| waiting_room_features          | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| is_active                      | boolean | waiting_room_features          | Yes      | Enable if you want to activate wating room feature. User will be in waiting room until moderator allow to join.                                                                                                                                                                                   |
-| breakout_room_features         | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| is_active                      | boolean | breakout_room_features         | Yes      | Enable or disable breakout room features.                                                                                                                                                                                                                                                         |
-| allowed_number_rooms           | number  | breakout_room_features         | No       | Number of breakout rooms allowed to create at a same time. Default: 6                                                                                                                                                                                                                             |
-| display_external_link_features | string  | room_features                  | Yes      |                                                                                                                                                                                                                                                                                                   |
-| is_active                      | boolean | display_external_link_features | Yes      | Enable or disable to allow to display external links inside a iframe. This feature is helpful if your session to require to display other website, quiz, games etc. The website must be allow to load inside an iframe. Moderator can pass various values like name, userId, role, meetingId etc. |
-| default_lock_settings          | string  | room_features                  | NO       |                                                                                                                                                                                                                                                                                                   |
-| lock_microphone                | boolean | default_lock_settings          | NO       | Lock microphone for users.                                                                                                                                                                                                                                                                        |
-| lock_webcam                    | boolean | default_lock_settings          | NO       | Lock webcam for users.                                                                                                                                                                                                                                                                            |
-| lock_screen_sharing            | boolean | default_lock_settings          | NO       | Lock screen share for users.                                                                                                                                                                                                                                                                      |
-| lock_chat                      | boolean | default_lock_settings          | NO       | Lock chat for users.                                                                                                                                                                                                                                                                              |
-| lock_chat_send_message         | boolean | default_lock_settings          | NO       | Lock send message for users.                                                                                                                                                                                                                                                                      |
-| lock_chat_file_share           | boolean | default_lock_settings          | NO       | Lock send file for users.                                                                                                                                                                                                                                                                         |
+## Request parameters
 
-**Example**:
+
+| Field                 | Type   | Required | Description                                                 |
+| ----------------------- | -------- | :--------- | ------------------------------------------------------------- |
+| room_id               | string | Yes      | Room Id should be unique for every room/session/meeting     |
+| max_participants      | number | No       | Limit number of participants that can be join in this room. |
+| empty_timeout         | number | No       | Number of seconds to keep the room open if no one joins     |
+| [metadata](#metadata) | string | Yes      |                                                             |
+
+### Metadata
+
+
+| Field                           | Type   | Required | Description                                   |
+| --------------------------------- | -------- | ---------- | ----------------------------------------------- |
+| room_title                      | string | Yes      | Title of the room/meeting                     |
+| welcome_message                 | string | No       | If you want to show some message at start up. |
+| [room_features](#room-features) | string | Yes      | Various room features.                        |
+
+### Room Features
+
+
+| Field                                                             | Type    | Required | Description                                                            |
+| ------------------------------------------------------------------- | --------- | ---------- | ------------------------------------------------------------------------ |
+| allow_webcams                                                     | boolean | Yes      | If you want to enable webcam support.                                  |
+| mute_on_start                                                     | boolean | Yes      | If you want to mute microphone automatically after share.              |
+| allow_screen_share                                                | boolean | Yes      | Enable or disable screen share for the meeting.                        |
+| allow_recording                                                   | boolean | Yes      | Enable or disable recording for the meeting.                           |
+| allow_rtmp                                                        | boolean | Yes      | Enable or disable RTMP for the meeting.                                |
+| admin_only_webcams                                                | boolean | Yes      | If you want to allow webcams only for admin                            |
+| allow_view_other_webcams                                          | boolean | Yes      | If you want to disable to display other users camera except moderator. |
+| allow_view_other_users_list                                       | boolean | Yes      | If you want to disable to display users list except moderator.         |
+| [chat_features](#chat-features)                                   | string  | Yes      | Chat Settings                                                          |
+| [shared_note_pad_features](#shared-note-pad-features)             | string  | Yes      | Shared note pad settings                                               |
+| [whiteboard_features](#whiteboard-features)                       | string  | Yes      | Whiteboard settings                                                    |
+| [external_media_player_features](#external-media-player-features) | string  | Yes      | External media player settings                                         |
+| [waiting_room_features](#waiting-room-features)                   | string  | Yes      | Waiting room settings                                                  |
+| [breakout_room_features](#breakout-room-features)                 | string  | Yes      | Breakout room settings                                                 |
+| [display_external_link_features](#display-external-link-features) | string  | Yes      | Display external link settings                                         |
+| [default_lock_settings](#default-lock-settings)                   | string  | No       | Default lock settings                                                  |
+
+### Chat features
+
+
+| Field             | Type    | Required | Description                                            |
+| ------------------- | --------- | ---------- | -------------------------------------------------------- |
+| allow_chat        | boolean | Yes      | Enable or disable chat for the meeting.                |
+| allow_file_upload | boolean | Yes      | Enable or disable file upload in chat for the meeting. |
+
+### Shared note pad features
+
+
+| Field                   | Type    | Required | Description                                       |
+| ------------------------- | --------- | ---------- | --------------------------------------------------- |
+| allowed_shared_note_pad | boolean | Yes      | Enable or disable shared notepad for the meeting. |
+
+### Whiteboard features
+
+
+| Field              | Type    | Required | Description                                   |
+| -------------------- | --------- | ---------- | ----------------------------------------------- |
+| allowed_whiteboard | boolean | Yes      | Enable or disable whiteboard for the meeting. |
+|                    |         |          |                                               |
+
+### External media player features
+
+
+| Field                         | Type    | Required | Description                                                                                                      |
+| ------------------------------- | --------- | ---------- | ------------------------------------------------------------------------------------------------------------------ |
+| allowed_external_media_player | boolean | Yes      | Enable or disable to allow to play video/audio from external source. Moderator can upload local video/audio too. |
+
+### Waiting room features
+
+
+| Field     | Type    | Required | Description                                                                                                     |
+| ----------- | --------- | ---------- | ----------------------------------------------------------------------------------------------------------------- |
+| is_active | boolean | Yes      | Enable if you want to activate wating room feature. User will be in waiting room until moderator allow to join. |
+
+### Breakout room features
+
+
+| Field                | Type    | Required | Description                                                           |
+| ---------------------- | --------- | ---------- | ----------------------------------------------------------------------- |
+| is_active            | boolean | Yes      | Enable or disable breakout room features.                             |
+| allowed_number_rooms | number  | No       | Number of breakout rooms allowed to create at a same time. Default: 6 |
+
+### Display external link features
+
+
+| Field     | Type    | Required | Description                                                                                                                                                                                                                                                                                       |
+| ----------- | --------- | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| is_active | boolean | Yes      | Enable or disable to allow to display external links inside a iframe. This feature is helpful if your session to require to display other website, quiz, games etc. The website must be allow to load inside an iframe. Moderator can pass various values like name, userId, role, meetingId etc. |
+
+### Default lock settings
+
+
+| Field                  | Type    | Required | Description                  |
+| ------------------------ | --------- | ---------- | ------------------------------ |
+| lock_microphone        | boolean | NO       | Lock microphone for users.   |
+| lock_webcam            | boolean | NO       | Lock webcam for users.       |
+| lock_screen_sharing    | boolean | NO       | Lock screen share for users. |
+| lock_chat              | boolean | NO       | Lock chat for users.         |
+| lock_chat_send_message | boolean | NO       | Lock send message for users. |
+| lock_chat_file_share   | boolean | NO       | Lock send file for users.    |
+
+### **Example**
 
 ```
 {
@@ -107,16 +171,23 @@ End point: `/room/create`
 
 ## Response
 
-| Field            | Type    | Position | Description                                |
-| :--------------- | ------- | -------- | :----------------------------------------- |
-| status           | boolean | root     | The status of the request                  |
-| msg              | string  | root     | Response message                           |
-| roomInfo         | string  | root     |                                            |
-| sid              | string  | roomInfo | Room sid                                   |
-| name             | string  | roomInfo | Room Id                                    |
-| max_participants | number  | roomInfo | Maximum participants for this room         |
-| empty_timeout    | number  | roomInfo | Maximum duration before closing empty room |
-| creation_time    | number  | roomInfo | Room creation time in unix time format     |
-| turn_password    | string  | roomInfo | Turn password                              |
-| enabled_codecs   | Array   | roomInfo | Video codecs for this room                 |
-| metadata         | string  | roomInfo | Room metadata                              |
+
+| Field                  | Type    | Description               |   
+| :----------------------- | --------- | --------------------------- | 
+| status                 | boolean | The status of the request |   
+| msg                    | string  | Response message          |   
+| [roomInfo](#room-info) |         |                           |   
+
+### Room Info
+
+
+| Field            | Type   | Description                                |
+| ------------------ | -------- | -------------------------------------------- |
+| sid              | string | Room sid                                   |
+| name             | string | Room Id                                    |
+| max_participants | number | Maximum participants for this room         |
+| empty_timeout    | number | Maximum duration before closing empty room |
+| creation_time    | number | Room creation time in unix time format     |
+| turn_password    | string | Turn password                              |
+| enabled_codecs   | Array  | Video codecs for this room                 |
+| metadata         | string | Room metadata                              |

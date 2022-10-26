@@ -2,30 +2,38 @@
 description: plugNmeet join room using API
 sidebar_position: 3
 ---
-
 # Join room
 
 End point: `/room/getJoinToken`
 
-| Field                  | Type    | Position      | Required | Description                                                  |
-| ---------------------- | ------- | ------------- | :------- | ------------------------------------------------------------ |
-| room_id                | string  | root          | Yes      | Room Id that you created before to join.                     |
-| user_info              | string  | root          | Yes      |                                                              |
-| name                   | string  | user_info     | Yes      | User name                                                    |
-| user_id                | string  | user_info     | Yes      | User unique ID. Should be unquie for every user.             |
-| is_admin               | boolean | user_info     | Yes      | If true then user will be treated as an admin for this room. |
-| is_hidden              | boolean | user_info     | Yes      | If true then user will be invisible in the room.             |
-| user_metadata          | string  | user_info     | Yes      |                                                              |
-| profile_pic            | string  | user_metadata | NO       | If you want to set user's avatar. Should be https URL.       |
-| lock_settings          | string  | user_metadata | NO       |                                                              |
-| lock_microphone        | boolean | lock_settings | NO       | Lock microphone for users.                                   |
-| lock_webcam            | boolean | lock_settings | NO       | Lock webcam for users.                                       |
-| lock_screen_sharing    | boolean | lock_settings | NO       | Lock screen share for users.                                 |
-| lock_chat              | boolean | lock_settings | NO       | Lock chat for users.                                         |
-| lock_chat_send_message | boolean | lock_settings | NO       | Lock send message for users.                                 |
-| lock_chat_file_share   | boolean | lock_settings | NO       | Lock send file for users.                                    |
+## Request parameters
 
-**Example**:
+
+| Field                   | Type   | Required | Description                              |
+| ------------------------- | -------- | :--------- | ------------------------------------------ |
+| room_id                 | string | Yes      | Room Id that you created before to join. |
+| [user_info](#user-info) | string | Yes      |                                          |
+
+### User info
+
+
+| Field                           | Type    | Required | Description                                                  |
+| --------------------------------- | --------- | ---------- | -------------------------------------------------------------- |
+| name                            | string  | Yes      | User full name                                               |
+| user_id                         | string  | Yes      | User unique ID. Should be unquie for every user.             |
+| is_admin                        | boolean | Yes      | If true then user will be treated as an admin for this room. |
+| is_hidden                       | boolean | No       | If true then user will be invisible in the room.             |
+| [user_metadata](#user-metadata) | string  | Yes      |                                                              |
+
+### User metadata
+
+
+| Field                                                           | Type   | Required | Description    |
+| ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
+| profile_pic                                                     | string | No       | Profile avatar |
+| [lock_settings](/docs/api/create_room.md#default-lock-settings) | string | No       | Lock settings  |
+
+### **Example**
 
 ```
 {
@@ -52,8 +60,9 @@ End point: `/room/getJoinToken`
 
 ## Response
 
+
 | Field  | Type    | Position | Description               |
-| :----- | ------- | -------- | :------------------------ |
+| :------- | --------- | ---------- | :-------------------------- |
 | status | boolean | root     | The status of the request |
 | msg    | string  | root     | Response message          |
 | token  | string  | root     | Join token                |
