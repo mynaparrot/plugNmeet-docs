@@ -8,7 +8,7 @@ End point: `/room/getActiveRoomsInfo`
 
 **Example**:
 
-```
+```json
 {}
 ```
 

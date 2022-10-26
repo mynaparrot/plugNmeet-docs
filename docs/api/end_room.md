@@ -12,7 +12,7 @@ End point: `/room/endRoom`
 
 **Example**:
 
-```
+```json
 {
   "room_id": "room01"
 }

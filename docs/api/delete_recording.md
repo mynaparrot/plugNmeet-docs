@@ -12,7 +12,7 @@ End point: `/recording/delete`
 
 **Example**:
 
-```
+```json
 {
   "record_id": "RM_RKD4jeiFMZDS-1645753430902"
 }

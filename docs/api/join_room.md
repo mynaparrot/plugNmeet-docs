@@ -35,7 +35,7 @@ End point: `/room/getJoinToken`
 
 ### **Example**
 
-```
+```json
 {
   "room_id": "room01",
   "user_info": {

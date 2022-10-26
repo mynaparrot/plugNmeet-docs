@@ -2,7 +2,6 @@
 description: plugNmeet create room using API
 sidebar_position: 2
 ---
-
 # Create room
 
 End point: `/room/create`
@@ -20,33 +19,35 @@ End point: `/room/create`
 ### Metadata
 
 
-| Field                           | Type   | Required | Description                                   |
-| --------------------------------- | -------- | ---------- | ----------------------------------------------- |
-| room_title                      | string | Yes      | Title of the room/meeting                     |
-| welcome_message                 | string | No       | If you want to show some message at start up. |
-| [room_features](#room-features) | string | Yes      | Various room features.                        |
+| Field                                           | Type   | Required | Description                                                                                |
+| ------------------------------------------------- | -------- | ---------- | -------------------------------------------------------------------------------------------- |
+| room_title                                      | string | Yes      | Title of the room/meeting                                                                  |
+| welcome_message                                 | string | No       | If you want to show some message at start up.                                              |
+| webhook_url                                     | string | No       | You can put webhook URL in where plugNmeet will send post request based on various events. |
+| [room_features](#room-features)                 | string | Yes      | Various room features.                                                                     |
+| [default_lock_settings](#default-lock-settings) | string | No       | Default lock settings                                                                      |
 
 ### Room Features
 
 
-| Field                                                             | Type    | Required | Description                                                            |
-| ------------------------------------------------------------------- | --------- | ---------- | ------------------------------------------------------------------------ |
-| allow_webcams                                                     | boolean | Yes      | If you want to enable webcam support.                                  |
-| mute_on_start                                                     | boolean | Yes      | If you want to mute microphone automatically after share.              |
-| allow_screen_share                                                | boolean | Yes      | Enable or disable screen share for the meeting.                        |
-| allow_recording                                                   | boolean | Yes      | Enable or disable recording for the meeting.                           |
-| allow_rtmp                                                        | boolean | Yes      | Enable or disable RTMP for the meeting.                                |
-| admin_only_webcams                                                | boolean | Yes      | If you want to allow webcams only for admin                            |
-| allow_view_other_webcams                                          | boolean | Yes      | If you want to disable to display other users camera except moderator. |
-| allow_view_other_users_list                                       | boolean | Yes      | If you want to disable to display users list except moderator.         |
-| [chat_features](#chat-features)                                   | string  | Yes      | Chat Settings                                                          |
-| [shared_note_pad_features](#shared-note-pad-features)             | string  | Yes      | Shared note pad settings                                               |
-| [whiteboard_features](#whiteboard-features)                       | string  | Yes      | Whiteboard settings                                                    |
-| [external_media_player_features](#external-media-player-features) | string  | Yes      | External media player settings                                         |
-| [waiting_room_features](#waiting-room-features)                   | string  | Yes      | Waiting room settings                                                  |
-| [breakout_room_features](#breakout-room-features)                 | string  | Yes      | Breakout room settings                                                 |
-| [display_external_link_features](#display-external-link-features) | string  | Yes      | Display external link settings                                         |
-| [default_lock_settings](#default-lock-settings)                   | string  | No       | Default lock settings                                                  |
+| Field                                                             | Type    | Required | Description                                                                                            |
+| ------------------------------------------------------------------- | --------- | ---------- | -------------------------------------------------------------------------------------------------------- |
+| allow_webcams                                                     | boolean | Yes      | If you want to enable webcam support.                                                                  |
+| mute_on_start                                                     | boolean | Yes      | If you want to mute microphone automatically after share.                                              |
+| allow_screen_share                                                | boolean | Yes      | Enable or disable screen share for the meeting.                                                        |
+| allow_recording                                                   | boolean | Yes      | Enable or disable recording for the meeting.                                                           |
+| allow_rtmp                                                        | boolean | Yes      | Enable or disable RTMP for the meeting.                                                                |
+| admin_only_webcams                                                | boolean | Yes      | If you want to allow webcams only for admin                                                            |
+| allow_view_other_webcams                                          | boolean | Yes      | If you want to disable to display other users camera except moderator.                                 |
+| allow_view_other_users_list                                       | boolean | Yes      | If you want to disable to display users list except moderator.                                         |
+| room_duration                                                     | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
+| [chat_features](#chat-features)                                   | string  | Yes      | Chat Settings                                                                                          |
+| [shared_note_pad_features](#shared-note-pad-features)             | string  | Yes      | Shared note pad settings                                                                               |
+| [whiteboard_features](#whiteboard-features)                       | string  | Yes      | Whiteboard settings                                                                                    |
+| [external_media_player_features](#external-media-player-features) | string  | Yes      | External media player settings                                                                         |
+| [waiting_room_features](#waiting-room-features)                   | string  | Yes      | Waiting room settings                                                                                  |
+| [breakout_room_features](#breakout-room-features)                 | string  | Yes      | Breakout room settings                                                                                 |
+| [display_external_link_features](#display-external-link-features) | string  | Yes      | Display external link settings                                                                         |
 
 ### Chat features
 
@@ -114,7 +115,7 @@ End point: `/room/create`
 
 ### **Example**
 
-```
+```json
 {
   "room_id": "room01",
   "metadata": {
@@ -126,33 +127,34 @@ End point: `/room/create`
       "allow_screen_share": true,
       "allow_recording": true,
       "allow_rtmp": true,
+      "admin_only_webcams": false,
       "allow_view_other_webcams": true,
       "allow_view_other_users_list": true,
-      "admin_only_webcams": false,
-      "room_duration": 0
-    },
-    "chat_features": {
-      "allow_chat": true,
-      "allow_file_upload": true
-    },
-    "shared_note_pad_features": {
-      "allowed_shared_note_pad": true
-    },
-    "whiteboard_features": {
-      "allowed_whiteboard": true
-    },
-    "external_media_player_features": {
-      "allowed_external_media_player": true
-    },
-    "waiting_room_features": {
-      "is_active": false
-    },
-    "breakout_room_features": {
-      "is_allow": true,
-      "allowed_number_rooms": 5
-    },
-    "display_external_link_features": {
-      "is_allow": true
+      "allow_polls": true,
+      "room_duration": 0,
+      "chat_features": {
+        "allow_chat": true,
+        "allow_file_upload": true
+      },
+      "shared_note_pad_features": {
+        "allowed_shared_note_pad": true
+      },
+      "whiteboard_features": {
+        "allowed_whiteboard": true
+      },
+      "external_media_player_features": {
+        "allowed_external_media_player": true
+      },
+      "waiting_room_features": {
+        "is_active": false
+      },
+      "breakout_room_features": {
+        "is_allow": true,
+        "allowed_number_rooms": 2
+      },
+      "display_external_link_features": {
+        "is_allow": true
+      }
     },
     "default_lock_settings": {
       "lock_microphone": false,
@@ -172,11 +174,11 @@ End point: `/room/create`
 ## Response
 
 
-| Field                  | Type    | Description               |   
-| :----------------------- | --------- | --------------------------- | 
-| status                 | boolean | The status of the request |   
-| msg                    | string  | Response message          |   
-| [roomInfo](#room-info) |         |                           |   
+| Field                  | Type    | Description               |
+| :----------------------- | --------- | --------------------------- |
+| status                 | boolean | The status of the request |
+| msg                    | string  | Response message          |
+| [roomInfo](#room-info) |         |                           |
 
 ### Room Info
 

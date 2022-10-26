@@ -12,7 +12,7 @@ End point: `/room/getActiveRoomInfo`
 
 **Example**:
 
-```
+```json
 {
   "room_id": "room01"
 }
