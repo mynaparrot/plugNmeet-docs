@@ -6,12 +6,12 @@ sidebar_position: 8
 End point: `/recording/fetch`
 
 
-| Field    | Type   | Required | Description                  |   |
-| ---------- | -------- | ---------- | :----------------------------- | --- |
-| room_ids | array  | Yes      | Array of room Ids'           |   |
-| from     | number | No       | From point. Default 0        |   |
-| limit    | number | No       | Limit of records. Default 20 |   |
-| order_by | string | No       | Ordering. Default: DESC      |   |
+| Field    | Type   | Required | Description                         |   |
+| ---------- | -------- | ---------- | :------------------------------------ | --- |
+| room_ids | array  | Yes      | Array of room Ids'                  |   |
+| from     | number | No       | From point. Default 0               |   |
+| limit    | number | No       | Limit of records. Default 20        |   |
+| order_by | string | No       | Ordering DESC or ASC. Default: DESC |   |
 
 **Example**:
 
@@ -27,21 +27,21 @@ End point: `/recording/fetch`
 ## Response
 
 
-| Field             | Type    | Position | Description               |
-| :------------------ | --------- | ---------- | :-------------------------- |
-| status            | boolean | root     | The status of the request |
-| msg               | string  | root     | Response message          |
-| [result](#result) | object<[result](#result)>  | root     |                           |
+| Field             | Type                      | Position | Description               |
+| :------------------ | --------------------------- | ---------- | :-------------------------- |
+| status            | boolean                   | root     | The status of the request |
+| msg               | string                    | root     | Response message          |
+| [result](#result) | object<[result](#result)> | root     |                           |
 
 ### Result
 
 
-| Field                               | Type                   | Description                              |
-| ------------------------------------- | ------------------------ | ------------------------------------------ |
-| total_recordings                    | number                 | Total number of recordings for the query |
-| from                                | number                 | Requested from point                     |
-| limit                               | number                 | Requested limit of records               |
-| order_by                            | string                 | Record order                             |
+| Field                              | Type                                     | Description                              |
+| ------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| total_recordings                   | number                                   | Total number of recordings for the query |
+| from                               | number                                   | Requested from point                     |
+| limit                              | number                                   | Requested limit of records               |
+| order_by                           | string                                   | Record order                             |
 | [recordings_list](#recording-list) | Array<[recording_list](#recording-list)> |                                          |
 
 ### Recording list
