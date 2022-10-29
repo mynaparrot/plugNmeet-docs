@@ -34,7 +34,7 @@ $signature = hash_hmac("sha256", $body, "SECRET");
 ```js
 // using CryptoJS library
 const body = JSON.stringify({
-    "room_id" => "room01",
+    room_id => "room01",
 });
 const hash = CryptoJS.HmacSHA256(body, "SECRET");
 const signature = CryptoJS.enc.Hex.stringify(hash);
@@ -44,7 +44,7 @@ OR
 import { createHmac } from 'crypto';
 
 const body = JSON.stringify({
-    "room_id" => "room01",
+    room_id => "room01",
 });
 const signature = createHmac("sha256", "SECRET")
     .update(body)
