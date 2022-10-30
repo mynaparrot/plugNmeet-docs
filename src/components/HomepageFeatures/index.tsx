@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Simple to install and quickly integrate with any existing website, apps,
-        and software.
+        and software. Every website can have an end-to-end real-time conferencing solution.
       </>
     ),
   },

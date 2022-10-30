@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Intro
 
-Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, Open source web conferencing system.
+Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, Open source web conferencing system. Every website can have an end-to-end real-time conferencing solution.
 
 ## Main Features
 
