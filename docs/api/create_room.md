@@ -145,7 +145,7 @@ End point: `/room/create`
         "is_allow": true,
         "is_allow_cloud": true,
         "is_allow_local": true,
-        "enable_auto_cloud_recording": false,
+        "enable_auto_cloud_recording": false
       },
       "chat_features": {
         "allow_chat": true,
