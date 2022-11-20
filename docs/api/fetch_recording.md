@@ -6,12 +6,12 @@ sidebar_position: 8
 End point: `/recording/fetch`
 
 
-| Field    | Type   | Required | Description                         |   |
-| ---------- | -------- | ---------- | :------------------------------------ | --- |
-| room_ids | array  | Yes      | Array of room Ids'                  |   |
-| from     | number | No       | From point. Default 0               |   |
-| limit    | number | No       | Limit of records. Default 20        |   |
-| order_by | string | No       | Ordering DESC or ASC. Default: DESC |   |
+| Field    | Type   | Required | Description                         |
+| ---------- | -------- | ---------- | :------------------------------------ |
+| room_ids | array  | Yes      | Array of room Ids'                  |
+| from     | number | No       | From point. Default 0               |
+| limit    | number | No       | Limit of records. Default 20        |
+| order_by | string | No       | Ordering DESC or ASC. Default: DESC |
 
 **Example**:
 

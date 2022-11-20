@@ -35,12 +35,12 @@ End point: `/room/create`
 | allow_webcams                                                     | boolean | Yes      | If you want to enable webcam support.                                                                  |
 | mute_on_start                                                     | boolean | Yes      | If you want to mute microphone automatically after share.                                              |
 | allow_screen_share                                                | boolean | Yes      | Enable or disable screen share for the meeting.                                                        |
-| allow_recording                                                   | boolean | Yes      | Enable or disable recording for the meeting.                                                           |
 | allow_rtmp                                                        | boolean | Yes      | Enable or disable RTMP for the meeting.                                                                |
 | admin_only_webcams                                                | boolean | Yes      | If you want to allow webcams only for admin                                                            |
 | allow_view_other_webcams                                          | boolean | Yes      | If you want to disable to display other users camera except moderator.                                 |
 | allow_view_other_users_list                                       | boolean | Yes      | If you want to disable to display users list except moderator.                                         |
 | room_duration                                                     | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
+| [recording_features](#recording-features)                              | string  | Yes      | Recording Settings                                                                                     |
 | [chat_features](#chat-features)                                   | string  | Yes      | Chat Settings                                                                                          |
 | [shared_note_pad_features](#shared-note-pad-features)             | string  | Yes      | Shared note pad settings                                                                               |
 | [whiteboard_features](#whiteboard-features)                       | string  | Yes      | Whiteboard settings                                                                                    |
@@ -48,6 +48,16 @@ End point: `/room/create`
 | [waiting_room_features](#waiting-room-features)                   | string  | Yes      | Waiting room settings                                                                                  |
 | [breakout_room_features](#breakout-room-features)                 | string  | Yes      | Breakout room settings                                                                                 |
 | [display_external_link_features](#display-external-link-features) | string  | Yes      | Display external link settings                                                                         |
+
+### Recording features
+
+
+| Field             | Type    | Required | Description                                            |
+| ------------------- | --------- | ---------- | -------------------------------------------------------- |
+|         is_allow          | boolean | Yes      | Enable or disable recording feature for the meeting.                |
+| is_allow_cloud | boolean | Yes      | Enable or disable cloud recording option |
+| is_allow_local | boolean | Yes      | Enable or disable local recording option |
+| enable_auto_cloud_recording | boolean | No      | If enable then recording will be starting as soon as moderator/admin join the session |
 
 ### Chat features
 
@@ -125,13 +135,18 @@ End point: `/room/create`
       "allow_webcams": true,
       "mute_on_start": false,
       "allow_screen_share": true,
-      "allow_recording": true,
       "allow_rtmp": true,
       "admin_only_webcams": false,
       "allow_view_other_webcams": true,
       "allow_view_other_users_list": true,
       "allow_polls": true,
       "room_duration": 0,
+      "recording_features": {
+        "is_allow": true,
+        "is_allow_cloud": true,
+        "is_allow_local": true,
+        "enable_auto_cloud_recording": false,
+      },
       "chat_features": {
         "allow_chat": true,
         "allow_file_upload": true
@@ -174,11 +189,11 @@ End point: `/room/create`
 ## Response
 
 
-| Field                  | Type    | Description               |
-| :----------------------- | --------- | --------------------------- |
-| status                 | boolean | The status of the request |
-| msg                    | string  | Response message          |
-| [roomInfo](#room-info) |  object<[roomInfo](#room-info)>       |                           |
+| Field                  | Type                           | Description               |
+| :----------------------- | -------------------------------- | --------------------------- |
+| status                 | boolean                        | The status of the request |
+| msg                    | string                         | Response message          |
+| [roomInfo](#room-info) | object<[roomInfo](#room-info)> |                           |
 
 ### Room Info
 
