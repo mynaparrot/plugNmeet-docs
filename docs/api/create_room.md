@@ -19,13 +19,14 @@ End point: `/room/create`
 ### Metadata
 
 
-| Field                                           | Type   | Required | Description                                                                                |
-| ------------------------------------------------- | -------- | ---------- | -------------------------------------------------------------------------------------------- |
-| room_title                                      | string | Yes      | Title of the room/meeting                                                                  |
-| welcome_message                                 | string | No       | If you want to show some message at start up.                                              |
-| webhook_url                                     | string | No       | You can put webhook URL in where plugNmeet will send post request based on various events. |
-| [room_features](#room-features)                 | string | Yes      | Various room features.                                                                     |
-| [default_lock_settings](#default-lock-settings) | string | No       | Default lock settings                                                                      |
+| Field                                           | Type   | Required | Description                                                                                    |
+| ------------------------------------------------- | -------- | ---------- | ------------------------------------------------------------------------------------------------ |
+| room_title                                      | string | Yes      | Title of the room/meeting                                                                      |
+| welcome_message                                 | string | No       | If you want to show some message at start up.                                                  |
+| webhook_url                                     | string | No       | You can put webhook URL in where plugNmeet will send post request based on various events.     |
+| logout_url                                      | string | No       | You can put logout URL in where plugNmeet will redirect the users after meeting/session ended. |
+| [room_features](#room-features)                 | string | Yes      | Various room features.                                                                         |
+| [default_lock_settings](#default-lock-settings) | string | No       | Default lock settings                                                                          |
 
 ### Room Features
 
@@ -40,7 +41,7 @@ End point: `/room/create`
 | allow_view_other_webcams                                          | boolean | Yes      | If you want to disable to display other users camera except moderator.                                 |
 | allow_view_other_users_list                                       | boolean | Yes      | If you want to disable to display users list except moderator.                                         |
 | room_duration                                                     | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
-| [recording_features](#recording-features)                              | string  | Yes      | Recording Settings                                                                                     |
+| [recording_features](#recording-features)                         | string  | Yes      | Recording Settings                                                                                     |
 | [chat_features](#chat-features)                                   | string  | Yes      | Chat Settings                                                                                          |
 | [shared_note_pad_features](#shared-note-pad-features)             | string  | Yes      | Shared note pad settings                                                                               |
 | [whiteboard_features](#whiteboard-features)                       | string  | Yes      | Whiteboard settings                                                                                    |
@@ -52,12 +53,12 @@ End point: `/room/create`
 ### Recording features
 
 
-| Field             | Type    | Required | Description                                            |
-| ------------------- | --------- | ---------- | -------------------------------------------------------- |
-|         is_allow          | boolean | Yes      | Enable or disable recording feature for the meeting.                |
-| is_allow_cloud | boolean | Yes      | Enable or disable cloud recording option |
-| is_allow_local | boolean | Yes      | Enable or disable local recording option |
-| enable_auto_cloud_recording | boolean | No      | If enable then recording will be starting as soon as moderator/admin join the session |
+| Field                       | Type    | Required | Description                                                                           |
+| ----------------------------- | --------- | ---------- | --------------------------------------------------------------------------------------- |
+| is_allow                    | boolean | Yes      | Enable or disable recording feature for the meeting.                                  |
+| is_allow_cloud              | boolean | Yes      | Enable or disable cloud recording option                                              |
+| is_allow_local              | boolean | Yes      | Enable or disable local recording option                                              |
+| enable_auto_cloud_recording | boolean | No       | If enable then recording will be starting as soon as moderator/admin join the session |
 
 ### Chat features
 
