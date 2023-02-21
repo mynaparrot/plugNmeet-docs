@@ -66,6 +66,11 @@ const config = {
             label: 'API',
           },
           {
+            href: 'https://www.plugnmeet.cloud',
+            label: 'Cloud',
+            position: 'right',
+          },
+          {
             href: 'https://plugnmeet.medium.com',
             label: 'Blog',
             position: 'right',
@@ -95,6 +100,10 @@ const config = {
               {
                 label: 'API',
                 to: '/docs/api/intro',
+              },
+              {
+                label: 'Cloud',
+                href: 'https://www.plugnmeet.cloud',
               },
             ],
           },
