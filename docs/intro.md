@@ -12,7 +12,7 @@ Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, O
 2. [HD video call](https://www.plugnmeet.org/docs/user-guide/moderator#3-video) with virtual background & [Screen Sharing](https://www.plugnmeet.org/docs/user-guide/moderator#4-share-screen)
 3. [Whiteboard](https://www.plugnmeet.org/docs/user-guide/moderator#5-whiteboard)
 4. [Online Notepad](https://www.plugnmeet.org/docs/user-guide/moderator#6-share-notepad)
-5. [Recording](https://www.plugnmeet.org/docs/user-guide/moderator#18-record-the-meeting) & [Live Steaming via RTMP](https://www.plugnmeet.org/docs/user-guide/moderator#7-rtmp)
+5. [MP4/Webm Recording](https://www.plugnmeet.org/docs/user-guide/moderator#18-record-the-meeting)
 6. [Raise Hand](https://www.plugnmeet.org/docs/user-guide/moderator#8-raise-your-hand)
 7. [Co-playing Video](https://www.plugnmeet.org/docs/user-guide/moderator#9-share-videos)
 8. [Breakout Room](https://www.plugnmeet.org/docs/user-guide/moderator#10-breakout-room)
@@ -21,6 +21,8 @@ Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, O
 11. [Poll](https://www.plugnmeet.org/docs/user-guide/moderator#14-poll)
 12. [Various user's lock settings](https://www.plugnmeet.org/docs/user-guide/moderator#15-room-lock-features)
 13. [External content sharing(iframe)](http://www.plugnmeet.org/docs/user-guide/moderator#19-external-content-sharing-iframe)
+14. [Live Steaming via RTMP](https://www.plugnmeet.org/docs/user-guide/moderator#7-rtmp) & RTMP ingress
+15. Live speech to text/translation (Powered by [microsoft azure](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-go&tabs=linux%2Cterminal#prerequisites))
 
 ## Demo
 
