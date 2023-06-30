@@ -12,9 +12,19 @@ In this article, we'll go over how simple it is to set up your own plugNmeet web
 
 ## Requirements
 
-- You'll need a clean **Ubuntu or Debian** server with a **public IP address**.
+- You'll need a clean **Ubuntu or Debian** server with a **public IP address**. **Ubuntu 20.04 LTS** recommended.
 - If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall.md) before proceeding.
 - Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
+- **Hardware recommendation** for server:
+
+It's really difficult to provide an estimate. It will depend on how you intend to use it. If you only intend to use plugNmeet with a few users, a smaller server will suffice. Still adhering to the minimum server requirements:
+<ul>
+<li> <b>CPU:</b> At least 4 cores. 8 cores or more, if installed with recorder. <b>Dedicated CPU</b> is recommended</li>
+<li> <b>RAM:</b> At least 4GB; 8GB or more, if installed with recorder.</li>
+<li> <b>Storage:</b> Unless a recorder is also being used, plugNmeet doesn't consume much storage. </li>
+<li> <b>Connection speed:</b> this is a crucial factor, a bandwidth of at least 100 Mbits/sec or greater.</li>
+</ul>
+
 - You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server. One for plugNmeet main URL (example: `plugnmeet.example.com`); another for TURN server (example: `turn.example.com`).
 - A valid email address is also required to
   generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
