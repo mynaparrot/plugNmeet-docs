@@ -14,7 +14,7 @@ In this article, we'll go over how simple it is to set up your own plugNmeet web
 
 <ol>
 <li> You'll need a clean <b>Ubuntu or Debian</b> server with a <b>public IP address</b>. <b>Ubuntu 20.04 LTS</b> recommended.</li>
-<li> If your infrastructure is protected by a <b>firewall</b>, please first [configure ports & firewall](/docs/firewall.md) before proceeding.</li>
+<li> If your infrastructure is protected by a <b>firewall</b>, please first <a href="/docs/firewall">configure ports & firewall</a> before proceeding.</li>
 <li> Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.</li>
 <li> <b>Hardware recommendation</b> for server:
 
