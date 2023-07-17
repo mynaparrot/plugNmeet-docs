@@ -23,6 +23,7 @@ Welcome to Plug-N-Meet documentation. Easy to use, Scalable, High Performance, O
 13. [External content sharing(iframe)](http://www.plugnmeet.org/docs/user-guide/moderator#19-external-content-sharing-iframe)
 14. [Live Steaming via RTMP](https://www.plugnmeet.org/docs/user-guide/moderator#7-rtmp) & RTMP ingress
 15. Live speech to text/translation (Powered by [microsoft azure](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-go&tabs=linux%2Cterminal#prerequisites))
+16. End-to-End encryption ([E2EE](https://webrtchacks.com/true-end-to-end-encryption-with-webrtc-insertable-streams/)) for video (Supported browsers: browser based on Chromium 83, Google Chrome, Microsoft Edge, Safari).
 
 ## Demo
 
