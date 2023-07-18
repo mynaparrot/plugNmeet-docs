@@ -14,7 +14,7 @@ End point: `/room/create`
 | room_id               | string | Yes      | Room Id should be unique for every room/session/meeting     |
 | max_participants      | number | No       | Limit number of participants that can be join in this room. |
 | empty_timeout         | number | No       | Number of seconds to keep the room open if no one joins     |
-| [metadata](#metadata) | string | Yes      |                                                             |
+| [metadata](#metadata) | object | Yes      |                                                             |
 
 ### Metadata
 
@@ -24,8 +24,8 @@ End point: `/room/create`
 | welcome_message                                 | string | No       | If you want to show some message at start up.                                                  |
 | webhook_url                                     | string | No       | You can put webhook URL in where plugNmeet will send post request based on various events.     |
 | logout_url                                      | string | No       | You can put logout URL in where plugNmeet will redirect the users after meeting/session ended. |
-| [room_features](#room-features)                 | string | Yes      | Various room features.                                                                         |
-| [default_lock_settings](#default-lock-settings) | string | No       | Default lock settings                                                                          |
+| [room_features](#room-features)                 | object | Yes      | Various room features.                                                                         |
+| [default_lock_settings](#default-lock-settings) | object | No       | Default lock settings                                                                          |
 
 ### Room Features
 
@@ -39,16 +39,17 @@ End point: `/room/create`
 | allow_view_other_webcams                                                   | boolean | Yes      | If you want to disable to display other users camera except moderator.                                 |
 | allow_view_other_users_list                                                | boolean | Yes      | If you want to disable to display users list except moderator.                                         |
 | room_duration                                                              | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
-| [recording_features](#recording-features)                                  | string  | Yes      | Recording Settings                                                                                     |
-| [chat_features](#chat-features)                                            | string  | Yes      | Chat Settings                                                                                          |
-| [shared_note_pad_features](#shared-note-pad-features)                      | string  | Yes      | Shared note pad settings                                                                               |
-| [whiteboard_features](#whiteboard-features)                                | string  | Yes      | Whiteboard settings                                                                                    |
-| [external_media_player_features](#external-media-player-features)          | string  | Yes      | External media player settings                                                                         |
-| [waiting_room_features](#waiting-room-features)                            | string  | Yes      | Waiting room settings                                                                                  |
-| [breakout_room_features](#breakout-room-features)                          | string  | Yes      | Breakout room settings                                                                                 |
-| [display_external_link_features](#display-external-link-features)          | string  | Yes      | Display external link settings                                                                         |
-| [ingress_features](#ingress-features)                                      | string  | No       | RTMP ingress feature                                                                                   |
-| [speech_to_text_translation_features](#speech-to-texttranslation-features) | string  | No       | Speech to text/translation features                                                                    |
+| [recording_features](#recording-features)                                  | object  | Yes      | Recording Settings                                                                                     |
+| [chat_features](#chat-features)                                            | object  | Yes      | Chat Settings                                                                                          |
+| [shared_note_pad_features](#shared-note-pad-features)                      | object  | Yes      | Shared note pad settings                                                                               |
+| [whiteboard_features](#whiteboard-features)                                | object  | Yes      | Whiteboard settings                                                                                    |
+| [external_media_player_features](#external-media-player-features)          | object  | Yes      | External media player settings                                                                         |
+| [waiting_room_features](#waiting-room-features)                            | object  | Yes      | Waiting room settings                                                                                  |
+| [breakout_room_features](#breakout-room-features)                          | object  | Yes      | Breakout room settings                                                                                 |
+| [display_external_link_features](#display-external-link-features)          | object  | Yes      | Display external link settings                                                                         |
+| [ingress_features](#ingress-features)                                      | object  | No       | RTMP ingress feature                                                                                   |
+| [speech_to_text_translation_features](#speech-to-texttranslation-features) | object  | No       | Speech to text/translation features                                                                    |
+| [end_to_end_encryption_features](#end-to-end-encryption-e2ee-features) | object  | No       | End-to-End encryption (E2EE)                                                                   |
 
 ### Recording features
 
@@ -77,7 +78,7 @@ End point: `/room/create`
 | Field              | Type    | Required | Description                                   |
 | ------------------ | ------- | -------- | --------------------------------------------- |
 | allowed_whiteboard | boolean | Yes      | Enable or disable whiteboard for the meeting. |
-|                    |         |          |                                               |
+
 
 ### External media player features
 
@@ -117,16 +118,22 @@ End point: `/room/create`
 | is_allow             | boolean | Yes      | enable/disable Speech to text feature. This feature will use [microsoft azure](https://learn.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started-text-to-speech?pivots=programming-language-go&tabs=linux%2Cterminal#prerequisites) under the hood. Make sure that you've configured API info correctly. |
 | is_allow_translation | boolean | Yes      | If you want to enable auto translation feature too.                                                                                                                                                                                                                                                                          |
 
+### End-to-End encryption (E2EE) features
+
+| Field                | Type    | Required | Description                                                                                                                                                                                                                                                                                                                  |
+| -------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| is_enabled             | boolean | Yes      | enable/disable E2EE. Supported browsers: `browser based on Chromium 83+, Google Chrome, Microsoft Edge, Safari.` **Note:** Users will be unable to join the session if their browser does not support it. |
+
 ### Default lock settings
 
 | Field                  | Type    | Required | Description                  |
 | ---------------------- | ------- | -------- | ---------------------------- |
-| lock_microphone        | boolean | NO       | Lock microphone for users.   |
-| lock_webcam            | boolean | NO       | Lock webcam for users.       |
-| lock_screen_sharing    | boolean | NO       | Lock screen share for users. |
-| lock_chat              | boolean | NO       | Lock chat for users.         |
-| lock_chat_send_message | boolean | NO       | Lock send message for users. |
-| lock_chat_file_share   | boolean | NO       | Lock send file for users.    |
+| lock_microphone        | boolean | No       | Lock microphone for users.   |
+| lock_webcam            | boolean | No       | Lock webcam for users.       |
+| lock_screen_sharing    | boolean | No       | Lock screen share for users. |
+| lock_chat              | boolean | No       | Lock chat for users.         |
+| lock_chat_send_message | boolean | No       | Lock send message for users. |
+| lock_chat_file_share   | boolean | No       | Lock send file for users.    |
 
 ### **Example**
 
@@ -181,6 +188,9 @@ End point: `/room/create`
       "speech_to_text_translation_features": {
         "is_allow": true,
         "is_allow_translation": true
+      },
+      "end_to_end_encryption_features": {
+        "is_enabled": false
       }
     },
     "default_lock_settings": {

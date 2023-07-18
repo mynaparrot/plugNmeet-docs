@@ -13,14 +13,14 @@ In this article, we'll go over how simple it is to set up your own plugNmeet web
 ## Requirements
 
 <ol>
-<li> You'll need a clean <b>Ubuntu or Debian</b> server with a <b>public IP address</b>. <b>Ubuntu 20.04 LTS</b> recommended.</li>
+<li> You'll need a clean <b>Ubuntu or Debian</b> server with a <b>public IP address</b>. <b>Ubuntu 22.04 LTS</b> recommended.</li>
 <li> If your infrastructure is protected by a <b>firewall</b>, please first <a href="/docs/firewall">configure ports & firewall</a> before proceeding.</li>
 <li> Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.</li>
 <li> <b>Hardware recommendation</b> for server:
 
-It's really difficult to provide an estimate. It will depend on how you intend to use it. If you only intend to use plugNmeet with a few users, a smaller server will suffice. Still adhering to the minimum server requirements:
+It's really difficult to provide an estimate. It will depend on how you intend to use it. If you only intend to use plugNmeet with a few users, a smaller server will suffice. Still adhering to the minimum server requirements for production environment:
 <ul>
-<li> <b>CPU:</b> At least 4 cores. 8 cores or more, if installed with recorder. <b>Dedicated CPU</b> is recommended</li>
+<li> <b>CPU:</b> At least 4 cores. 8 cores or more, if installed with recorder. <b>Dedicated CPU</b> is recommended.</li>
 <li> <b>RAM:</b> At least 4GB; 8GB or more, if installed with recorder.</li>
 <li> <b>Storage:</b> Unless a recorder is also being used, plugNmeet doesn't consume much storage. </li>
 <li> <b>Connection speed:</b> this is a crucial factor, a bandwidth of at least 100 Mbits/sec or greater.</li>
