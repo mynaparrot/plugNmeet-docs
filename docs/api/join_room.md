@@ -79,6 +79,8 @@ If you are using [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-clie
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 ```
 
+**Note:** You may alternatively use the [getClientFiles](/docs/api/get_client_files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
+
 ## Custom design
 
 It's possible to add extra query parameter `custom_design` with the join link. This way you can use seperate design for indivisual user. The value of `custom_design` will need to be **url encoded json value**. You can view supported parameters from [design-parameters](/docs/developer-guide/design-customisation#design-parameters). Example:
