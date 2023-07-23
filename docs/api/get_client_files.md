@@ -21,5 +21,5 @@ End point: `/getClientFiles`
 | status        | boolean               | root     | The status of the request |
 | msg           | string                | root     | Response message          |
 | css | array | root     |          All required CSS files                 |
-| css | array | root     |         All required JS files                  |
+| js | array | root     |         All required JS files                  |
 
