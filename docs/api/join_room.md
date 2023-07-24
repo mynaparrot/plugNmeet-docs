@@ -12,7 +12,7 @@ End point: `/room/getJoinToken`
 | Field                   | Type   | Required | Description                              |
 | ------------------------- | -------- | :--------- | ------------------------------------------ |
 | room_id                 | string | Yes      | Room Id that you created before to join. |
-| [user_info](#user-info) | string | Yes      |                                          |
+| [user_info](#user-info) | object | Yes      |                                          |
 
 ### User info
 
@@ -23,7 +23,7 @@ End point: `/room/getJoinToken`
 | user_id                         | string  | Yes      | User unique ID. Should be unquie for every user.             |
 | is_admin                        | boolean | Yes      | If true then user will be treated as an admin for this room. |
 | is_hidden                       | boolean | No       | If true then user will be invisible in the room.             |
-| [user_metadata](#user-metadata) | string  | Yes      |                                                              |
+| [user_metadata](#user-metadata) | object  | Yes      |                                                              |
 
 ### User metadata
 
@@ -31,7 +31,7 @@ End point: `/room/getJoinToken`
 | Field                                                           | Type   | Required | Description    |
 | ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
 | profile_pic                                                     | string | No       | Profile avatar |
-| [lock_settings](/docs/api/create_room.md#default-lock-settings) | string | No       | Lock settings  |
+| [lock_settings](/docs/api/create_room.md#default-lock-settings) | object | No       | Lock settings  |
 
 ### **Example**
 
