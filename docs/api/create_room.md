@@ -79,6 +79,7 @@ End point: `/room/create`
 | Field              | Type    | Required | Description                                   |
 | ------------------ | ------- | -------- | --------------------------------------------- |
 | allowed_whiteboard | boolean | Yes      | Enable or disable whiteboard for the meeting. |
+| preload_file | string | No      | You can preload a presentation file for the whiteboard. Ensure that it can be fetched directly without being redirected; otherwise, downloading will fail. |
 
 
 ### External media player features
