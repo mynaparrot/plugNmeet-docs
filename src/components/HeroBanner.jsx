@@ -15,11 +15,11 @@ const HeroBanner = () => {
         <div className="text-wrap">
           <div className="container">
             <div className="content">
-              <p>
+              <h1>
                 WebRTC based Scalable, High Performance, Open source web
-                conferencing that is simple to use and customizable.<br />
-                <small>Every website can have an end-to-end real-time conferencing solution.</small>
-              </p>
+                conferencing that is simple to use and customizable.
+              </h1>
+              <h2>Every website can quickly implement a self-hosted WebRTC conferencing system.</h2>
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/intro"

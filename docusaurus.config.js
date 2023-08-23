@@ -144,6 +144,15 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
+      metadata: [
+        {
+          name: 'keywords', 
+          content: `self-hosted WebRTC, self-hosted conference system, 
+          open-source web conference, open source video conference, open source audio conference,
+          open-source WebRTC, wordpress WebRTC, joomla WebRTC, moodle WebRTC, 
+          wordpress video call, moodle video call, moodle video call, online class, free WebRTC`
+        }
+      ],
     }),
 };
 

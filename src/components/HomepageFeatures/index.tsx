@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         Simple to install and quickly integrate with any existing website, apps,
-        and software. Every website can have an end-to-end real-time conferencing solution.
+        and software. Your privacy is in your hands with a self-hosted WebRTC solution.
       </>
     ),
   },

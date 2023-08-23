@@ -5,17 +5,11 @@ import HeroBanner from "../components/HeroBanner";
 
 export default function Home(): JSX.Element {
   return (
-    <Layout description="WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable.<head />">
+    <Layout 
+    description="WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable">
       <HeroBanner />
       <main>
         <HomepageFeatures />
-        {/* <div className="desktop-banner">
-          <div className="container">
-            <h1 className='headline'>plugNmeet that feel like Classroom</h1>
-            <p>Our next-gen event platform and mobile apps connect attendees, sponsors, exhibitors and speakers for a meaningful virtual event experience.</p>
-          </div>
-          <div className="image-intro"></div>
-        </div> */}
       </main>
     </Layout>
   );

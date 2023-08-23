@@ -72,8 +72,14 @@
 .landing-banner .container .content {
   width: 45%;
 }
-.landing-banner p {
+.landing-banner h1 {
   font-size: 28px;
+  color: #fff;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.landing-banner h2 {
+  font-size: 20px;
   color: #fff;
   font-weight: 600;
   line-height: 1.2;
