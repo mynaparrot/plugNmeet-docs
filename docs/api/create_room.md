@@ -26,6 +26,7 @@ End point: `/room/create`
 | logout_url                                      | string | No       | You can put logout URL in where plugNmeet will redirect the users after meeting/session ended. |
 | [room_features](#room-features)                 | object | Yes      | Various room features.                                                                         |
 | [default_lock_settings](#default-lock-settings) | object | No       | Default lock settings                                                                          |
+| extra_data | string | No       | You can store extra data.                                                                       |
 
 ### Room Features
 
