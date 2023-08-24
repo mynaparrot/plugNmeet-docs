@@ -39,7 +39,7 @@ plugNmeet API SECRET: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ## plugNmeet Cloud
 
-plugNmeet Cloud is a ready to use hosting solution. You won't have to worry about server setup or maintenance. We offer a scalable cloud-based solution with a 99.99% SLA. You can start with [free for forever](https://www.plugnmeet.cloud/pricing) & can upgrade when necessary. Checkout [plugNmeet cloud solution](https://www.plugnmeet.cloud).
+plugNmeet Cloud is a ready to use hosting solution. You won't have to worry about server setup or maintenance. We offer a scalable cloud-based solution with a 99.99% SLA. You can start with [free package](https://www.plugnmeet.cloud/pricing) & can upgrade when necessary. Checkout [plugNmeet cloud solution](https://www.plugnmeet.cloud).
 
 ## SDKs & Tools
 

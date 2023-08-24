@@ -6,7 +6,7 @@ sidebar_position: 3
 
 Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet into any platform. We've created an easy to install script which can be used to install all the necessary components in few minutes. The source code can be found in the [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repository.
 
-You can also look into the [plugNmeet cloud solution](https://www.plugnmeet.cloud). plugNmeet Cloud is a ready to use hosting solution. You won't have to worry about server setup or maintenance. We offer a scalable cloud-based solution with a 99.99% SLA. You can start with [free for forever](https://www.plugnmeet.cloud/pricing) & can upgrade when necessary. 
+You can also look into the [plugNmeet cloud solution](https://www.plugnmeet.cloud). plugNmeet Cloud is a ready to use hosting solution. You won't have to worry about server setup or maintenance. We offer a scalable cloud-based solution with a 99.99% SLA. You can start with [free package](https://www.plugnmeet.cloud/pricing) & can upgrade when necessary. 
 
 In this article, we'll go over how simple it is to set up your own plugNmeet web conferencing system using the plugNmeet installation script and immediately begin video conferencing.
 
