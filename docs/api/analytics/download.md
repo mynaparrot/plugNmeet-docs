@@ -1,20 +1,20 @@
 ---
-sidebar_position: 9
+sidebar_position: 2
 ---
 
-# Download recording (token)
+# Download analytics (token)
 
-End point: `/recording/getDownloadToken`
+End point: `/analytics/getDownloadToken`
 
 | Field     | Type   | Position | Required | Description                             |
 | --------- | ------ | -------- | :------- | --------------------------------------- |
-| record_id | string | root     | Yes      | Recording Id that you want to get token |
+| file_id | string | root     | Yes      | File Id that you want to get token |
 
 **Example**:
 
 ```json
 {
-  "record_id": "RM_RKD4jeiFMZDS-1645753430902"
+  "file_id": "RM_SqZLoUieWYu8-209-1693729854"
 }
 ```
 
@@ -27,4 +27,4 @@ End point: `/recording/getDownloadToken`
 | token  | string  | root     | Download token            |
 
 When you'll receive token during that time you'll build URL like this format:
-`https://Your-Plug-N-Meet-Server.com/download/recording/<TOKEN HERE>`
+`https://Your-Plug-N-Meet-Server.com/download/analytics/<TOKEN HERE>`

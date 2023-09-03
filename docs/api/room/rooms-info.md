@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Get active rooms info
@@ -18,4 +18,4 @@ End point: `/room/getActiveRoomsInfo`
 | :----- | ------- | -------- | :---------------------------------------------------------------------------------------- |
 | status | boolean | root     | The status of the request                                                                 |
 | msg    | string  | root     | Response message                                                                          |
-| rooms  | array<[room](/docs/api/get_room_info.md#room)>   | root     | Array of Room |
+| rooms  | array<[room](/docs/api/room/room-info#room)>   | root     | Array of Room |

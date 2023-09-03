@@ -1,6 +1,6 @@
 ---
 description: plugNmeet join room using API
-sidebar_position: 3
+sidebar_position: 2
 ---
 # Join room
 
@@ -31,7 +31,7 @@ End point: `/room/getJoinToken`
 | Field                                                           | Type   | Required | Description    |
 | ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
 | profile_pic                                                     | string | No       | Profile avatar |
-| [lock_settings](/docs/api/create_room.md#default-lock-settings) | object | No       | Lock settings  |
+| [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
 
 ### **Example**
 
@@ -79,7 +79,7 @@ If you are using [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-clie
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 ```
 
-**Note:** You may alternatively use the [getClientFiles](/docs/api/get_client_files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
+**Note:** You may alternatively use the [getClientFiles](/docs/api/get-client-files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
 
 ## Custom design
 

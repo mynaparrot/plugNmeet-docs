@@ -105,4 +105,4 @@ When we'll get value of `$output->url` that time we can redirect user like this:
 header("Location: " . $output->url);
 ```
 
-You can also build plugNmeet client interface by using [getClientFiles](/docs/api/get_client_files) API. You'll be able to customize the page more freely and won't need to use iFrame. Have a look an example of [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) file.
+You can also build plugNmeet client interface by using [getClientFiles](/docs/api/get-client-files) API. You'll be able to customize the page more freely and won't need to use iFrame. Have a look an example of [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) file.
