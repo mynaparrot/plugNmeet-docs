@@ -31,7 +31,7 @@ End point: `/room/getJoinToken`
 | Field                                                           | Type   | Required | Description    |
 | ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
 | profile_pic                                                     | string | No       | Profile avatar |
-| [lock_settings](/docs/api/create_room.md#default-lock-settings) | object | No       | Lock settings  |
+| [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
 
 ### **Example**
 
