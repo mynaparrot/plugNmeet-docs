@@ -1,6 +1,6 @@
 ---
 description: plugNmeet join room using API
-sidebar_position: 11
+sidebar_position: 2
 ---
 # Join room
 
