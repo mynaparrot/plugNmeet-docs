@@ -1,9 +1,9 @@
 ---
-sidebar_position: 8
+sidebar_position: 15
 ---
-# Fetch recordings
+# Fetch past rooms info
 
-End point: `/recording/fetch`
+End point: `/room/fetchPastRooms`
 
 
 | Field    | Type   | Required | Description                         |
@@ -38,21 +38,22 @@ End point: `/recording/fetch`
 
 | Field                              | Type                                     | Description                              |
 | ------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| total_recordings                   | number                                   | Total number of recordings for the query |
+| total_rooms                   | number                                   | Total number of rooms for the query |
 | from                               | number                                   | Requested from point                     |
 | limit                              | number                                   | Requested limit of records               |
 | order_by                           | string                                   | Record order                             |
-| [recordings_list](#recording-list) | Array<[recording_list](#recording-list)> |                                          |
+| rooms_list | Array<[past-room-info](#past-room-info)> |                                          |
 
-### Recording list
+### Past Room info
 
 
 | Field              | Type   | Description                         |
 | -------------------- | -------- | ------------------------------------- |
-| record_id          | string | Record internal ID                  |
+| room_title          | string | Room title                  |
 | room_id            | string | Room Id                             |
 | room_sid           | string | Room Sid                            |
-| file_path          | string | File path                           |
-| file_size          | number | File size                           |
-| creation_time      | number | Record creation time in unix format |
-| room_creation_time | number | Room creation time in unix format   |
+| joined_participants          | number | Number of  participants joined (may not be accurate, use analytics to get more details)                         |
+| webhook_url          | string | Webhook url                           |
+| created      | string | Room created time |
+| ended | string | Room ended time   |
+| analytics_file_id | string | Analytics file id (if any)   |

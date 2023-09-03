@@ -1,10 +1,10 @@
 ---
-sidebar_position: 4
+sidebar_position: 16
 ---
 
-# Room Status (active/inactive)
+# End room
 
-End point: `/room/isRoomActive`
+End point: `/room/endRoom`
 
 | Field   | Type   | Position | Required | Description |
 | ------- | ------ | -------- | :------- | ----------- |

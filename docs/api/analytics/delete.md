@@ -1,20 +1,20 @@
 ---
-sidebar_position: 10
+sidebar_position: 32
 ---
 
-# Delete recording
+# Delete analytics
 
-End point: `/recording/delete`
+End point: `/analytics/delete`
 
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
-| record_id | string | root     | Yes      | Recording Id that you want to delete |
+| file_id | string | root     | Yes      | File Id that you want to delete |
 
 **Example**:
 
 ```json
 {
-  "record_id": "RM_RKD4jeiFMZDS-1645753430902"
+  "file_id": "RM_SqZLoUieWYu8-209-1693729854"
 }
 ```
 

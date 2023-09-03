@@ -1,6 +1,6 @@
 ---
 description: plugNmeet join room using API
-sidebar_position: 3
+sidebar_position: 11
 ---
 # Join room
 
@@ -79,7 +79,7 @@ If you are using [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-clie
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 ```
 
-**Note:** You may alternatively use the [getClientFiles](/docs/api/get_client_files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
+**Note:** You may alternatively use the [getClientFiles](/docs/api/get-client-files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
 
 ## Custom design
 
