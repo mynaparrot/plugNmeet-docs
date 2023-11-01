@@ -218,7 +218,7 @@ End point: `/room/create`
 | :--------------------- | ------------------------------ | ------------------------- |
 | status                 | boolean                        | The status of the request |
 | msg                    | string                         | Response message          |
-| [roomInfo](#room-info) | object<[roomInfo](#room-info)> |                           |
+| [roomInfo](#room-info) | object\<[roomInfo](#room-info)> |                           |
 
 ### Room Info
 

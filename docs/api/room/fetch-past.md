@@ -31,7 +31,7 @@ End point: `/room/fetchPastRooms`
 | :------------------ | --------------------------- | ---------- | :-------------------------- |
 | status            | boolean                   | root     | The status of the request |
 | msg               | string                    | root     | Response message          |
-| [result](#result) | object<[result](#result)> | root     |                           |
+| [result](#result) | object\<[result](#result)> | root     |                           |
 
 ### Result
 
@@ -42,7 +42,7 @@ End point: `/room/fetchPastRooms`
 | from                               | number                                   | Requested from point                     |
 | limit                              | number                                   | Requested limit of records               |
 | order_by                           | string                                   | Record order                             |
-| rooms_list | Array<[past-room-info](#past-room-info)> |                                          |
+| rooms_list | Array\<[past-room-info](#past-room-info)> |                                          |
 
 ### Past Room info
 

@@ -31,7 +31,7 @@ End point: `/analytics/fetch`
 | :------------------ | --------------------------- | ---------- | :-------------------------- |
 | status            | boolean                   | root     | The status of the request |
 | msg               | string                    | root     | Response message          |
-| [result](#result) | object<[result](#result)> | root     |                           |
+| [result](#result) | object\<[result](#result)> | root     |                           |
 
 ### Result
 
@@ -42,7 +42,7 @@ End point: `/analytics/fetch`
 | from                               | number                                   | Requested from point                     |
 | limit                              | number                                   | Requested limit of records               |
 | order_by                           | string                                   | Record order                             |
-| analytics_list | Array<[analytics-info](#analytics-info)> |                                          |
+| analytics_list | Array\<[analytics-info](#analytics-info)> |                                          |
 
 ### Analytics info
 

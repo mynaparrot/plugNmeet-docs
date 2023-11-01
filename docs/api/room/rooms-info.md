@@ -18,4 +18,4 @@ End point: `/room/getActiveRoomsInfo`
 | :----- | ------- | -------- | :---------------------------------------------------------------------------------------- |
 | status | boolean | root     | The status of the request                                                                 |
 | msg    | string  | root     | Response message                                                                          |
-| rooms  | array<[room](/docs/api/room/room-info#room)>   | root     | Array of Room |
+| rooms  | array\<[room](/docs/api/room/room-info#room)>   | root     | Array of Room |

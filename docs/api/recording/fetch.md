@@ -31,7 +31,7 @@ End point: `/recording/fetch`
 | :------------------ | --------------------------- | ---------- | :-------------------------- |
 | status            | boolean                   | root     | The status of the request |
 | msg               | string                    | root     | Response message          |
-| [result](#result) | object<[result](#result)> | root     |                           |
+| [result](#result) | object\<[result](#result)> | root     |                           |
 
 ### Result
 
@@ -42,7 +42,7 @@ End point: `/recording/fetch`
 | from                               | number                                   | Requested from point                     |
 | limit                              | number                                   | Requested limit of records               |
 | order_by                           | string                                   | Record order                             |
-| [recordings_list](#recording-list) | Array<[recording_list](#recording-list)> |                                          |
+| [recordings_list](#recording-list) | Array\<[recording_list](#recording-list)> |                                          |
 
 ### Recording list
 

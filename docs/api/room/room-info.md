@@ -25,15 +25,15 @@ End point: `/room/getActiveRoomInfo`
 | :-------------- | ----------------------- | ---------- | :-------------------------- |
 | status        | boolean               | root     | The status of the request |
 | msg           | string                | root     | Response message          |
-| [room](#room) | object<[room](#room)> | root     |                           |
+| [room](#room) | object\<[room](#room)> | root     |                           |
 
 ### Room
 
 
 | Field                                  | Type                                         | Description                   |
 | :--------------------------------------- | ---------------------------------------------- | :------------------------------ |
-| [room_info](#room-info)                | object<[room_info](#room-info)>              |                               |
-| [participants_info](#participant-info) | array<[participant_info](#participant-info)> | Array of current participants |
+| [room_info](#room-info)                | object\<[room_info](#room-info)>              |                               |
+| [participants_info](#participant-info) | array\<[participant_info](#participant-info)> | Array of current participants |
 
 ### Room Info
 
