@@ -125,6 +125,7 @@ if ($isRoomActive && $output->status) {
         $join = $connect->getJoinToken($roomId, $user_full_name, $userId, true);
 
         $output->url = $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
+        // or you can set cookie name `pnm_access_token` with that token & redirect
         $output->status = $join->getStatus();
         $output->msg = $join->getResponseMsg();
     } catch (Exception $e) {
