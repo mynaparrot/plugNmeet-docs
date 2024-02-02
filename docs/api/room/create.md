@@ -127,7 +127,7 @@ End point: `/room/create`
 
 | Field                | Type    | Required | Description                                                                                                                                                                                                                                                                                                                  |
 | -------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| is_enabled             | boolean | Yes      | enable/disable E2EE. Supported browsers: `browser based on Chromium 83+, Google Chrome, Microsoft Edge, Safari.` **Note:** Users will be unable to join the session if their browser does not support it. |
+| is_enabled             | boolean | Yes      | enable/disable E2EE. Supported browsers: `browser based on Chromium 83+, Google Chrome, Microsoft Edge, Safari. Firefox: 117+` **Note:** Users will be unable to join the session if their browser does not support it. |
 
 ### Default lock settings
 
