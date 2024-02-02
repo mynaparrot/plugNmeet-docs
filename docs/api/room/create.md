@@ -158,6 +158,8 @@ End point: `/room/create`
       "allow_view_other_users_list": true,
       "allow_polls": true,
       "enable_analytics": true,
+      "allow_virtual_bg": true,
+      "allow_raise_hand": true,
       "room_duration": 0,
       "recording_features": {
         "is_allow": true,
