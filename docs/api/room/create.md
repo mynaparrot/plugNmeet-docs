@@ -40,6 +40,8 @@ End point: `/room/create`
 | allow_view_other_webcams                                                   | boolean | Yes      | If you want to disable to display other users camera except moderator.                                 |
 | allow_view_other_users_list                                                | boolean | Yes      | If you want to disable to display users list except moderator.                                         |
 | enable_analytics                                                | boolean | No      | Enable/Disable to create analytics report for the session. Later can [fetch analytics](/docs/api/analytics/fetch). Default: false                                        |
+| allow_virtual_bg                                                | boolean | No      |         Enable/disable virtual background option         |
+| allow_raise_hand                                                | boolean | No      |                Enable/disable raise hand option                       |
 | room_duration                                                              | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
 | [recording_features](#recording-features)                                  | object  | Yes      | Recording Settings                                                                                     |
 | [chat_features](#chat-features)                                            | object  | Yes      | Chat Settings                                                                                          |

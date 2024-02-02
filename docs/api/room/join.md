@@ -31,6 +31,7 @@ End point: `/room/getJoinToken`
 | Field                                                           | Type   | Required | Description    |
 | ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
 | profile_pic                                                     | string | No       | Profile avatar |
+| preferred_lang                                                     | string | No       | You can set a preferred language to force the plugNmeet-client to use it. Please see the list of values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE etc |
 | [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
 
 ### **Example**
