@@ -26,6 +26,7 @@ End point: `/room/create`
 | logout_url                                      | string | No       | You can put logout URL in where plugNmeet will redirect the users after meeting/session ended. |
 | [room_features](#room-features)                 | object | Yes      | Various room features.                                                                         |
 | [default_lock_settings](#default-lock-settings) | object | No       | Default lock settings                                                                          |
+| [copyright_conf](#copyright-config) | object | No       | Copyright config                                                                          |
 | extra_data | string | No       | You can store extra data.                                                                       |
 
 ### Room Features
@@ -139,6 +140,14 @@ End point: `/room/create`
 | lock_chat              | boolean | No       | Lock chat for users.         |
 | lock_chat_send_message | boolean | No       | Lock send message for users. |
 | lock_chat_file_share   | boolean | No       | Lock send file for users.    |
+
+### Copyright config
+This will only work if server's config `client > copyright_conf > allow_override` has been set `true`.
+
+| Field                  | Type    | Required | Description                  |
+| ---------------------- | ------- | -------- | ---------------------------- |
+| display        | boolean | Yes       | Enable or disable display copyright text   |
+| text            | string | Yes       |     Do not make the text longer, supported html tags are: `b`, `i`, `em`, `strong`, `a`       |
 
 ### **Example**
 

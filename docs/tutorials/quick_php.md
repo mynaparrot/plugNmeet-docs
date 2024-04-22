@@ -103,9 +103,13 @@ $output->status = false;
 
 try {
     $res = $connect->isRoomActive($roomId);
-    $isRoomActive = $res->getStatus();
-    $output->status = true;
-    $output->msg = $res->getResponseMsg();
+    if (!$res->getStatus()) {
+        $output->msg = $res->getResponseMsg();
+    } else {
+        $isRoomActive = $res->isActive();
+        $output->status = true;
+    }
+
 } catch (Exception $e) {
     $output->msg = $e->getMessage();
 }

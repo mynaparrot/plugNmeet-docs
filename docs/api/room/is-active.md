@@ -23,4 +23,5 @@ End point: `/room/isRoomActive`
 | Field  | Type    | Position | Description               |
 | :----- | ------- | -------- | :------------------------ |
 | status | boolean | root     | The status of the request |
+| is_active | boolean | root     | The status of the room |
 | msg    | string  | root     | Response message          |
