@@ -1,6 +1,6 @@
 ---
 description: plugNmeet analytics
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Analytics data

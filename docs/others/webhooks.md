@@ -1,6 +1,6 @@
 ---
 description: plugNmeet webhooks
-sidebar_position: 1
+sidebar_position: 2
 ---
 # Webhooks
 
@@ -11,7 +11,7 @@ Webhook requests are HTTP POST requests sent to URLs that you had configured eit
 
 The `Content-Type` header of the request is set to `application/webhook+json`. Please ensure your webserver is configured to receive payloads with this content type.
 
-plugNmeet will use same security pattern that livekit is following. In order to ensure webhook requests are coming from plugNmeet, these requests have an Authorization header containing a signed JWT token. The token includes a sha256 hash of the payload. You can quickly have a look example in PHP from [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
+plugNmeet will use same security pattern that livekit is following. In order to ensure webhook requests are coming from plugNmeet, these requests has `Authorization` and `Hash-Token` headers containing a signed JWT token. The token includes a `sha256` hash of the payload. You can quickly have a look example in PHP from [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
 ## Events
 You can review the code from [here](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L8C9-L8C26).
