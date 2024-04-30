@@ -90,7 +90,8 @@ fonts-arphic-uming \
 fonts-ipafont-mincho \
 fonts-ipafont-gothic \
 fonts-unfonts-core \
-ttf-mscorefonts-installer
+ttf-mscorefonts-installer \
+fonts-noto-color-emoji
 ```
 
 ## Update
