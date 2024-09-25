@@ -32,9 +32,10 @@ End point: `/room/getJoinToken`
 | ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
 | profile_pic                                                     | string | No       | Profile avatar |
 | preferred_lang                                                     | string | No       | You can set a preferred language to force the plugNmeet-client to use it. Please see the list of values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE etc |
-| [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
+| record_webcam | boolean | No       | If false, this user's webcam will not be recorded.|
 | ex_user_id | string | No       | if empty then will use same value of user_id  |
 | extra_data | string | No       | You can store extra data. |
+| [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
 
 ### **Example**
 
