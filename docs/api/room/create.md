@@ -43,6 +43,7 @@ End point: `/room/create`
 | enable_analytics                                                | boolean | No      | Enable/Disable to create analytics report for the session. Later can [fetch analytics](/docs/api/analytics/fetch). Default: false                                        |
 | allow_virtual_bg                                                | boolean | No      |         Enable/disable virtual background option         |
 | allow_raise_hand                                                | boolean | No      |                Enable/disable raise hand option                       |
+| auto_gen_user_id                                                | boolean | No      |                The system will automatically generate a `user_id` for each participant if the value is set to `true`. In this instance, any supplied `user_id` will be ignored, and the value will be stored in `ex_user_id`. Default: false                      |
 | room_duration                                                              | number  | No       | If you want to set fixed room duration. Value should be in minutes. 1 hour = 60 minutes. 0 = unlimited |
 | [recording_features](#recording-features)                                  | object  | Yes      | Recording Settings                                                                                     |
 | [chat_features](#chat-features)                                            | object  | Yes      | Chat Settings                                                                                          |
@@ -129,6 +130,8 @@ End point: `/room/create`
 | Field                | Type    | Required | Description                                                                                                                                                                                                                                                                                                                  |
 | -------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | is_enabled             | boolean | Yes      | enable/disable E2EE. Supported browsers: `browser based on Chromium 83+, Google Chrome, Microsoft Edge, Safari. Firefox: 117+` **Note:** Users will be unable to join the session if their browser does not support it. |
+| included_chat_messages             | boolean | No      | enable/disable E2EE for chat messages. |
+| included_whiteboard             | boolean | No      | enable/disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). This may use more CPU for the user end, do not enable it unless really necessary|
 
 ### Default lock settings
 
@@ -169,6 +172,7 @@ This will only work if server's config `client > copyright_conf > allow_override
       "enable_analytics": true,
       "allow_virtual_bg": true,
       "allow_raise_hand": true,
+      "auto_gen_user_id": false,
       "room_duration": 0,
       "recording_features": {
         "is_allow": true,
@@ -231,17 +235,4 @@ This will only work if server's config `client > copyright_conf > allow_override
 | :--------------------- | ------------------------------ | ------------------------- |
 | status                 | boolean                        | The status of the request |
 | msg                    | string                         | Response message          |
-| [roomInfo](#room-info) | object\<[roomInfo](#room-info)> |                           |
-
-### Room Info
-
-| Field            | Type   | Description                                |
-| ---------------- | ------ | ------------------------------------------ |
-| sid              | string | Room sid                                   |
-| name             | string | Room Id                                    |
-| max_participants | number | Maximum participants for this room         |
-| empty_timeout    | number | Maximum duration before closing empty room |
-| creation_time    | number | Room creation time in unix time format     |
-| turn_password    | string | Turn password                              |
-| enabled_codecs   | Array  | Video codecs for this room                 |
-| metadata         | string | Room metadata                              |
+| [room_info](/docs/api/room/room-info.md#room-info) | object |                           |

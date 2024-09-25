@@ -20,6 +20,14 @@ In addition to the fields below, all webhook events will include the following f
 - `id` - a UUID identifying the event
 - `createdAt` - UNIX timestamp in seconds
 
+### Room created
+```js
+interface CommonNotifyEvent {
+  event: 'room_created'
+  room: Room
+}
+```
+
 ### Room started
 ```js
 interface CommonNotifyEvent {
