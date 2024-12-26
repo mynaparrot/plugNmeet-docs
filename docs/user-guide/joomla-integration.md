@@ -45,16 +45,6 @@ That is demo server information, it may have some limitations, please replace it
 
 
 
-## Update Client Version 
-
-
-By default, the client load will choose the **remote** option. In this option, the client version will update automatically with the plugin update. Normally users don´t need to do anything with this. 
-
-If you want to use some customized version of the client, you need to choose the **local** option, in this way you can manually update the client version. 
-
-<img src="/img/Joomla/Joomla-client-version.png"loading="lazy"/>   
-
-
 ## Design Customization
 
 In plugNmeet it is possible to customize the color and logo of all rooms to fit with your branding. 
@@ -267,7 +257,11 @@ Image-room-color picker
 
 ![Joomla-21.png](/img/Joomla/Joomla-21.png)
 
-17. Then, we click on "**Save**" and the room will have been created.
+17. Configure permission
+
+![room_permission.png](/img/Joomla/room_permission.png)
+
+18. Then, we click on "**Save**" and the room will have been created.
 
 ![Joomla-22.png](/img/Joomla/Joomla-22.png)
 
