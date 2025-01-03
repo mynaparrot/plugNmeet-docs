@@ -12,7 +12,7 @@ In this article, we'll go over how simple it is to set up your own plugNmeet web
 
 ## Requirements
 
-  - You'll need a clean **Ubuntu or Debian** server with a **public IP address**. **Ubuntu 22.04 LTS** recommended.
+  - You'll need a clean **Ubuntu or Debian** server with a **public IP address**. **Ubuntu 24.04 LTS** recommended.
   If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall) before proceeding.
   - Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
   - **Hardware recommendation** for server: It's really difficult to provide an estimate. It will depend on how you intend to use it. If you only intend to use plugNmeet with a few users, a smaller server will suffice. Still adhering to the minimum server requirements for production environment:
