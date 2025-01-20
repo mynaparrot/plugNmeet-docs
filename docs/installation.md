@@ -62,6 +62,11 @@ systemctl restart plugnmeet-recorder
 # to stop
 systemctl stop plugnmeet
 systemctl stop plugnmeet-recorder
+
+# log files
+cd /opt/plugNmeet
+tail -n 100 log/plugNmeet.log
+tail -n 100 recorder/logs/recorder.log
 ```
 
 ## Fonts installation (optional)

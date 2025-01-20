@@ -78,10 +78,11 @@ Open another tab from your terminal & run:
 # navigate to recorder directory that you created above
 cd recorder
 cp config_sample.yaml config.yaml
-pnpm install
+cp docker-compose_sample.yaml docker-compose.yaml
 
 # start recorder
-pnpm run dev
+docker compose build
+docker compose start
 ```
 
 Now the recorder should be ready for getting signal from `plugNmeet-server`.
