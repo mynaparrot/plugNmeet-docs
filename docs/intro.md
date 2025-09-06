@@ -28,7 +28,7 @@ Welcome to Plug-N-Meet documentation. plugNmeet is an open-source WebRTC confere
 
 ## Demo
 
-Live demo site: https://demo.plugnmeet.com/login.html
+Live demo site: https://demo.plugnmeet.com/landing.html
 
 Demo API Info:
 

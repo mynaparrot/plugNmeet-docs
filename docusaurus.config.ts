@@ -88,7 +88,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://demo.plugnmeet.com/login.html',
+          href: 'https://demo.plugnmeet.com/landing.html',
           label: 'Demo',
           position: 'right',
         },
@@ -145,7 +145,7 @@ const config: Config = {
             },
             {
               label: 'Demo',
-              href: 'https://demo.plugnmeet.com/login.html',
+              href: 'https://demo.plugnmeet.com/landing.html',
             },
           ]
         }
