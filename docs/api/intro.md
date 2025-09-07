@@ -110,4 +110,4 @@ curl -X POST https://demo.plugnmeet.com/auth/room/getActiveRoomInfo \
 You can use the following ready-to-use SDKs:
 
 - [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php)
-- [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js)
+- [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
