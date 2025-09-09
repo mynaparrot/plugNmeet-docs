@@ -10,9 +10,38 @@ Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate co
 
 What truly sets Plug-N-Meet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience—from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
 
+---
+
+## Key Features
+
+### Core Conferencing & Collaboration
+- High-Quality Audio & Smooth HD Video Calls (up to 60 fps, with Virtual Backgrounds)
+- Browser-Based Web Conferencing: No downloads or installation required. Join meetings instantly from your web browser. We recommend Google Chrome, Firefox, or Safari for the best experience.
+- Smooth HD Screen Sharing (up to 60 fps)
+- Interactive Whiteboard & Collaborative Notepad
+- Public and Private Chat
+
+### Engagement & Moderation Tools
+- Breakout Rooms for focused discussions
+- Polling, Raise Hand feature, and Waiting Room
+- Advanced User Lock Settings to manage participants
+
+### Recording & Live Broadcasting
+- Local MP4/WebM Recording of your meetings
+- Live Stream your conference via RTMP to YouTube, etc.
+- Co-play video files directly in a meeting
+
+### Advanced Integration & Security
+- **End-to-End Encryption (E2EE):** Secures all media (audio/video), chat, and whiteboard content for maximum privacy. Supported on the latest versions of modern browsers like Chrome, Firefox, and Safari.
+- Live Speech-to-Text and Translation
+- Integrate external content via iframes
+- Detailed Analytics Reports
+
+---
+
 ## How It Works
 
-Plug-N-Meet has two components:
+Now that you've seen what's possible, here’s the simple concept behind Plug-N-Meet. The platform has two components:
 
 1.  **The Server:** The powerful engine that runs your video conferences.
 2.  **The Integration:** The client that connects the server to your website (like a plugin or custom code).
@@ -48,33 +77,6 @@ If you use a popular CMS, our official plugins are the easiest way to integrate.
 For developers building custom applications, our SDKs provide everything you need.
 - [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
 - [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
-
----
-
-## Key Features
-
-### Core Conferencing & Collaboration
-- High-Quality Audio & Smooth HD Video Calls (up to 60 fps, with Virtual Backgrounds)
-- Browser-Based Web Conferencing: No downloads or installation required. Join meetings instantly from your web browser. We recommend Google Chrome, Firefox, or Safari for the best experience.
-- Smooth HD Screen Sharing (up to 60 fps)
-- Interactive Whiteboard & Collaborative Notepad
-- Public and Private Chat
-
-### Engagement & Moderation Tools
-- Breakout Rooms for focused discussions
-- Polling, Raise Hand feature, and Waiting Room
-- Advanced User Lock Settings to manage participants
-
-### Recording & Live Broadcasting
-- Local MP4/WebM Recording of your meetings
-- Live Stream your conference via RTMP to YouTube, etc.
-- Co-play video files directly in a meeting
-
-### Advanced Integration & Security
-- **End-to-End Encryption (E2EE):** Secures all media (audio/video), chat, and whiteboard content for maximum privacy. Supported on the latest versions of modern browsers like Chrome, Firefox, and Safari.
-- Live Speech-to-Text and Translation
-- Integrate external content via iframes
-- Detailed Analytics Reports
 
 ---
 
