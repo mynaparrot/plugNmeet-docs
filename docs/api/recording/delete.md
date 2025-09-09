@@ -4,7 +4,7 @@ sidebar_position: 4
 
 # Delete recording
 
-End point: `/recording/delete`
+Endpoint: `/recording/delete`
 
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |

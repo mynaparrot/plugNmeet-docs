@@ -16,10 +16,10 @@ const HeroBanner = () => {
           <div className="container">
             <div className="content">
               <h1>
-                WebRTC based Scalable, High Performance, Open source web
-                conferencing that is simple to use and customizable.
+                Open Source WebRTC Conferencing: Scalable, Customizable, and
+                Self-Hosted.
               </h1>
-              <h2>Every website can quickly implement a self-hosted WebRTC conferencing system.</h2>
+              <h2>Integrate a powerful, high-performance video meeting solution into your website with ease.</h2>
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/intro"
@@ -35,7 +35,7 @@ const HeroBanner = () => {
       </div>
       <section className="features-section slider-section">
         <div className="container">
-          <h2 className="headline">Features Preview</h2>
+          <h2 className="headline">Explore Key Features</h2>
           <div className="slider-wrapper">
             <img className="desktop-back" src={DesktopBack} alt="DesktopBack" />
             <Carousel

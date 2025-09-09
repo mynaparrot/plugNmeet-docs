@@ -2,48 +2,57 @@
 description: plugNmeet join room using API
 sidebar_position: 2
 ---
-# Join room
 
-End point: `/room/getJoinToken`
+# Join Room
 
-## Request parameters
+Endpoint: `/room/getJoinToken`
 
+This endpoint generates a temporary token that grants a user access to a specific room. Before diving into the parameters, here are a few key concepts to keep in mind:
 
-| Field                   | Type   | Required | Description                              |
-| ------------------------- | -------- | :--------- | ------------------------------------------ |
-| room_id                 | string | Yes      | Room Id that you created before to join. |
-| [user_info](#user-info) | object | Yes      |                                          |
+*   **Token Lifecycle**: The generated token is short-lived (its validity period is set in your server configuration) and designed for **one-time use**. You should consume it immediately by redirecting the user to the meeting URL. **Do not store this token for future use.**
 
-### User info
+*   **User ID Uniqueness**:
+    *   Plug-N-Meet requires every participant in a session to have a unique `user_id`.
+    *   If you created the room with `auto_gen_user_id: false` (the default), you are responsible for providing a unique `user_id` for each user.
+    *   If a new user joins with a `user_id` that is already active in the room, the existing participant with that ID will be automatically disconnected. This is useful for allowing users to switch devices seamlessly.
 
+*   **Room Existence**: You can only generate a join token for a room that has already been created and is currently active.
+
+## Request Parameters
+
+| Field                   | Type   | Required | Description                                 |
+| ----------------------- | ------ | -------- | ------------------------------------------- |
+| room_id                 | string | Yes      | The ID of the room you want to join.        |
+| [user_info](#user-info) | object | Yes      | Information about the user joining the room.|
+
+### User Info
 
 | Field                           | Type    | Required | Description                                                  |
-| --------------------------------- | --------- | ---------- | -------------------------------------------------------------- |
-| name                            | string  | Yes      | User full name                                               |
-| user_id                         | string  | Yes      | User unique ID. Should be unquie for every user.             |
-| is_admin                        | boolean | Yes      | If true then user will be treated as an admin for this room. |
-| is_hidden                       | boolean | No       | If true then user will be invisible in the room.             |
-| [user_metadata](#user-metadata) | object  | Yes      |                                                              |
+| --------------------------------| ------- | -------- | ------------------------------------------------------------ |
+| name                            | string  | Yes      | The display name of the user.                                |
+| user_id                         | string  | Yes      | A unique identifier for the user. **Note:** If the room was created with `auto_gen_user_id: true`, this value will be stored as `ex_user_id` and a random ID will be assigned to the user for the session. |
+| is_admin                        | boolean | Yes      | If `true`, the user will join as a moderator with elevated privileges. If `false`, they will join as a standard participant. |
+| is_hidden                       | boolean | No       | If `true`, the user will join as a spectator. They will not appear in the participant list and cannot interact. |
+| [user_metadata](#user-metadata) | object  | Yes      | Additional metadata about the user.                          |
 
-### User metadata
+### User Metadata
 
+| Field                                                           | Type    | Required | Description                                                                                                    |
+| --------------------------------------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------------------- |
+| profile_pic                                                     | string  | No       | URL of the user's profile picture.                                                                             |
+| preferred_lang                                                  | string  | No       | Preferred language for the Plug-N-Meet client. See supported values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE, etc. |
+| record_webcam                                                   | boolean | No       | Controls whether this user's webcam is included in server-side recordings. Defaults to `true`. Set to `false` to exclude. |
+| ex_user_id                                                      | string  | No       | If empty, the value of `user_id` will be used.                                                                 |
+| extra_data                                                      | string  | No       | Any additional data you wish to store.                                                                         |
+| [lock_settings](/docs/api/room/create#default-lock-settings)    | object  | No       | Lock settings for the user.                                                                                    |
 
-| Field                                                           | Type   | Required | Description    |
-| ----------------------------------------------------------------- | -------- | ---------- | ---------------- |
-| profile_pic                                                     | string | No       | Profile avatar |
-| preferred_lang                                                     | string | No       | You can set a preferred language to force the plugNmeet-client to use it. Please see the list of values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE etc |
-| record_webcam | boolean | No       | If false, this user's webcam will not be recorded.|
-| ex_user_id | string | No       | if empty then will use same value of user_id  |
-| extra_data | string | No       | You can store extra data. |
-| [lock_settings](/docs/api/room/create#default-lock-settings) | object | No       | Lock settings  |
-
-### **Example**
+### Example
 
 ```json
 {
   "room_id": "room01",
   "user_info": {
-    "name": "Your name",
+    "name": "Your Name",
     "user_id": "Your-Unique-User-Id",
     "is_admin": true,
     "is_hidden": false,
@@ -64,30 +73,36 @@ End point: `/room/getJoinToken`
 
 ## Response
 
-
 | Field  | Type    | Position | Description               |
-| :------- | --------- | ---------- | :-------------------------- |
-| status | boolean | root     | The status of the request |
-| msg    | string  | root     | Response message          |
-| token  | string  | root     | Join token                |
+| ------ | ------- | -------- | ------------------------- |
+| status | boolean | root     | Indicates if the request was successful. |
+| msg    | string  | root     | Response message.         |
+| token  | string  | root     | The join token.           |
 
-When you'll receive token during that time you can pass that token to plugNmeet-client by GET/search value of `access_token` or cookie name `pnm_access_token`. If you've setup it with plugNmeet-server then:
+### Using the Join Token
+
+Once you receive the `token`, you can grant the user access to the meeting room. There are two ways to pass the token to the Plug-N-Meet client:
+
+1.  **As a URL parameter (recommended)**: Pass the token in the query string as `access_token`.
+2.  **As a cookie**: Set a cookie named `pnm_access_token` with the token as its value.
+
+The URL parameter is the most straightforward method. Here's an example:
 
 ```
 https://Your-Plug-N-Meet-Server.com/?access_token=<TOKEN HERE>
 ```
 
-If you are using [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-client) build static files in somewhere else then you'll require to pass token like that too. For example you've uploaded build static files inside `conference` directory. In this case:
+If you are hosting the [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-client) static files elsewhere, you should also pass the token in the same way. For example, if your static files are in a `conference` directory:
 
 ```
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 ```
 
-**Note:** You may alternatively use the [getClientFiles](/docs/api/get-client-files) API call to get all of the CSS and JS files needed to display the interface manually. This way, you can embed the `plugNmeet-client` anywhere without worrying about static build files.
+**Note:** You can also use the [getClientFiles](/docs/api/get-client-files) API to retrieve all the CSS and JS files required to display the interface manually. This allows you to embed the Plug-N-Meet client anywhere without worrying about static build files.
 
-## Custom design
+## Custom Design
 
-It's possible to add extra query parameter `custom_design` with the join link. This way you can use seperate design for indivisual user. The value of `custom_design` will need to be **url encoded json value**. You can view supported parameters from [design-parameters](/docs/developer-guide/design-customisation#design-parameters). Example:
+You can add an extra query parameter called `custom_design` to the join link to apply a unique design for each user. The value of `custom_design` should be a URL-encoded JSON object. Supported parameters can be found in the [design-parameters](/docs/developer-guide/design-customisation#design-parameters) documentation. Example:
 
 ```
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design=%7B%22primary_color%22%3A%22%23004D90%22%2C%22secondary_color%22%3A%22%2324AEF7%22%7D

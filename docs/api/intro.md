@@ -24,6 +24,22 @@ All requests must be in JSON format and include the above
 
 ## Examples
 
+### Shell with cURL
+
+```bash
+BODY='{"room_id":"room01"}'
+API_KEY="plugnmeet"
+SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+
+SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+
+curl -X POST https://demo.plugnmeet.com/auth/room/getActiveRoomInfo \
+  -H "Content-Type: application/json" \
+  -H "API-KEY: $API_KEY" \
+  -H "HASH-SIGNATURE: $SIGNATURE" \
+  -d "$BODY"
+```
+
 ### PHP
 
 ```php
@@ -87,20 +103,16 @@ sha256_HMAC.init(secret_key);
 String signature = javax.xml.bind.DatatypeConverter.printHexBinary(sha256_HMAC.doFinal(body.getBytes())).toLowerCase();
 ```
 
-### Shell with cURL
+### Ruby
 
-```bash
-BODY='{"room_id":"room01"}'
-API_KEY="plugnmeet"
-SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+```ruby
+require 'openssl'
 
-SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+body = '{"room_id":"room01"}'
+secret = 'SECRET'
 
-curl -X POST https://demo.plugnmeet.com/auth/room/getActiveRoomInfo \
-  -H "Content-Type: application/json" \
-  -H "API-KEY: $API_KEY" \
-  -H "HASH-SIGNATURE: $SIGNATURE" \
-  -d "$BODY"
+digest = OpenSSL::Digest.new('sha256')
+signature = OpenSSL::HMAC.hexdigest(digest, secret, body)
 ```
 
 ---

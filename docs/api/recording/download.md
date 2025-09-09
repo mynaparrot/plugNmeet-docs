@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-# Download recording (token)
+# Download Recording (Token)
 
-End point: `/recording/getDownloadToken`
+Endpoint: `/recording/getDownloadToken`
 
-| Field     | Type   | Position | Required | Description                             |
-| --------- | ------ | -------- | :------- | --------------------------------------- |
-| record_id | string | root     | Yes      | Recording Id that you want to get token |
+| Field     | Type   | Position | Required | Description                                 |
+| --------- | ------ | -------- | :------- | ------------------------------------------- |
+| record_id | string | root     | Yes      | The ID of the recording you want to download. |
 
-**Example**:
+**Example Request:**
 
 ```json
 {
@@ -20,11 +20,13 @@ End point: `/recording/getDownloadToken`
 
 ## Response
 
-| Field  | Type    | Position | Description               |
-| :----- | ------- | -------- | :------------------------ |
-| status | boolean | root     | The status of the request |
-| msg    | string  | root     | Response message          |
-| token  | string  | root     | Download token            |
+| Field  | Type    | Position | Description                       |
+| :----- | ------- | -------- | :------------------------------- |
+| status | boolean | root     | Indicates if the request was successful. |
+| msg    | string  | root     | Response message.                |
+| token  | string  | root     | Download token.                  |
 
-When you'll receive token during that time you'll build URL like this format:
-`https://Your-Plug-N-Meet-Server.com/download/recording/<TOKEN HERE>`
+Once you receive the token, you can construct the download URL using the following format:
+```
+https://Your-Plug-N-Meet-Server.com/download/recording/<TOKEN HERE>
+```

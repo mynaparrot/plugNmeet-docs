@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Delete analytics
 
-End point: `/analytics/delete`
+Endpoint: `/analytics/delete`
 
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |

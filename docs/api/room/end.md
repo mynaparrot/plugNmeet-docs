@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # End room
 
-End point: `/room/endRoom`
+Endpoint: `/room/endRoom`
 
 | Field   | Type   | Position | Required | Description |
 | ------- | ------ | -------- | :------- | ----------- |

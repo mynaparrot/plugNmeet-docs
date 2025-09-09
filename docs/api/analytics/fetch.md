@@ -1,19 +1,21 @@
 ---
 sidebar_position: 1
 ---
-# Fetch analytics
 
-End point: `/analytics/fetch`
+# Fetch Analytics
 
+Endpoint: `/analytics/fetch`
 
-| Field    | Type   | Required | Description                         |
-| ---------- | -------- | ---------- | :------------------------------------ |
-| room_ids | array  | Yes      | Array of room Ids'                  |
-| from     | number | No       | From point. Default 0               |
-| limit    | number | No       | Limit of records. Default 20        |
-| order_by | string | No       | Ordering DESC or ASC. Default: DESC |
+## Request Parameters
 
-**Example**:
+| Field    | Type   | Required | Description                                   |
+| -------- | ------ | -------- | --------------------------------------------- |
+| room_ids | array  | Yes      | Array of room IDs to fetch analytics for.     |
+| from     | number | No       | Starting index for records. Default is 0.     |
+| limit    | number | No       | Maximum number of records to return. Default is 20. |
+| order_by | string | No       | Sort order: `DESC` or `ASC`. Default is `DESC`. |
+
+**Example Request:**
 
 ```json
 {
@@ -26,32 +28,29 @@ End point: `/analytics/fetch`
 
 ## Response
 
-
-| Field             | Type                      | Position | Description               |
-| :------------------ | --------------------------- | ---------- | :-------------------------- |
-| status            | boolean                   | root     | The status of the request |
-| msg               | string                    | root     | Response message          |
-| [result](#result) | object\<[result](#result)> | root     |                           |
+| Field             | Type                        | Position | Description                       |
+| ----------------- | -------------------------- | -------- | --------------------------------- |
+| status            | boolean                     | root     | Indicates if the request was successful. |
+| msg               | string                      | root     | Response message.                 |
+| [result](#result) | object                      | root     | Contains the analytics data.      |
 
 ### Result
 
+| Field            | Type                                      | Description                                 |
+| ---------------- | ----------------------------------------- | ------------------------------------------- |
+| total_analytics  | number                                    | Total number of analytics records found.    |
+| from             | number                                    | Starting index for the returned records.    |
+| limit            | number                                    | Number of records returned.                 |
+| order_by         | string                                    | Sort order used for the records.            |
+| analytics_list   | Array\<[analytics-info](#analytics-info)> | List of analytics records.                  |
 
-| Field                              | Type                                     | Description                              |
-| ------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| total_analytics                   | number                                   | Total number of analytics for the query |
-| from                               | number                                   | Requested from point                     |
-| limit                              | number                                   | Requested limit of records               |
-| order_by                           | string                                   | Record order                             |
-| analytics_list | Array\<[analytics-info](#analytics-info)> |                                          |
+### Analytics Info
 
-### Analytics info
-
-
-| Field              | Type   | Description                         |
-| -------------------- | -------- | ------------------------------------- |
-| room_id          | string | Room Id                  |
-| file_id            | string | File Id                             |
-| file_name           | string | File name                            |
-| file_size          | number | File size                           |
-| creation_time      | number | Creation time in unix format |
-| room_creation_time | number | Room creation time in unix format   |
+| Field              | Type   | Description                                 |
+| ------------------ | ------ | ------------------------------------------- |
+| room_id            | string | The ID of the room.                         |
+| file_id            | string | The ID of the analytics file.               |
+| file_name          | string | The name of the analytics file.             |
+| file_size          | number | The size of the file in bytes.              |
+| creation_time      | number | File creation time (Unix timestamp).        |
+| room_creation_time | number | Room creation time (Unix timestamp).        |

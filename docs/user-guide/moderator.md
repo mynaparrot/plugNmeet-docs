@@ -1,380 +1,227 @@
 ---
-description: plugNmeet user guide for moderator/admin
+description: A complete guide for moderators on how to host and manage a video conference, use presentation tools, and engage with participants in Plug-N-Meet.
 sidebar_position: 2
+sidebar_label: Moderator Guide
 ---
 
-# Moderator
+# Moderator Guide: How to Host and Manage a Meeting
 
-## 1. Entering the room
+Welcome to the Moderator Guide. This document provides a complete overview of all the features and controls available to you as a meeting host or moderator.
 
-When we enter the room, two options will appear: "**Microphone**" and "**Listen only**". If we press on "**Microphone**", it means that we want to actively participate by audio in the meeting.
+The moderator has full control over the meeting, including managing participants, using presentation tools, and configuring room settings. This guide is structured to help you quickly find the feature you need.
 
-Whereas, if we select "**Listen only**", you can only hear what the other participants say, but you will not be able to participate by audio.
+---
 
-1. **Microphone**
+## First Steps: Entering the Room & Choosing Your Audio
 
-   - After having selected the "Microphone" option, it will tell you through a box to select the microphone you want to use. It is here, where you can select the source of your microphone, either the microphone of the device you use or the headphones you have connected.
-   - Finally, you click "Join" and you will be able to talk in the meeting.
-
-2. **Listen only**
-
-   If you click on the "listen only" option, immediately afterwards it will direct you to the meeting so that you can only listen to the interventions of the other participants.
-
-   Important: The option you choose at the start of the meeting, either "Microphone" or "listen only", does not mean that it will be final for the entire meeting. Since, then you can change the settings again during the meeting. 
+When you first enter a PlugNmeet room, you will be prompted to choose how you want to join the audio session. This is your most important first step.
 
 ![enter-the-room-min.png](/img/moderator/enter-the-room-min.png)
 
-## 2. Audio
+-   **Microphone:** Choose this option to speak and participate in the meeting. Your browser will ask for permission to access your microphone.
+-   **Listen only:** Choose this option to join without a microphone. You will be able to hear everything but will not be able to speak.
 
-1. **Turn Microphone on or off**
+**Important:** This choice is not permanent. If you join in "Listen only" mode, you can easily activate your microphone later from the main control bar.
 
-   Being inside the meeting, we can choose whether to activate or deactivate the microphone. How you can do this will depend on how you entered the room.
+---
 
-   1. If "**Microphone**" was chosen at the time of entering the Room
-      - What you will have to do is go to the bottom left, find the microphone icon.
-      - Then, you can mute/unmute the microphone by click the Microphone icon. 
-      - And in case you want to do more settings on your microphone, you can click that small down arrow icon to see more options.
-   2. If "**listen only**" was chosen at the time of entering the Room
-      - What you will have to do is go to the lower left part, locate the microphone icon, and click on it.
-      - A box will immediately appear in which you will need to select the microphone of your preference. Finally, you will need to click on "Join".
-      - At that point your microphone will be activated.
-      - Then you can mute/unmute the microphone by click the Microphone icon or click that down arrow icon to see more options.
-   
+## Section 1: Core Media Controls
 
-2. **Select the microphone of preference**
+These are the basic controls for your audio and video, located in the bottom-left of the control bar.
 
-   While by the time you entered the meeting, you may have already set up the microphone of preference, you can do it again while the meeting is being held.
-   For that, you need to go to the microphone icon and then select within the first options of the drop-down list, the microphone you prefer to use.
+### Managing Your Microphone & Audio
 
-   This way of choosing the microphone can be used if the microphone has already been activated.
+- **Mute/Unmute:** If you joined with a microphone, click the **Microphone** icon to mute or unmute yourself.
+- **Activate Microphone:** If you joined in "Listen only" mode, the icon will show a headset. Click it to leave the listen-only session and activate your microphone.
+- **Change Audio Source:** Click the small arrow next to the microphone icon to switch between different microphones.
 
 ![audio-min.png](/img/moderator/audio-min.png)
 
-## 3. Video
+### Managing Your Webcam & Virtual Backgrounds
 
-When the meeting is taking place, you can choose to turn on the webcam.
-
-1. **Activate webcam**
-
-   - To do this you need to go to the bottom left and press on the camera icon.
-   - After that, you will be asked “ plugNmeet requires you to give it access permission to your camera ”, in which you will have to select "Allow".
-   - Immediately afterwards, it will be able to display you on your screen.
-   - Below your video image, you will see some options, these are **virtual background options**. You can choose a **virtual background options** if you want.
-   - Finally, you click on "Share".
-
-This is how you will have already activated your webcam.
-
-2. **Turn off webcam**
-   - In case you no longer want to share your webcam, what you will have to do is go to the camera icon.
-   - Just click the camera icon once 
-   - Your webcam will no longer be shared immediately.
+- **Start/Stop Webcam:** Click the **Webcam** icon to start or stop sharing your video.
+- **Virtual Backgrounds:** When starting your webcam, a preview window will appear. Here you can select a virtual background (blur or an image) before clicking **Share**.
 
 ![camera-min.png](/img/moderator/camera-min.png)
 
-## 4. Share Screen
+---
 
-1. To share, you will have to go to the bottom center and select the icon of a laptop with an arrow.
-2. Then, a box will appear where you can select which window, browser tab or screen you want to share.
-3. You click on “**Share**”.
-4. Screen sharing will now be taking place.
-5. Later, in case you want to stop sharing the screen, you must go again to the icon of a laptop with an arrow.
+## Section 2: Presentation & Collaboration Tools
+
+These tools allow you to present content and collaborate with your attendees.
+
+### Sharing Your Screen
+
+- Click the **Share Screen** icon in the main control bar.
+- Your browser will prompt you to choose whether to share your entire screen, a specific application window, or a browser tab.
+- To stop sharing, click the **Share Screen** icon again.
 
 ![sharescreen-min.png](/img/moderator/sharescreen-min.png)
 
-## 5. Whiteboard
+### Using the Interactive Whiteboard
 
-In the meeting it is possible to use a shared whiteboard among all participants.
+The whiteboard is a powerful tool for real-time collaboration.
 
-1. **Activate whiteboard**
-
-   To activate the **whiteboard**, you have to go to the bottom center and click on the **whiteboard** icon.
-   And the **whiteboard** will have already been activated.
-
-2. **Use whiteboard**
-
-   Inside the whiteboard, several tools will appear to use.
-
-   - **Zoom or zoom out**: Its location is in the lower left, where with the symbol "+" you can zoom, while if you select "-" it will move away.
-   - **Undo or Redo**: Its location is in the lower left. If the arrow is on the left, it means that you want to undo the last change made; on the other hand, if the arrow is to the right, it means that you want to redo the last change you had discarded.
-   - **Shapes**: Its location is in the upper central part. The shape that is selected is the one that can be drawn on the board and customized depending on the size and color you want.
-   - **Pencil**: Its location is in the upper central part. With the icon of a pencil. It will allow you to write freely, with the color you want.
-   - **Text**: Its location is in the upper central part. With the "A" icon. It will allow you to write text, with the color, size, and font you want.
-   - **Upload Multi-Files**:In the meeting you can upload different files (PDF, Word, Excel, or Power Point) on the board. These files can be quickly switched between them.
-   - **Images**: Its location is in the upper right. Allows you to attach images to display on the board. You will only have to click on the "Clip" icon and select the image you want to appear on the whiteboard and then be able to zoom in and out.
-   - **Delete**: Your location is at the top left. With the icon of a bin. Pressing will cause everything that was done on the whiteboard to be erased.
-   - **Export**: Its location is in the upper left. With the icon of an image with an arrow to the right. When clicked, it will lead to a window in which you can choose the type of format in which you want to export the content of the whiteboard (PNG or SVG), as well as the scale (1x, 2x 3x) and whether you want to place a white or transparent background. To finally export it, the final step should be to choose the format to export, which will lead to a window in which one must select the location of where you want the file to be exported.
-
-3. **Hide whiteboard**
-
-   In case you no longer want to use the whiteboard, what you will have to do is go to the bottom center and click on the whiteboard icon.<br />
-   And if there are still traces on the board, they will not be eliminated, but can continue to be used in the same place that was left when the board is reactivated.
+- **Activate/Hide:** Click the **Whiteboard** icon in the control bar to show or hide it.
+- **Tools:** Use the toolbar to draw shapes, write text, upload files (PDF, Word, etc.), and more.
+- **Export:** You can export the whiteboard's content as a PNG or SVG file.
 
 ![whiteboard-min.png](/img/moderator/whiteboard-min.png)
 
-## 6. Share Notepad
+### Using the Shared Notepad
 
-1. **Activate notepad**<br />
-   To activate the notepad, you have to go to the bottom center and click on the three dots icon and select "activate shared notepad".
-2. **Use notepad**<br />
-   Within the notepad, several tools will appear to use. <br />
-   In the upper left you can see the options to put the text in bold, italic, underlined and strikethrough. In addition, you can enumerate, list the text, modify the alignment of the text and make use of undo or redo. <br />
-   Also, in the central part, where you can see a blank sheet, is where you can write the text. <br />
-   Finally, to export the document or import an existing one, you have to go to the top right and click on the arrow icon to choose the option you want.
-3. **Hide notepad**<br />
-   In case you no longer want to use the notepad, what you will have to do is go to the bottom center and click on the icon of a sheet to write. <br />
-   And if there is still text in the notepad, it will not be deleted, but can continue to be used when the notepad is reactivated.
+- **Activate/Hide:** Open the **More Options** menu (...) in the control bar and select **Activate shared notepad**.
+- The notepad allows all participants to write and edit text together in real-time. You can format text and import/export the content.
 
 ![notepad-min.png](/img/moderator/notepad-min.png)
 
-## 7. RTMP
+### Sharing an External Video
 
-1. **Start Streaming**<br />
+You can share a video from a URL (like YouTube) or a local file.
 
-   1. To make a live broadcast from Plugnmeet to Facebook, Youtube or another similar, what you need to do is go to the bottom center and select the three-dot icon and choose "Start RTMP broadcasting".
-      ![startrtmp-min.png](/img/moderator/startrtmp-min.png)
-   2. Then, in the box that will appear, you can choose the provider of your preference and you will have to enter the Stream Key to start the transmission.
-   3. Ready! Now you'll be able to stream everything you'll do in Plugnmeet, from your webcam to the shared whiteboard.
+- Open the **More Options** menu (...) and select **Start external Media Player**.
+- Paste a video URL or upload a video file (MP4, WebM).
+- The video will appear for all participants, and you will have playback controls.
 
-2. **Finalize transmission**<br />
-   You will press on the three-dot icon and select "Stop RTMP broadcasting".
+<img src="/img/moderator/moderator-sharevideofile.jpg" alt="Share Video File" loading="lazy"/>
+
+### Displaying an External Website (iframe)
+
+You can display any website that allows embedding within an iframe.
+
+- Open the **More Options** menu (...) and select **Display external link**.
+- Enter the URL of the website you wish to share.
+
+<img src="/img/moderator/moderator-iframe.png"loading="lazy"/>
+
+---
+
+## Section 3: Managing Participants
+
+These features allow you to control and interact with your attendees.
+
+### Viewing the Participant List
+
+- Click the **Participants** icon in the control bar to open the participant panel. Here you can see everyone in the meeting.
+
+### Using the Waiting Room
+
+If the waiting room is enabled, you must approve attendees before they can join.
+
+- Open the **More Options** menu (...) and select **Manage waiting room**.
+- In the waiting room panel, you can see a list of users waiting to enter. You can **Accept** or **Reject** them individually, or all at once.
+- You can also approve users directly from the participant list.
+
+<img src="/img/moderator/waittingroom-min.png"alt="Manage Waiting Room" loading="lazy"/>
+
+### Sending Private Chat Messages
+
+- Open the **Participants** panel.
+- Click the three-dot menu next to a user's name and select **Send private message**.
+- This will open a private chat tab in the chat panel.
+
+<img src="/img/moderator/privatemessage-min.png" alt="Send Private Message" loading="lazy"/>
+
+### Using Room Lock Settings
+
+This feature allows you to restrict what attendees can do.
+
+- Open the **More Options** menu (...) and select **Room Lock Settings**.
+- From here, you can lock attendees' microphones, webcams, screen sharing, and chat abilities.
+- These locks do not affect other moderators.
+
+![romlocko-min.png](/img/moderator/romlocko-min.png)
+
+### Muting All Users
+
+- To mute all attendees at once, open the **More Options** menu (...) and select **Mute all users**.
+- This will not mute other moderators.
+
+---
+
+## Section 4: Advanced Engagement Features
+
+Use these tools to create a more interactive and engaging session.
+
+### Creating and Managing Polls
+
+- Open the **Participants** panel and click the **Polls** tab.
+- Click **Create new Poll**.
+- Define your question and answer options, then click **Create poll**.
+- Attendees will be prompted to vote. You can view the results in real-time, end the poll, and publish the results to the public chat.
+
+<img src="/img/moderator/createpoll-min.png"alt="Create a Poll" loading="lazy"/>
+
+### Using Breakout Rooms
+
+Split participants into smaller, temporary groups for focused discussions.
+
+- Open the **More Options** menu (...) and select **Manage breakout room**.
+- Configure the number of rooms, the duration, and assign participants (or use random assignment).
+- Click **Start breakout rooms**.
+- While rooms are active, you can broadcast messages to all groups, join specific rooms, or end the breakout session.
+
+<img src="/img/moderator/breakout-room-min.png" alt="Manage Breakout Rooms" loading="lazy"/>
+
+### Live Streaming via RTMP
+
+You can broadcast your meeting live to platforms like YouTube or Facebook.
+
+- Open the **More Options** menu (...) and select **Start RTMP broadcasting**.
+- Enter the RTMP URL and Stream Key provided by your streaming platform.
 
 ![rtmp-min.png](/img/moderator/rtmp-min.png)
 
-## 8. Raise your hand
+---
 
-1. To raise your hand, you will have to go to the bottom center and select the hand icon.
-2. Then, it will notify you that you have raised your hand.
-3. Then, if you no longer want to have your hand raised, you must go back to the hand icon and press to lower the hand.
+## Section 5: Session Management
 
-![raise-hand-min.png](/img/moderator/raise-hand-min.png)
+These actions control the overall meeting session.
 
-## 9. Share videos
+### Recording the Meeting
 
-To present videos to all participants and be able to watch them at the same time, you must do the following:
-
-<img src="/img/moderator/sharevideo-min.png" alt="/img/moderator/sharevideo-min.png" loading="lazy"/>  
-
-1. Go to the bottom center and click on "...".
-2. Then, select the "Start external Media Player" option.
-3. Next, a dialog box will appear in which you can insert the URL of the video you want to share. The video can be one from Youtube,Vimeo or any other direct video url link.
-4. You click "Play".
-5. The video will automatically appear in the center of the room.
-6. Now you can play or stop the video whenever you want.
-
-If you no longer want to continue sharing the video, you must do the following:
-
-1. Go to the bottom center and click on "...".
-2. Then, select the "Stop external Media Player" option.
-3. A box will appear, and you will have to click "Ok".
-
-That way you will stop sharing the video.
-
-**You also can share video via external video file.**
-
-To play a video that is in a file on your computer, you must do the following:
-
-1. Click on "...".
-2. Select "Start external Media Player".
-3. Click on "Upload".
-4. Select the file to play. Can be in mp4, mp3 or webm format.
-5. Click on "Upload and play".
-
-This way you can play the video for all meeting participants.
-
-<img src="/img/moderator/moderator-sharevideofile.jpg" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
-
-## 10. Breakout room
-
-The meeting can be divided into groups, which are rooms with the same functionalities. To do this you must do the following:
-
-<img src="/img/moderator/breakout-room-min.png" alt="/img/moderator/breakout-room-min.png" loading="lazy"/>   
-
-1. Go to the bottom center and click on "...".
-2. Select the "Manage breakout room" option.
-3. A dialog box will open in which you can select:
-- The number of groups 
-- Duration of the group session in minutes
-- Welcome message when they enter your group
-- Which participant will go in each group or if you prefer a random distribution, you can click on "Random selection”.
-4. Finally, you will click on "Start breakout rooms".
-
-The breakout rooms will start and while they are in progress, you can also perform additional actions:
-
-1. To do this, you will have to go back to the bottom center and click on "..." and choosethe option "Manage breakout room".
-2. A dialog box will open in which you can select:
-- A message for all groups with "Broadcast message".
-- Extend the duration of time in breakout rooms.
-- Join one of the groups by clicking "Join"
-- End all breakout rooms with the "End all rooms" button.
-
-
-
-## 11. Public Chat
-
-1. To be able to view the chat, you must go to the bottom center and select the icon of a message.
-2. Then, you will be able to see that you can write messages in the chat.
-3. In addition, you can send files. To do this, within the chat, you will see a clip icon. You press on it.
-4. Then, you select the file, and you will see that in the chat the link of your file will appear so that the other participants can download it.
-
-![chatroom-min.png](/img/moderator/chatroom-min.png)
-
-## 12. Private Chat
-
-During the meeting you can send private messages to the users who are present in the video call:
-
-<img src="/img/moderator/privatemessage-min.png" alt="/img/moderator/privatemessage-min.png" loading="lazy"/>   
-
-1. To do this you first have to make sure you can view the list of participants. 
-2. Then identify the user to whom you will want to write a private message.
-3. You will see that on the side of his name there is a symbol of "...". You'll have to click in those three points.
-4. Then you will select the option "Send private message". 
-5. Next, the chat will be set up so that you only talk to the user you wanted to send a private message to.  
-6. In the chat the name of the user will appear, and the chat will already be enabled to be able to send a private message. 
-If you no longer want to send private messages, you can change it to public chat: 
-1. You'll have to go to the chat and tap on the username.
-2. A drop-down list will appear, and you will select "Public chat".
-3. That way you can return to the public chat. 
-
-## 13. Waiting Room
-
-To be able to manage who can enter the meeting, you can use the waiting room. 
-
-To configure it, you must do the following:
-
-<img src="/img/moderator/waittingroom-min.png"alt="/img/moderator/waittingroom-min.png" loading="lazy"/> 
- 
-
-1. Click the "..." which is located at the bottom center of the room. 
-2. Then select the "Manage waiting room" option.
-3. Then, a dialog box will open in which you can make all the configurations for the waiting room. 
-4. In the first part of the configuration, you can edit what the waiting message will be while users are in the waiting room. To be able to modify it you will have to click on "Update".
-5. Then, under the waiting room message, there are the options to accept everyone as reject all users who are on hold.
-6. Finally, in the final part of the dialog box you can accept, reject, or block users who want to enter the room. 
-7. That way you can configure the waiting room. 
-
-Likewise, it is also possible to accept or reject the entry of a participant from the list of participants with the options "Approve" or "Reject" that will be seen on the right side of the user's name. 
-
-## 14. Poll
-
-To know the opinions of the participants within the meeting, there is the option to make polls.
-
-To configure it, you must do the following:
-
-<img src="/img/moderator/createpoll-min.png"alt="/img/moderator/createpoll-min.png" loading="lazy"/> 
-
-1. First you will have to visualize the list of participants. 
-2. Then, next to the "Participants" tab, you will be able to see another tab that says "Polls". You have to click on "Polls". 
-3. After you have selected in the tab, you will have to click on the "Create new Poll" button, which is located at the bottom left.
-4. A dialog box will then open where you can edit which questions and answer options you want. 
-5. After you have selected your question and answer options, you will click on "Create poll".
-
-That way other users will be notified that a poll was created and will have to vote.
-
-Once the participants finish voting, you can finish the poll and publish the results:
-
-1. You will go to the "Polls" tab.
-2. You will identify the survey you created and select "View details".
-3. Then, you will click on "End poll" to be able to finish the survey. 
-4. Next, a button will be displayed that will say "Publish result", and if you select it, the results will be shared in the public chat, otherwise they will not appear in the chat. 
-
-
-## 15. Room lock features
-
-To access lock functions, what needs to be done is to go to the bottom center, select the three-dot icon and press "Room Lock Settings".
-![roomlockmenu-min.png](/img/moderator/roomlockmenu-min.png)
-
-In the new box, you can turn the following on or off:
-
-- **Lock microphone:** If you turn it on, participants will not be able to use their microphone.
-- **Lock Webcams**: If you turn it on, participants won't be able to use their webcam.
-- **Lock screen sharing:** If you turn it on, participants won't be able to share their screen.
-- **Lock chat:**If you turn it on, participants will have access to the chat.
-- **Lock send message**: If you turn it on, participants won't be able to send messages to chat.
-- **Lock chat file share**: If you turn it on, no participant will be able to send attachments in the chat.
-
-These blocking functions are aimed at the participants; therefore, the moderators are not affected.
-![romlocko-min.png](/img/moderator/romlocko-min.png)
-
-## 16. Mute all users
-
-In case you want to silence all the participants, what you must do is go to the bottom center, select the icon of the three points and press "Mute all users". **This will only mute attendees role users, for moderator will not be muted.**  
-![muteall-min.png](/img/moderator/muteall-min.png)
-
-## 17. See list of participants
-
-1.  To see the list of participants, what must be done is to go to the bottom center, select the icon on which two people appear.
-2.  In case you no longer want to see, you press again on the same icon.
-
-![participants-min.png](/img/moderator/participants-min.png)
-
-## 18. Record the meeting
-
-1.  To record the meeting, what needs to be done is to go to the bottom center, select the REC icon.
-2.  Then, it will be notified that you are already recording, and the REC icon will have a circle that shrinks and increases around it.
-3.  Finally, if you no longer want to record, you will press on the same REC icon.
+Plug-N-Meet offers two distinct methods for recording your session: **Cloud Recording** (server-side) and **Local Recording** (browser-based). To start either, click the **REC** icon in the main control bar and choose your preferred option.
 
 ![recording-min.png](/img/moderator/recording-min.png)
 
-## 19.External content sharing (iframe)
-To share external internet content, you must do the following:
-1. Click on "...".
-2. Select "Display external link".
-3. Insert the URL of the external content you want to present.
-4. Select if you want extra values:
-- Name: User’s full name
-- User Id: User’s unique Id
-- User role: User’s current role. Either admin or participant
-- Meeting Id: Meeting’s origin ID
-5. Click on “Display”
+#### Cloud Recording (Recommended)
 
-In this way, each member of the meeting will be able to access the external content.
-In case you want to finish sharing, you must do the following:
-1. Click on "...".
-2. Select "Stop display external link".
+This is the most reliable method. The recording is processed on your server, capturing the entire session without depending on your local computer's performance.
 
-** This feature only support the url/website you shared which allow the iframe feature. otherwise, it won´t work. 
+-   **Requirement:** To use Cloud Recording, the free and open-source `plugNmeet-recorder` component must have been installed on your server. This is an option during the main installation process.
+-   **Troubleshooting:** If you see a "No recorder available" message, it means this component is not running on your server.
+-   **How it works:** Simply select "Cloud Recording" to start. The REC icon will pulse to indicate that the server is recording. Click it again to stop.
 
-<img src="/img/moderator/moderator-iframe.png"loading="lazy"/> 
+#### Local Recording (Browser-Based)
 
+This method uses your web browser's capabilities to capture and save the meeting directly to your computer. It has very specific requirements and is **only supported in Google Chrome**.
 
-## 20. Access general settings
+> **Important:** Local Recording is an advanced feature. For the best results, please read the following instructions carefully.
 
-To be able to make general configurations of the meeting, what must be done is to go to the top left, select the icon of three vertical dots, and then choose "Settings".
-![settingsmenu-min.png](/img/moderator/settingsmenu-min.png)
+To capture all audio within the session (not just your own microphone), the recording must be performed by a "virtual" second user.
 
-Three sections will appear here:
+**Step-by-Step Instructions:**
 
-1. **Application settings:** <br />
-   Here you can choose the preferred language.
+1.  **Open a new Chrome window** (not just a new tab).
+2.  Using the new window, **log in to the same meeting with a different user account** that has moderator privileges. You will now have two instances of yourself in the meeting.
+3.  In this second window, click the **REC** icon and choose **Local Recording**.
+4.  A Chrome prompt will appear asking you to share a tab. Select the tab of your *original* meeting session.
+5.  **Crucial Step:** At the bottom of the Chrome prompt, you **must** check the box that says **"Share tab audio"**. If you do not enable this, only the video will be recorded, with no sound.
 
-2. **Data saving:** <br />
-   It can be activated if you want to show webcams or screen sharing in the meeting.
+**Alternative Method (for capturing your microphone only):**
 
-3. **Notifications:** <br />
-   You can choose whether to allow an audio notification.
+If you only need to record what your microphone picks up along with the main video, you can start local recording without a second user. However, you must **share your microphone first**, and *then* start the local recording. If you start recording before sharing your mic, your own audio will be excluded.
+
+### Application Settings
+
+- Click the three-dot menu in the **top-left** corner and select **Settings**.
+- Here you can change the application language, manage data-saving preferences, and toggle notification sounds.
 
 ![settingsoption-min.png](/img/moderator/settingsoption-min.png)
 
-## 21. Logout the meeting
+### Ending vs. Logging Out of a Meeting
 
-1.  To be able to leave the meeting without the other participants disconnecting and staying in the meeting, you have to go to the top right, select the icon of the three vertical dots, and then choose “Log out”.
-2.  A confirmation box will then appear to make sure you want to leave the meeting.
-
-![logout-min.png](/img/moderator/logout-min.png)
-
-## 22. Software Version 
-
-If you want to know which version of the software you are using now, you can go to the top left, select the icon of three vertical dots, and then choose "Settings".
-From the pop up window, at the bottom area, you will see the current version of the software. 
-
-<img src="/img/softwareversion.png" width="600" alt="/img/softwareversion.png" loading="lazy" /> 
-
-This information is useful when you want to report a problem about the software. 
-
-
-## 23. End the meeting
-
-1.  To be able to end the meeting, what must be done is to go to the top right, select the icon of three vertical dots, and then choose "End".
-2.  A confirmation box will then appear to ensure that you want to end the meeting, because when the action is performed, all participants will be disconnected.
+- **Log Out:** If you select **Log out** from the top-right menu, you will leave the meeting, but the session will remain active for other participants.
+- **End Meeting:** If you select **End meeting**, the session will be terminated for **everyone**.
 
 ![end-min.png](/img/moderator/end-min.png)

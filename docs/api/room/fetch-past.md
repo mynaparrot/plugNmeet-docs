@@ -1,19 +1,21 @@
 ---
 sidebar_position: 6
 ---
-# Fetch past rooms info
 
-End point: `/room/fetchPastRooms`
+# Fetch Past Rooms Information
 
+Endpoint: `/room/fetchPastRooms`
 
-| Field    | Type   | Required | Description                         |
-| ---------- | -------- | ---------- | :------------------------------------ |
-| room_ids | array  | Yes      | Array of room Ids'                  |
-| from     | number | No       | From point. Default 0               |
-| limit    | number | No       | Limit of records. Default 20        |
-| order_by | string | No       | Ordering DESC or ASC. Default: DESC |
+## Request Parameters
 
-**Example**:
+| Field    | Type   | Required | Description                                 |
+| -------- | ------ | -------- | ------------------------------------------- |
+| room_ids | array  | Yes      | Array of room IDs to query.                 |
+| from     | number | No       | Starting index for records. Default is 0.   |
+| limit    | number | No       | Maximum number of records to return. Default is 20. |
+| order_by | string | No       | Sort order: `DESC` or `ASC`. Default is `DESC`. |
+
+**Example Request:**
 
 ```json
 {
@@ -26,34 +28,31 @@ End point: `/room/fetchPastRooms`
 
 ## Response
 
-
-| Field             | Type                      | Position | Description               |
-| :------------------ | --------------------------- | ---------- | :-------------------------- |
-| status            | boolean                   | root     | The status of the request |
-| msg               | string                    | root     | Response message          |
-| [result](#result) | object\<[result](#result)> | root     |                           |
+| Field             | Type                        | Position | Description                       |
+| ----------------- | -------------------------- | -------- | --------------------------------- |
+| status            | boolean                     | root     | Indicates if the request was successful. |
+| msg               | string                      | root     | Response message.                 |
+| [result](#result) | object                      | root     | Contains the results data.        |
 
 ### Result
 
+| Field            | Type                                      | Description                                 |
+| ---------------- | ----------------------------------------- | ------------------------------------------- |
+| total_rooms      | number                                    | Total number of rooms found for the query.  |
+| from             | number                                    | Starting index for the returned records.    |
+| limit            | number                                    | Number of records returned.                 |
+| order_by         | string                                    | Sort order used for the records.            |
+| rooms_list       | Array\<[Past Room Info](#past-room-info)> | List of past room records.                  |
 
-| Field                              | Type                                     | Description                              |
-| ------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| total_rooms                   | number                                   | Total number of rooms for the query |
-| from                               | number                                   | Requested from point                     |
-| limit                              | number                                   | Requested limit of records               |
-| order_by                           | string                                   | Record order                             |
-| rooms_list | Array\<[past-room-info](#past-room-info)> |                                          |
+### Past Room Info
 
-### Past Room info
-
-
-| Field              | Type   | Description                         |
-| -------------------- | -------- | ------------------------------------- |
-| room_title          | string | Room title                  |
-| room_id            | string | Room Id                             |
-| room_sid           | string | Room Sid                            |
-| joined_participants          | number | Number of  participants joined (may not be accurate, use analytics to get more details)                         |
-| webhook_url          | string | Webhook url                           |
-| created      | string | Room created time |
-| ended | string | Room ended time   |
-| analytics_file_id | string | Analytics file id (if any)   |
+| Field               | Type   | Description                                                                                   |
+| ------------------- | ------ | --------------------------------------------------------------------------------------------- |
+| room_title          | string | Title of the room.                                                                            |
+| room_id             | string | Unique identifier for the room.                                                               |
+| room_sid            | string | SID of the room.                                                                              |
+| joined_participants | number | Number of participants who joined (may not be exact; use analytics for detailed information). |
+| webhook_url         | string | Webhook URL associated with the room.                                                         |
+| created             | string | Room creation time.                                                                           |
+| ended               | string | Room end time.                                                                                |
+| analytics_file_id   | string | Analytics file identifier, if available.                                                      |

@@ -1,25 +1,32 @@
 ---
-description: plugNmeet user guide for Learning Tools Interoperability (LTI)
+description: A guide on how to connect Plug-N-Meet to any Learning Management System (LMS) like Canvas, Moodle, or Chamilo using the LTI standard.
 sidebar_position: 7
+sidebar_label: LTI Integration
 ---
 
-# LTI
+# Integrating with any LMS using LTI
 
-## Intro
+Learning Tools Interoperability (LTI) is a standard protocol that allows you to securely connect Plug-N-Meet to virtually any Learning Management System (LMS) like Canvas, Moodle, Chamilo, and more.
 
-plugNmeet support LTI **v1.0/1.1** as Provider. Users can join/manage sessions and download recordings from any LTI supported platform without changing any code.
+This method is ideal if there is no dedicated plugin for your platform or if your institution restricts the installation of custom plugins. It allows instructors and students to join meetings and view recordings directly from their course page.
 
-## plugNmeet API info
+---
 
-Following information will require:
+## Part 1: General LTI Configuration Details
+
+This section contains the information needed for **any** LTI integration.
+
+### Required Credentials
+
+To connect any LTI-compatible platform, you will need the following three pieces of information. The **Consumer Key** and **Shared Secret** must be obtained from your own PlugNmeet server's API settings.
 
 ```
 Launch URL: https://your-plug-n-meet.com/lti/v1
-Consumer key: plug-n-meet API Key
-Shared secret: plug-n-meet API Secret
+Consumer key: [Your plugNmeet API Key]
+Shared secret: [Your plugNmeet API Secret]
 ```
 
-For demo you can try following information:
+For temporary testing, you can use the public demo server:
 
 ```
 Launch URL: https://demo.plugnmeet.com/lti/v1
@@ -27,184 +34,84 @@ Consumer key: plugnmeet
 Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 ```
 
-**Note:** Allowing `launcher's name` is recommended; otherwise, the user will see an empty name.
+**Note:** It is highly recommended to allow the LTI tool to send the `launcher's name`; otherwise, the user will appear in the meeting with an empty name.
 
-## Custom parameters (optional)
+### User Interface Overview
 
-| Field                       | Type    | Description                                                                                           |
-| :-------------------------- | ------- | :---------------------------------------------------------------------------------------------------- |
-| room_duration               | Number  | If you want to set duration for the session. The should be in minutes. Default 0 which mean no limit. |
-| allow_polls                 | Boolean | Default: true                                                                                         |
-| allow_shared_note_pad       | Boolean | Default: true                                                                                         |
-| allow_breakout_room         | Boolean | Default: true                                                                                         |
-| allow_recording             | Boolean | Default: true                                                                                         |
-| allow_rtmp                  | Boolean | Default: true                                                                                         |
-| allow_view_other_webcams    | Boolean | Default: true                                                                                         |
-| allow_view_other_users_list | Boolean | Default: true                                                                                         |
-| mute_on_start               | Boolean | Default: false                                                                                        |
-| primary_color               | String  | Interface primary color in hex code. Example: #004D90                                                 |
-| secondary_color             | String  | Interface secondary color in hex code. Example: #004D90                                               |
-| background_color            | String  | Interface background color in hex code. Example: #004D90                                              |
-| custom_logo                 | String  | This should be direct https link. Example: https://mydomain.com/logo.png                              |
-
-## UI view
-
-**Moderator/Admin view**
+- **Instructor/Moderator View:** When a user with an instructor role launches the LTI tool, they will see an administrative view allowing them to manage sessions and view recordings.
 
 ![lti1.png](/img/lti/lti1.png)
 
-![lti2.png](/img/lti/lti2.png)
-
-**Student/Attendee view**
+- **Student/Attendee View:** When a student launches the tool, they will see a simple page to join the current live session.
 
 ![lti3.png](/img/lti/lti3.png)
 
-## Canvas LMS Example
+### Optional Custom Parameters
 
-Here we take Canvas LMS as an example to show you how it works.
+You can pass these optional parameters during the LTI configuration in your LMS to customize the meeting room experience.
 
-1. Go to the Settings section and select **"Apps"**.
+| Field                 | Type    | Description                                                                 |
+| :-------------------- | :------ | :-------------------------------------------------------------------------- |
+| `room_duration`         | Number  | Session duration in minutes. `0` means no limit.                            |
+| `allow_polls`           | Boolean | `true` (default) or `false`                                                 |
+| `allow_shared_note_pad` | Boolean | `true` (default) or `false`                                                 |
+| `allow_breakout_room`   | Boolean | `true` (default) or `false`                                                 |
+| `allow_recording`       | Boolean | `true` (default) or `false`                                                 |
+| `allow_rtmp`            | Boolean | `true` (default) or `false`                                                 |
+| `mute_on_start`         | Boolean | `false` (default) or `true`                                                 |
+| `primary_color`         | String  | Interface primary color in hex code (e.g., `#004D90`).                      |
+| `secondary_color`       | String  | Interface secondary color in hex code.                                      |
+| `background_color`      | String  | Interface background color in hex code.                                     |
+| `custom_logo`           | String  | A direct HTTPS link to a logo image (e.g., `https://mydomain.com/logo.png`). |
 
-<img src="/img/lti/lti-add-apps.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+---
 
-2. Then click on **"View App Configurations"**.
+## Part 2: LMS Integration Examples
 
-<img src="/img/lti/lti-app-config.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+This section provides step-by-step examples for popular Learning Management Systems.
 
-3. Select **"+App"**.
+### Canvas LMS Example
 
-<img src="/img/lti/lti-click-add.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+This example demonstrates how to add Plug-N-Meet as an external LTI app in Canvas.
 
-4. Fill in the API information.
-   You can use following demo api information for testing:
+1.  As an administrator, navigate to **Settings > Apps** in your Canvas course.
+2.  Click **View App Configurations** and then **+App**.
+3.  For **Configuration Type**, select **Manual Entry**.
+4.  Fill in the fields with your PlugNmeet LTI credentials (Name, Consumer Key, Shared Secret, and Launch URL).
+5.  Click **Submit**. The PlugNmeet app will now be available as an external tool for assignments and modules.
 
-```
-Name: plugNmeet
-Launch URL: https://demo.plugnmeet.com/lti/v1
-Consumer key: plugnmeet
-Shared secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
-```
-<img src="/img/lti/lti-canvas-1.png"loading="lazy"/> 
+<img src="/img/lti/lti-canvas-1.png"loading="lazy"/>
 
-5. Click **"Submit"** to save the changes.
+### Chamilo LMS Example
 
-<img src="/img/lti/lti-click-submit.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+1.  As an administrator, go to the **Plugins** page and enable the **IMS/LTI** plugin.
+2.  Navigate to a course and click the pencil icon to edit its settings.
+3.  Go to the **IMS/LTI** section and click **Configure external tools**.
+4.  Click **Add external tool** and fill in the form with your PlugNmeet LTI credentials.
+5.  After saving, **plugNmeet** will appear as an available tool in the **Interaction** section of your course.
 
-6. A **notification** will appear that the plugNmeet app has been installed.
-   You are able to join plugNmeet meetings via LTI now.
+<img src="/img/lti/lti-chamilo-8.png"loading="lazy"/>
 
-<img src="/img/lti/lti-sucess.png" alt="/img/moderator/attendee-poll-min.png" loading="lazy"/>
+### Moodle LMS Example
 
-## Chamilo LMS Example
-To install plugNmeet, the following steps must be performed:
+This LTI method is a great alternative if your Moodle hosting provider does not allow the installation of custom activity plugins.
 
-1. Go to the "Portal” section and select "Plugins".
-
-<img src="/img/lti/lti-chamilo-1.png"loading="lazy"/>   
-
-
-2. Search for "IMS/LTI" and select its checkbox and then click on "Enable the selected plugins".
-
-<img src="/img/lti/lti-chamilo-2.png"loading="lazy"/>  
-
-3. Then, the "Plugins" page will load again and in the "IMS/LTI" section you will select "Configure".
-
-<img src="/img/lti/lti-chamilo-3.png"loading="lazy"/> 
-
-4. Select "Yes" and click on "Save".
-
-<img src="/img/lti/lti-chamilo-4.png"loading="lazy"/>  
-
-5. Now that "IMS/LTI" is enabled, you must go to "My Courses".
-
-<img src="/img/lti/lti-chamilo-5.png"loading="lazy"/>  
-
-6. You choose the course where you want to add plugNmeet and click the pencil icon to edit the course.
-
-<img src="/img/lti/lti-chamilo-6.png"loading="lazy"/> 
-
-7. Go to the "IMS/LTI" section and click on "Configure external tools".
-
-<img src="/img/lti/lti-chamilo-7.png"loading="lazy"/>  
-
-8. You fill in the following data and then select "Add external tool".
-
-<img src="/img/lti/lti-chamilo-8.png"loading="lazy"/> 
-
-9. You select the title of your course.
-
-<img src="/img/lti/lti-chamilo-9.png"loading="lazy"/>  
-
-10. You go to the "Interaction" section, and you can view "plugNmeet" to use it.
-<img src="/img/lti/lti-chamilo-10.png"loading="lazy"/>  
-
-## Moodle LMS Example
-
-If your Moodle provider doesn’t support to install custom plugins, then you can use LTI tools to join the plugNmeet meeting. Here is how you can do it. 
-
-1. Go to "Site administration".
-
-<img src="/img/lti/lti-moodle-1.png"loading="lazy"/> 
-
-2. Click on "Plugins".
-
-<img src="/img/lti/lti-moodle-2.png"loading="lazy"/>  
-
-3. Scroll down and select "Manage tools".
-
-<img src="/img/lti/lti-moodle-3.png"loading="lazy"/>  
-
-4. Click on "Configure a tool manually".
-
-<img src="/img/lti/lti-moodle-4.png"loading="lazy"/>    
-
-5. Fill in the following data and then select "Save changes".
-
-```
-Name: plugNmeet
-Tool URL: https://your-plug-n-meet/lti/v1
-Consumer key: plug-n-meet API Key
-Shared secret: plug-n-meet API Secret
-
-```
-**Replace with your own API key and Secret**
-
-<img src="/img/lti/lti-moodle-5.png"loading="lazy"/>  
-
-
-6. PlugNmeet is now ready to use via LTI tools on Moodle.
-
-<img src="/img/lti/lti-moodle-6.png"loading="lazy"/>   
-
-7. After the LTI tool is ready,then you can go to My course page to add a new course with LTI. 
-
-8. Create a course or choose an existing one by going to the "My courses" section. In this case, a course will be created by clicking on "Create new course". "Edit mode" needs to be enabled.
-<img src="/img/lti/lti-moodle-8.png"loading="lazy"/>
-
-9. We input the name of the course
-
-<img src="/img/lti/lti-moodle-9.png"loading="lazy"/>
-
-10. Click on "Save and display".then we come to the course page. 
-
-<img src="/img/lti/lti-moodle-10.png"loading="lazy"/>
-
-11. Select "Add an activity or resource".
-
-<img src="/img/lti/lti-moodle-11.png"loading="lazy"/>
-
-12. Click on "External tool".
-
-<img src="/img/lti/lti-moodle-12.png"loading="lazy"/>
-
-13. Type the name of the activity and select in Preconfigured tool: "plugNmeet".
+1.  As an administrator, go to **Site administration > Plugins > Manage tools**.
+2.  Click **Configure a tool manually**.
+3.  Fill in the form with your PlugNmeet LTI credentials (Tool name, Tool URL, Consumer key, Shared secret).
+4.  Click **Save changes**.
+5.  Now, any course creator can add this to their course. Turn on **Edit mode** in a course, click **Add an activity or resource**, and select **External tool**.
+6.  From the **Preconfigured tool** dropdown, select the **plugNmeet** tool you just created.
+7.  Give the activity a name, save, and it will be ready for your students.
 
 <img src="/img/lti/lti-moodle-13.png"loading="lazy"/>
 
-14. Click on "Save and display".
+---
 
-<img src="/img/lti/lti-moodle-14.png"loading="lazy"/>
+## Common Questions & Troubleshooting
 
-15. Then user can click the activity and join the plugNmeet meeting. 
+**What is the difference between using LTI and the dedicated Moodle plugin?**
+The dedicated Moodle plugin offers deeper integration with Moodle features like grading and permissions. However, the LTI method is a universal solution that works for nearly any LMS and is a great alternative if you cannot install custom plugins.
 
-<img src="/img/lti/lti-moodle-15.png"loading="lazy"/>
+**Why do I get an 'Authentication Failed' error?**
+This almost always means the **Consumer Key** or **Shared Secret** is incorrect. Double-check that you have copied these values correctly from your PlugNmeet server's API settings and that they are entered correctly in your LMS.

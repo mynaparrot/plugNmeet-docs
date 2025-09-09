@@ -1,35 +1,73 @@
 ---
-description: Quick join to plugNmeet using PHP
+description: A step-by-step PHP quick start guide to create a video conference room and generate a secure join token using the Plug-N-Meet PHP SDK.
 sidebar_position: 1
+sidebar_label: PHP Quick Start
 ---
 
-# Quick join using PHP
+# PHP Quick Start: Create and Join a Meeting
 
-In this section you'll learn how to generate join token for joining a session using PHP. The flow will be like this:
+This tutorial provides a complete, step-by-step example of how to use the `plugNmeet-sdk-php` library to create a new meeting room and generate a secure join token for a user.
 
-<img src="/img/tutorials/quick_join_flow.png" width="400" alt="quick_join_flow.png" loading="lazy"/>
+The logic follows a common workflow: check if a room exists, create it if it doesn't, and then generate a URL for a user to join.
 
-1. Step one to download [plugNmeet-sdk-php](https://github.com/mynaparrot/plugNmeet-sdk-php/releases) library
+<img src="/img/tutorials/quick_join_flow.png" width="400" alt="Quick Join Logic Flow" loading="lazy"/>
 
-2. We'll use [plugNmeetConnect.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/plugNmeetConnect.php) class.
+---
 
-3. Create a file `quickJoin.php`
+## Prerequisites
 
-```PHP
+Before you begin, ensure you have the following:
+
+- A working PlugNmeet server with your API Key and Secret.
+- The latest version of the [plugNmeet-sdk-php](https://github.com/mynaparrot/plugNmeet-sdk-php/releases) library downloaded.
+
+---
+
+## Step 1: Setup & Configuration
+
+First, create a PHP file (e.g., `quickJoin.php`) and include the `plugNmeetConnect.php` class from the SDK. Then, create a configuration object with your server details.
+
+```php
+<?php
 require __DIR__ . "/plugNmeetConnect.php";
 
+// Step 1: Configuration
 $config = new stdClass();
-$config->plugnmeet_server_url = "http://localhost:8080";
-$config->plugnmeet_api_key = "plugnmeet";
-$config->plugnmeet_secret = "zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6";
+$config->plugnmeet_server_url = "http://localhost:8080"; // Your server URL
+$config->plugnmeet_api_key = "plugnmeet"; // Your API Key
+$config->plugnmeet_secret = "zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"; // Your API Secret
 
 $connect = new plugNmeetConnect($config);
+```
 
-$roomId = "room01"; // must be unique. You can also use $connect->getUUID();
-$max_participants = 0; // value 0 means no limit (unlimited)
-$user_full_name = "Your name";
-$userId = "Your-Unique-User-Id"; // must be unique for each user.
+---
 
+## Step 2: Define Room & User Parameters
+
+Next, define the basic parameters for the room you want to create and the user who will be joining. The `$roomMetadata` array allows you to customize every aspect of the room's features, from enabling webcams to setting default lock permissions.
+
+```php
+// Step 2: Room and User definitions
+$roomId = "room01"; // Must be unique. You can also use $connect->getUUID();
+$user_full_name = "Your Name";
+$userId = "your-unique-user-id"; // Must be unique for each user.
+
+// Define all the features for this specific room.
+$roomMetadata = array(
+    "room_features" => array(
+        "allow_webcams" => true,
+        "mute_on_start" => false,
+        "allow_screen_share" => true,
+        "room_duration" => 0 // 0 = no limit
+    ),
+    // ... and many more options
+);
+```
+
+<details>
+<summary>View Full Room Metadata Options</summary>
+
+```php
 $roomMetadata = array(
     "room_features" => array(
         "allow_webcams" => true,
@@ -96,12 +134,27 @@ $roomMetadata = array(
         "lock_private_chat" => false // user can always send private message to moderator
     )
 );
+```
 
+</details>
+
+---
+
+## Step 3: The Logic Flow - Check, Create, Join
+
+The following code blocks implement the core logic.
+
+### 3.1 Check if the Room is Active
+
+First, we call the API to see if a room with the specified `$roomId` already exists and is active.
+
+```php
 $isRoomActive = false;
 $output = new stdClass();
 $output->status = false;
 
 try {
+    // Check if the room already exists on the server
     $res = $connect->isRoomActive($roomId);
     if (!$res->getStatus()) {
         $output->msg = $res->getResponseMsg();
@@ -109,14 +162,20 @@ try {
         $isRoomActive = $res->isActive();
         $output->status = true;
     }
-
 } catch (Exception $e) {
     $output->msg = $e->getMessage();
 }
+```
 
+### 3.2 If Not, Create the Room
+
+If the room is not active, we proceed to create it using the parameters we defined earlier.
+
+```php
 if (!$isRoomActive && $output->status) {
     try {
-        $create = $connect->createRoom($roomId, "Test room", "Welcome to room", $max_participants, "", $roomMetadata);
+        // The room doesn't exist, so we create it now.
+        $create = $connect->createRoom($roomId, "Test room", "Welcome to room", 0, "", $roomMetadata);
 
         $isRoomActive = $create->getStatus();
         $output->status = $create->getStatus();
@@ -125,26 +184,46 @@ if (!$isRoomActive && $output->status) {
         $output->msg = $e->getMessage();
     }
 }
+```
 
+### 3.3 Generate the Join Token
+
+Once we have confirmed the room is active (either because it already existed or we just created it), we can generate a secure, single-use join token for our user.
+
+```php
 if ($isRoomActive && $output->status) {
     try {
+        // The room is active, now we can generate a join token.
         $join = $connect->getJoinToken($roomId, $user_full_name, $userId, true);
 
         $output->url = $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
-        // or you can set cookie name `pnm_access_token` with that token & redirect
         $output->status = $join->getStatus();
         $output->msg = $join->getResponseMsg();
     } catch (Exception $e) {
         $output->msg = $e->getMessage();
     }
 }
-
 ```
 
-When we'll get value of `$output->url` that time we can redirect user like this:
+---
 
-```PHP
-header("Location: " . $output->url);
+## Step 4: Redirecting the User
+
+After successfully generating the join token, the complete meeting URL will be in the `$output->url` variable. You can now redirect your user to this URL to join the meeting.
+
+```php
+if ($output->status) {
+    header("Location: " . $output->url);
+    exit;
+} else {
+    echo $output->msg;
+}
 ```
 
-You can also build plugNmeet client interface by using [getClientFiles](/docs/api/get-client-files) API. You'll be able to customize the page more freely and won't need to use iFrame. Have a look an example of [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) file.
+---
+
+## Next Steps
+
+This quick start guide uses the simplest method to get a user into a room. For a more deeply integrated experience, you can build a custom client interface using the [getClientFiles()](/docs/api/get-client-files) API method. This allows you to host the client on your own page without using an iframe.
+
+See the [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) file in our PHP-SDK for a complete example.

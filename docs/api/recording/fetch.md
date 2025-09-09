@@ -1,19 +1,21 @@
 ---
 sidebar_position: 1
 ---
-# Fetch recordings
 
-End point: `/recording/fetch`
+# Fetch Recordings
 
+Endpoint: `/recording/fetch`
 
-| Field    | Type   | Required | Description                         |
-| ---------- | -------- | ---------- | :------------------------------------ |
-| room_ids | array  | Yes      | Array of room Ids'                  |
-| from     | number | No       | From point. Default 0               |
-| limit    | number | No       | Limit of records. Default 20        |
-| order_by | string | No       | Ordering DESC or ASC. Default: DESC |
+## Request Parameters
 
-**Example**:
+| Field    | Type   | Required | Description                                   |
+| -------- | ------ | -------- | --------------------------------------------- |
+| room_ids | array  | Yes      | Array of room IDs to fetch recordings for.    |
+| from     | number | No       | Starting index for records. Default is 0.     |
+| limit    | number | No       | Maximum number of records to return. Default is 20. |
+| order_by | string | No       | Sort order: `DESC` or `ASC`. Default is `DESC`. |
+
+**Example Request:**
 
 ```json
 {
@@ -26,33 +28,30 @@ End point: `/recording/fetch`
 
 ## Response
 
-
-| Field             | Type                      | Position | Description               |
-| :------------------ | --------------------------- | ---------- | :-------------------------- |
-| status            | boolean                   | root     | The status of the request |
-| msg               | string                    | root     | Response message          |
-| [result](#result) | object\<[result](#result)> | root     |                           |
+| Field             | Type                        | Position | Description                                 |
+| ----------------- | -------------------------- | -------- | ------------------------------------------- |
+| status            | boolean                     | root     | Indicates if the request was successful.    |
+| msg               | string                      | root     | Response message.                           |
+| [result](#result) | object                      | root     | Contains the recordings data.               |
 
 ### Result
 
+| Field              | Type                                      | Description                                 |
+| ------------------ | ----------------------------------------- | ------------------------------------------- |
+| total_recordings   | number                                    | Total number of recordings found.           |
+| from               | number                                    | Starting index for the returned records.    |
+| limit              | number                                    | Number of records returned.                 |
+| order_by           | string                                    | Sort order used for the records.            |
+| recordings_list    | Array\<[Recording Info](#recording-info)> | List of recording records.                  |
 
-| Field                              | Type                                     | Description                              |
-| ------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| total_recordings                   | number                                   | Total number of recordings for the query |
-| from                               | number                                   | Requested from point                     |
-| limit                              | number                                   | Requested limit of records               |
-| order_by                           | string                                   | Record order                             |
-| [recordings_list](#recording-list) | Array\<[recording_list](#recording-list)> |                                          |
+### Recording Info
 
-### Recording list
-
-
-| Field              | Type   | Description                         |
-| -------------------- | -------- | ------------------------------------- |
-| record_id          | string | Record internal ID                  |
-| room_id            | string | Room Id                             |
-| room_sid           | string | Room Sid                            |
-| file_path          | string | File path                           |
-| file_size          | number | File size                           |
-| creation_time      | number | Record creation time in unix format |
-| room_creation_time | number | Room creation time in unix format   |
+| Field              | Type   | Description                                 |
+| ------------------ | ------ | ------------------------------------------- |
+| record_id          | string | Unique identifier for the recording.        |
+| room_id            | string | ID of the room associated with the recording.|
+| room_sid           | string | SID of the room.                            |
+| file_path          | string | Path to the recording file.                 |
+| file_size          | number | Size of the recording file in bytes.        |
+| creation_time      | number | Recording creation time (Unix timestamp).   |
+| room_creation_time | number | Room creation time (Unix timestamp).       |

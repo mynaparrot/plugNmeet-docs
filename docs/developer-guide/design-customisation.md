@@ -1,5 +1,5 @@
 ---
-description: plugNmeet interface design customisation using external CSS
+description: PlugNmeet interface design customization using external CSS
 sidebar_position: 3
 ---
 
@@ -7,7 +7,7 @@ sidebar_position: 3
 
 ## Using config.js
 
-Open `config.js` file which is located under `dist/assets/config.js` of `plugNmeet-client`. You'll notice one field `window.DESIGN_CUSTOMIZATION` which accept JSON value like this:
+Open the `config.js` file located in `dist/assets/config.js` of the `plugNmeet-client`. You will find a field called `window.DESIGN_CUSTOMIZATION`, which accepts a JSON value like this:
 
 ```js
 window.DESIGN_CUSTOMIZATION = `{
@@ -23,27 +23,27 @@ window.DESIGN_CUSTOMIZATION = `{
 }`;
 ```
 
-You can use custom value for any or all of above options. You can also pass the above JSON format by URL too. In that case you'll require to use `custom_design` as URL parameter.
+You can customize any or all of the above options. Alternatively, you can pass this JSON format via a URL parameter using `custom_design`.
 
-## Design parameters
+## Design Parameters
 
 | Field               | Description                                                                                                                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| primary_color       | The primary color code in hex format                                                                                                                                   |
-| secondary_color     | The secondary color code in hex format                                                                                                                                 |
-| background_color    | If you want to change default background color of room then you can supply color code                                                                                  |
-| background_image    | You can add custom background image. The link will require to direct https link. If you use value for `background_image` then `background_color` value will be ignore. |
-| header_bg_color     | Header background color                                                                                                                                                |
-| footer_bg_color     | Footer background color                                                                                                                                                |
-| left_side_bg_color  | Left side panel's background color                                                                                                                                     |
-| right_side_bg_color | Right side panel's background color                                                                                                                                    |
-| custom_css_url      | You also can use your own custom CSS file for further advance customization. The link should be direct https link                                                      |
+| primary_color       | The primary color code in hex format.                                                                                                                                  |
+| secondary_color     | The secondary color code in hex format.                                                                                                                                |
+| background_color    | Sets the default background color of the room.                                                                                                                         |
+| background_image    | Adds a custom background image. The link must be a direct HTTPS URL. If `background_image` is set, `background_color` will be ignored.                                 |
+| header_bg_color     | Header background color.                                                                                                                                               |
+| footer_bg_color     | Footer background color.                                                                                                                                               |
+| left_side_bg_color  | Background color for the left panel.                                                                                                                                   |
+| right_side_bg_color | Background color for the right panel.                                                                                                                                  |
+| custom_css_url      | URL to your custom CSS file for advanced customization. The link must be a direct HTTPS URL.                                                                           |
 
-## Global Changes using CSS
+## Global Changes Using CSS
 
-Primary Color
+**Primary Color**
 
-```
+```css
 .primaryColor {
     color: #004D90;
 }
@@ -54,9 +54,9 @@ Primary Color
 
 ![brand-color1-min.png](/img/design-customisation/brand-color1-min.png)
 
-Secondary Color
+**Secondary Color**
 
-```
+```css
 .secondaryColor {
     color: #24AEF7;
 }
@@ -67,9 +67,9 @@ Secondary Color
 
 ![brand-color2-min.png](/img/design-customisation/brand-color2-min.png)
 
-Primary Background
+**Primary Background**
 
-```
+```css
 .bg-primaryColor {
     background: #004D90;
 }
@@ -77,23 +77,25 @@ Primary Background
 
 ![bg-brand1.png](/img/design-customisation/bg-brand1.png)
 
-Secondary Background Color
+**Secondary Background Color**
 
-```
+```css
 .bg-secondaryColor {
     background: #24AEF7;
 }
 ```
 
-![bg-brand1.png](/img/design-customisation/bg-brand2.png)
+![bg-brand2.png](/img/design-customisation/bg-brand2.png)
 
 ## Header
 
-For your need, You can change header Background, Logo, Color etc.
+You can change the header background, logo, color, and more.
 
-To change **Header Background Color** style use this class: see screenshot below.
+**Header Background Color**
 
-```
+Use this class to change the header background color:
+
+```css
 header#main-header {
   background-color: azure;
 }
@@ -101,11 +103,11 @@ header#main-header {
 
 ![HeaderBG.png](/img/design-customisation/HeaderBG.png)
 
-<div style={{marginBottom: 100 + 'px'}}></div>
+**Logo**
 
-Change **Logo** using this class name:
+Change the logo using this class:
 
-```
+```css
 .header-logo {
     background-image: url(./assets/imgs/app-banner.jpg) !important;
 }
@@ -113,11 +115,11 @@ Change **Logo** using this class name:
 
 ![HeaderLOGO.png](/img/design-customisation/HeaderLOGO.png)
 
-<div style={{marginBottom: 100 + 'px'}}></div>
+**Header Start and End Shape**
 
-Change **Header Start and End Shape** style using these class:
+Use these classes to change the header's start and end shapes:
 
-```
+```css
 .header-before-start {
     background-image: url(./assets/imgs/app-banner.jpg) !important;
 }
@@ -128,11 +130,11 @@ Change **Header Start and End Shape** style using these class:
 
 ![HeaderShape.png](/img/design-customisation/HeaderShape.png)
 
-<div style={{marginBottom: 100 + 'px'}}></div>
+**Header Title**
 
-Change **Header Title** style using these class:
+Change the header title style using this class:
 
-```
+```css
 h2.header-title {
     color: blue;
     font-size: 20px;
@@ -143,9 +145,9 @@ h2.header-title {
 
 ## Participants
 
-You can change **participants Background, width, padding** etc. Style Using this class name:
+You can customize the participants section, including background, width, and padding:
 
-```
+```css
 .participants-wrapper {
     background: #fff;
     width: 300px;
@@ -155,9 +157,9 @@ You can change **participants Background, width, padding** etc. Style Using this
 
 ![participants-min.png](/img/design-customisation/participants-min.png)
 
-You can change **participants Headline** style using this class name:
+**Participants Headline**
 
-```
+```css
 .participants-wrapper .top p {
     font-size: 20px;
     color: grey;
@@ -166,9 +168,9 @@ You can change **participants Headline** style using this class name:
 
 ![participants-headline-min.png](/img/design-customisation/participants-headline-min.png)
 
-You can change **participant name** style using this class name:
+**Participant Name**
 
-```
+```css
 .all-participants-wrap p {
     font-size: 18px;
     color: grey;
@@ -177,9 +179,9 @@ You can change **participant name** style using this class name:
 
 ![participants-name-min.png](/img/design-customisation/participants-name-min.png)
 
-You can change **participant thumb** style using this class name:
+**Participant Thumbnail**
 
-```
+```css
 .all-participants-wrap .thumb {
     font-size: 14px;
     color: grey;
@@ -191,9 +193,9 @@ You can change **participant thumb** style using this class name:
 
 ## Messages
 
-You can change **Messages Background, width, padding** etc. Style Using this class name:
+Customize the messages section, including background, width, and padding:
 
-```
+```css
 .MessageModule-wrapper {
     background: #fff;
     width: 300px;
@@ -205,9 +207,9 @@ You can change **Messages Background, width, padding** etc. Style Using this cla
 
 ## Start-Up Page
 
-You can change **Start-Up page** style using this class name:
+Change the style of the start-up page using this class:
 
-```
+```css
 #startupJoinModal {
     background-color: aqua;
 }
@@ -217,9 +219,9 @@ You can change **Start-Up page** style using this class name:
 
 ## Error Page
 
-You can change **Error Page** style using this class name:
+Customize the error page background:
 
-```
+```css
 .error-app-bg {
     background-image: url("./assets/imgs/header-before2.png") !important;
     background-position: center;
@@ -228,9 +230,9 @@ You can change **Error Page** style using this class name:
 }
 ```
 
-Or
+Or use a solid color:
 
-```
+```css
 .error-app-bg {
     background: aliceblue !important;
 }

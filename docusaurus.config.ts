@@ -3,8 +3,8 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'plugNmeet - Open source web conferencing system',
-  tagline: 'WebRTC based Scalable, High Performance, Open source web conferencing that is simple to use and customizable',
+  title: 'plugNmeet | Open Source Web Conferencing System',
+  tagline: 'The free and open-source video conferencing platform for full control and privacy. Host scalable, customizable meetings on your own servers.',
   favicon: 'img/favicon.png',
 
   // Set the production url of your site here
@@ -158,11 +158,8 @@ const config: Config = {
     },
     metadata: [
       {
-        name: 'keywords', 
-        content: 'self-hosted WebRTC,self-hosted conference system,'+
-        'open source web conference,open source video conference,open source audio conference,'+
-        'open-source WebRTC,wordpress WebRTC,joomla WebRTC,moodle WebRTC,'+ 
-        'wordpress video call,moodle video call,moodle video call,online class,free WebRTC'
+        name: 'keywords',
+          content: 'webrtc, self-hosted, on-premise, open source, video conferencing, web conference, video call, video chat, online meetings, webinar, zoom alternative, jitsi alternative, BigBlueButton alternative, wordpress webrtc, joomla webrtc, moodle webrtc, online class, free webrtc, video conferencing api, video conferencing sdk'
       }
     ],
   } satisfies Preset.ThemeConfig,

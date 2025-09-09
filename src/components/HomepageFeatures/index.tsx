@@ -12,8 +12,12 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
     description: (
       <>
-        Simple to install and quickly integrate with any existing website, apps,
-        and software. Your privacy is in your hands with a self-hosted WebRTC solution.
+        <h3>Easy Installation & Self-Hosting</h3>
+        <p>
+          Integrate a full-featured video conferencing solution into your
+          existing apps and websites in minutes. Keep your data secure with a
+          self-hosted, on-premise WebRTC platform.
+        </p>
       </>
     ),
   },
@@ -23,8 +27,12 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        You can personalize everything, from URLs to logos and branding colors,
-        as well as features with ease.
+        <h3>Fully Customizable & Brandable</h3>
+        <p>
+          Personalize every aspect of your online meetings and video calls. Customize URLs, logos,
+          branding colors, and available features to create a seamless user
+          experience.
+        </p>
       </>
     ),
   },
@@ -34,9 +42,11 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        It supports all the functions of a video call, including High-Definition
-        Audio/Video/Screen Sharing; Virtual background; file-sharing, and MP4
-        Recordings.
+        <h3>HD Video & Rich Media</h3>
+        <p>
+          Engage your audience with high-definition audio and video during your web conference. Supports virtual backgrounds, file sharing, and MP4/WebM
+          recordings.
+        </p>
       </>
     ),
   },
@@ -46,9 +56,11 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        Extended Functions, RTMP Broadcasting, which can enable users to
-        broadcast their meetings to YouTube, Facebook, or any other third-party
-        RTMP-supported live streaming platform.
+        <h3>Live Broadcasting</h3>
+        <p>
+          Expand your reach with RTMP broadcasting. Stream your webinars or online meetings live to
+          YouTube, Facebook, or any other platform that supports RTMP ingress.
+        </p>
       </>
     ),
   },
@@ -58,8 +70,11 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        Collaboration was made easy with the use of a shared notepad and
-        whiteboard for real-time collaboration.
+        <h3>Real-time Collaboration</h3>
+        <p>
+          Boost productivity during your video conference with powerful collaboration tools. Work together in
+          real-time using a shared whiteboard and collaborative notepad.
+        </p>
       </>
     ),
   },
@@ -68,8 +83,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
-        WebRTC-based, secured, and encrypted communication can make your online
-        meeting private and safe at the top level.
+        <h3>Secure & Encrypted</h3>
+        <p>
+          Protect your conversations with end-to-end encryption (E2EE). Our
+          WebRTC-based architecture ensures your video conferences are private and secure.
+        </p>
       </>
     ),
   },
@@ -78,8 +96,12 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
     description: (
       <>
-        Compatible with all devices. For browsers, Google Chrome and Firefox are
-        recommended. For iOS, Safari is recommended.
+        <h3>Cross-Device Compatibility</h3>
+        <p>
+          Connect from anywhere, on any device. Plug-N-Meet is fully compatible
+          with modern desktop and mobile browsers, including Chrome, Firefox, and
+          Safari.
+        </p>
       </>
     ),
   },
@@ -89,8 +111,12 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        Simulcast and Dynacast features will allow you to continue online
-        conferencing even if your internet connection is slow!
+        <h3>Adaptive Bitrate Streaming</h3>
+        <p>
+          Deliver a smooth, uninterrupted video chat experience even on slow networks.
+          Simulcast and Dynacast automatically adjust video quality to match
+          network conditions.
+        </p>
       </>
     ),
   },
@@ -99,67 +125,27 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
     description: (
       <>
-        Scalable and high-performance system written in the Go programming
-        language which made it possible to distribute as a single binary file!
+        <h3>High-Performance Backend</h3>
+        <p>
+          Built for easy horizontal scaling, our Go-based backend uses{" "}
+          <strong>LiveKit</strong> as its media server and <strong>NATS</strong> for
+          real-time messaging. This modern stack handles more users with fewer
+          resources and deploys as a single binary.
+        </p>
       </>
     ),
   },
-  // {
-  //   title: '10',
-  //   Svg: require('@site/static/img/features/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       Lock settings.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: '11',
-  //   Svg: require('@site/static/img/features/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       Raise hand.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: '12',
-  //   Svg: require('@site/static/img/features/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       Chatting with File sharing.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: '13',
-  //   Svg: require('@site/static/img/features/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       MP4 Recordings.
-  //     </>
-  //   ),
-  // },
-  // {
-  //   title: '14',
-  //   Svg: require('@site/static/img/features/undraw_docusaurus_react.svg').default,
-  //   description: (
-  //     <>
-  //       RTMP Broadcasting
-  //     </>
-  //   ),
-  // },
 ];
 
 function Feature({ title, Svg, description }: FeatureItem) {
   return (
     <div className="item">
       <div className="icon-wrap">
-        <Svg role="img" />
+        <Svg role="img" aria-label={title} />
         <h3>{title}</h3>
       </div>
       <div className="description">
-        <p>{description}</p>
+        {description}
       </div>
     </div>
   );
@@ -169,7 +155,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className="features-section">
       <div className="container">
-        <h1 className="headline">Core Features</h1>
+        <h2 className="headline">Core Features</h2>
         <div className="features-wrapper">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

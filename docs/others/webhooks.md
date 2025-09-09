@@ -2,25 +2,29 @@
 description: plugNmeet webhooks
 sidebar_position: 2
 ---
+
 # Webhooks
 
-plugNmeet will notify different events to the provided URL. This URL can be added in server configuration or during create room.
+Plug-N-Meet can notify your application about various events by sending webhook requests to a specified URL. You can configure this URL in the server settings or provide it when creating a room.
 
-## Receiving webhooks
-Webhook requests are HTTP POST requests sent to URLs that you had configured either in server `config.yml` file or during create room. A WebhookEvent is encoded as JSON and sent in the body of the request.
+## Receiving Webhooks
 
-The `Content-Type` header of the request is set to `application/webhook+json`. Please ensure your webserver is configured to receive payloads with this content type.
+Webhook requests are sent as HTTP POST requests to the URLs you have configured, either in the server's `config.yml` file or during room creation. Each webhook event is encoded as JSON and included in the request body.
 
-plugNmeet will use same security pattern that livekit is following. In order to ensure webhook requests are coming from plugNmeet, these requests has `Authorization` and `Hash-Token` headers containing a signed JWT token. The token includes a `sha256` hash of the payload. You can quickly have a look example in PHP from [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
+The request will have the `Content-Type` header set to `application/webhook+json`. Make sure your web server is configured to accept payloads with this content type.
+
+Plug-N-Meet uses the same security pattern as LiveKit. To verify that webhook requests originate from Plug-N-Meet, each request includes `Authorization` and `Hash-Token` headers containing a signed JWT token. The token includes a SHA256 hash of the payload. For a PHP example, see [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
 ## Events
-You can review the code from [here](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L8C9-L8C26).
-In addition to the fields below, all webhook events will include the following fields:
 
-- `id` - a UUID identifying the event
-- `createdAt` - UNIX timestamp in seconds
+You can review the event definitions [here](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L8C9-L8C26).
 
-### Room created
+All webhook events include the following fields:
+- `id`: A UUID identifying the event
+- `createdAt`: UNIX timestamp in seconds
+
+### Room Created
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_created'
@@ -28,7 +32,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Room started
+### Room Started
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_started'
@@ -36,7 +41,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Room finished
+### Room Finished
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_finished'
@@ -44,7 +50,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Participant joined
+### Participant Joined
+
 ```js
 interface CommonNotifyEvent {
   event: 'participant_joined'
@@ -53,7 +60,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Participant left
+### Participant Left
+
 ```js
 interface CommonNotifyEvent {
   event: 'participant_left'
@@ -64,7 +72,8 @@ interface CommonNotifyEvent {
 
 ### Track Published
 
-In the Room and Participant objects, only sid, identity, and name are sent.
+Only `sid`, `identity`, and `name` are included in the Room and Participant objects.
+
 ```js
 interface CommonNotifyEvent {
   event: 'track_published'
@@ -76,7 +85,8 @@ interface CommonNotifyEvent {
 
 ### Track Unpublished
 
-In the Room and Participant objects, only sid, identity, and name are sent.
+Only `sid`, `identity`, and `name` are included in the Room and Participant objects.
+
 ```js
 interface CommonNotifyEvent {
   event: 'track_unpublished'
@@ -86,7 +96,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Recording started
+### Recording Started
+
 ```js
 interface CommonNotifyEvent {
   event: 'start_recording'
@@ -95,7 +106,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Recording ended
+### Recording Ended
+
 ```js
 interface CommonNotifyEvent {
   event: 'end_recording'
@@ -104,7 +116,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Recording proceeded
+### Recording Proceeded
+
 ```js
 interface CommonNotifyEvent {
   event: 'recording_proceeded'
@@ -113,7 +126,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### RTMP started
+### RTMP Started
+
 ```js
 interface CommonNotifyEvent {
   event: 'start_rtmp'
@@ -122,7 +136,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### RTMP ended
+### RTMP Ended
+
 ```js
 interface CommonNotifyEvent {
   event: 'end_rtmp'
@@ -131,7 +146,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Speech to text session started
+### Speech-to-Text Session Started
+
 ```js
 interface CommonNotifyEvent {
   event: 'speech_to_text_session_started'
@@ -140,7 +156,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Speech to text session ended
+### Speech-to-Text Session Ended
+
 ```js
 interface CommonNotifyEvent {
   event: 'speech_to_text_session_ended'
@@ -149,7 +166,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Speech to text total usage
+### Speech-to-Text Total Usage
+
 ```js
 interface CommonNotifyEvent {
   event: 'speech_to_text_total_usage'
@@ -158,7 +176,8 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Analytics proceeded
+### Analytics Proceeded
+
 ```js
 interface CommonNotifyEvent {
   event: 'analytics_proceeded'

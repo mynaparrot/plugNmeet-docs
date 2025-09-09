@@ -4,32 +4,30 @@ sidebar_position: 3
 
 # Installation
 
-Using [docker](https://docs.docker.com/get-docker/) you can install plugNmeet into any platform. We've created an easy to install script which can be used to install all the necessary components in few minutes. The source code can be found in the [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repository.
+This guide details the official installation process for a self-hosted PlugNmeet server. Our recommended method uses a Docker-based script that automates the setup of all necessary components on a clean Ubuntu or Debian system. The source code for this installation script is available in the [plugNmeet-install](https://github.com/mynaparrot/plugNmeet-install) repository.
 
-You can also look into the [plugNmeet cloud solution](https://www.plugnmeet.cloud). plugNmeet Cloud is a ready to use hosting solution. You won't have to worry about server setup or maintenance. We offer a scalable cloud-based solution with a 99.99% SLA. You can start with [free package](https://www.plugnmeet.cloud/pricing) & can upgrade when necessary. 
+Alternatively, for those who prefer a managed service, our official **[PlugNmeet Cloud solution](https://www.plugnmeet.cloud)** provides a ready-to-use server, allowing you to bypass the installation process entirely. Our cloud solution is built with the same commitment to privacy as our open-source version, following strict security best practices to keep your data safe. For large-scale deployments, it also includes our Intelligent Geo-Distribution feature to reduce latency. You can [start with a free plan](https://www.plugnmeet.cloud/pricing) and upgrade as you grow.
 
-In this article, we'll go over how simple it is to set up your own plugNmeet web conferencing system using the plugNmeet installation script and immediately begin video conferencing.
+This guide will show you how easy it is to set up your own PlugNmeet web conferencing system using the installation script, so you can start video conferencing right away.
 
 ## Requirements
 
-  - You'll need a clean **Ubuntu or Debian** server with a **public IP address**. **Ubuntu 24.04 LTS** recommended.
-  If your infrastructure is protected by a **firewall**, please first [configure ports & firewall](/docs/firewall) before proceeding.
-  - Ubuntu/Debian server does not come pre-installed with apache or nginx, or else the installation will fail.
-  - **Hardware recommendation** for server: It's really difficult to provide an estimate. It will depend on how you intend to use it. If you only intend to use plugNmeet with a few users, a smaller server will suffice. Still adhering to the minimum server requirements for production environment:
-    
-      - **CPU:** At least 4 cores. 8 cores or more, if installed with recorder. **Dedicated CPU** is recommended.
-      - **RAM:** At least 4GB; 8GB or more, if installed with recorder.
-      - **Storage:** Unless a recorder is also being used, plugNmeet doesn't consume much storage.
-      - **Connection speed:** this is a crucial factor, a bandwidth of at least 100 Mbits/sec or greater.
-    
-  - You'll need 2 subdomains that point to the public IP address of this Ubuntu/Debian server. One for plugNmeet main URL (example: **plugnmeet.example.com**); another for TURN server (example: **turn.example.com**).
-  - A valid email address is also required to generate a [Let's Encrypt](https://letsencrypt.org/) SSL certificate.
+- A clean **Ubuntu or Debian** server with a **public IP address**. We recommend **Ubuntu 24.04 LTS**.
+- If your infrastructure uses a **firewall**, please [configure ports and firewall](/docs/firewall) before proceeding.
+- The server should not have Apache or Nginx pre-installed, or the installation will fail.
+- **Hardware recommendations:** The requirements depend on your usage. For small groups, a modest server is sufficient. For production environments, we recommend:
+  - **CPU:** At least 4 cores (8 cores or more if using the recorder). A dedicated CPU is recommended.
+  - **RAM:** At least 4GB (8GB or more if using the recorder).
+  - **Storage:** PlugNmeet does not require much storage unless you use the recorder.
+  - **Connection speed:** At least 100 Mbits/sec bandwidth.
+- You will need two subdomains pointing to your server's public IP: one for the main PlugNmeet URL (e.g., **plugnmeet.example.com**) and one for the TURN server (e.g., **turn.example.com**).
+- A valid email address is required to generate a [Let's Encrypt](httpshttps://letsencrypt.org/) SSL certificate.
 
-**_Note:_** If DNS fails for those 2 domains, the installation will be aborted.
+**Note:** If DNS resolution fails for either domain, the installation will be aborted.
 
-## Install
+## Installation Steps
 
-Using SSH, connect to your Ubuntu/Debian server. Download and run the installation script as the root user.
+Connect to your Ubuntu/Debian server via SSH. Download and run the installation script as the root user:
 
 ```bash
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh
@@ -39,39 +37,38 @@ wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install
 sudo bash install.sh
 ```
 
-OR
+Or:
 
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh)" root
 ```
 
-Now, follow the steps in terminal. It will ask you to enter information when necessary. You'll receive the relevant
-information at the end of the installation. This script will create a directory under `/opt` called `plugNmeet` and create all directories and configuration files there.
+Follow the prompts in the terminal. You will be asked to provide information as needed. At the end of the installation, you will receive all relevant details. The script creates a directory under `/opt` called `plugNmeet` and sets up all necessary files and configurations there.
 
-To manage services:
+## Managing Services
 
 ```bash
-# to start
+# Start services
 systemctl start plugnmeet
 systemctl start plugnmeet-recorder
 
-# to restart
+# Restart services
 systemctl restart plugnmeet
 systemctl restart plugnmeet-recorder
 
-# to stop
+# Stop services
 systemctl stop plugnmeet
 systemctl stop plugnmeet-recorder
 
-# log files
+# View log files
 cd /opt/plugNmeet
 tail -n 100 log/plugNmeet.log
 tail -n 100 recorder/logs/recorder.log
 ```
 
-## Fonts installation (optional)
+## Optional: Fonts Installation
 
-When exporting or importing Microsoft Word files that contain characters other than English, you may run into issues because of font missing. You may install additional fonts in the Ubuntu/Debian server using the commands below:
+If you need to export or import Microsoft Word files containing non-English characters, you may encounter font issues. You can install additional fonts on your Ubuntu/Debian server using the following command:
 
 ```bash
 sudo apt update && sudo apt -y install --no-install-recommends \
@@ -99,9 +96,9 @@ ttf-mscorefonts-installer \
 fonts-noto-color-emoji
 ```
 
-## Update
+## Updating PlugNmeet
 
-To update you can use `update.sh` script. This will update all the docker images, client & recorder (if installed).
+To update PlugNmeet, use the `update.sh` script. This will update all Docker images, the client, and the recorder (if installed).
 
 ```bash
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh
@@ -111,7 +108,7 @@ wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.
 sudo bash update.sh
 ```
 
-OR
+Or:
 
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh)" root

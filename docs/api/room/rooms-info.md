@@ -4,7 +4,7 @@ sidebar_position: 5
 
 # Get active rooms info
 
-End point: `/room/getActiveRoomsInfo`
+Endpoint: `/room/getActiveRoomsInfo`
 
 **Example**:
 

@@ -2,15 +2,15 @@
 sidebar_position: 3
 ---
 
-# Room Status (active/inactive)
+# Room Status (Active/Inactive)
 
-End point: `/room/isRoomActive`
+Endpoint: `/room/isRoomActive`
 
-| Field   | Type   | Position | Required | Description |
-| ------- | ------ | -------- | :------- | ----------- |
-| room_id | string | root     | Yes      | Room Id     |
+| Field   | Type   | Position | Required | Description           |
+| ------- | ------ | -------- | :------- | --------------------- |
+| room_id | string | root     | Yes      | The unique ID of the room to check. |
 
-**Example**:
+**Example Request:**
 
 ```json
 {
@@ -20,8 +20,8 @@ End point: `/room/isRoomActive`
 
 ## Response
 
-| Field  | Type    | Position | Description               |
-| :----- | ------- | -------- | :------------------------ |
-| status | boolean | root     | The status of the request |
-| is_active | boolean | root     | The status of the room |
-| msg    | string  | root     | Response message          |
+| Field     | Type    | Position | Description                          |
+| :-------- | ------- | -------- | :----------------------------------- |
+| status    | boolean | root     | Indicates if the request was successful. |
+| is_active | boolean | root     | Indicates whether the room is currently active. |
+| msg       | string  | root     | Response message.                    |

@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Recording info
 
-End point: `/recording/recordingInfo`
+Endpoint: `/recording/recordingInfo`
 
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |

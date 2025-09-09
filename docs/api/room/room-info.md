@@ -1,16 +1,18 @@
 ---
 sidebar_position: 4
 ---
-# Get active room info
 
-End point: `/room/getActiveRoomInfo`
+# Get Active Room Information
 
+Endpoint: `/room/getActiveRoomInfo`
 
-| Field   | Type   | Position | Required | Description |
-| --------- | -------- | ---------- | :--------- | ------------- |
-| room_id | string | root     | Yes      | Room Id     |
+## Request Parameters
 
-**Example**:
+| Field   | Type   | Position | Required | Description           |
+| ------- | ------ | -------- | :------- | --------------------- |
+| room_id | string | root     | Yes      | The unique ID of the room. |
+
+**Example Request:**
 
 ```json
 {
@@ -20,47 +22,42 @@ End point: `/room/getActiveRoomInfo`
 
 ## Response
 
-
-| Field         | Type                  | Position | Description               |
-| :-------------- | ----------------------- | ---------- | :-------------------------- |
-| status        | boolean               | root     | The status of the request |
-| msg           | string                | root     | Response message          |
-| [room](#room) | object\<[room](#room)> | root     |                           |
+| Field   | Type                  | Position | Description               |
+| ------- | --------------------- | -------- | ------------------------- |
+| status  | boolean               | root     | Indicates if the request was successful. |
+| msg     | string                | root     | Response message.         |
+| room    | object\<[Room](#room)>| root     | Contains room details.    |
 
 ### Room
 
-
-| Field                                  | Type                                         | Description                   |
-| :--------------------------------------- | ---------------------------------------------- | :------------------------------ |
-| [room_info](#room-info)                | object\<[room_info](#room-info)>              |                               |
-| [participants_info](#participant-info) | array\<[participant_info](#participant-info)> | Array of current participants |
+| Field                | Type                                         | Description                       |
+| -------------------- | -------------------------------------------- | --------------------------------- |
+| room_info            | object\<[Room Info](#room-info)>             | Details about the room.           |
+| participants_info    | array\<[Participant Info](#participant-info)>| List of current participants.     |
 
 ### Room Info
 
+| Field               | Type    | Description                                 |
+| ------------------- | ------- | ------------------------------------------- |
+| room_title          | string  | Title of the meeting.                       |
+| room_id             | string  | Unique room ID.                             |
+| sid                 | string  | Room unique session ID.                                   |
+| joined_participants | number  | Total number of users who have joined.      |
+| is_running          | boolean | Indicates if the room is currently active.  |
+| is_recording        | boolean | Indicates if recording is in progress.      |
+| is_active_rtmp      | boolean | Indicates if RTMP streaming is active.      |
+| creation_time       | number  | Room creation time (Unix timestamp).        |
+| metadata            | string  | Room metadata.                              |
+| webhook_url         | string  | Webhook URL associated with the room.       |
 
-| Field               | Type    | Description                       |
-| :-------------------- | --------- | :---------------------------------- |
-| room_title          | string  | Title of the meeting              |
-| room_id             | string  | Room Id                           |
-| sid                 | string  | Room Sid                          |
-| joined_participants | number  | Total number of users joined      |
-| is_running          | boolean | If the room is active now         |
-| is_recording        | boolean | If recording active               |
-| is_active_rtmp      | boolean | If RTMP active                    |
-| creation_time       | number  | Room creation time in unix format |
-| metadata            | string  | Room metadata                     |
-| webhook_url         | string  | Webhook URL                       |
+### Participant Info
 
-### Participant info
-
-
-| Field      | Type   | Description                            |
-| :----------- | -------- | :--------------------------------------- |
-| sid        | string | Participant Sid                        |
-| identity   | string | Participant userId                     |
-| name       | string | Participant name                       |
-| state      | string | Participant state                      |
-| metadata   | string | Participant metadata                   |
-| joined_at  | number | Participant joined time in unix format |
-| version    | number |                                        |
-| permission | object |                                        |
+| Field      | Type    | Description                                 |
+| ---------- | ------- | ------------------------------------------- |
+| sid        | string  | Participant unique session ID.                            |
+| identity   | string  | Participant user ID.                        |
+| name       | string  | Participant name.                           |
+| state      | string  | Participant state.                          |
+| metadata   | string  | Participant metadata.                       |
+| joined_at  | number  | Time the participant joined (Unix timestamp).|
+| version    | number  | Version information.
