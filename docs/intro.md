@@ -60,7 +60,7 @@ Your first step is to choose how to set up your server.
 ## Step 1: Choose Your Server
 
 ### Option A: Self-Host (The Open-Source Way)
-For maximum control, privacy, and customization, you can install the open-source Plug-N-Meet server in your own environment. As open-source software, it is **completely free to download, use, and modify**. This is the most powerful option, giving you complete ownership of your data and the ability to create a fully branded and customized user experience.
+For maximum control, privacy, and customization, you can install the open-source Plug-N-Meet server in your own environment. We provide a [simple, automated installation script](/docs/installation.md) that handles all the complex server configuration for you. **This means you don't need special system administration skills;** if you are comfortable using a command line and following on-screen prompts, you can get a server running in minutes. As open-source software, it is **completely free to download, use, and modify**, giving you complete ownership of your data and the ability to create a fully branded and customized user experience.
 
 ### Option B: plugNmeet Cloud (The Managed Way)
 If you want to avoid server setup and maintenance, our official **[plugNmeet Cloud](https://www.plugnmeet.cloud)** service provides a ready-to-use, managed server for you. Our cloud solution is built with the same commitment to privacy as our open-source version, following strict security best practices to keep your data safe and your conversations private.
