@@ -104,8 +104,11 @@ This LTI method is a great alternative if your Moodle hosting provider does not 
 6.  From the **Preconfigured tool** dropdown, select the **plugNmeet** tool you just created.
 7.  Give the activity a name, save, and it will be ready for your students.
 
-<img src="/img/lti/lti-moodle-13.png"loading="lazy"/>
-
+<img src="/img/lti/lti-moodle-3.png" loading="lazy"/>
+<img src="/img/lti/lti-moodle-4.png" loading="lazy"/>
+<img src="/img/lti/lti-moodle-5.png" loading="lazy"/>
+<img src="/img/lti/lti-moodle-12.png" loading="lazy"/>
+<img src="/img/lti/lti-moodle-13.png" loading="lazy"/>
 ---
 
 ## Common Questions & Troubleshooting

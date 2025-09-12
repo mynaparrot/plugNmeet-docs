@@ -22,7 +22,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 > If you want to create the experience of a "permanent" room that users can join at any time, you can build this logic into your application.
 >
 > When a user attempts to join, your application should:
-> 1.  Check if an active session for that `room_id` already exists (e.g., using the `getActiveRoomInfo` API).
+> 1.  Check if an active session for that `room_id` already exists (e.g., using the `isRoomActive` API).
 > 2.  If no session exists, call this `create` endpoint to start a new one.
 > 3.  Finally, generate an access token to allow the user to join.
 >

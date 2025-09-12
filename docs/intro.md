@@ -60,7 +60,7 @@ Your first step is to choose how to set up your server.
 ## Step 1: Choose Your Server
 
 ### Option A: Self-Host (The Open-Source Way)
-For maximum control, privacy, and customization, you can install the open-source Plug-N-Meet server in your own environment. We provide a [simple, automated installation script](/docs/installation.md) that handles all the complex server configuration for you. **This means you don't need special system administration skills;** if you are comfortable using a command line and following on-screen prompts, you can get a server running in minutes. As open-source software, it is **completely free to download, use, and modify**, giving you complete ownership of your data and the ability to create a fully branded and customized user experience.
+For maximum control, privacy, and customization, you can install the open-source Plug-N-Meet server in your own environment. We provide a [simple, automated installation script](/docs/installation.md) that handles all the complex server configuration for you. **This means you don’t need special system administration skills;** if you are comfortable using a command line and following on-screen prompts, you can get a server running in minutes. As open-source software, it is **completely free to download, use, and modify**, giving you complete ownership of your data and the ability to create a fully branded and customized user experience.
 
 ### Option B: plugNmeet Cloud (The Managed Way)
 If you want to avoid server setup and maintenance, our official **[plugNmeet Cloud](https://www.plugnmeet.cloud)** service provides a ready-to-use, managed server for you. Our cloud solution is built with the same commitment to privacy as our open-source version, following strict security best practices to keep your data safe and your conversations private.
@@ -83,9 +83,12 @@ If you use a popular CMS, our official plugins are the easiest way to integrate.
 - [LTI for educational platforms](/docs/user-guide/lti.md)
 
 #### For Custom Applications
-For developers building custom applications, our SDKs provide everything you need.
-- [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
-- [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
+For developers building custom applications, we provide official SDKs and comprehensive API documentation.
+
+- **[API Documentation](/docs/api/intro):** The complete reference for all available endpoints, parameters, and real-time events.
+- **SDKs:** Convenient wrappers to accelerate your development.
+  - [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
+  - [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
 
 ---
 
