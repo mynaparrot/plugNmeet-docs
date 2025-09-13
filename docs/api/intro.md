@@ -1,5 +1,9 @@
 ---
+title: API Reference Introduction | plugNmeet Developer Docs
+description: An introduction to the plugNmeet API. Learn how to authenticate, make requests, and use our powerful endpoints to build custom video applications.
+keywords: [api, rest api, developer, sdk, authentication, api key, endpoints, webhook]
 sidebar_position: 1
+sidebar_label: Intro
 ---
 
 # Introduction

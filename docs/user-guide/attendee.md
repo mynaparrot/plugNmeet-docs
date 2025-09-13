@@ -1,5 +1,7 @@
 ---
-description: A simple guide for attendees and students on how to join a meeting, participate, and use the features available in Plug-N-Meet.
+title: Attendee Guide | How to Join and Participate in a plugNmeet Meeting
+description: A simple guide for attendees on how to join meetings and use features like chat, screen sharing, raising your hand, and changing your background.
+keywords: [attendee, participant, join meeting, video call, chat, screen share, raise hand]
 sidebar_position: 3
 sidebar_label: Attendee Guide
 ---

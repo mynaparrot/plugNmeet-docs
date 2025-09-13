@@ -1,5 +1,9 @@
 ---
+title: Delete Analytics API | plugNmeet API Reference
+description: API endpoint documentation to delete the analytics data for a specific past meeting.
+keywords: [api, delete analytics, remove analytics, analytics api, endpoint]
 sidebar_position: 3
+sidebar_label: Delete
 ---
 
 # Delete analytics

@@ -1,5 +1,7 @@
 ---
-description: A complete guide on how to install and configure the Plug-N-Meet video conferencing activity module for your Moodle learning environment.
+title: plugNmeet Moodle Plugin | Add Video Conferencing to Moodle
+description: How to install and configure the plugNmeet Moodle plugin to add a live video conference activity to your Moodle courses for online classes.
+keywords: [moodle, plugin, moodle integration, virtual classroom, online class, e-learning, moodle webrtc]
 sidebar_position: 5
 sidebar_label: Moodle Integration
 ---

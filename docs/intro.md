@@ -1,5 +1,7 @@
 ---
-description: An introduction to Plug-N-Meet, the open-source video conferencing platform designed for control, flexibility, and cost-effective scale.
+title: Introduction to plugNmeet | Your Self-Hosted Video Conferencing Solution
+description: An introduction to plugNmeet, the open-source video conferencing platform designed for control, flexibility, and cost-effective scale.
+keywords: [open source, webrtc, video conferencing, self-hosted, on-premise, video chat, webinar, virtual classroom, zoom alternative, video api]
 sidebar_position: 1
 sidebar_label: Intro
 ---

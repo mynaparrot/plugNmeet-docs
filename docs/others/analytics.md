@@ -1,6 +1,9 @@
 ---
-description: plugNmeet analytics
+title: Meeting Analytics Overview | plugNmeet
+description: An overview of the meeting analytics and reporting features in plugNmeet, which provide insights into session duration and participant engagement.
+keywords: [analytics, reporting, meeting stats, usage data, insights]
 sidebar_position: 1
+sidebar_label: Analytics
 ---
 
 # Analytics data

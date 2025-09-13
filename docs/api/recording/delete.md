@@ -1,5 +1,9 @@
 ---
+title: Delete Recording API | plugNmeet API Reference
+description: API endpoint documentation to delete a specific meeting recording from the server.
+keywords: [api, delete recording, remove recording, recording api, endpoint]
 sidebar_position: 4
+sidebar_label: Delete
 ---
 
 # Delete recording

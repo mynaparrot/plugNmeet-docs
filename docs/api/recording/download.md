@@ -1,5 +1,9 @@
 ---
+title: Download Recording API | plugNmeet API Reference
+description: API endpoint documentation to get a temporary, signed URL to download a specific meeting recording file.
+keywords: [api, download recording, get recording url, recording api, endpoint]
 sidebar_position: 3
+sidebar_label: Download
 ---
 
 # Download Recording (Token)

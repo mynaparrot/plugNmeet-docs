@@ -1,6 +1,9 @@
 ---
-description: plugNmeet create room using API
+title: Create Room API | plugNmeet API Reference
+description: API endpoint documentation for creating a new video conference room. Learn about the required parameters like room_id, participant names, and custom settings.
+keywords: [api, create room, new room, generate room, room api, video api, endpoint]
 sidebar_position: 1
+sidebar_label: Create
 ---
 
 # Create Room

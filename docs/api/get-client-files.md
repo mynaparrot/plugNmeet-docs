@@ -1,5 +1,9 @@
 ---
+title: Get Client Files API | plugNmeet API Reference
+description: API endpoint documentation for fetching the plugNmeet client-side application files. This allows for self-hosting the front-end assets.
+keywords: [api, get client files, client assets, front-end, self-host client, sdk, endpoint]
 sidebar_position: 40
+sidebar_label: Get Client Files
 ---
 
 # Get Client Files

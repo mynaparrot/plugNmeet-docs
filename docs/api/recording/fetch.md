@@ -1,5 +1,9 @@
 ---
+title: Fetch Recordings API | plugNmeet API Reference
+description: API endpoint documentation to fetch a list of all available recordings on the server.
+keywords: [api, fetch recordings, list recordings, get recordings, recording api, endpoint]
 sidebar_position: 1
+sidebar_label: Fetch
 ---
 
 # Fetch Recordings

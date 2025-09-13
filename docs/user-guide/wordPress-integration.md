@@ -1,5 +1,7 @@
 ---
-description: A complete guide on how to add a secure, self-hosted video conferencing solution to your WordPress site using the official Plug-N-Meet plugin.
+title: plugNmeet WordPress Plugin | Add Video Conferencing to Your Site
+description: How to install and configure the plugNmeet WordPress plugin to add secure, self-hosted video conferencing directly to your WordPress website.
+keywords: [wordpress, plugin, wordpress integration, video conference wordpress, webrtc wordpress, zoom alternative wordpress]
 sidebar_position: 4
 sidebar_label: WordPress Integration
 ---

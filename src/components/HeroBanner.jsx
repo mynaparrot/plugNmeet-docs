@@ -30,14 +30,14 @@ const HeroBanner = () => {
           </div>
         </div>
         <div className="banner">
-          <img src={Banner} alt="Banner" />
+          <img src={Banner} alt="plugNmeet video conferencing platform banner" />
         </div>
       </div>
       <section className="features-section slider-section">
         <div className="container">
           <h2 className="headline">Explore Key Features</h2>
           <div className="slider-wrapper">
-            <img className="desktop-back" src={DesktopBack} alt="DesktopBack" />
+            <img className="desktop-back" src={DesktopBack} alt="Desktop monitor frame" />
             <Carousel
               autoPlay
               infiniteLoop
@@ -46,13 +46,13 @@ const HeroBanner = () => {
               showThumbs={false}
             >
               <div className="desktop">
-                <img src={DesktopCam} alt="DesktopCam" />
+                <img src={DesktopCam} alt="plugNmeet video conference with multiple participants" />
               </div>
               <div className="desktop">
-                <img src={DesktopWhiteBoard} alt="DesktopWhiteBoard" />
+                <img src={DesktopWhiteBoard} alt="plugNmeet interactive whiteboard feature" />
               </div>
               <div className="desktop">
-                <img src={DesktopNotePad} alt="DesktopNotePad" />
+                <img src={DesktopNotePad} alt="plugNmeet shared notepad for collaborative notes" />
               </div>
             </Carousel>
           </div>

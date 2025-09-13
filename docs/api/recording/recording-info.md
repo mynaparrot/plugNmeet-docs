@@ -1,5 +1,9 @@
 ---
+title: Get Recording Info API | plugNmeet API Reference
+description: API endpoint documentation to get detailed information about a specific recording, including its size, duration, and download link.
+keywords: [api, get recording info, recording details, recording api, endpoint]
 sidebar_position: 2
+sidebar_label: Recording Info
 ---
 
 # Recording info

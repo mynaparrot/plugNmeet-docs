@@ -1,5 +1,7 @@
 ---
-description: An overview of the Plug-N-Meet user guide, with links to guides for moderators, attendees, and platform integrations like WordPress, Moodle, and Joomla.
+title: User Guide for plugNmeet Video Conferencing
+description: An overview of the plugNmeet user guide, with links to guides for moderators, attendees, and platform integrations like WordPress, Moodle, and Joomla.
+keywords: [user guide, moderator, attendee, wordpress, moodle, joomla, lti, docs]
 sidebar_position: 1
 sidebar_label: Overview
 ---

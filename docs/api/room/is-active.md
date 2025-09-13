@@ -1,5 +1,9 @@
 ---
+title: Is Room Active API | plugNmeet API Reference
+description: API endpoint documentation to check if a video conference room is currently active and has participants.
+keywords: [api, is active, check room, room status, room api, endpoint]
 sidebar_position: 3
+sidebar_label: Room Status
 ---
 
 # Room Status (Active/Inactive)

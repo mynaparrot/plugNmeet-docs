@@ -1,5 +1,7 @@
 ---
-description: A guide on how to migrate from BigBlueButton (BBB) to Plug-N-Meet, a modern, lightweight, and scalable open-source alternative.
+title: How to Migrate from BigBlueButton (BBB) to plugNmeet
+description: A guide for developers and administrators on migrating from a BigBlueButton server to plugNmeet for a more modern, scalable, and customizable solution.
+keywords: [migrate from bbb, bigbluebutton alternative, bbb migration, bbb replacement, plugnmeet vs bbb, tutorial]
 sidebar_position: 2
 sidebar_label: Migrating from BigBlueButton
 ---

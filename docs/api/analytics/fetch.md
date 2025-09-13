@@ -1,5 +1,9 @@
 ---
+title: Fetch Analytics API | plugNmeet API Reference
+description: API endpoint documentation to fetch analytics data for past meetings, including participant information and session duration.
+keywords: [api, fetch analytics, get analytics, meeting analytics, analytics api, endpoint]
 sidebar_position: 1
+sidebar_label: Fetch
 ---
 
 # Fetch Analytics

@@ -1,5 +1,9 @@
 ---
+title: Get All Rooms Info API | plugNmeet API Reference
+description: API endpoint documentation to fetch information about all currently active video conference rooms on the server.
+keywords: [api, get all rooms, list rooms, active rooms, room api, endpoint]
 sidebar_position: 4
+sidebar_label: Room Info
 ---
 
 # Get Active Room Information

@@ -1,5 +1,7 @@
 ---
-description: A step-by-step PHP quick start guide to create a video conference room and generate a secure join token using the Plug-N-Meet PHP SDK.
+title: PHP Quick Start Guide | Create a Video Meeting with plugNmeet
+description: A quick start tutorial for PHP developers showing how to use the plugNmeet PHP SDK to create and join a secure video conference room in minutes.
+keywords: [php, tutorial, quick start, php sdk, example code, integration, webrtc php, video api php]
 sidebar_position: 1
 sidebar_label: PHP Quick Start
 ---

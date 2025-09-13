@@ -1,5 +1,7 @@
 ---
-description: A guide on how to connect Plug-N-Meet to any Learning Management System (LMS) like Canvas, Moodle, or Chamilo using the LTI standard.
+title: LTI Integration for LMS | Use plugNmeet with Canvas, Chamilo, etc.
+description: A guide for connecting plugNmeet to any LTI-compatible Learning Management System (LMS) like Canvas, Chamilo, or others for online education.
+keywords: [lti, lms, learning management system, canvas, chamilo, e-learning, integration]
 sidebar_position: 7
 sidebar_label: LTI Integration
 ---

@@ -1,6 +1,9 @@
 ---
-description: plugNmeet join room using API
+title: Join Room API | plugNmeet API Reference
+description: API endpoint documentation for generating a token to join a video conference room. Learn how to add participants and set moderator or attendee roles.
+keywords: [api, join room, get token, access token, join meeting, room api, endpoint]
 sidebar_position: 2
+sidebar_label: Join
 ---
 
 # Join Room

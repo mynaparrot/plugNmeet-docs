@@ -1,6 +1,9 @@
 ---
-description: plugNmeet webhooks
+title: Webhooks Guide | plugNmeet Developer Docs
+description: A guide to using plugNmeet webhooks to receive real-time notifications about events in your video conference rooms, such as 'session-started' or 'user-joined'.
+keywords: [webhook, webhooks, events, real-time, notifications, api, developer]
 sidebar_position: 2
+sidebar_label: Webhooks
 ---
 
 # Webhooks

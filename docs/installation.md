@@ -1,5 +1,9 @@
 ---
+title: How to Install plugNmeet Server | Self-Hosted Installation Guide
+description: A step-by-step guide to installing the open-source plugNmeet server on your Linux machine using our simple, automated script.
+keywords: [install, setup, server, linux, self-host, docker, ubuntu, installation, webrtc server]
 sidebar_position: 3
+sidebar_label: Installation Guide
 ---
 
 # Installation

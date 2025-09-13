@@ -1,5 +1,9 @@
 ---
+title: Firewall Configuration for plugNmeet Server
+description: How to configure your firewall and NAT for a self-hosted plugNmeet server, including required TCP/UDP ports for WebRTC, TURN, and HTTPS.
+keywords: [firewall, ports, networking, nat, turn, stun, udp, tcp, webrtc ports]
 sidebar_position: 2
+sidebar_label: Ports & Firewall
 ---
 
 # Ports & Firewall

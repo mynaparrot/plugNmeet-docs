@@ -1,5 +1,9 @@
 ---
+title: Download Analytics API | plugNmeet API Reference
+description: API endpoint documentation to download analytics data for a past meeting as a PDF or JSON file.
+keywords: [api, download analytics, export analytics, analytics report, analytics api, endpoint]
 sidebar_position: 2
+sidebar_label: Download
 ---
 
 # Download Analytics (Token)

@@ -1,5 +1,7 @@
 ---
-description: A complete guide for moderators on how to host and manage a video conference, use presentation tools, and engage with participants in Plug-N-Meet.
+title: Moderator Guide | How to Host and Manage a plugNmeet Meeting
+description: A complete guide for moderators on how to manage meetings, participants, recordings, and use advanced features like breakout rooms, polling, and screen sharing.
+keywords: [moderator, host, manage meeting, breakout rooms, polling, recording, screen share, user management]
 sidebar_position: 2
 sidebar_label: Moderator Guide
 ---

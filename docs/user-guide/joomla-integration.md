@@ -1,5 +1,7 @@
 ---
-description: A complete guide on how to add a secure, self-hosted video conferencing solution to your Joomla site using the official Plug-N-Meet component.
+title: plugNmeet Joomla Integration | Add Video Meetings to Your Site
+description: How to install and configure the plugNmeet component to add self-hosted video meetings and conferencing features to your Joomla website.
+keywords: [joomla, joomla integration, joomla component, joomla video conference, joomla webrtc]
 sidebar_position: 6
 sidebar_label: Joomla Integration
 ---
