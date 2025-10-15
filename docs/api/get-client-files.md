@@ -56,7 +56,7 @@ $plugnmeet_server_url = 'https://plugnmeet.example.com';
 // A sample API response containing the asset filenames
 $api_response = [
     'css' => ['styles.css', 'vendor.css'],
-    'js' => ['runtime.js', 'vendor.js', 'app.js'],
+    'js' => ['runtime.js', 'vendor.js', 'app.js', 'main-module.34dc.js'],
 ];
 
 $assets_path = $plugnmeet_server_url . '/assets';
@@ -77,7 +77,11 @@ $assets_path = $plugnmeet_server_url . '/assets';
 
     <!-- Dynamically insert JS scripts -->
     <?php foreach ($api_response['js'] as $js_file): ?>
-        <script src="<?= $assets_path . '/js/' . $js_file ?>" defer="defer"></script>
+        <?php if (substr($js_file, 0, strlen('main-module.')) === 'main-module.'): ?>
+            <script src="<?= $assets_path . '/js/' . $js_file ?>" type="module"></script>
+        <?php else: ?>
+            <script src="<?= $assets_path . '/js/' . $js_file ?>" defer="defer"></script>
+        <?php endif; ?>
     <?php endforeach; ?>
 </body>
 </html>
