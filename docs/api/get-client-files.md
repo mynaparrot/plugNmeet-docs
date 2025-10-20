@@ -46,38 +46,61 @@ For implementation examples, refer to the [conference.php](https://github.com/my
 
 ### Example HTML Structure
 
-Here is a simplified example using PHP that demonstrates how to construct the full asset paths correctly.
+Here is a simplified example using PHP to illustrate the logic. This approach can be easily adapted to any server-side language (like Node.js, Python, or Ruby) to dynamically generate the required HTML.
 
 ```php
 <?php
-// The base URL of your Plug-N-Meet server
+// 1. Define your server URL.
 $plugnmeet_server_url = 'https://plugnmeet.example.com';
 
-// A sample API response containing the asset filenames
+// 2. Call the /getClientFiles API and get the response.
+// This is a sample response for demonstration.
 $api_response = [
-    'css' => ['styles.css', 'vendor.css'],
-    'js' => ['runtime.js', 'vendor.js', 'app.js', 'main-module.34dc.js'],
+    'status' => true,
+    'css' => ['styles.8f34.css', 'vendor.9c3a.css'],
+    'js' => ['runtime.3e4a.js', 'vendor.b12c.js', 'app.5d6e.js', 'main-module.a4f1.js'],
 ];
 
+// 3. Construct the base path for your assets.
 $assets_path = $plugnmeet_server_url . '/assets';
+
 ?>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <!-- ... your other head elements ... -->
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>plugNmeet</title>
 
-    <!-- Dynamically insert CSS links -->
+    <!-- 4. Dynamically generate <link> tags for CSS files. -->
     <?php foreach ($api_response['css'] as $css_file): ?>
-        <link rel="stylesheet" href="<?= $assets_path . '/css/' . $css_file ?>">
+        <link href="<?= $assets_path . '/css/' . $css_file ?>" rel="stylesheet" />
     <?php endforeach; ?>
+
+    <!--
+    5. Inject required window variables before loading scripts.
+       These are essential for the client to initialize correctly.
+    -->
+    <script type="text/javascript">
+        // Required: The URL of your plugNmeet server.
+        window.PLUG_N_MEET_SERVER_URL = "<?= $plugnmeet_server_url ?>";
+
+        // Required: The public path to the assets directory.
+        window.STATIC_ASSETS_PATH = "<?= $assets_path ?>";
+
+        // Optional: Add any other custom configurations.
+        // See: https://github.com/mynaparrot/plugNmeet-client/blob/main/src/assets/config_sample.js
+        window.ENABLE_SIMULCAST = true;
+    </script>
 </head>
 <body>
     <!-- This is the root element for the Plug-N-Meet client -->
     <div id="plugNmeet-app"></div>
 
-    <!-- Dynamically insert JS scripts -->
+    <!-- 6. Dynamically generate <script> tags for JS files. -->
     <?php foreach ($api_response['js'] as $js_file): ?>
-        <?php if (substr($js_file, 0, strlen('main-module.')) === 'main-module.'): ?>
+        <?php if (str_starts_with($js_file, 'main-module.')): ?>
             <script src="<?= $assets_path . '/js/' . $js_file ?>" type="module"></script>
         <?php else: ?>
             <script src="<?= $assets_path . '/js/' . $js_file ?>" defer="defer"></script>
