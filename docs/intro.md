@@ -8,7 +8,7 @@ sidebar_label: Intro
 
 # Plug-N-Meet: Your Open-Source WebRTC Conferencing Solution
 
-Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality video meetings directly from your website, with your own branding and complete ownership of the user experience.
+Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality video meetings directly from your website, with your own branding, and complete ownership of the user experience.
 
 What truly sets Plug-N-Meet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience—from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
 
@@ -26,28 +26,28 @@ Plug-N-Meet's flexibility makes it the perfect solution for a wide range of user
 ## Key Features
 
 ### Core Conferencing & Collaboration
-- High-Quality Audio & Smooth HD Video Calls (up to 60 fps, with Virtual Backgrounds)
-- Browser-Based Web Conferencing: No downloads or installation required. Join meetings instantly from your web browser. We recommend Google Chrome, Firefox, or Safari for the best experience.
-- Smooth HD Screen Sharing (up to 60 fps)
-- Interactive Whiteboard & Collaborative Notepad
-- Public and Private Chat
+- **High-Quality Audio & Video:** Experience clear audio and smooth HD video calls. Users can also use virtual backgrounds to hide their surroundings.
+- **Browser-Based Conferencing:** Join meetings instantly in your web browser with a modern, lightweight interface. No downloads or installation required.
+- **HD Screen Sharing:** Share your computer screen with others in high-definition quality.
+- **Interactive Whiteboard & Notepad:** Draw and write together on a blank canvas, or upload PDF and Office files to present and draw on them.
+- **Public & Private Chat:** Send messages and share files with everyone in the meeting, or send them privately to a single person.
 
 ### Engagement & Moderation Tools
-- Breakout Rooms for focused discussions
-- Polling, Raise Hand feature, and Waiting Room
-- Advanced User Lock Settings to manage participants
+- **Breakout Rooms:** Split a large meeting into smaller, separate rooms for focused group discussions.
+- **Moderation & Engagement Tools:** Manage your audience with features like Polling, Raise Hand, and a Waiting Room to control who joins the meeting.
+- **Advanced Participant Permissions:** Control what each participant can do, such as locking their microphone, camera, or chat.
 
 ### Recording & Live Broadcasting
-- **Record Your Meetings:** Save meetings as MP4 files on your computer or in the cloud.
-- **Live Stream to the World:** Broadcast your conference to YouTube, Facebook, or any other RTMP-supported platform.
-- **Use Professional Streaming Tools:** Bring in polished video feeds from external sources like OBS Studio using RTMP or WHIP for high-quality, low-latency broadcasts.
-- **Watch Videos Together:** Play uploaded video files or watch YouTube videos in sync with all participants during a meeting.
+- **Meeting Recording:** Save meetings as MP4 video files to your computer (local recording) or to the cloud.
+- **RTMP Live Streaming:** Broadcast your meeting live to YouTube, Facebook, or any other streaming service.
+- **RTMP & WHIP Ingress:** Use professional tools like OBS Studio to send high-quality video into your meeting room.
+- **Shared Video Playback:** Watch a YouTube video or play a video file for everyone in the meeting at the same time.
 
 ### Advanced Integration & Security
-- **End-to-End Encryption (E2EE):** Secures all media (audio/video), chat, and whiteboard content for maximum privacy. Supported on the latest versions of modern browsers like Chrome, Firefox, and Safari.
-- Live Speech-to-Text and Translation
-- Integrate external content via iframes
-- Detailed Analytics Reports
+- **End-to-End Encryption (E2EE):** Keep your meetings completely private with the highest level of security for all audio, video, and data.
+- **Live Captions & Translation:** See spoken words as text in real-time, allowing you to also translate the conversation into different languages.
+- **Embed Web Content:** Show any website or online application, like a Google Doc or a project dashboard, directly within the meeting window.
+- **Analytics & Reports:** Get detailed reports about meetings and users to understand how the platform is being used.
 
 ---
 
