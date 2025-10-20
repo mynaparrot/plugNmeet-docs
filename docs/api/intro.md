@@ -8,35 +8,69 @@ sidebar_label: Intro
 
 # Introduction
 
-Plug-N-Meet provides a secure API for interacting with your server.  
-To use the API, send a `POST` request with a JSON body to your server endpoint:
+Plug-N-Meet provides a secure API for interacting with your server. All authenticated API requests share a common base path.
 
+### Endpoint Structure
+
+To use the API, you will send a `POST` request to an endpoint that starts with your server's URL followed by the `/auth` path. The specific API method path is then appended to it.
+
+**Base authenticated API path:**
 ```
 https://plugnmeet.example.com/auth
 ```
 
-**Required headers:**
-- `API-KEY`: Your Plug-N-Meet Server API Key
-- `HASH-SIGNATURE`: HMAC SHA256 signature (hex) of the request body, using your API Secret
+For example, if you are calling the `/room/getActiveRoomInfo` method, the full endpoint URL would be:
+```
+https://plugnmeet.example.com/auth/room/getActiveRoomInfo
+```
 
-**Content type:**
-- `Content-Type: application/json`
+All API calls must be `POST` requests with a JSON body.
 
-All requests must be in JSON format and include the above
+### Authentication Headers
+
+All requests to these endpoints must include the following headers for authentication:
+
+- **`API-KEY`**: Your Plug-N-Meet Server API Key
+- **`HASH-SIGNATURE`**: An HMAC SHA256 signature (in hex format) of the raw JSON request body, generated using your API Secret as the key.
+- **`Content-Type`**: `application/json`
 
 ---
 
-## Examples
+## Generating the HASH-SIGNATURE
+
+The `HASH-SIGNATURE` is the core of the authentication process. It proves that the request is coming from a trusted source and that the message body has not been tampered with. It is a standard HMAC (Hash-based Message Authentication Code) signature.
+
+Here is the language-agnostic process to generate it:
+
+1.  **Get the Raw Request Body**: Start with the complete JSON request body as a single, raw string. It is crucial that this string is exactly what will be sent in the `POST` request.
+2.  **Select the Algorithm**: Use the **HMAC-SHA256** algorithm. This is a standard function available in the cryptography or hashing library of almost any programming language.
+3.  **Use Your Secret Key**: The "key" for the HMAC function is your **API Secret**.
+4.  **Compute the Hash**: Pass the raw request body string and your API Secret to the HMAC-SHA256 function.
+5.  **Encode the Result**: The output of the HMAC function is a binary hash. You must convert this binary value into its **lowercase hexadecimal representation**. This final hex string is the value for your `HASH-SIGNATURE` header.
+
+By following these steps, you can generate a valid signature in any language, ensuring secure communication with the API.
+
+## Implementation Examples
+
+The following examples demonstrate how to implement the signature generation process in various popular languages.
 
 ### Shell with cURL
 
+This example demonstrates the entire process using command-line tools. It shows how to construct the headers and body, generate the signature, and send the request.
+
 ```bash
+# 1. The raw JSON body as a string
 BODY='{"room_id":"room01"}'
+
+# Your API credentials
 API_KEY="plugnmeet"
 SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
 
+# 2. Generate the HMAC-SHA256 signature and encode it in hex
+#    (This command performs steps 2-5 from the process above)
 SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
+# 3. Make the POST request with the correct headers and body
 curl -X POST https://demo.plugnmeet.com/auth/room/getActiveRoomInfo \
   -H "Content-Type: application/json" \
   -H "API-KEY: $API_KEY" \
@@ -123,7 +157,7 @@ signature = OpenSSL::HMAC.hexdigest(digest, secret, body)
 
 ## SDKs
 
-You can use the following ready-to-use SDKs:
+For an even easier integration, you can use the following ready-to-use SDKs which handle the authentication process for you:
 
 - [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php)
 - [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
