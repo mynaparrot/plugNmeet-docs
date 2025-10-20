@@ -75,7 +75,7 @@ $assets_path = $plugnmeet_server_url . '/assets';
 
     <!-- 4. Dynamically generate <link> tags for CSS files. -->
     <?php foreach ($api_response['css'] as $css_file): ?>
-        <link href="<?= $assets_path . '/css/' . $css_file ?>" rel="stylesheet" />
+        <link href="<?php echo $assets_path . '/css/' . $css_file ?>" rel="stylesheet" />
     <?php endforeach; ?>
 
     <!--
@@ -84,10 +84,10 @@ $assets_path = $plugnmeet_server_url . '/assets';
     -->
     <script type="text/javascript">
         // Required: The URL of your plugNmeet server.
-        window.PLUG_N_MEET_SERVER_URL = "<?= $plugnmeet_server_url ?>";
+        window.PLUG_N_MEET_SERVER_URL = "<?php echo $plugnmeet_server_url ?>";
 
         // Required: The public path to the assets directory.
-        window.STATIC_ASSETS_PATH = "<?= $assets_path ?>";
+        window.STATIC_ASSETS_PATH = "<?php echo $assets_path ?>";
 
         // Optional: Add any other custom configurations.
         // See: https://github.com/mynaparrot/plugNmeet-client/blob/main/src/assets/config_sample.js
@@ -101,9 +101,9 @@ $assets_path = $plugnmeet_server_url . '/assets';
     <!-- 6. Dynamically generate <script> tags for JS files. -->
     <?php foreach ($api_response['js'] as $js_file): ?>
         <?php if (str_starts_with($js_file, 'main-module.')): ?>
-            <script src="<?= $assets_path . '/js/' . $js_file ?>" type="module"></script>
+            <script src="<?php echo $assets_path . '/js/' . $js_file ?>" type="module"></script>
         <?php else: ?>
-            <script src="<?= $assets_path . '/js/' . $js_file ?>" defer="defer"></script>
+            <script src="<?php echo $assets_path . '/js/' . $js_file ?>" defer="defer"></script>
         <?php endif; ?>
     <?php endforeach; ?>
 </body>
