@@ -38,9 +38,10 @@ Plug-N-Meet's flexibility makes it the perfect solution for a wide range of user
 - Advanced User Lock Settings to manage participants
 
 ### Recording & Live Broadcasting
-- Local MP4/WebM Recording of your meetings
-- Live Stream your conference via RTMP to YouTube, etc.
-- Co-play video files directly in a meeting
+- **Record Your Meetings:** Save meetings as MP4 files on your computer or in the cloud.
+- **Live Stream to the World:** Broadcast your conference to YouTube, Facebook, or any other RTMP-supported platform.
+- **Use Professional Streaming Tools:** Bring in polished video feeds from external sources like OBS Studio using RTMP or WHIP for high-quality, low-latency broadcasts.
+- **Watch Videos Together:** Play uploaded video files or watch YouTube videos in sync with all participants during a meeting.
 
 ### Advanced Integration & Security
 - **End-to-End Encryption (E2EE):** Secures all media (audio/video), chat, and whiteboard content for maximum privacy. Supported on the latest versions of modern browsers like Chrome, Firefox, and Safari.
@@ -87,7 +88,7 @@ If you use a popular CMS, our official plugins are the easiest way to integrate.
 #### For Custom Applications
 For developers building custom applications, we provide official SDKs and comprehensive API documentation.
 
-- **[API Documentation](/docs/api/intro):** The complete reference for all available endpoints, parameters, and real-time events.
+- **[API Documentation](/docs/api/intro.md):** The complete reference for all available endpoints, parameters, and real-time events.
 - **SDKs:** Convenient wrappers to accelerate your development.
   - [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
   - [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
