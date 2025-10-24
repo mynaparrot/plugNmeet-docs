@@ -28,6 +28,7 @@ Plug-N-Meet's flexibility makes it the perfect solution for a wide range of user
 ### Core Conferencing & Collaboration
 - **High-Quality Audio & Video:** Experience clear audio and smooth HD video calls. Users can also use virtual backgrounds to hide their surroundings.
 - **Browser-Based Conferencing:** Join meetings instantly in your web browser with a modern, lightweight interface. No downloads or installation required.
+- **Adaptive Streaming (Simulcast & Dynacast):** Ensures a smooth, uninterrupted video experience, even on slow networks. It intelligently saves bandwidth by pausing video streams from off-screen participants and adjusting video quality for thumbnails. This prevents lag and significantly reduces data usage for everyone on the call.
 - **HD Screen Sharing:** Share your computer screen with others in high-definition quality.
 - **Interactive Whiteboard & Notepad:** Draw and write together on a blank canvas, or upload PDF and Office files to present and draw on them.
 - **Public & Private Chat:** Send messages and share files with everyone in the meeting, or send them privately to a single person.
