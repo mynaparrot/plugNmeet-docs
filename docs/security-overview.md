@@ -8,7 +8,7 @@ sidebar_label: Security Overview
 
 # Plug-N-Meet Security Overview
 
-This document provides an overview of the security architecture and mechanisms implemented within the Plug-N-Meet a platform. Our goal is to ensure the confidentiality, integrity, and availability of all communications.
+This document provides a detailed overview of the security architecture of the Plug-N-Meet platform. The system is designed from the ground up to ensure the confidentiality, integrity, and availability of all user communications, providing a secure and private environment for your meetings.
 
 ## Table of Contents
 
