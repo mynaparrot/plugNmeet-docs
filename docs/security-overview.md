@@ -8,7 +8,7 @@ sidebar_label: Security Overview
 
 # Plug-N-Meet Security Overview
 
-This document provides an overview of the security architecture and mechanisms implemented within the Plug-N-Meet platform. Our goal is to ensure the confidentiality, integrity, and availability of all communications.
+This document provides an overview of the security architecture and mechanisms implemented within the Plug-N-Meet a platform. Our goal is to ensure the confidentiality, integrity, and availability of all communications.
 
 ## Table of Contents
 
@@ -22,6 +22,7 @@ This document provides an overview of the security architecture and mechanisms i
     -   [Media Server (LiveKit)](#42-media-server-livekit)
 5.  [Secure Session Flow](#5-secure-session-flow)
 6.  [Browser Storage (IndexedDB)](#6-browser-storage-indexeddb)
+7.  [Server-Side Data Handling & Persistence](#7-server-side-data-handling--persistence)
 
 ---
 
@@ -130,6 +131,46 @@ The data stored in IndexedDB is designed to be ephemeral and is handled as follo
 *   The storage is essential for the application's expected functionality and is not used for tracking or analytics.
 
 **Disclaimer for Operators:** As the person or organization deploying this software, you are responsible for creating and maintaining your own Privacy Policy. You should use this information to ensure your policy is transparent and compliant with any applicable data protection regulations (e.g., GDPR, CCPA).
+
+### 7. Server-Side Data Handling & Persistence
+
+To provide a complete picture of the data lifecycle, this section outlines how data is handled and stored on the server side. The architecture is designed to separate volatile real-time data from long-term persistent data, with a strong emphasis on user-controlled data retention.
+
+#### 7.1. Real-Time Session State (Redis or NATS KV)
+
+During an active meeting, the server needs to manage the real-time state of the room, such as the list of participants, their mute status, and other immediate metadata. This is handled by a high-performance, in-memory key-value store (either Redis or NATS KV).
+
+-   **Purpose:** Fast, real-time coordination of an active session.
+-   **Lifecycle:** This data is volatile and is tied to the life of the session. It is automatically cleared when the session ends.
+
+#### 7.2. Persistent Database (MariaDB)
+
+For historical reference and administrative purposes, a small subset of non-sensitive information is stored in a persistent relational database (MariaDB).
+
+-   **Purpose:** Long-term record-keeping of meeting occurrences.
+-   **Data Stored:** This typically includes basic room information such as `roomId`, `title`, creation/end time etc.
+
+#### 7.3. Optional Analytics Data
+
+PlugNmeet provides the option to persist detailed analytics for a session to help administrators understand usage patterns. This feature is governed by a setting that provides administrators with control over data retention.
+
+-   **User Control:** The decision to **persist** analytics data is made by the administrator on a per-room basis via the `enable_analytics` flag, adhering to the principle of privacy by default.
+-   **Data Collected:** The data aggregated in-memory during a session may include metrics such as user join/leave times, the number of times a user speaks, files uploaded, and other engagement events.
+-   **Storage:** If persisted, the aggregated analytics data is **always stored as a JSON file** on the server's filesystem. A reference to the filename and its associated room is then stored in a dedicated table in the persistent database for easy retrieval.
+-   **Lifecycle:** Analytics data is aggregated in-memory during the course of an active session. Upon the conclusion of the session, the system checks the room's `enable_analytics` setting.
+    -   If `true`, the aggregated data is written to a JSON file, and its reference is saved to the database.
+    -   If `false`, the in-memory data is immediately discarded and is not persisted in any form.
+
+#### 7.4. Cloud Recordings
+
+When cloud recording is enabled for a session, the resulting media file (MP4) is stored on the server.
+
+-   **Purpose:** To provide a persistent, shareable record of a meeting.
+-   **Storage:** The MP4 files are stored in a configurable directory on the server's filesystem.
+-   **User Control & Lifecycle:** The management of these recordings is entirely controlled by the administrator via the API. Recordings are retained on the server indefinitely until they are explicitly deleted using the `/recording/delete` API call. This gives the administrator full control over the data retention lifecycle.
+-   **E2EE Incompatibility:** Server-side recording is **fundamentally incompatible** with zero-trust End-to-End Encryption. Therefore, cloud recording is automatically disabled and cannot be initiated if the room is configured with `enabled_self_insert_encryption_key: true`. This is because the server has no access to the unencrypted media streams required to create the recording, which is the core guarantee of the E2EE model.
+
+This layered approach to data handling ensures that plugNmeet is both performant and flexible, while giving operators the transparency and control needed to meet their own privacy and compliance obligations.
 
 ---
 
