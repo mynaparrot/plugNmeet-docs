@@ -21,6 +21,7 @@ This document provides an overview of the security architecture and mechanisms i
     -   [NATS Communication](#41-nats-communication)
     -   [Media Server (LiveKit)](#42-media-server-livekit)
 5.  [Secure Session Flow](#5-secure-session-flow)
+6.  [Browser Storage (IndexedDB)](#6-browser-storage-indexeddb)
 
 ---
 
@@ -104,5 +105,32 @@ The end-to-end connection process is designed with security at each step:
 5.  **E2EE Key Import**: The client imports the E2EE key (either from the server or derived from user input).
 6.  **Media Connection**: The client connects to the LiveKit media server, enabling E2EE with the imported key.
 7.  **Encrypted Communication**: All subsequent data and media are now end-to-end encrypted.
+
+### 6. Browser Storage (IndexedDB)
+
+To enhance user experience and ensure session continuity, the application utilizes the browser's built-in IndexedDB storage. This is used for purely functional purposes, such as restoring a user's session if they accidentally refresh their page.
+
+To achieve this, the application temporarily stores ephemeral session data on the end-user's local device. The categories of data stored may include, but are not limited to:
+
+*   **User & Session Preferences:** To remember settings like a chosen subtitle language.
+*   **Session Content & History:** To restore chat messages, speech-to-text transcripts, and the state of the whiteboard.
+*   **Performance Caches:** Such as cached images to improve loading times.
+
+#### Data Lifecycle and Encryption
+
+The data stored in IndexedDB is designed to be ephemeral and is handled as follows:
+
+*   **Encryption:** The data stored in IndexedDB is **not encrypted** by the application. This is a deliberate design choice, as the data resides on the end-user's own device and is protected by the security measures of the user's operating system and browser profile. The primary security focus is on encrypting data *in transit* and ensuring it is not persisted on any server.
+*   **Normal Session End:** When a user properly ends their session (e.g., by clicking "End meeting" or "Leave Meeting"), all stored data for that session is **immediately and permanently deleted** from the browser.
+*   **Abnormal Session End (e.g., closing the browser tab):** If a session is not ended properly, the data remains in the browser's IndexedDB. However, upon the next application startup, a cleanup process runs. This process automatically identifies and deletes any stored data from previous sessions that has exceeded a predefined maximum age (e.g., several hours). This maximum age is configurable and subject to change in future versions to optimize performance and privacy.
+
+**Key Points:**
+
+*   This data is stored **only on the end-user's browser** and is never transmitted elsewhere for storage purposes.
+*   The storage is essential for the application's expected functionality and is not used for tracking or analytics.
+
+**Disclaimer for Operators:** As the person or organization deploying this software, you are responsible for creating and maintaining your own Privacy Policy. You should use this information to ensure your policy is transparent and compliant with any applicable data protection regulations (e.g., GDPR, CCPA).
+
+---
 
 This multi-layered approach ensures that Plug-N-Meet sessions are secure, private, and resilient against common threats.
