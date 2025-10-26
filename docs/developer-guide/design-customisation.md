@@ -1,152 +1,121 @@
 ---
-description: PlugNmeet interface design customization using external CSS
+description: A guide to customizing the plugNmeet interface design using configuration options and external CSS.
+title: Design Customization | plugNmeet Developer Guide
+keywords: [css, design, customization, branding, white-label, custom css, plugnmeet design, themes]
 sidebar_position: 3
+sidebar_label: Design Customization
 ---
 
-# Design Customisation
+# Design Customization
 
-## Using config.js
+This guide explains how to customize the look and feel of the plugNmeet user interface. You can achieve a fully branded, white-label experience by using a combination of simple configuration parameters and your own custom CSS.
 
-Open the `config.js` file located in `dist/assets/config.js` of the `plugNmeet-client`. You will find a field called `window.DESIGN_CUSTOMIZATION`, which accepts a JSON value like this:
+## Method 1: Using `config.js` for Basic Customization
 
-```js
+For quick and easy branding, you can edit the `config.js` file located in the `dist/assets/` directory of the `plugNmeet-client` package. Inside this file, you will find a `window.DESIGN_CUSTOMIZATION` variable.
+
+This variable accepts a JSON string with various parameters to control the primary visual elements of the interface. You can also pass this same JSON object as a URL parameter named `custom_design` when joining a room.
+
+```javascript
 window.DESIGN_CUSTOMIZATION = `{
   "primary_color": "#004D90",
   "secondary_color": "#24AEF7",
-  "background_color": "#0b7db4",
-  "background_image": "https:\/\/mydomain.com\/custom_bg.png",
-  "header_bg_color": "#45b3ec",
-  "footer_bg_color": "#45b3ec",
-  "left_side_bg_color": "#04a2f3",
-  "right_side_bg_color": "#04a2f3",
-  "custom_css_url": "https:\/\/mydomain.com\/plugNmeet_desing.css"
+  "background_color": "#F5F5F5",
+  "background_image": "https://mydomain.com/custom_bg.png",
+  "header_bg_color": "#FFFFFF",
+  "footer_bg_color": "#FFFFFF",
+  "left_side_bg_color": "#FFFFFF",
+  "right_side_bg_color": "#FAFAFA",
+  "custom_css_url": "https://mydomain.com/plugnmeet_design.css",
+  "custom_logo": "https://mydomain.com/logo.png"
 }`;
 ```
 
-You can customize any or all of the above options. Alternatively, you can pass this JSON format via a URL parameter using `custom_design`.
+### Design Parameters
 
-## Design Parameters
+> **Important:** All external resources (`background_image`, `custom_css_url`, `custom_logo`, etc.) must be served over **HTTPS**. Using non-HTTPS (`http://`) URLs will cause mixed-content errors in the browser and prevent the resources from loading.
 
 | Field               | Description                                                                                                                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| primary_color       | The primary color code in hex format.                                                                                                                                  |
-| secondary_color     | The secondary color code in hex format.                                                                                                                                |
-| background_color    | Sets the default background color of the room.                                                                                                                         |
-| background_image    | Adds a custom background image. The link must be a direct HTTPS URL. If `background_image` is set, `background_color` will be ignored.                                 |
-| header_bg_color     | Header background color.                                                                                                                                               |
-| footer_bg_color     | Footer background color.                                                                                                                                               |
-| left_side_bg_color  | Background color for the left panel.                                                                                                                                   |
-| right_side_bg_color | Background color for the right panel.                                                                                                                                  |
-| custom_css_url      | URL to your custom CSS file for advanced customization. The link must be a direct HTTPS URL.                                                                           |
+| `primary_color`       | The primary brand color for buttons, icons, and other key highlights. (Hex format)                                                                                    |
+| `secondary_color`     | The secondary brand color, often used for accents. (Hex format)                                                                                                       |
+| `background_color`    | Sets the default background color of the main meeting room.                                                                                                            |
+| `background_image`    | Sets a custom background image for the room. This must be a direct HTTPS URL. If `background_image` is set, `background_color` will be ignored.                         |
+| `header_bg_color`     | The background color for the main header bar.                                                                                                                          |
+| `footer_bg_color`     | The background color for the main footer and control bar.                                                                                                              |
+| `left_side_bg_color`  | The background color for the left-side panel (e.g., participants list).                                                                                                |
+| `right_side_bg_color` | The background color for the right-side panel (e.g., chat).                                                                                                            |
+| `custom_css_url`      | A URL to your own custom CSS file for advanced, granular customization. This must be a direct HTTPS URL. See Method 2 below.                                            |
+| `custom_logo`         | A URL for your brand's logo, displayed on the welcome screen and in the header. **Must be a direct HTTPS URL.**                                                          |
 
-## Global Changes Using CSS
+---
 
-**Primary Color**
+## Method 2: Using Custom CSS for Advanced Customization
 
+For complete control over every element in the interface, you can provide a `custom_css_url` in the configuration. This CSS file will be loaded after all default stylesheets, allowing you to override any class.
+
+Below are some common examples of how to customize various UI components.
+
+### Global Color Classes
+
+These classes are used throughout the application and are a good starting point for applying your brand colors.
+
+**Primary Color & Background**
 ```css
-.primaryColor {
+.primaryColor, .text-primaryColor {
     color: #004D90;
 }
-.text-primaryColor {
-    color: #004D90;
-}
-```
-
-![brand-color1-min.png](/img/design-customisation/brand-color1-min.png)
-
-**Secondary Color**
-
-```css
-.secondaryColor {
-    color: #24AEF7;
-}
-.text-secondaryColor {
-    color: #24AEF7;
-}
-```
-
-![brand-color2-min.png](/img/design-customisation/brand-color2-min.png)
-
-**Primary Background**
-
-```css
 .bg-primaryColor {
     background: #004D90;
 }
 ```
+![brand-color1-min.png](/img/design-customisation/brand-color1-min.png)
 
-![bg-brand1.png](/img/design-customisation/bg-brand1.png)
-
-**Secondary Background Color**
-
+**Secondary Color & Background**
 ```css
+.secondaryColor, .text-secondaryColor {
+    color: #24AEF7;
+}
 .bg-secondaryColor {
     background: #24AEF7;
 }
 ```
+![brand-color2-min.png](/img/design-customisation/brand-color2-min.png)
 
-![bg-brand2.png](/img/design-customisation/bg-brand2.png)
+### Header Elements
 
-## Header
-
-You can change the header background, logo, color, and more.
+You can change the header's background, logo, title, and decorative shapes.
 
 **Header Background Color**
-
-Use this class to change the header background color:
-
 ```css
 header#main-header {
   background-color: azure;
 }
 ```
-
 ![HeaderBG.png](/img/design-customisation/HeaderBG.png)
 
-**Logo**
-
-Change the logo using this class:
-
+**Header Logo**
 ```css
 .header-logo {
-    background-image: url(./assets/imgs/app-banner.jpg) !important;
+    background-image: url(./assets/imgs/your-logo.png) !important;
 }
 ```
-
 ![HeaderLOGO.png](/img/design-customisation/HeaderLOGO.png)
 
-**Header Start and End Shape**
-
-Use these classes to change the header's start and end shapes:
-
-```css
-.header-before-start {
-    background-image: url(./assets/imgs/app-banner.jpg) !important;
-}
-.header-before-end {
-    background-image: url(./assets/imgs/app-banner.jpg) !important;
-}
-```
-
-![HeaderShape.png](/img/design-customisation/HeaderShape.png)
-
 **Header Title**
-
-Change the header title style using this class:
-
 ```css
 h2.header-title {
     color: blue;
     font-size: 20px;
 }
 ```
-
 ![HeaderTitle.png](/img/design-customisation/HeaderTitle.png)
 
-## Participants
+### Participants Panel
 
-You can customize the participants section, including background, width, and padding:
+Customize the participants panel, including its background, width, and the style of the text.
 
+**Panel Wrapper**
 ```css
 .participants-wrapper {
     background: #fff;
@@ -154,46 +123,20 @@ You can customize the participants section, including background, width, and pad
     padding: 14px;
 }
 ```
-
 ![participants-min.png](/img/design-customisation/participants-min.png)
 
-**Participants Headline**
-
+**Panel Headline**
 ```css
 .participants-wrapper .top p {
     font-size: 20px;
     color: grey;
 }
 ```
-
 ![participants-headline-min.png](/img/design-customisation/participants-headline-min.png)
 
-**Participant Name**
+### Messages Panel
 
-```css
-.all-participants-wrap p {
-    font-size: 18px;
-    color: grey;
-}
-```
-
-![participants-name-min.png](/img/design-customisation/participants-name-min.png)
-
-**Participant Thumbnail**
-
-```css
-.all-participants-wrap .thumb {
-    font-size: 14px;
-    color: grey;
-    background-color: antiquewhite;
-}
-```
-
-![participants-thumb-min.png](/img/design-customisation/participants-thumb-min.png)
-
-## Messages
-
-Customize the messages section, including background, width, and padding:
+Customize the chat and messages panel.
 
 ```css
 .MessageModule-wrapper {
@@ -202,40 +145,28 @@ Customize the messages section, including background, width, and padding:
     padding: 14px;
 }
 ```
-
 ![messages.png](/img/design-customisation/messages.png)
 
-## Start-Up Page
+### Key Pages
 
-Change the style of the start-up page using this class:
+**Welcome/Join Page**
 
+Change the style of the initial join modal.
 ```css
 #startupJoinModal {
     background-color: aqua;
 }
 ```
-
 ![startup-page.png](/img/design-customisation/startup-page.png)
 
-## Error Page
+**Error Page**
 
-Customize the error page background:
-
-```css
-.error-app-bg {
-    background-image: url("./assets/imgs/header-before2.png") !important;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-```
-
-Or use a solid color:
-
+Customize the background of the error page with an image or a solid color.
 ```css
 .error-app-bg {
     background: aliceblue !important;
 }
 ```
-
 ![error-page.png](/img/design-customisation/error-page.png)
+
+> **Pro Tip:** To find the class for any element you want to change, simply use the "Inspect Element" tool in your web browser to identify its CSS selector.
