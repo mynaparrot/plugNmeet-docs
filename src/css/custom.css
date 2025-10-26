@@ -47,6 +47,10 @@
   height: 3rem;
 }
 
+.title_mnaJ {
+    font-size: 2rem !important;
+}
+
 .container {
   width: 100%;
   max-width: 1320px;

@@ -41,6 +41,12 @@ const config: Config = {
           editUrl:
             'https://github.com/mynaparrot/plugNmeet-docs/edit/main/',
         },
+        blog: {
+          showReadingTime: true,
+          // Please change this to your repo.
+          editUrl:
+            'https://github.com/mynaparrot/plugNmeet-docs/edit/main/',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -79,13 +85,13 @@ const config: Config = {
           label: 'API',
         },
         {
-          href: 'https://www.plugnmeet.cloud',
-          label: 'Cloud',
-          position: 'right',
+          to: '/blog',
+          label: 'Blog',
+          position: 'right'
         },
         {
-          href: 'https://plugnmeet.medium.com',
-          label: 'Blog',
+          href: 'https://www.plugnmeet.cloud',
+          label: 'Cloud',
           position: 'right',
         },
         {
@@ -142,7 +148,7 @@ const config: Config = {
             },
             {
               label: 'Blog',
-              href: 'https://plugnmeet.medium.com',
+              to: '/blog',
             },
             {
               label: 'Demo',
