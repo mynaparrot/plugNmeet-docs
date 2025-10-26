@@ -3,9 +3,10 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'PNM',
+  title: " ",
   tagline: 'The free and open-source video conferencing platform for full control and privacy. Host scalable, customizable meetings on your own servers.',
   favicon: 'img/favicon.png',
+  titleDelimiter: " ",
 
   // Set the production url of your site here
   url: 'https://www.plugnmeet.org',
