@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'plugNmeet | Open Source Web Conferencing System',
+  title: 'PNM',
   tagline: 'The free and open-source video conferencing platform for full control and privacy. Host scalable, customizable meetings on your own servers.',
   favicon: 'img/favicon.png',
 
