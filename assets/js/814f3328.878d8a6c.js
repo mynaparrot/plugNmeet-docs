@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkplugnmeet_documentation=self.webpackChunkplugnmeet_documentation||[]).push([[7472],{5513:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"How to Build Your Own Video Conferencing App in Under an Hour","permalink":"/blog/build-video-conferencing-app-in-under-an-hour","unlisted":false,"date":"2025-10-26T00:00:00.000Z"}]}')}}]);
