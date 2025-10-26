@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.plugnmeet.org/blog</id>
+    <title>  Blog</title>
+    <updated>2025-10-26T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
+    <subtitle>  Blog</subtitle>
+    <icon>https://www.plugnmeet.org/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[How to Build Your Own Video Conferencing App in Under an Hour]]></title>
+        <id>https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour</id>
+        <link href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour"/>
+        <updated>2025-10-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Building a video conferencing application sounds like a monumental task. You have to wrestle with the complexities of WebRTC, set up signaling servers, manage STUN/TURN for NAT traversal, and handle the resource-intensive job of routing media streams. The backend infrastructure alone can take months to build and stabilize.]]></summary>
+        <content type="html"><![CDATA[<p>Building a video conferencing application sounds like a monumental task. You have to wrestle with the complexities of WebRTC, set up signaling servers, manage STUN/TURN for NAT traversal, and handle the resource-intensive job of routing media streams. The backend infrastructure alone can take months to build and stabilize.</p>
+<p>But what if you could skip all of that?</p>
+<p>What if you could leverage a powerful, open-source platform that handles all the backend complexity, allowing you to build a fully functional, custom-branded video conferencing app in under an hour? With <strong>plugNmeet</strong>, you can.</p>
+<p>This guide will show you the three core steps to building your own video app using plugNmeet's API-first architecture.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-old-way-the-mountain-of-complexity">The Old Way: The Mountain of Complexity<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#the-old-way-the-mountain-of-complexity" class="hash-link" aria-label="Direct link to The Old Way: The Mountain of Complexity" title="Direct link to The Old Way: The Mountain of Complexity" translate="no">​</a></h2>
+<p>Before we show you the easy way, it's important to appreciate the problems plugNmeet solves. Building a WebRTC app from scratch requires you to become an expert in:</p>
+<ol>
+<li class=""><strong>Signaling:</strong> Creating a system (usually with WebSockets) to coordinate connections between users.</li>
+<li class=""><strong>NAT Traversal:</strong> Setting up and managing STUN/TURN servers to allow users behind firewalls to connect to each other.</li>
+<li class=""><strong>Media Server (SFU):</strong> Deploying and scaling a Selective Forwarding Unit (like LiveKit, Mediasoup, or Janus) to efficiently route video and audio streams.</li>
+<li class=""><strong>Backend Logic:</strong> Writing an application server to manage rooms, users, and permissions.</li>
+<li class=""><strong>Frontend UI:</strong> Building a complete user interface from scratch to handle video elements, buttons, chat, and more.</li>
+</ol>
+<p>This is a massive undertaking.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-plugnmeet-way-an-api-first-framework">The plugNmeet Way: An API-First Framework<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#the-plugnmeet-way-an-api-first-framework" class="hash-link" aria-label="Direct link to The plugNmeet Way: An API-First Framework" title="Direct link to The plugNmeet Way: An API-First Framework" translate="no">​</a></h2>
+<p>plugNmeet bundles all of this complexity into a single, open-source server that you can install with an automated script. It provides you with a simple, powerful set of APIs that act as your building blocks.</p>
+<p>Here's how you build your app in three steps.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-1-set-up-the-backend-5-minutes">Step 1: Set Up the Backend (5 Minutes)<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#step-1-set-up-the-backend-5-minutes" class="hash-link" aria-label="Direct link to Step 1: Set Up the Backend (5 Minutes)" title="Direct link to Step 1: Set Up the Backend (5 Minutes)" translate="no">​</a></h3>
+<p>First, you need the plugNmeet server, which includes LiveKit for media and NATS for messaging. You can install everything on a fresh Ubuntu server using our automated installation script.</p>
+<div class="language-bash codeBlockContainer_fMmN theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_VhtC"><pre tabindex="0" class="prism-code language-bash codeBlock_H2kJ thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_yaRf"><span class="token-line" style="color:#393A34"><span class="token plain">wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">chmod +x install.sh</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">./install.sh</span><br></span></code></pre></div></div>
+<p>That's it. You now have a production-ready media server and API endpoint. The script will provide you with your <code>API_KEY</code> and <code>API_SECRET</code>, which you'll need for the next step.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-2-control-the-backend-with-an-api-call-10-minutes">Step 2: Control the Backend with an API Call (10 Minutes)<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#step-2-control-the-backend-with-an-api-call-10-minutes" class="hash-link" aria-label="Direct link to Step 2: Control the Backend with an API Call (10 Minutes)" title="Direct link to Step 2: Control the Backend with an API Call (10 Minutes)" translate="no">​</a></h3>
+<p>Next, you need to tell your backend to create a meeting room and generate a token for a user to join. This is done with a simple server-side API call.</p>
+<p>You can use our official PHP SDK or JavaScript SDK, or call the API directly. Here’s a simple example in PHP:</p>
+<div class="language-php codeBlockContainer_fMmN theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_VhtC"><pre tabindex="0" class="prism-code language-php codeBlock_H2kJ thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_yaRf"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;?php</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">require_once 'vendor/autoload.php'; // Assuming you've installed the SDK via Composer</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">use PlugNmeet\auth\Auth;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">use PlugNmeet\plugNmeet;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// Your API credentials from the server installation</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$apiKey = 'plugnmeet';</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$apiSecret = 'zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6';</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$host = 'https://demo.plugnmeet.com'; // Replace with your server URL</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$auth = new Auth($apiKey, $apiSecret);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$plugNmeet = new plugNmeet($host, $auth);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 1. Create a new room</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$room = $plugNmeet-&gt;room()-&gt;createRoom([</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    'room_id' =&gt; 'test-room-123',</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    'max_participants' =&gt; 20,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">]);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// 2. Generate a join token for a user</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$token = $plugNmeet-&gt;auth()-&gt;getJoinToken([</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    'room_id' =&gt; 'test-room-123',</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    'user_info' =&gt; [</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        'name' =&gt; 'John Doe',</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        'user_id' =&gt; 'user-id-001',</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        'is_admin' =&gt; true,</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    ],</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">]);</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $token;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">?&gt;</span><br></span></code></pre></div></div>
+<p>This script creates a room and gives you a unique URL with a token that grants "John Doe" access to that room.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-3-display-the-frontend-2-minutes">Step 3: Display the Frontend (2 Minutes)<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#step-3-display-the-frontend-2-minutes" class="hash-link" aria-label="Direct link to Step 3: Display the Frontend (2 Minutes)" title="Direct link to Step 3: Display the Frontend (2 Minutes)" translate="no">​</a></h3>
+<p>Now for the final piece: the user interface. Do you need to build one from scratch? No.</p>
+<p>plugNmeet provides a complete, feature-rich, and customizable web client. You simply need to direct your user to the join URL generated in the previous step.</p>
+<p>The join URL looks something like this:
+<code>https://your-domain.com/login.html?access_token=YOUR_GENERATED_TOKEN</code></p>
+<p>When a user visits this link, the plugNmeet client application loads, authenticates them with the token, and places them directly into the video meeting.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-youre-a-video-app-developer-now">Conclusion: You're a Video App Developer Now<a href="https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour#conclusion-youre-a-video-app-developer-now" class="hash-link" aria-label="Direct link to Conclusion: You're a Video App Developer Now" title="Direct link to Conclusion: You're a Video App Developer Now" translate="no">​</a></h2>
+<p>In the time it took to read this article, you've learned the entire workflow:</p>
+<ol>
+<li class=""><strong>Install a powerful backend</strong> with a single command.</li>
+<li class=""><strong>Use a simple API call</strong> to control rooms and users.</li>
+<li class=""><strong>Use the pre-built client</strong> to provide an instant user interface.</li>
+</ol>
+<p>You've skipped the mountain of WebRTC complexity and gone straight to building your application. From here, you can use our <strong>Design Customization</strong> features to completely white-label the client, or use our webhooks to build complex business logic around your meetings.</p>
+<p>The power of a complete WebRTC platform is now at your fingertips. What will you build?</p>
+<hr>
+<p><strong>Ready to get started?</strong></p>
+<ul>
+<li class=""><strong>Follow the <a class="" href="https://www.plugnmeet.org/docs/installation">Installation Guide</a></strong></li>
+<li class=""><strong>Explore the <a class="" href="https://www.plugnmeet.org/docs/api/intro">API Documentation</a></strong></li>
+</ul>]]></content>
+        <category label="webrtc" term="webrtc"/>
+        <category label="api" term="api"/>
+        <category label="sdk" term="sdk"/>
+        <category label="developer" term="developer"/>
+        <category label="tutorial" term="tutorial"/>
+        <category label="programming" term="programming"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building Our Own Home: Why the New plugNmeet Blog is Self-Hosted]]></title>
+        <id>https://www.plugnmeet.org/blog/welcome-to-the-new-plugnmeet-blog</id>
+        <link href="https://www.plugnmeet.org/blog/welcome-to-the-new-plugnmeet-blog"/>
+        <updated>2025-10-26T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Today marks a new chapter for the plugNmeet project. We are incredibly excited to launch our new, official blog, right here on our own domain: plugnmeet.org.]]></summary>
+        <content type="html"><![CDATA[<p>Today marks a new chapter for the plugNmeet project. We are incredibly excited to launch our new, official blog, right here on our own domain: <code>plugnmeet.org</code>.</p>
+<p>For those of you who have followed us on Medium, thank you. Your support has been invaluable. But as our community has grown, we knew it was time to build our own home—a space that truly reflects the values of our project.</p>
+<p>The decision to move our blog wasn't just about having a new design. It was about philosophy.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="why-we-moved-practicing-what-we-preach">Why We Moved: Practicing What We Preach<a href="https://www.plugnmeet.org/blog/welcome-to-the-new-plugnmeet-blog#why-we-moved-practicing-what-we-preach" class="hash-link" aria-label="Direct link to Why We Moved: Practicing What We Preach" title="Direct link to Why We Moved: Practicing What We Preach" translate="no">​</a></h3>
+<p>The core promise of plugNmeet is simple: <strong>you should be in control.</strong></p>
+<p>We built plugNmeet because we believe that your conversations are too important to be entrusted to a third-party platform. You should own your data, control your brand, and manage your own infrastructure. We provide the tools for you to build your own private, powerful communication platform.</p>
+<p>So, it was only natural that we apply the same principle to our own content.</p>
+<p>Publishing on a third-party platform like Medium is convenient, but it means you are building your house on someone else's land. The platform controls the experience, owns the relationship with your audience, and ultimately benefits the most from the value you create.</p>
+<p>We decided it was time to own our content, just as we empower you to own your conversations. By moving our blog to our own self-hosted Docusaurus site, we are:</p>
+<ol>
+<li class=""><strong>Consolidating Our SEO:</strong> All the authority we build now flows directly to <code>plugnmeet.org</code>, making our project's home the definitive source of truth.</li>
+<li class=""><strong>Owning Our Brand:</strong> The look, feel, and user experience are now 100% ours, creating a seamless journey from our blog to our documentation.</li>
+<li class=""><strong>Living Our Philosophy:</strong> We are demonstrating the power and importance of self-hosting in a real, tangible way.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="what-to-expect-from-this-blog">What to Expect from This Blog<a href="https://www.plugnmeet.org/blog/welcome-to-the-new-plugnmeet-blog#what-to-expect-from-this-blog" class="hash-link" aria-label="Direct link to What to Expect from This Blog" title="Direct link to What to Expect from This Blog" translate="no">​</a></h3>
+<p>This new space will be the heart of the plugNmeet community and knowledge base. It's where we will share not just announcements, but deep, valuable content designed to help you succeed. Expect to see:</p>
+<ul>
+<li class=""><strong>Technical Deep Dives:</strong> Detailed articles on our architecture, from our pragmatic approach to scaling to the specifics of our security model.</li>
+<li class=""><strong>Practical Guides &amp; Case Studies:</strong> Real-world examples of how businesses, educators, and developers are using plugNmeet to solve their communication challenges.</li>
+<li class=""><strong>Product Updates:</strong> The latest news on new features, releases, and the future roadmap of the project.</li>
+</ul>
+<p>Our goal is to create a resource that is as powerful and flexible as the platform itself.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="join-us-on-the-journey">Join Us on the Journey<a href="https://www.plugnmeet.org/blog/welcome-to-the-new-plugnmeet-blog#join-us-on-the-journey" class="hash-link" aria-label="Direct link to Join Us on the Journey" title="Direct link to Join Us on the Journey" translate="no">​</a></h3>
+<p>Thank you for being a part of the plugNmeet community. This new blog is for you, and we're excited to start this next chapter together. We believe in a future where everyone has the power to create their own private, secure, and branded spaces for communication.</p>
+<p>Welcome to our new home.</p>
+<hr>
+<p><strong>Ready to take control of your own conversations?</strong></p>
+<ul>
+<li class=""><strong>Explore the Open-Source Project on <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">GitHub</a></strong></li>
+<li class=""><strong>Read Our Comprehensive <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a></strong></li>
+<li class=""><strong>Try the <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
+</ul>]]></content>
+        <category label="plugnmeet" term="plugnmeet"/>
+        <category label="open-source" term="open-source"/>
+        <category label="self-hosting" term="self-hosting"/>
+        <category label="meta" term="meta"/>
+        <category label="announcement" term="announcement"/>
+    </entry>
+</feed>
