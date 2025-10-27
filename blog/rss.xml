@@ -4,10 +4,94 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Sun, 26 Oct 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Oct 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Why We Chose LiveKit and NATS: A Deep Dive into Our Backend Architecture]]></title>
+            <link>https://www.plugnmeet.org/blog/backend-architecture-deep-dive</link>
+            <guid>https://www.plugnmeet.org/blog/backend-architecture-deep-dive</guid>
+            <pubDate>Mon, 27 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Every great application is built on a foundation of smart architectural choices. For a real-time video conferencing platform, these choices are the difference between a smooth, reliable experience and a frustrating mess of lag, dropped calls, and connection errors.]]></description>
+            <content:encoded><![CDATA[<p>Every great application is built on a foundation of smart architectural choices. For a real-time video conferencing platform, these choices are the difference between a smooth, reliable experience and a frustrating mess of lag, dropped calls, and connection errors.</p>
+<p>When we designed plugNmeet, we had a clear set of goals: the platform needed to be high-performance, horizontally scalable, resilient, and easy for developers to build upon. This led us to make two fundamental decisions for our backend: we chose <strong>LiveKit</strong> for our media server and <strong>NATS</strong> for our real-time messaging layer.</p>
+<p>This article is a deep dive into the "why" behind these critical choices.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-two-pillars-of-real-time-communication">The Two Pillars of Real-Time Communication<a href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive#the-two-pillars-of-real-time-communication" class="hash-link" aria-label="Direct link to The Two Pillars of Real-Time Communication" title="Direct link to The Two Pillars of Real-Time Communication" translate="no">​</a></h2>
+<p>At its core, any serious video conferencing platform has to solve two distinct problems. But for a project like plugNmeet, it's not enough to just make them work. The solution must also be:</p>
+<ul>
+<li class=""><strong>Easy to Scale:</strong> Able to grow from handling a few dozen users to many thousands without a complete re-architecture.</li>
+<li class=""><strong>Highly Available:</strong> Resilient to failure, ensuring that the loss of a single component doesn't bring the entire system down.</li>
+<li class=""><strong>Resource-Efficient &amp; Cost-Effective:</strong> Designed to run on reasonable hardware, keeping operational costs low for everyone.</li>
+<li class=""><strong>Easy to Manage:</strong> Simple to deploy and maintain, even for small teams or individual developers.</li>
+</ul>
+<p>Our architectural philosophy was to choose a best-in-class open-source tool for each of the two main challenges—<strong>Media Routing</strong> and <strong>Signaling</strong>—that met all of these demanding criteria.</p>
+<ol>
+<li class=""><strong>Media Routing:</strong> How do you efficiently get audio and video streams from each participant to every other participant?</li>
+<li class=""><strong>Signaling &amp; State Management:</strong> How do you instantly deliver all the other real-time information that makes a meeting dynamic and interactive?</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="pillar-1-livekit---the-high-performance-media-engine">Pillar 1: LiveKit - The High-Performance Media Engine<a href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive#pillar-1-livekit---the-high-performance-media-engine" class="hash-link" aria-label="Direct link to Pillar 1: LiveKit - The High-Performance Media Engine" title="Direct link to Pillar 1: LiveKit - The High-Performance Media Engine" translate="no">​</a></h2>
+<p>In the early days of WebRTC, many apps used a peer-to-peer (P2P) mesh. This works for a 1-on-1 call, but it fails catastrophically as you add more people. Each participant has to upload their video stream separately to every other person, quickly overwhelming their internet connection.</p>
+<p>The modern solution is a <strong>Selective Forwarding Unit (SFU)</strong>. An SFU is a server that acts as a traffic cop. Each participant sends their video stream to the SFU just <em>once</em>, and the SFU then forwards that stream to all other participants.</p>
+<p>For our SFU, we chose <strong>LiveKit</strong>, and here’s why:</p>
+<ul>
+<li class=""><strong>High Performance &amp; Efficiency:</strong> LiveKit is written in Go, making it incredibly fast and resource-efficient. It can handle a large number of concurrent users and streams on a single server, which aligns with our goal of providing a cost-effective solution.</li>
+<li class=""><strong>Built-in Scalability:</strong> LiveKit is designed to be clustered, and it uses Redis to manage state across multiple nodes. This provides a clear, documented path to the massive scale required by our largest users.</li>
+<li class=""><strong>Modern Features by Default:</strong> LiveKit comes with critical, out-of-the-box support for modern WebRTC features like <strong>Simulcast</strong> (sending multiple quality streams) and <strong>Dynacast</strong> (intelligently pausing streams). This allows plugNmeet to automatically adapt to each user's network conditions, dramatically improving reliability.</li>
+<li class=""><strong>Secure and Open Source:</strong> As an open-source project itself, LiveKit aligns with our core philosophy of transparency. It also has built-in support for passing through End-to-End Encrypted (E2EE) media, which is essential for our security model.</li>
+</ul>
+<p>In short, by building on top of LiveKit, we didn't have to reinvent the wheel. We inherited a powerful, battle-tested media engine, allowing us to focus on building the application logic and features that make plugNmeet unique.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="pillar-2-nats-jetstream---the-resilient-nervous-system">Pillar 2: NATS JetStream - The Resilient Nervous System<a href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive#pillar-2-nats-jetstream---the-resilient-nervous-system" class="hash-link" aria-label="Direct link to Pillar 2: NATS JetStream - The Resilient Nervous System" title="Direct link to Pillar 2: NATS JetStream - The Resilient Nervous System" translate="no">​</a></h2>
+<p>While LiveKit handles the heavy media streams, we needed a separate, highly reliable system for all the other real-time data that makes a meeting interactive. This is where <strong>NATS</strong> comes in.</p>
+<p>More specifically, we leverage <strong>NATS JetStream</strong>, the powerful persistence layer built into the NATS ecosystem. JetStream elevates NATS from a simple messaging system to a true streaming platform, which is critical for the reliability and scalability of our backend services.</p>
+<p>Here’s why JetStream was the perfect choice for plugNmeet:</p>
+<ul>
+<li class="">
+<p><strong>Multi-Layered Security:</strong> NATS provides a robust, defense-in-depth security model at the messaging layer, which operates in addition to our application-level E2EE.</p>
+<ul>
+<li class=""><strong>Encryption in Transit:</strong> All connections from clients to the NATS cluster are secured using <strong>TLS</strong>. This encrypts all signaling data while it's on the wire, protecting it from eavesdropping.</li>
+<li class=""><strong>Fine-Grained Authorization:</strong> This is where the real power lies. When a user authenticates, the <code>plugnmeet-server</code> dynamically generates a unique set of permissions for that specific user session. These permissions strictly define which NATS subjects the user is allowed to publish to and subscribe from, typically scoped by <code>roomId</code> and <code>userId</code>. This enforces a true <strong>principle of least privilege</strong>, making it architecturally impossible for a user in one room to access data from another.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Scalable Request Processing with Queue Workers:</strong> For critical client-server interactions, like fetching the initial user list, we leverage JetStream's powerful <strong>queue worker pattern</strong>. When a client sends a request, it's published to a stream. Our backend <code>plugnmeet-server</code> instances subscribe to this stream as a <strong>queue group</strong>, and NATS ensures that each request is delivered to only <strong>one</strong> available server. This provides automatic, built-in load balancing for our core application logic.</p>
+</li>
+<li class="">
+<p><strong>High-Performance Streaming for Real-Time Data:</strong> For other real-time data like <strong>chat messages</strong> or <strong>collaborative whiteboard</strong> drawing data, we use JetStream's high-performance streaming capabilities to ensure fast and reliable delivery to all participants in a room.</p>
+</li>
+<li class="">
+<p><strong>Built for Resilience:</strong> NATS is designed from the ground up for clustering and self-healing. If one NATS node fails, clients will automatically reconnect to another, ensuring the "nervous system" of your meetings stays online.</p>
+</li>
+</ul>
+<p>By using NATS for its deep security model, performance, and resilience, we built a backend that is fast, secure, and remarkably easy to scale.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-a-foundation-built-for-the-future">Conclusion: A Foundation Built for the Future<a href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive#conclusion-a-foundation-built-for-the-future" class="hash-link" aria-label="Direct link to Conclusion: A Foundation Built for the Future" title="Direct link to Conclusion: A Foundation Built for the Future" translate="no">​</a></h2>
+<p>The choice of LiveKit and NATS JetStream was deliberate. By combining a best-in-class media server with a best-in-class streaming platform, we've created a platform that is:</p>
+<ul>
+<li class=""><strong>Performant:</strong> Handling both media and signaling with specialized, high-speed tools.</li>
+<li class=""><strong>Scalable:</strong> With clear, documented paths for clustering each component.</li>
+<li class=""><strong>Resilient:</strong> With built-in failover and self-healing capabilities.</li>
+<li class=""><strong>Flexible:</strong> Allowing us to build powerful, decoupled features like our auto-scaling recorders.</li>
+</ul>
+<p>But there's one more crucial element that ties this all together: <strong>the underlying technology</strong>. Both LiveKit and NATS are written in <strong>Go</strong>, one of the most powerful languages for modern, concurrent network services. This was no accident. We deliberately chose to write the core <code>plugnmeet-server</code> in Go as well.</p>
+<p>This creates a <strong>unified, high-performance ecosystem</strong>. Our developers can move seamlessly between components, leading to faster development cycles, easier maintenance, and a more cohesive and stable platform for our users. It means that when you build with plugNmeet, you're building on a consistent and coherent technology stack from top to bottom.</p>
+<p>The ultimate benefit of this Go-based approach is in the final deployment. The entire <code>plugnmeet-server</code> compiles down to a <strong>single, dependency-free binary file</strong>. This makes deployment incredibly simple and portable. You can run it as a standalone service on a bare-metal server or package it into a minimal, highly secure Docker container. There are no language runtimes to manage and no complex dependencies to install—just a single file that works.</p>
+<p>When you choose plugNmeet, you're not just getting an application. You're getting a thoughtfully designed architecture built on a foundation you can trust.</p>
+<hr>
+<p><strong>Want to learn more?</strong></p>
+<ul>
+<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong></li>
+<li class=""><strong>Explore the <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content:encoded>
+            <category>webrtc</category>
+            <category>architecture</category>
+            <category>backend</category>
+            <category>livekit</category>
+            <category>nats</category>
+            <category>open-source</category>
+            <category>scalability</category>
+        </item>
         <item>
             <title><![CDATA[How to Build Your Own Video Conferencing App in Under an Hour]]></title>
             <link>https://www.plugnmeet.org/blog/build-video-conferencing-app-in-under-an-hour</link>

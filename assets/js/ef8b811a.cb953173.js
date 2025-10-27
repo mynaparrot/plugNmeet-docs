@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkplugnmeet_documentation=self.webpackChunkplugnmeet_documentation||[]).push([[8947],{6600:e=>{e.exports=JSON.parse('{"authors":[{"name":"Jibon L. Costa","title":"Founding developer","url":"https://github.com/jibon57","imageURL":"https://github.com/jibon57.png","key":"jibon","page":null,"count":2}]}')}}]);
