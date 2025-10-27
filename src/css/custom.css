@@ -47,6 +47,10 @@
   height: 3rem;
 }
 
+[data-theme='dark'] .navbar__logo{
+    filter: brightness(100);
+}
+
 .title_mnaJ {
     font-size: 2rem !important;
 }
