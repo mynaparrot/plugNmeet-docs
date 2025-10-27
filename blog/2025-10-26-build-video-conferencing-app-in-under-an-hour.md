@@ -1,6 +1,7 @@
 ---
 title: "How to Build Your Own Video Conferencing App in Under an Hour"
 slug: build-video-conferencing-app-in-under-an-hour
+authors: [jibon]
 tags: [webrtc, api, sdk, developer, tutorial, programming]
 ---
 
