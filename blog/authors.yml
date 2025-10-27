@@ -3,3 +3,13 @@ jibon:
   title: Founding developer
   url: https://github.com/jibon57
   image_url: https://github.com/jibon57.png
+bob:
+  name: Bob Teng
+  title: Developer Advocate
+  url: https://github.com/wbobteng
+  image_url: https://github.com/wbobteng.png
+simon:
+  name: Chaboud Simon
+  title: Community & Marketing Lead
+  url: https://github.com/saimonzone
+  image_url: https://github.com/saimonzone.png
