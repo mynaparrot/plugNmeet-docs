@@ -55,40 +55,40 @@ You can use our official PHP SDK or JavaScript SDK, or call the API directly. He
 
 ```php
 <?php
-require_once 'vendor/autoload.php'; // Assuming you've installed the SDK via Composer
+require __DIR__ . "/plugNmeetConnect.php";
 
-use PlugNmeet\auth\Auth;
-use PlugNmeet\plugNmeet;
+$config = new stdClass();
+$config->plugnmeet_server_url = "https://demo.plugnmeet.com"; // Your server URL
+$config->plugnmeet_api_key = "plugnmeet"; // Your API Key
+$config->plugnmeet_secret = "zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"; // Your API Secret
 
-// Your API credentials from the server installation
-$apiKey = 'plugnmeet';
-$apiSecret = 'zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6';
-$host = 'https://demo.plugnmeet.com'; // Replace with your server URL
+$connect = new plugNmeetConnect($config);
 
-$auth = new Auth($apiKey, $apiSecret);
-$plugNmeet = new plugNmeet($host, $auth);
+$roomId = "room01"; // Must be unique. You can also use $connect->getUUID();
+$user_full_name = "John Doe";
+$userId = "your-unique-user-id"; // Must be unique for each user.
 
-// 1. Create a new room
-$room = $plugNmeet->room()->createRoom([
-    'room_id' => 'test-room-123',
-    'max_participants' => 20,
-]);
+// Define all the features for this specific room.
+$roomMetadata = array(
+    "room_features" => array(
+        "allow_webcams" => true,
+        "mute_on_start" => false,
+        "allow_screen_share" => true,
+        "room_duration" => 0 // 0 = no limit
+    ),
+    // ... and many more options
+);
+$create = $connect->createRoom($roomId, "Test room", "Welcome to room", 0, "", $roomMetadata);
+// $create->getStatus();
 
-// 2. Generate a join token for a user
-$token = $plugNmeet->auth()->getJoinToken([
-    'room_id' => 'test-room-123',
-    'user_info' => [
-        'name' => 'John Doe',
-        'user_id' => 'user-id-001',
-        'is_admin' => true,
-    ],
-]);
+$join = $connect->getJoinToken($roomId, $user_full_name, $userId, true);
+// $join->getStatus();
 
-echo $token;
-?>
+$url = $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
+echo $url;
 ```
 
-This script creates a room and gives you a unique URL with a token that grants "John Doe" access to that room.
+This script creates a room and gives you a unique URL with a token that grants "John Doe" access to that room. You can find full example of PHP from [PHP Quick Start](/docs/tutorials/quick_php)
 
 ### Step 3: Display the Frontend (2 Minutes)
 
