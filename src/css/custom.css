@@ -260,3 +260,15 @@ section.features-section.slider-section .container {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 }
+
+.footer--dark {
+    --ifm-footer-background-color: #171717;
+    --ifm-footer-color: #a2a2a2;
+    --ifm-footer-link-color: #a2a2a2;
+    --ifm-footer-title-color: var(--ifm-color-white);
+}
+
+.footer__link-item:hover {
+    color: #ffffff;
+}
+
