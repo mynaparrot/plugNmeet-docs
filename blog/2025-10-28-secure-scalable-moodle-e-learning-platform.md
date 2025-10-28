@@ -69,6 +69,6 @@ By combining Moodle with plugNmeet, you are not just adding a video link to your
 
 **Ready to build your next-generation e-learning platform?**
 
-*   **Learn more about our [Moodle Integration](/docs/user-guide/moodle-integration.md)**
+*   **Learn more about our [Moodle Integration](/docs/user-guide/moodle-integration)**
 *   **Try the whiteboard and other features in our [Live Demo](https://demo.plugnmeet.com/landing.html)**
 *   **Explore our [Open-Source Project on GitHub](https://github.com/mynaparrot/plugNmeet-server)**
