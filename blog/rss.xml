@@ -85,6 +85,96 @@ In this model, you are not trusting any server component at all. You are only tr
             <category>developer</category>
         </item>
         <item>
+            <title><![CDATA[A Major Leap Forward: Announcing the Next Generation of Plug-N-Meet]]></title>
+            <link>https://www.plugnmeet.org/blog/plugnmeet-next-generation</link>
+            <guid>https://www.plugnmeet.org/blog/plugnmeet-next-generation</guid>
+            <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[We are thrilled to announce a landmark update for the Plug-N-Meet ecosystem, featuring a completely redesigned client and a more powerful, scalable recorder. These updates are the result of countless hours of development aimed at enhancing user experience, boosting performance, and providing developers with even more flexibility.]]></description>
+            <content:encoded><![CDATA[<p>We are thrilled to announce a landmark update for the Plug-N-Meet ecosystem, featuring a completely redesigned client and a more powerful, scalable recorder. These updates are the result of countless hours of development aimed at enhancing user experience, boosting performance, and providing developers with even more flexibility.</p>
+<p>We're aiming to publish the new client <strong>before Christmas</strong>, but you don't have to wait to see what's coming. You can preview the future right now! Just click the <strong>"Demo"</strong> link from our website's main menu and select the <strong>"Development version"</strong> to get a sneak peek.</p>
+<p>Let's dive into what’s new.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-new-client-a-completely-reimagined-experience"><strong>The New Client: A Completely Reimagined Experience</strong><a href="https://www.plugnmeet.org/blog/plugnmeet-next-generation#the-new-client-a-completely-reimagined-experience" class="hash-link" aria-label="Direct link to the-new-client-a-completely-reimagined-experience" title="Direct link to the-new-client-a-completely-reimagined-experience" translate="no">​</a></h3>
+<p>We have rebuilt the Plug-N-Meet front-end from the ground up to be lighter, faster, and more intuitive than ever before.</p>
+<p><strong>A Fresh, Modern UI</strong></p>
+<p>The first thing you'll notice is the stunning new user interface. Every component, from the control bar to the settings panel, has been redesigned for a cleaner look, smoother animations, and a more logical workflow. The result is a user experience that is not just more aesthetically pleasing, but also easier to navigate.</p>
+<p><strong>Under the Hood: A Blazing-Fast and Developer-Friendly Core</strong></p>
+<p>This isn't just a facelift. We've modernized the entire tech stack for a massive performance boost and a superior developer experience:</p>
+<ul>
+<li class=""><strong>Upgraded to React 19:</strong> Leveraging the latest features from the React framework for a more efficient UI.</li>
+<li class=""><strong>Next-Generation Whiteboard:</strong> We've integrated the newest version of Excalidraw for a more feature-rich and responsive collaborative experience.</li>
+<li class=""><strong>Vite with Rolldown:</strong> We have migrated our build system from Webpack to the cutting-edge Vite, powered by Rolldown. This means significantly faster development builds and a more optimized, lightweight production bundle.</li>
+<li class=""><strong>A Refactored &amp; Modernized Codebase:</strong> The entire client has been architecturally improved, making the code cleaner, more modular, and easier for developers to understand, customize, and contribute to.</li>
+<li class=""><strong>Zero-Knowledge Security Models:</strong> The new client brings to life our most advanced security options, including support for <code>enabled_self_insert_encryption_key</code>. This allows users to provide their own encryption keys for a true zero-knowledge session, a feature we detailed in our <a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">guide to E2EE key models</a>.</li>
+<li class="">...and many more improvements!</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="what-this-upgrade-means-for-you"><strong>What This Upgrade Means For You</strong><a href="https://www.plugnmeet.org/blog/plugnmeet-next-generation#what-this-upgrade-means-for-you" class="hash-link" aria-label="Direct link to what-this-upgrade-means-for-you" title="Direct link to what-this-upgrade-means-for-you" translate="no">​</a></h4>
+<p>We've worked hard to make this transition as smooth as possible.</p>
+<ul>
+<li class="">
+<p><strong>For Users of Our Official Plugins (WordPress, Moodle, Joomla):</strong>
+You don't need to worry about a thing. Simply update the plugin from your platform's marketplace after you've updated your Plug-N-Meet server. The new client will be loaded automatically.</p>
+</li>
+<li class="">
+<p><strong>For Developers with Custom Integrations (<code>getClientFiles</code>):</strong>
+This is a critical update. To achieve the new performance standards, the client now utilizes modern <strong>ES Modules</strong>. This requires a small but important change to how you inject the JavaScript files into your application.</p>
+<p><strong>The Core Logic (Language-Agnostic):</strong>
+Previously, all JavaScript files could be loaded with a standard <code>&lt;script&gt;</code> tag. Now, you must differentiate between the main module script and the other scripts.</p>
+<ol>
+<li class="">When you loop through the <code>js_files</code> array returned by the API, you need to check the filename of each script.</li>
+<li class="">If the filename <strong>starts with <code>main-module.</code></strong>, you must render its <code>&lt;script&gt;</code> tag with <code>type="module"</code>.</li>
+<li class="">For all other JavaScript files, you should render the <code>&lt;script&gt;</code> tag as before, preferably with a <code>defer</code> attribute to avoid blocking page render.</li>
+</ol>
+<p>This logic can be implemented in any server-side language or templating engine (Python, Node.js, Ruby, etc.) by performing a simple string check on the filename.</p>
+<p><strong>Implementation Example (PHP):</strong>
+Here is a PHP example demonstrating how to implement this conditional logic:</p>
+<div class="language-php codeBlockContainer_fMmN theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_VhtC"><pre tabindex="0" class="prism-code language-php codeBlock_H2kJ thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_yaRf"><span class="token-line" style="color:#393A34"><span class="token plain">&lt;?php foreach ($api_response['js'] as $js_file): ?&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;?php if (str_starts_with($js_file, 'main-module.')):</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;script src="&lt;?php echo $assets_path . '/js/' . $js_file ?&gt;" type="module"&gt;&lt;/script&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;?php else: ?&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        &lt;script src="&lt;?php echo $assets_path . '/js/' . $js_file ?&gt;" defer="defer"&gt;&lt;/script&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    &lt;?php endif; ?&gt;</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">&lt;?php endforeach; ?&gt;</span><br></span></code></pre></div></div>
+<p>By following this logic, you can ensure the new, faster client loads correctly in your custom application.</p>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-new-recorder-a-scalable--resilient-pipeline"><strong>The New Recorder: A Scalable &amp; Resilient Pipeline</strong><a href="https://www.plugnmeet.org/blog/plugnmeet-next-generation#the-new-recorder-a-scalable--resilient-pipeline" class="hash-link" aria-label="Direct link to the-new-recorder-a-scalable--resilient-pipeline" title="Direct link to the-new-recorder-a-scalable--resilient-pipeline" translate="no">​</a></h3>
+<p>One of the most common bottlenecks in any live video platform is recording. Previously, as soon as a recording ended, the same server that was handling live meetings would begin the CPU-intensive task of post-processing (transcoding), which could impact the performance of other active sessions.</p>
+<p>With the new <code>plugnmeet-recorder</code>, we've completely solved this problem by introducing <strong>Operational Modes</strong>.</p>
+<p>Each recorder instance can now be configured to run as a specialized worker, allowing you to build a powerful, decoupled, and highly scalable recording pipeline.</p>
+<ul>
+<li class="">
+<p><strong><code>recorderOnly</code> Mode:</strong> This worker's only job is to record the live session to a raw file. Once finished, it publishes a "transcoding job" to a queue and immediately frees itself up to record another session. It never gets bogged down by post-processing.</p>
+</li>
+<li class="">
+<p><strong><code>transcoderOnly</code> Mode:</strong> This worker does the heavy lifting. It subscribes to the job queue, picks up transcoding tasks one by one, and converts the raw files into the final MP4 format.</p>
+</li>
+<li class="">
+<p><strong><code>both</code> Mode (Default):</strong> For smaller setups, a single instance can still perform both functions, just as it did before.</p>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="why-this-is-a-game-changer"><strong>Why This is a Game-Changer</strong><a href="https://www.plugnmeet.org/blog/plugnmeet-next-generation#why-this-is-a-game-changer" class="hash-link" aria-label="Direct link to why-this-is-a-game-changer" title="Direct link to why-this-is-a-game-changer" translate="no">​</a></h4>
+<p>This new architecture allows you to build a truly professional-grade recording system:</p>
+<ul>
+<li class=""><strong>Scalability:</strong> You can run a fleet of <code>transcoderOnly</code> workers on separate, cheaper VMs, processing dozens of recordings in parallel without ever affecting the performance of your live meetings.</li>
+<li class=""><strong>Resilience:</strong> If a <code>transcoderOnly</code> worker fails, the job simply remains in the queue until another worker picks it up. No recordings are lost.</li>
+<li class=""><strong>Performance:</strong> Your <code>recorderOnly</code> workers stay lightweight and responsive, ensuring the quality of your live session recordings is never compromised by CPU load.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion"><strong>Conclusion</strong><a href="https://www.plugnmeet.org/blog/plugnmeet-next-generation#conclusion" class="hash-link" aria-label="Direct link to conclusion" title="Direct link to conclusion" translate="no">​</a></h3>
+<p>This release marks a significant step forward in our mission to provide the most powerful, flexible, and high-performance open-source video conferencing platform. The redesigned client delivers a world-class user experience, while the new recorder architecture provides the scalability and resilience needed for enterprise-grade deployments.</p>
+<p>We can't wait for you to experience the new Plug-N-Meet.</p>
+<p><strong>Ready to upgrade?</strong></p>
+<ul>
+<li class=""><strong><a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Explore the Open-Source Project on GitHub</a></strong></li>
+<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/api/get-client-files">Review the updated API Documentation</a></strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Check out the Live Demo to see the new UI in action</a></strong></li>
+</ul>]]></content:encoded>
+            <category>release</category>
+            <category>update</category>
+            <category>react</category>
+            <category>vite</category>
+            <category>recorder</category>
+            <category>scalability</category>
+            <category>developer</category>
+            <category>ui-ux</category>
+        </item>
+        <item>
             <title><![CDATA[How to Launch Your Own Video Conferencing Service with Joomla (No Code Required)]]></title>
             <link>https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-joomla</link>
             <guid>https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-joomla</guid>
