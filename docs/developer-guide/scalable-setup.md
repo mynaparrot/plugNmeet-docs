@@ -20,7 +20,7 @@ We recommend approaching scaling in phases:
 
 For optimal performance, especially when recording frequently, we strongly recommend deploying the **`plugnmeet-recorder` on a dedicated server**, separate from your main `plugnmeet-server` and LiveKit instance.
 
-*   **Why?** Recording, and especially RTMP streaming, can be a CPU-intensive process. Isolating it prevents recording jobs from impacting the performance of your live meetings.
+*   **Why?** Recording and post-processing (transcoding) are CPU-intensive tasks. Isolating them prevents recording jobs from impacting the performance of your live meetings.
 *   **When?** This should be your first step if you notice performance degradation during active recordings.
 
 However, if you only plan to record sessions infrequently, running the recorder on the same server (as the default installation script does) is a perfectly viable option.
@@ -48,7 +48,7 @@ In a distributed setup, the core components of plugNmeet are separated onto diff
     *   A `Redis` cluster.
     *   A `MariaDB` cluster.
 3.  **Horizontally Scaled Recorders:**
-    *   Multiple `plugnmeet-recorder` instances.
+    *   Multiple `plugnmeet-recorder` instances, potentially in different operational modes.
 
 ---
 
@@ -110,8 +110,16 @@ LiveKit also works behind a load balancer for initial connections.
 The `plugnmeet-recorder` is a special case. While it is stateful during a job, its discovery and load balancing are handled automatically.
 
 *   **Load Balancing & Discovery:** The recorder does **not** require an external load balancer. Recorders automatically announce their availability over NATS, and the `plugnmeet-server` distributes jobs to them.
+
+*   **Operational Modes:** The `plugnmeet-recorder` supports different operational modes, allowing for a highly scalable and resilient pipeline. Each instance can be configured via the `mode` setting in `config.yaml`:
+    *   **`recorderOnly`:** This instance will *only* handle live session recording. Once a raw recording file is captured, it publishes a transcoding job to a queue and immediately becomes available for the next live session. This is ideal for your primary recording servers as it keeps them lightweight and responsive.
+    *   **`transcoderOnly`:** This instance will *only* process transcoding jobs. It subscribes to the job queue, performs the CPU-intensive conversion of raw files to MP4, and does not handle any live recordings. You can run a fleet of these workers on cheaper, CPU-optimized VMs to process recordings in parallel without impacting live meetings.
+    *   **`both` (Default):** A single instance performs both live recording and transcoding. This is suitable for smaller setups or if you record infrequently.
+
 *   **Configuration:** Each recorder instance must be configured to connect to the same NATS cluster.
-*   **Shared Storage:** It is **critical** that all recorder instances have access to the same shared storage location (e.g., NFS, S3) for the final recording files.
+
+*   **Shared Storage:** It is **critical** that all `recorderOnly` and `transcoderOnly` instances have access to the same shared storage location (e.g., NFS, S3) for the recording files.
+
 *   **Action:** For detailed setup, refer to the **official `plugnmeet-recorder` repository README**.
 
 **(Link: [Official plugNmeet-recorder README](https://github.com/mynaparrot/plugNmeet-recorder))
