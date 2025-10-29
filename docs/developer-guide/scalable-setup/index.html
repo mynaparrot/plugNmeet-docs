@@ -5,7 +5,7 @@
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Scalable PlugNmeet Deployment | A Guide to Distributed Setups    </title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://www.plugnmeet.org/docs/developer-guide/scalable-setup"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Scalable PlugNmeet Deployment | A Guide to Distributed Setups    "><meta data-rh="true" name="description" content="A high-level guide for scaling a self-hosted plugNmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."><meta data-rh="true" property="og:description" content="A high-level guide for scaling a self-hosted plugNmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."><meta data-rh="true" name="keywords" content="scalable webrtc,distributed setup,plugnmeet scaling,high availability,load balancing,livekit cluster,nats cluster,redis cluster,self-hosted scaling,enterprise webrtc"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Scalable Deployment","item":"https://www.plugnmeet.org/docs/developer-guide/scalable-setup"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="  RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="  Atom Feed"><link rel="stylesheet" href="/assets/css/styles.fc6ecea0.css">
-<script src="/assets/js/runtime~main.076a47ed.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.1d137629.js" defer="defer"></script>
 <script src="/assets/js/main.19c41042.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -20,7 +20,7 @@
 <h4 class="anchor anchorTargetStickyNavbar_f97l" id="phase-1-isolate-the-recorder-the-most-common-bottleneck">Phase 1: Isolate the Recorder (The Most Common Bottleneck)<a href="#phase-1-isolate-the-recorder-the-most-common-bottleneck" class="hash-link" aria-label="Direct link to Phase 1: Isolate the Recorder (The Most Common Bottleneck)" title="Direct link to Phase 1: Isolate the Recorder (The Most Common Bottleneck)" translate="no">​</a></h4>
 <p>For optimal performance, especially when recording frequently, we strongly recommend deploying the <strong><code>plugnmeet-recorder</code> on a dedicated server</strong>, separate from your main <code>plugnmeet-server</code> and LiveKit instance.</p>
 <ul>
-<li class=""><strong>Why?</strong> Recording, and especially RTMP streaming, can be a CPU-intensive process. Isolating it prevents recording jobs from impacting the performance of your live meetings.</li>
+<li class=""><strong>Why?</strong> Recording and post-processing (transcoding) are CPU-intensive tasks. Isolating them prevents recording jobs from impacting the performance of your live meetings.</li>
 <li class=""><strong>When?</strong> This should be your first step if you notice performance degradation during active recordings.</li>
 </ul>
 <p>However, if you only plan to record sessions infrequently, running the recorder on the same server (as the default installation script does) is a perfectly viable option.</p>
@@ -48,7 +48,7 @@
 </li>
 <li class=""><strong>Horizontally Scaled Recorders:</strong>
 <ul>
-<li class="">Multiple <code>plugnmeet-recorder</code> instances.</li>
+<li class="">Multiple <code>plugnmeet-recorder</code> instances, potentially in different operational modes.</li>
 </ul>
 </li>
 </ol>
@@ -97,10 +97,26 @@
 <h3 class="anchor anchorTargetStickyNavbar_f97l" id="3-the-plugnmeet-recorder">3. The plugNmeet Recorder<a href="#3-the-plugnmeet-recorder" class="hash-link" aria-label="Direct link to 3. The plugNmeet Recorder" title="Direct link to 3. The plugNmeet Recorder" translate="no">​</a></h3>
 <p>The <code>plugnmeet-recorder</code> is a special case. While it is stateful during a job, its discovery and load balancing are handled automatically.</p>
 <ul>
-<li class=""><strong>Load Balancing &amp; Discovery:</strong> The recorder does <strong>not</strong> require an external load balancer. Recorders automatically announce their availability over NATS, and the <code>plugnmeet-server</code> distributes jobs to them.</li>
-<li class=""><strong>Configuration:</strong> Each recorder instance must be configured to connect to the same NATS cluster.</li>
-<li class=""><strong>Shared Storage:</strong> It is <strong>critical</strong> that all recorder instances have access to the same shared storage location (e.g., NFS, S3) for the final recording files.</li>
-<li class=""><strong>Action:</strong> For detailed setup, refer to the <strong>official <code>plugnmeet-recorder</code> repository README</strong>.</li>
+<li class="">
+<p><strong>Load Balancing &amp; Discovery:</strong> The recorder does <strong>not</strong> require an external load balancer. Recorders automatically announce their availability over NATS, and the <code>plugnmeet-server</code> distributes jobs to them.</p>
+</li>
+<li class="">
+<p><strong>Operational Modes:</strong> The <code>plugnmeet-recorder</code> supports different operational modes, allowing for a highly scalable and resilient pipeline. Each instance can be configured via the <code>mode</code> setting in <code>config.yaml</code>:</p>
+<ul>
+<li class=""><strong><code>recorderOnly</code>:</strong> This instance will <em>only</em> handle live session recording. Once a raw recording file is captured, it publishes a transcoding job to a queue and immediately becomes available for the next live session. This is ideal for your primary recording servers as it keeps them lightweight and responsive.</li>
+<li class=""><strong><code>transcoderOnly</code>:</strong> This instance will <em>only</em> process transcoding jobs. It subscribes to the job queue, performs the CPU-intensive conversion of raw files to MP4, and does not handle any live recordings. You can run a fleet of these workers on cheaper, CPU-optimized VMs to process recordings in parallel without impacting live meetings.</li>
+<li class=""><strong><code>both</code> (Default):</strong> A single instance performs both live recording and transcoding. This is suitable for smaller setups or if you record infrequently.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Configuration:</strong> Each recorder instance must be configured to connect to the same NATS cluster.</p>
+</li>
+<li class="">
+<p><strong>Shared Storage:</strong> It is <strong>critical</strong> that all <code>recorderOnly</code> and <code>transcoderOnly</code> instances have access to the same shared storage location (e.g., NFS, S3) for the recording files.</p>
+</li>
+<li class="">
+<p><strong>Action:</strong> For detailed setup, refer to the <strong>official <code>plugnmeet-recorder</code> repository README</strong>.</p>
+</li>
 </ul>
 <p>**(Link: <a href="https://github.com/mynaparrot/plugNmeet-recorder" target="_blank" rel="noopener noreferrer" class="">Official plugNmeet-recorder README</a>)</p>
 <hr>
