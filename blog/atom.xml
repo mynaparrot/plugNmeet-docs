@@ -2,11 +2,202 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.plugnmeet.org/blog</id>
     <title>  Blog</title>
-    <updated>2025-10-29T00:00:00.000Z</updated>
+    <updated>2025-10-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[The Anatomy of a Perfect Online Workshop: A Step-by-Step Guide]]></title>
+        <id>https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop</id>
+        <link href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop"/>
+        <updated>2025-10-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We've all been there: an "interactive workshop" that's just a 90-minute video call with a slide deck. The host struggles to juggle different apps for polls, group activities, and notes, while the audience slowly disengages.]]></summary>
+        <content type="html"><![CDATA[<p>We've all been there: an "interactive workshop" that's just a 90-minute video call with a slide deck. The host struggles to juggle different apps for polls, group activities, and notes, while the audience slowly disengages.</p>
+<p>An online workshop shouldn't be a passive presentation. It should be a dynamic, collaborative experience. But to achieve that, you need more than just a video link; you need an integrated toolkit where every feature works together seamlessly.</p>
+<p>With Plug-N-Meet, you have that toolkit. This guide will walk you through the anatomy of a perfect online workshop, showing how to use a single, unified platform to manage every stage of your event, from the initial icebreaker to the automated follow-up.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-1-the-blueprint---setting-up-your-workshop-for-success">Step 1: The Blueprint - Setting Up Your Workshop for Success<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#step-1-the-blueprint---setting-up-your-workshop-for-success" class="hash-link" aria-label="Direct link to Step 1: The Blueprint - Setting Up Your Workshop for Success" title="Direct link to Step 1: The Blueprint - Setting Up Your Workshop for Success" translate="no">​</a></h3>
+<p>A great workshop starts with the right environment. When you create your Plug-N-Meet room, you're not just creating a call; you're setting the stage. Using the API or the dashboard, you can pre-configure the room specifically for interaction:</p>
+<ul>
+<li class=""><strong>Enable Breakout Rooms:</strong> Check the box to allow breakout rooms, ready for your group activities.</li>
+<li class=""><strong>Activate the Whiteboard:</strong> Ensure the interactive whiteboard is enabled for visual collaboration.</li>
+<li class=""><strong>Keep it Open:</strong> Unlike a formal webinar, you might start with microphones and webcams unlocked to encourage participation from the very beginning.</li>
+<li class=""><strong>Set Up Your Automation:</strong> Provide a <code>webhook_url</code> during room creation. This is the secret ingredient for our automated follow-up later.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-2-the-icebreaker---a-visual-welcome">Step 2: The Icebreaker - A Visual Welcome<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#step-2-the-icebreaker---a-visual-welcome" class="hash-link" aria-label="Direct link to Step 2: The Icebreaker - A Visual Welcome" title="Direct link to Step 2: The Icebreaker - A Visual Welcome" translate="no">​</a></h3>
+<p>Forget the awkward "let's go around and say our names" in the chat. A great workshop starts with immediate, visual engagement.</p>
+<p><strong>The Activity:</strong> Use the <strong>Interactive Whiteboard</strong> for a simple icebreaker. Upload an image of a world map. As participants join, enable <strong>multi-user drawing mode</strong> and ask everyone to place a dot or their name on the city they're joining from.</p>
+<p>In seconds, you've created a visual, interactive representation of your audience. It's a simple, powerful way to get everyone engaged and comfortable with the tools from the very first minute.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-3-the-core-activity---deep-collaboration-in-breakout-rooms">Step 3: The Core Activity - Deep Collaboration in Breakout Rooms<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#step-3-the-core-activity---deep-collaboration-in-breakout-rooms" class="hash-link" aria-label="Direct link to Step 3: The Core Activity - Deep Collaboration in Breakout Rooms" title="Direct link to Step 3: The Core Activity - Deep Collaboration in Breakout Rooms" translate="no">​</a></h3>
+<p>Now for the heart of the workshop. You announce, "We're going to split into groups of four to brainstorm solutions."</p>
+<p>With Plug-N-Meet, this is effortless:</p>
+<ol>
+<li class="">The host opens the <strong>Breakout Rooms</strong> management panel.</li>
+<li class="">They choose the number of rooms and the duration (e.g., "15 minutes").</li>
+<li class="">They can drag and drop participants into specific rooms or click <strong>"Randomly Assign"</strong> to have Plug-N-Meet do the work.</li>
+</ol>
+<p>The magic is what happens <em>inside</em> these rooms. Unlike other platforms where advanced features disappear, each breakout room in Plug-N-Meet gets its own <strong>fully functional, private interactive whiteboard and shared notepad.</strong></p>
+<p>Your groups can now brainstorm on their own canvas, create their own notes, and collaborate deeply without being distracted by the main session. As a host, you can even send a broadcast message to all rooms ("5 minutes left!") or pop into a specific room to see how they're doing.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-4-the-debrief---gathering-insights-with-live-polls">Step 4: The Debrief - Gathering Insights with Live Polls<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#step-4-the-debrief---gathering-insights-with-live-polls" class="hash-link" aria-label="Direct link to Step 4: The Debrief - Gathering Insights with Live Polls" title="Direct link to Step 4: The Debrief - Gathering Insights with Live Polls" translate="no">​</a></h3>
+<p>The breakout session timer ends, and everyone is automatically brought back to the main room. How do you efficiently gather the key takeaways from each group?</p>
+<p>This is the perfect moment for a <strong>Live Poll</strong>.</p>
+<p>The host creates a new poll on the fly: "Which proposed solution did your group find most promising?" with several options. As participants vote, the host sees the results update in real-time. Once the voting is closed, the host can click <strong>"Publish Results,"</strong> which sends a clean, graphical summary to the public chat for everyone to see and discuss. It's a structured, democratic, and highly efficient way to debrief.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="step-5-the-follow-up---smart-automated-summaries">Step 5: The Follow-Up - Smart, Automated Summaries<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#step-5-the-follow-up---smart-automated-summaries" class="hash-link" aria-label="Direct link to Step 5: The Follow-Up - Smart, Automated Summaries" title="Direct link to Step 5: The Follow-Up - Smart, Automated Summaries" translate="no">​</a></h3>
+<p>The workshop was a huge success. Now what? Manually downloading the recording, uploading it somewhere, and emailing a link to all attendees is a tedious, error-prone process.</p>
+<p>This is where the <code>webhook_url</code> you set up in Step 1 comes into play.</p>
+<ol>
+<li class="">The host clicks <strong>"End Recording."</strong></li>
+<li class="">A few minutes later, once the recording file is processed and ready, the Plug-N-Meet server automatically sends a notification (a webhook) to your server.</li>
+<li class="">Your system, listening for this <code>end_recording</code> event, receives a payload with the link to the downloadable MP4 file.</li>
+<li class="">Your server can then automatically trigger a pre-written email to all registered workshop attendees with a thank-you message and the link to the recording.</li>
+</ol>
+<p>The host does nothing. The follow-up is instant, professional, and completely automated.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-an-integrated-toolkit-for-true-collaboration">Conclusion: An Integrated Toolkit for True Collaboration<a href="https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop#conclusion-an-integrated-toolkit-for-true-collaboration" class="hash-link" aria-label="Direct link to Conclusion: An Integrated Toolkit for True Collaboration" title="Direct link to Conclusion: An Integrated Toolkit for True Collaboration" translate="no">​</a></h3>
+<p>A successful online workshop isn't about having a dozen different tools; it's about having the <em>right</em> tools that work together in harmony.</p>
+<p>From the initial setup and interactive icebreaker, through the deep collaboration in breakout rooms, to the structured polling and automated follow-up, Plug-N-Meet provides a single, integrated platform designed for one purpose: to help you create more engaging, effective, and professional online events.</p>
+<hr>
+<p><strong>Ready to host your best workshop yet?</strong></p>
+<ul>
+<li class=""><strong>Try these features in our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
+<li class=""><strong>Explore our <a class="" href="https://www.plugnmeet.org/docs/others/webhooks">Webhooks Documentation</a> to learn about automation</strong></li>
+<li class=""><strong>Check out the <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Bob Teng</name>
+            <uri>https://github.com/wbobteng</uri>
+        </author>
+        <category label="workshop" term="workshop"/>
+        <category label="collaboration" term="collaboration"/>
+        <category label="breakout-rooms" term="breakout-rooms"/>
+        <category label="whiteboard" term="whiteboard"/>
+        <category label="polling" term="polling"/>
+        <category label="use-case" term="use-case"/>
+        <category label="automation" term="automation"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Your Session, Your Browser: How We Use Client-Side Storage for Privacy and Resilience]]></title>
+        <id>https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience</id>
+        <link href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience"/>
+        <updated>2025-10-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We’ve all felt that moment of panic. You’re in an important online meeting, the chat is full of crucial links, and then you accidentally hit refresh. Everything is gone. To solve this, many applications store your entire session on their backend servers. This allows them to restore your session, but it comes at a huge cost: your sensitive data is now stored permanently on someone else's hard drive.]]></summary>
+        <content type="html"><![CDATA[<p>We’ve all felt that moment of panic. You’re in an important online meeting, the chat is full of crucial links, and then you accidentally hit refresh. Everything is gone. To solve this, many applications store your entire session on their backend servers. This allows them to restore your session, but it comes at a huge cost: your sensitive data is now stored permanently on someone else's hard drive.</p>
+<p>At plugNmeet, we believe this is the wrong trade-off. We've made a deliberate architectural choice to use <strong>your browser's own storage</strong> to provide a resilient experience without compromising your privacy.</p>
+<p>Our philosophy is simple: <strong>if we don't need the data on our server to make the service work, we don't touch it.</strong></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-problem-server-databases-are-data-honeypots">The Problem: Server Databases are Data "Honeypots"<a href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience#the-problem-server-databases-are-data-honeypots" class="hash-link" aria-label="Direct link to The Problem: Server Databases are Data &quot;Honeypots&quot;" title="Direct link to The Problem: Server Databases are Data &quot;Honeypots&quot;" translate="no">​</a></h2>
+<p>Most applications link your in-meeting activity to an account. They save your chat history, your whiteboard drawings, and your preferences in a large backend database.</p>
+<p>While this can be convenient, it creates a massive "honeypot" of user data. This central database becomes a prime target for data breaches. If the server is ever compromised, all of that user information is at risk.</p>
+<p>We believe this is an unnecessary risk for the kind of temporary data generated during a meeting.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-plugnmeet-solution-your-browser-is-your-temporary-database">The plugNmeet Solution: Your Browser is Your Temporary Database<a href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience#the-plugnmeet-solution-your-browser-is-your-temporary-database" class="hash-link" aria-label="Direct link to The plugNmeet Solution: Your Browser is Your Temporary Database" title="Direct link to The plugNmeet Solution: Your Browser is Your Temporary Database" translate="no">​</a></h2>
+<p>To give you a smooth experience without compromising your privacy, we use your browser's built-in storage (IndexedDB) for temporary session information.</p>
+<p>This means that when you're in a meeting, data like this is stored <strong>only on your own computer</strong>:</p>
+<ul>
+<li class=""><strong>Your chat history</strong> for the current session.</li>
+<li class="">The state of the <strong>collaborative whiteboard</strong>.</li>
+<li class="">Your chosen <strong>subtitle language</strong>, etc.</li>
+</ul>
+<p>Our backend server has no knowledge of this information. We use this local storage for one primary reason: to make your experience resilient by restoring your session if you accidentally refresh the page.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-lifecycle-of-your-data-here-today-gone-tomorrow">The Lifecycle of Your Data: Here Today, Gone Tomorrow<a href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience#the-lifecycle-of-your-data-here-today-gone-tomorrow" class="hash-link" aria-label="Direct link to The Lifecycle of Your Data: Here Today, Gone Tomorrow" title="Direct link to The Lifecycle of Your Data: Here Today, Gone Tomorrow" translate="no">​</a></h3>
+<p>The data stored in your browser is designed to be temporary. Here's how we handle it in simple terms:</p>
+<ol>
+<li class="">
+<p><strong>When you leave a meeting properly,</strong> all the session data we stored in your browser is <strong>immediately and permanently deleted.</strong></p>
+</li>
+<li class="">
+<p><strong>If you leave abnormally</strong> (like closing the tab), the data remains temporarily to allow you to rejoin. However, the next time you start the application, a cleanup process automatically finds and <strong>deletes this old data</strong> after a few hours.</p>
+</li>
+</ol>
+<p>This ensures that your browser stays clean and your session data remains ephemeral.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-privacy-and-resilience-by-design">Conclusion: Privacy and Resilience by Design<a href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience#conclusion-privacy-and-resilience-by-design" class="hash-link" aria-label="Direct link to Conclusion: Privacy and Resilience by Design" title="Direct link to Conclusion: Privacy and Resilience by Design" translate="no">​</a></h2>
+<p>Our decision to use client-side storage is a core part of our "privacy by design" philosophy.</p>
+<p>By not collecting and storing your in-meeting activity on our servers, we can make a simple but powerful promise: <strong>we cannot lose, misuse, or be forced to hand over data that we do not have.</strong></p>
+<p>It's a simple principle that leads to a more private, more secure, and more respectful platform for everyone. Your data stays where it belongs: with you.</p>
+<hr>
+<p><strong>Want to learn more about our security model?</strong></p>
+<ul>
+<li class=""><strong>Read our complete <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a></strong></li>
+<li class=""><strong>Explore the <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Chaboud Simon</name>
+            <uri>https://github.com/saimonzone</uri>
+        </author>
+        <category label="privacy" term="privacy"/>
+        <category label="security" term="security"/>
+        <category label="architecture" term="architecture"/>
+        <category label="indexeddb" term="indexeddb"/>
+        <category label="data-minimization" term="data-minimization"/>
+        <category label="ux" term="ux"/>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Our Philosophy on Recordings: Why We Capture the Whole Picture]]></title>
+        <id>https://www.plugnmeet.org/blog/recording-philosophy</id>
+        <link href="https://www.plugnmeet.org/blog/recording-philosophy"/>
+        <updated>2025-10-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What is a meeting recording? Is it just a collection of video and audio streams? Or is it a faithful replica of a live, interactive experience?]]></summary>
+        <content type="html"><![CDATA[<p>What is a meeting recording? Is it just a collection of video and audio streams? Or is it a faithful replica of a live, interactive experience?</p>
+<p>At Plug-N-Meet, we believe a recording should be a perfect, trustworthy artifact. When you watch it back, the whiteboard annotations should appear at the exact moment the speaker was discussing them. The chat messages should pop up in perfect sync with the conversation. The shared presentation should be exactly as the audience saw it.</p>
+<p>To achieve this perfect fidelity, we made a deliberate architectural choice for our recorder: we record the <strong>final, rendered output</strong>, not just the individual parts. This article explains why this headless Chrome-based approach, while CPU-intensive, is fundamentally better and more reliable than the alternatives.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-alternative-the-fragile-puzzle-of-component-based-recording">The Alternative: The Fragile Puzzle of Component-Based Recording<a href="https://www.plugnmeet.org/blog/recording-philosophy#the-alternative-the-fragile-puzzle-of-component-based-recording" class="hash-link" aria-label="Direct link to The Alternative: The Fragile Puzzle of Component-Based Recording" title="Direct link to The Alternative: The Fragile Puzzle of Component-Based Recording" translate="no">​</a></h3>
+<p>Many systems attempt to record meetings by capturing each data stream independently:</p>
+<ul>
+<li class="">One file for each participant's audio.</li>
+<li class="">Another file for each video stream.</li>
+<li class="">A JSON or text file containing all the chat messages with timestamps.</li>
+<li class="">A separate event log for all the whiteboard drawings, pointer movements, and slide changes.</li>
+</ul>
+<p>On the surface, this seems efficient. But it creates a massive, fragile puzzle for post-processing. The system must then try to reassemble all these disparate pieces into a single, coherent video.</p>
+<p>This approach is fraught with peril:</p>
+<ul>
+<li class=""><strong>Synchronization Nightmares:</strong> What if a network hiccup causes a slight drift in the timestamps between the audio and the whiteboard events? The result is a recording where the presenter is pointing at something that isn't there yet.</li>
+<li class=""><strong>Complexity in Playback:</strong> To view the "recording," you often need a special player that knows how to read all these separate files and reconstruct the session on the fly. The final output isn't a simple, portable video file.</li>
+<li class=""><strong>Brittle and Not Future-Proof:</strong> If you add a new feature to your client, like emoji reactions, you also have to update your entire recording-processing logic to know how to handle and display this new "part."</li>
+</ul>
+<p>This method doesn't create a recording; it creates a complex and fragile reconstruction that is only as good as its weakest link.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-plug-n-meet-way-recording-what-you-actually-see">The Plug-N-Meet Way: Recording What You Actually See<a href="https://www.plugnmeet.org/blog/recording-philosophy#the-plug-n-meet-way-recording-what-you-actually-see" class="hash-link" aria-label="Direct link to The Plug-N-Meet Way: Recording What You Actually See" title="Direct link to The Plug-N-Meet Way: Recording What You Actually See" translate="no">​</a></h3>
+<p>Our philosophy is simpler and far more robust. We believe the only way to perfectly capture a live event is to record it exactly as a human participant would experience it.</p>
+<p>Here’s how we do it:</p>
+<ol>
+<li class="">When a recording is initiated, we launch a <strong>"virtual participant"</strong> into the meeting. This is a headless Chrome browser running on the server.</li>
+<li class="">This virtual user sees and hears everything exactly as a real person would. It sees the active speaker, the shared screen, the whiteboard drawings, and the chat messages as they appear, all rendered together in a single, final view.</li>
+<li class="">We then use the industry-standard <code>ffmpeg</code> to capture the output of this browser window, encoding it directly into a standard <strong>MP4 video file</strong>.</li>
+</ol>
+<p>The result is a single, self-contained video file that is a <strong>perfect, high-fidelity replica</strong> of the live session. What you saw is what you get.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-best-of-both-worlds-fidelity-and-scalability">The Best of Both Worlds: Fidelity and Scalability<a href="https://www.plugnmeet.org/blog/recording-philosophy#the-best-of-both-worlds-fidelity-and-scalability" class="hash-link" aria-label="Direct link to The Best of Both Worlds: Fidelity and Scalability" title="Direct link to The Best of Both Worlds: Fidelity and Scalability" translate="no">​</a></h3>
+<p>We are transparent about the trade-off: running a headless browser and encoding video in real-time is a CPU-intensive task. In our previous architecture, this could mean that a server busy with post-processing a finished recording might have fewer resources available for new, live recordings.</p>
+<p>We have completely solved this.</p>
+<p>The new <code>plugnmeet-recorder</code> introduces <strong>Operational Modes</strong>, allowing you to decouple the recording pipeline.</p>
+<ul>
+<li class="">You can run lightweight <strong><code>recorderOnly</code></strong> instances whose sole job is to join the meeting and capture the raw, high-fidelity stream. They use minimal CPU and are always ready for the next live session.</li>
+<li class="">You can then run a separate fleet of <strong><code>transcoderOnly</code></strong> workers on different, even cheaper, servers. Their only job is to perform the CPU-intensive post-processing, converting the raw files into the final MP4s.</li>
+</ul>
+<p>This architecture gives you the best of both worlds: the perfect fidelity of a headless Chrome recording and the scalability to offload the intensive work, ensuring your live meetings are never impacted.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-a-commitment-to-quality">Conclusion: A Commitment to Quality<a href="https://www.plugnmeet.org/blog/recording-philosophy#conclusion-a-commitment-to-quality" class="hash-link" aria-label="Direct link to Conclusion: A Commitment to Quality" title="Direct link to Conclusion: A Commitment to Quality" translate="no">​</a></h3>
+<p>Our choice to use a headless browser for recordings is a direct reflection of our commitment to quality and reliability. A meeting recording is often a critical business asset or an essential educational resource. It needs to be perfect. By capturing the entire, rendered experience—and providing a scalable architecture to manage the workload—we ensure that your recordings are not just a collection of parts, but a trustworthy and professional record of what actually happened.</p>
+<hr>
+<p><strong>Ready to dive deeper into our recording architecture?</strong></p>
+<ul>
+<li class=""><strong><a href="https://github.com/mynaparrot/plugNmeet-recorder" target="_blank" rel="noopener noreferrer" class="">Explore the plugNmeet-recorder on GitHub</a></strong></li>
+<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Read our Scalable Deployment Guide</a> to see how to use the new operational modes.</strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo to create a recording yourself</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Jibon L. Costa</name>
+            <uri>https://github.com/jibon57</uri>
+        </author>
+        <category label="recorder" term="recorder"/>
+        <category label="architecture" term="architecture"/>
+        <category label="ffmpeg" term="ffmpeg"/>
+        <category label="headless-chrome" term="headless-chrome"/>
+        <category label="philosophy" term="philosophy"/>
+        <category label="reliability" term="reliability"/>
+        <category label="scalability" term="scalability"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Who Holds the Keys? A Guide to plugNmeet's End-to-End Encryption Models]]></title>
         <id>https://www.plugnmeet.org/blog/e2ee-key-models-guide</id>
