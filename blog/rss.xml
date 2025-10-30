@@ -4,10 +4,89 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Thu, 30 Oct 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 31 Oct 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Why We Built Plug-N-Meet: A Founder's Story]]></title>
+            <link>https://www.plugnmeet.org/blog/why-we-built-plugnmeet</link>
+            <guid>https://www.plugnmeet.org/blog/why-we-built-plugnmeet</guid>
+            <pubDate>Fri, 31 Oct 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[For years, our company has been a well-known provider of BigBlueButton hosting and support services. We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.]]></description>
+            <content:encoded><![CDATA[<p>For years, our company has been a well-known provider of BigBlueButton hosting and support services. We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.</p>
+<p>But after years in the trenches, supporting live sessions, online classes, and events at scale, we found ourselves running into the same fundamental walls. We weren't just using the software; we were experiencing its architectural limits firsthand. The frustration wasn't just about bugs; it was about an architecture that, while powerful for its original purpose, presented challenges for the kind of elastic scalability and developer agility that modern web applications demand.</p>
+<p>We realized we had a choice: continue building workarounds, or take everything we had learned and build the solution we knew our users needed.</p>
+<p>We chose to build. This is the story of why Plug-N-Meet exists.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="lessons-from-the-trenches-the-challenges-we-had-to-solve">Lessons from the Trenches: The Challenges We Had to Solve<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#lessons-from-the-trenches-the-challenges-we-had-to-solve" class="hash-link" aria-label="Direct link to Lessons from the Trenches: The Challenges We Had to Solve" title="Direct link to Lessons from the Trenches: The Challenges We Had to Solve" translate="no">​</a></h3>
+<p>Our decision wasn't born from a dislike of BigBlueButton, but from a deep understanding of its pain points at scale. We consistently faced a set of recurring challenges:</p>
+<ul>
+<li class="">
+<p><strong>The 100-User Wall:</strong> We saw time and again that even on powerful servers, BigBlueButton's performance would degrade significantly once a session crossed 100-150 concurrent users. It simply wasn't designed for the elastic scalability modern applications require.</p>
+</li>
+<li class="">
+<p><strong>The Labyrinth of Complexity:</strong> The architecture is a mix of different programming languages and technologies, each solving a different piece of the puzzle. While brilliant in its time, this makes it incredibly difficult to maintain, debug, and—most importantly—add new features to. A simple change could have cascading effects across a half-dozen different services.</p>
+</li>
+<li class="">
+<p><strong>The Branding Straitjacket:</strong> For our clients who wanted a true white-label experience, customization was a constant struggle. Deep branding required complex themeing and often direct code modifications, making every update a risky and time-consuming process.</p>
+</li>
+<li class="">
+<p><strong>The Recording Puzzle:</strong> Recordings were a major pain point. The system was complex, and generating a single, portable MP4 file was notoriously difficult. In fact, I developed one of the first open-source solutions to try and solve this very problem, but even then, it was a patch on a fundamentally complicated system.</p>
+</li>
+<li class="">
+<p><strong>The Monolithic Burden:</strong> The lack of modularity was the biggest roadblock. You couldn't scale one part of the system without scaling the whole thing. If recording was using all the CPU, it directly impacted live meetings. There was no separation of concerns.</p>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="a-new-philosophy-built-on-simplicity-modularity-and-control">A New Philosophy: Built on Simplicity, Modularity, and Control<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#a-new-philosophy-built-on-simplicity-modularity-and-control" class="hash-link" aria-label="Direct link to A New Philosophy: Built on Simplicity, Modularity, and Control" title="Direct link to A New Philosophy: Built on Simplicity, Modularity, and Control" translate="no">​</a></h3>
+<p>With Plug-N-Meet, we started with a clean slate and a few core principles born directly from our frustrations.</p>
+<ol>
+<li class="">
+<p><strong>Radical Simplicity in Technology.</strong>
+Instead of a dozen languages, we chose two: <strong>Go</strong> for the entire backend and <strong>TypeScript (with React)</strong> for the front-end. That's it. This decision extended to our core dependencies. We chose <strong>LiveKit</strong> as our media server and <strong>NATS</strong> for messaging, not just because they are best-in-class, but because they are also written in Go. This creates a unified, consistent, and high-performance ecosystem—a topic we explore in our <strong><a class="" href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive">Backend Architecture Deep Dive</a></strong>—that is a joy for our developers to work in and easy for the community to contribute to.</p>
+</li>
+<li class="">
+<p><strong>Modularity by Design.</strong>
+Plug-N-Meet is not a monolith. It's a decoupled system of components that work together. The recorder, the media server, and the application logic are all separate. This means you can scale, update, or even replace one part without breaking everything else. Our new recorder's "Operational Modes" are a perfect example of this, a direct result of our <strong><a class="" href="https://www.plugnmeet.org/blog/recording-philosophy">recording philosophy</a></strong>. This allows you to run CPU-intensive transcoding on entirely different machines from your live recording servers, a concept we explore further in our <strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong>.</p>
+</li>
+<li class="">
+<p><strong>Effortless Customization.</strong>
+Branding shouldn't be a development project. With Plug-N-Meet, deep customization is handled via a simple API and configuration objects. You can change colors, logos, and even the entire layout without ever touching our core code, as outlined in our <strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/design-customisation">Design Customization Guide</a></strong>, ensuring that your platform always feels like <em>your</em> platform.</p>
+</li>
+<li class="">
+<p><strong>Empowering Everyone Through Integration.</strong>
+While we provide powerful tools for developers, our philosophy has always been to make Plug-N-Meet accessible to everyone. A powerful platform shouldn't require a team of engineers to use. That's why we've invested heavily in creating simple, robust plugins for the world's most popular CMS and LMS platforms.</p>
+<p>With our official plugins for <strong>WordPress</strong>, <strong>Moodle</strong>, and <strong>Joomla</strong>, anyone can add a fully-featured, branded video conferencing service to their website in minutes. These integrations aren't just an afterthought; they are a core part of our mission to empower creators. As we've detailed in our guides, you can even <strong><a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-wordpress">launch your own video service with WordPress</a></strong>, <strong><a class="" href="https://www.plugnmeet.org/blog/secure-scalable-moodle-e-learning-platform">build a scalable e-learning platform with Moodle</a></strong>, or <strong><a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-joomla">start a no-code business with Joomla</a></strong>, no coding required.</p>
+</li>
+<li class="">
+<p><strong>Developer-First, Not an Afterthought.</strong>
+We are not a domain-based solution that locks you into a rigid structure. We are an API-first platform designed to be a building block. Whether you use our simple plugins for WordPress and Moodle or our <strong><a class="" href="https://www.plugnmeet.org/docs/api/get-client-files"><code>getClientFiles</code> API</a></strong> for a "headless" integration, our goal is to empower you to build the exact experience you want, not force you into ours.</p>
+</li>
+<li class="">
+<p><strong>Security as a Foundation, Not an Add-on.</strong>
+In today's world, privacy is non-negotiable. We built Plug-N-Meet with a security-first mindset, offering robust <strong>End-to-End Encryption (E2EE)</strong> as a core feature, with multiple <strong><a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">key management models</a></strong> to fit any security posture. This ensures that conversations are private and that not even the server can access the media streams. This commitment to privacy is woven through our entire architecture, as detailed in our <strong><a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a></strong>.</p>
+</li>
+</ol>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-building-the-road-for-the-future">Conclusion: Building the Road for the Future<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#conclusion-building-the-road-for-the-future" class="hash-link" aria-label="Direct link to Conclusion: Building the Road for the Future" title="Direct link to Conclusion: Building the Road for the Future" translate="no">​</a></h3>
+<p>We will always be grateful for the path that BigBlueButton paved. It showed the world what was possible with open-source communication. But the web has evolved, and the demands for scalability, flexibility, and developer experience have grown exponentially.</p>
+<p>We built Plug-N-Meet to answer that call. It is the platform we wished we had during all those years of managing complex deployments—a simpler, more powerful, and more flexible foundation for the future of real-time communication.</p>
+<p>We are not building a tool for everyone. We are building a <strong>platform for builders.</strong></p>
+<hr>
+<p><strong>Ready to see the difference for yourself?</strong></p>
+<ul>
+<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/tutorials/migration-from-bbb">Migrating from BigBlueButton? We've made it easy.</a></strong></li>
+<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/api/intro">Explore our API Documentation</a></strong></li>
+<li class=""><strong><a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Explore the Open-Source Project on GitHub</a></strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo to experience the modern interface.</a></strong></li>
+</ul>]]></content:encoded>
+            <category>open-source</category>
+            <category>architecture</category>
+            <category>philosophy</category>
+            <category>bigbluebutton</category>
+            <category>scalability</category>
+            <category>developer</category>
+        </item>
         <item>
             <title><![CDATA[The Anatomy of a Perfect Online Workshop: A Step-by-Step Guide]]></title>
             <link>https://www.plugnmeet.org/blog/anatomy-of-a-perfect-online-workshop</link>
