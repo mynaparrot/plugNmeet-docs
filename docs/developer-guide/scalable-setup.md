@@ -118,11 +118,23 @@ The `plugnmeet-recorder` is a special case. While it is stateful during a job, i
 
 *   **Configuration:** Each recorder instance must be configured to connect to the same NATS cluster.
 
-*   **Shared Storage:** It is **critical** that all `recorderOnly` and `transcoderOnly` instances have access to the same shared storage location (e.g., NFS, S3) for the recording files.
-
 *   **Action:** For detailed setup, refer to the **official `plugnmeet-recorder` repository README**.
 
 **(Link: [Official plugNmeet-recorder README](https://github.com/mynaparrot/plugNmeet-recorder))
+
+---
+
+### 4. Shared Filesystem: A Critical Requirement for Data Consistency
+
+In a distributed environment where requests can be handled by any `plugnmeet-server` instance, it is **absolutely critical** that all stateless servers have access to a shared filesystem for storing and retrieving persistent files. Without this, your users will experience broken features like missing file downloads or inaccessible recordings.
+
+You must mount a shared network storage solution (such as **NFS**, **GlusterFS**, or an **S3-compatible object store** mounted as a filesystem) to the same path on **all** of your `plugnmeet-server` and `plugnmeet-recorder` instances.
+
+The following paths in your `config.yaml` must point to this shared location:
+
+*   **`recorder_info.recording_files_path`**: `plugnmeet-recorder` instances write MP4 files here, but **all** `plugnmeet-server` instances need read access to serve download requests via the API.
+*   **`analytics_settings.files_store_path`**: When a room ends, any `plugnmeet-server` might write the analytics JSON file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.
+*   **`upload_file_settings.path`**: When a user uploads a file in chat, the request might be handled by one server. When another user tries to download it, that request could go to any other server in the cluster.
 
 ---
 
