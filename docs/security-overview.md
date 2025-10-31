@@ -1,14 +1,14 @@
 ---
-title: Plug-N-Meet Security Overview | Your Self-Hosted Video Conferencing Solution
+title: Plug-N-Meet Security and Privacy Overview | Your Self-Hosted Video Conferencing Solution
 description: A detailed overview of the security architecture, authentication, authorization, and end-to-end encryption (E2EE) mechanisms within the Plug-N-Meet platform.
-keywords: [security, e2ee, end-to-end encryption, authentication, authorization, hmac, jwt, nats, livekit, webrtc security]
+keywords: [security, privacy, data handling, e2ee, end-to-end encryption, authentication, authorization, hmac, jwt, nats, livekit, webrtc security]
 sidebar_position: 3
-sidebar_label: Security Overview
+sidebar_label: Security & Privacy
 ---
 
-# Plug-N-Meet Security Overview
+# Plug-N-Meet Security and Privacy Overview
 
-This document provides a detailed overview of the security architecture of the Plug-N-Meet platform. The system is designed from the ground up to ensure the confidentiality, integrity, and availability of all user communications, providing a secure and private environment for your meetings.
+This document provides a comprehensive overview of the security architecture and data privacy principles that govern the Plug-N-Meet platform. It details not only the technical measures we take to protect your meetings from unauthorized access, but also provides a transparent look at how your data is handled, stored, and managed throughout its entire lifecycle. The system is designed from the ground up to be secure by default and to give you, the operator, full control over your data.
 
 ## Table of Contents
 
@@ -97,15 +97,14 @@ Media streams are managed by LiveKit, which has built-in support for E2EE.
 
 ### 5. Secure Session Flow
 
-The end-to-end connection process is designed with security at each step:
+The end-to-end connection process is designed with security at each step. The exact flow can vary based on the room's configuration (e.g., whether E2EE is enabled).
 
-1.  **Token Verification**: Client verifies its token with the backend.
-2.  **E2EE Key Prompt (if applicable)**: If self-insertion is enabled, the user provides their secret key, which is hashed client-side.
-3.  **NATS Connection**: The client connects to NATS using the credentials from step 1. The NATS auth service grants fine-grained permissions.
-4.  **Initial Data Fetch**: The client requests initial room data over the secure NATS connection.
-5.  **E2EE Key Import**: The client imports the E2EE key (either from the server or derived from user input).
-6.  **Media Connection**: The client connects to the LiveKit media server, enabling E2EE with the imported key.
-7.  **Encrypted Communication**: All subsequent data and media are now end-to-end encrypted.
+1.  **Token Verification**: The client verifies its access token with the backend.
+2.  **NATS Connection**: The client connects to NATS using the credentials from step 1. The NATS auth service grants fine-grained permissions for the session.
+3.  **Initial Data Fetch**: The client requests initial room data over the secure NATS connection.
+4.  **(Conditional) E2EE Key Import**: If End-to-End Encryption is enabled for the room, the client imports the E2EE key. This key is either received from the server or derived from the user's manual input, depending on the room's E2EE settings.
+5.  **Media Connection**: The client connects to the LiveKit media server. If E2EE is active, it enables encryption with the imported key.
+6.  **Secure Communication**: All subsequent data and media are now handled according to the room's security configuration, with E2EE applied if it was enabled.
 
 ### 6. Browser Storage (IndexedDB)
 
@@ -155,10 +154,14 @@ For historical reference and administrative purposes, a small subset of non-sens
 PlugNmeet provides the option to persist detailed analytics for a session to help administrators understand usage patterns. This feature is governed by a setting that provides administrators with control over data retention.
 
 -   **User Control:** The decision to **persist** analytics data is made by the administrator on a per-room basis via the `enable_analytics` flag, adhering to the principle of privacy by default.
--   **Data Collected:** The data aggregated in-memory during a session may include metrics such as user join/leave times, the number of times a user speaks, files uploaded, and other engagement events.
--   **Storage:** If persisted, the aggregated analytics data is **always stored as a JSON file** on the server's filesystem. A reference to the filename and its associated room is then stored in a dedicated table in the persistent database for easy retrieval.
+-   **Data Collected (Metadata, Not Content):** To protect user privacy, PlugNmeet **does not store the raw content** of user interactions in its analytics. Instead, it aggregates metadata and event counters. For example, the system records:
+    -   The *number of times* a user sent a chat message, not the chat messages themselves.
+    -   The *number of times* a user drew on the whiteboard, not the content of the drawings.
+    -   The *total duration* a user spoke, not the audio of what they said.
+    -   Other engagement events like join/leave times, files uploaded, and poll votes.
+-   **Storage:** If persisted, this aggregated metadata is **always stored as a JSON file** on the server's filesystem. A reference to the filename and its associated room is then stored in a dedicated table in the persistent database for easy retrieval.
 -   **Lifecycle:** Analytics data is aggregated in-memory during the course of an active session. Upon the conclusion of the session, the system checks the room's `enable_analytics` setting.
-    -   If `true`, the aggregated data is written to a JSON file, and its reference is saved to the database.
+    -   If `true`, the aggregated metadata is written to a JSON file, and its reference is saved to the database.
     -   If `false`, the in-memory data is immediately discarded and is not persisted in any form.
 
 #### 7.4. Cloud Recordings
@@ -166,12 +169,10 @@ PlugNmeet provides the option to persist detailed analytics for a session to hel
 When cloud recording is enabled for a session, the resulting media file (MP4) is stored on the server.
 
 -   **Purpose:** To provide a persistent, shareable record of a meeting.
--   **Storage:** The MP4 files are stored in a configurable directory on the server's filesystem.
+-   **Storage:** The MP4 files are stored in a configurable directory on the server's filesystem. To allow for easy management and retrieval via the API, a reference to each recording—including its `record_id`, associated `roomId`, `file_path`, `file_size`, and creation timestamp—is stored in a dedicated table in the persistent database.
 -   **User Control & Lifecycle:** The management of these recordings is entirely controlled by the administrator via the API. Recordings are retained on the server indefinitely until they are explicitly deleted using the `/recording/delete` API call. This gives the administrator full control over the data retention lifecycle.
 -   **E2EE Incompatibility:** Server-side recording is **fundamentally incompatible** with zero-trust End-to-End Encryption. Therefore, cloud recording is automatically disabled and cannot be initiated if the room is configured with `enabled_self_insert_encryption_key: true`. This is because the server has no access to the unencrypted media streams required to create the recording, which is the core guarantee of the E2EE model.
 
-This layered approach to data handling ensures that plugNmeet is both performant and flexible, while giving operators the transparency and control needed to meet their own privacy and compliance obligations.
-
 ---
 
-This multi-layered approach ensures that Plug-N-Meet sessions are secure, private, and resilient against common threats.
+This layered approach to security and data handling does more than just protect against common threats; it provides a transparent and flexible framework that puts you, the operator, in control. By combining robust security measures with a "**_privacy by design_**" philosophy, Plug-N-Meet gives you the tools and the transparency needed to meet your own privacy and compliance obligations confidently.
