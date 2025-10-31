@@ -1,12 +1,14 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
+import { Carousel } from 'react-responsive-carousel';
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import Banner from '../../static/img/slider/BannerOne2-min.png';
 import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
 import DesktopCam from '../../static/img/slider/Desktop_version_cam.png';
 import DesktopWhiteBoard from '../../static/img/slider/Desktop_version_whiteboard.png';
 import DesktopNotePad from '../../static/img/slider/Desktop_version_NotePad.png';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
 
 const HeroBanner = () => {
   return (

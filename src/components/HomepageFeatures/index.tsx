@@ -3,7 +3,7 @@ import React from 'react';
 type FeatureItem = {
   title: string;
   Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
+  description: React.Element;
 };
 
 const FeatureList: FeatureItem[] = [
