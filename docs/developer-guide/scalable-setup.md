@@ -22,16 +22,24 @@ For optimal performance, especially when recording frequently, we strongly recom
 
 *   **Why?** Recording and post-processing (transcoding) are CPU-intensive tasks. Isolating them prevents recording jobs from impacting the performance of your live meetings.
 *   **When?** This should be your first step if you notice performance degradation during active recordings.
-
-However, if you only plan to record sessions infrequently, running the recorder on the same server (as the default installation script does) is a perfectly viable option.
+*   **Key Requirements:** When you isolate the recorder, you must configure a **shared network storage** for your recording files and assign a **unique ID** to the recorder instance.
+*   **Next Steps:** For detailed configuration instructions, please refer to [The plugNmeet Recorder](#3-the-plugnmeet-recorder) section later in this guide.
 
 #### Phase 2: Vertically Scale Your Main Server
 
 If you are not recording heavily but are still seeing performance issues, the next step is to **vertically scale** your single server. This simply means adding more CPU cores and RAM. A single, well-provisioned server can comfortably handle **hundreds of concurrent users**.
 
-#### Phase 3: Go Fully Distributed
+#### Phase 3: Advanced Distributed Setups
 
-Only after you have isolated the recorder and vertically scaled your main server should you consider the fully distributed setup described in the rest of this guide. This advanced architecture is intended for very large-scale deployments where a single server is no longer sufficient.
+:::note[For Advanced, Large-Scale Deployments]
+
+Most users will **never** need to go beyond Phase 1 (isolating the recorder) and Phase 2 (vertically scaling). A single, well-provisioned server can handle a very large number of concurrent users and operations.
+
+The fully distributed architecture described in the rest of this guide is designed for massive, enterprise-scale deployments with extreme high-availability requirements. You should only consider this phase after you have exhausted vertical scaling options.
+
+When you do reach this scale, **remember that it is not an all-or-nothing process**. You can incrementally scale individual components (like LiveKit or NATS) as needed, rather than clustering everything at once. The rest of this guide details the conceptual architecture for when you need to scale each part.
+
+:::
 
 ---
 
@@ -49,6 +57,8 @@ In a distributed setup, the core components of plugNmeet are separated onto diff
     *   A `MariaDB` cluster.
 3.  **Horizontally Scaled Recorders:**
     *   Multiple `plugnmeet-recorder` instances, potentially in different operational modes.
+4.  **Shared & Persistent File Storage:**
+    *   A shared network filesystem (e.g., NFS, Samba (CIFS), GlusterFS, or S3-compatible) accessible by all `plugnmeet-server` and `plugnmeet-recorder` instances. This is a critical component that ensures recordings, analytics files, and user uploads are consistently available across the entire cluster.
 
 ---
 
@@ -60,9 +70,12 @@ The key to a successful distributed setup is understanding how each component sc
 
 These components can be placed behind a standard load balancer, whose primary role is to terminate SSL and distribute initial traffic.
 
-#### The plugNmeet Server
+#### The plugNmeet Server: The Lightweight Command Post
 
-The main `plugnmeet-server` application is **stateless**.
+The main `plugnmeet-server` application is designed to be a lightweight, stateless **command post** or orchestrator. It intentionally offloads all heavy lifting: media is handled by LiveKit, and recording is handled by the `plugnmeet-recorder`.
+
+Its core responsibility is to handle API requests, authenticate users, and coordinate the overall session via NATS. Because it uses very few resources (CPU and RAM), it is incredibly efficient and easy to scale horizontally.
+
 *   **Action:** You can run multiple instances on different machines and place them behind a standard L4 or L7 load balancer using a simple algorithm like round-robin or least connections.
 *   **Configuration:** Each instance must be configured to point to the same shared infrastructure (NATS, Redis, and MariaDB).
 
@@ -94,7 +107,7 @@ LiveKit also works behind a load balancer for initial connections.
 *   **Recommendation:** For high availability, the database must be clustered. All `plugnmeet-server` instances must point to the same database cluster.
 *   **Action:** Use a managed, high-availability database service from a cloud provider, or set up your own solution like a MariaDB Galera Cluster. Follow the official documentation for your chosen solution.
 
-**(Link: [Official MariaDB Documentation](https://mariadb.com/docs/server/ha-and-performance/standard-replication/setting-up-replication))
+**(Link: [Official MariaDB Documentation](https://mariadb.com/docs/galera-cluster))
 
 #### Redis Cache
 
@@ -128,7 +141,7 @@ The `plugnmeet-recorder` is a special case. While it is stateful during a job, i
 
 In a distributed environment where requests can be handled by any `plugnmeet-server` instance, it is **absolutely critical** that all stateless servers have access to a shared filesystem for storing and retrieving persistent files. Without this, your users will experience broken features like missing file downloads or inaccessible recordings.
 
-You must mount a shared network storage solution (such as **NFS**, **GlusterFS**, or an **S3-compatible object store** mounted as a filesystem) to the same path on **all** of your `plugnmeet-server` and `plugnmeet-recorder` instances.
+You must mount a shared network storage solution (such as **NFS**, **Samba (CIFS)**, **GlusterFS**, or an **S3-compatible object store** mounted as a filesystem) to the same path on **all** of your `plugnmeet-server` and `plugnmeet-recorder` instances.
 
 The following paths in your `config.yaml` must point to this shared location:
 
