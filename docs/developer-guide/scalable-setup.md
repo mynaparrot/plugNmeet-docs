@@ -129,7 +129,17 @@ The `plugnmeet-recorder` is a special case. While it is stateful during a job, i
     *   **`transcoderOnly`:** This instance will *only* process transcoding jobs. It subscribes to the job queue, performs the CPU-intensive conversion of raw files to MP4, and does not handle any live recordings. You can run a fleet of these workers on cheaper, CPU-optimized VMs to process recordings in parallel without impacting live meetings.
     *   **`both` (Default):** A single instance performs both live recording and transcoding. This is suitable for smaller setups or if you record infrequently.
 
-*   **Configuration:** Each recorder instance must be configured to connect to the same NATS cluster.
+*   **Configuration:**
+    *   Each recorder instance must be configured to connect to the same NATS cluster.
+    *   Each recorder instance **must** be assigned a unique `id` in its `config.yaml` under the `recorder` section (e.g., `recorder.id: "recorder-node-1"`). This ID is used by the `plugnmeet-server` to track and communicate with individual workers. It is especially critical for `recorderOnly` and `both` modes, and highly recommended for all instances for clear logging and identification.
+
+:::warning[Administrator Responsibility]
+
+It is **your responsibility** to ensure that every single recorder instance has a globally unique `id`. The `plugnmeet-server` does **not** validate the uniqueness of these IDs.
+
+If multiple recorders share the same ID, they will all try to accept the same recording job from the NATS queue. This race condition will cause the job to fail, as none of the instances will be able to acquire the necessary lock. This scenario is extremely difficult to debug, as the only symptom may be that recordings intermittently fail to start.
+
+:::
 
 *   **Action:** For detailed setup, refer to the **official `plugnmeet-recorder` repository README**.
 
