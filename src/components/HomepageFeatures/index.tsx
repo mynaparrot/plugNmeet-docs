@@ -29,9 +29,7 @@ const FeatureList: FeatureItem[] = [
       <>
         <h3>Fully Customizable & Brandable</h3>
         <p>
-          Personalize every aspect of your online meetings and video calls. Customize URLs, logos,
-          branding colors, and available features to create a seamless user
-          experience.
+          Personalize every aspect of your meetings with a simple API, no code changes required. Customize URLs, logos, branding colors, and available features to create a truly white-label experience.
         </p>
       </>
     ),
@@ -42,10 +40,9 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>HD Video & Rich Media</h3>
+        <h3>HD Video & MP4 Recording</h3>
         <p>
-          Engage your audience with high-definition audio and video during your web conference. Supports virtual backgrounds, file sharing, and MP4/WebM
-          recordings.
+          Engage your audience with HD audio and video, alongside powerful features like virtual backgrounds and file sharing. Our scalable cloud recorder captures every session as a single, portable MP4 file.
         </p>
       </>
     ),
@@ -58,8 +55,7 @@ const FeatureList: FeatureItem[] = [
       <>
         <h3>Live Broadcasting</h3>
         <p>
-          Expand your reach with RTMP broadcasting. Stream your webinars or online meetings live to
-          YouTube, Facebook, or any other platform that supports RTMP ingress.
+          Expand your reach by streaming your meetings to a global audience. With built-in support for RTMP and WHIP, you can broadcast directly to platforms like YouTube, Facebook, and more.
         </p>
       </>
     ),
@@ -83,10 +79,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Secure & Encrypted</h3>
+        <h3>Private by Design</h3>
         <p>
-          Protect your conversations with end-to-end encryption (E2EE). Our
-          WebRTC-based architecture ensures your video conferences are private and secure.
+          For maximum privacy, we add a layer of true End-to-End Encryption (E2EE) on top of default WebRTC security, ensuring not even the server can access your private conversation.
         </p>
       </>
     ),
@@ -96,11 +91,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Cross-Device Compatibility</h3>
+        <h3>No Installation Required</h3>
         <p>
-          Connect from anywhere, on any device. Plug-N-Meet is fully compatible
-          with modern desktop and mobile browsers, including Chrome, Firefox, and
-          Safari.
+          Join meetings instantly with your browser. Our platform means no downloads, no plugins, and no friction for your users on any modern desktop or mobile device.
         </p>
       </>
     ),
@@ -111,11 +104,9 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Adaptive Bitrate Streaming</h3>
+        <h3>A Stable Connection, Anywhere</h3>
         <p>
-          Deliver a smooth, uninterrupted video chat experience even on slow networks.
-          Simulcast and Dynacast automatically adjust video quality to match
-          network conditions.
+          Enjoy a smooth video experience, even on weak Wi-Fi or mobile. Our smart technology automatically adjusts video quality to prevent buffering and keep the conversation flowing.
         </p>
       </>
     ),
@@ -125,12 +116,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>High-Performance Backend</h3>
+        <h3>Built to Scale</h3>
         <p>
-          Built for easy horizontal scaling, our Go-based backend uses{" "}
-          <strong>LiveKit</strong> as its media server and <strong>NATS</strong> for
-          real-time messaging. This modern stack handles more users with fewer
-          resources and deploys as a single binary.
+          Grow your platform with confidence. Our modern backend is built for horizontal scaling using Go, <strong>LiveKit</strong>, and <strong>NATS</strong>. This high-performance stack supports more users with fewer resources and deploys as a simple, single binary.
         </p>
       </>
     ),
