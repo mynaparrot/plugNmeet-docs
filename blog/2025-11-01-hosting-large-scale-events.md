@@ -29,9 +29,11 @@ The giants of the industry don't do it this way. They use a hybrid model. And no
 
 ### The Technical Challenge of a Single Massive Room
 
-Now, some organizations have a specific requirement to keep all participants in a single, fully interactive room. It's important to understand the technical barrier here. Standard open-source media servers, including the open-source version of LiveKit, are designed to run a single room's session on a single server. This means that even a very powerful machine will eventually hit a ceiling on the number of interactive participants it can handle.
+To understand the technical challenge of a single massive room, it’s important to look at the components. The `plugnmeet-server` itself is a lightweight orchestrator, and NATS is designed for massive-scale messaging; both can scale horizontally with ease. The bottleneck for a *single room* lies specifically with the media server layer.
 
-Overcoming this requires a more complex, commercial-grade infrastructure capable of clustering a single session across multiple servers. For those looking to scale their own self-hosted deployment, we provide a detailed **[Scalable Deployment Guide](/docs/developer-guide/scalable-setup)**. However, for the vast majority of large-scale events, the Broadcast Studio Model remains the most cost-effective, stable, and professional approach. Let's explore how to set that up.
+The **open-source version of LiveKit**, while excellent for scaling to many different rooms, is designed to run any single room's session on a single media server node. This means that even a very powerful machine will eventually hit a ceiling on the number of interactive participants *in that one room*.
+
+Overcoming this specific limitation requires a more complex architecture capable of intelligently bridging a single session across multiple media server nodes. For the vast majority of events, the Broadcast Studio Model remains the most practical and cost-effective solution. Let's explore how to set that up.
 
 ### The Solution: The Broadcast Studio Model
 
@@ -67,9 +69,13 @@ You have just created a professional, interactive broadcast, bringing guests "on
 
 ### Conclusion: The Right Tool for Your Stage
 
-So, can Plug-N-Meet handle a 1000-person event? The answer is a definitive yes, by empowering you to do it the smart way.
+So, can Plug-N-Meet handle a 1000-person event? The answer is yes, but the more important question is ***how***.
 
-For the vast majority of events, the **Broadcast Studio Model** is the most scalable and cost-effective solution, using our open-source platform as your private control room. However, for the enterprise client who truly needs to overcome the single-server limitation for a massive interactive session, our managed **Plug-N-Meet Cloud** service is built on the commercial-grade infrastructure required to make it happen.
+While it's theoretically possible to cram a thousand users into a single session on the open-source version, it comes with extreme costs and forces you to limit interactivity (like allowing only 1-2 webcams) just to maintain stability.
+
+That's why we empower you to do it the smart way.
+
+For the vast majority of events, the **Broadcast Studio Model** is the most scalable and cost-effective solution. However, for the enterprise client who needs a massive interactive session *without compromise*, our managed **Plug-N-Meet Cloud** service is engineered to solve this challenge, offering a powerful and cost-effective alternative to other enterprise solutions.
 
 Ultimately, it's not about building a bigger room; it's about building a better show. Whether you're a producer using our open-source tools or an enterprise leveraging our cloud, Plug-N-Meet provides the flexible core to do it your way.
 
@@ -79,4 +85,5 @@ Ultimately, it's not about building a bigger room; it's about building a better 
 
 *   **[Try the Live Broadcasting feature in our Live Demo](https://demo.plugnmeet.com/landing.html)**
 *   **[Learn more about our enterprise-grade Cloud Service](https://www.plugnmeet.cloud)**
+*   **[Review our Scalable Deployment Guide](/docs/developer-guide/scalable-setup)**
 *   **[Explore the Open-Source Project on GitHub](https://github.com/mynaparrot/plugNmeet-server)**
