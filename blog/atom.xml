@@ -27,8 +27,9 @@
 </ul>
 <p>The giants of the industry don't do it this way. They use a hybrid model. And now, so can you.</p>
 <h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-technical-challenge-of-a-single-massive-room">The Technical Challenge of a Single Massive Room<a href="https://www.plugnmeet.org/blog/hosting-large-scale-events-the-smart-way#the-technical-challenge-of-a-single-massive-room" class="hash-link" aria-label="Direct link to The Technical Challenge of a Single Massive Room" title="Direct link to The Technical Challenge of a Single Massive Room" translate="no">​</a></h3>
-<p>Now, some organizations have a specific requirement to keep all participants in a single, fully interactive room. It's important to understand the technical barrier here. Standard open-source media servers, including the open-source version of LiveKit, are designed to run a single room's session on a single server. This means that even a very powerful machine will eventually hit a ceiling on the number of interactive participants it can handle.</p>
-<p>Overcoming this requires a more complex, commercial-grade infrastructure capable of clustering a single session across multiple servers. For those looking to scale their own self-hosted deployment, we provide a detailed <strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong>. However, for the vast majority of large-scale events, the Broadcast Studio Model remains the most cost-effective, stable, and professional approach. Let's explore how to set that up.</p>
+<p>To understand the technical challenge of a single massive room, it’s important to look at the components. The <code>plugnmeet-server</code> itself is a lightweight orchestrator, and NATS is designed for massive-scale messaging; both can scale horizontally with ease. The bottleneck for a <em>single room</em> lies specifically with the media server layer.</p>
+<p>The <strong>open-source version of LiveKit</strong>, while excellent for scaling to many different rooms, is designed to run any single room's session on a single media server node. This means that even a very powerful machine will eventually hit a ceiling on the number of interactive participants <em>in that one room</em>.</p>
+<p>Overcoming this specific limitation requires a more complex architecture capable of intelligently bridging a single session across multiple media server nodes. For the vast majority of events, the Broadcast Studio Model remains the most practical and cost-effective solution. Let's explore how to set that up.</p>
 <h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-solution-the-broadcast-studio-model">The Solution: The Broadcast Studio Model<a href="https://www.plugnmeet.org/blog/hosting-large-scale-events-the-smart-way#the-solution-the-broadcast-studio-model" class="hash-link" aria-label="Direct link to The Solution: The Broadcast Studio Model" title="Direct link to The Solution: The Broadcast Studio Model" translate="no">​</a></h3>
 <p>Instead of one giant, chaotic room, think like a television producer. You need two things: a private, controlled <strong>Studio</strong> for your speakers, and a massive, scalable <strong>Audience Venue</strong> for your viewers.</p>
 <ol>
@@ -60,14 +61,17 @@
 </ul>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-the-right-tool-for-your-stage">Conclusion: The Right Tool for Your Stage<a href="https://www.plugnmeet.org/blog/hosting-large-scale-events-the-smart-way#conclusion-the-right-tool-for-your-stage" class="hash-link" aria-label="Direct link to Conclusion: The Right Tool for Your Stage" title="Direct link to Conclusion: The Right Tool for Your Stage" translate="no">​</a></h3>
-<p>So, can Plug-N-Meet handle a 1000-person event? The answer is a definitive yes, by empowering you to do it the smart way.</p>
-<p>For the vast majority of events, the <strong>Broadcast Studio Model</strong> is the most scalable and cost-effective solution, using our open-source platform as your private control room. However, for the enterprise client who truly needs to overcome the single-server limitation for a massive interactive session, our managed <strong>Plug-N-Meet Cloud</strong> service is built on the commercial-grade infrastructure required to make it happen.</p>
+<p>So, can Plug-N-Meet handle a 1000-person event? The answer is yes, but the more important question is <em><strong>how</strong></em>.</p>
+<p>While it's theoretically possible to cram a thousand users into a single session on the open-source version, it comes with extreme costs and forces you to limit interactivity (like allowing only 1-2 webcams) just to maintain stability.</p>
+<p>That's why we empower you to do it the smart way.</p>
+<p>For the vast majority of events, the <strong>Broadcast Studio Model</strong> is the most scalable and cost-effective solution. However, for the enterprise client who needs a massive interactive session <em>without compromise</em>, our managed <strong>Plug-N-Meet Cloud</strong> service is engineered to solve this challenge, offering a powerful and cost-effective alternative to other enterprise solutions.</p>
 <p>Ultimately, it's not about building a bigger room; it's about building a better show. Whether you're a producer using our open-source tools or an enterprise leveraging our cloud, Plug-N-Meet provides the flexible core to do it your way.</p>
 <hr>
 <p><strong>Ready to produce your next big event?</strong></p>
 <ul>
 <li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Broadcasting feature in our Live Demo</a></strong></li>
 <li class=""><strong><a href="https://www.plugnmeet.cloud/" target="_blank" rel="noopener noreferrer" class="">Learn more about our enterprise-grade Cloud Service</a></strong></li>
+<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Review our Scalable Deployment Guide</a></strong></li>
 <li class=""><strong><a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Explore the Open-Source Project on GitHub</a></strong></li>
 </ul>]]></content>
         <author>
