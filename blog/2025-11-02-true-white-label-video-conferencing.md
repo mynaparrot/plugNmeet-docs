@@ -41,26 +41,13 @@ This API-driven approach means you can use the exact same client to power wildly
 
 ## Level 3: Deep Styling (The Custom CSS URL)
 
-This is where we start to move beyond simple rebranding. We understand that your brand is more than just a color palette; it's about typography, spacing, and a unique design language.
-
-plugNmeet allows you to provide a URL to your own **custom CSS file**. This file is loaded after all of our default styles, giving you the power to override and restyle **any element** in the user interface.
-
-*   Want to use your brand's custom font? You can.
-*   Need to change the shape and size of the buttons to match your app's design system? You can.
-
-This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.
+For deeper customization beyond basic colors, Plug-N-Meet allows you to provide a URL to your own custom CSS file. This gives you pixel-perfect control to override any element and match your application's unique design, from fonts and button styles to the overall layout, ensuring a completely seamless look and feel.
 
 ## Level 4: True Native Integration (The `getClientFiles` API)
 
-This is the ultimate level of customization and our most powerful feature for developers. This is what separates a "re-skinned app" from a "truly integrated feature."
+This is the ultimate level of customization. Most web-based video tools force you to embed their client in an `<iframe>`, creating a restrictive black box with complex permission issues and a disconnected feel.
 
-Most web-based video tools force you to embed their client in an `<iframe>`. This is a restrictive, sandboxed approach that limits your control. The `<iframe>` is a black box.
-
-We do the opposite. Our `getClientFiles` API gives you a list of all the raw JavaScript and CSS files that make up our client application. This allows you to **inject these files directly into your own application's HTML**.
-
-**Why is this a game-changer?**
-*   **No More `<iframe>` Sandbox:** By running in the same DOM context as your main application, the boundaries are broken. Your application's global CSS can cascade and style the client, and your own JavaScript can directly interact with it.
-*   **Deeper Integration:** This two-way street allows your application to listen for events from the client and send commands to it, enabling a seamless functional integration that feels native to your user, which is impossible to achieve with a restrictive `<iframe>`.
+We do the opposite. Our `getClientFiles` API allows you to inject the client directly into your own application. The result is a video conferencing experience that feels just like another page in your app, seamlessly integrated and free from the headaches of iframe sandboxing.
 
 This approach transforms plugNmeet from an "embedded tool" into a true **headless UI component library** for building real-time communication.
 
