@@ -26,7 +26,20 @@ Within minutes, you can customize:
 
 This is perfect for getting a branded look and feel up and running quickly, but it's just the beginning.
 
-## Level 2: Deep Styling (The Custom CSS URL)
+## Level 2: API-Driven Feature Control
+
+True white-labeling goes beyond just looks; it's about controlling the **functionality** of the room to match your specific use case. A simple one-to-one video call has very different needs than a full-featured virtual classroom.
+
+Plug-N-Meet is fully controlled by our powerful server-side API. When you create a room, you are not just setting a title; you are defining the entire feature set available to the participants. This allows you to programmatically design the perfect experience, all without ever touching the client-side code.
+
+For example, you can:
+*   **Create a Minimalist Video Call:** Disable the whiteboard, shared notepad, and all other collaboration tools to create a clean, simple interface for one-to-one conversations.
+*   **Design a Virtual Classroom:** Enable the whiteboard, polls, and breakout rooms, while disabling features like screen sharing for students.
+*   **Host a Webinar:** Give all power to the moderator and disable chat and microphone access for attendees by default.
+
+This API-driven approach means you can use the exact same client to power wildly different products and experiences, all controlled from your backend.
+
+## Level 3: Deep Styling (The Custom CSS URL)
 
 This is where we start to move beyond simple rebranding. We understand that your brand is more than just a color palette; it's about typography, spacing, and a unique design language.
 
@@ -37,7 +50,7 @@ plugNmeet allows you to provide a URL to your own **custom CSS file**. This file
 
 This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.
 
-## Level 3: True Native Integration (The `getClientFiles` API)
+## Level 4: True Native Integration (The `getClientFiles` API)
 
 This is the ultimate level of customization and our most powerful feature for developers. This is what separates a "re-skinned app" from a "truly integrated feature."
 
@@ -46,8 +59,8 @@ Most web-based video tools force you to embed their client in an `<iframe>`. Thi
 We do the opposite. Our `getClientFiles` API gives you a list of all the raw JavaScript and CSS files that make up our client application. This allows you to **inject these files directly into your own application's HTML**.
 
 **Why is this a game-changer?**
-*   **No More `<iframe>`:** The plugNmeet client runs as a native part of your own page. This means your own CSS, your own JavaScript, and your own HTML can directly interact with the video client.
-*   **Deeper Integration:** Feel like your own page.
+*   **No More `<iframe>` Sandbox:** By running in the same DOM context as your main application, the boundaries are broken. Your application's global CSS can cascade and style the client, and your own JavaScript can directly interact with it.
+*   **Deeper Integration:** This two-way street allows your application to listen for events from the client and send commands to it, enabling a seamless functional integration that feels native to your user, which is impossible to achieve with a restrictive `<iframe>`.
 
 This approach transforms plugNmeet from an "embedded tool" into a true **headless UI component library** for building real-time communication.
 
