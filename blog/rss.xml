@@ -4,10 +4,67 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Sat, 01 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Nov 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Beyond the Logo: What True White-Label Video Conferencing Looks Like]]></title>
+            <link>https://www.plugnmeet.org/blog/true-white-label-video-conferencing</link>
+            <guid>https://www.plugnmeet.org/blog/true-white-label-video-conferencing</guid>
+            <pubDate>Sun, 02 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[The term "white-label" is used a lot in the software world. Too often, it simply means you can replace the provider's logo with your own. You're still stuck with their user interface, their workflow, and their branding on the URL. It’s like putting your own sign on a franchise restaurant—it might have your name on the door, but it's still their kitchen and their menu.]]></description>
+            <content:encoded><![CDATA[<p>The term "white-label" is used a lot in the software world. Too often, it simply means you can replace the provider's logo with your own. You're still stuck with their user interface, their workflow, and their branding on the URL. It’s like putting your own sign on a franchise restaurant—it might have your name on the door, but it's still their kitchen and their menu.</p>
+<p>At plugNmeet, we believe true white-labeling is not about hiding our brand; it's about <strong>empowering you to build your own.</strong></p>
+<p>Our platform is designed not as a finished product to be re-skinned, but as a flexible canvas for you to create a deeply integrated, pixel-perfect communication experience that feels like a native part of your application. This article explores the three levels of customization that make this possible.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-1-the-quick-rebrand-the-configuration-object">Level 1: The Quick Rebrand (The Configuration Object)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-1-the-quick-rebrand-the-configuration-object" class="hash-link" aria-label="Direct link to Level 1: The Quick Rebrand (The Configuration Object)" title="Direct link to Level 1: The Quick Rebrand (The Configuration Object)" translate="no">​</a></h2>
+<p>This is the baseline for any white-label solution, and we make it incredibly easy. Using a simple JavaScript configuration object, you can instantly change the most important visual elements to match your brand's identity.</p>
+<p>Within minutes, you can customize:</p>
+<ul>
+<li class=""><strong>Colors:</strong> Set the primary, secondary, and background colors.</li>
+<li class=""><strong>Logos:</strong> Add your own logo and favicon.</li>
+<li class=""><strong>Backgrounds:</strong> Use a custom background image for your meeting rooms.</li>
+</ul>
+<p>This is perfect for getting a branded look and feel up and running quickly, but it's just the beginning.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-2-deep-styling-the-custom-css-url">Level 2: Deep Styling (The Custom CSS URL)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-2-deep-styling-the-custom-css-url" class="hash-link" aria-label="Direct link to Level 2: Deep Styling (The Custom CSS URL)" title="Direct link to Level 2: Deep Styling (The Custom CSS URL)" translate="no">​</a></h2>
+<p>This is where we start to move beyond simple rebranding. We understand that your brand is more than just a color palette; it's about typography, spacing, and a unique design language.</p>
+<p>plugNmeet allows you to provide a URL to your own <strong>custom CSS file</strong>. This file is loaded after all of our default styles, giving you the power to override and restyle <strong>any element</strong> in the user interface.</p>
+<ul>
+<li class="">Want to use your brand's custom font? You can.</li>
+<li class="">Need to change the shape and size of the buttons to match your app's design system? You can.</li>
+<li class="">Want to hide specific UI elements that aren't relevant to your users (like the recording button)? You can do it with a simple <code>display: none;</code>.</li>
+</ul>
+<p>This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-3-true-native-integration-the-getclientfiles-api">Level 3: True Native Integration (The <code>getClientFiles</code> API)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-3-true-native-integration-the-getclientfiles-api" class="hash-link" aria-label="Direct link to level-3-true-native-integration-the-getclientfiles-api" title="Direct link to level-3-true-native-integration-the-getclientfiles-api" translate="no">​</a></h2>
+<p>This is the ultimate level of customization and our most powerful feature for developers. This is what separates a "re-skinned app" from a "truly integrated feature."</p>
+<p>Most web-based video tools force you to embed their client in an <code>&lt;iframe&gt;</code>. This is a restrictive, sandboxed approach that limits your control. The <code>&lt;iframe&gt;</code> is a black box.</p>
+<p>We do the opposite. Our <code>getClientFiles</code> API gives you a list of all the raw JavaScript and CSS files that make up our client application. This allows you to <strong>inject these files directly into your own application's HTML</strong>.</p>
+<p><strong>Why is this a game-changer?</strong></p>
+<ul>
+<li class=""><strong>No More <code>&lt;iframe&gt;</code>:</strong> The plugNmeet client runs as a native part of your own page. This means your own CSS, your own JavaScript, and your own HTML can directly interact with the video client.</li>
+<li class=""><strong>Build Your Own Layout:</strong> You can place the video window in one <code>&lt;div&gt;</code>, the chat in another, and the participant list in a sidebar that is part of <em>your</em> application's layout, not ours. You have complete structural control.</li>
+<li class=""><strong>Deeper Integration:</strong> Your application can listen for events from the plugNmeet client and react to them, or even programmatically control the client's behavior.</li>
+</ul>
+<p>This approach transforms plugNmeet from an "embedded tool" into a true <strong>headless UI component library</strong> for building real-time communication.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-your-platform-not-ours">Conclusion: Your Platform, Not Ours<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#conclusion-your-platform-not-ours" class="hash-link" aria-label="Direct link to Conclusion: Your Platform, Not Ours" title="Direct link to Conclusion: Your Platform, Not Ours" translate="no">​</a></h2>
+<p>True white-labeling isn't about putting your logo on our product. It's about giving you the building blocks to create your own.</p>
+<p>Whether you need a quick rebrand, deep styling, or a fully integrated native experience, plugNmeet provides the tools to meet you where you are. Our goal is to give you the power to create a communication experience that is indistinguishable from the rest of your platform, because we believe the best video tool is the one your users don't even realize is there.</p>
+<hr>
+<p><strong>Ready to start building your custom experience?</strong></p>
+<ul>
+<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/developer-guide/design-customisation">Design Customization Guide</a></strong></li>
+<li class=""><strong>Explore the <a class="" href="https://www.plugnmeet.org/docs/api/get-client-files"><code>getClientFiles</code> API Documentation</a></strong></li>
+<li class=""><strong>Check out the <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> to see it in action</strong></li>
+</ul>]]></content:encoded>
+            <category>white-label</category>
+            <category>customization</category>
+            <category>branding</category>
+            <category>developer</category>
+            <category>api</category>
+            <category>saas</category>
+        </item>
         <item>
             <title><![CDATA[Hosting a 1000-Person Event? Don't Put Them All in One Room.]]></title>
             <link>https://www.plugnmeet.org/blog/hosting-large-scale-events-the-smart-way</link>
