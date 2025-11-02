@@ -37,22 +37,10 @@
 </ul>
 <p>This API-driven approach means you can use the exact same client to power wildly different products and experiences, all controlled from your backend.</p>
 <h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-3-deep-styling-the-custom-css-url">Level 3: Deep Styling (The Custom CSS URL)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-3-deep-styling-the-custom-css-url" class="hash-link" aria-label="Direct link to Level 3: Deep Styling (The Custom CSS URL)" title="Direct link to Level 3: Deep Styling (The Custom CSS URL)" translate="no">​</a></h2>
-<p>This is where we start to move beyond simple rebranding. We understand that your brand is more than just a color palette; it's about typography, spacing, and a unique design language.</p>
-<p>plugNmeet allows you to provide a URL to your own <strong>custom CSS file</strong>. This file is loaded after all of our default styles, giving you the power to override and restyle <strong>any element</strong> in the user interface.</p>
-<ul>
-<li class="">Want to use your brand's custom font? You can.</li>
-<li class="">Need to change the shape and size of the buttons to match your app's design system? You can.</li>
-</ul>
-<p>This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.</p>
+<p>For deeper customization beyond basic colors, Plug-N-Meet allows you to provide a URL to your own custom CSS file. This gives you pixel-perfect control to override any element and match your application's unique design, from fonts and button styles to the overall layout, ensuring a completely seamless look and feel.</p>
 <h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-4-true-native-integration-the-getclientfiles-api">Level 4: True Native Integration (The <code>getClientFiles</code> API)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-4-true-native-integration-the-getclientfiles-api" class="hash-link" aria-label="Direct link to level-4-true-native-integration-the-getclientfiles-api" title="Direct link to level-4-true-native-integration-the-getclientfiles-api" translate="no">​</a></h2>
-<p>This is the ultimate level of customization and our most powerful feature for developers. This is what separates a "re-skinned app" from a "truly integrated feature."</p>
-<p>Most web-based video tools force you to embed their client in an <code>&lt;iframe&gt;</code>. This is a restrictive, sandboxed approach that limits your control. The <code>&lt;iframe&gt;</code> is a black box.</p>
-<p>We do the opposite. Our <code>getClientFiles</code> API gives you a list of all the raw JavaScript and CSS files that make up our client application. This allows you to <strong>inject these files directly into your own application's HTML</strong>.</p>
-<p><strong>Why is this a game-changer?</strong></p>
-<ul>
-<li class=""><strong>No More <code>&lt;iframe&gt;</code> Sandbox:</strong> By running in the same DOM context as your main application, the boundaries are broken. Your application's global CSS can cascade and style the client, and your own JavaScript can directly interact with it.</li>
-<li class=""><strong>Deeper Integration:</strong> This two-way street allows your application to listen for events from the client and send commands to it, enabling a seamless functional integration that feels native to your user, which is impossible to achieve with a restrictive <code>&lt;iframe&gt;</code>.</li>
-</ul>
+<p>This is the ultimate level of customization. Most web-based video tools force you to embed their client in an <code>&lt;iframe&gt;</code>, creating a restrictive black box with complex permission issues and a disconnected feel.</p>
+<p>We do the opposite. Our <code>getClientFiles</code> API allows you to inject the client directly into your own application. The result is a video conferencing experience that feels just like another page in your app, seamlessly integrated and free from the headaches of iframe sandboxing.</p>
 <p>This approach transforms plugNmeet from an "embedded tool" into a true <strong>headless UI component library</strong> for building real-time communication.</p>
 <hr>
 <h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-your-platform-not-ours">Conclusion: Your Platform, Not Ours<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#conclusion-your-platform-not-ours" class="hash-link" aria-label="Direct link to Conclusion: Your Platform, Not Ours" title="Direct link to Conclusion: Your Platform, Not Ours" translate="no">​</a></h2>
