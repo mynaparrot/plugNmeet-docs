@@ -32,7 +32,6 @@
 <ul>
 <li class="">Want to use your brand's custom font? You can.</li>
 <li class="">Need to change the shape and size of the buttons to match your app's design system? You can.</li>
-<li class="">Want to hide specific UI elements that aren't relevant to your users (like the recording button)? You can do it with a simple <code>display: none;</code>.</li>
 </ul>
 <p>This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.</p>
 <h2 class="anchor anchorTargetStickyNavbar_f97l" id="level-3-true-native-integration-the-getclientfiles-api">Level 3: True Native Integration (The <code>getClientFiles</code> API)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-3-true-native-integration-the-getclientfiles-api" class="hash-link" aria-label="Direct link to level-3-true-native-integration-the-getclientfiles-api" title="Direct link to level-3-true-native-integration-the-getclientfiles-api" translate="no">​</a></h2>
@@ -42,8 +41,7 @@
 <p><strong>Why is this a game-changer?</strong></p>
 <ul>
 <li class=""><strong>No More <code>&lt;iframe&gt;</code>:</strong> The plugNmeet client runs as a native part of your own page. This means your own CSS, your own JavaScript, and your own HTML can directly interact with the video client.</li>
-<li class=""><strong>Build Your Own Layout:</strong> You can place the video window in one <code>&lt;div&gt;</code>, the chat in another, and the participant list in a sidebar that is part of <em>your</em> application's layout, not ours. You have complete structural control.</li>
-<li class=""><strong>Deeper Integration:</strong> Your application can listen for events from the plugNmeet client and react to them, or even programmatically control the client's behavior.</li>
+<li class=""><strong>Deeper Integration:</strong> Feel like your own page.</li>
 </ul>
 <p>This approach transforms plugNmeet from an "embedded tool" into a true <strong>headless UI component library</strong> for building real-time communication.</p>
 <hr>
