@@ -34,7 +34,6 @@ plugNmeet allows you to provide a URL to your own **custom CSS file**. This file
 
 *   Want to use your brand's custom font? You can.
 *   Need to change the shape and size of the buttons to match your app's design system? You can.
-*   Want to hide specific UI elements that aren't relevant to your users (like the recording button)? You can do it with a simple `display: none;`.
 
 This gives you granular, pixel-perfect control over the entire visual presentation, ensuring the plugNmeet client feels less like a third-party tool and more like a component that was designed specifically for your application.
 
@@ -48,8 +47,7 @@ We do the opposite. Our `getClientFiles` API gives you a list of all the raw Jav
 
 **Why is this a game-changer?**
 *   **No More `<iframe>`:** The plugNmeet client runs as a native part of your own page. This means your own CSS, your own JavaScript, and your own HTML can directly interact with the video client.
-*   **Build Your Own Layout:** You can place the video window in one `<div>`, the chat in another, and the participant list in a sidebar that is part of *your* application's layout, not ours. You have complete structural control.
-*   **Deeper Integration:** Your application can listen for events from the plugNmeet client and react to them, or even programmatically control the client's behavior.
+*   **Deeper Integration:** Feel like your own page.
 
 This approach transforms plugNmeet from an "embedded tool" into a true **headless UI component library** for building real-time communication.
 
