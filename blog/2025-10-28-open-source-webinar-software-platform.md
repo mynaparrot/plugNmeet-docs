@@ -81,7 +81,7 @@ And if you're running your community on a platform like **WordPress or Joomla**,
 
 Whether you're a developer building a custom application from scratch or a site administrator looking for a simple, powerful integration, plugNmeet provides the tools to help you create the perfect webinar experience.
 
-Once you've mastered the art of the webinar, you can apply these same principles to even larger audiences. The "Broadcast Studio" model, where you use Plug-N-Meet as your private control room, is the perfect next step for **[hosting massive, 1000+ person events](/blog/hosting-large-scale-events)**, allowing you to scale your reach professionally and cost-effectively.
+Once you've mastered the art of the webinar, you can apply these same principles to even larger audiences. The "Broadcast Studio" model, where you use Plug-N-Meet as your private control room, is the perfect next step for **[hosting massive, 1000+ person events](/blog/hosting-large-scale-events-the-smart-way)**, allowing you to scale your reach professionally and cost-effectively.
 
 ---
 **Ready to build your perfect webinar platform?**
