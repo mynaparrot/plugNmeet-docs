@@ -48,7 +48,7 @@ With Plug-N-Meet, you can seamlessly connect your private studio to your public 
 
 This isn't a complex technical challenge; it's a simple workflow that Plug-N-Meet is perfectly designed for.
 
-1.  **Start Your Private Studio:** Create a standard Plug-N-Meet session. Invite your 5-10 speakers, panelists, and producers. Inside this room, you have full, high-quality, interactive collaboration.
+1.  **Start Your Private Studio:** Create a standard **[Plug-N-Meet session](/blog/open-source-webinar-software-platform)**, configured with all the powerful webinar features you need. Invite your 5-10 speakers, panelists, and producers. Inside this room, you have full, high-quality, interactive collaboration.
 2.  **Go Live to the World:** From the main menu, the moderator selects **Live Broadcasting** and pastes the stream key from their chosen platform (e.g., YouTube). With one click, your private session is now being broadcast live to the world.
 3.  **Engage Your Audience:** Share the public YouTube or Facebook link with your 1,000 attendees. They get a rock-solid, high-definition viewing experience powered by the world's best streaming infrastructure—for free.
 4.  **Bring the Audience "On Stage":** This is the magic. Want to take a question from the audience?
