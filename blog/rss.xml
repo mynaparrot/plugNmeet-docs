@@ -4,10 +4,102 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Wed, 05 Nov 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Nov 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[From Chaos to Control: A Moderator's Guide to Managing Any Meeting with Lock Settings]]></title>
+            <link>https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings</link>
+            <guid>https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings</guid>
+            <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[If you've ever hosted an online meeting, you know the feeling. You're in the middle of a critical point, and suddenly someone's dog starts barking through an unmuted microphone. Or, just as you're about to share your screen, an attendee accidentally shares their own, derailing the entire presentation.]]></description>
+            <content:encoded><![CDATA[<p>If you've ever hosted an online meeting, you know the feeling. You're in the middle of a critical point, and suddenly someone's dog starts barking through an unmuted microphone. Or, just as you're about to share your screen, an attendee accidentally shares their own, derailing the entire presentation.</p>
+<p>A successful meeting isn't just about good content; it's about good management. The difference between a chaotic, unprofessional session and a smooth, engaging one often comes down to a single question: <strong>who is in control?</strong></p>
+<p>At Plug-N-Meet, we believe the host should always have the power to direct the flow of their meeting. That's why we built a simple but incredibly powerful <strong>Room Lock Settings</strong> panel. Think of it as your command center, allowing you to instantly transform the dynamic of your room to fit any situation.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="your-command-center-the-room-lock-settings">Your Command Center: The Room Lock Settings<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#your-command-center-the-room-lock-settings" class="hash-link" aria-label="Direct link to Your Command Center: The Room Lock Settings" title="Direct link to Your Command Center: The Room Lock Settings" translate="no">​</a></h3>
+<p>Accessible from the "More Options" menu, the Room Lock Settings panel gives you granular control over what your attendees can and cannot do. It’s not about being restrictive; it’s about creating the right environment for each phase of your meeting.</p>
+<p>Let's break down each tool in your command center.</p>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="1-lock-microphone">1. Lock Microphone<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#1-lock-microphone" class="hash-link" aria-label="Direct link to 1. Lock Microphone" title="Direct link to 1. Lock Microphone" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>What it does:</strong> Instantly mutes all attendees and prevents them from unmuting themselves.</li>
+<li class=""><strong>When to use it:</strong> This is your most essential tool. Use it for:<!-- -->
+<ul>
+<li class=""><strong>Lectures &amp; Webinars:</strong> Ensure the focus remains on the speaker without any background noise.</li>
+<li class=""><strong>Panel Discussions:</strong> Keep the audience quiet while the designated panelists are speaking.</li>
+<li class=""><strong>Resolving Interruptions:</strong> Instantly silence unexpected noise without having to find the source.</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="2-lock-webcam">2. Lock Webcam<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#2-lock-webcam" class="hash-link" aria-label="Direct link to 2. Lock Webcam" title="Direct link to 2. Lock Webcam" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>What it does:</strong> Prevents attendees from sharing their webcams.</li>
+<li class=""><strong>When to use it:</strong>
+<ul>
+<li class=""><strong>Saving Bandwidth:</strong> In very large meetings or for users with poor internet, disabling dozens of video streams can significantly improve the call quality for everyone.</li>
+<li class=""><strong>Focusing Attention:</strong> In a formal presentation, locking webcams ensures all eyes are on the speaker's video feed.</li>
+</ul>
+</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="3-lock-screen-sharing">3. Lock Screen Sharing<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#3-lock-screen-sharing" class="hash-link" aria-label="Direct link to 3. Lock Screen Sharing" title="Direct link to 3. Lock Screen Sharing" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>What it does:</strong> Prevents attendees from sharing their screens.</li>
+<li class=""><strong>When to use it:</strong> This is a simple but crucial tool to prevent accidental or disruptive takeovers of the main presentation area. Keep it locked until you specifically ask someone to share.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="4-lock-chat--private-chat">4. Lock Chat &amp; Private Chat<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#4-lock-chat--private-chat" class="hash-link" aria-label="Direct link to 4. Lock Chat &amp; Private Chat" title="Direct link to 4. Lock Chat &amp; Private Chat" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>What it does:</strong> Temporarily disables the ability for attendees to send messages in the public chat or to each other privately.</li>
+<li class=""><strong>When to use it:</strong>
+<ul>
+<li class=""><strong>Minimizing Distractions:</strong> During a critical part of your presentation, you can pause the chat to ensure everyone is listening, not typing.</li>
+<li class=""><strong>Structured Q&amp;A:</strong> Lock the chat during the presentation, then unlock it at the end to create a dedicated time for questions, preventing them from getting lost.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-power-of-flexibility-a-meeting-in-three-acts">The Power of Flexibility: A Meeting in Three Acts<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#the-power-of-flexibility-a-meeting-in-three-acts" class="hash-link" aria-label="Direct link to The Power of Flexibility: A Meeting in Three Acts" title="Direct link to The Power of Flexibility: A Meeting in Three Acts" translate="no">​</a></h3>
+<p>The real power of these settings is not just turning them on, but using them dynamically to guide your meeting through different phases.</p>
+<ul>
+<li class="">
+<p><strong>Act 1: The Open Welcome (5 mins before start)</strong></p>
+<ul>
+<li class=""><strong>Settings:</strong> Everything is unlocked.</li>
+<li class=""><strong>Goal:</strong> As attendees join, they can freely chat, turn on their webcams, and network. This creates a friendly, welcoming atmosphere.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Act 2: The Presentation (30 mins)</strong></p>
+<ul>
+<li class=""><strong>Settings:</strong> The host locks microphones, webcams, and screen sharing.</li>
+<li class=""><strong>Goal:</strong> The presenter has the floor. There are no interruptions. The audience can focus completely on the content being delivered.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Act 3: The Moderated Q&amp;A (15 mins)</strong></p>
+<ul>
+<li class=""><strong>Settings:</strong> The host unlocks the "Raise Hand" feature and the chat.</li>
+<li class=""><strong>Goal:</strong> The host can now see who has a question and can unmute individuals one by one to speak. The chat is open for typed questions. The session is interactive but remains orderly and controlled.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-your-meeting-your-rules">Conclusion: Your Meeting, Your Rules<a href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings#conclusion-your-meeting-your-rules" class="hash-link" aria-label="Direct link to Conclusion: Your Meeting, Your Rules" title="Direct link to Conclusion: Your Meeting, Your Rules" translate="no">​</a></h3>
+<p>With Plug-N-Meet's lock settings, you are no longer just a participant in your own meeting; you are the director. You have the simple, intuitive tools to guide your audience from open collaboration to focused listening and back again, all within a single, seamless interface.</p>
+<p>Stop letting your meetings descend into chaos. Take control, and deliver the professional, engaging experience your audience deserves.</p>
+<hr>
+<p><strong>Ready to take control of your meetings?</strong></p>
+<ul>
+<li class=""><strong>Try the Moderator features in our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
+<li class=""><strong>Read the full <a class="" href="https://www.plugnmeet.org/docs/user-guide/moderator">Moderator Guide</a></strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content:encoded>
+            <category>moderator</category>
+            <category>host</category>
+            <category>control</category>
+            <category>permissions</category>
+            <category>features</category>
+            <category>user-guide</category>
+        </item>
         <item>
             <title><![CDATA[Building a HIPAA-Compliant Telehealth Platform with an Open-Source Core]]></title>
             <link>https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform</link>
@@ -858,7 +950,7 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
 <h2 class="anchor anchorTargetStickyNavbar_f97l" id="4-the-after-show-owning-your-content">4. The After-Show: Owning Your Content<a href="https://www.plugnmeet.org/blog/open-source-webinar-software-platform#4-the-after-show-owning-your-content" class="hash-link" aria-label="Direct link to 4. The After-Show: Owning Your Content" title="Direct link to 4. The After-Show: Owning Your Content" translate="no">​</a></h2>
 <p>With SaaS platforms, your recording is often trapped on their cloud, subject to their retention policies and pricing.</p>
 <ul>
-<li class=""><strong>How We Solve It:</strong> With plugNmeet, you own your content. Recordings are saved directly to your own server. And with our <code>end_recording</code> webhook, you can build powerful post-webinar automations. For example, you can automatically:<!-- -->
+<li class=""><strong>How We Solve It:</strong> With plugNmeet, you own your content. Recordings are saved directly to your own server. And with our <code>recording_proceeded</code> webhook, you can build powerful post-webinar automations. For example, you can automatically:<!-- -->
 <ul>
 <li class="">Upload the recording to your YouTube channel.</li>
 <li class="">Add the video to a "past webinars" section on your website.</li>
