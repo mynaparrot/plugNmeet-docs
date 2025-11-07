@@ -62,7 +62,7 @@ Your webinar is your show. It shouldn't look and feel like a Zoom meeting.
 
 With SaaS platforms, your recording is often trapped on their cloud, subject to their retention policies and pricing.
 
-*   **How We Solve It:** With plugNmeet, you own your content. Recordings are saved directly to your own server. And with our `end_recording` webhook, you can build powerful post-webinar automations. For example, you can automatically:
+*   **How We Solve It:** With plugNmeet, you own your content. Recordings are saved directly to your own server. And with our `recording_proceeded` webhook, you can build powerful post-webinar automations. For example, you can automatically:
     *   Upload the recording to your YouTube channel.
     *   Add the video to a "past webinars" section on your website.
     *   Send an email to all attendees with a link to the recording.
