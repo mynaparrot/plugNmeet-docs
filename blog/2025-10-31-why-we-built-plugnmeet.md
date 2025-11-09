@@ -5,7 +5,7 @@ authors: [jibon]
 tags: [open-source, architecture, philosophy, bigbluebutton, scalability, developer]
 ---
 
-For years, our company has been a well-known provider of BigBlueButton hosting and support services. We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.
+For years, our company has been a well-known provider of [BigBlueButton hosting and support services](https://www.mynaparrot.com/classroom/bigbluebuttonservice). We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.
 
 But after years in the trenches, supporting live sessions, online classes, and events at scale, we found ourselves running into the same fundamental walls. We weren't just using the software; we were experiencing its architectural limits firsthand. The frustration wasn't just about bugs; it was about an architecture that, while powerful for its original purpose, presented challenges for the kind of elastic scalability and developer agility that modern web applications demand.
 
