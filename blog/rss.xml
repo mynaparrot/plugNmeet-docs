@@ -550,6 +550,7 @@ In today's world, privacy is non-negotiable. We built Plug-N-Meet with a securit
             <category>polling</category>
             <category>use-case</category>
             <category>automation</category>
+            <category>video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[Your Session, Your Browser: How We Use Client-Side Storage for Privacy and Resilience]]></title>
@@ -922,7 +923,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
             <category>saas</category>
             <category>monetization</category>
             <category>white-label</category>
-            <category>component</category>
+            <category>video-conferencing</category>
+            <category>joomla-video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[How to Launch Your Own Video Conferencing Service with WordPress (No Code Required)]]></title>
@@ -1008,6 +1010,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
             <category>monetization</category>
             <category>white-label</category>
             <category>plugin</category>
+            <category>video-conferencing</category>
+            <category>wordpress-video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[Looking for Open Source Webinar Software? Here’s Why You Need a Platform, Not Just a Tool.]]></title>
@@ -1102,6 +1106,7 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
             <category>marketing</category>
             <category>saas-alternative</category>
             <category>platform</category>
+            <category>video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[Meet Users Where They Are: Why We Build Plugins, Not Another Standalone App]]></title>
@@ -1168,6 +1173,7 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
             <category>wordpress</category>
             <category>integration</category>
             <category>architecture</category>
+            <category>video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[Building a Secure and Scalable E-Learning Platform with Plug-N-Meet and Moodle]]></title>
@@ -1234,6 +1240,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
             <category>excalidraw</category>
             <category>security</category>
             <category>scalability</category>
+            <category>video-conferencing</category>
+            <category>moodle-video-conferencing</category>
         </item>
         <item>
             <title><![CDATA[Why We Chose LiveKit and NATS: A Deep Dive into Our Backend Architecture]]></title>

@@ -581,6 +581,7 @@ In today's world, privacy is non-negotiable. We built Plug-N-Meet with a securit
         <category label="polling" term="polling"/>
         <category label="use-case" term="use-case"/>
         <category label="automation" term="automation"/>
+        <category label="video-conferencing" term="video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Your Session, Your Browser: How We Use Client-Side Storage for Privacy and Resilience]]></title>
@@ -973,7 +974,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
         <category label="saas" term="saas"/>
         <category label="monetization" term="monetization"/>
         <category label="white-label" term="white-label"/>
-        <category label="component" term="component"/>
+        <category label="video-conferencing" term="video-conferencing"/>
+        <category label="joomla-video-conferencing" term="joomla-video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[How to Launch Your Own Video Conferencing Service with WordPress (No Code Required)]]></title>
@@ -1063,6 +1065,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
         <category label="monetization" term="monetization"/>
         <category label="white-label" term="white-label"/>
         <category label="plugin" term="plugin"/>
+        <category label="video-conferencing" term="video-conferencing"/>
+        <category label="wordpress-video-conferencing" term="wordpress-video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Looking for Open Source Webinar Software? Here’s Why You Need a Platform, Not Just a Tool.]]></title>
@@ -1161,6 +1165,7 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
         <category label="marketing" term="marketing"/>
         <category label="saas-alternative" term="saas-alternative"/>
         <category label="platform" term="platform"/>
+        <category label="video-conferencing" term="video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Meet Users Where They Are: Why We Build Plugins, Not Another Standalone App]]></title>
@@ -1231,6 +1236,7 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
         <category label="wordpress" term="wordpress"/>
         <category label="integration" term="integration"/>
         <category label="architecture" term="architecture"/>
+        <category label="video-conferencing" term="video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Building a Secure and Scalable E-Learning Platform with Plug-N-Meet and Moodle]]></title>
@@ -1301,6 +1307,8 @@ Here is a PHP example demonstrating how to implement this conditional logic:</p>
         <category label="excalidraw" term="excalidraw"/>
         <category label="security" term="security"/>
         <category label="scalability" term="scalability"/>
+        <category label="video-conferencing" term="video-conferencing"/>
+        <category label="moodle-video-conferencing" term="moodle-video-conferencing"/>
     </entry>
     <entry>
         <title type="html"><![CDATA[Why We Chose LiveKit and NATS: A Deep Dive into Our Backend Architecture]]></title>
