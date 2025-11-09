@@ -40,7 +40,7 @@ For our SFU, we chose **LiveKit**, and here’s why:
 *   **High Performance & Efficiency:** LiveKit is written in Go, making it incredibly fast and resource-efficient. It can handle a large number of concurrent users and streams on a single server, which aligns with our goal of providing a cost-effective solution.
 *   **Built-in Scalability:** LiveKit is designed to be clustered, and it uses Redis to manage state across multiple nodes. This provides a clear, documented path to the massive scale required by our largest users.
 *   **Modern Features by Default:** LiveKit comes with critical, out-of-the-box support for modern WebRTC features like **Simulcast** (sending multiple quality streams) and **Dynacast** (intelligently pausing streams). This allows plugNmeet to automatically adapt to each user's network conditions, dramatically improving reliability.
-*   **Secure and Open Source:** As an open-source project itself, LiveKit aligns with our core philosophy of transparency. It also has built-in support for passing through End-to-End Encrypted (E2EE) media, which is essential for our security model.
+*   **Secure and Open Source:** As an open-source project itself, LiveKit aligns with our core philosophy of transparency. It also has built-in support for passing through End-to-End Encrypted (E2EE) media, which is essential for our **[security model](/docs/security-overview)**.
 
 In short, by building on top of LiveKit, we didn't have to reinvent the wheel. We inherited a powerful, battle-tested media engine, allowing us to focus on building the application logic and features that make plugNmeet unique.
 
@@ -88,6 +88,6 @@ When you choose plugNmeet, you're not just getting an application. You're gettin
 **Want to learn more?**
 
 *   **Review our [Security and Privacy Overview](/docs/security-overview)**
-*   **Dive deep into our [E2EE Key Models](/blog/2025-10-29-e2ee-key-models-guide)**
+*   **Dive deep into our [E2EE Key Models](/blog/e2ee-key-models-guide)**
 *   **Read our [Scalable Deployment Guide](/docs/developer-guide/scalable-setup)**
 *   **Explore the [Open-Source Project on GitHub](https://github.com/mynaparrot/plugNmeet-server)**
