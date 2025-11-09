@@ -44,17 +44,18 @@ For our SFU, we chose **LiveKit**, and here’s why:
 
 In short, by building on top of LiveKit, we didn't have to reinvent the wheel. We inherited a powerful, battle-tested media engine, allowing us to focus on building the application logic and features that make plugNmeet unique.
 
-## Pillar 2: NATS JetStream - The Resilient Nervous System
+## Pillar 2: NATS JetStream - The Resilient and Secure Nervous System
 
-While LiveKit handles the heavy media streams, we needed a separate, highly reliable system for all the other real-time data that makes a meeting interactive. This is where **NATS** comes in.
+While LiveKit handles the heavy media streams, we needed a separate system for all the other real-time data that makes a meeting interactive. Our "privacy and security first" design principle demanded a solution that was not only fast and scalable but also fundamentally secure. This is why we chose **NATS**.
 
-More specifically, we leverage **NATS JetStream**, the powerful persistence layer built into the NATS ecosystem. JetStream elevates NATS from a simple messaging system to a true streaming platform, which is critical for the reliability and scalability of our backend services.
+More specifically, we leverage **NATS JetStream**, the powerful persistence layer built into the NATS ecosystem. JetStream's combination of high performance and a robust, built-in security model made it the perfect choice to serve as the resilient nervous system for our platform. As detailed in our **[Security and Privacy Overview](/docs/security-overview)**, NATS provides a critical defense-in-depth layer for all signaling and application data.
 
 Here’s why JetStream was the perfect choice for plugNmeet:
 
 *   **Multi-Layered Security:** NATS provides a robust, defense-in-depth security model at the messaging layer, which operates in addition to our application-level E2EE.
     *   **Encryption in Transit:** All connections from clients to the NATS cluster are secured using **TLS**. This encrypts all signaling data while it's on the wire, protecting it from eavesdropping.
     *   **Fine-Grained Authorization:** This is where the real power lies. When a user authenticates, the `plugnmeet-server` dynamically generates a unique set of permissions for that specific user session. These permissions strictly define which NATS subjects the user is allowed to publish to and subscribe from, typically scoped by `roomId` and `userId`. This enforces a true **principle of least privilege**, making it architecturally impossible for a user in one room to access data from another.
+    *   **Encrypted Authorization Payloads:** As an additional layer of security, Plug-N-Meet leverages NATS's built-in `xkey` feature. The `plugnmeet-server` uses a designated private key to sign and encrypt the authorization JWT before sending it to the NATS auth callout server. This ensures that even the authorization payload itself is protected in transit, providing a robust, multi-layered security model for user authentication.
 
 *   **Scalable Request Processing with Queue Workers:** For critical client-server interactions, like fetching the initial user list, we leverage JetStream's powerful **queue worker pattern**. When a client sends a request, it's published to a stream. Our backend `plugnmeet-server` instances subscribe to this stream as a **queue group**, and NATS ensures that each request is delivered to only **one** available server. This provides automatic, built-in load balancing for our core application logic.
 
@@ -86,5 +87,7 @@ When you choose plugNmeet, you're not just getting an application. You're gettin
 ---
 **Want to learn more?**
 
+*   **Review our [Security and Privacy Overview](/docs/security-overview)**
+*   **Dive deep into our [E2EE Key Models](/blog/2025-10-29-e2ee-key-models-guide)**
 *   **Read our [Scalable Deployment Guide](/docs/developer-guide/scalable-setup)**
 *   **Explore the [Open-Source Project on GitHub](https://github.com/mynaparrot/plugNmeet-server)**
