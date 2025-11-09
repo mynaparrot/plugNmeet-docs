@@ -2,7 +2,7 @@
 title: "Building a Secure and Scalable E-Learning Platform with Plug-N-Meet and Moodle"
 slug: secure-scalable-moodle-e-learning-platform
 authors: [bob]
-tags: [moodle, e-learning, education, whiteboard, collaboration, excalidraw, security, scalability]
+tags: [moodle, e-learning, education, whiteboard, collaboration, excalidraw, security, scalability, video-conferencing, moodle-video-conferencing]
 ---
 
 For educators and institutions using Moodle, the goal is to create a seamless, engaging, and secure learning environment. However, when it's time for a live virtual class, many are forced to send their students to an external, generic video conferencing link. This experience is often disjointed, and the tools provided are frequently limited to passive screen sharing.

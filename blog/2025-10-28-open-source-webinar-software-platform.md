@@ -2,7 +2,7 @@
 title: "Looking for Open Source Webinar Software? Here’s Why You Need a Platform, Not Just a Tool."
 slug: open-source-webinar-software-platform
 authors: [bob]
-tags: [webinar, open-source, business, marketing, saas-alternative, platform]
+tags: [webinar, open-source, business, marketing, saas-alternative, platform, video-conferencing]
 ---
 
 When you search for **open source webinar software**, you're looking for more than just a way to talk to people online. You're looking for control. You want to own your brand, manage your audience, and create a unique, professional presentation without being locked into the expensive, rigid ecosystem of proprietary tools like Zoom Webinars or GoToWebinar.

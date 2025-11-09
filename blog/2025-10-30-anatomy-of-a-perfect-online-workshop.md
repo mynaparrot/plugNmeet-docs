@@ -2,7 +2,7 @@
 title: "The Anatomy of a Perfect Online Workshop: A Step-by-Step Guide"
 slug: anatomy-of-a-perfect-online-workshop
 authors: [bob]
-tags: [workshop, collaboration, breakout-rooms, whiteboard, polling, use-case, automation]
+tags: [workshop, collaboration, breakout-rooms, whiteboard, polling, use-case, automation, video-conferencing]
 ---
 
 We've all been there: an "interactive workshop" that's just a 90-minute video call with a slide deck. The host struggles to juggle different apps for polls, group activities, and notes, while the audience slowly disengages.

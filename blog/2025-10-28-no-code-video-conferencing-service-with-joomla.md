@@ -2,7 +2,7 @@
 title: "How to Launch Your Own Video Conferencing Service with Joomla (No Code Required)"
 slug: no-code-video-conferencing-service-with-joomla
 authors: [simon]
-tags: [joomla, no-code, business, saas, monetization, white-label, component]
+tags: [joomla, no-code, business, saas, monetization, white-label, video-conferencing, joomla-video-conferencing]
 ---
 
 Have you ever dreamed of launching your own online service or "micro-SaaS," but felt blocked by the biggest hurdle: coding? You're not alone. The idea of building, managing, and scaling a software product is daunting.

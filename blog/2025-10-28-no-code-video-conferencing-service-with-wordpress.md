@@ -2,7 +2,7 @@
 title: "How to Launch Your Own Video Conferencing Service with WordPress (No Code Required)"
 slug: no-code-video-conferencing-service-with-wordpress
 authors: [simon]
-tags: [wordpress, no-code, business, saas, monetization, white-label, plugin]
+tags: [wordpress, no-code, business, saas, monetization, white-label, plugin, video-conferencing, wordpress-video-conferencing]
 ---
 
 Have you ever dreamed of launching your own online service or "micro-SaaS," but felt blocked by the biggest hurdle: coding? You're not alone. The idea of building, managing, and scaling a software product is daunting.

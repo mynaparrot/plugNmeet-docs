@@ -2,7 +2,7 @@
 title: "Meet Users Where They Are: Why We Build Plugins, Not Another Standalone App"
 slug: plugin-first-philosophy
 authors: [simon]
-tags: [plugin, lms, cms, moodle, wordpress, integration, architecture]
+tags: [plugin, lms, cms, moodle, wordpress, integration, architecture, video-conferencing]
 ---
 
 If you manage a Learning Management System (LMS) like Moodle or a Content Management System (CMS) like WordPress, you've likely faced this frustrating scenario: you have a vibrant community, a rich content library, and a well-defined user base, but the moment you need to host a live class or a webinar, you have to send everyone away to a third-party, standalone application.
