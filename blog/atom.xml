@@ -78,6 +78,66 @@
         <category label="feature" term="feature"/>
     </entry>
     <entry>
+        <title type="html"><![CDATA[How to Add No-Code Video Conferencing to Your Moodle Courses]]></title>
+        <id>https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle</id>
+        <link href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle"/>
+        <updated>2025-11-09T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[As an educator using Moodle, your goal is to create engaging and effective learning experiences. You want to add live, interactive video classes to your courses, but the options can be frustrating. You're either stuck with complex tools that require technical help, or you're forced to send your students to an external platform like Zoom, breaking the seamless flow of your course.]]></summary>
+        <content type="html"><![CDATA[<p>As an educator using Moodle, your goal is to create engaging and effective learning experiences. You want to add live, interactive video classes to your courses, but the options can be frustrating. You're either stuck with complex tools that require technical help, or you're forced to send your students to an external platform like Zoom, breaking the seamless flow of your course.</p>
+<p>What if you could add a powerful, interactive virtual classroom directly to your Moodle course as easily as adding a quiz or a forum?</p>
+<p>With the official Plug-N-Meet plugin for Moodle, you can. You don't need to be a developer, and you don't need to write a single line of code. This article will show you how to create a fully integrated, no-code video conferencing service right inside your Moodle site.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-problem-the-zoom-detour-in-your-lesson-plan">The Problem: The "Zoom Detour" in Your Lesson Plan<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#the-problem-the-zoom-detour-in-your-lesson-plan" class="hash-link" aria-label="Direct link to The Problem: The &quot;Zoom Detour&quot; in Your Lesson Plan" title="Direct link to The Problem: The &quot;Zoom Detour&quot; in Your Lesson Plan" translate="no">​</a></h3>
+<p>Every time you link to an external video tool, you create a detour in the learning journey. Students have to leave your Moodle site, deal with a different interface, and sometimes even a separate login. It's a clunky experience that can lead to distraction and technical support headaches.</p>
+<p>Furthermore, you lose control over your brand and, more importantly, your students' data.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="the-solution-a-native-moodle-activity">The Solution: A Native Moodle Activity<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#the-solution-a-native-moodle-activity" class="hash-link" aria-label="Direct link to The Solution: A Native Moodle Activity" title="Direct link to The Solution: A Native Moodle Activity" translate="no">​</a></h3>
+<p>The Plug-N-Meet plugin transforms live video conferencing from an external link into a native Moodle activity. For your students, joining your live class is as simple and intuitive as any other part of their coursework.</p>
+<p>With just a few clicks—and absolutely no code—you can:</p>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="1-add-a-virtual-classroom-to-any-course">1. Add a Virtual Classroom to Any Course<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#1-add-a-virtual-classroom-to-any-course" class="hash-link" aria-label="Direct link to 1. Add a Virtual Classroom to Any Course" title="Direct link to 1. Add a Virtual Classroom to Any Course" translate="no">​</a></h4>
+<p>From the "Add an activity or resource" menu in your Moodle course, you can now select "PlugNmeet." You can give your live session a name, set a welcome message, and define the schedule, just like any other Moodle activity. It feels completely native because it <em>is</em>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="2-control-the-student-experience">2. Control the Student Experience<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#2-control-the-student-experience" class="hash-link" aria-label="Direct link to 2. Control the Student Experience" title="Direct link to 2. Control the Student Experience" translate="no">​</a></h4>
+<p>You are the teacher, and you control your classroom. From the simple activity settings page, you can decide:</p>
+<ul>
+<li class="">Should students have to wait for a moderator to join?</li>
+<li class="">Should the session be recorded automatically?</li>
+<li class="">Who can join and with what permissions?</li>
+</ul>
+<p>This allows you to create a safe and structured learning environment for every class.</p>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="3-use-powerful-tools-built-for-teaching">3. Use Powerful Tools Built for Teaching<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#3-use-powerful-tools-built-for-teaching" class="hash-link" aria-label="Direct link to 3. Use Powerful Tools Built for Teaching" title="Direct link to 3. Use Powerful Tools Built for Teaching" translate="no">​</a></h4>
+<p>This isn't just a simple video call. You get a full suite of interactive tools designed to make your online classes more engaging and effective:</p>
+<ul>
+<li class=""><strong>Interactive Whiteboard:</strong> Upload your slides and annotate them in real-time.</li>
+<li class=""><strong>Live Polls:</strong> Quickly check for student understanding with on-the-fly quizzes.</li>
+<li class=""><strong>Breakout Rooms:</strong> Divide your students into small groups for collaborative projects.</li>
+<li class=""><strong>MP4 Recordings:</strong> All recordings are automatically saved to your server and can be made available within the Moodle course for students who missed the live session.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_f97l" id="4-own-your-schools-brand-and-data">4. Own Your School's Brand and Data<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#4-own-your-schools-brand-and-data" class="hash-link" aria-label="Direct link to 4. Own Your School's Brand and Data" title="Direct link to 4. Own Your School's Brand and Data" translate="no">​</a></h4>
+<p>Because Plug-N-Meet is self-hosted, the entire experience happens on your own Moodle site, under your own domain. Your school's logo and branding are front and center. Most importantly, all student data and recordings are stored on your own server, giving you full control and ensuring you can meet your institution's privacy requirements.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-your-moodle-site-your-virtual-classroom">Conclusion: Your Moodle Site, Your Virtual Classroom<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#conclusion-your-moodle-site-your-virtual-classroom" class="hash-link" aria-label="Direct link to Conclusion: Your Moodle Site, Your Virtual Classroom" title="Direct link to Conclusion: Your Moodle Site, Your Virtual Classroom" translate="no">​</a></h3>
+<p>Stop sending your students away to third-party platforms. With the Plug-N-Meet plugin, you can build a powerful, seamless, and secure virtual classroom experience right inside the Moodle environment your students already know and trust.</p>
+<p>It's the power of a world-class video conferencing solution, with the simplicity of a native Moodle activity. No code required.</p>
+<hr>
+<p><strong>Ready to upgrade your Moodle courses?</strong></p>
+<ul>
+<li class=""><strong>Download the <a class="" href="https://www.plugnmeet.org/docs/user-guide/moodle-integration">Official Moodle Plugin</a></strong></li>
+<li class=""><strong>Try our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> to experience the teaching tools</strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/moodle-mod_plugnmeet" target="_blank" rel="noopener noreferrer" class="">Open-Source Project</a> on GitHub</strong></li>
+</ul>]]></content>
+        <author>
+            <name>Chaboud Simon</name>
+            <uri>https://github.com/saimonzone</uri>
+        </author>
+        <category label="moodle" term="moodle"/>
+        <category label="no-code" term="no-code"/>
+        <category label="e-learning" term="e-learning"/>
+        <category label="lms" term="lms"/>
+        <category label="video-conferencing" term="video-conferencing"/>
+        <category label="education" term="education"/>
+        <category label="teacher" term="teacher"/>
+        <category label="moodle-video-conferencing" term="moodle-video-conferencing"/>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[From Chaos to Control: A Moderator's Guide to Managing Any Meeting with Lock Settings]]></title>
         <id>https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings</id>
         <link href="https://www.plugnmeet.org/blog/moderator-guide-room-lock-settings"/>
