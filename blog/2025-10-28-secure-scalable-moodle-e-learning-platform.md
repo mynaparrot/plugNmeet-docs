@@ -65,6 +65,8 @@ This is made possible by our unique architecture, which leverages an API like `g
 
 By combining Moodle with plugNmeet, you are not just adding a video link to your course; you are building a truly integrated, secure, and scalable e-learning platform. You are empowering your educators with tools that are far more engaging than passive screen sharing, fostering a new level of collaboration and interaction in the virtual classroom.
 
+And for the educators and course creators on the front lines, you don't need to understand the technical complexity to reap the benefits. We've designed the Plug-N-Meet Moodle plugin to be incredibly simple to use. If you can add a quiz to your course, you can add a powerful virtual classroom. **[Learn how to get started with our no-code video conferencing guide for Moodle](/blog/no-code-video-conferencing-moodle)**.
+
 ---
 
 **Ready to build your next-generation e-learning platform?**

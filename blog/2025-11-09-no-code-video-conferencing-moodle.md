@@ -49,6 +49,8 @@ This isn't just a simple video call. You get a full suite of interactive tools d
 #### 4. Own Your School's Brand and Data
 Because Plug-N-Meet is self-hosted, the entire experience happens on your own Moodle site, under your own domain. Your school's logo and branding are front and center. Most importantly, all student data and recordings are stored on your own server, giving you full control and ensuring you can meet your institution's privacy requirements.
 
+For your IT department, this self-hosted model provides a **[secure and scalable e-learning platform](/blog/secure-scalable-moodle-e-learning-platform)** that they can manage and grow with confidence.
+
 ---
 
 ### Conclusion: Your Moodle Site, Your Virtual Classroom
