@@ -97,7 +97,7 @@ Now for the final piece: the user interface. Do you need to build one from scrat
 plugNmeet provides a complete, feature-rich, and customizable web client. You simply need to direct your user to the join URL generated in the previous step.
 
 The join URL looks something like this:
-`https://your-domain.com/login.html?access_token=YOUR_GENERATED_TOKEN`
+`https://your-domain.com/conference/?access_token=YOUR_GENERATED_TOKEN`
 
 When a user visits this link, the plugNmeet client application loads, authenticates them with the token, and places them directly into the video meeting.
 
