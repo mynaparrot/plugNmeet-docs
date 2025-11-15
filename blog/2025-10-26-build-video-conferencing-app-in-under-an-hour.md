@@ -35,7 +35,7 @@ plugNmeet bundles all of this complexity into a single, open-source server that 
 
 Here's how you build your app in three steps.
 
-### Step 1: Set Up the Backend (5 Minutes)
+### Step 1: Set Up the Backend (15 Minutes)
 
 First, you need the plugNmeet server, which includes LiveKit for media and NATS for messaging. You can install everything on a fresh Ubuntu server using our automated installation script.
 
