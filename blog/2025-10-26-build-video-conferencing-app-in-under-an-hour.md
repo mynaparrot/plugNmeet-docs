@@ -152,7 +152,7 @@ In the time it took to read this article, you've learned the entire workflow:
 2.  **Use a simple API call** to control rooms and users.
 3.  **Integrate the pre-built client** for an instant user interface.
 
-You've skipped the mountain of WebRTC complexity and gone straight to building your application. From here, you can use our **Design Customization** features to completely white-label the client, or use our webhooks to build complex business logic around your meetings.
+You've skipped the mountain of WebRTC complexity and gone straight to building your application. From here, your next step is to make it truly your own. Learn **[how to deeply integrate and white-label the client](/blog/deep-integration-white-label-guide)** to create a seamless user experience that perfectly matches your brand.
 
 The power of a complete WebRTC platform is now at your fingertips. What will you build?
 
