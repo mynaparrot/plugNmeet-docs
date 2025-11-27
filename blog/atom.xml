@@ -2,11 +2,71 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.plugnmeet.org/blog</id>
     <title>  Blog</title>
-    <updated>2025-11-25T00:00:00.000Z</updated>
+    <updated>2025-11-27T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[A Whiteboard That Belongs in the Classroom, Not in Another Tab]]></title>
+        <id>https://www.plugnmeet.org/blog/integrated-whiteboard-experience</id>
+        <link href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience"/>
+        <updated>2025-11-27T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[If you've ever taught a class online, you've likely experienced this frustrating moment. You're in the middle of a great discussion, and you want to illustrate a point on a whiteboard. You click the "whiteboard" button, and suddenly, a completely new application opens up in another window.]]></summary>
+        <content type="html"><![CDATA[<p>If you've ever taught a class online, you've likely experienced this frustrating moment. You're in the middle of a great discussion, and you want to illustrate a point on a whiteboard. You click the "whiteboard" button, and suddenly, a completely new application opens up in another window.</p>
+<p>It has a different design, a different set of tools, and it feels... disconnected. Your students are now looking at a separate program, not your classroom. This is the "plugin" approach, and while it works, it's often clunky and unintuitive.</p>
+<p>At plugNmeet, we believe your tools should feel like a natural part of your classroom, not a separate gadget you have to bolt on. That's why our whiteboard is <strong>truly built-in</strong>, designed from the ground up to be a seamless and powerful part of your teaching experience.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-problem-with-plugin-whiteboards">The Problem with "Plugin" Whiteboards<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#the-problem-with-plugin-whiteboards" class="hash-link" aria-label="Direct link to The Problem with &quot;Plugin&quot; Whiteboards" title="Direct link to The Problem with &quot;Plugin&quot; Whiteboards" translate="no">​</a></h2>
+<p>Many video platforms integrate a whiteboard by simply linking to an external tool, like Google Jamboard or Miro. This creates several problems for teachers and students:</p>
+<ul>
+<li class=""><strong>A Jarring Experience:</strong> Switching to a new window or tab breaks the flow of the lesson and can confuse students.</li>
+<li class=""><strong>Limited Features:</strong> Often, these external tools don't work properly in smaller "breakout rooms," limiting your ability to run group activities.</li>
+<li class=""><strong>Lag and Delays:</strong> Because the tool is running separately, there can be a noticeable delay between when you draw something and when your students see it.</li>
+<li class=""><strong>Lack of Control:</strong> The controls for the whiteboard are separate from your main meeting controls, making it harder to manage your classroom effectively.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-plugnmeet-difference-a-truly-native-tool">The plugNmeet Difference: A Truly Native Tool<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#the-plugnmeet-difference-a-truly-native-tool" class="hash-link" aria-label="Direct link to The plugNmeet Difference: A Truly Native Tool" title="Direct link to The plugNmeet Difference: A Truly Native Tool" translate="no">​</a></h2>
+<p>We didn't just add a link to a whiteboard. We built one directly into the heart of plugNmeet. Here’s why that makes all the difference for you as an educator.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="1-it-feels-instant-and-seamless">1. It Feels Instant and Seamless<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#1-it-feels-instant-and-seamless" class="hash-link" aria-label="Direct link to 1. It Feels Instant and Seamless" title="Direct link to 1. It Feels Instant and Seamless" translate="no">​</a></h3>
+<p>Because our whiteboard is part of the core application, every line you draw appears on your students' screens instantly. There's no frustrating lag. This is possible because our unique architecture is built for speed, ensuring everyone is always on the same page, literally.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="2-its-more-than-a-blank-canvas">2. It’s More Than a Blank Canvas<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#2-its-more-than-a-blank-canvas" class="hash-link" aria-label="Direct link to 2. It’s More Than a Blank Canvas" title="Direct link to 2. It’s More Than a Blank Canvas" translate="no">​</a></h3>
+<p>A classroom whiteboard isn't just for drawing. It's for reviewing work. We built this directly into our tool. You can <strong>upload PDF documents and Office files</strong> right onto the canvas. This allows you to:</p>
+<ul>
+<li class="">Display a worksheet and have students circle the answers together.</li>
+<li class="">Pull up a presentation slide and highlight key points.</li>
+<li class="">Review a student's paper and add notes directly on the document.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="3-you-have-real-classroom-control">3. You Have Real Classroom Control<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#3-you-have-real-classroom-control" class="hash-link" aria-label="Direct link to 3. You Have Real Classroom Control" title="Direct link to 3. You Have Real Classroom Control" translate="no">​</a></h3>
+<p>As a teacher, you need control. Our built-in whiteboard gives you simple, powerful moderation tools with a single click:</p>
+<ul>
+<li class=""><strong>Lock the board</strong> to make it "view-only" while you are presenting.</li>
+<li class=""><strong>Allow any student</strong> to draw and add to the board.</li>
+<li class=""><strong>Enable multi-user drawing</strong> so the entire class can brainstorm together.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="4-it-works-everywhere-especially-in-breakout-rooms">4. It Works Everywhere, Especially in Breakout Rooms<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#4-it-works-everywhere-especially-in-breakout-rooms" class="hash-link" aria-label="Direct link to 4. It Works Everywhere, Especially in Breakout Rooms" title="Direct link to 4. It Works Everywhere, Especially in Breakout Rooms" translate="no">​</a></h3>
+<p>This is one of the biggest differences. Unlike other platforms where advanced tools often disappear in breakout rooms, our whiteboard retains its full power. Students can work together on documents, solve problems, and brainstorm on their own collaborative canvas in each breakout room, just as they would in the main session.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-the-best-tool-is-the-one-you-dont-notice">Conclusion: The Best Tool is the One You Don't Notice<a href="https://www.plugnmeet.org/blog/integrated-whiteboard-experience#conclusion-the-best-tool-is-the-one-you-dont-notice" class="hash-link" aria-label="Direct link to Conclusion: The Best Tool is the One You Don't Notice" title="Direct link to Conclusion: The Best Tool is the One You Don't Notice" translate="no">​</a></h2>
+<p>Our philosophy is simple: your teaching tools shouldn't get in your way. They should feel so natural and integrated that you don't even think about them.</p>
+<p>By building our whiteboard as a core, native feature, we've created a fast, powerful, and seamless collaborative space that truly belongs in your classroom. It’s not an add-on or a plugin; it's simply part of the room.</p>
+<hr>
+<p><strong>Ready to experience a better way to collaborate?</strong></p>
+<ul>
+<li class=""><strong>Try our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> and experience the whiteboard yourself</strong></li>
+<li class=""><strong>Read our guide on <a class="" href="https://www.plugnmeet.org/blog/classroom-analytics-for-educators">Using Analytics to Understand Your Classroom</a></strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Chaboud Simon</name>
+            <uri>https://github.com/saimonzone</uri>
+        </author>
+        <category label="whiteboard" term="whiteboard"/>
+        <category label="collaboration" term="collaboration"/>
+        <category label="ease-of-use" term="ease-of-use"/>
+        <category label="user-experience" term="user-experience"/>
+        <category label="edtech" term="edtech"/>
+        <category label="features" term="features"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Don't Just Rent Your Video Solution, Own It: The Business Case for Self-Hosting]]></title>
         <id>https://www.plugnmeet.org/blog/own-vs-rent-video-platform</id>
@@ -1256,85 +1316,5 @@ In today's world, privacy is non-negotiable. We built Plug-N-Meet with a securit
         <category label="philosophy" term="philosophy"/>
         <category label="reliability" term="reliability"/>
         <category label="scalability" term="scalability"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Who Holds the Keys? A Guide to plugNmeet's End-to-End Encryption Models]]></title>
-        <id>https://www.plugnmeet.org/blog/e2ee-key-models-guide</id>
-        <link href="https://www.plugnmeet.org/blog/e2ee-key-models-guide"/>
-        <updated>2025-10-29T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[In the world of secure communication, End-to-End Encryption (E2EE) is the gold standard. It ensures that only the participants in a conversation can decrypt and view the media streams, not even the server itself. At plugNmeet, we've implemented a robust E2EE model based on the WebRTC Insertable Streams API.]]></summary>
-        <content type="html"><![CDATA[<p>In the world of secure communication, End-to-End Encryption (E2EE) is the gold standard. It ensures that only the participants in a conversation can decrypt and view the media streams, not even the server itself. At plugNmeet, we've implemented a robust E2EE model based on the WebRTC Insertable Streams API.</p>
-<p>But "E2EE" isn't a single, one-size-fits-all solution. A critical question remains: <strong>where do the encryption keys come from, and who manages them?</strong></p>
-<p>plugNmeet offers two distinct models for managing E2EE keys, controlled by a simple setting: <code>enabled_self_insert_encryption_key</code>. Understanding the difference is key to choosing the right security posture for your application.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_f97l" id="the-core-concept-shared-secret">The Core Concept: Shared Secret<a href="https://www.plugnmeet.org/blog/e2ee-key-models-guide#the-core-concept-shared-secret" class="hash-link" aria-label="Direct link to The Core Concept: Shared Secret" title="Direct link to The Core Concept: Shared Secret" translate="no">​</a></h2>
-<p>In both models, the goal is the same: every participant in a room must share the exact same secret key. This key is used to encrypt all outgoing media and decrypt all incoming media. If a user doesn't have the key, they can't participate.</p>
-<p>The difference between our two models comes down to a simple question: <strong>who generates and distributes this shared secret?</strong></p>
-<h3 class="anchor anchorTargetStickyNavbar_f97l" id="model-1-server-generated-keys-enabled_self_insert_encryption_key--false">Model 1: Server-Generated Keys (<code>enabled_self_insert_encryption_key = false</code>)<a href="https://www.plugnmeet.org/blog/e2ee-key-models-guide#model-1-server-generated-keys-enabled_self_insert_encryption_key--false" class="hash-link" aria-label="Direct link to model-1-server-generated-keys-enabled_self_insert_encryption_key--false" title="Direct link to model-1-server-generated-keys-enabled_self_insert_encryption_key--false" translate="no">​</a></h3>
-<p>This is the <strong>default, simplest, and most convenient</strong> method.</p>
-<p><strong>How it works:</strong></p>
-<ol>
-<li class="">When the first participant joins an E2EE-enabled room, the <strong>plugNmeet server</strong> cryptographically generates a strong, random secret key for that specific room.</li>
-<li class="">As each subsequent participant joins, the plugNmeet server securely delivers this key to the new participant as part of their authentication response.</li>
-<li class="">The client's browser then uses this key to set up its encryption mechanism.</li>
-</ol>
-<p><strong>Who is this for?</strong></p>
-<ul>
-<li class=""><strong>Most standard use cases.</strong></li>
-<li class="">Applications that need strong encryption without the complexity of building their own key management system.</li>
-<li class="">Anyone who trusts their own self-hosted plugNmeet server to manage keys on a per-session basis.</li>
-</ul>
-<p><strong>Pros:</strong></p>
-<ul>
-<li class=""><strong>Simple to Implement:</strong> E2EE works out of the box with no extra development work required on your part.</li>
-<li class=""><strong>Secure:</strong> The key is generated on your trusted, self-hosted server and transmitted securely to each client. It only exists for the duration of the session.</li>
-</ul>
-<p><strong>The Trust Model:</strong>
-In this model, you are trusting your own plugNmeet server to generate and distribute the keys. The server "knows" the key for each session, but it is designed not to store it long-term. For a self-hosted environment, this is a very strong and practical security model.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_f97l" id="model-2-user-provided-keys-enabled_self_insert_encryption_key--true">Model 2: User-Provided Keys (<code>enabled_self_insert_encryption_key = true</code>)<a href="https://www.plugnmeet.org/blog/e2ee-key-models-guide#model-2-user-provided-keys-enabled_self_insert_encryption_key--true" class="hash-link" aria-label="Direct link to model-2-user-provided-keys-enabled_self_insert_encryption_key--true" title="Direct link to model-2-user-provided-keys-enabled_self_insert_encryption_key--true" translate="no">​</a></h3>
-<p>This is the <strong>most secure and advanced</strong> method, providing a true "zero-knowledge" architecture where not even your application handles the key.</p>
-<p><strong>How it works:</strong></p>
-<ol>
-<li class="">When this mode is enabled, the plugNmeet server <strong>does not</strong> generate or handle any keys.</li>
-<li class="">It becomes the users' responsibility to securely share a secret key among themselves using a completely <strong>out-of-band channel</strong> (e.g., a Signal message, a password manager, or even verbally). Your application and servers never touch or see this key.</li>
-<li class="">When a user joins the meeting, the plugNmeet UI will <strong>prompt them to manually enter the secret key</strong>.</li>
-<li class="">The user must type or paste the pre-shared key into the prompt. Only if the key is correct will their client be able to encrypt and decrypt the media streams to participate in the call.</li>
-</ol>
-<p><strong>Who is this for?</strong></p>
-<ul>
-<li class=""><strong>Maximum Security &amp; Zero-Knowledge Applications:</strong> Use cases where you need to guarantee that your entire server infrastructure (including both the plugNmeet server and your own application backend) has absolutely no knowledge of the encryption keys.</li>
-<li class=""><strong>Journalist/Whistleblower Platforms:</strong> Situations where proving that you cannot access user communications is a core feature.</li>
-<li class=""><strong>High-Assurance Enterprise Meetings:</strong> For top-secret internal discussions where keys are managed by corporate security policy, not the application.</li>
-</ul>
-<p><strong>Pros:</strong></p>
-<ul>
-<li class=""><strong>True Zero-Knowledge:</strong> Your servers are completely blind to the content of the conversations. The key never touches your server infrastructure, not even your application's frontend.</li>
-<li class=""><strong>Maximum User Control:</strong> The security of the key is entirely in the hands of the end-users and their chosen out-of-band communication method.</li>
-</ul>
-<p><strong>The Trust Model:</strong>
-In this model, you are not trusting any server component at all. You are only trusting the end-user clients and the security of the out-of-band mechanism they used to share the key. This is the highest level of user-controlled security you can achieve.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_f97l" id="quick-comparison-which-model-should-you-use">Quick Comparison: Which Model Should You Use?<a href="https://www.plugnmeet.org/blog/e2ee-key-models-guide#quick-comparison-which-model-should-you-use" class="hash-link" aria-label="Direct link to Quick Comparison: Which Model Should You Use?" title="Direct link to Quick Comparison: Which Model Should You Use?" translate="no">​</a></h2>
-<table><thead><tr><th style="text-align:left">Use Case</th><th style="text-align:left">Recommended Model</th><th style="text-align:left">Why?</th></tr></thead><tbody><tr><td style="text-align:left"><strong>A general-purpose meeting platform</strong></td><td style="text-align:left"><strong>Server-Generated</strong></td><td style="text-align:left">Simple, secure, and requires no extra work. The default choice for most applications.</td></tr><tr><td style="text-align:left"><strong>A secure telehealth or legal app</strong></td><td style="text-align:left"><strong>User-Provided</strong></td><td style="text-align:left">Provides the strongest "zero-knowledge" guarantee, which may be required for compliance.</td></tr><tr><td style="text-align:left"><strong>A private chat for a small, trusted team</strong></td><td style="text-align:left"><strong>Server-Generated</strong></td><td style="text-align:left">The security is more than sufficient, and the convenience is high.</td></tr><tr><td style="text-align:left"><strong>Building a Signal/Telegram-like video app</strong></td><td style="text-align:left"><strong>User-Provided</strong></td><td style="text-align:left">Aligns with the user-controlled, zero-knowledge philosophy of those platforms.</td></tr></tbody></table>
-<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion">Conclusion<a href="https://www.plugnmeet.org/blog/e2ee-key-models-guide#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
-<p>The choice between server-generated and user-provided keys is a classic trade-off between convenience and absolute control. By offering both models, plugNmeet gives you the flexibility to choose the security posture that best fits your application's specific needs and threat model.</p>
-<p>Whether you need the simple, out-of-the-box security of server-generated keys or the zero-knowledge guarantees of a user-provided model, plugNmeet provides the tools to build a truly secure communication platform.</p>
-<hr>
-<p><strong>Ready to learn more?</strong></p>
-<ul>
-<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a></strong></li>
-<li class=""><strong>Explore the <a class="" href="https://www.plugnmeet.org/docs/api/intro">API Documentation</a></strong></li>
-</ul>]]></content>
-        <author>
-            <name>Jibon L. Costa</name>
-            <uri>https://github.com/jibon57</uri>
-        </author>
-        <category label="e2ee" term="e2ee"/>
-        <category label="security" term="security"/>
-        <category label="encryption" term="encryption"/>
-        <category label="privacy" term="privacy"/>
-        <category label="architecture" term="architecture"/>
-        <category label="developer" term="developer"/>
     </entry>
 </feed>
