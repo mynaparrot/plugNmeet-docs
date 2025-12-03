@@ -36,27 +36,24 @@ const FeatureList: FeatureItem[] = [
   },
   {
     title: '3',
-    Svg: require('@site/static/img/features/video-call-svgrepo-com.svg')
-      .default,
+    Svg: require('@site/static/img/features/video-call-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>HD Video & MP4 Recording</h3>
+        <h3>Recording & Broadcasting</h3>
         <p>
-          Engage your audience with HD audio and video, alongside powerful features like virtual backgrounds and file sharing. Our scalable cloud recorder captures every session as a single, portable MP4 file.
+          Capture your sessions in crystal-clear HD quality as portable MP4 files. Or, expand your reach by streaming directly to platforms like YouTube and Facebook with built-in RTMP/WHIP support.
         </p>
       </>
     ),
   },
   {
     title: '4',
-    Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg')
+    Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg')
       .default,
     description: (
       <>
-        <h3>Live Broadcasting</h3>
-        <p>
-          Expand your reach by streaming your meetings to a global audience. With built-in support for RTMP and WHIP, you can broadcast directly to platforms like YouTube, Facebook, and more.
-        </p>
+        <h3>AI Meeting Agent</h3>
+        <p>Turn your meetings into actionable intelligence. Our powerful AI agent provides live spoken translations, generates automated summaries, creates full transcriptions, <strong>and many more...</strong></p>
       </>
     ),
   },

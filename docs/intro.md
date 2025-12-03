@@ -1,14 +1,14 @@
 ---
 title: Introduction to plugNmeet | Your Self-Hosted Video Conferencing Solution
 description: An introduction to plugNmeet, the open-source video conferencing platform designed for control, flexibility, and cost-effective scale.
-keywords: [open source, webrtc, video conferencing, self-hosted, on-premise, video chat, webinar, virtual classroom, zoom alternative, video api]
+keywords: [open source, webrtc, video conferencing, self-hosted, on-premise, video chat, webinar, virtual classroom, zoom alternative, video api, ai]
 sidebar_position: 1
 sidebar_label: Intro
 ---
 
 # Plug-N-Meet: Your Open-Source WebRTC Conferencing Solution
 
-Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality video meetings directly from your website, with your own branding, and complete ownership of the user experience.
+Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality, and **AI-powered** meetings directly from your website, with your own branding, and complete ownership of the user experience.
 
 What truly sets Plug-N-Meet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience—from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
 
@@ -45,6 +45,7 @@ Plug-N-Meet's flexibility makes it the perfect solution for a wide range of user
 - **Shared Video Playback:** Watch a YouTube video or play a video file for everyone in the meeting at the same time.
 
 ### Advanced Integration & Security
+- **AI Meeting Agent:** Turn your meetings into actionable intelligence. Our powerful AI agent provides live spoken translations, generates automated summaries, creates full transcriptions, **and many more...**
 - **End-to-End Encryption (E2EE):** Keep your meetings completely private with the highest level of security for all audio, video, and data. For a deeper dive into our security architecture, including authentication and data-in-transit protection, refer to our detailed **[Security Overview](/docs/security-overview.md)**.
 - **Live Captions & Translation:** See spoken words as text in real-time, allowing you to also translate the conversation into different languages.
 - **Embed Web Content:** Show any website or online application, like a Google Doc or a project dashboard, directly within the meeting window.

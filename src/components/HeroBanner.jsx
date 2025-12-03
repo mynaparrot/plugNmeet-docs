@@ -21,7 +21,9 @@ const HeroBanner = () => {
                 Open Source WebRTC Conferencing: Scalable, Customizable, and
                 Self-Hosted.
               </h1>
-              <h2>Integrate a powerful, high-performance video meeting solution into your website with ease.</h2>
+              <h2>
+                Integrate a powerful, AI-enhanced video meeting solution into your website with ease.
+              </h2>
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/intro"

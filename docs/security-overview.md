@@ -20,9 +20,10 @@ This document provides a comprehensive overview of the security architecture and
 4.  [Transport & Data-in-Transit Security](#4-transport--data-in-transit-security)
     -   [NATS Communication](#41-nats-communication)
     -   [Media Server (LiveKit)](#42-media-server-livekit)
-5.  [Secure Session Flow](#5-secure-session-flow)
-6.  [Browser Storage (IndexedDB)](#6-browser-storage-indexeddb)
-7.  [Server-Side Data Handling & Persistence](#7-server-side-data-handling--persistence)
+5.  [AI Services & Data Privacy (The Insights Platform)](#5-ai-services--data-privacy-the-insights-platform)
+6.  [Secure Session Flow](#6-secure-session-flow)
+7.  [Browser Storage (IndexedDB)](#7-browser-storage-indexeddb)
+8.  [Server-Side Data Handling & Persistence](#8-server-side-data-handling--persistence)
 
 ---
 
@@ -95,7 +96,34 @@ Media streams are managed by LiveKit, which has built-in support for E2EE.
 
 *Reference: `client/src/helpers/livekit/ConnectLivekit.ts`*
 
-### 5. Secure Session Flow
+### 5. AI Services & Data Privacy (The Insights Platform)
+
+The Plug-N-Meet Insights Platform integrates with third-party AI providers (such as Microsoft Azure and Google) to offer advanced features. As the operator of the platform, it is your responsibility to understand how this data is handled and to update your own privacy policy accordingly.
+
+#### 5.1. Audio-Based AI Features
+
+Features that require understanding spoken words, such as **Speech-to-Text**, **Spoken Translations**, and **AI Meeting Summaries**, work by processing the meeting's audio.
+
+*   **How it Works:** When these features are enabled, an AI agent joins the session. This agent captures the mixed audio stream of the meeting and sends it directly to the configured AI provider for processing.
+*   **Data Flow:** The audio data is streamed from your Plug-N-Meet server to the third-party AI provider's servers.
+
+#### 5.2. Text-Based AI Features
+
+Text-based features have different data flow models depending on their purpose.
+
+*   **Chat Translation:** This is a **broadcast** feature. When a user sends a chat message, the text is sent to the AI provider for translation. The translated text is then received by the Plug-N-Meet server and broadcast to the relevant participants.
+*   **AI Chat Assistant:** This is a **private, one-to-one** feature. When a user sends a message to the AI Assistant, that prompt is sent to the AI provider. The response is sent back **only to that specific user** and is not broadcast to anyone else in the meeting.
+
+#### 5.3. The Impact of End-to-End Encryption (E2EE)
+
+Your privacy and security are paramount. The interaction between AI features and E2EE is designed to be secure by default.
+
+*   **When E2EE is enabled with a self-provided key (`enabled_self_insert_encryption_key: true`), all audio-based AI features are automatically disabled.** This is a deliberate security design. The AI agent cannot decrypt the audio stream, and therefore cannot function.
+*   **Text-based features like Chat Translation and the AI Chat Assistant will continue to function.** This is because the text is sent to the AI provider *before* it is encrypted for transport over NATS.
+
+**Disclaimer for Operators:** You are the data controller. It is your responsibility to inform your users that when AI features are enabled, their audio and/or text data will be processed by third-party AI providers. You must ensure your terms of service and privacy policy are updated to reflect this data flow.
+
+### 6. Secure Session Flow
 
 The end-to-end connection process is designed with security at each step. The exact flow can vary based on the room's configuration (e.g., whether E2EE is enabled).
 
@@ -106,7 +134,7 @@ The end-to-end connection process is designed with security at each step. The ex
 5.  **Media Connection**: The client connects to the LiveKit media server. If E2EE is active, it enables encryption with the imported key.
 6.  **Secure Communication**: All subsequent data and media are now handled according to the room's security configuration, with E2EE applied if it was enabled.
 
-### 6. Browser Storage (IndexedDB)
+### 7. Browser Storage (IndexedDB)
 
 To enhance user experience and ensure session continuity, the application utilizes the browser's built-in IndexedDB storage. This is used for purely functional purposes, such as restoring a user's session if they accidentally refresh their page.
 
@@ -131,25 +159,25 @@ The data stored in IndexedDB is designed to be ephemeral and is handled as follo
 
 **Disclaimer for Operators:** As the person or organization deploying this software, you are responsible for creating and maintaining your own Privacy Policy. You should use this information to ensure your policy is transparent and compliant with any applicable data protection regulations (e.g., GDPR, CCPA).
 
-### 7. Server-Side Data Handling & Persistence
+### 8. Server-Side Data Handling & Persistence
 
 To provide a complete picture of the data lifecycle, this section outlines how data is handled and stored on the server side. The architecture is designed to separate volatile real-time data from long-term persistent data, with a strong emphasis on user-controlled data retention.
 
-#### 7.1. Real-Time Session State (Redis or NATS KV)
+#### 8.1. Real-Time Session State (Redis or NATS KV)
 
 During an active meeting, the server needs to manage the real-time state of the room, such as the list of participants, their mute status, and other immediate metadata. This is handled by a high-performance, in-memory key-value store (either Redis or NATS KV).
 
 -   **Purpose:** Fast, real-time coordination of an active session.
 -   **Lifecycle:** This data is volatile and is tied to the life of the session. It is automatically cleared when the session ends.
 
-#### 7.2. Persistent Database (MariaDB)
+#### 8.2. Persistent Database (MariaDB)
 
 For historical reference and administrative purposes, a small subset of non-sensitive information is stored in a persistent relational database (MariaDB).
 
 -   **Purpose:** Long-term record-keeping of meeting occurrences.
 -   **Data Stored:** This typically includes basic room information such as `roomId`, `title`, creation/end time etc.
 
-#### 7.3. Optional Analytics Data
+#### 8.3. Optional Analytics Data
 
 PlugNmeet provides the option to persist detailed analytics for a session to help administrators understand usage patterns. This feature is governed by a setting that provides administrators with control over data retention.
 
@@ -164,7 +192,7 @@ PlugNmeet provides the option to persist detailed analytics for a session to hel
     -   If `true`, the aggregated metadata is written to a JSON file, and its reference is saved to the database.
     -   If `false`, the in-memory data is immediately discarded and is not persisted in any form.
 
-#### 7.4. Cloud Recordings
+#### 8.4. Cloud Recordings
 
 When cloud recording is enabled for a session, the resulting media file (MP4) is stored on the server.
 
