@@ -201,6 +201,17 @@ When cloud recording is enabled for a session, the resulting media file (MP4) is
 -   **User Control & Lifecycle:** The management of these recordings is entirely controlled by the administrator via the API. Recordings are retained on the server indefinitely until they are explicitly deleted using the `/recording/delete` API call. This gives the administrator full control over the data retention lifecycle.
 -   **E2EE Incompatibility:** Server-side recording is **fundamentally incompatible** with zero-trust End-to-End Encryption. Therefore, cloud recording is automatically disabled and cannot be initiated if the room is configured with `enabled_self_insert_encryption_key: true`. This is because the server has no access to the unencrypted media streams required to create the recording, which is the core guarantee of the E2EE model.
 
+#### 8.5. AI Service Artifacts
+
+When AI features like transcription or summarization are used, they generate valuable data artifacts. Similar to cloud recordings and analytics, Plug-N-Meet gives the administrator full control over this data.
+
+-   **Purpose:** To provide a persistent, retrievable record of AI-generated meeting intelligence.
+-   **Storage:** The generated files (e.g., VTT transcription files, text summaries) are stored in a configurable directory on the server's filesystem. To allow for easy management and retrieval, **metadata** about these artifacts—such as the associated `roomId`, `file_path`, AI token usage, and speech duration—is stored in the `pnm_room_artifacts` table in the persistent database.
+-   **User Control & Lifecycle:** The management of these artifacts is entirely controlled by the administrator via the API. You can:
+    -   **Download** the transcription or summary files.
+    -   **Delete the Artifact File:** The API allows you to delete the generated files from the server's filesystem to save storage space.
+    -   **Retained Metadata:** The associated metadata in the `pnm_room_artifacts` table is linked to the meeting's history and is **retained** for your records, even after the file is deleted. This ensures you always have a permanent record for auditing and analyzing AI service usage and costs.
+
 ---
 
 This layered approach to security and data handling does more than just protect against common threats; it provides a transparent and flexible framework that puts you, the operator, in control. By combining robust security measures with a "**_privacy by design_**" philosophy, Plug-N-Meet gives you the tools and the transparency needed to meet your own privacy and compliance obligations confidently.
