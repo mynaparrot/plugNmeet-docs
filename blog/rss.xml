@@ -4,10 +4,79 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Sun, 07 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 14 Dec 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Smart Scaling: Leveraging Cloud HA and Prioritizing Your Recorder for Cost-Effective Performance]]></title>
+            <link>https://www.plugnmeet.org/blog/smart-scaling-ha-recorder</link>
+            <guid>https://www.plugnmeet.org/blog/smart-scaling-ha-recorder</guid>
+            <pubDate>Sun, 14 Dec 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[When building any critical application, "scalability" and "high availability" (HA) are often top of mind. But for many, these terms conjure images of complex, multi-node clusters, expensive infrastructure, and a steep learning curve. The truth is, for most plugNmeet users, achieving both performance and resilience can be much simpler and more cost-effective than you might think.]]></description>
+            <content:encoded><![CDATA[<p>When building any critical application, "scalability" and "high availability" (HA) are often top of mind. But for many, these terms conjure images of complex, multi-node clusters, expensive infrastructure, and a steep learning curve. The truth is, for most plugNmeet users, achieving both performance and resilience can be much simpler and more cost-effective than you might think.</p>
+<p>This article will demystify the relationship between scalability and HA, and guide you through a pragmatic, phased approach to optimizing your plugNmeet deployment. We'll show you how to leverage the power of your cloud provider for HA, and why separating your recording server is almost always your first and best step towards true scalability.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="scalability-vs-high-availability-understanding-the-difference">Scalability vs. High Availability: Understanding the Difference<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#scalability-vs-high-availability-understanding-the-difference" class="hash-link" aria-label="Direct link to Scalability vs. High Availability: Understanding the Difference" title="Direct link to Scalability vs. High Availability: Understanding the Difference" translate="no">​</a></h2>
+<p>While often used interchangeably, scalability and high availability address distinct challenges:</p>
+<ul>
+<li class=""><strong>Scalability:</strong> The ability of a system to handle a growing amount of work by adding resources. For plugNmeet, this means handling more concurrent users, more rooms, or more recordings.</li>
+<li class=""><strong>High Availability (HA):</strong> The ability of a system to remain operational and accessible even if some components fail. This is about minimizing downtime and ensuring continuous service.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="leveraging-cloud-provider-ha-dont-re-invent-the-wheel">Leveraging Cloud Provider HA: Don't Re-Invent the Wheel<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#leveraging-cloud-provider-ha-dont-re-invent-the-wheel" class="hash-link" aria-label="Direct link to Leveraging Cloud Provider HA: Don't Re-Invent the Wheel" title="Direct link to Leveraging Cloud Provider HA: Don't Re-Invent the Wheel" translate="no">​</a></h2>
+<p>Many users deploy plugNmeet on cloud platforms like AWS, Google Cloud, Azure, or DigitalOcean. These providers offer robust, built-in High Availability features for their virtual machines and underlying infrastructure.</p>
+<ul>
+<li class=""><strong>Automatic Restarts:</strong> If a virtual machine fails, the cloud provider will often automatically restart it on healthy hardware.</li>
+<li class=""><strong>Managed Databases:</strong> Services like managed MySQL/MariaDB or Redis often come with built-in replication and failover, ensuring your data layer is resilient.</li>
+<li class=""><strong>Redundant Networking:</strong> Cloud networks are designed with redundancy to minimize single points of failure.</li>
+</ul>
+<p><strong>The takeaway:</strong> For many plugNmeet users, the "HA" of their <em>server instance</em> is already handled by their cloud provider. You might not need to build complex application-level HA for your <code>plugnmeet-server</code> if your underlying VM is already highly available. Focus your efforts where they matter most.</p>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="plugnmeets-pragmatic-scaling-strategy">plugNmeet's Pragmatic Scaling Strategy<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#plugnmeets-pragmatic-scaling-strategy" class="hash-link" aria-label="Direct link to plugNmeet's Pragmatic Scaling Strategy" title="Direct link to plugNmeet's Pragmatic Scaling Strategy" translate="no">​</a></h2>
+<p>Instead of immediately jumping to a complex, multi-node HA setup for plugNmeet itself, we recommend a phased approach that prioritizes impact and cost-effectiveness.</p>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="phase-1-separate-the-recorder-the-1-priority-for-scalability">Phase 1: Separate the Recorder (The #1 Priority for Scalability)<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#phase-1-separate-the-recorder-the-1-priority-for-scalability" class="hash-link" aria-label="Direct link to Phase 1: Separate the Recorder (The #1 Priority for Scalability)" title="Direct link to Phase 1: Separate the Recorder (The #1 Priority for Scalability)" translate="no">​</a></h3>
+<p>This is the most impactful and cost-effective step for improving your plugNmeet deployment's scalability and performance.</p>
+<ul>
+<li class=""><strong>The Problem:</strong> Recording is a CPU-intensive task. Running the recorder on the same server as your live media server (<code>plugnmeet-server</code> + LiveKit) can starve the media server of resources, leading to poor quality for live participants.</li>
+<li class=""><strong>The Solution:</strong> Deploy the <code>plugnmeet-recorder</code> on a <strong>separate, dedicated server</strong>.</li>
+<li class=""><strong>Cost-Effective:</strong> This recorder server doesn't need to be expensive or highly available. It can be a smaller, cheaper VM. From our testing, a 2-vCPU server can handle approximately 2-3 simultaneous recordings, depending on the number of webcams active in the session. If the recorder server goes down, recordings might be temporarily delayed, but your live meetings remain unaffected. NATS JetStream's queue worker pattern ensures that recording jobs will simply wait for an available recorder to pick them up.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="phase-2-vertical-scaling-more-power-for-your-main-server">Phase 2: Vertical Scaling (More Power for Your Main Server)<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#phase-2-vertical-scaling-more-power-for-your-main-server" class="hash-link" aria-label="Direct link to Phase 2: Vertical Scaling (More Power for Your Main Server)" title="Direct link to Phase 2: Vertical Scaling (More Power for Your Main Server)" translate="no">​</a></h3>
+<p>Once your recorder is isolated, the next step is often to simply give your main <code>plugnmeet-server</code> more power. A single plugNmeet setup can handle hundreds of concurrent users on a good server, so it's wise to start with a reasonable configuration and scale up as needed.</p>
+<ul>
+<li class=""><strong>The Strategy:</strong> Start with a solid baseline and upgrade your main server's resources based on observed load. Prioritize increasing CPU/RAM and network bandwidth. For example, if you start with a 1 Gbps uplink and notice bottlenecks, upgrading to a 2 Gbps or 5 Gbps connection is a simple and highly effective scaling tactic.</li>
+<li class=""><strong>The Benefit:</strong> plugNmeet and LiveKit, being written in Go, are incredibly efficient. A single, well-provisioned server can handle hundreds of concurrent users. This is far simpler and cheaper than managing a multi-node cluster.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_f97l" id="phase-3-horizontal-scaling-when-you-really-need-it">Phase 3: Horizontal Scaling (When You <em>Really</em> Need It)<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#phase-3-horizontal-scaling-when-you-really-need-it" class="hash-link" aria-label="Direct link to phase-3-horizontal-scaling-when-you-really-need-it" title="Direct link to phase-3-horizontal-scaling-when-you-really-need-it" translate="no">​</a></h3>
+<p>Only after you've isolated the recorder and vertically scaled your main server to its practical limits should you consider a multi-node, horizontally scaled plugNmeet deployment. This is for extreme scale or custom HA requirements beyond what your cloud provider offers.</p>
+<ul>
+<li class=""><strong>The Strategy:</strong> Deploy multiple <code>plugnmeet-server</code> instances behind a load balancer, and potentially cluster LiveKit and NATS.</li>
+<li class=""><strong>The Benefit:</strong> This provides maximum resilience and capacity for thousands of concurrent users.</li>
+<li class=""><strong>The Caveat:</strong> This is significantly more complex and should only be pursued when your usage patterns clearly demand it.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-smart-choices-for-optimal-performance">Conclusion: Smart Choices for Optimal Performance<a href="https://www.plugnmeet.org/blog/smart-scaling-ha-recorder#conclusion-smart-choices-for-optimal-performance" class="hash-link" aria-label="Direct link to Conclusion: Smart Choices for Optimal Performance" title="Direct link to Conclusion: Smart Choices for Optimal Performance" translate="no">​</a></h2>
+<p>Achieving a high-performing and resilient plugNmeet deployment doesn't always mean building the most complex architecture from day one. By making smart, phased decisions, you can optimize for both cost and performance:</p>
+<ol>
+<li class=""><strong>Leverage your cloud provider's built-in HA</strong> for your server instances.</li>
+<li class=""><strong>Prioritize separating your recording server</strong> on a cheaper, dedicated VM to immediately boost live meeting quality.</li>
+<li class=""><strong>Vertically scale your main server</strong> before considering horizontal scaling.</li>
+</ol>
+<p>This pragmatic approach ensures you get the most out of plugNmeet without unnecessary complexity or expense, allowing you to grow intelligently.</p>
+<hr>
+<p><strong>Ready to optimize your plugNmeet deployment?</strong></p>
+<ul>
+<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+<li class=""><strong>Check out our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
+</ul>]]></content:encoded>
+            <category>scalability</category>
+            <category>high-availability</category>
+            <category>ha</category>
+            <category>cloud</category>
+            <category>cost-effective</category>
+            <category>recorder</category>
+            <category>deployment</category>
+            <category>architecture</category>
+        </item>
         <item>
             <title><![CDATA[Automate Everything: 5 Powerful Workflows You Can Build with plugNmeet Webhooks]]></title>
             <link>https://www.plugnmeet.org/blog/powerful-workflows-with-webhooks</link>
@@ -1220,85 +1289,6 @@
             <category>youtube</category>
             <category>cost-effective</category>
             <category>large-scale</category>
-        </item>
-        <item>
-            <title><![CDATA[Why We Built Plug-N-Meet: A Founder's Story]]></title>
-            <link>https://www.plugnmeet.org/blog/why-we-built-plugnmeet</link>
-            <guid>https://www.plugnmeet.org/blog/why-we-built-plugnmeet</guid>
-            <pubDate>Fri, 31 Oct 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[For years, our company has been a well-known provider of BigBlueButton hosting and support services. We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.]]></description>
-            <content:encoded><![CDATA[<p>For years, our company has been a well-known provider of <a href="https://www.mynaparrot.com/classroom/bigbluebuttonservice" target="_blank" rel="noopener noreferrer" class="">BigBlueButton hosting and support services</a>. We've deployed, managed, and scaled it for countless clients, and we have a deep respect for the role it has played in the open-source education community. It paved the way.</p>
-<p>But after years in the trenches, supporting live sessions, online classes, and events at scale, we found ourselves running into the same fundamental walls. We weren't just using the software; we were experiencing its architectural limits firsthand. The frustration wasn't just about bugs; it was about an architecture that, while powerful for its original purpose, presented challenges for the kind of elastic scalability and developer agility that modern web applications demand.</p>
-<p>We realized we had a choice: continue building workarounds, or take everything we had learned and build the solution we knew our users needed.</p>
-<p>We chose to build. This is the story of why Plug-N-Meet exists.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_f97l" id="lessons-from-the-trenches-the-challenges-we-had-to-solve">Lessons from the Trenches: The Challenges We Had to Solve<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#lessons-from-the-trenches-the-challenges-we-had-to-solve" class="hash-link" aria-label="Direct link to Lessons from the Trenches: The Challenges We Had to Solve" title="Direct link to Lessons from the Trenches: The Challenges We Had to Solve" translate="no">​</a></h3>
-<p>Our decision wasn't born from a dislike of BigBlueButton, but from a deep understanding of its pain points at scale. We consistently faced a set of recurring challenges:</p>
-<ul>
-<li class="">
-<p><strong>The 100-User Wall:</strong> We saw time and again that even on powerful servers, BigBlueButton's performance would degrade significantly once a session crossed 100-150 concurrent users. It simply wasn't designed for the elastic scalability modern applications require.</p>
-</li>
-<li class="">
-<p><strong>The Labyrinth of Complexity:</strong> The architecture is a mix of different programming languages and technologies, each solving a different piece of the puzzle. While brilliant in its time, this makes it incredibly difficult to maintain, debug, and—most importantly—add new features to. A simple change could have cascading effects across a half-dozen different services.</p>
-</li>
-<li class="">
-<p><strong>The Branding Straitjacket:</strong> For our clients who wanted a true white-label experience, customization was a constant struggle. Deep branding required complex themeing and often direct code modifications, making every update a risky and time-consuming process.</p>
-</li>
-<li class="">
-<p><strong>The Recording Puzzle:</strong> Recordings were a major pain point. The system was complex, and generating a single, portable MP4 file was notoriously difficult. In fact, I developed one of the first open-source solutions to try and solve this very problem, but even then, it was a patch on a fundamentally complicated system.</p>
-</li>
-<li class="">
-<p><strong>The Monolithic Burden:</strong> The lack of modularity was the biggest roadblock. You couldn't scale one part of the system without scaling the whole thing. If recording was using all the CPU, it directly impacted live meetings. There was no separation of concerns.</p>
-</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_f97l" id="a-new-philosophy-built-on-simplicity-modularity-and-control">A New Philosophy: Built on Simplicity, Modularity, and Control<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#a-new-philosophy-built-on-simplicity-modularity-and-control" class="hash-link" aria-label="Direct link to A New Philosophy: Built on Simplicity, Modularity, and Control" title="Direct link to A New Philosophy: Built on Simplicity, Modularity, and Control" translate="no">​</a></h3>
-<p>With Plug-N-Meet, we started with a clean slate and a few core principles born directly from our frustrations.</p>
-<ol>
-<li class="">
-<p><strong>Radical Simplicity in Technology.</strong>
-Instead of a dozen languages, we chose two: <strong>Go</strong> for the entire backend and <strong>TypeScript (with React)</strong> for the front-end. That's it. This decision extended to our core dependencies. We chose <strong>LiveKit</strong> as our media server and <strong>NATS</strong> for messaging, not just because they are best-in-class, but because they are also written in Go. This creates a unified, consistent, and high-performance ecosystem—a topic we explore in our <strong><a class="" href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive">Backend Architecture Deep Dive</a></strong>—that is a joy for our developers to work in and easy for the community to contribute to.</p>
-</li>
-<li class="">
-<p><strong>Modularity by Design.</strong>
-Plug-N-Meet is not a monolith. It's a decoupled system of components that work together. The recorder, the media server, and the application logic are all separate. This means you can scale, update, or even replace one part without breaking everything else. Our new recorder's "Operational Modes" are a perfect example of this, a direct result of our <strong><a class="" href="https://www.plugnmeet.org/blog/recording-philosophy">recording philosophy</a></strong>. This allows you to run CPU-intensive transcoding on entirely different machines from your live recording servers, a concept we explore further in our <strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong>.</p>
-</li>
-<li class="">
-<p><strong>Effortless Customization.</strong>
-Branding shouldn't be a development project. With Plug-N-Meet, deep customization is handled via a simple API and configuration objects. You can change colors, logos, and even the entire layout without ever touching our core code, as outlined in our <strong><a class="" href="https://www.plugnmeet.org/docs/developer-guide/design-customisation">Design Customization Guide</a></strong>, ensuring that your platform always feels like <em>your</em> platform.</p>
-</li>
-<li class="">
-<p><strong>Empowering Everyone Through Integration.</strong>
-While we provide powerful tools for developers, our philosophy has always been to make Plug-N-Meet accessible to everyone. A powerful platform shouldn't require a team of engineers to use. That's why we've invested heavily in creating simple, robust plugins for the world's most popular CMS and LMS platforms.</p>
-<p>With our official plugins for <strong>WordPress</strong>, <strong>Moodle</strong>, and <strong>Joomla</strong>, anyone can add a fully-featured, branded video conferencing service to their website in minutes. These integrations aren't just an afterthought; they are a core part of our mission to empower creators. As we've detailed in our guides, you can even <strong><a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-wordpress">launch your own video service with WordPress</a></strong>, <strong><a class="" href="https://www.plugnmeet.org/blog/secure-scalable-moodle-e-learning-platform">build a scalable e-learning platform with Moodle</a></strong>, or <strong><a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-joomla">start a no-code business with Joomla</a></strong>, no coding required.</p>
-</li>
-<li class="">
-<p><strong>Developer-First, Not an Afterthought.</strong>
-We are not a domain-based solution that locks you into a rigid structure. We are an API-first platform designed to be a building block. Whether you use our simple plugins for WordPress and Moodle or our <strong><a class="" href="https://www.plugnmeet.org/docs/api/get-client-files"><code>getClientFiles</code> API</a></strong> for a "headless" integration, our goal is to empower you to build the exact experience you want, not force you into ours.</p>
-</li>
-<li class="">
-<p><strong>Security as a Foundation, Not an Add-on.</strong>
-In today's world, privacy is non-negotiable. We built Plug-N-Meet with a security-first mindset, offering robust <strong>End-to-End Encryption (E2EE)</strong> as a core feature, with multiple <strong><a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">key management models</a></strong> to fit any security posture. This ensures that conversations are private and that not even the server can access the media streams. This commitment to privacy is woven through our entire architecture, as detailed in our <strong><a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a></strong>.</p>
-</li>
-</ol>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_f97l" id="conclusion-building-the-road-for-the-future">Conclusion: Building the Road for the Future<a href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet#conclusion-building-the-road-for-the-future" class="hash-link" aria-label="Direct link to Conclusion: Building the Road for the Future" title="Direct link to Conclusion: Building the Road for the Future" translate="no">​</a></h3>
-<p>We will always be grateful for the path that BigBlueButton paved. It showed the world what was possible with open-source communication. But the web has evolved, and the demands for scalability, flexibility, and developer experience have grown exponentially.</p>
-<p>We built Plug-N-Meet to answer that call. It is the platform we wished we had during all those years of managing complex deployments—a simpler, more powerful, and more flexible foundation for the future of real-time communication.</p>
-<p>We are not building a tool for everyone. We are building a <strong>platform for builders.</strong></p>
-<hr>
-<p><strong>Ready to see the difference for yourself?</strong></p>
-<ul>
-<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/tutorials/migration-from-bbb">Migrating from BigBlueButton? We've made it easy.</a></strong></li>
-<li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/api/intro">Explore our API Documentation</a></strong></li>
-<li class=""><strong><a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Explore the Open-Source Project on GitHub</a></strong></li>
-<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo to experience the modern interface.</a></strong></li>
-</ul>]]></content:encoded>
-            <category>open-source</category>
-            <category>architecture</category>
-            <category>philosophy</category>
-            <category>bigbluebutton</category>
-            <category>scalability</category>
-            <category>developer</category>
         </item>
     </channel>
 </rss>
