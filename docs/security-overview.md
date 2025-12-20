@@ -61,7 +61,7 @@ Plug-N-Meet provides robust End-to-End Encryption (E2EE) for all peer-to-peer da
 When a room is created with E2EE enabled but `enabled_self_insert_encryption_key` is `false`, the backend server securely generates a 32-byte random string to serve as the base secret. This secret is stored as part of the room's metadata and distributed to authenticated participants when they join.
 
 -   Upon receiving this secret, the client-side application does **not** use it directly for encryption.
--   Instead, it processes the secret through the **PBKDF2 (Password-Based Key Derivation Function 2)** algorithm, using a static salt and 100,000 iterations.
+-   Instead, it processes the secret through the **PBKDF2 (Password-Based Key Derivation Function 2)** algorithm, using the room's random **Session ID** as the salt. This ensures that even if the same `roomId` is reused, each session will generate a unique cryptographic key.
 -   This derives a strong AES-256 key that is used for all subsequent encryption and decryption operations.
 
 *References: `protocol/utils/create_room.go` (`SetCreateRoomDefaultValues`), `protocol/proto_files/plugnmeet_create_room.proto`*
@@ -70,8 +70,8 @@ When a room is created with E2EE enabled but `enabled_self_insert_encryption_key
 
 For maximum security and zero-trust, rooms can be configured with `enabled_self_insert_encryption_key` set to `true`.
 
--   In this mode, each user is prompted to enter a secret key or passphrase upon joining. It is the participants' responsibility to coordinate and share the same secret key, as the server does not validate it. If participants use different keys, they will not be able to communicate with each other in the encrypted session.
--   The client-side application processes this passphrase through the same robust **PBKDF2** algorithm, using a static salt and 100,000 iterations. This process is intentionally slow to make brute-force attacks against the user's passphrase infeasible.
+-   In this mode, each user is prompted to enter a secret key or passphrase upon joining. It is the participants' responsibility to coordinate and share the same secret key, as the server has zero knowledge about the key as the plain key never leaves the user's device. If participants use different keys, they will not be able to communicate with each other in the encrypted session.
+-   The client-side application processes this passphrase through the same robust **PBKDF2** algorithm, using the room's random **Session ID** as the salt. This process is intentionally slow to make brute-force attacks against the user's passphrase infeasible.
 -   The strong cryptographic key derived from this process is then used for all encryption and decryption, ensuring the user's original secret is never used directly and is well-protected against attacks.
 
 *References: `client/src/components/extra-pages/InsertE2EEKey.tsx`, `client/src/helpers/libs/cryptoMessages.ts` (`importSecretKeyFromPlainText`), `client/src/helpers/nats/ConnectNats.ts` (`createMediaServerConn`)*

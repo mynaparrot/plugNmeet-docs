@@ -56,8 +56,8 @@
     filter: brightness(100);
 }
 
-.title_mnaJ {
-    font-size: 2rem !important;
+[class^="title_"] {
+  font-size: 2rem !important;
 }
 
 .container {
