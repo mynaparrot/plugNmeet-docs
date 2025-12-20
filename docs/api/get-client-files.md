@@ -83,15 +83,18 @@ $assets_path = $plugnmeet_server_url . '/assets';
        These are essential for the client to initialize correctly.
     -->
     <script type="text/javascript">
-        // Required: The URL of your plugNmeet server.
-        window.PLUG_N_MEET_SERVER_URL = "<?php echo $plugnmeet_server_url ?>";
+        window.plugNmeetConfig = {
+            // Required: The URL of your plugNmeet server.
+            serverUrl: "<?php echo $plugnmeet_server_url ?>",
 
-        // Required: The public path to the assets directory.
-        window.STATIC_ASSETS_PATH = "<?php echo $assets_path ?>";
+            // Required: The public path to the assets directory.
+            staticAssetsPath: "<?php echo $assets_path ?>",
 
-        // Optional: Add any other custom configurations.
-        // See: https://github.com/mynaparrot/plugNmeet-client/blob/main/src/assets/config_sample.js
-        window.ENABLE_SIMULCAST = true;
+            // Optional: Add any other custom configurations.
+            // See: https://github.com/mynaparrot/plugNmeet-client/blob/main/src/assets/config_sample.js
+            enableSimulcast: true,
+            enableDynacast: true
+        };
     </script>
 </head>
 <body>

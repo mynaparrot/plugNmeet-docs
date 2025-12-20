@@ -51,25 +51,12 @@ Next, define the basic parameters for the room you want to create and the user w
 ```php
 // Step 2: Room and User definitions
 $roomId = "room01"; // Must be unique. You can also use $connect->getUUID();
+$max_participants = 0; // 0 = no limit
 $user_full_name = "Your Name";
 $userId = "your-unique-user-id"; // Must be unique for each user.
+$isAdmin = true;
 
 // Define all the features for this specific room.
-$roomMetadata = array(
-    "room_features" => array(
-        "allow_webcams" => true,
-        "mute_on_start" => false,
-        "allow_screen_share" => true,
-        "room_duration" => 0 // 0 = no limit
-    ),
-    // ... and many more options
-);
-```
-
-<details>
-<summary>View Full Room Metadata Options</summary>
-
-```php
 $roomMetadata = array(
     "room_features" => array(
         "allow_webcams" => true,
@@ -80,49 +67,75 @@ $roomMetadata = array(
         "allow_view_other_users_list" => true,
         "admin_only_webcams" => false,
         "enable_analytics" => true,
+        "room_duration" => 0, // in minutes. 0 = no limit/unlimited
         "allow_virtual_bg" => true,
         "allow_raise_hand" => true,
-        "room_duration" => 0 // in minutes. 0 = no limit/unlimited
-    ),
-    "recording_features" => array(
-        "is_allow" => true,
-        "is_allow_cloud" => true,
-        "is_allow_local" => true,
-        "enable_auto_cloud_recording" => false
-    ),
-    "chat_features" => array(
-        "allow_chat" => true,
-        "allow_file_upload" => true
-    ),
-    "shared_note_pad_features" => array(
-        "allowed_shared_note_pad" => true
-    ),
-    "whiteboard_features" => array(
-        "allowed_whiteboard" => true,
-        //"preload_file" => "https://mydomain.com/text_book.pdf"
-    ),
-    "external_media_player_features" => array(
-        "allowed_external_media_player" => true
-    ),
-    "waiting_room_features" => array(
-        "is_active" => false,
-    ),
-    "breakout_room_features" => array(
-        "is_allow" => true,
-        "allowed_number_rooms" => 2
-    ),
-    "display_external_link_features" => array(
-        "is_allow" => true,
-    ),
-    "ingress_features" => array(
-        "is_allow" => true,
-    ),
-    "speech_to_text_translation_features" => array(
-        "is_allow" => true,
-        "is_allow_translation" => true,
-    ),
-    "end_to_end_encryption_features" => array(
-        "is_enabled" => false,
+        // if false then you'll need to provide unique user id
+        "auto_gen_user_id" => true,
+        "recording_features" => array(
+            "is_allow" => true,
+            "is_allow_cloud" => true,
+            "is_allow_local" => true,
+            "enable_auto_cloud_recording" => false
+        ),
+        "chat_features" => array(
+            "is_allow" => true,
+            "is_allow_file_upload" => true
+        ),
+        "shared_note_pad_features" => array(
+            "is_allow" => true
+        ),
+        "whiteboard_features" => array(
+            "is_allow" => true,
+            //"preload_file" => "https://mydomain.com/text_book.pdf"
+        ),
+        "external_media_player_features" => array(
+            "is_allow" => true
+        ),
+        "waiting_room_features" => array(
+            "is_active" => false,
+        ),
+        "breakout_room_features" => array(
+            "is_allow" => true,
+            "allowed_number_rooms" => 2
+        ),
+        "display_external_link_features" => array(
+            "is_allow" => true,
+        ),
+        "ingress_features" => array(
+            "is_allow" => true,
+        ),
+        "polls_features" => array(
+            "is_allow" => true,
+        ),
+        "insights_features" => array(
+            "is_allow" => true,
+            "transcription_features" => array(
+                "is_allow" => true,
+                "is_allow_translation" => true,
+                "is_allow_speech_synthesis" => true,
+            ),
+            "chat_translation_features" => array(
+                "is_allow" => true,
+            ),
+            "ai_features" => array(
+                "is_allow" => true,
+                "ai_text_chat_features" => array(
+                    "is_allow" => true,
+                ),
+                "meeting_summarization_features" => array(
+                    "is_allow" => true,
+                )
+            )
+        ),
+        "end_to_end_encryption_features" => array(
+            "is_enabled" => false,
+            "enabled_self_insert_encryption_key" => false,
+            "included_chat_messages" => false,
+            // this may use more CPU for the user end.
+            // do not enable it unless really necessary
+            "included_whiteboard" => false,
+        ),
     ),
     "default_lock_settings" => array(
         "lock_microphone" => false,
@@ -134,11 +147,15 @@ $roomMetadata = array(
         "lock_chat_send_message" => false,
         "lock_chat_file_share" => false,
         "lock_private_chat" => false // user can always send private message to moderator
+    ),
+    // copyright_conf will only work if server config has been
+    // set true for `allow_override` otherwise this will ignore
+    "copyright_conf" => array(
+        "display" => true,
+        "text" => "Powered by <a href=\"https://www.plugnmeet.org\" target=\"_blank\">plugNmeet</a>"
     )
 );
 ```
-
-</details>
 
 ---
 
@@ -156,14 +173,14 @@ $output = new stdClass();
 $output->status = false;
 
 try {
-    // Check if the room already exists on the server
     $res = $connect->isRoomActive($roomId);
     if (!$res->getStatus()) {
-        $output->msg = $res->getResponseMsg();
+        $output->msg = $res->getMsg();
     } else {
-        $isRoomActive = $res->isActive();
+        $isRoomActive = $res->getIsActive();
         $output->status = true;
     }
+
 } catch (Exception $e) {
     $output->msg = $e->getMessage();
 }
@@ -176,12 +193,11 @@ If the room is not active, we proceed to create it using the parameters we defin
 ```php
 if (!$isRoomActive && $output->status) {
     try {
-        // The room doesn't exist, so we create it now.
-        $create = $connect->createRoom($roomId, "Test room", "Welcome to room", 0, "", $roomMetadata);
+        $create = $connect->createRoom($roomId, "Test room", $roomMetadata, "Welcome to room", "", "", $max_participants);
 
         $isRoomActive = $create->getStatus();
         $output->status = $create->getStatus();
-        $output->msg = $create->getResponseMsg();
+        $output->msg = $create->getMsg();
     } catch (Exception $e) {
         $output->msg = $e->getMessage();
     }
@@ -195,12 +211,15 @@ Once we have confirmed the room is active (either because it already existed or 
 ```php
 if ($isRoomActive && $output->status) {
     try {
-        // The room is active, now we can generate a join token.
-        $join = $connect->getJoinToken($roomId, $user_full_name, $userId, true);
+        $join = $connect->getJoinToken($roomId, $user_full_name, $userId, $isAdmin);
 
-        $output->url = $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
+        if ($join->getStatus()) {
+            $output->token = "<br>" . $join->getToken();
+            $output->url = "<br>" . $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
+            // or you can set cookie name `pnm_access_token` with that token & redirect
+        }
         $output->status = $join->getStatus();
-        $output->msg = $join->getResponseMsg();
+        $output->msg = $join->getMsg();
     } catch (Exception $e) {
         $output->msg = $e->getMessage();
     }
