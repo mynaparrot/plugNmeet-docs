@@ -1,12 +1,20 @@
 ---
 title: Fetch Analytics API | plugNmeet API Reference
-description: API endpoint documentation to fetch analytics data for past meetings, including participant information and session duration.
-keywords: [api, fetch analytics, get analytics, meeting analytics, analytics api, endpoint]
+description: (DEPRECATED) API endpoint documentation for fetching meeting analytics.
+keywords: [api, analytics, fetch, list analytics]
 sidebar_position: 1
 sidebar_label: Fetch
 ---
 
 # Fetch Analytics
+
+:::danger[Deprecated]
+This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/fetch`](../artifact/fetch.md)** endpoint instead.
+
+To fetch analytics data, you can make the following request:
+`POST /auth/artifact/fetch`
+With the body: `{"type": "MEETING_ANALYTICS"}`
+:::
 
 Endpoint: `/analytics/fetch`
 

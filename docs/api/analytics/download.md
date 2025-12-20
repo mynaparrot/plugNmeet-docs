@@ -1,12 +1,18 @@
 ---
 title: Download Analytics API | plugNmeet API Reference
-description: API endpoint documentation to download analytics data for a past meeting as a PDF or JSON file.
-keywords: [api, download analytics, export analytics, analytics report, analytics api, endpoint]
+description: (DEPRECATED) API endpoint documentation for downloading a meeting analytics file.
+keywords: [api, analytics, download]
 sidebar_position: 2
 sidebar_label: Download
 ---
 
 # Download Analytics (Token)
+
+:::danger[Deprecated]
+This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/getDownloadToken`](../artifact/download.md)** endpoint instead.
+
+You can get a download token for an analytics artifact by using its `artifact_id` from the `/artifact/fetch` response.
+:::
 
 Endpoint: `/analytics/getDownloadToken`
 

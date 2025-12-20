@@ -50,6 +50,17 @@ Here is the language-agnostic process to generate it:
 
 By following these steps, you can generate a valid signature in any language, ensuring secure communication with the API.
 
+## API Categories
+
+The Plug-N-Meet API is organized into several categories based on functionality.
+
+*   **Room Management:** Endpoints for creating, managing, and querying the state of live meeting rooms.
+*   **Authentication:** Endpoints for generating access tokens for participants.
+*   **Recording Management:** Endpoints for fetching, downloading, and deleting meeting recordings.
+*   **Artifact Management:** Endpoints for fetching, downloading, and deleting AI-generated meeting artifacts like summaries and transcriptions.
+
+---
+
 ## Implementation Examples
 
 The following examples demonstrate how to implement the signature generation process in various popular languages.

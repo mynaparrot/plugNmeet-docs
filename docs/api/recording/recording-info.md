@@ -8,7 +8,7 @@ sidebar_label: Recording Info
 
 # Recording info
 
-Endpoint: `/recording/recordingInfo`
+Endpoint: `/recording/info`
 
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |

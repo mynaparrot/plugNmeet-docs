@@ -46,7 +46,7 @@ This endpoint generates a temporary token that grants a user access to a specifi
 | preferred_lang                                                  | string  | No       | Preferred language for the Plug-N-Meet client. See supported values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE, etc. |
 | record_webcam                                                   | boolean | No       | Controls whether this user's webcam is included in server-side recordings. Defaults to `true`. Set to `false` to exclude. |
 | ex_user_id                                                      | string  | No       | If empty, the value of `user_id` will be used.                                                                 |
-| extra_data                                                      | string  | No       | Any additional data you wish to store.                                                                         |
+| extra_data                                                      |  map  | No       | A map of custom key-value pairs. Both keys and values must be strings. e.g. `{"key": "value"}`|.                                                                         |
 | [lock_settings](/docs/api/room/create#default-lock-settings)    | object  | No       | Lock settings for the user.                                                                                    |
 
 ### Example
@@ -105,7 +105,11 @@ https://Your-Domain.com/conference/?access_token=<TOKEN HERE>
 
 ## Custom Design
 
-You can add an extra query parameter called `custom_design` to the join link to apply a unique design for each user. The value of `custom_design` should be a URL-encoded JSON object. Supported parameters can be found in the [design-parameters](/docs/developer-guide/design-customisation#design-parameters) documentation. Example:
+You can add an extra query parameter called `custom_design` to the join link to apply a unique design for each user. The value of `custom_design` should be a URL-encoded JSON string.
+
+For a full list of supported parameters and their descriptions, please refer to the **[Design Parameters](/docs/developer-guide/design-customisation#design-parameters)** section in our Developer Guide.
+
+**Example:**
 
 ```
 https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design=%7B%22primary_color%22%3A%22%23004D90%22%2C%22secondary_color%22%3A%22%2324AEF7%22%7D

@@ -42,44 +42,45 @@ Once a session is over, the room is finalized, and all associated data (like cha
 
 ### Metadata
 
-| Field                                           | Type   | Required | Description                                                                                      |
-| ----------------------------------------------- | ------ | -------- | ------------------------------------------------------------------------------------------------ |
-| room_title                                      | string | Yes      | The title of the room or meeting.                                                                |
-| welcome_message                                 | string | No       | A message displayed to participants when they join.                                              |
-| webhook_url                                     | string | No       | URL to receive webhook events from Plug-N-Meet.                                                  |
-| logout_url                                      | string | No       | URL to redirect users after the meeting or session ends.                                         |
-| [room_features](#room-features)                 | object | Yes      | Settings to enable or disable various room features.                                             |
-| [default_lock_settings](#default-lock-settings) | object | No       | Default settings to lock specific features for users.                                            |
-| [copyright_conf](#copyright-config)             | object | No       | Copyright configuration.                                                                         |
-| extra_data                                      | string | No       | Any additional data you wish to store.                                                           |
+| Field                                           | Type                | Required | Description                                                                                      |
+| ----------------------------------------------- |---------------------| -------- | ------------------------------------------------------------------------------------------------ |
+| room_title                                      | string              | Yes      | The title of the room or meeting.                                                                |
+| welcome_message                                 | string              | No       | A message displayed to participants when they join.                                              |
+| webhook_url                                     | string              | No       | URL to receive webhook events from Plug-N-Meet.                                                  |
+| logout_url                                      | string              | No       | URL to redirect users after the meeting or session ends.                                         |
+| [room_features](#room-features)                 | object              | Yes      | Settings to enable or disable various room features.                                             |
+| [default_lock_settings](#default-lock-settings) | object              | No       | Default settings to lock specific features for users.                                            |
+| [copyright_conf](#copyright-config)             | object              | No       | Copyright configuration.                                                                         |
+| extra_data                                      | map | No       | A map of custom key-value pairs. Both keys and values must be strings. e.g. `{"key": "value"}`|.                                                           |
 
 ### Room Features
 
-| Field                                                                      | Type    | Required | Description                                                                                            |
-| -------------------------------------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ |
-| allow_webcams                                                              | boolean | Yes      | Enable or disable webcam support.                                                                      |
-| mute_on_start                                                              | boolean | Yes      | Automatically mute microphones when participants join.                                                 |
-| allow_screen_share                                                         | boolean | Yes      | Enable or disable screen sharing.                                                                      |
-| allow_rtmp                                                                 | boolean | Yes      | Enable or disable RTMP streaming.                                                                      |
-| admin_only_webcams                                                         | boolean | Yes      | Allow webcam access only for admins.                                                                   |
-| allow_view_other_webcams                                                   | boolean | Yes      | Allow participants to view each other's webcams. If `false`, only moderators can see all webcams. |
-| allow_view_other_users_list                                                | boolean | Yes      | Restrict viewing of the user list to moderators only.                                                  |
-| enable_analytics                                                           | boolean | No       | Enable or disable analytics reporting for the session. Default: false                                  |
-| allow_virtual_bg                                                           | boolean | No       | Enable or disable virtual background options.                                                          |
-| allow_raise_hand                                                           | boolean | No       | Enable or disable the "raise hand" feature.                                                            |
-| auto_gen_user_id                                                           | boolean | No       | PlugNmeet requires a unique `userId` for each participant. Enable this if you prefer not to manage `userId`s or need to allow the same user to join from multiple devices. When `true`, PlugNmeet generates a unique `user_id` for each session. Any `user_id` you provide will be stored as `ex_user_id`, retrievable via the `getActiveRoomInfo` API. Default: `false` |
-| room_duration                                                              | number  | No       | Set a fixed duration for the room in minutes. 0 means unlimited.                                       |
-| [recording_features](#recording-features)                                  | object  | Yes      | Recording settings.                                                                                    |
-| [chat_features](#chat-features)                                            | object  | Yes      | Chat settings.                                                                                         |
-| [shared_note_pad_features](#shared-note-pad-features)                      | object  | Yes      | Shared notepad settings.                                                                               |
-| [whiteboard_features](#whiteboard-features)                                | object  | Yes      | Whiteboard settings.                                                                                   |
-| [external_media_player_features](#external-media-player-features)          | object  | Yes      | External media player settings.                                                                        |
-| [waiting_room_features](#waiting-room-features)                            | object  | Yes      | Waiting room settings.                                                                                 |
-| [breakout_room_features](#breakout-room-features)                          | object  | Yes      | Breakout room settings.                                                                                |
-| [display_external_link_features](#display-external-link-features)          | object  | Yes      | Settings for displaying external links.                                                                |
-| [ingress_features](#ingress-features)                                      | object  | No       | RTMP ingress settings.                                                                                 |
-| [speech_to_text_translation_features](#speech-to-texttranslation-features) | object  | No       | Speech-to-text and translation settings.                                                               |
-| [end_to_end_encryption_features](#end-to-end-encryption-e2ee-features)     | object  | No       | End-to-End Encryption (E2EE) settings.                                                                 |
+| Field                                                                | Type    | Required | Description                                                                                            |
+| -------------------------------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ |
+| allow_webcams                                                        | boolean | Yes      | Enable or disable webcam support.                                                                      |
+| mute_on_start                                                        | boolean | Yes      | Automatically mute microphones when participants join.                                                 |
+| allow_screen_share                                                   | boolean | Yes      | Enable or disable screen sharing.                                                                      |
+| allow_rtmp                                                           | boolean | Yes      | Enable or disable RTMP streaming.                                                                      |
+| admin_only_webcams                                                   | boolean | Yes      | Allow webcam access only for admins.                                                                   |
+| allow_view_other_webcams                                             | boolean | Yes      | Allow participants to view each other's webcams. If `false`, only moderators can see all webcams. |
+| allow_view_other_users_list                                          | boolean | Yes      | Restrict viewing of the user list to moderators only.                                                  |
+| enable_analytics                                                     | boolean | No       | Enable or disable analytics reporting for the session. Default: false                                  |
+| allow_virtual_bg                                                     | boolean | No       | Enable or disable virtual background options.                                                          |
+| allow_raise_hand                                                     | boolean | No       | Enable or disable the "raise hand" feature.                                                            |
+| auto_gen_user_id                                                     | boolean | No       | PlugNmeet requires a unique `userId` for each participant. Enable this if you prefer not to manage `userId`s or need to allow the same user to join from multiple devices. When `true`, PlugNmeet generates a unique `user_id` for each session. Any `user_id` you provide will be stored as `ex_user_id`, retrievable via the `getActiveRoomInfo` API. Default: `false` |
+| room_duration                                                        | number  | No       | Set a fixed duration for the room in minutes. 0 means unlimited.                                       |
+| [recording_features](#recording-features)                            | object  | Yes      | Recording settings.                                                                                    |
+| [chat_features](#chat-features)                                      | object  | Yes      | Chat settings.                                                                                         |
+| [shared_note_pad_features](#shared-note-pad-features)                | object  | Yes      | Shared notepad settings.                                                                               |
+| [whiteboard_features](#whiteboard-features)                          | object  | Yes      | Whiteboard settings.                                                                                   |
+| [external_media_player_features](#external-media-player-features)    | object  | Yes      | External media player settings.                                                                        |
+| [waiting_room_features](#waiting-room-features)                      | object  | Yes      | Waiting room settings.                                                                                 |
+| [breakout_room_features](#breakout-room-features)                    | object  | Yes      | Breakout room settings.                                                                                |
+| [display_external_link_features](#display-external-link-features)    | object  | Yes      | Settings for displaying external links.                                                                |
+| [ingress_features](#ingress-features)                                | object  | No       | RTMP ingress settings.                                                                                 |
+| [polls_features](#polls-features)                                    | object  | No       | Polls settings.                                                                                        |
+| [insights_features](#insights-features)                              | object  | No       | AI-powered insights, transcription, and translation settings.                                          |
+| [end_to_end_encryption_features](#end-to-end-encryption-e2ee-features) | object  | No       | End-to-End Encryption (E2EE) settings.                                                                 |
 
 ### Recording Features
 
@@ -92,29 +93,29 @@ Once a session is over, the room is finalized, and all associated data (like cha
 
 ### Chat Features
 
-| Field             | Type    | Required | Description                                            |
-| ----------------- | ------- | -------- | ------------------------------------------------------ |
-| allow_chat        | boolean | Yes      | Enable or disable chat for the meeting.                |
-| allow_file_upload | boolean | Yes      | Enable or disable file uploads in chat.                |
+| Field               | Type    | Required | Description                             |
+| ------------------- | ------- | -------- | --------------------------------------- |
+| is_allow            | boolean | Yes      | Enable or disable chat for the meeting. |
+| is_allow_file_upload | boolean | Yes      | Enable or disable file uploads in chat. |
 
 ### Shared Notepad Features
 
-| Field                   | Type    | Required | Description                                       |
-| ----------------------- | ------- | -------- | ------------------------------------------------- |
-| allowed_shared_note_pad | boolean | Yes      | Enable or disable the shared notepad feature.     |
+| Field    | Type    | Required | Description                                   |
+| -------- | ------- | -------- | --------------------------------------------- |
+| is_allow | boolean | Yes      | Enable or disable the shared notepad feature. |
 
 ### Whiteboard Features
 
-| Field              | Type    | Required | Description                                   |
-| ------------------ | ------- | -------- | --------------------------------------------- |
-| allowed_whiteboard | boolean | Yes      | Enable or disable the whiteboard feature.     |
-| preload_file       | string  | No       | Preload a remote (http/https) presentation file for the whiteboard. The file must be directly accessible without redirection. |
+| Field        | Type    | Required | Description                                                                                                   |
+| ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
+| is_allow     | boolean | Yes      | Enable or disable the whiteboard feature.                                                                     |
+| preload_file | string  | No       | Preload a remote (http/https) presentation file for the whiteboard. The file must be directly accessible without redirection. |
 
 ### External Media Player Features
 
-| Field                         | Type    | Required | Description                                                                                                      |
-| ----------------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------- |
-| allowed_external_media_player | boolean | Yes      | Enable or disable playback of video/audio from external sources. Moderators can also upload local media.         |
+| Field    | Type    | Required | Description                                                                              |
+| -------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
+| is_allow | boolean | Yes      | Enable or disable playback of video/audio from external sources. Moderators can also upload local media. |
 
 ### Waiting Room Features
 
@@ -141,20 +142,75 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable media ingress to stream content directly into the session. This is useful for professional broadcasting using software like OBS Studio. Plug-N-Meet supports both RTMP and WHIP (WebRTC-HTTP Ingestion Protocol) for low-latency streaming. |
 
-### Speech-to-Text/Translation Features
+### Polls Features
 
-| Field                | Type    | Required | Description                                                                                                                                                                                                                                                                                                                  |
-| -------------------- | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| is_allow             | boolean | Yes      | Enable or disable speech-to-text functionality. This feature uses Microsoft Azure, so ensure your API credentials are configured correctly on the server. |
-| is_allow_translation | boolean | Yes      | Enable or disable automatic translation.                                                                                                                                                                                                                                                                                     |
+| Field    | Type    | Required | Description                       |
+| -------- | ------- | -------- | --------------------------------- |
+| is_allow | boolean | Yes      | Enable or disable polls features. |
+
+### Insights Features
+
+:::note[Server Configuration Required]
+For any of these features to work, you must first configure the `insights` section of your server's main `config.yaml` file.
+
+The configuration has a powerful two-part structure:
+1.  First, you define your **provider accounts**, such as `azure` or `google`, and add your API credentials for each.
+2.  Second, you map each **service** (e.g., `transcription`, `ai_text_chat`) to a specific provider account.
+
+This flexible design allows you to use different providers for different tasks (e.g., Azure for translation and Google for AI chat) and even select different models for cost-performance optimization (e.g., a powerful model for chat and a cheaper one for summarization). Please refer to the server configuration guide for detailed setup instructions.
+:::
+
+This object controls all AI-powered features provided by the Insights Platform.
+
+| Field                                       | Type   | Required | Description                                           |
+| ------------------------------------------- | ------ | -------- | ----------------------------------------------------- |
+| is_allow                                    | boolean| Yes      | Enable or disable all Insights Platform features.     |
+| [transcription_features](#transcription-features) | object | No       | Settings for speech-to-text and spoken translation.   |
+| [chat_translation_features](#chat-translation-features) | object | No       | Settings for chat translation.                        |
+| [ai_features](#ai-features)                 | object | No       | Settings for generative AI features.                  |
+
+#### Transcription Features
+
+| Field                       | Type    | Required | Description                                                 |
+| --------------------------- | ------- | -------- | ----------------------------------------------------------- |
+| is_allow                    | boolean | Yes      | Enable or disable real-time transcription.                  |
+| is_allow_translation        | boolean | No       | Enable or disable translation of the transcription.         |
+| is_allow_speech_synthesis   | boolean | No       | Enable or disable spoken translations (text-to-speech).     |
+
+#### Chat Translation Features
+
+| Field    | Type    | Required | Description                                           |
+| -------- | ------- | -------- | ----------------------------------------------------- |
+| is_allow | boolean | Yes      | Enable or disable real-time translation of chat messages. |
+
+#### AI Features
+
+| Field                                              | Type   | Required | Description                                |
+| -------------------------------------------------- | ------ | -------- | ------------------------------------------ |
+| is_allow                                           | boolean| Yes      | Enable or disable all generative AI features.  |
+| [ai_text_chat_features](#ai-text-chat-features)    | object | No       | Settings for the AI Chat Assistant.        |
+| [meeting_summarization_features](#meeting-summarization-features) | object | No       | Settings for AI-powered meeting summaries. |
+
+##### AI Text Chat Features
+
+| Field    | Type    | Required | Description                          |
+| -------- | ------- | -------- | ------------------------------------ |
+| is_allow | boolean | Yes      | Enable or disable the AI Chat Assistant. |
+
+##### Meeting Summarization Features
+
+| Field    | Type    | Required | Description                                      |
+| -------- | ------- | -------- | ------------------------------------------------ |
+| is_allow | boolean | Yes      | Enable or disable the generation of meeting summaries. |
 
 ### End-to-End Encryption (E2EE) Features
 
-| Field                    | Type    | Required | Description                                                                                                                                                                                                                                   |
-| ------------------------ | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| is_enabled               | boolean | Yes      | Enable or disable E2EE. Supported browsers: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Note:** Users cannot join if their browser does not support E2EE.                                                           |
-| included_chat_messages   | boolean | No       | Enable or disable E2EE for chat messages.                                                                                                                                                                                                    |
-| included_whiteboard      | boolean | No       | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary.                                                                      |
+| Field                               | Type    | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| ----------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| is_enabled                          | boolean | Yes      | Enable or disable E2EE. Supported browsers: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Note:** Users cannot join if their browser does not support E2EE.                                                                                                                                      |
+| enabled_self_insert_encryption_key  | boolean | No       | If `true`, users will be prompted to enter a secret key upon joining. This enables a zero-trust model where the key is **never sent to the server**. If `false`, the server generates and distributes the key. Default: `false`. <br/><br/> **Important:** When this is `true`, all audio-based AI features (like transcription and summarization) are automatically disabled. This is because the server does not have the key and therefore cannot provide it to the AI agent to access the audio stream. |
+| included_chat_messages              | boolean | No       | Enable or disable E2EE for chat messages.                                                                                                                                                                                                                                                        |
+| included_whiteboard                 | boolean | No       | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary.                                                                                                                                                                                                |
 
 ### Default Lock Settings
 
@@ -166,6 +222,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | lock_chat              | boolean | No       | Lock chat for users.         |
 | lock_chat_send_message | boolean | No       | Lock sending messages in chat.|
 | lock_chat_file_share   | boolean | No       | Lock file sharing in chat.   |
+| lock_private_chat      | boolean | No       | Lock private chat for users. |
 
 ### Copyright Configuration
 
@@ -192,12 +249,10 @@ This feature is available only if the server configuration `client > copyright_c
       "admin_only_webcams": false,
       "allow_view_other_webcams": true,
       "allow_view_other_users_list": true,
-      "allow_polls": true,
       "enable_analytics": true,
       "allow_virtual_bg": true,
       "allow_raise_hand": true,
       "auto_gen_user_id": false,
-      "room_duration": 0,
       "recording_features": {
         "is_allow": true,
         "is_allow_cloud": true,
@@ -205,17 +260,17 @@ This feature is available only if the server configuration `client > copyright_c
         "enable_auto_cloud_recording": false
       },
       "chat_features": {
-        "allow_chat": true,
-        "allow_file_upload": true
+        "is_allow": true,
+        "is_allow_file_upload": true
       },
       "shared_note_pad_features": {
-        "allowed_shared_note_pad": true
+        "is_allow": true
       },
       "whiteboard_features": {
-        "allowed_whiteboard": true
+        "is_allow": true
       },
       "external_media_player_features": {
-        "allowed_external_media_player": true
+        "is_allow": true
       },
       "waiting_room_features": {
         "is_active": false
@@ -230,12 +285,32 @@ This feature is available only if the server configuration `client > copyright_c
       "ingress_features": {
         "is_allow": true
       },
-      "speech_to_text_translation_features": {
+      "polls_features": {
+        "is_allow": true
+      },
+      "insights_features": {
         "is_allow": true,
-        "is_allow_translation": true
+        "transcription_features": {
+          "is_allow": true,
+          "is_allow_translation": true,
+          "is_allow_speech_synthesis": true
+        },
+        "chat_translation_features": {
+          "is_allow": true
+        },
+        "ai_features": {
+          "is_allow": true,
+          "ai_text_chat_features": {
+            "is_allow": true
+          },
+          "meeting_summarization_features": {
+            "is_allow": true
+          }
+        }
       },
       "end_to_end_encryption_features": {
-        "is_enabled": false
+        "is_enabled": false,
+        "enabled_self_insert_encryption_key": false
       }
     },
     "default_lock_settings": {
@@ -248,6 +323,10 @@ This feature is available only if the server configuration `client > copyright_c
       "lock_chat_send_message": false,
       "lock_chat_file_share": false,
       "lock_private_chat": false
+    },
+    "copyright_conf": {
+      "display": true,
+      "text": "Powered by <a href=\"https://www.plugnmeet.org\" target=\"_blank\">plugNmeet</a>"
     }
   }
 }
