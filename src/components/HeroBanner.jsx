@@ -3,20 +3,20 @@ import Link from '@docusaurus/Link';
 import { Carousel } from 'react-responsive-carousel';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Banner2 from '../../static/img/slider/banner-2.0.png';
+import Banner2 from '../../static/img/slider/banner-2.0.webp';
 import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
 import Whiteboard1 from '../../static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '../../static/img/slider/02-whiteboard2.png';
-import SharedNotepad from '../../static/img/slider/03-SharedNotepad.jpg';
-import AiChatbot from '../../static/img/slider/04-AiChatbot.png';
+import SharedNotepad from '../../static/img/slider/03-SharedNotepad2.jpg';
+import AiChatbot from '../../static/img/slider/04-AiChatbot2.jpg';
 import CamGrid from '../../static/img/slider/05-24CamGrid.jpg';
 import CamModal from '../../static/img/slider/06-cam-overlay.png';
-import Notifications from '../../static/img/slider/07-notifications.jpg';
+import Notifications from '../../static/img/slider/07-notifications2.jpg';
 import ScreenSharing from '../../static/img/slider/08-ScreenSharing.jpg';
 import Participants from '../../static/img/slider/09-Participants.jpg';
 import ChatRoom from '../../static/img/slider/10-ChatRoom.jpg';
-import TranscriptionTranslation from '../../static/img/slider/11-TranscriptionTranslation.jpg';
-import Poll from '../../static/img/slider/12-Poll.jpg';
+import TranscriptionTranslation from '../../static/img/slider/11-TranscriptionTranslation2.jpg';
+import Poll from '../../static/img/slider/12-Poll2.jpg';
 
 const SlideItems = [
   {
