@@ -3,12 +3,72 @@ import Link from '@docusaurus/Link';
 import { Carousel } from 'react-responsive-carousel';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-
-import Banner from '../../static/img/slider/BannerOne2-min.png';
+import Banner2 from '../../static/img/slider/banner-2.0.png';
 import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
-import DesktopCam from '../../static/img/slider/Desktop_version_cam.png';
-import DesktopWhiteBoard from '../../static/img/slider/Desktop_version_whiteboard.png';
-import DesktopNotePad from '../../static/img/slider/Desktop_version_NotePad.png';
+import Whiteboard1 from '../../static/img/slider/01-whiteboard-1.jpg';
+import Whiteboard2 from '../../static/img/slider/02-whiteboard2.png';
+import SharedNotepad from '../../static/img/slider/03-SharedNotepad.jpg';
+import AiChatbot from '../../static/img/slider/04-AiChatbot.png';
+import CamGrid from '../../static/img/slider/05-24CamGrid.jpg';
+import CamModal from '../../static/img/slider/06-cam-overlay.png';
+import Notifications from '../../static/img/slider/07-notifications.jpg';
+import ScreenSharing from '../../static/img/slider/08-ScreenSharing.jpg';
+import Participants from '../../static/img/slider/09-Participants.jpg';
+import ChatRoom from '../../static/img/slider/10-ChatRoom.jpg';
+import TranscriptionTranslation from '../../static/img/slider/11-TranscriptionTranslation.jpg';
+import Poll from '../../static/img/slider/12-Poll.jpg';
+
+const SlideItems = [
+  {
+    imgSrc: Whiteboard1,
+    altText: 'plugNmeet interactive whiteboard feature',
+  },
+  {
+    imgSrc: Whiteboard2,
+    altText: 'plugNmeet interactive whiteboard feature with files upload',
+  },
+  {
+    imgSrc: SharedNotepad,
+    altText: 'plugNmeet shared notepad for collaborative notes',
+  },
+  {
+    imgSrc: AiChatbot,
+    altText: 'plugNmeet AI Chatbot integration in video conference',
+  },
+  {
+    imgSrc: CamGrid,
+    altText: 'plugNmeet 24 camera grid view in video conference',
+  },
+  {
+    imgSrc: CamModal,
+    altText: 'plugNmeet Choose Camera Background',
+  },
+  {
+    imgSrc: Notifications,
+    altText: 'plugNmeet Notifications Panel',
+  },
+  {
+    imgSrc: ScreenSharing,
+    altText: 'plugNmeet video conference with Screen Sharing feature',
+  },
+  {
+    imgSrc: Participants,
+    altText: 'plugNmeet video conference with multiple participants',
+  },
+  {
+    imgSrc: ChatRoom,
+    altText: 'plugNmeet video conference with Chat Room feature',
+  },
+  {
+    imgSrc: TranscriptionTranslation,
+    altText:
+      'plugNmeet video conference with Transcription and Translation feature',
+  },
+  {
+    imgSrc: Poll,
+    altText: 'plugNmeet video conference with Poll feature',
+  },
+];
 
 const HeroBanner = () => {
   return (
@@ -22,7 +82,8 @@ const HeroBanner = () => {
                 Self-Hosted.
               </h1>
               <h2>
-                Integrate a powerful, AI-enhanced video meeting solution into your website with ease.
+                Integrate a powerful, AI-enhanced video meeting solution into
+                your website with ease.
               </h2>
               <Link
                 className="button button--secondary button--lg"
@@ -34,14 +95,21 @@ const HeroBanner = () => {
           </div>
         </div>
         <div className="banner">
-          <img src={Banner} alt="plugNmeet video conferencing platform banner" />
+          <img
+            src={Banner2}
+            alt="plugNmeet video conferencing platform banner"
+          />
         </div>
       </div>
       <section className="features-section slider-section">
         <div className="container">
           <h2 className="headline">Explore Key Features</h2>
           <div className="slider-wrapper">
-            <img className="desktop-back" src={DesktopBack} alt="Desktop monitor frame" />
+            <img
+              className="desktop-back"
+              src={DesktopBack}
+              alt="Desktop monitor frame"
+            />
             <Carousel
               autoPlay
               infiniteLoop
@@ -49,15 +117,11 @@ const HeroBanner = () => {
               showIndicators={false}
               showThumbs={false}
             >
-              <div className="desktop">
-                <img src={DesktopCam} alt="plugNmeet video conference with multiple participants" />
-              </div>
-              <div className="desktop">
-                <img src={DesktopWhiteBoard} alt="plugNmeet interactive whiteboard feature" />
-              </div>
-              <div className="desktop">
-                <img src={DesktopNotePad} alt="plugNmeet shared notepad for collaborative notes" />
-              </div>
+              {SlideItems.map((props, idx) => (
+                <div className="desktop" key={idx}>
+                  <img src={props.imgSrc} alt={props.altText} />
+                </div>
+              ))}
             </Carousel>
           </div>
         </div>
