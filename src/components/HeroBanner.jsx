@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import { Carousel } from 'react-responsive-carousel';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Banner2 from '../../static/img/slider/banner-2.0.webp';
+import Banner2 from '../../static/img/slider/banner.webp';
 import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
 import Whiteboard1 from '../../static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '../../static/img/slider/02-whiteboard2.png';
