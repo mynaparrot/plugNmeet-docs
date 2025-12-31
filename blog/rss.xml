@@ -4,10 +4,146 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Sat, 20 Dec 2025 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 31 Dec 2025 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
+        <item>
+            <title><![CDATA[Stream Like a Pro: How to Bring OBS into Your plugNmeet Room]]></title>
+            <link>https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress</link>
+            <guid>https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress</guid>
+            <pubDate>Wed, 31 Dec 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[Have you ever wanted to share a high-quality video during a meeting, but the file was too large to upload? Or maybe you have a copyrighted video that you are allowed to show, but you can't share the file itself. Perhaps you're a power user who wants to create a professional presentation with multiple cameras, overlays, and smooth transitions using a tool like OBS Studio.]]></description>
+            <content:encoded><![CDATA[<p>Have you ever wanted to share a high-quality video during a meeting, but the file was too large to upload? Or maybe you have a copyrighted video that you are allowed to show, but you can't share the file itself. Perhaps you're a power user who wants to create a professional presentation with multiple cameras, overlays, and smooth transitions using a tool like OBS Studio.</p>
+<p>Traditionally, getting this kind of professional content into a live meeting has been complex or impossible.</p>
+<p>At plugNmeet, we believe you should be able to use the best tools for the job. That's why we've built a simple but powerful feature called <strong>Live Stream Input</strong>. Think of it as giving your meeting its own private, secure TV channel. You can broadcast directly into your meeting room from professional software like OBS, and your stream appears as a regular participant.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="why-stream-directly-into-your-meeting">Why Stream Directly into Your Meeting?<a href="https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress#why-stream-directly-into-your-meeting" class="hash-link" aria-label="Direct link to Why Stream Directly into Your Meeting?" title="Direct link to Why Stream Directly into Your Meeting?" translate="no">​</a></h2>
+<p>This feature unlocks a world of new possibilities:</p>
+<ul>
+<li class=""><strong>Share Large or Private Videos:</strong> Play a high-resolution video file from your local computer without ever having to upload it.</li>
+<li class=""><strong>Professional Live Productions:</strong> Use OBS Studio to switch between multiple cameras, share specific application windows, add professional graphics and lower thirds, and create a polished, TV-style presentation.</li>
+<li class=""><strong>Enhanced Demonstrations:</strong> Show a complex software workflow or a live coding session with all the power and customization of your desktop setup.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="how-to-set-it-up-a-simple-step-by-step-guide">How to Set It Up: A Simple Step-by-Step Guide<a href="https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress#how-to-set-it-up-a-simple-step-by-step-guide" class="hash-link" aria-label="Direct link to How to Set It Up: A Simple Step-by-Step Guide" title="Direct link to How to Set It Up: A Simple Step-by-Step Guide" translate="no">​</a></h2>
+<p>Getting started is incredibly easy. Here’s how you do it from within your plugNmeet room:</p>
+<ol>
+<li class="">
+<p><strong>Open the Settings Menu:</strong> Click the three-dots menu in the top-right corner of your meeting room and select <strong>Settings</strong>.</p>
+</li>
+<li class="">
+<p><strong>Find Live Stream Input:</strong> In the settings panel, navigate to the <strong>Live Stream Input</strong> tab.</p>
+</li>
+<li class="">
+<p><strong>Choose Your "Channel" Type (RTMP or WHIP):</strong>
+You'll see an option called "Input Type." This lets you choose the technology for your stream. Think of it like choosing between two types of cables to connect your camera:</p>
+<ul>
+<li class=""><strong>RTMP:</strong> This is the trusty, universal standard. It's been used for years by platforms like YouTube and Twitch and is supported by almost every streaming application. It's a great, reliable choice.</li>
+<li class=""><strong>WHIP:</strong> This is the new, modern standard designed specifically for real-time communication. It's generally faster, with less delay between your stream and what your audience sees. If your software supports it, WHIP is the future-proof option.</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Give Your Stream a Name:</strong> In the <strong>Display Name</strong> field, you can type in a name for your stream. This is the name that will appear in the participant list. For example, "Main Presentation" or "Guest Speaker Cam." If you leave it blank, it will default to "Broadcaster."</p>
+</li>
+<li class="">
+<p><strong>Generate Your Private Link:</strong> Click the <strong>"Generate link"</strong> button. plugNmeet will instantly create a unique and secure address for your private stream. You'll see two fields: a <strong>URL</strong> and a <strong>Secret</strong> (or "Stream Key").</p>
+</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="connecting-your-streaming-software-like-obs">Connecting Your Streaming Software (like OBS)<a href="https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress#connecting-your-streaming-software-like-obs" class="hash-link" aria-label="Direct link to Connecting Your Streaming Software (like OBS)" title="Direct link to Connecting Your Streaming Software (like OBS)" translate="no">​</a></h2>
+<p>Now, you just need to tell your software (we'll use OBS as an example) where to send the stream.</p>
+<ul>
+<li class="">
+<p><strong>For RTMP (The Universal Standard):</strong></p>
+<ol>
+<li class="">In OBS settings, go to "Stream."</li>
+<li class="">For "Service," choose "Custom..."</li>
+<li class="">Copy the <strong>URL</strong> from plugNmeet and paste it into the "Server" field in OBS.</li>
+<li class="">Copy the <strong>Secret</strong> from plugNmeet and paste it into the "Stream Key" field in OBS.</li>
+</ol>
+</li>
+<li class="">
+<p><strong>For WHIP (The Modern Choice):</strong></p>
+<ol>
+<li class="">In OBS settings, go to "Stream."</li>
+<li class="">For "Service," choose "WHIP."</li>
+<li class="">Combine the URL and Secret from plugNmeet into a single line. For example: <code>https://your-plugnmeet-domain.com/whip/A_LONG_SECRET_KEY_HERE</code></li>
+<li class="">Paste this full, combined address into the "Server" field in OBS.</li>
+<li class=""><strong>Leave the "Bearer Token" field in OBS blank.</strong></li>
+</ol>
+</li>
+</ul>
+<p>Once you hit "Start Streaming" in OBS, your stream will magically appear as a new participant in your plugNmeet room for everyone to see!</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-professional-power-made-simple">Conclusion: Professional Power, Made Simple<a href="https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress#conclusion-professional-power-made-simple" class="hash-link" aria-label="Direct link to Conclusion: Professional Power, Made Simple" title="Direct link to Conclusion: Professional Power, Made Simple" translate="no">​</a></h2>
+<p>The Live Stream Input feature is a perfect example of our philosophy. We've taken a powerful, professional-grade technology and made it accessible to everyone with just a few clicks. You don't need to be a technical expert to create a high-quality, polished, and engaging presentation.</p>
+<p>The best tools are the ones that get out of your way and let your content shine.</p>
+<hr>
+<p><strong>Ready to level up your presentations?</strong></p>
+<ul>
+<li class=""><strong>Try our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> and test it yourself</strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup">Scalable Deployment Guide</a></strong></li>
+</ul>]]></content:encoded>
+            <category>obs</category>
+            <category>streaming</category>
+            <category>rtmp</category>
+            <category>whip</category>
+            <category>features</category>
+            <category>ease-of-use</category>
+            <category>professional</category>
+        </item>
+        <item>
+            <title><![CDATA[A Smoother Call on Any Connection: Our Smart Approach to Video Streaming]]></title>
+            <link>https://www.plugnmeet.org/blog/smart-video-streaming</link>
+            <guid>https://www.plugnmeet.org/blog/smart-video-streaming</guid>
+            <pubDate>Sat, 27 Dec 2025 00:00:00 GMT</pubDate>
+            <description><![CDATA[We've all been in that frustrating video call. Someone is speaking, and suddenly their video freezes. Their voice becomes robotic and distorted. You miss a crucial piece of the conversation, and the flow of the meeting is completely broken.]]></description>
+            <content:encoded><![CDATA[<p>We've all been in that frustrating video call. Someone is speaking, and suddenly their video freezes. Their voice becomes robotic and distorted. You miss a crucial piece of the conversation, and the flow of the meeting is completely broken.</p>
+<p>Often, we blame our internet connection. But what if the problem isn't just the connection, but the software's inability to adapt to it?</p>
+<p>At plugNmeet, we believe that a video conferencing platform should work intelligently to provide the best possible experience, no matter what your internet situation is. That's why we've built a "smart streaming" philosophy into our core, using advanced techniques to ensure your calls are smooth, stable, and use as little data as possible.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-problem-the-one-size-fits-all-video-stream">The Problem: The "One-Size-Fits-All" Video Stream<a href="https://www.plugnmeet.org/blog/smart-video-streaming#the-problem-the-one-size-fits-all-video-stream" class="hash-link" aria-label="Direct link to The Problem: The &quot;One-Size-Fits-All&quot; Video Stream" title="Direct link to The Problem: The &quot;One-Size-Fits-All&quot; Video Stream" translate="no">​</a></h2>
+<p>Most video applications work like a firehose. They try to send a single, high-quality stream of video data to everyone, all the time. If your internet connection is a wide-open pipe, this works great.</p>
+<p>But what if your connection is more like a narrow straw? Trying to force a firehose of data through a tiny straw leads to a predictable result: a clog. In video terms, this "clog" is what you experience as lag, frozen video, and dropped calls.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-plugnmeet-solution-smart-adaptive-streaming">The plugNmeet Solution: Smart, Adaptive Streaming<a href="https://www.plugnmeet.org/blog/smart-video-streaming#the-plugnmeet-solution-smart-adaptive-streaming" class="hash-link" aria-label="Direct link to The plugNmeet Solution: Smart, Adaptive Streaming" title="Direct link to The plugNmeet Solution: Smart, Adaptive Streaming" translate="no">​</a></h2>
+<p>Instead of a single firehose, we use several smart techniques to adapt the video stream to the reality of each person's connection and what they are actually seeing on their screen.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="technique-1-offering-multiple-qualities-like-netflix-does">Technique 1: Offering Multiple Qualities (Like Netflix Does)<a href="https://www.plugnmeet.org/blog/smart-video-streaming#technique-1-offering-multiple-qualities-like-netflix-does" class="hash-link" aria-label="Direct link to Technique 1: Offering Multiple Qualities (Like Netflix Does)" title="Direct link to Technique 1: Offering Multiple Qualities (Like Netflix Does)" translate="no">​</a></h3>
+<p>Think about watching a movie on Netflix. If your internet slows down, the picture might get a little less sharp for a moment, but the movie keeps playing. Netflix does this by having multiple quality versions of the movie available.</p>
+<p>We do the same thing for live video. This is called <strong>Simulcast</strong>.</p>
+<p>For every person speaking, our server intelligently prepares multiple versions of their video stream: a high-quality one, a medium one, and a low-quality one. Your device automatically "tunes in" to the best quality it can handle at any given moment without freezing. The result is a continuous, uninterrupted conversation, even if the video quality has to adjust temporarily.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="technique-2-pausing-what-you-cant-see">Technique 2: Pausing What You Can't See<a href="https://www.plugnmeet.org/blog/smart-video-streaming#technique-2-pausing-what-you-cant-see" class="hash-link" aria-label="Direct link to Technique 2: Pausing What You Can't See" title="Direct link to Technique 2: Pausing What You Can't See" translate="no">​</a></h3>
+<p>Imagine a meeting with 20 people. On your screen, you can probably only see 9 of them at once. So why should your computer waste precious data downloading the video streams of the 11 people who are off-screen?</p>
+<p>It shouldn't. This is called <strong>Dynacast</strong>.</p>
+<p>plugNmeet is smart enough to automatically pause the video streams of participants who are not currently visible on your screen. The moment you scroll or switch pages to bring them into view, their video instantly resumes. This single technique can dramatically reduce the amount of data your computer needs to download, making the call more stable for you and everyone else.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="technique-3-sending-the-just-right-size">Technique 3: Sending the "Just Right" Size<a href="https://www.plugnmeet.org/blog/smart-video-streaming#technique-3-sending-the-just-right-size" class="hash-link" aria-label="Direct link to Technique 3: Sending the &quot;Just Right&quot; Size" title="Direct link to Technique 3: Sending the &quot;Just Right&quot; Size" translate="no">​</a></h3>
+<p>On your screen, the person speaking might be in a large main window, while other participants are in tiny thumbnail squares. It makes no sense to download a full, high-definition video stream just to display it in a tiny box.</p>
+<p>Our platform is smart about this, too. It automatically sends a much smaller, lower-resolution video for thumbnails, while reserving the high-quality video for the main speaker. This further reduces data usage and frees up your connection to focus on what's most important.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="technique-4-prioritizing-voice-above-all-else">Technique 4: Prioritizing Voice Above All Else<a href="https://www.plugnmeet.org/blog/smart-video-streaming#technique-4-prioritizing-voice-above-all-else" class="hash-link" aria-label="Direct link to Technique 4: Prioritizing Voice Above All Else" title="Direct link to Technique 4: Prioritizing Voice Above All Else" translate="no">​</a></h3>
+<p>What is the most important part of any conversation? <strong>Hearing what the other person is saying.</strong></p>
+<p>Our platform understands this fundamental rule. When a user's internet connection becomes very unstable, the system performs a kind of digital triage. It knows that it is always better to have a clear conversation with a frozen video than to have a choppy, robotic voice with a moving picture.</p>
+<p>So, it makes a smart choice: it will <strong>temporarily pause the video stream</strong> to dedicate all available, limited bandwidth to keeping the audio channel clear and uninterrupted. The moment the connection stabilizes, the video seamlessly resumes. This ensures that your conversation can always continue, even in the most challenging network conditions.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-a-more-accessible-and-reliable-experience-for-everyone">Conclusion: A More Accessible and Reliable Experience for Everyone<a href="https://www.plugnmeet.org/blog/smart-video-streaming#conclusion-a-more-accessible-and-reliable-experience-for-everyone" class="hash-link" aria-label="Direct link to Conclusion: A More Accessible and Reliable Experience for Everyone" title="Direct link to Conclusion: A More Accessible and Reliable Experience for Everyone" translate="no">​</a></h2>
+<p>By combining these smart streaming techniques, plugNmeet creates a video experience that is:</p>
+<ul>
+<li class=""><strong>More Resilient:</strong> It gracefully handles fluctuations in network quality, preventing the freezes and robotic voices that kill conversations.</li>
+<li class=""><strong>More Cost-Effective:</strong> By intelligently reducing data usage, it's a lifesaver for anyone on a metered or expensive data plan.</li>
+<li class=""><strong>More Accessible:</strong> It ensures that users in areas with variable connectivity can still have a meaningful and productive meeting.</li>
+</ul>
+<p>Our goal is to make real-time communication a stable, reliable utility for everyone, everywhere. Our smart streaming philosophy is how we deliver on that promise.</p>
+<hr>
+<p><strong>Ready to experience a smoother call?</strong></p>
+<ul>
+<li class=""><strong>Try our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> and see the difference</strong></li>
+<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/blog/backend-architecture-deep-dive">Architecture Deep Dive</a> to learn more</strong></li>
+<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
+</ul>]]></content:encoded>
+            <category>performance</category>
+            <category>adaptive-streaming</category>
+            <category>bandwidth</category>
+            <category>user-experience</category>
+            <category>accessibility</category>
+        </item>
         <item>
             <title><![CDATA[Privacy by Design: Why Plug-N-Meet is Built for the Zero-Trust Era]]></title>
             <link>https://www.plugnmeet.org/blog/privacy-by-design-zero-trust</link>
@@ -1175,115 +1311,6 @@
             <category>permissions</category>
             <category>features</category>
             <category>user-guide</category>
-        </item>
-        <item>
-            <title><![CDATA[Building a HIPAA-Compliant Telehealth Platform with an Open-Source Core]]></title>
-            <link>https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform</link>
-            <guid>https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform</guid>
-            <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[The digital transformation of healthcare is accelerating, but for telehealth providers, the choice of communication technology is fraught with risk. Using off-the-shelf video conferencing tools can create a compliance nightmare. How do you ensure patient data is secure? How do you sign a Business Associate Agreement (BAA) with a public cloud vendor whose data practices are a black box? How do you create a seamless, trusted experience for your patients?]]></description>
-            <content:encoded><![CDATA[<p>The digital transformation of healthcare is accelerating, but for telehealth providers, the choice of communication technology is fraught with risk. Using off-the-shelf video conferencing tools can create a compliance nightmare. How do you ensure patient data is secure? How do you sign a Business Associate Agreement (BAA) with a public cloud vendor whose data practices are a black box? How do you create a seamless, trusted experience for your patients?</p>
-<p>The answer is to <strong>own your stack</strong>.</p>
-<p>Building a telehealth platform requires a foundation of absolute control over your data and infrastructure. This is why forward-thinking healthcare companies are turning to self-hosted, open-source platforms like <strong>plugNmeet</strong> to serve as the secure communication core for their applications. This article explains how.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-core-challenge-hipaa-and-data-sovereignty">The Core Challenge: HIPAA and Data Sovereignty<a href="https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform#the-core-challenge-hipaa-and-data-sovereignty" class="hash-link" aria-label="Direct link to The Core Challenge: HIPAA and Data Sovereignty" title="Direct link to The Core Challenge: HIPAA and Data Sovereignty" translate="no">​</a></h2>
-<p>The Health Insurance Portability and Accountability Act (HIPAA) requires that Protected Health Information (PHI) be handled with strict security and privacy controls. When you use a third-party video platform, you are entrusting them with PHI, and the compliance challenges are enormous:</p>
-<ol>
-<li class=""><strong>Data at Rest:</strong> Where are your call recordings and chat logs stored? Are they on a server in a specific jurisdiction? Are they encrypted? With a public cloud vendor, you often don't know.</li>
-<li class=""><strong>Data in Transit:</strong> While most services offer encryption, you have to trust their implementation and their infrastructure.</li>
-<li class=""><strong>Business Associate Agreements (BAAs):</strong> You need a BAA with every vendor that handles PHI. Negotiating these with large tech companies can be difficult and expensive.</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-plugnmeet-solution-self-hosting-is-the-ultimate-control">The plugNmeet Solution: Self-Hosting is the Ultimate Control<a href="https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform#the-plugnmeet-solution-self-hosting-is-the-ultimate-control" class="hash-link" aria-label="Direct link to The plugNmeet Solution: Self-Hosting is the Ultimate Control" title="Direct link to The plugNmeet Solution: Self-Hosting is the Ultimate Control" translate="no">​</a></h3>
-<p>By self-hosting plugNmeet on your own servers (or your own private cloud), you elegantly solve these problems:</p>
-<ul>
-<li class=""><strong>You Control Data Sovereignty:</strong> You decide exactly where your data lives. You can deploy your servers in the specific country or region required to meet data residency laws.</li>
-<li class=""><strong>You Control the Data:</strong> Since all data—from recordings to analytics—is stored on your own infrastructure as simple files, you have complete control over its lifecycle and encryption at rest.</li>
-<li class=""><strong>You Don't Need a BAA with Us:</strong> Because we are an open-source software provider and never have access to your servers or your data, there is no need for a BAA. You are the sole custodian of your patients' PHI.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="creating-a-seamless-and-trusted-patient-experience">Creating a Seamless and Trusted Patient Experience<a href="https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform#creating-a-seamless-and-trusted-patient-experience" class="hash-link" aria-label="Direct link to Creating a Seamless and Trusted Patient Experience" title="Direct link to Creating a Seamless and Trusted Patient Experience" translate="no">​</a></h2>
-<p>A telehealth appointment should feel like a natural extension of the clinic's brand, not a clunky redirect to a third-party app with a different logo and UI. This is where plugNmeet's deep white-labeling capabilities are essential.</p>
-<ul>
-<li class=""><strong>A Branded Environment:</strong> Using our customization features, you can style the video client to perfectly match your application's branding, creating a seamless and professional experience that builds patient trust.</li>
-<li class=""><strong>No <code>&lt;iframe&gt;</code> Restrictions:</strong> With our <code>getClientFiles</code> API, you can embed the video client natively into your patient portal. This allows you to build a custom layout where the video appears alongside patient charts, notes, or other critical information, creating a true "single pane of glass" for the physician.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="integrating-with-your-healthcare-workflow">Integrating with Your Healthcare Workflow<a href="https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform#integrating-with-your-healthcare-workflow" class="hash-link" aria-label="Direct link to Integrating with Your Healthcare Workflow" title="Direct link to Integrating with Your Healthcare Workflow" translate="no">​</a></h2>
-<p>A telehealth call is just one part of a larger workflow that includes scheduling, billing, and electronic health records (EHR). plugNmeet's API-first design makes it easy to integrate into these systems.</p>
-<ul>
-<li class=""><strong>Automated Scheduling:</strong> When an appointment is booked in your scheduling system, you can use our API to automatically pre-create a secure, unique meeting room for that specific session.</li>
-<li class=""><strong>Secure Access:</strong> Use our <code>getJoinToken</code> API to generate a single-use token that grants the patient and doctor access only to their specific room for the duration of their appointment.</li>
-<li class=""><strong>Post-Call Automation:</strong> Use our webhooks to trigger post-call workflows, such as automatically moving a call recording to a secure archival server or updating the patient's EHR with the call duration.</li>
-</ul>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-the-foundation-for-modern-telehealth">Conclusion: The Foundation for Modern Telehealth<a href="https://www.plugnmeet.org/blog/hipaa-compliant-telehealth-platform#conclusion-the-foundation-for-modern-telehealth" class="hash-link" aria-label="Direct link to Conclusion: The Foundation for Modern Telehealth" title="Direct link to Conclusion: The Foundation for Modern Telehealth" translate="no">​</a></h2>
-<p>Building a compliant and user-friendly telehealth platform doesn't have to mean starting from scratch or accepting the risks of public cloud services.</p>
-<p>By using plugNmeet as your open-source core, you get the best of both worlds: the power of a production-ready WebRTC platform and the absolute control of a self-hosted solution. It provides the secure, compliant, and customizable foundation you need to build the future of healthcare.</p>
-<hr>
-<p><strong>Ready to build your telehealth platform?</strong></p>
-<ul>
-<li class=""><strong>Read our complete <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security and Privacy Overview</a></strong></li>
-<li class=""><strong>Explore our <a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">E2EE Key Models Guide</a></strong></li>
-<li class=""><strong>Check out our <a class="" href="https://www.plugnmeet.org/docs/api/intro">API Documentation</a></strong></li>
-</ul>]]></content:encoded>
-            <category>telehealth</category>
-            <category>hipaa</category>
-            <category>security</category>
-            <category>privacy</category>
-            <category>api</category>
-            <category>white-label</category>
-            <category>healthcare</category>
-        </item>
-        <item>
-            <title><![CDATA[Beyond the Logo: What True White-Label Video Conferencing Looks Like]]></title>
-            <link>https://www.plugnmeet.org/blog/true-white-label-video-conferencing</link>
-            <guid>https://www.plugnmeet.org/blog/true-white-label-video-conferencing</guid>
-            <pubDate>Sun, 02 Nov 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[The term "white-label" is used a lot in the software world. Too often, it simply means you can replace the provider's logo with your own. You're still stuck with their user interface, their workflow, and their branding on the URL. It’s like putting your own sign on a franchise restaurant—it might have your name on the door, but it's still their kitchen and their menu.]]></description>
-            <content:encoded><![CDATA[<p>The term "white-label" is used a lot in the software world. Too often, it simply means you can replace the provider's logo with your own. You're still stuck with their user interface, their workflow, and their branding on the URL. It’s like putting your own sign on a franchise restaurant—it might have your name on the door, but it's still their kitchen and their menu.</p>
-<p>At plugNmeet, we believe true white-labeling is not about hiding our brand; it's about <strong>empowering you to build your own.</strong></p>
-<p>Our platform is designed not as a finished product to be re-skinned, but as a flexible canvas for you to create a deeply integrated, pixel-perfect communication experience that feels like a native part of your application. This article explores the three levels of customization that make this possible.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="level-1-the-quick-rebrand-the-configuration-object">Level 1: The Quick Rebrand (The Configuration Object)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-1-the-quick-rebrand-the-configuration-object" class="hash-link" aria-label="Direct link to Level 1: The Quick Rebrand (The Configuration Object)" title="Direct link to Level 1: The Quick Rebrand (The Configuration Object)" translate="no">​</a></h2>
-<p>This is the baseline for any white-label solution, and we make it incredibly easy. Using a simple JavaScript configuration object, you can instantly change the most important visual elements to match your brand's identity.</p>
-<p>Within minutes, you can customize:</p>
-<ul>
-<li class=""><strong>Colors:</strong> Set the primary, secondary, and background colors.</li>
-<li class=""><strong>Logos:</strong> Add your own logo and favicon.</li>
-<li class=""><strong>Backgrounds:</strong> Use a custom background image for your meeting rooms.</li>
-</ul>
-<p>This is perfect for getting a branded look and feel up and running quickly, but it's just the beginning.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="level-2-api-driven-feature-control">Level 2: API-Driven Feature Control<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-2-api-driven-feature-control" class="hash-link" aria-label="Direct link to Level 2: API-Driven Feature Control" title="Direct link to Level 2: API-Driven Feature Control" translate="no">​</a></h2>
-<p>True white-labeling goes beyond just looks; it's about controlling the <strong>functionality</strong> of the room to match your specific use case. A simple one-to-one video call has very different needs than a full-featured virtual classroom.</p>
-<p>Plug-N-Meet is fully controlled by our powerful server-side API. When you create a room, you are not just setting a title; you are defining the entire feature set available to the participants. This allows you to programmatically design the perfect experience, all without ever touching the client-side code.</p>
-<p>For example, you can:</p>
-<ul>
-<li class=""><strong>Create a Minimalist Video Call:</strong> Disable the whiteboard, shared notepad, and all other collaboration tools to create a clean, simple interface for one-to-one conversations.</li>
-<li class=""><strong>Design a Virtual Classroom:</strong> Enable the whiteboard, polls, and breakout rooms, while disabling features like screen sharing for students.</li>
-<li class=""><strong>Host a Webinar:</strong> Give all power to the moderator and disable chat and microphone access for attendees by default.</li>
-</ul>
-<p>This API-driven approach means you can use the exact same client to power wildly different products and experiences, all controlled from your backend.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="level-3-deep-styling-the-custom-css-url">Level 3: Deep Styling (The Custom CSS URL)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-3-deep-styling-the-custom-css-url" class="hash-link" aria-label="Direct link to Level 3: Deep Styling (The Custom CSS URL)" title="Direct link to Level 3: Deep Styling (The Custom CSS URL)" translate="no">​</a></h2>
-<p>For deeper customization beyond basic colors, Plug-N-Meet allows you to provide a URL to your own custom CSS file. This gives you pixel-perfect control to override any element and match your application's unique design, from fonts and button styles to the overall layout, ensuring a completely seamless look and feel.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="level-4-true-native-integration-the-getclientfiles-api">Level 4: True Native Integration (The <code>getClientFiles</code> API)<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#level-4-true-native-integration-the-getclientfiles-api" class="hash-link" aria-label="Direct link to level-4-true-native-integration-the-getclientfiles-api" title="Direct link to level-4-true-native-integration-the-getclientfiles-api" translate="no">​</a></h2>
-<p>This is the ultimate level of customization. Most web-based video tools force you to embed their client in an <code>&lt;iframe&gt;</code>, creating a restrictive black box with complex permission issues and a disconnected feel.</p>
-<p>We do the opposite. Our <code>getClientFiles</code> API allows you to inject the client directly into your own application. The result is a video conferencing experience that feels just like another page in your app, seamlessly integrated and free from the headaches of iframe sandboxing.</p>
-<p>This approach transforms plugNmeet from an "embedded tool" into a true <strong>headless UI component library</strong> for building real-time communication.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-your-platform-not-ours">Conclusion: Your Platform, Not Ours<a href="https://www.plugnmeet.org/blog/true-white-label-video-conferencing#conclusion-your-platform-not-ours" class="hash-link" aria-label="Direct link to Conclusion: Your Platform, Not Ours" title="Direct link to Conclusion: Your Platform, Not Ours" translate="no">​</a></h2>
-<p>True white-labeling isn't about putting your logo on our product. It's about giving you the building blocks to create your own.</p>
-<p>Whether you need a quick rebrand, deep styling, or a fully integrated native experience, plugNmeet provides the tools to meet you where you are. Our goal is to give you the power to create a communication experience that is indistinguishable from the rest of your platform, because we believe the best video tool is the one your users don't even realize is there.</p>
-<hr>
-<p><strong>Ready to start building your custom experience?</strong></p>
-<ul>
-<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/developer-guide/design-customisation">Design Customization Guide</a></strong></li>
-<li class=""><strong>Explore the <a class="" href="https://www.plugnmeet.org/docs/api/get-client-files"><code>getClientFiles</code> API Documentation</a></strong></li>
-<li class=""><strong>Check out the <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> to see it in action</strong></li>
-</ul>]]></content:encoded>
-            <category>white-label</category>
-            <category>customization</category>
-            <category>branding</category>
-            <category>developer</category>
-            <category>api</category>
-            <category>saas</category>
         </item>
     </channel>
 </rss>
