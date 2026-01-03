@@ -20,7 +20,7 @@ This guide will show you how to add world-class **AI meeting assistant features*
 By the end of this guide, your **meeting assistant AI** will be able to:
 1.  Provide live, real-time captions of the conversation.
 2.  Translate those captions into any user's preferred language with a single click.
-3.  Automatically generate a full **meeting summary AI** with key decisions and action items after the session ends.
+3.  Generate a full **meeting summary AI** with key decisions and action items after the session ends.
 
 ## Prerequisites
 
@@ -115,11 +115,23 @@ That's it! Any room created with this metadata will now have the AI Meeting Assi
 
 ### Step 3: Experience It Live
 
-When a user joins a room created with these settings, they will see new icons and options available to them:
+When a user joins a room created with these settings, the AI features are available to be activated by a moderator.
 
-*   **Live Captions:** A "CC" icon will appear in the control bar. Clicking it will start displaying real-time captions of the conversation.
-*   **Live Translation:** Next to the captions, a language selector will appear. A user can simply pick their language (e.g., "Spanish"), and the captions will instantly switch from the original language to Spanish.
-*   **Automated Meeting Notes:** The AI agent will automatically start processing the meeting audio in the background to generate your **meeting notes AI**. No user action is required.
+*   **Live Captions & Translation:** A moderator must first enable the service.
+    1.  Click the **3-dots menu** in the control bar.
+    2.  Select **Transcription and Translation**.
+    3.  In the pop-up, select the primary speaker and the language they will be speaking.
+    4.  Click **Start Service**.
+    
+    Once enabled, participants will see a new **"T" icon** in their main control bar (next to icons like Raise Hand, Whiteboard, etc.). Clicking this "T" icon opens a menu where they can view the live captions and select their own preferred language for translation.
+
+*   **Automated Meeting Notes:** To generate **AI meeting notes**, a moderator must start the summarization service.
+    1.  Click the **3-dots menu** in the control bar.
+    2.  Select **AI Tools**, then **Meeting Summarization**.
+    3.  (Optional) Add custom instructions in the "Summarization Instructions" text area to guide the AI.
+    4.  Click **Start Service**.
+
+The **meeting assistant AI** will then process the audio in the background. After the meeting, the summary will be generated.
 
 ## Conclusion
 
