@@ -48,6 +48,17 @@ const config: Config = {
           // Please change this to your repo.
           editUrl:
             'https://github.com/mynaparrot/plugNmeet-docs/edit/main/',
+          feedOptions: {
+            type: 'all',
+            copyright: `Copyright © ${new Date().getFullYear()} MynaParrot SL.`,
+            createFeedItems: async (params) => {
+              const {blogPosts, defaultCreateFeedItems, ...rest} = params;
+              return defaultCreateFeedItems({
+                blogPosts: blogPosts.filter((item, index) => index < 25),
+                ...rest,
+              });
+            },
+          }
         },
         theme: {
           customCss: './src/css/custom.css',
