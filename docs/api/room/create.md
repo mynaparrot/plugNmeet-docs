@@ -50,7 +50,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | logout_url                                      | string              | No       | URL to redirect users after the meeting or session ends.                                         |
 | [room_features](#room-features)                 | object              | Yes      | Settings to enable or disable various room features.                                             |
 | [default_lock_settings](#default-lock-settings) | object              | No       | Default settings to lock specific features for users.                                            |
-| [copyright_conf](#copyright-config)             | object              | No       | Copyright configuration.                                                                         |
+| [copyright_conf](#copyright-configuration)             | object              | No       | Copyright configuration.                                                                         |
 | extra_data                                      | map | No       | A map of custom key-value pairs. Both keys and values must be strings. e.g. `{"key": "value"}`|.                                                           |
 
 ### Room Features
@@ -71,7 +71,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | room_duration                                                        | number  | No       | Set a fixed duration for the room in minutes. 0 means unlimited.                                       |
 | [recording_features](#recording-features)                            | object  | Yes      | Recording settings.                                                                                    |
 | [chat_features](#chat-features)                                      | object  | Yes      | Chat settings.                                                                                         |
-| [shared_note_pad_features](#shared-note-pad-features)                | object  | Yes      | Shared notepad settings.                                                                               |
+| [shared_note_pad_features](#shared-notepad-features)                | object  | Yes      | Shared notepad settings.                                                                               |
 | [whiteboard_features](#whiteboard-features)                          | object  | Yes      | Whiteboard settings.                                                                                   |
 | [external_media_player_features](#external-media-player-features)    | object  | Yes      | External media player settings.                                                                        |
 | [waiting_room_features](#waiting-room-features)                      | object  | Yes      | Waiting room settings.                                                                                 |
