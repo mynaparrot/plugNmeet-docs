@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <Layout
     title="plugNmeet: Open Source Web Conferencing System"
-    description="The free and open-source video conferencing software for full control and privacy. Host scalable, customizable, and AI-powered meetings on your own servers.">
+    description="The free and open-source video conferencing software for full control and privacy. Host secure, scalable, and customizable AI-powered meetings on your own servers.">
       <HeroBanner />
       <main>
         <HomepageFeatures />
