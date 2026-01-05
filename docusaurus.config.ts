@@ -43,6 +43,8 @@ const config: Config = {
         },
         blog: {
           showReadingTime: true,
+          postsPerPage: 20,
+          blogSidebarCount: 15,
           // Please change this to your repo.
           editUrl:
             'https://github.com/mynaparrot/plugNmeet-docs/edit/main/',
