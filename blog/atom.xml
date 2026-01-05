@@ -7,6 +7,7 @@
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
+    <rights>Copyright © 2026 MynaParrot SL.</rights>
     <entry>
         <title type="html"><![CDATA[How to Enable End-to-End Encryption in Your Video App]]></title>
         <id>https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption</id>
