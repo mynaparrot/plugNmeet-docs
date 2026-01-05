@@ -2,11 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.plugnmeet.org/blog</id>
     <title>  Blog</title>
-    <updated>2026-01-03T00:00:00.000Z</updated>
+    <updated>2026-01-05T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
+    <entry>
+        <title type="html"><![CDATA[How to Enable End-to-End Encryption in Your Video App]]></title>
+        <id>https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption</id>
+        <link href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption"/>
+        <updated>2026-01-05T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In an age of heightened privacy concerns, offering End-to-End Encryption (E2EE) is one of the most powerful ways to build trust with your users. It provides a mathematical guarantee that conversations are confidential and that not even your server can access the media streams.]]></summary>
+        <content type="html"><![CDATA[<p>In an age of heightened privacy concerns, offering End-to-End Encryption (E2EE) is one of the most powerful ways to build trust with your users. It provides a mathematical guarantee that conversations are confidential and that not even your server can access the media streams.</p>
+<p>While the technology is complex, implementing it doesn't have to be. This guide will walk you through the two E2EE models available in Plug-N-Meet and show you how to enable them with a simple API call.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="prerequisites">Prerequisites<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<ul>
+<li class="">A running Plug-N-Meet server.</li>
+<li class="">The ability to make API calls to your server.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-1-choose-your-security-model">Step 1: Choose Your Security Model<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#step-1-choose-your-security-model" class="hash-link" aria-label="Direct link to Step 1: Choose Your Security Model" title="Direct link to Step 1: Choose Your Security Model" translate="no">​</a></h3>
+<p>Before writing any code, you need to answer one question: <strong>Who should manage the encryption keys?</strong> Plug-N-Meet offers two distinct models, and your choice will determine the implementation.</p>
+<ul>
+<li class=""><strong>Model A: Server-Generated (Simple &amp; Secure):</strong> The Plug-N-Meet server generates, manages, and distributes a unique secret for each session. This is the easiest and most convenient method.</li>
+<li class=""><strong>Model B: User-Provided (Zero-Knowledge):</strong> The users are responsible for creating and sharing a secret among themselves. Your server never sees the secret, providing the absolute highest level of privacy.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-2-implement-your-chosen-model">Step 2: Implement Your Chosen Model<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#step-2-implement-your-chosen-model" class="hash-link" aria-label="Direct link to Step 2: Implement Your Chosen Model" title="Direct link to Step 2: Implement Your Chosen Model" translate="no">​</a></h3>
+<p>Enabling E2EE is done within the <code>end_to_end_encryption_features</code> block of your <code>createRoom</code> API call.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-underlying-security-one-time-session-keys">The Underlying Security: One-Time Session Keys<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#the-underlying-security-one-time-session-keys" class="hash-link" aria-label="Direct link to The Underlying Security: One-Time Session Keys" title="Direct link to The Underlying Security: One-Time Session Keys" translate="no">​</a></h4>
+<p>Before we look at the two models, it's important to understand a key security feature that applies to <strong>both</strong>: every session gets its own unique encryption key.</p>
+<p>No matter where the initial secret comes from (the server or the user), the client's browser never uses it directly. Instead, it combines the secret with the unique Session ID of the meeting to generate a final, one-time encryption key.</p>
+<p>This process ensures that even if you reuse the same room ID for multiple meetings, every single session is cryptographically isolated, preventing any link between them.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="option-a-the-simple--secure-way-server-generated-keys">Option A: The Simple &amp; Secure Way (Server-Generated Keys)<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#option-a-the-simple--secure-way-server-generated-keys" class="hash-link" aria-label="Direct link to Option A: The Simple &amp; Secure Way (Server-Generated Keys)" title="Direct link to Option A: The Simple &amp; Secure Way (Server-Generated Keys)" translate="no">​</a></h4>
+<p>This is the recommended path for most applications. You get strong E2EE without needing to build any custom key-sharing logic.</p>
+<p>In your <code>createRoom</code> metadata, set <code>is_enabled</code> to <code>true</code> and <code>enabled_self_insert_encryption_key</code> to <code>false</code>.</p>
+<div class="language-json codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-json codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"room_id"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"e2ee-room-simple"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"metadata"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"room_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic">// ... other features</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"end_to_end_encryption_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"is_enabled"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"enabled_self_insert_encryption_key"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<p><strong>How it works:</strong> When a user joins, the server provides a unique secret for the session. The client then uses the one-time key generation process described above to secure the meeting.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="option-b-the-zero-knowledge-way-user-provided-keys">Option B: The Zero-Knowledge Way (User-Provided Keys)<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#option-b-the-zero-knowledge-way-user-provided-keys" class="hash-link" aria-label="Direct link to Option B: The Zero-Knowledge Way (User-Provided Keys)" title="Direct link to Option B: The Zero-Knowledge Way (User-Provided Keys)" translate="no">​</a></h4>
+<p>Choose this model if you need to guarantee that your infrastructure has zero knowledge of the encryption keys.</p>
+<p>In your <code>createRoom</code> metadata, set both <code>is_enabled</code> and <code>enabled_self_insert_encryption_key</code> to <code>true</code>.</p>
+<div class="language-json codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-json codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"room_id"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"e2ee-room-zero-knowledge"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"metadata"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"room_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic">// ... other features</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"end_to_end_encryption_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"is_enabled"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"enabled_self_insert_encryption_key"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<p><strong>The User Experience:</strong>
+When a user joins this room, the Plug-N-Meet client will automatically prompt them to enter the shared secret key.</p>
+<ul>
+<li class=""><strong>If they enter the correct key</strong>, their client will use it to generate the final session key (as described above) and they will be able to see, hear, and interact with other participants seamlessly.</li>
+<li class=""><strong>If they enter an incorrect key (or no key)</strong>, they will still join the session, but they will not be able to see or hear anyone, nor will their own media be visible to others. They will see decryption error messages, indicating that they do not have the correct key to participate.</li>
+</ul>
+<p>This behavior is by design, as the server has zero knowledge of the key and therefore cannot validate it upon entry. You must provide your users with an "out-of-band" way to share this key (e.g., a secure chat app, a password manager, or verbally).</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-3-verify-its-working">Step 3: Verify It's Working<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#step-3-verify-its-working" class="hash-link" aria-label="Direct link to Step 3: Verify It's Working" title="Direct link to Step 3: Verify It's Working" translate="no">​</a></h3>
+<p>How do you know E2EE is active? The most obvious sign is that certain server-side features will be <strong>automatically disabled</strong>.</p>
+<p>If you try to use the following features in an E2EE-enabled room, they will fail, which is the expected behavior and proof that your server cannot access the media:</p>
+<ul>
+<li class=""><strong>Cloud Recording:</strong> The server can't record what it can't see.</li>
+<li class=""><strong>RTMP Broadcasting:</strong> Similarly, the server cannot broadcast an encrypted stream.</li>
+<li class=""><strong>Audio-Based AI Features:</strong> The AI Meeting Assistant cannot transcribe or summarize audio it cannot decrypt.</li>
+</ul>
+<p>This is a core part of the security design, ensuring that your choice of privacy is enforced across the entire platform.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion">Conclusion<a href="https://www.plugnmeet.org/blog/how-to-enable-end-to-end-encryption#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>Implementing End-to-End Encryption is a powerful step, but it's just one part of a broader "<strong>privacy by design</strong>" philosophy. Plug-N-Meet was architected to be a secure data relay, not a data store.</p>
+<p>Whether it's using the LiveKit SFU to route encrypted media packets or NATS to broadcast messages, the server's primary job is to pass data between participants. It has no interest in what that data is, and in the case of E2EE, it has no ability to inspect it. This philosophy extends to features like our use of <a class="" href="https://www.plugnmeet.org/blog/client-side-storage-privacy-resilience">client-side storage</a>, where session data lives in your browser, not on our servers.</p>
+<p>By choosing Plug-N-Meet, you're not just getting a feature; you're adopting a platform built on the principle that the most secure user data is the data you never have to touch.</p>
+<hr>
+<p><strong>Ready to learn more?</strong></p>
+<ul>
+<li class=""><strong>Dive deep into our <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security &amp; Privacy Overview</a></strong></li>
+<li class=""><strong>Review the <a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">E2EE Key Models Guide</a></strong></li>
+<li class=""><strong>Explore the full <a class="" href="https://www.plugnmeet.org/docs/api/room/create">createRoom API call</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Bob Teng</name>
+            <uri>https://github.com/wbobteng</uri>
+        </author>
+        <category label="tutorial" term="tutorial"/>
+        <category label="how-to" term="how-to"/>
+        <category label="e2ee" term="e2ee"/>
+        <category label="security" term="security"/>
+        <category label="encryption" term="encryption"/>
+        <category label="privacy" term="privacy"/>
+        <category label="developer" term="developer"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[How to Add an Interactive AI Assistant to Your Video App in 15 Minutes]]></title>
         <id>https://www.plugnmeet.org/blog/how-to-add-ai-meeting-assistant-features</id>
@@ -1312,66 +1390,5 @@ You'll see an option called "Input Type." This lets you choose the technology fo
         <category label="education" term="education"/>
         <category label="moderator" term="moderator"/>
         <category label="feature" term="feature"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[How to Add No-Code Video Conferencing to Your Moodle Courses]]></title>
-        <id>https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle</id>
-        <link href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle"/>
-        <updated>2025-11-09T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[As an educator using Moodle, your goal is to create engaging and effective learning experiences. You want to add live, interactive video classes to your courses, but the options can be frustrating. You're either stuck with complex tools that require technical help, or you're forced to send your students to an external platform like Zoom, breaking the seamless flow of your course.]]></summary>
-        <content type="html"><![CDATA[<p>As an educator using Moodle, your goal is to create engaging and effective learning experiences. You want to add live, interactive video classes to your courses, but the options can be frustrating. You're either stuck with complex tools that require technical help, or you're forced to send your students to an external platform like Zoom, breaking the seamless flow of your course.</p>
-<p>What if you could add a powerful, interactive virtual classroom directly to your Moodle course as easily as adding a quiz or a forum?</p>
-<p>With the official Plug-N-Meet plugin for Moodle, you can. You don't need to be a developer, and you don't need to write a single line of code. This article will show you how to create a fully integrated, no-code video conferencing service right inside your Moodle site.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-problem-the-zoom-detour-in-your-lesson-plan">The Problem: The "Zoom Detour" in Your Lesson Plan<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#the-problem-the-zoom-detour-in-your-lesson-plan" class="hash-link" aria-label="Direct link to The Problem: The &quot;Zoom Detour&quot; in Your Lesson Plan" title="Direct link to The Problem: The &quot;Zoom Detour&quot; in Your Lesson Plan" translate="no">​</a></h3>
-<p>Every time you link to an external video tool, you create a detour in the learning journey. Students have to leave your Moodle site, deal with a different interface, and sometimes even a separate login. It's a clunky experience that can lead to distraction and technical support headaches.</p>
-<p>Furthermore, you lose control over your brand and, more importantly, your students' data.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-solution-a-native-moodle-activity">The Solution: A Native Moodle Activity<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#the-solution-a-native-moodle-activity" class="hash-link" aria-label="Direct link to The Solution: A Native Moodle Activity" title="Direct link to The Solution: A Native Moodle Activity" translate="no">​</a></h3>
-<p>The Plug-N-Meet plugin transforms live video conferencing from an external link into a native Moodle activity. For your students, joining your live class is as simple and intuitive as any other part of their coursework.</p>
-<p>With just a few clicks—and absolutely no code—you can:</p>
-<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="1-add-a-virtual-classroom-to-any-course">1. Add a Virtual Classroom to Any Course<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#1-add-a-virtual-classroom-to-any-course" class="hash-link" aria-label="Direct link to 1. Add a Virtual Classroom to Any Course" title="Direct link to 1. Add a Virtual Classroom to Any Course" translate="no">​</a></h4>
-<p>From the "Add an activity or resource" menu in your Moodle course, you can now select "PlugNmeet." You can give your live session a name, set a welcome message, and define the schedule, just like any other Moodle activity. It feels completely native because it <em>is</em>.</p>
-<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="2-control-the-student-experience">2. Control the Student Experience<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#2-control-the-student-experience" class="hash-link" aria-label="Direct link to 2. Control the Student Experience" title="Direct link to 2. Control the Student Experience" translate="no">​</a></h4>
-<p>You are the teacher, and you control your classroom. From the simple activity settings page, you can decide:</p>
-<ul>
-<li class="">Should students have to wait for a moderator to join?</li>
-<li class="">Should the session be recorded automatically?</li>
-<li class="">Who can join and with what permissions?</li>
-</ul>
-<p>This allows you to create a safe and structured learning environment for every class.</p>
-<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="3-use-powerful-tools-built-for-teaching">3. Use Powerful Tools Built for Teaching<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#3-use-powerful-tools-built-for-teaching" class="hash-link" aria-label="Direct link to 3. Use Powerful Tools Built for Teaching" title="Direct link to 3. Use Powerful Tools Built for Teaching" translate="no">​</a></h4>
-<p>This isn't just a simple video call. You get a full suite of interactive tools designed to make your online classes more engaging and effective:</p>
-<ul>
-<li class=""><strong>Interactive Whiteboard:</strong> Upload your slides and annotate them in real-time.</li>
-<li class=""><strong>Live Polls:</strong> Quickly check for student understanding with on-the-fly quizzes.</li>
-<li class=""><strong>Breakout Rooms:</strong> Divide your students into small groups for collaborative projects.</li>
-<li class=""><strong>MP4 Recordings:</strong> All recordings are automatically saved to your server and can be made available within the Moodle course for students who missed the live session.</li>
-</ul>
-<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="4-own-your-schools-brand-and-data">4. Own Your School's Brand and Data<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#4-own-your-schools-brand-and-data" class="hash-link" aria-label="Direct link to 4. Own Your School's Brand and Data" title="Direct link to 4. Own Your School's Brand and Data" translate="no">​</a></h4>
-<p>Because Plug-N-Meet is self-hosted, the entire experience happens on your own Moodle site, under your own domain. Your school's logo and branding are front and center. Most importantly, all student data and recordings are stored on your own server, giving you full control and ensuring you can meet your institution's privacy requirements.</p>
-<p>For your IT department, this self-hosted model provides a <strong><a class="" href="https://www.plugnmeet.org/blog/secure-scalable-moodle-e-learning-platform">secure and scalable e-learning platform</a></strong> that they can manage and grow with confidence.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-your-moodle-site-your-virtual-classroom">Conclusion: Your Moodle Site, Your Virtual Classroom<a href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle#conclusion-your-moodle-site-your-virtual-classroom" class="hash-link" aria-label="Direct link to Conclusion: Your Moodle Site, Your Virtual Classroom" title="Direct link to Conclusion: Your Moodle Site, Your Virtual Classroom" translate="no">​</a></h3>
-<p>Stop sending your students away to third-party platforms. With the Plug-N-Meet plugin, you can build a powerful, seamless, and secure virtual classroom experience right inside the Moodle environment your students already know and trust.</p>
-<p>It's the power of a world-class video conferencing solution, with the simplicity of a native Moodle activity. No code required.</p>
-<hr>
-<p><strong>Ready to upgrade your Moodle courses?</strong></p>
-<ul>
-<li class=""><strong>Download the <a class="" href="https://www.plugnmeet.org/docs/user-guide/moodle-integration">Official Moodle Plugin</a></strong></li>
-<li class=""><strong>Try our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a> to experience the teaching tools</strong></li>
-<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/moodle-mod_plugnmeet" target="_blank" rel="noopener noreferrer" class="">Open-Source Project</a> on GitHub</strong></li>
-</ul>]]></content>
-        <author>
-            <name>Chaboud Simon</name>
-            <uri>https://github.com/saimonzone</uri>
-        </author>
-        <category label="moodle" term="moodle"/>
-        <category label="no-code" term="no-code"/>
-        <category label="e-learning" term="e-learning"/>
-        <category label="lms" term="lms"/>
-        <category label="video-conferencing" term="video-conferencing"/>
-        <category label="education" term="education"/>
-        <category label="teacher" term="teacher"/>
-        <category label="moodle-video-conferencing" term="moodle-video-conferencing"/>
     </entry>
 </feed>
