@@ -78,8 +78,7 @@ const HeroBanner = () => {
           <div className="container">
             <div className="content">
               <h1>
-                Open Source WebRTC Conferencing: Scalable, Customizable, and
-                Self-Hosted.
+                Open Source WebRTC Conferencing: Secure, Scalable, Customizable, and Self-Hosted.
               </h1>
               <h2>
                 Integrate a powerful, AI-enhanced video meeting solution into

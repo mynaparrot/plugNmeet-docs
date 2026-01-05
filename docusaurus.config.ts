@@ -4,7 +4,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: " ",
-  tagline: 'The free and open-source video conferencing software for full control and privacy. Host scalable, customizable meetings, and AI-powered on your own servers.',
+  tagline: 'The free and open-source video conferencing software for full control and privacy. Host secure, scalable, and customizable AI-powered meetings on your own servers.',
   favicon: 'img/favicon.png',
   titleDelimiter: " ",
 
@@ -122,7 +122,7 @@ const config: Config = {
             },
             {
               label: 'Cloud',
-              href: 'https://www.plugnmeet.cloud',
+              href: 'https://www.plugnmeet.com',
             },
           ],
         },
