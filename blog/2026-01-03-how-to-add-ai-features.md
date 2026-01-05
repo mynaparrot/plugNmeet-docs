@@ -73,8 +73,8 @@ insights:
       provider: "google"
       id: "my-gemini-account"
       options:
-        # Use gemini-1.5-flash for faster, cost-effective summaries.
-        summarize_model: "gemini-2.5-pro"
+        # Use gemini-2.5-flash for faster, cost-effective summaries.
+        summarize_model: "gemini-2.5-flash"
 ```
 
 Save the file and **restart your PlugNmeet server** for the changes to take effect.
