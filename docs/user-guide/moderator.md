@@ -18,33 +18,33 @@ The moderator has full control over the meeting, including managing participants
 
 When you first enter a PlugNmeet room, you will be prompted to choose how you want to join the audio session. This is your most important first step.
 
-![enter-the-room-min.png](/img/moderator/enter-the-room-min.png)
+![Onboarding-Desktop.jpg](/img/moderator/Onboarding-Desktop.jpg)
 
--   **Microphone:** Choose this option to speak and participate in the meeting. Your browser will ask for permission to access your microphone.
--   **Listen only:** Choose this option to join without a microphone. You will be able to hear everything but will not be able to speak.
+-   **Enable Microphone and Camera:** Choose this option to speak and share your video in the meeting. Your browser will ask for permission to access your microphone and camera.
+-   **Continue as a listener:** Choose this option to join without a microphone or camera. You will be able to hear everything but will not be able to speak or share video.
 
-**Important:** This choice is not permanent. If you join in "Listen only" mode, you can easily activate your microphone later from the main control bar.
+**Important:** This choice is not permanent. If you decide to **Continue as a listener**, you can easily activate your microphone and camera later from the main control bar.
 
 ---
-
+ 
 ## Section 1: Core Media Controls
 
 These are the basic controls for your audio and video, located in the bottom-left of the control bar.
 
 ### Managing Your Microphone & Audio
 
-- **Mute/Unmute:** If you joined with a microphone, click the **Microphone** icon to mute or unmute yourself.
-- **Activate Microphone:** If you joined in "Listen only" mode, the icon will show a headset. Click it to leave the listen-only session and activate your microphone.
+- **Mute/Unmute:** If you joined with microphone and camera access, click the **Microphone** icon in the bottom-left of the footer to mute or unmute yourself.
+- **Activate Microphone:** If you joined in "Continue as a listener" mode, the icon will show a headset. Click it to leave the listen-only session and activate your microphone.
 - **Change Audio Source:** Click the small arrow next to the microphone icon to switch between different microphones.
 
-![audio-min.png](/img/moderator/audio-min.png)
+![microphone-pop.webp](/img/moderator/microphone-pop.webp)
 
 ### Managing Your Webcam & Virtual Backgrounds
 
-- **Start/Stop Webcam:** Click the **Webcam** icon to start or stop sharing your video.
-- **Virtual Backgrounds:** When starting your webcam, a preview window will appear. Here you can select a virtual background (blur or an image) before clicking **Share**.
+- **Start/Stop Webcam:** Click the **Webcam** icon in the bottom-left of the footer to start or stop sharing your video. You can also toggle the visibility of your video in the meeting.
+- **Virtual Backgrounds:** When starting your webcam, a preview window will appear. Here you can select a virtual background (blur or an image) or upload your own image (using the plus icon) before clicking **Share**.
 
-![camera-min.png](/img/moderator/camera-min.png)
+![share-webcam-pop.webp](/img/moderator/share-webcam-pop.webp)
 
 ---
 
@@ -54,47 +54,79 @@ These tools allow you to present content and collaborate with your attendees.
 
 ### Sharing Your Screen
 
-- Click the **Share Screen** icon in the main control bar.
+- Click the **Share Screen** icon in the main footer control bar.
 - Your browser will prompt you to choose whether to share your entire screen, a specific application window, or a browser tab.
 - To stop sharing, click the **Share Screen** icon again.
 
-![sharescreen-min.png](/img/moderator/sharescreen-min.png)
+![share-screen.webp](/img/moderator/share-screen.webp)
 
 ### Using the Interactive Whiteboard
 
 The whiteboard is a powerful tool for real-time collaboration.
 
-- **Activate/Hide:** Click the **Whiteboard** icon in the control bar to show or hide it.
+- **Activate/Hide:** Click the **Whiteboard** icon in the main footer control bar to show or hide it.
 - **Tools:** Use the toolbar to draw shapes, write text, upload files (PDF, Word, etc.), and more.
 - **Export:** You can export the whiteboard's content as a PNG or SVG file.
 
-![whiteboard-min.png](/img/moderator/whiteboard-min.png)
+![white-board.webp](/img/moderator/white-board.webp)
 
 ### Using the Shared Notepad
 
-- **Activate/Hide:** Open the **More Options** menu (...) in the control bar and select **Activate shared notepad**.
-- The notepad allows all participants to write and edit text together in real-time. You can format text and import/export the content.
+- **Activate/Hide:** Open the **More Options** menu (...) in the main footer control bar and select **Enable shared notepad**.
+- The shared notepad allows all participants to write and edit text together in real-time. You can format text and import/export the content.
 
-![notepad-min.png](/img/moderator/notepad-min.png)
+![shared-notepad.webp](/img/moderator/shared-notepad.webp)
+
+### Using AI Assistant
+
+- **AI Activation:** Open the **More Options** menu (...) in the main footer control bar and select **AI Tools**.
+- **AI Settings:** The **Insights AI settings** popup will appear. Here you can enable or disable the AI assistant, and choose to make it available for all participants or specific users.
+
+![ai-tools.webp](/img/moderator/ai-tools.webp)
+
+- **Show/Hide:** Click the **AI Chat** icon in the main footer control bar to show or hide it.
+- **Send Message:** You can send a message to the AI assistant and get an answer.
+
+![ai-chat-widget.webp](/img/moderator/ai-chat-widget.webp)
+
+- **AI Meeting summarization:** Use this feature to summarize the meeting conversation, identify all key decisions, and create a list of action items.
+
+![ai-meeting-summerization.webp](/img/moderator/ai-meeting-summerization.webp)
+
+### Transcription & Translation
+- **Activation:** Open the **More Options** menu (...) in the main footer control bar and select **Transcription & Translation**.
+- **Settings:** The Transcription and Translation Settings popup will appear. Here you can enable or disable Transcription & Translation.
+
+![transcriptions-pop.webp](/img/moderator/transcriptions-pop.webp)
+
+- **Start Transcription & Translation:** Click the **Transcription & Translation** Icon in the main footer control bar to start the transcription & translation.
+
+![transcriptions-settings-pop.webp](/img/moderator/transcriptions-settings-pop.webp)
+
+- **History:** You can view the **Live Transcription & Translation** in real-time. Click the **History** icon to see the full transcript history.
+
+![transcriptions-history.webp](/img/moderator/transcriptions-history.webp)
+
+**Important:** You must **Enable Microphone** to use **Transcription & Translation**.
 
 ### Sharing an External Video
 
 You can share a video from a URL (like YouTube) or a local file.
 
-- Open the **More Options** menu (...) and select **Start external Media Player**.
+- Open the **More Options** menu (...) in the main footer control bar and select **Play External Video**.
 - Paste a video URL or upload a video file (MP4, WebM).
 - The video will appear for all participants, and you will have playback controls.
 
-<img src="/img/moderator/moderator-sharevideofile.jpg" alt="Share Video File" loading="lazy"/>
+![external-video-player.webp](/img/moderator/external-video-player.webp)
 
 ### Displaying an External Website (iframe)
 
 You can display any website that allows embedding within an iframe.
 
-- Open the **More Options** menu (...) and select **Display external link**.
+- Open the **More Options** menu (...) in the main footer control bar and select **Share External Link**.
 - Enter the URL of the website you wish to share.
 
-<img src="/img/moderator/moderator-iframe.png"loading="lazy"/>
+![external-link-iframe.webp](/img/moderator/external-link-iframe.webp)
 
 ---
 
@@ -104,17 +136,17 @@ These features allow you to control and interact with your attendees.
 
 ### Viewing the Participant List
 
-- Click the **Participants** icon in the control bar to open the participant panel. Here you can see everyone in the meeting.
+- Click the **Participants** icon in the footer control bar to open the participant panel. Here you can see everyone in the meeting.
 
 ### Using the Waiting Room
 
 If the waiting room is enabled, you must approve attendees before they can join.
 
-- Open the **More Options** menu (...) and select **Manage waiting room**.
+- Open the **More Options** menu (...) in the footer control bar and select **Manage Waiting Room**.
 - In the waiting room panel, you can see a list of users waiting to enter. You can **Accept** or **Reject** them individually, or all at once.
 - You can also approve users directly from the participant list.
 
-<img src="/img/moderator/waittingroom-min.png"alt="Manage Waiting Room" loading="lazy"/>
+![manage-waiting-room.webp](/img/moderator/manage-waiting-room.webp)
 
 ### Sending Private Chat Messages
 
@@ -122,17 +154,17 @@ If the waiting room is enabled, you must approve attendees before they can join.
 - Click the three-dot menu next to a user's name and select **Send private message**.
 - This will open a private chat tab in the chat panel.
 
-<img src="/img/moderator/privatemessage-min.png" alt="Send Private Message" loading="lazy"/>
+![private-message.webp](/img/moderator/private-message.webp)
 
 ### Using Room Lock Settings
 
 This feature allows you to restrict what attendees can do.
 
-- Open the **More Options** menu (...) and select **Room Lock Settings**.
-- From here, you can lock attendees' microphones, webcams, screen sharing, and chat abilities.
+- Open the **More Options** menu (...) in the footer control bar and select **Meeting Lock Settings**.
+- From here, you can lock attendees' microphones, webcams, screen sharing, whiteboard sharing, notepad sharing, and chat abilities.
 - These locks do not affect other moderators.
 
-![romlocko-min.png](/img/moderator/romlocko-min.png)
+![lock-settings.webp](/img/moderator/lock-settings.webp)
 
 ### Muting All Users
 
@@ -147,32 +179,34 @@ Use these tools to create a more interactive and engaging session.
 
 ### Creating and Managing Polls
 
-- Open the **Participants** panel and click the **Polls** tab.
+- Open the **More Options** menu (...) in the footer control bar and select **Enable Polls**. This will enable polls for the meeting and you will see a **Polls** icon in the main footer control bar.
+- **Enable/Disable Polls:** Click the **Polls** icon in the main footer control bar to manage polls.
 - Click **Create new Poll**.
 - Define your question and answer options, then click **Create poll**.
 - Attendees will be prompted to vote. You can view the results in real-time, end the poll, and publish the results to the public chat.
 
-<img src="/img/moderator/createpoll-min.png"alt="Create a Poll" loading="lazy"/>
+![polls.webp](/img/moderator/polls.webp)
 
 ### Using Breakout Rooms
 
 Split participants into smaller, temporary groups for focused discussions.
 
-- Open the **More Options** menu (...) and select **Manage breakout room**.
+- Open the **More Options** menu (...) in the footer control bar and select **Manage Breakout Rooms**.
 - Configure the number of rooms, the duration, and assign participants (or use random assignment).
 - Click **Start breakout rooms**.
 - While rooms are active, you can broadcast messages to all groups, join specific rooms, or end the breakout session.
 
-<img src="/img/moderator/breakout-room-min.png" alt="Manage Breakout Rooms" loading="lazy"/>
+![breakout-room.webp](/img/moderator/breakout-room.webp)
 
 ### Live Streaming via RTMP
 
 You can broadcast your meeting live to platforms like YouTube or Facebook.
 
-- Open the **More Options** menu (...) and select **Start RTMP broadcasting**.
-- Enter the RTMP URL and Stream Key provided by your streaming platform.
+- Open the **More Options** menu (...) in the footer control bar and select **Start Live Stream**.
+- Enter the **Stream Key** and **Stream URL** provided by your streaming platform.
+- Click **Start Streaming** to begin streaming.
 
-![rtmp-min.png](/img/moderator/rtmp-min.png)
+![live-streaming.webp](/img/moderator/live-streaming.webp)
 
 ---
 
@@ -184,7 +218,7 @@ These actions control the overall meeting session.
 
 Plug-N-Meet offers two distinct methods for recording your session: **Cloud Recording** (server-side) and **Local Recording** (browser-based). To start either, click the **REC** icon in the main control bar and choose your preferred option.
 
-![recording-min.png](/img/moderator/recording-min.png)
+![recording.png](/img/moderator/recording.png)
 
 #### Cloud Recording (Recommended)
 
@@ -216,14 +250,14 @@ If you only need to record what your microphone picks up along with the main vid
 
 ### Application Settings
 
-- Click the three-dot menu in the **top-left** corner and select **Settings**.
-- Here you can change the application language, manage data-saving preferences, and toggle notification sounds.
+- Click the three-dot menu in the **top-right** corner and select **Settings**.
+- Here you can change the application language, manage data-saving preferences, toggle notification sounds, and manage Live Stream settings.
 
-![settingsoption-min.png](/img/moderator/settingsoption-min.png)
+![app-settings.webp](/img/moderator/app-settings.webp)
 
 ### Ending vs. Logging Out of a Meeting
 
-- **Log Out:** If you select **Log out** from the top-right menu, you will leave the meeting, but the session will remain active for other participants.
+- **Leave Meeting:** If you select **Leave Meeting** from the top-right menu, you will leave the meeting, but the session will remain active for other participants.
 - **End Meeting:** If you select **End meeting**, the session will be terminated for **everyone**.
 
-![end-min.png](/img/moderator/end-min.png)
+![meeting-end.webp](/img/moderator/meeting-end.webp)

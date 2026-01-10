@@ -16,12 +16,12 @@ Welcome to the Attendee Guide! This document will walk you through everything yo
 
 When you first enter a PlugNmeet room, you will be prompted to choose how you want to join the audio session. This is your most important first step.
 
-![enter-the-room-min.png](/img/moderator/enter-the-room-min.png)
+![Onboarding-Desktop.jpg](/img/moderator/Onboarding-Desktop.jpg)
 
--   **Microphone:** Choose this option to speak and participate in the meeting. Your browser will ask for permission to access your microphone.
--   **Listen only:** Choose this option to join without a microphone. You will be able to hear everything but will not be able to speak.
+-   **Enable Microphone and Camera:** Choose this option to speak and share your video in the meeting. Your browser will ask for permission to access your microphone and camera.
+-   **Continue as a listener:** Choose this option to join without a microphone or camera. You will be able to hear everything but will not be able to speak or share video.
 
-**Important:** This choice is not permanent. If you join in "Listen only" mode, you can easily activate your microphone later from the main control bar (if the moderator allows it).
+**Important:** This choice is not permanent. If you decide to **Continue as a listener**, you can easily activate your microphone and camera later from the main control bar (if the moderator allows it).
 
 ---
 
@@ -33,7 +33,7 @@ These are the basic controls you will use during the meeting, located at the bot
 -   **Webcam:** Click this icon to start or stop sharing your webcam. You can choose a virtual background before you share.
 -   **Raise Hand:** Click this icon to signal to the moderator that you have a question or wish to speak.
 
-![raise-hand-min.png](/img/moderator/raise-hand-min.png)
+![attendee-control-bar.webp](/img/moderator/attendee-control-bar.webp)
 
 ---
 
@@ -46,7 +46,7 @@ These features allow you to interact with the moderator and other participants.
 -   **Public Chat:** Click the **Chat** icon to open the main chat panel where you can send messages to everyone.
 -   **Private Chat:** To send a private message, open the **Participants** list, click the three-dot menu next to a user's name, and select **Send private message**.
 
-![chatroom-min.png](/img/moderator/chatroom-min.png)
+![attendee-Chat.webp](/img/moderator/attendee-Chat.webp)
 
 ### Viewing the Participant List
 
@@ -56,7 +56,24 @@ These features allow you to interact with the moderator and other participants.
 
 -   If the moderator starts a poll, you will see a notification. You can open the **Polls** tab in the participant panel to cast your vote.
 
-<img src="/img/moderator/attendee-poll-min.png" alt="Vote in a Poll" loading="lazy"/>
+![attendee-polls.webp](/img/moderator/attendee-polls.webp)
+
+### Transcription & Translation
+- **Start Transcription & Translation:** Click the **Transcription & Translation** icon in the main footer control bar to start the service (if the moderator has enabled it for you).
+
+![attendee-transcriptions.webp](/img/moderator/attendee-transcriptions.webp)
+
+- **History:** You can view **Live Transcription & Translation** in real-time. Click the **History** icon to see the full transcript history.
+
+![attendee-transcriptions-history.webp](/img/moderator/attendee-transcriptions-history.webp)
+
+**Important:** You must **Enable Microphone** to use **Transcription & Translation**.
+
+### Using AI Assistant
+
+- **Enable/Disable:** Click the **AI Assistant** icon in the main footer control bar to start the AI Assistant (if the moderator has enabled it for you).
+
+![attendee-ai-tools.webp](/img/moderator/attendee-ai-tools.webp)
 
 ---
 
@@ -77,12 +94,13 @@ The moderator can split the main session into smaller Breakout Rooms for group a
 -   If you are assigned to a room, you will see a notification inviting you to **Join**.
 -   You will be taken to a new, smaller meeting room. When the breakout session is over, you will be returned to the main room automatically.
 
-<img src="/img/moderator/attendee-breakoutroom-min.png" alt="Join a Breakout Room" loading="lazy"/>
+![attendee-breakout-room.webp](/img/moderator/attendee-breakout-room.webp)
 
 ---
 
-## Section 5: Leaving the Meeting
 
--   To leave the meeting, click the three-dot menu in the **top-right** corner and select **Log out**.
+## Section 5: Leave Meeting
 
-![logout-min.png](/img/moderator/logout-min.png)
+- **Leave Meeting:** If you select **Leave Meeting** from the top-right menu or the bottom-right button, you will leave the meeting, but the session will remain active for other participants.
+
+![attendee-end-meeting.webp](/img/moderator/attendee-end-meeting.webp)
