@@ -77,7 +77,7 @@ The toolbar provides a rich set of tools for drawing and brainstorming:
 There are two distinct methods for adding content to the whiteboard: one for images and one for office files.
 
 **1. Adding Images**
-You can add images (like JPG, PNG, or GIF) to the whiteboard in several easy ways:
+You can add images (like JPG or PNG) to the whiteboard in several easy ways:
 - **Drag and Drop:** Simply drag an image file from your computer and drop it directly onto the whiteboard canvas.
 - **Copy and Paste:** Copy an image (from a website or a file on your computer) and paste it onto the whiteboard using `Ctrl+V` (or `Cmd+V` on Mac).
 - **Toolbar Icon:** Click the **Image** icon in the whiteboard's toolbar to open a file selection window.
