@@ -62,13 +62,35 @@ These tools allow you to present content and collaborate with your attendees.
 
 ### Using the Interactive Whiteboard
 
-The whiteboard is a powerful tool for real-time collaboration.
+The whiteboard is a powerful tool for real-time collaboration, powered by Excalidraw. To open it, click the **Whiteboard** icon in the main footer control bar.
 
-- **Activate/Hide:** Click the **Whiteboard** icon in the main footer control bar to show or hide it.
-- **Tools:** Use the toolbar to draw shapes, write text, upload files (PDF, Word, etc.), and more.
-- **Export:** You can export the whiteboard's content as a PNG or SVG file.
+![white-board.webp](/img/moderator/white-board.png)
 
-![white-board.webp](/img/moderator/white-board.webp)
+#### Drawing & Annotation Tools
+The toolbar provides a rich set of tools for drawing and brainstorming:
+- Use the **pen tool** to draw freehand.
+- Add **shapes**, **arrows**, and **text** to create diagrams.
+- Change **colors**, **stroke styles**, and more.
+- You can **export** the entire whiteboard canvas as a PNG or SVG file at any time.
+
+#### Adding Content to the Whiteboard
+There are two distinct methods for adding content to the whiteboard: one for images and one for office files.
+
+**1. Adding Images**
+You can add images (like JPG, PNG, or GIF) to the whiteboard in several easy ways:
+- **Drag and Drop:** Simply drag an image file from your computer and drop it directly onto the whiteboard canvas.
+- **Copy and Paste:** Copy an image (from a website or a file on your computer) and paste it onto the whiteboard using `Ctrl+V` (or `Cmd+V` on Mac).
+- **Toolbar Icon:** Click the **Image** icon in the whiteboard's toolbar to open a file selection window.
+
+**2. Adding Office Files & PDFs**
+To present documents like PDFs, Word files, or PowerPoint presentations, you must use the dedicated file uploader.
+- Click the **Files** icon in the whiteboard's toolbar.
+- A new panel will open. From here, you can upload your office documents or PDF files.
+- Once uploaded, the file will be listed below the upload option. From there, you can select the file you want to display on the whiteboard.
+
+:::tip Note
+You cannot upload images using the "Files" uploader. It is specifically for office documents and PDFs.
+:::
 
 ### Using the Shared Notepad
 
@@ -180,7 +202,6 @@ Use these tools to create a more interactive and engaging session.
 ### Creating and Managing Polls
 
 - Open the **More Options** menu (...) in the footer control bar and select **Enable Polls**. This will enable polls for the meeting and you will see a **Polls** icon in the main footer control bar.
-- **Enable/Disable Polls:** Click the **Polls** icon in the main footer control bar to manage polls.
 - Click **Create new Poll**.
 - Define your question and answer options, then click **Create poll**.
 - Attendees will be prompted to vote. You can view the results in real-time, end the poll, and publish the results to the public chat.
