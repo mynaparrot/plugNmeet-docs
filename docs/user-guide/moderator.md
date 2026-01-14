@@ -82,11 +82,15 @@ You can add images (like JPG, PNG, or GIF) to the whiteboard in several easy way
 - **Copy and Paste:** Copy an image (from a website or a file on your computer) and paste it onto the whiteboard using `Ctrl+V` (or `Cmd+V` on Mac).
 - **Toolbar Icon:** Click the **Image** icon in the whiteboard's toolbar to open a file selection window.
 
+![upload-images.webp](/img/moderator/upload-images.webp)
+
 **2. Adding Office Files & PDFs**
 To present documents like PDFs, Word files, or PowerPoint presentations, you must use the dedicated file uploader.
 - Click the **Files** icon in the whiteboard's toolbar.
 - A new panel will open. From here, you can upload your office documents or PDF files.
 - Once uploaded, the file will be listed below the upload option. From there, you can select the file you want to display on the whiteboard.
+
+![upload-files.webp](/img/moderator/upload-files.webp)
 
 :::tip Note
 You cannot upload images using the "Files" uploader. It is specifically for office documents and PDFs.
