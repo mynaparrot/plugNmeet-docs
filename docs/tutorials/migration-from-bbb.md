@@ -16,7 +16,7 @@ This guide will walk you through the benefits of switching and show you how to m
 
 ## Why Consider Plug-N-Meet?
 
-BigBlueButton is a foundational open-source project that has served the community for years. Plug-N-Meet was born from a deep respect for the BBB ecosystem and was designed to address some of its inherent architectural challenges, offering a different approach for those who need more flexibility and scalability.
+BigBlueButton is a foundational open-source project that has served the community for years. Plug-N-Meet was born from a deep respect for the BBB ecosystem and was designed to address some of its inherent architectural challenges, offering a different approach for those who need more flexibility and scalability. To understand our journey and the "why" behind our design choices, you can read our founder's story: **[Why We Built Plug-N-Meet](/blog/why-we-built-plugnmeet)**.
 
 Here are the key advantages of the Plug-N-Meet architecture:
 
