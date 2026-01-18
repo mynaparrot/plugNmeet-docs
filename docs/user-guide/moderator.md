@@ -233,8 +233,8 @@ You can broadcast your meeting live to platforms like YouTube or Facebook.
 
 ![live-streaming.webp](/img/moderator/live-streaming.webp)
 
-### Stream Like a Pro: How to Bring OBS into Your plugNmeet Room
-
+### Live stream input
+##### Stream Like a Pro: How to Bring OBS into Your plugNmeet Room
 Getting started is incredibly easy. Here’s how you do it from within your plugNmeet room:
 
 - Click the three-dot menu in the **top-right** corner and select **Settings**.
@@ -246,7 +246,7 @@ Getting started is incredibly easy. Here’s how you do it from within your plug
 ![live-stream-input.webp](/img/moderator/live-stream-input.webp)
 ![stream-key-host.webp](/img/moderator/stream-key-host.webp)
 
-### Connecting Your Streaming Software (like OBS)
+#### Connecting Your Streaming Software (like OBS)
 
 Now, you just need to tell your software (we'll use OBS as an example) where to send the stream.
 
