@@ -6,7 +6,7 @@
 <title data-rh="true">Scalable PlugNmeet Deployment | A Guide to Distributed Setups    </title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://www.plugnmeet.org/docs/developer-guide/scalable-setup"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Scalable PlugNmeet Deployment | A Guide to Distributed Setups    "><meta data-rh="true" name="description" content="A high-level guide for scaling a self-hosted plugNmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."><meta data-rh="true" property="og:description" content="A high-level guide for scaling a self-hosted plugNmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."><meta data-rh="true" name="keywords" content="scalable webrtc,distributed setup,plugnmeet scaling,high availability,load balancing,livekit cluster,nats cluster,redis cluster,self-hosted scaling,enterprise webrtc"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/developer-guide/scalable-setup" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Scalable Deployment","item":"https://www.plugnmeet.org/docs/developer-guide/scalable-setup"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="  RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="  Atom Feed">
 <link rel="alternate" type="application/json" href="/blog/feed.json" title="  JSON Feed"><link rel="stylesheet" href="/assets/css/styles.189a73de.css">
-<script src="/assets/js/runtime~main.53af1149.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.8645b531.js" defer="defer"></script>
 <script src="/assets/js/main.24b7132e.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -97,8 +97,8 @@
 <p>**(Link: <a href="https://mariadb.com/docs/galera-cluster" target="_blank" rel="noopener noreferrer" class="">Official MariaDB Documentation</a>)</p>
 <h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="redis-cache">Redis Cache<a href="#redis-cache" class="hash-link" aria-label="Direct link to Redis Cache" title="Direct link to Redis Cache" translate="no">​</a></h4>
 <ul>
-<li class=""><strong>Recommendation:</strong> For a highly available LiveKit cluster, your Redis instance must also be highly available.</li>
-<li class=""><strong>Action:</strong> Use a managed Redis service or set up your own Redis Cluster or Sentinel configuration. Your LiveKit nodes should be configured to connect to this cluster directly.</li>
+<li class=""><strong>Recommendation:</strong> For a highly available plugNmeet and LiveKit cluster, your Redis instance must also be highly available.</li>
+<li class=""><strong>Action:</strong> Use a managed Redis service or set up your own Redis Cluster or Sentinel configuration. Your plugNmeet and LiveKit nodes should be configured to connect to this cluster directly.</li>
 </ul>
 <p>**(Link: <a href="https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel" target="_blank" rel="noopener noreferrer" class="">Official Redis Sentinel Clustering Documentation</a>)</p>
 <hr>
@@ -136,7 +136,7 @@
 <p>The following paths in your <code>config.yaml</code> must point to this shared location:</p>
 <ul>
 <li class=""><strong><code>recorder_info.recording_files_path</code></strong>: <code>plugnmeet-recorder</code> instances write MP4 files here, but <strong>all</strong> <code>plugnmeet-server</code> instances need read access to serve download requests via the API.</li>
-<li class=""><strong><code>analytics_settings.files_store_path</code></strong>: When a room ends, any <code>plugnmeet-server</code> might write the analytics JSON file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.</li>
+<li class=""><strong><code>artifacts_settings.storage_path</code></strong>: When a room ends, any <code>plugnmeet-server</code> might write artifacts file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.</li>
 <li class=""><strong><code>upload_file_settings.path</code></strong>: When a user uploads a file in chat, the request might be handled by one server. When another user tries to download it, that request could go to any other server in the cluster.</li>
 </ul>
 <hr>
