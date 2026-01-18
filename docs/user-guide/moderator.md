@@ -82,11 +82,15 @@ You can add images (like JPG or PNG) to the whiteboard in several easy ways:
 - **Copy and Paste:** Copy an image (from a website or a file on your computer) and paste it onto the whiteboard using `Ctrl+V` (or `Cmd+V` on Mac).
 - **Toolbar Icon:** Click the **Image** icon in the whiteboard's toolbar to open a file selection window.
 
+![upload-images.webp](/img/moderator/upload-images.webp)
+
 **2. Adding Office Files & PDFs**
 To present documents like PDFs, Word files, or PowerPoint presentations, you must use the dedicated file uploader.
 - Click the **Files** icon in the whiteboard's toolbar.
 - A new panel will open. From here, you can upload your office documents or PDF files.
 - Once uploaded, the file will be listed below the upload option. From there, you can select the file you want to display on the whiteboard.
+
+![upload-files.webp](/img/moderator/upload-files.webp)
 
 :::tip Note
 You cannot upload images using the "Files" uploader. It is specifically for office documents and PDFs.
@@ -228,6 +232,44 @@ You can broadcast your meeting live to platforms like YouTube or Facebook.
 - Click **Start Streaming** to begin streaming.
 
 ![live-streaming.webp](/img/moderator/live-streaming.webp)
+
+### Live stream input
+##### Stream Like a Pro: How to Bring OBS into Your plugNmeet Room
+Getting started is incredibly easy. Here’s how you do it from within your plugNmeet room:
+
+- Click the three-dot menu in the **top-right** corner and select **Settings**.
+- Find **Live Stream Input**: In the settings panel, navigate to the **Live Stream Input** tab.
+- Choose **Your "Channel" Type (RTMP or WHIP)**: You'll see an option called "Input Type." This lets you choose the technology for your stream. Think of it like choosing between two types of cables to connect your camera. RTMP is for professional streaming, while WHIP is for live streaming.
+- Give **Your Stream a Name**: In the **Display Name** field, you can type in a name for your stream. This is the name that will appear in the participant list. For example, "Main Presentation" or "Guest Speaker Cam." If you leave it blank, it will default to "Broadcaster."
+- Generate **Your Private Link**: Click the **Generate link** button. plugNmeet will instantly create a unique and secure address for your private stream. You'll see two fields: a URL and a Secret (or "Stream Key").
+
+![live-stream-input.webp](/img/moderator/live-stream-input.webp)
+![stream-key-host.webp](/img/moderator/stream-key-host.webp)
+
+#### Connecting Your Streaming Software (like OBS)
+
+Now, you just need to tell your software (we'll use OBS as an example) where to send the stream.
+
+#### For RTMP (The Universal Standard):
+
+- In OBS settings, go to **Stream**.
+- For **Service**, choose **Custom...**
+- Copy the **URL** from plugNmeet and paste it into the **Server** field in OBS.
+- Copy the **Secret** from plugNmeet and paste it into the **Stream Key** field in OBS.
+
+![obs-custom.webp](/img/moderator/obs-custom.webp)
+
+#### For WHIP (The Modern Choice):
+
+- In OBS settings, go to **Stream**.
+- For **Service**, choose **WHIP**.
+- Combine the **URL** and **Secret** from plugNmeet into a single line. For example: `https://your-plugnmeet-domain.com/whip/A_LONG_SECRET_KEY_HERE`
+- Paste this full, combined address into the **Server** field in OBS.
+- Leave the **Bearer Token** field in OBS blank.
+
+![obs-whip.webp](/img/moderator/obs-whip.webp)
+
+Once you hit **"Start Streaming"** in OBS, your stream will magically appear as a new participant in your plugNmeet room for everyone to see! You can checkout our blog post for more details. [Stream Like a Pro: How to Bring OBS into Your plugNmeet Room](https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress)
 
 ---
 
