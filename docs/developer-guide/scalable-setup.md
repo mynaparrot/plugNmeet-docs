@@ -111,8 +111,8 @@ LiveKit also works behind a load balancer for initial connections.
 
 #### Redis Cache
 
-*   **Recommendation:** For a highly available LiveKit cluster, your Redis instance must also be highly available.
-*   **Action:** Use a managed Redis service or set up your own Redis Cluster or Sentinel configuration. Your LiveKit nodes should be configured to connect to this cluster directly.
+*   **Recommendation:** For a highly available plugNmeet and LiveKit cluster, your Redis instance must also be highly available.
+*   **Action:** Use a managed Redis service or set up your own Redis Cluster or Sentinel configuration. Your plugNmeet and LiveKit nodes should be configured to connect to this cluster directly.
 
 **(Link: [Official Redis Sentinel Clustering Documentation](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel))
 
@@ -156,7 +156,7 @@ You must mount a shared network storage solution (such as **NFS**, **Samba (CIFS
 The following paths in your `config.yaml` must point to this shared location:
 
 *   **`recorder_info.recording_files_path`**: `plugnmeet-recorder` instances write MP4 files here, but **all** `plugnmeet-server` instances need read access to serve download requests via the API.
-*   **`analytics_settings.files_store_path`**: When a room ends, any `plugnmeet-server` might write the analytics JSON file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.
+*   **`artifacts_settings.storage_path`**: When a room ends, any `plugnmeet-server` might write artifacts file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.
 *   **`upload_file_settings.path`**: When a user uploads a file in chat, the request might be handled by one server. When another user tries to download it, that request could go to any other server in the cluster.
 
 ---
