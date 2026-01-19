@@ -16,14 +16,17 @@ This guide will walk you through the benefits of switching and show you how to m
 
 ## Why Consider Plug-N-Meet?
 
-BigBlueButton is a foundational open-source project that has served the community for years. Plug-N-Meet was born from a deep respect for the BBB ecosystem and was designed to address some of its inherent architectural challenges, offering a different approach for those who need more flexibility and scalability. To understand our journey and the "why" behind our design choices, you can read our founder's story: **[Why We Built Plug-N-Meet](/blog/why-we-built-plugnmeet)**.
+BigBlueButton is a foundational open-source project that has served the community for years. Plug-N-Meet was born from a deep respect for the BBB ecosystem and was designed to address some of its inherent architectural challenges, offering a different approach for those who need more flexibility and scalability.
+
+For a detailed, head-to-head comparison of the two platforms, we recommend reading our full breakdown:
+**[BigBlueButton vs. Plug-N-Meet: A Modern Alternative](/blog/bigbluebutton-vs-plugnmeet-alternative)**
 
 Here are the key advantages of the Plug-N-Meet architecture:
 
 -   **Built on a World-Class Foundation:** Plug-N-Meet is powered by **LiveKit** as its media server and **NATS** for real-time messaging (chat, whiteboard sync, etc.). These are extremely fast, scalable, and modern components that allow Plug-N-Meet to handle a massive user load with fewer server resources.
 -   **Simplified & Lightweight Stack:** By leveraging these components, Plug-N-Meet avoids the complex web of dependencies found in BigBlueButton (like FreeSWITCH and Kurento). This results in a significantly smaller footprint, easier installation, and simpler maintenance.
 -   **Simplified, Single-File Recordings:** Unlike BigBlueButton's complex post-processing workflow, plugNmeet generates a standard MP4 file for each recording. This makes your recordings instantly portable, easier to manage, and faster to access.
--   **Designed for Distributed Scaling:** Plug-N-Meet is not built as a single, large application. Each core component—LiveKit (media), NATS (messaging), the recorder, and the plugNmeet server—is designed to be scaled out independently. This allows you to add resources precisely where you need them, for example, scaling your recording infrastructure without impacting live meeting performance.
+-   **Designed for Distributed Scaling:** Plug-N-Meet is not built as a single, large application. Each core component—LiveKit (media), NATS (messaging), the recorder, and the plugnmeet server—is designed to be scaled out independently. This allows you to add resources precisely where you need them, for example, scaling your recording infrastructure without impacting live meeting performance.
 -   **Effortless Customization:** The platform is designed for deep and easy customization. The frontend client is a modern, self-contained application, and the backend is a single binary. This clean separation allows developers to rapidly change the UI, add features, or integrate custom workflows without navigating the complex, multi-service environment found in BigBlueButton.
 -   **Seamless API Compatibility:** This is our commitment to the ecosystem. Plug-N-Meet includes a BBB-compatible API layer. This means your existing application—whether it's Greenlight, a Moodle plugin, or a custom-built solution—will work with Plug-N-Meet without requiring any front-end code changes.
 
