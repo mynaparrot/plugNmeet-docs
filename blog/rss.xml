@@ -44,17 +44,16 @@
 <h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-migration-path-try-without-the-risk">The Migration Path: Try Without the Risk<a href="https://www.plugnmeet.org/blog/bigbluebutton-vs-plugnmeet-alternative#the-migration-path-try-without-the-risk" class="hash-link" aria-label="Direct link to The Migration Path: Try Without the Risk" title="Direct link to The Migration Path: Try Without the Risk" translate="no">​</a></h3>
 <p>We understand that migrating from a deeply integrated platform is a big decision. That's why we made it painless.</p>
 <p>Plug-N-Meet includes a <strong>BBB-compatible API layer</strong>. This means you can point your existing Greenlight, Moodle, or custom application to your Plug-N-Meet server, and it will work <strong>without any front-end code changes</strong>. This allows you to test the performance and stability of Plug-N-Meet in your own environment with zero risk.</p>
-<p>For a step-by-step guide, see our <strong><a class="" href="https://www.plugnmeet.org/docs/tutorials/migration-from-bbb">Migration from BigBlueButton Tutorial</a></strong>.</p>
+<p>Ready to take the next step? Follow our simple, step-by-step <strong><a class="" href="https://www.plugnmeet.org/docs/tutorials/migration-from-bbb">Migration from BigBlueButton Tutorial</a></strong> to see how easy it is.</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-the-right-tool-for-the-modern-web">Conclusion: The Right Tool for the Modern Web<a href="https://www.plugnmeet.org/blog/bigbluebutton-vs-plugnmeet-alternative#conclusion-the-right-tool-for-the-modern-web" class="hash-link" aria-label="Direct link to Conclusion: The Right Tool for the Modern Web" title="Direct link to Conclusion: The Right Tool for the Modern Web" translate="no">​</a></h3>
-<p>BigBlueButton laid the foundation for open-source communication. It proved what was possible. Plug-N-Meet is the next step in that evolution, built from the ground up to meet the modern web's demands for elastic scalability, developer agility, and long-term maintainability.</p>
+<p>BigBlueButton laid the foundation for open-source communication. It proved what was possible. As we detailed in our <strong><a class="" href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet">founder's story, "Why We Built Plug-N-Meet,"</a></strong> our platform is the next step in that evolution, built from the ground up to meet the modern web's demands for elastic scalability, developer agility, and long-term maintainability.</p>
 <p>If you are feeling the pain points of a monolithic architecture and are looking for a more flexible, performant, and cost-effective solution, Plug-N-Meet is the modern alternative you've been waiting for.</p>
 <hr>
 <p><strong>Ready to see the difference for yourself?</strong></p>
 <ul>
 <li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo</a> to experience the modern interface.</strong></li>
 <li class=""><strong><a class="" href="https://www.plugnmeet.org/docs/installation">Follow our simple Installation Guide</a> to get your own server running in minutes.</strong></li>
-<li class=""><strong><a class="" href="https://www.plugnmeet.org/blog/why-we-built-plugnmeet">Read our Founder's Story</a> to understand the philosophy behind our design.</strong></li>
 </ul>]]></content:encoded>
             <category>bigbluebutton</category>
             <category>bbb-alternative</category>
