@@ -24,7 +24,7 @@ This article provides a direct, head-to-head comparison to help you understand t
 | **Media Server**          | **FreeSWITCH & mediasoup** (previously Kurento)                         | **LiveKit** (a modern, high-performance SFU)                                 | LiveKit is purpose-built for scalable WebRTC, offering better performance, adaptive streaming (Simulcast/Dynacast), and lower resource usage out of the box. |
 | **Security & E2EE**       | Basic encryption. E2EE is not a native, fully integrated feature.       | **Native End-to-End Encryption (E2EE):** A core, API-controlled feature with multiple key management models. | Plug-N-Meet provides true zero-trust security, ensuring not even the server can access meeting content. This is critical for privacy-sensitive applications. |
 | **Recording**             | Reconstructs a presentation from separately recorded raw streams.       | **High-Fidelity Capture:** A headless browser records the final rendered output to a single MP4. | Plug-N-Meet's method produces a perfect, "what you see is what you get" replica of the live session, ensuring perfect synchronization. |
-| **Customization**         | **Static Theming:** Requires complex server-side configuration and often code modification. | **Dynamic, Per-User Theming:** The entire UI can be customized for each user via a simple URL parameter. | Plug-N-Meet's API-driven approach enables true multi-tenant branding and greater white-label flexibility. |
+| **Customization**         | **Static Theming:** Requires complex server-side configuration and often code modification. | **Multi-Layered & Dynamic:** Offers four levels of customization, from simple branding to a "headless" native integration. | Plug-N-Meet's API-driven approach enables true multi-tenant branding and a vastly superior white-label experience. |
 | **Installation**          | Scripted, but with heavy, specific OS dependencies.                     | **Automated script using Docker containers.**                                | Plug-N-Meet's containerized setup is faster and avoids conflicts with other services on the host machine. |
 | **Upgrades & Maintenance**| **Full Rebuild Required:** OS upgrades require a new server and manual data migration. | **Simple & In-Place:** Docker abstracts the OS, allowing safe, independent updates. | You avoid the operational cost and risk of rebuilding your server for every major OS update. |
 | **Multi-Tenancy**         | **Domain-Coupled:** Difficult to serve multiple domains from one instance. | **Domain-Agnostic:** A single server can easily serve unlimited domains via a reverse proxy. | Greatly simplifies offering a white-labeled service to multiple clients from a single, cost-effective server instance. |
@@ -39,15 +39,19 @@ The most fundamental difference is in the design philosophy.
 
 **Plug-N-Meet** is built on a **decoupled, microservices-based architecture**. The application server, the LiveKit media server, and the recorder are all independent services. This allows you to isolate workloads and scale intelligently, leading to a significantly lower Total Cost of Ownership (TCO).
 
-### Key Difference 2: Dynamic, Per-User Customization
+### Key Difference 2: A Multi-Layered Approach to Customization
 
 This is a game-changer for anyone building a white-label or multi-tenant service.
 
-**BigBlueButton** uses a **static theming** approach. Customizing the look and feel is a complex, server-wide change that often requires modifying configuration files and restarting services. Applying a unique brand for different clients on the same server is difficult.
+**BigBlueButton** uses a **static theming** approach. Customizing the look and feel is a complex, server-wide change that often requires modifying configuration files and restarting services.
 
-**Plug-N-Meet** is **API-first and dynamic**. As detailed in our **[Design Customization Guide](/docs/developer-guide/design-customisation)**, you can change the entire look and feel—colors, logos, and more—for every single user, every single session. This is done by simply passing a URL-encoded JSON object to the `custom_design` parameter in the **[join URL](/docs/api/room/join)**.
+**Plug-N-Meet** is **API-first and dynamic**, offering a **[multi-layered approach to white-labeling](/blog/true-white-label-video-conferencing)** that allows you to choose the level of customization that fits your needs:
+*   **Level 1: Quick Rebranding:** Instantly change logos, colors, and backgrounds via a simple **[configuration object](/docs/developer-guide/design-customisation)**.
+*   **Level 2: API-Driven Feature Control:** Programmatically enable or disable features (like the whiteboard or breakout rooms) to create purpose-built experiences for different use cases.
+*   **Level 3: Deep Styling with Custom CSS:** Provide a URL to your own stylesheet for pixel-perfect control over any UI element.
+*   **Level 4: True Native Integration:** Use the **[`getClientFiles` API](/docs/api/get-client-files)** to render the client "headless" directly within your own application, giving you complete control over the layout and user experience.
 
-This means you can serve `client-a.com` with a blue theme and `client-b.com` with a red theme, all from the same server, at the same time, with no code changes.
+This layered flexibility makes it easy to get started but provides a path to a truly unique and deeply integrated product.
 
 ### Key Difference 3: Security by Design - Native End-to-End Encryption
 
