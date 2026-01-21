@@ -80,6 +80,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | [ingress_features](#ingress-features)                                | object  | No       | RTMP ingress settings.                                                                                 |
 | [polls_features](#polls-features)                                    | object  | No       | Polls settings.                                                                                        |
 | [insights_features](#insights-features)                              | object  | No       | AI-powered insights, transcription, and translation settings.                                          |
+| [sip_dial_in_features](#sip-dial-in-features)                        | object  | No       | SIP dial-in settings.                                                                                  |
 | [end_to_end_encryption_features](#end-to-end-encryption-e2ee-features) | object  | No       | End-to-End Encryption (E2EE) settings.                                                                 |
 
 ### Recording Features
@@ -203,6 +204,20 @@ This object controls all AI-powered features provided by the Insights Platform.
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Yes      | Enable or disable the generation of meeting summaries. |
 
+### SIP Dial-In Features
+
+:::note[Server Configuration Required]
+For SIP dial-in to function, you must first configure the `livekit_sip_info` section of your server's main `config.yaml` file. This involves setting up the SIP gateway (e.g., `livekit/sip`) and integrating it with an external SIP trunking provider.
+
+Please refer to the server configuration guide and the [livekit/sip GitHub repository](https://github.com/livekit/sip) for detailed setup instructions.
+:::
+
+| Field                      | Type    | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| -------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| is_allow                   | boolean | Yes      | Enable or disable SIP dial-in for the room.                                                                                                                                                                                                                                                                                                                                                                                    |
+| enable_dial_in_on_create   | boolean | No       | If `true`, the SIP dial-in service will automatically start when the room is created. If `false`, a moderator must manually start it from within the meeting. Default: `false`.                                                                                                                                                                                                                                                |
+| hide_phone_number          | boolean | No       | If `true`, the dial-in phone number will be masked in the participant list, showing only the last 4 digits. Default: `false`.                                                                                                                                                                                                                                                                                                   |
+
 ### End-to-End Encryption (E2EE) Features
 
 | Field                               | Type    | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -307,6 +322,11 @@ This feature is available only if the server configuration `client > copyright_c
             "is_allow": true
           }
         }
+      },
+      "sip_dial_in_features": {
+        "is_allow": true,
+        "enable_dial_in_on_create": true,
+        "hide_phone_number": false
       },
       "end_to_end_encryption_features": {
         "is_enabled": false,

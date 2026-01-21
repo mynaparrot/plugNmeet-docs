@@ -149,7 +149,7 @@ You can share a video from a URL (like YouTube) or a local file.
 
 You can display any website that allows embedding within an iframe.
 
-- Open the **More Options** menu (...) in the main footer control bar and select **Share External Link**.
+- Open the **More Options** menu (...) in the footer control bar and select **Share External Link**.
 - Enter the URL of the website you wish to share.
 
 ![external-link-iframe.webp](/img/moderator/external-link-iframe.webp)
@@ -270,6 +270,22 @@ Now, you just need to tell your software (we'll use OBS as an example) where to 
 ![obs-whip.webp](/img/moderator/obs-whip.webp)
 
 Once you hit **"Start Streaming"** in OBS, your stream will magically appear as a new participant in your plugNmeet room for everyone to see! You can checkout our blog post for more details. [Stream Like a Pro: How to Bring OBS into Your plugNmeet Room](https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress)
+
+### SIP/VoIP Dial-In
+
+:::note[Server Configuration Required]
+This is an advanced feature that will only be available if your system administrator has configured the SIP integration on the server.
+:::
+
+This feature allows participants to join the meeting's audio by dialing a standard telephone number.
+
+![sip_1.png](/img/moderator/sip_1.png)
+
+- Click the three-dot menu in the **top-right** corner and select **Settings**.
+- Navigate to the **SIP/VoIP Dial-In** tab.
+- **Enable Service:** If the service is not already running, click the **Activate** button to start the SIP gateway for this session.
+- **View Dial-In Information:** Once enabled, this panel will display the **Dial-in Number(s)** and the unique **PIN** for the current meeting.
+- **Share in Chat:** Click the **Share to Chat** button to automatically post the dial-in number and PIN to the public chat, making it easy for all participants to see.
 
 ---
 

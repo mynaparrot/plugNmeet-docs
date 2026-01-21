@@ -20,6 +20,7 @@ This document provides a comprehensive overview of the security architecture and
 4.  [Transport & Data-in-Transit Security](#4-transport--data-in-transit-security)
     -   [NATS Communication](#41-nats-communication)
     -   [Media Server (LiveKit)](#42-media-server-livekit)
+    -   [SIP Gateway](#43-sip-gateway)
 5.  [AI Services & Data Privacy (The Insights Platform)](#5-ai-services--data-privacy-the-insights-platform)
 6.  [Secure Session Flow](#6-secure-session-flow)
 7.  [Browser Storage (IndexedDB)](#7-browser-storage-indexeddb)
@@ -95,6 +96,14 @@ Media streams are managed by LiveKit, which has built-in support for E2EE.
 -   The LiveKit client SDK handles the encryption and decryption of all audio, webcam, and screen-sharing tracks directly on the user's device. The media server (SFU) only relays encrypted media packets.
 
 *Reference: `client/src/helpers/livekit/ConnectLivekit.ts`*
+
+#### 4.3. SIP Gateway
+
+The telephone dial-in feature is powered by the **[livekit/sip](https://github.com/livekit/sip)** project. This is an advanced feature that requires the server administrator to configure it with an external SIP trunking provider to bridge calls between the telephone network (PSTN) and your WebRTC session.
+
+-   **Administrator Responsibility:** You are responsible for the setup and security of this integration. For detailed setup instructions, please refer to the official [livekit/sip GitHub repository](https://github.com/livekit/sip).
+-   **Transport Encryption (SRTP):** The `livekit/sip` service supports `SIPMediaEncryption` (SRTP), which encrypts the audio stream between the SIP gateway and your provider. It is your responsibility to enable this and to ensure your provider supports it.
+-   **E2EE Incompatibility:** The SIP gateway must process unencrypted audio to bridge the call between the PSTN and WebRTC networks. Because of this, it is **fundamentally incompatible with End-to-End Encryption**. The SIP dial-in feature is automatically disabled for any room where E2EE is active.
 
 ### 5. AI Services & Data Privacy (The Insights Platform)
 

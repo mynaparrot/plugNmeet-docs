@@ -47,6 +47,7 @@ Plug-N-Meet's flexibility makes it the perfect solution for a wide range of user
 ### Advanced Integration & Security
 - **AI Meeting Agent:** Turn your meetings into actionable intelligence. Our powerful AI agent provides live spoken translations, generates automated summaries, creates full transcriptions, **and many more...**
 - **End-to-End Encryption (E2EE):** Keep your meetings completely private with the highest level of security for all audio, video, and data. For a deeper dive into our security architecture, including authentication and data-in-transit protection, refer to our detailed **[Security Overview](/docs/security-overview.md)**.
+- **Telephone Dial-In (SIP Gateway):** Allow participants to join the audio of your meeting by dialing a standard phone number—no internet required.
 - **Live Captions & Translation:** See spoken words as text in real-time, allowing you to also translate the conversation into different languages.
 - **Embed Web Content:** Show any website or online application, like a Google Doc or a project dashboard, directly within the meeting window.
 - **Analytics & Reports:** Get detailed reports about meetings and users to understand how the platform is being used.
