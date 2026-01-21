@@ -6,8 +6,8 @@
 <title data-rh="true">Plug-N-Meet Security and Privacy Overview | Your Self-Hosted Video Conferencing Solution    </title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://www.plugnmeet.org/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://www.plugnmeet.org/docs/security-overview"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plug-N-Meet Security and Privacy Overview | Your Self-Hosted Video Conferencing Solution    "><meta data-rh="true" name="description" content="A detailed overview of the security architecture, authentication, authorization, and end-to-end encryption (E2EE) mechanisms within the Plug-N-Meet platform."><meta data-rh="true" property="og:description" content="A detailed overview of the security architecture, authentication, authorization, and end-to-end encryption (E2EE) mechanisms within the Plug-N-Meet platform."><meta data-rh="true" name="keywords" content="security,privacy,data handling,e2ee,end-to-end encryption,authentication,authorization,hmac,jwt,nats,livekit,webrtc security"><link data-rh="true" rel="icon" href="/img/favicon.png"><link data-rh="true" rel="canonical" href="https://www.plugnmeet.org/docs/security-overview"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/security-overview" hreflang="en"><link data-rh="true" rel="alternate" href="https://www.plugnmeet.org/docs/security-overview" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Security & Privacy","item":"https://www.plugnmeet.org/docs/security-overview"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="  RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="  Atom Feed">
 <link rel="alternate" type="application/json" href="/blog/feed.json" title="  JSON Feed"><link rel="stylesheet" href="/assets/css/styles.189a73de.css">
-<script src="/assets/js/runtime~main.923a5ab6.js" defer="defer"></script>
-<script src="/assets/js/main.413ffc4f.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9fda6805.js" defer="defer"></script>
+<script src="/assets/js/main.30b4b6b3.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <svg style="display: none;"><defs>
@@ -29,6 +29,7 @@
 <ul>
 <li class=""><a href="#41-nats-communication" class="">NATS Communication</a></li>
 <li class=""><a href="#42-media-server-livekit" class="">Media Server (LiveKit)</a></li>
+<li class=""><a href="#43-sip-gateway" class="">SIP Gateway</a></li>
 </ul>
 </li>
 <li class=""><a href="#5-ai-services--data-privacy-the-insights-platform" class="">AI Services &amp; Data Privacy (The Insights Platform)</a></li>
@@ -88,6 +89,13 @@
 <li class="">The LiveKit client SDK handles the encryption and decryption of all audio, webcam, and screen-sharing tracks directly on the user&#x27;s device. The media server (SFU) only relays encrypted media packets.</li>
 </ul>
 <p><em>Reference: <code>client/src/helpers/livekit/ConnectLivekit.ts</code></em></p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="43-sip-gateway">4.3. SIP Gateway<a href="#43-sip-gateway" class="hash-link" aria-label="Direct link to 4.3. SIP Gateway" title="Direct link to 4.3. SIP Gateway" translate="no">​</a></h4>
+<p>The telephone dial-in feature is powered by the <strong><a href="https://github.com/livekit/sip" target="_blank" rel="noopener noreferrer" class="">livekit/sip</a></strong> project. This is an advanced feature that requires the server administrator to configure it with an external SIP trunking provider to bridge calls between the telephone network (PSTN) and your WebRTC session.</p>
+<ul>
+<li class=""><strong>Administrator Responsibility:</strong> You are responsible for the setup and security of this integration. For detailed setup instructions, please refer to the official <a href="https://github.com/livekit/sip" target="_blank" rel="noopener noreferrer" class="">livekit/sip GitHub repository</a>.</li>
+<li class=""><strong>Transport Encryption (SRTP):</strong> The <code>livekit/sip</code> service supports <code>SIPMediaEncryption</code> (SRTP), which encrypts the audio stream between the SIP gateway and your provider. It is your responsibility to enable this and to ensure your provider supports it.</li>
+<li class=""><strong>E2EE Incompatibility:</strong> The SIP gateway must process unencrypted audio to bridge the call between the PSTN and WebRTC networks. Because of this, it is <strong>fundamentally incompatible with End-to-End Encryption</strong>. The SIP dial-in feature is automatically disabled for any room where E2EE is active.</li>
+</ul>
 <h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="5-ai-services--data-privacy-the-insights-platform">5. AI Services &amp; Data Privacy (The Insights Platform)<a href="#5-ai-services--data-privacy-the-insights-platform" class="hash-link" aria-label="Direct link to 5. AI Services &amp; Data Privacy (The Insights Platform)" title="Direct link to 5. AI Services &amp; Data Privacy (The Insights Platform)" translate="no">​</a></h3>
 <p>The Plug-N-Meet Insights Platform integrates with third-party AI providers (such as Microsoft Azure and Google) to offer advanced features. As the operator of the platform, it is your responsibility to understand how this data is handled and to update your own privacy policy accordingly.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="51-audio-based-ai-features">5.1. Audio-Based AI Features<a href="#51-audio-based-ai-features" class="hash-link" aria-label="Direct link to 5.1. Audio-Based AI Features" title="Direct link to 5.1. Audio-Based AI Features" translate="no">​</a></h4>

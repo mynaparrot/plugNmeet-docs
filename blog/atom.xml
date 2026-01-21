@@ -2,12 +2,83 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.plugnmeet.org/blog</id>
     <title>  Blog</title>
-    <updated>2026-01-18T00:00:00.000Z</updated>
+    <updated>2026-01-21T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
     <rights>Copyright © 2026 MynaParrot SL.</rights>
+    <entry>
+        <title type="html"><![CDATA[Bridging the Gap: How SIP Dial-In Connects Your Meetings to Any Phone]]></title>
+        <id>https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing</id>
+        <link href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing"/>
+        <updated>2026-01-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We've all been there: a crucial meeting is about to start, but a key participant has a spotty internet connection, is traveling, or simply doesn't have access to a computer. In a world increasingly reliant on video calls, how do you ensure everyone can still participate, even if they can't join online?]]></summary>
+        <content type="html"><![CDATA[<p>We've all been there: a crucial meeting is about to start, but a key participant has a spotty internet connection, is traveling, or simply doesn't have access to a computer. In a world increasingly reliant on video calls, how do you ensure everyone can still participate, even if they can't join online?</p>
+<p>At Plug-N-Meet, we believe in inclusivity. That's why we're excited to introduce <strong>SIP Dial-In</strong>, a powerful feature that allows participants to join the audio of your video meetings using any standard telephone. No internet, no problem.</p>
+<p>This feature seamlessly bridges the gap between your online conference and the traditional telephone network, ensuring that every voice can be heard, regardless of their connectivity.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-problem-when-internet-isnt-an-option">The Problem: When Internet Isn't an Option<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#the-problem-when-internet-isnt-an-option" class="hash-link" aria-label="Direct link to The Problem: When Internet Isn't an Option" title="Direct link to The Problem: When Internet Isn't an Option" translate="no">​</a></h3>
+<p>While WebRTC-based video conferencing is incredibly powerful, it relies on a stable internet connection. This can be a barrier for:</p>
+<ul>
+<li class=""><strong>Travelers:</strong> On the road, in a car, or in areas with poor Wi-Fi.</li>
+<li class=""><strong>Remote Locations:</strong> Participants in regions with limited internet infrastructure.</li>
+<li class=""><strong>Accessibility Needs:</strong> Individuals who prefer or require telephone access.</li>
+<li class=""><strong>Simple Audio-Only Participation:</strong> Sometimes, all you need is to listen and speak, without the video.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-solution-plug-n-meets-sip-dial-in">The Solution: Plug-N-Meet's SIP Dial-In<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#the-solution-plug-n-meets-sip-dial-in" class="hash-link" aria-label="Direct link to The Solution: Plug-N-Meet's SIP Dial-In" title="Direct link to The Solution: Plug-N-Meet's SIP Dial-In" translate="no">​</a></h3>
+<p>Our SIP Dial-In feature integrates your Plug-N-Meet meetings with the global telephone network. It works by setting up a <strong>SIP Gateway</strong> that acts as a bridge, allowing traditional phone calls to connect directly into your online conference.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="how-it-works-for-participants-simple--familiar">How It Works for Participants (Simple &amp; Familiar)<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#how-it-works-for-participants-simple--familiar" class="hash-link" aria-label="Direct link to How It Works for Participants (Simple &amp; Familiar)" title="Direct link to How It Works for Participants (Simple &amp; Familiar)" translate="no">​</a></h4>
+<ol>
+<li class="">A participant receives a standard phone number and a unique PIN for the meeting.</li>
+<li class="">They dial the number from any phone (mobile or landline).</li>
+<li class="">They enter the PIN when prompted.</li>
+<li class="">They are instantly connected to the meeting's audio, able to hear and speak with everyone in the online session.</li>
+</ol>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="how-it-works-for-moderators-easy-control">How It Works for Moderators (Easy Control)<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#how-it-works-for-moderators-easy-control" class="hash-link" aria-label="Direct link to How It Works for Moderators (Easy Control)" title="Direct link to How It Works for Moderators (Easy Control)" translate="no">​</a></h4>
+<p>Moderators have full control over the SIP dial-in service from within the meeting:</p>
+<ul>
+<li class=""><strong>Enable/Disable:</strong> Start or stop the dial-in service for the current session.</li>
+<li class=""><strong>View Information:</strong> See the active dial-in number(s) and PIN.</li>
+<li class=""><strong>Share Instantly:</strong> With a single click, post the dial-in details directly into the public chat for all online participants.</li>
+<li class=""><strong>Privacy Options:</strong> Choose to mask the dial-in number in the participant list, showing only the last four digits for added privacy.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="technical-deep-dive-powering-the-connection">Technical Deep Dive: Powering the Connection<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#technical-deep-dive-powering-the-connection" class="hash-link" aria-label="Direct link to Technical Deep Dive: Powering the Connection" title="Direct link to Technical Deep Dive: Powering the Connection" translate="no">​</a></h3>
+<p>Under the hood, Plug-N-Meet leverages the robust <strong><a href="https://github.com/livekit/sip" target="_blank" rel="noopener noreferrer" class="">livekit/sip</a></strong> project as its SIP gateway. This component is responsible for managing the connection between your meeting and an external SIP trunking provider.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="for-administrators-server-setup-is-key">For Administrators: Server Setup is Key<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#for-administrators-server-setup-is-key" class="hash-link" aria-label="Direct link to For Administrators: Server Setup is Key" title="Direct link to For Administrators: Server Setup is Key" translate="no">​</a></h4>
+<p>To enable SIP Dial-In, your system administrator must perform a one-time server-side configuration:</p>
+<ol>
+<li class=""><strong><code>config.yaml</code> Setup:</strong> The <code>livekit_sip_info</code> section in your Plug-N-Meet server's <code>config.yaml</code> file must be configured with your SIP provider's details.</li>
+<li class=""><strong>External SIP Provider:</strong> You will need an account with a SIP trunking provider (e.g., Twilio, SignalWire, etc.) to handle the actual phone calls to and from the public telephone network (PSTN).</li>
+</ol>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="security-considerations-encrypting-the-phone-leg">Security Considerations: Encrypting the Phone Leg<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#security-considerations-encrypting-the-phone-leg" class="hash-link" aria-label="Direct link to Security Considerations: Encrypting the Phone Leg" title="Direct link to Security Considerations: Encrypting the Phone Leg" translate="no">​</a></h4>
+<p>While the SIP audio stream itself cannot be end-to-end encrypted (as it must traverse the traditional phone network), the connection between your SIP gateway and your SIP provider <em>can</em> be secured. The <code>livekit/sip</code> service supports <code>SIPMediaEncryption</code> (SRTP), which encrypts the audio stream over the internet. It is the administrator's responsibility to enable this and ensure their chosen SIP provider supports it.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Bsqo" id="e2ee-incompatibility">E2EE Incompatibility<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#e2ee-incompatibility" class="hash-link" aria-label="Direct link to E2EE Incompatibility" title="Direct link to E2EE Incompatibility" translate="no">​</a></h4>
+<p>It's important to note that the SIP gateway must process unencrypted audio to bridge the call. Because of this, <strong>SIP Dial-In is automatically disabled for any room where End-to-End Encryption (E2EE) is active</strong>. This ensures that the integrity of your E2EE sessions is never compromised.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-expanding-your-reach">Conclusion: Expanding Your Reach<a href="https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing#conclusion-expanding-your-reach" class="hash-link" aria-label="Direct link to Conclusion: Expanding Your Reach" title="Direct link to Conclusion: Expanding Your Reach" translate="no">​</a></h3>
+<p>Plug-N-Meet's SIP Dial-In feature is more than just a convenience; it's a powerful tool for inclusivity and accessibility. It ensures that your meetings can reach a wider audience, providing a reliable audio connection even when internet access is a challenge.</p>
+<p>By bridging the gap between online and traditional telephony, Plug-N-Meet empowers you to connect with everyone, everywhere.</p>
+<hr>
+<p><strong>Ready to expand your meeting's reach?</strong></p>
+<ul>
+<li class=""><strong>Learn how to enable SIP Dial-In when creating a room via the <a class="" href="https://www.plugnmeet.org/docs/api/room/create">Create Room API</a>.</strong></li>
+<li class=""><strong>Understand the security implications in our <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a>.</strong></li>
+<li class=""><strong>Explore the <a href="https://github.com/livekit/sip" target="_blank" rel="noopener noreferrer" class="">livekit/sip GitHub repository</a> for detailed setup instructions.</strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo</a> to experience Plug-N-Meet's features.</strong></li>
+</ul>]]></content>
+        <author>
+            <name>Bob Teng</name>
+            <uri>https://github.com/wbobteng</uri>
+        </author>
+        <category label="sip" term="sip"/>
+        <category label="voip" term="voip"/>
+        <category label="telephony" term="telephony"/>
+        <category label="integration" term="integration"/>
+        <category label="accessibility" term="accessibility"/>
+        <category label="feature" term="feature"/>
+        <category label="moderator" term="moderator"/>
+        <category label="admin" term="admin"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[BigBlueButton vs. Plug-N-Meet: A Modern Alternative for Scalable Video Conferencing]]></title>
         <id>https://www.plugnmeet.org/blog/bigbluebutton-vs-plugnmeet-alternative</id>
@@ -1353,66 +1424,6 @@ You'll see an option called "Input Type." This lets you choose the technology fo
         <category label="collaboration" term="collaboration"/>
         <category label="training" term="training"/>
         <category label="engagement" term="engagement"/>
-        <category label="feature" term="feature"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Breaking Down Language Barriers: Real-Time Translation and Live Captions in Your Video Meetings]]></title>
-        <id>https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication</id>
-        <link href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication"/>
-        <updated>2025-11-13T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[In today's hyper-connected world, your team, your classroom, or your community isn't in one city; it's in every corner of the globe. A project update might involve team members from Berlin, Tokyo, and São Paulo. A university lecture could have students tuning in from a dozen different countries.]]></summary>
-        <content type="html"><![CDATA[<p>In today's hyper-connected world, your team, your classroom, or your community isn't in one city; it's in every corner of the globe. A project update might involve team members from Berlin, Tokyo, and São Paulo. A university lecture could have students tuning in from a dozen different countries.</p>
-<p>This creates a huge, unspoken barrier. When everyone is forced to communicate in a single language, who is being left out? Who is hesitant to speak up? Who is missing the critical details?</p>
-<p>At Plug-N-Meet, we believe that technology should break down these barriers, not create new ones. That's why we built a powerful, integrated <strong>Live Captions and Real-Time Translation</strong> feature. It’s a tool designed to transform your video meetings from a one-language monologue into a truly global, multilingual conversation.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-foundation-live-captions-for-clarity-and-accessibility">The Foundation: Live Captions for Clarity and Accessibility<a href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication#the-foundation-live-captions-for-clarity-and-accessibility" class="hash-link" aria-label="Direct link to The Foundation: Live Captions for Clarity and Accessibility" title="Direct link to The Foundation: Live Captions for Clarity and Accessibility" translate="no">​</a></h3>
-<p>The first layer of our solution is real-time speech-to-text. When a participant speaks, our system can instantly transcribe their words and display them as live captions at the bottom of the screen.</p>
-<p>This is more than just a convenience; it's a fundamental boost to communication for everyone:</p>
-<ul>
-<li class=""><strong>For Accessibility:</strong> It provides an essential service for participants who are deaf or hard of hearing, ensuring they can fully engage in the conversation.</li>
-<li class=""><strong>For Clarity:</strong> In a noisy environment or when trying to understand a speaker with a strong accent, captions provide a written backup that ensures no detail is missed.</li>
-<li class=""><strong>For Focus:</strong> For visual learners, seeing the words can significantly improve comprehension and retention.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-magic-instant-user-controlled-translation">The Magic: Instant, User-Controlled Translation<a href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication#the-magic-instant-user-controlled-translation" class="hash-link" aria-label="Direct link to The Magic: Instant, User-Controlled Translation" title="Direct link to The Magic: Instant, User-Controlled Translation" translate="no">​</a></h3>
-<p>Here is where we take a huge leap forward. Seeing the captions is powerful, but what if you could see them <em>in your own native language</em>?</p>
-<p>With Plug-N-Meet, every single user has the power to do just that.</p>
-<p>From a simple dropdown menu within the meeting, a participant can select their preferred language. The live captions they see will then be instantly and automatically translated.</p>
-<p>The experience is seamless and personal:</p>
-<ul>
-<li class="">A team member in Germany can choose to see German translations.</li>
-<li class="">A student in Japan can simultaneously see Japanese translations.</li>
-<li class="">The main speaker in the United States doesn't have to do anything different.</li>
-</ul>
-<p>Everyone in the meeting can independently choose the language they are most comfortable with, empowering them to understand every nuance and contribute with confidence.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="powered-by-world-class-technology">Powered by World-Class Technology<a href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication#powered-by-world-class-technology" class="hash-link" aria-label="Direct link to Powered by World-Class Technology" title="Direct link to Powered by World-Class Technology" translate="no">​</a></h3>
-<p>To deliver this high-quality, real-time transcription and translation, Plug-N-Meet integrates with <strong>Microsoft Azure's Cognitive Services</strong>. By leveraging Azure's powerful AI-driven speech-to-text and translation engines, we can provide a fast, accurate, and reliable experience that supports a vast number of languages.</p>
-<p>As a self-hosted platform, you remain in control. You simply add your own Azure API credentials to your Plug-N-Meet server configuration, ensuring that you have a direct relationship with the service provider and full transparency into your usage.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="who-is-this-for-every-global-organization">Who is This For? Every Global Organization.<a href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication#who-is-this-for-every-global-organization" class="hash-link" aria-label="Direct link to Who is This For? Every Global Organization." title="Direct link to Who is This For? Every Global Organization." translate="no">​</a></h3>
-<p>This feature isn't a niche add-on; it's a core tool for any organization that operates on a global scale. We built it for:</p>
-<ul>
-<li class=""><strong>Global Enterprises:</strong> Imagine a quarterly all-hands meeting where your CEO's message is instantly accessible to every employee in their native language. It fosters a level of inclusion and clarity that was previously impossible.</li>
-<li class=""><strong>Educators and Universities:</strong> A professor can deliver a lecture knowing that international students can follow along with real-time translations, breaking down barriers to learning and participation.</li>
-<li class=""><strong>NGOs and Non-Profits:</strong> When coordinating disaster relief or running global initiatives, clear communication is critical. This tool ensures that volunteers and team members from different regions are always on the same page.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-more-than-a-meeting-its-a-conversation">Conclusion: More Than a Meeting, It's a Conversation<a href="https://www.plugnmeet.org/blog/real-time-translation-live-captions-for-global-communication#conclusion-more-than-a-meeting-its-a-conversation" class="hash-link" aria-label="Direct link to Conclusion: More Than a Meeting, It's a Conversation" title="Direct link to Conclusion: More Than a Meeting, It's a Conversation" translate="no">​</a></h3>
-<p>True communication isn't just about transmitting information; it's about ensuring that information is understood. By integrating live captions and real-time translation directly into the core experience, Plug-N-Meet transforms a simple video call into a powerful platform for inclusive, global collaboration.</p>
-<p>It’s one more way we’re working to build a future where technology connects us, no matter what language we speak.</p>
-<hr>
-<p><strong>Ready to break down your own language barriers?</strong></p>
-<ul>
-<li class=""><strong>Try the Live Captions and Translation in our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
-<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
-<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/intro">Introduction</a> to see what else is possible</strong></li>
-</ul>]]></content>
-        <author>
-            <name>Bob Teng</name>
-            <uri>https://github.com/wbobteng</uri>
-        </author>
-        <category label="translation" term="translation"/>
-        <category label="captions" term="captions"/>
-        <category label="accessibility" term="accessibility"/>
-        <category label="inclusion" term="inclusion"/>
-        <category label="global-business" term="global-business"/>
         <category label="feature" term="feature"/>
     </entry>
 </feed>
