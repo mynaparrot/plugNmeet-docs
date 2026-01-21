@@ -1,7 +1,7 @@
 ---
 title: Firewall Configuration Guide for Plug-N-Meet
 description: How to configure your firewall and NAT for a self-hosted Plug-N-Meet server, including required TCP/UDP ports for WebRTC, TURN, and HTTPS.
-keywords: [firewall, ports, networking, nat, turn, stun, udp, tcp, webrtc ports]
+keywords: [firewall, ports, networking, nat, turn, stun, udp, tcp, webrtc ports, sip, voip]
 sidebar_position: 2
 sidebar_label: Firewall & Ports
 ---
@@ -27,6 +27,22 @@ You must allow incoming traffic on the following ports:
 
 :::info[What about TURN?]
 The installation script automatically sets up and configures a TURN server for you on port 443 over TCP/UDP, so you typically do not need to open a separate port for it.
+:::
+
+---
+
+### SIP/VoIP Dial-In Ports
+
+If you plan to use the SIP/VoIP Dial-In feature, you must also open the following ports to allow communication with your external SIP trunking provider.
+
+| Port          | Protocol | Required | Description                                                  |
+| :------------ | :------- | :------- | :----------------------------------------------------------- |
+| **5060-5061** | TCP      | **Yes**  | SIP signaling ports.                                         |
+| **5060-5061** | UDP      | **Yes**  | SIP signaling ports.                                         |
+| **10000-20000** | UDP      | **Yes**  | RTP (Real-time Transport Protocol) media port range for audio. |
+
+:::info[Further Details]
+For a deeper understanding of the SIP gateway's networking requirements and advanced configurations, please consult the official [livekit/sip GitHub repository](https://github.com/livekit/sip).
 :::
 
 ---
