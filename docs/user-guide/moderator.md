@@ -284,6 +284,9 @@ This feature allows participants to join the meeting's audio by dialing a standa
 - Click the three-dot menu in the **top-right** corner and select **Settings**.
 - Navigate to the **SIP/VoIP Dial-In** tab.
 - **Enable Service:** If the service is not already running, click the **Activate** button to start the SIP gateway for this session.
+
+![sip_2.png](/img/moderator/sip_2.png)
+
 - **View Dial-In Information:** Once enabled, this panel will display the **Dial-in Number(s)** and the unique **PIN** for the current meeting.
 - **Share in Chat:** Click the **Share to Chat** button to automatically post the dial-in number and PIN to the public chat, making it easy for all participants to see.
 
