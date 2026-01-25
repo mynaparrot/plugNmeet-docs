@@ -2,12 +2,82 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.plugnmeet.org/blog</id>
     <title>  Blog</title>
-    <updated>2026-01-21T00:00:00.000Z</updated>
+    <updated>2026-01-24T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.plugnmeet.org/blog"/>
     <subtitle>  Blog</subtitle>
     <icon>https://www.plugnmeet.org/img/favicon.png</icon>
     <rights>Copyright © 2026 MynaParrot SL.</rights>
+    <entry>
+        <title type="html"><![CDATA[Beyond the Record Button: A Guide to Managing and Using Your Meeting Recordings]]></title>
+        <id>https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings</id>
+        <link href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings"/>
+        <updated>2026-01-24T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[For many platforms, the "record" button is the end of the story. You get an MP4 file, and that's it. But what if your recordings could be more? What if they could be a structured, searchable, and accessible content library for your students, your team, or your customers?]]></summary>
+        <content type="html"><![CDATA[<p>For many platforms, the "record" button is the end of the story. You get an MP4 file, and that's it. But what if your recordings could be more? What if they could be a structured, searchable, and accessible content library for your students, your team, or your customers?</p>
+<p>With Plug-N-Meet's powerful API, your recordings aren't just video files; they are programmable assets.</p>
+<p>This guide will show you how to move beyond simply recording a meeting and start building a true content management system using the Recordings API. We'll cover how to find your recordings, enrich them with metadata, and even attach subtitles.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-goal">The Goal<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#the-goal" class="hash-link" aria-label="Direct link to The Goal" title="Direct link to The Goal" translate="no">​</a></h2>
+<p>By the end of this guide, you will be able to programmatically manage your entire recording lifecycle, turning a simple list of video files into a rich, queryable content library.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="prerequisites">Prerequisites<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<ul>
+<li class="">A running Plug-N-Meet server.</li>
+<li class="">Basic familiarity with making API calls (we'll use <code>cURL</code> for the examples).</li>
+<li class="">Your Plug-N-Meet <code>API_KEY</code> and <code>API_SECRET</code>.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-1-enable-cloud-recording">Step 1: Enable Cloud Recording<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#step-1-enable-cloud-recording" class="hash-link" aria-label="Direct link to Step 1: Enable Cloud Recording" title="Direct link to Step 1: Enable Cloud Recording" translate="no">​</a></h3>
+<p>First, you need to ensure your meetings are being recorded. You can do this on a per-room basis when you create it. In your <code>createRoom</code> API call, include the <code>recording_features</code> block and set <code>is_allow_cloud</code> to <code>true</code>.</p>
+<p>For a "record by default" experience, you can also enable <code>enable_auto_cloud_recording</code>.</p>
+<div class="language-json codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-json codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"room_id"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">"my-recorded-session"</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">"metadata"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">"room_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic">// ... other features</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">"recording_features"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"is_allow"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"is_allow_cloud"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token property" style="color:#36acaa">"enable_auto_cloud_recording"</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-2-find-your-recordings">Step 2: Find Your Recordings<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#step-2-find-your-recordings" class="hash-link" aria-label="Direct link to Step 2: Find Your Recordings" title="Direct link to Step 2: Find Your Recordings" translate="no">​</a></h3>
+<p>After your meetings are over, the first step is to get a list of your available recordings. You can do this using the <code>recording/fetch</code> endpoint. You can fetch recordings for one or more specific rooms by providing their IDs in the <code>room_ids</code> array.</p>
+<p>This call will return a paginated list of all recordings for the specified room(s).</p>
+<div class="language-bash codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-bash codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token plain"># The raw JSON body as a string</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">BODY='{"room_ids":["room01"],"from":0,"limit":20,"order_by":"DESC"}'</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Your API credentials</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">API_KEY="YOUR_API_KEY"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SECRET="YOUR_API_SECRET"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Generate the HMAC-SHA256 signature</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Make the POST request</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST https://YOUR_SERVER_URL/auth/recording/fetch \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "API-KEY: $API_KEY" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "HASH-SIGNATURE: $SIGNATURE" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -d "$BODY"</span><br></span></code></pre></div></div>
+<p>The response will give you a list that includes the <code>record_id</code>, <code>room_id</code>, <code>file_size</code>, and <code>creation_time</code> for each recording—the essential building blocks for your content library.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-3-make-your-recordings-discoverable-with-metadata">Step 3: Make Your Recordings Discoverable with Metadata<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#step-3-make-your-recordings-discoverable-with-metadata" class="hash-link" aria-label="Direct link to Step 3: Make Your Recordings Discoverable with Metadata" title="Direct link to Step 3: Make Your Recordings Discoverable with Metadata" translate="no">​</a></h3>
+<p>A filename like <code>rec_123.mp4</code> isn't very helpful. To make your recordings useful, you need to add context. The <code>recording/update-metadata</code> endpoint allows you to add a descriptive title, a detailed description, and even your own custom data.</p>
+<p>Let's say you just finished a "Q4 Marketing Sync" and you want to tag it appropriately.</p>
+<div class="language-bash codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-bash codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token plain"># The raw JSON body as a string</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">BODY='{"record_id":"f031a270-20ab-433d-96e9-aed34db97c0a-1761814595173","metadata":{"title":"Q4 Marketing Sync - Final Strategy","description":"A detailed review of the Q4 marketing plan, including budget allocation and final campaign targets.","extra_data":{"department":"Marketing","quarter":"Q4-2025","is_public":"true"}}}'</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Your API credentials</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">API_KEY="YOUR_API_KEY"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SECRET="YOUR_API_SECRET"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Generate the HMAC-SHA256 signature</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Make the POST request</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST https://YOUR_SERVER_URL/auth/recording/update-metadata \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "API-KEY: $API_KEY" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "HASH-SIGNATURE: $SIGNATURE" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -d "$BODY"</span><br></span></code></pre></div></div>
+<p>Now, when you fetch this recording, it will come with rich, structured data. You can use the <code>extra_data</code> field to build powerful filtering and search features in your own application (e.g., "show me all recordings from the Marketing department").</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="step-4-bonus-attach-subtitles-and-summaries">Step 4 (Bonus): Attach Subtitles and Summaries<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#step-4-bonus-attach-subtitles-and-summaries" class="hash-link" aria-label="Direct link to Step 4 (Bonus): Attach Subtitles and Summaries" title="Direct link to Step 4 (Bonus): Attach Subtitles and Summaries" translate="no">​</a></h3>
+<p>If you used the <strong>AI Meeting Assistant</strong> during your meeting, you can link the generated transcription file directly to your recording's metadata.</p>
+<ol>
+<li class="">First, use the <code>artifacts/fetch</code> API to get the URL of the VTT subtitle file.</li>
+<li class="">Then, call <code>recording/update-metadata</code> again, this time adding a <code>subtitles</code> map.</li>
+</ol>
+<div class="language-bash codeBlockContainer_Z983 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_LQ_W"><pre tabindex="0" class="prism-code language-bash codeBlock_BV73 thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_IAWx"><span class="token-line" style="color:#393A34"><span class="token plain"># The raw JSON body as a string</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">BODY='{"record_id":"f031a270-20ab-433d-96e9-aed34db97c0a-1761814595173","metadata":{"subtitles":{"en":{"label":"English","url":"https://YOUR_SERVER_URL/path/to/your/transcript.vtt"}}}}'</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Your API credentials</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">API_KEY="YOUR_API_KEY"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SECRET="YOUR_API_SECRET"</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Generate the HMAC-SHA256 signature</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Make the POST request</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">curl -X POST https://YOUR_SERVER_URL/auth/recording/update-metadata \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "Content-Type: application/json" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "API-KEY: $API_KEY" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -H "HASH-SIGNATURE: $SIGNATURE" \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  -d "$BODY"</span><br></span></code></pre></div></div>
+<p>By linking these assets together, you create a far more valuable piece of content. Your users can now watch the recording with closed captions, improving accessibility and comprehension.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion">Conclusion<a href="https://www.plugnmeet.org/blog/guide-to-managing-meeting-recordings#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
+<p>Stop thinking of your recordings as a simple archive. With Plug-N-Meet's API-first approach, you have the tools to build a sophisticated, searchable, and accessible content management system.</p>
+<p>By programmatically fetching, enriching, and linking your recordings with other assets, you can transform a simple folder of MP4 files into a powerful knowledge base for your organization.</p>
+<hr>
+<p><strong>Ready to build your content library?</strong></p>
+<ul>
+<li class=""><strong>Explore the full <a class="" href="https://www.plugnmeet.org/docs/api/recording/fetch">Recording API Documentation</a></strong></li>
+<li class=""><strong>Learn how to generate summaries with our <a class="" href="https://www.plugnmeet.org/blog/how-to-add-ai-meeting-assistant-features">AI Features Guide</a></strong></li>
+<li class=""><strong>Automate this entire process with <a class="" href="https://www.plugnmeet.org/blog/how-to-build-your-first-webhook-workflow">Webhooks</a></strong></li>
+</ul>]]></content>
+        <author>
+            <name>Bob Teng</name>
+            <uri>https://github.com/wbobteng</uri>
+        </author>
+        <author>
+            <name>Jibon L. Costa</name>
+            <uri>https://github.com/jibon57</uri>
+        </author>
+        <category label="tutorial" term="tutorial"/>
+        <category label="how-to" term="how-to"/>
+        <category label="recordings" term="recordings"/>
+        <category label="api" term="api"/>
+        <category label="content-management" term="content-management"/>
+        <category label="developer" term="developer"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Bridging the Gap: How SIP Dial-In Connects Your Meetings to Any Phone]]></title>
         <id>https://www.plugnmeet.org/blog/sip-dial-in-for-video-conferencing</id>
@@ -1354,76 +1424,5 @@ You'll see an option called "Input Type." This lets you choose the technology fo
         <category label="customization" term="customization"/>
         <category label="getClientFiles" term="getClientFiles"/>
         <category label="deep-integration" term="deep-integration"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Everyone on the Same Page: Synchronized Video Playback in Your Meetings]]></title>
-        <id>https://www.plugnmeet.org/blog/synchronized-video-playback-feature</id>
-        <link href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature"/>
-        <updated>2025-11-15T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[You have a video you need to discuss with your team—a new marketing ad, a training module, or a customer testimonial. What do you do?]]></summary>
-        <content type="html"><![CDATA[<p>You have a video you need to discuss with your team—a new marketing ad, a training module, or a customer testimonial. What do you do?</p>
-<p>The usual options are frustrating. If you share your screen, you're often left with a choppy, low-resolution video and distorted audio. If you paste a link in the chat, everyone watches at their own pace, making it impossible to pause and say, "Let's talk about what happens at the 1:32 mark."</p>
-<p>At Plug-N-Meet, we believe watching a video together should be a seamless, collaborative activity. That's why we built the <strong>"Play External Video"</strong> feature—a powerful tool that synchronizes video and audio playback for every participant, turning passive viewing into an active, shared experience.</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-problem-the-chaos-of-un-synchronized-video">The Problem: The Chaos of Un-synchronized Video<a href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature#the-problem-the-chaos-of-un-synchronized-video" class="hash-link" aria-label="Direct link to The Problem: The Chaos of Un-synchronized Video" title="Direct link to The Problem: The Chaos of Un-synchronized Video" translate="no">​</a></h3>
-<p>Trying to watch a video together in a typical online meeting is a recipe for frustration. The presenter is constantly asking, "Has everyone finished?" or "Tell me when you get to the part with the blue car."</p>
-<p>This disjointed approach makes it impossible to:</p>
-<ul>
-<li class="">Analyze a specific moment together.</li>
-<li class="">Ensure everyone has seen the same content before a discussion.</li>
-<li class="">Create a shared emotional impact from a powerful video.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-solution-a-shared-synchronized-media-player-with-centralized-control">The Solution: A Shared, Synchronized Media Player with Centralized Control<a href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature#the-solution-a-shared-synchronized-media-player-with-centralized-control" class="hash-link" aria-label="Direct link to The Solution: A Shared, Synchronized Media Player with Centralized Control" title="Direct link to The Solution: A Shared, Synchronized Media Player with Centralized Control" translate="no">​</a></h3>
-<p>The "Play External Video" feature solves this by creating a virtual, shared media player inside your Plug-N-Meet room. The moderator has full control over the playback, and their actions are instantly broadcast to every participant.</p>
-<ul>
-<li class="">When the moderator clicks <strong>Play</strong>, the video plays for everyone.</li>
-<li class="">When they click <strong>Pause</strong>, the video pauses for everyone at the exact same frame.</li>
-<li class="">When they <strong>seek to a specific time</strong> (e.g., jumping to the 2:15 mark), every participant's player jumps to that precise moment.</li>
-</ul>
-<p>This centralized control ensures everyone is always on the same page, literally.</p>
-<p>This feature gives you two powerful ways to share media:</p>
-<ol>
-<li class=""><strong>Stream from YouTube:</strong> Simply paste a YouTube video URL, and it will begin playing for everyone in the main presentation area.</li>
-<li class=""><strong>Upload Your Own Media:</strong> Directly upload your own <code>MP4</code>, <code>WebM</code>, or even <code>MP3</code> audio files. This is perfect for sharing private, high-resolution content without ever having to upload it to a public platform.</li>
-</ol>
-<p><strong>How it Works (Simple Steps):</strong></p>
-<ol>
-<li class="">As a moderator, click the "More Options" menu (...) in the control bar.</li>
-<li class="">Select <strong>"Start external Media Player."</strong></li>
-<li class="">Choose your source: paste a YouTube URL or click to upload your own file.</li>
-<li class="">The media will load, and you will have full, synchronized control over playback for the entire room.</li>
-</ol>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="powerful-use-cases-more-than-just-watching">Powerful Use Cases: More Than Just Watching<a href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature#powerful-use-cases-more-than-just-watching" class="hash-link" aria-label="Direct link to Powerful Use Cases: More Than Just Watching" title="Direct link to Powerful Use Cases: More Than Just Watching" translate="no">​</a></h3>
-<p>This feature opens up a new world of possibilities for training, collaboration, and engagement:</p>
-<ul>
-<li class=""><strong>Education &amp; Flipped Classrooms:</strong> A teacher can play a pre-recorded lecture segment and pause it at key moments to poll the class or start a discussion, ensuring all students are on the same page.</li>
-<li class=""><strong>Marketing &amp; Design Reviews:</strong> A marketing team can review the final cut of a new video advertisement together, pausing frame-by-frame to discuss visual details and timing.</li>
-<li class=""><strong>Onboarding &amp; HR Training:</strong> An HR manager can play a standardized training video for new hires and facilitate a live Q&amp;A session immediately afterward.</li>
-<li class=""><strong>Community Movie Nights:</strong> Foster a sense of community by hosting a synchronized "movie night" or a listening party for a new podcast episode, creating a fun, shared social event.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="the-power-of-shared-context">The Power of Shared Context<a href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature#the-power-of-shared-context" class="hash-link" aria-label="Direct link to The Power of Shared Context" title="Direct link to The Power of Shared Context" translate="no">​</a></h3>
-<p>The "Play External Video" feature is about creating a <strong>shared context</strong>. When everyone is looking at the same frame at the same time, you can have deeper, more meaningful discussions. The moderator becomes a conductor, guiding the audience through the content and ensuring that the key moments land with maximum impact.</p>
-<p>It's the difference between saying "Go watch this video" and saying "Let's watch this together."</p>
-<hr>
-<h3 class="anchor anchorTargetStickyNavbar_Bsqo" id="conclusion-transform-passive-viewing-into-active-collaboration">Conclusion: Transform Passive Viewing into Active Collaboration<a href="https://www.plugnmeet.org/blog/synchronized-video-playback-feature#conclusion-transform-passive-viewing-into-active-collaboration" class="hash-link" aria-label="Direct link to Conclusion: Transform Passive Viewing into Active Collaboration" title="Direct link to Conclusion: Transform Passive Viewing into Active Collaboration" translate="no">​</a></h3>
-<p>Stop struggling with choppy screen shares and out-of-sync links. With Plug-N-Meet's "Play External Video" feature, you can effortlessly create a professional, engaging, and truly collaborative viewing experience.</p>
-<p>It's one more tool that elevates your meetings from simple calls into powerful, interactive sessions.</p>
-<hr>
-<p><strong>Ready to watch together?</strong></p>
-<ul>
-<li class=""><strong>Try the "Play External Video" feature in our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
-<li class=""><strong>Explore our <a class="" href="https://www.plugnmeet.org/docs/user-guide/moderator">Moderator Guide</a> to learn more about in-meeting controls</strong></li>
-<li class=""><strong>Check out the <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
-</ul>]]></content>
-        <author>
-            <name>Bob Teng</name>
-            <uri>https://github.com/wbobteng</uri>
-        </author>
-        <category label="video-playback" term="video-playback"/>
-        <category label="youtube" term="youtube"/>
-        <category label="collaboration" term="collaboration"/>
-        <category label="training" term="training"/>
-        <category label="engagement" term="engagement"/>
-        <category label="feature" term="feature"/>
     </entry>
 </feed>
