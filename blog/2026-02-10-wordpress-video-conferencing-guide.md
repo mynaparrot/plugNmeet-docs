@@ -88,7 +88,7 @@ Now, you have a secure, automated paywall for your exclusive video content.
 
 The Plug-N-Meet WordPress plugin isn't just for basic meetings. It gives you simple, one-click access to enterprise-grade features directly from your room settings.
 
-*   **AI-Powered Meeting Assistants:** Imagine having every meeting automatically transcribed and summarized. With the AI features enabled, you can turn your conversations into actionable intelligence. Learn **[how to add AI features](/blog/how-to-add-ai-features)** with a simple toggle.
+*   **AI-Powered Meeting Assistants:** Imagine having every meeting automatically transcribed and summarized. With the AI features enabled, you can turn your conversations into actionable intelligence. Learn **[how to add AI features](/blog/how-to-add-ai-meeting-assistant-features)** with a simple toggle.
 *   **Zero-Trust Security:** For telehealth, legal consultations, or any conversation requiring absolute confidentiality, you can enable End-to-End Encryption (E2EE). This ensures that not even your server can access the meeting's content. Discover more about our **[privacy-by-design philosophy](/blog/privacy-by-design-zero-trust)**.
 
 ---
