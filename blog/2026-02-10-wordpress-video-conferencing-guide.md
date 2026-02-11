@@ -3,7 +3,6 @@ title: "The Ultimate Guide to WordPress Video Conferencing"
 slug: wordpress-video-conferencing-guide
 authors: [simon]
 tags: [wordpress, video-conferencing, plugin, no-code, webinar, coaching, membership, wordpress-video-conferencing]
-date: 2026-03-12
 ---
 
 WordPress has empowered millions to build anything from a simple blog to a complex e-commerce empire. But when it comes to one of the most critical forms of modern communication—live video—many site owners hit a wall. You're often left juggling clunky Zoom links, sending your users to third-party platforms, and sacrificing the professional, branded experience your website was designed to provide.
