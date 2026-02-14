@@ -172,3 +172,4 @@ For an even easier integration, you can use the following ready-to-use SDKs whic
 
 - [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php)
 - [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
+- [Python](https://github.com/vector-mj/plugnmeet-sdk) (Community Supported)

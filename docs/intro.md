@@ -95,6 +95,7 @@ For developers building custom applications, we provide official SDKs and compre
 - **SDKs:** Convenient wrappers to accelerate your development.
   - [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
   - [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))
+  - [Python SDK](https://github.com/vector-mj/plugnmeet-sdk) (Community Supported)
 
 ---
 
