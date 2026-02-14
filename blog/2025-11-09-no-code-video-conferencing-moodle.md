@@ -53,6 +53,10 @@ For your IT department, this self-hosted model provides a **[secure and scalable
 
 ---
 
+While this guide focuses on the simple "no-code" setup, Plug-N-Meet is a powerful platform with a wide range of features. For a complete overview of how to leverage video for different teaching styles, from large webinars to collaborative workshops, be sure to read our **[Ultimate Guide to Moodle Video Conferencing](/blog/moodle-video-conferencing-guide)**.
+
+---
+
 ### Conclusion: Your Moodle Site, Your Virtual Classroom
 
 Stop sending your students away to third-party platforms. With the Plug-N-Meet plugin, you can build a powerful, seamless, and secure virtual classroom experience right inside the Moodle environment your students already know and trust.
