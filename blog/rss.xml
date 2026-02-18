@@ -4,11 +4,94 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Sat, 14 Feb 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 Feb 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2026 MynaParrot SL.</copyright>
+        <item>
+            <title><![CDATA[The Ultimate Guide to Joomla Video Conferencing: Integrate Live Meetings & Webinars]]></title>
+            <link>https://www.plugnmeet.org/blog/joomla-video-conferencing-guide</link>
+            <guid>https://www.plugnmeet.org/blog/joomla-video-conferencing-guide</guid>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Joomla is a powerhouse for building robust, flexible websites, from community portals to sophisticated business sites. But when it's time to engage your audience with live video, you might find yourself sending them away from the beautiful site you've built to a generic, third-party conferencing tool. This breaks the user experience and undermines your brand.]]></description>
+            <content:encoded><![CDATA[<p>Joomla is a powerhouse for building robust, flexible websites, from community portals to sophisticated business sites. But when it's time to engage your audience with live video, you might find yourself sending them away from the beautiful site you've built to a generic, third-party conferencing tool. This breaks the user experience and undermines your brand.</p>
+<p>What if you could integrate a secure, fully-branded, and powerful video conferencing solution directly into your Joomla site, making it a native part of your user's journey?</p>
+<p>With the official <strong>Plug-N-Meet component for Joomla</strong>, you can. This guide will show you how to transform your Joomla website into a dynamic communication platform, perfect for community meetings, webinars, online training, and even monetized services.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="why-a-native-joomla-integration-beats-external-tools">Why a Native Joomla Integration Beats External Tools<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#why-a-native-joomla-integration-beats-external-tools" class="hash-link" aria-label="Direct link to Why a Native Joomla Integration Beats External Tools" title="Direct link to Why a Native Joomla Integration Beats External Tools" translate="no">​</a></h3>
+<p>Before we get into the setup, let's be clear about the strategic advantages of using a self-hosted, integrated solution like Plug-N-Meet instead of an external SaaS tool.</p>
+<ol>
+<li class=""><strong>A Seamless, Professional Brand Experience:</strong> Your users join meetings on your own domain, with your logo and brand colors. This reinforces professionalism and trust, keeping the user experience consistent with the rest of your site.</li>
+<li class=""><strong>Full Control Over User Data:</strong> All user data and meeting recordings are stored on your own server, not in a third-party cloud. This is critical for maintaining data sovereignty and complying with privacy regulations like GDPR.</li>
+<li class=""><strong>Cost-Effective Scaling:</strong> You escape the expensive per-user, per-month subscription fees that penalize growth. With a self-hosted model, your primary cost is a predictable server fee, allowing you to serve more users without your bill spiraling out of control.</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="the-3-step-guide-to-your-first-joomla-meeting">The 3-Step Guide to Your First Joomla Meeting<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#the-3-step-guide-to-your-first-joomla-meeting" class="hash-link" aria-label="Direct link to The 3-Step Guide to Your First Joomla Meeting" title="Direct link to The 3-Step Guide to Your First Joomla Meeting" translate="no">​</a></h3>
+<p>You can have a live video meeting room on your Joomla site in under 15 minutes.</p>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="step-1-get-your-video-conferencing-engine">Step 1: Get Your Video Conferencing Engine<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#step-1-get-your-video-conferencing-engine" class="hash-link" aria-label="Direct link to Step 1: Get Your Video Conferencing Engine" title="Direct link to Step 1: Get Your Video Conferencing Engine" translate="no">​</a></h4>
+<p>First, you need the server that will power your video calls. You can either self-host the open-source version with our <strong><a class="" href="https://www.plugnmeet.org/docs/installation">simple installation script</a></strong> or get an instant, managed server from <strong><a href="https://www.plugnmeet.cloud/" target="_blank" rel="noopener noreferrer" class="">plugnmeet Cloud</a></strong>. Both will provide you with an <strong>API Key</strong> and <strong>API Secret</strong>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="step-2-install-the-free-plug-n-meet-component">Step 2: Install the Free Plug-N-Meet Component<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#step-2-install-the-free-plug-n-meet-component" class="hash-link" aria-label="Direct link to Step 2: Install the Free Plug-N-Meet Component" title="Direct link to Step 2: Install the Free Plug-N-Meet Component" translate="no">​</a></h4>
+<p>From your Joomla administrator panel:</p>
+<ol>
+<li class="">Go to <strong>System &gt; Install &gt; Extensions</strong>.</li>
+<li class="">Install the Plug-N-Meet component, which you can download from the official <a href="https://extensions.joomla.org/extension/plugnmeet/" target="_blank" rel="noopener noreferrer" class="">Joomla Extensions Directory</a>.</li>
+<li class="">After installation, navigate to <strong>System &gt; Global Configuration</strong> and select <strong>plugNmeet</strong> from the components list.</li>
+<li class="">Enter your <strong>API Key</strong> and <strong>API Secret</strong> and save the configuration.</li>
+</ol>
+<p>Your Joomla site is now fully connected to your video conferencing engine.</p>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="step-3-create-and-display-your-room">Step 3: Create and Display Your Room<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#step-3-create-and-display-your-room" class="hash-link" aria-label="Direct link to Step 3: Create and Display Your Room" title="Direct link to Step 3: Create and Display Your Room" translate="no">​</a></h4>
+<ol>
+<li class="">Go to <strong>Components &gt; Plug N Meet &gt; Manage Rooms</strong> and click <strong>+ New</strong>.</li>
+<li class="">Configure your room's features, such as its name, participant limits, and a welcome message.</li>
+<li class="">To display the room, go to <strong>Menus &gt; Main Menu</strong> and click <strong>+ Add New Menu Item</strong>.</li>
+<li class="">For the <strong>Menu Item Type</strong>, select <strong>Plug N Meet &gt; Single room</strong>.</li>
+<li class="">In the <strong>Select a room</strong> dropdown, choose the room you just created and save the menu item.</li>
+</ol>
+<p>That's it. A new link will appear on your site's main menu, leading directly to your fully functional, branded video conferencing room.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="level-up-3-powerful-ways-to-use-video-on-your-joomla-site">Level Up: 3 Powerful Ways to Use Video on Your Joomla Site<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#level-up-3-powerful-ways-to-use-video-on-your-joomla-site" class="hash-link" aria-label="Direct link to Level Up: 3 Powerful Ways to Use Video on Your Joomla Site" title="Direct link to Level Up: 3 Powerful Ways to Use Video on Your Joomla Site" translate="no">​</a></h3>
+<p>With the basics in place, you can now leverage Plug-N-Meet to build sophisticated video-based services.</p>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="use-case-1-the-private-client-portal">Use Case 1: The Private Client Portal<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#use-case-1-the-private-client-portal" class="hash-link" aria-label="Direct link to Use Case 1: The Private Client Portal" title="Direct link to Use Case 1: The Private Client Portal" translate="no">​</a></h4>
+<p>If you're a consultant, coach, or provide any one-on-one service, you can create private, secure meeting rooms for your clients.</p>
+<ul>
+<li class=""><strong>How to do it:</strong> Use Joomla's built-in Access Control Levels (ACL) to create a user group for each client. Create a dedicated menu item for their private meeting room and set its <strong>Access</strong> level to their specific user group. Now, only that logged-in client can see and access their private session link.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="use-case-2-the-community-webinar-platform">Use Case 2: The Community Webinar Platform<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#use-case-2-the-community-webinar-platform" class="hash-link" aria-label="Direct link to Use Case 2: The Community Webinar Platform" title="Direct link to Use Case 2: The Community Webinar Platform" translate="no">​</a></h4>
+<p>Host live webinars and events directly on your site to engage your community.</p>
+<ul>
+<li class=""><strong>How to do it:</strong> Create a new room and configure it for a webinar. In the room settings, you can disable webcams for attendees, enable <strong>Cloud Recording</strong>, and activate features like <strong>Polling</strong> and <strong>Raise Hand</strong>. Set the menu item's access to "Public" or "Registered" and you have an instant webinar platform.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_bX8q" id="use-case-3-the-monetized-membership-service">Use Case 3: The Monetized Membership Service<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#use-case-3-the-monetized-membership-service" class="hash-link" aria-label="Direct link to Use Case 3: The Monetized Membership Service" title="Direct link to Use Case 3: The Monetized Membership Service" translate="no">​</a></h4>
+<p>This is where you can turn your Joomla site into a revenue-generating business. By combining Plug-N-Meet with a Joomla membership or e-commerce extension, you can sell access to premium video content. For a detailed walkthrough, see our guide on <strong><a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-service-with-joomla">How to Launch Your Own No-Code Video Conferencing Service with Joomla</a></strong>.</p>
+<ul>
+<li class=""><strong>How to do it:</strong>
+<ol>
+<li class="">Use your membership extension to create a "Premium Members" user group that paying subscribers are automatically added to.</li>
+<li class="">Create a new menu item that links to your premium Plug-N-Meet room.</li>
+<li class="">Set the <strong>Access</strong> level for this menu item to "Premium Members."</li>
+</ol>
+</li>
+</ul>
+<p>Now, only paying subscribers will be able to see the link and join your exclusive video sessions, creating an automated paywall.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="conclusion-the-professional-video-solution-for-joomla">Conclusion: The Professional Video Solution for Joomla<a href="https://www.plugnmeet.org/blog/joomla-video-conferencing-guide#conclusion-the-professional-video-solution-for-joomla" class="hash-link" aria-label="Direct link to Conclusion: The Professional Video Solution for Joomla" title="Direct link to Conclusion: The Professional Video Solution for Joomla" translate="no">​</a></h3>
+<p>Don't let external tools dictate your user experience. With the Plug-N-Meet component, you can seamlessly integrate a secure, scalable, and fully-branded video conferencing platform into the Joomla ecosystem.</p>
+<p>It's a solution that's simple enough to get started in minutes but powerful enough to build a business on.</p>
+<hr>
+<p><strong>Ready to power up your Joomla site?</strong></p>
+<ul>
+<li class=""><strong><a href="https://extensions.joomla.org/extension/plugnmeet/" target="_blank" rel="noopener noreferrer" class="">Download the official Joomla Component</a></strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo</a> to see all the features in action.</strong></li>
+<li class=""><strong>Follow our <a class="" href="https://www.plugnmeet.org/docs/installation">Installation Guide</a> to get your server running.</strong></li>
+</ul>]]></content:encoded>
+            <category>joomla</category>
+            <category>video-conferencing</category>
+            <category>component</category>
+            <category>no-code</category>
+            <category>webinar</category>
+            <category>membership</category>
+            <category>joomla-video-conferencing</category>
+        </item>
         <item>
             <title><![CDATA[The Ultimate Guide to Moodle Video Conferencing: From Virtual Classrooms to Collaborative Workshops]]></title>
             <link>https://www.plugnmeet.org/blog/moodle-video-conferencing-guide</link>
@@ -1353,56 +1436,6 @@ You'll see an option called "Input Type." This lets you choose the technology fo
             <category>user-experience</category>
             <category>edtech</category>
             <category>features</category>
-        </item>
-        <item>
-            <title><![CDATA[Don't Just Rent Your Video Solution, Own It: The Business Case for Self-Hosting]]></title>
-            <link>https://www.plugnmeet.org/blog/own-vs-rent-video-platform</link>
-            <guid>https://www.plugnmeet.org/blog/own-vs-rent-video-platform</guid>
-            <pubDate>Tue, 25 Nov 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[For most businesses, video conferencing is a utility, like electricity or water. You sign up for a service like Zoom or Google Meet, pay a monthly fee, and use it for your internal meetings. You are, in effect, renting your video solution. And for many use cases, that's perfectly fine.]]></description>
-            <content:encoded><![CDATA[<p>For most businesses, video conferencing is a utility, like electricity or water. You sign up for a service like Zoom or Google Meet, pay a monthly fee, and use it for your internal meetings. You are, in effect, <strong>renting</strong> your video solution. And for many use cases, that's perfectly fine.</p>
-<p>But what happens when video is more than just a utility? What happens when it's a core part of your <strong>product</strong>, your <strong>customer experience</strong>, or your <strong>brand identity</strong>?</p>
-<p>Suddenly, renting becomes a strategic liability. You're building a critical part of your business on a platform you don't control, using an interface that looks just like your competitors', and sending your valuable user data to a third party.</p>
-<p>This is why smart businesses are moving from renting their video solution to <strong>owning it</strong>. By leveraging powerful, self-hosted platforms like <strong>plugNmeet</strong>, they are transforming video from a simple utility into a strategic asset and a powerful competitive advantage.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_bX8q" id="the-hidden-costs-of-renting-your-video-platform">The Hidden Costs of "Renting" Your Video Platform<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#the-hidden-costs-of-renting-your-video-platform" class="hash-link" aria-label="Direct link to The Hidden Costs of &quot;Renting&quot; Your Video Platform" title="Direct link to The Hidden Costs of &quot;Renting&quot; Your Video Platform" translate="no">​</a></h2>
-<p>Using a public SaaS video provider for a customer-facing product seems easy at first, but it comes with significant hidden costs.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="1-you-have-no-brand-differentiation">1. You Have No Brand Differentiation<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#1-you-have-no-brand-differentiation" class="hash-link" aria-label="Direct link to 1. You Have No Brand Differentiation" title="Direct link to 1. You Have No Brand Differentiation" translate="no">​</a></h3>
-<p>When you send a customer to a standard Zoom meeting, you are reinforcing Zoom's brand, not your own. The user experience is generic and identical to the one your competitors are using. You have no ability to create a unique, memorable interaction that feels like a seamless part of your product.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="2-your-data-becomes-their-asset">2. Your Data Becomes Their Asset<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#2-your-data-becomes-their-asset" class="hash-link" aria-label="Direct link to 2. Your Data Becomes Their Asset" title="Direct link to 2. Your Data Becomes Their Asset" translate="no">​</a></h3>
-<p>Every time your users interact with the video service, they are generating valuable data: who is talking to whom, for how long, what features are they using? When you use a third-party platform, you are handing all of these valuable insights over to them. You lose the ability to analyze this data to improve your own product.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="3-you-are-trapped-in-a-black-box">3. You Are Trapped in a "Black Box"<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#3-you-are-trapped-in-a-black-box" class="hash-link" aria-label="Direct link to 3. You Are Trapped in a &quot;Black Box&quot;" title="Direct link to 3. You Are Trapped in a &quot;Black Box&quot;" translate="no">​</a></h3>
-<p>Integration with a public SaaS platform is often limited to a superficial API. You can create users and schedule meetings, but you can't deeply change the user experience. You're forced to embed their client in a restrictive <code>&lt;iframe&gt;</code>, and you have no control over the layout, the workflow, or the underlying features.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="4-your-costs-are-unpredictable-and-escalate">4. Your Costs Are Unpredictable and Escalate<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#4-your-costs-are-unpredictable-and-escalate" class="hash-link" aria-label="Direct link to 4. Your Costs Are Unpredictable and Escalate" title="Direct link to 4. Your Costs Are Unpredictable and Escalate" translate="no">​</a></h3>
-<p>Per-user, per-month, or per-minute pricing models are manageable at a small scale, but they become incredibly expensive as your business grows. Your success is penalized with escalating costs, and you have no control over future price increases.</p>
-<h2 class="anchor anchorTargetStickyNavbar_bX8q" id="the-power-of-owning-your-video-platform">The Power of "Owning" Your Video Platform<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#the-power-of-owning-your-video-platform" class="hash-link" aria-label="Direct link to The Power of &quot;Owning&quot; Your Video Platform" title="Direct link to The Power of &quot;Owning&quot; Your Video Platform" translate="no">​</a></h2>
-<p>By self-hosting a platform like plugNmeet, you flip the script. You move from being a tenant to being the owner.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="1-video-becomes-a-native-feature-not-a-link">1. Video Becomes a Native Feature, Not a Link<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#1-video-becomes-a-native-feature-not-a-link" class="hash-link" aria-label="Direct link to 1. Video Becomes a Native Feature, Not a Link" title="Direct link to 1. Video Becomes a Native Feature, Not a Link" translate="no">​</a></h3>
-<p>Instead of sending users to an external link, the video experience happens directly within your own application. It feels like a native, integrated feature, creating a seamless and professional user journey that you control from start to finish.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="2-you-own-the-brand-experience">2. You Own the Brand Experience<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#2-you-own-the-brand-experience" class="hash-link" aria-label="Direct link to 2. You Own the Brand Experience" title="Direct link to 2. You Own the Brand Experience" translate="no">​</a></h3>
-<p>With deep customization capabilities, you can style every aspect of the video client to perfectly match your brand's look and feel. The colors, the fonts, the layout—it all becomes <em>your</em> experience, reinforcing your brand and building user trust.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="3-you-own-your-data-and-insights">3. You Own Your Data and Insights<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#3-you-own-your-data-and-insights" class="hash-link" aria-label="Direct link to 3. You Own Your Data and Insights" title="Direct link to 3. You Own Your Data and Insights" translate="no">​</a></h3>
-<p>Because the entire platform runs on your own servers, all data and analytics are yours. You can analyze usage patterns, understand user behavior, and gain valuable insights to build a better product, all without ever compromising your users' privacy.</p>
-<h3 class="anchor anchorTargetStickyNavbar_bX8q" id="4-your-costs-are-predictable-and-transparent">4. Your Costs Are Predictable and Transparent<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#4-your-costs-are-predictable-and-transparent" class="hash-link" aria-label="Direct link to 4. Your Costs Are Predictable and Transparent" title="Direct link to 4. Your Costs Are Predictable and Transparent" translate="no">​</a></h3>
-<p>With a self-hosted solution, your cost is the server infrastructure it runs on. This cost is predictable and does not scale with the number of users you have. You can grow your business without worrying about runaway licensing fees.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_bX8q" id="conclusion-is-video-a-utility-or-a-strategic-asset">Conclusion: Is Video a Utility or a Strategic Asset?<a href="https://www.plugnmeet.org/blog/own-vs-rent-video-platform#conclusion-is-video-a-utility-or-a-strategic-asset" class="hash-link" aria-label="Direct link to Conclusion: Is Video a Utility or a Strategic Asset?" title="Direct link to Conclusion: Is Video a Utility or a Strategic Asset?" translate="no">​</a></h2>
-<p>The choice is simple. If video is just a tool for internal team meetings, renting is a perfectly valid strategy.</p>
-<p>But if video is a core part of how you serve your customers, deliver your product, or express your brand, then <strong>owning the platform is the only viable long-term strategy.</strong></p>
-<p>Owning your video stack allows you to build a defensible, unique, and cost-effective competitive advantage. Platforms like plugNmeet provide the open-source foundation to make this ownership a reality, giving you the power of a production-ready video platform without sacrificing control.</p>
-<hr>
-<p><strong>Ready to take ownership of your video strategy?</strong></p>
-<ul>
-<li class=""><strong>Explore our <a href="https://github.com/mynaparrot/plugNmeet-server" target="_blank" rel="noopener noreferrer" class="">Open-Source Project on GitHub</a></strong></li>
-<li class=""><strong>Check out our <a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Live Demo</a></strong></li>
-<li class=""><strong>Read our <a class="" href="https://www.plugnmeet.org/docs/api/intro">API Documentation</a></strong></li>
-</ul>]]></content:encoded>
-            <category>business</category>
-            <category>strategy</category>
-            <category>saas</category>
-            <category>open-source</category>
-            <category>white-label</category>
-            <category>data-privacy</category>
         </item>
     </channel>
 </rss>
