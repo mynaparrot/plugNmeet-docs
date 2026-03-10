@@ -76,6 +76,6 @@ If your organization is feeling the pain of rising SaaS subscription costs, it's
 
 **Ready to slash your video conferencing costs?**
 
-*   **See our detailed [Server Recommendations](/blog/how-to-choose-the-right-server-for-self-hosted-video-conferencing).**
+*   **See our detailed [Server Recommendations](/blog/scaling-architecture-saves-money).**
 *   **Follow our simple [Installation Guide](/docs/installation) to get started.**
 *   **Read more about the [Business Case for Self-Hosting](/blog/own-vs-rent-video-platform).**
