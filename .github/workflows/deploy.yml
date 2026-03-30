@@ -22,6 +22,8 @@ jobs:
           version: 10
       - name: Install dependencies
         run: pnpm install
+      - name: Run Update Browserslist
+        run: npx update-browserslist-db@latest
       - name: Build website
         run: pnpm run build
 
