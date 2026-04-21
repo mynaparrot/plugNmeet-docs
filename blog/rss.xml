@@ -4,11 +4,76 @@
         <title>  Blog</title>
         <link>https://www.plugnmeet.org/blog</link>
         <description>  Blog</description>
-        <lastBuildDate>Tue, 14 Apr 2026 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 21 Apr 2026 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <language>en</language>
         <copyright>Copyright © 2026 MynaParrot SL.</copyright>
+        <item>
+            <title><![CDATA[Deep Integration, Powerful Features: The All-New plugNmeet Plugin for Moodle is Here!]]></title>
+            <link>https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration</link>
+            <guid>https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration</guid>
+            <pubDate>Tue, 21 Apr 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[Discover the completely rebuilt plugNmeet plugin for Moodle 4.5+. Featuring deep integration with Moodle's core systems, cumulative attendance, AI artifacts, and a seamless, white-label experience.]]></description>
+            <content:encoded><![CDATA[<p>Sending students to an external video conferencing link breaks the learning flow, creates a disjointed experience, and pulls them away from the Moodle environment you've carefully built. What if your virtual classroom wasn't a detour, but a destination—a native part of your course?</p>
+<p>Today, we're thrilled to announce the launch of the completely rebuilt plugNmeet plugin for Moodle. This isn't just an update; it's a ground-up redesign focused on one thing: deep, seamless integration that makes your virtual classroom feel like a core Moodle activity.</p>
+<h3 class="anchor anchorTargetStickyNavbar_q1dW" id="a-major-leap-forward">A Major Leap Forward<a href="https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration#a-major-leap-forward" class="hash-link" aria-label="Direct link to A Major Leap Forward" title="Direct link to A Major Leap Forward" translate="no">​</a></h3>
+<p>While our previous plugin offered basic branding and recording features, this new version is in a different league. We've rebuilt it from scratch with a laser focus on <strong>Moodle 4.5+ standards</strong>, creating a robust, secure, and deeply integrated solution. The user interface is now cleaner and more intuitive, with features logically placed within the Moodle activity context, just as you'd expect.</p>
+<p>So, what makes this new version so special? Let's dive into the features that will change the way you teach online.</p>
+<h3 class="anchor anchorTargetStickyNavbar_q1dW" id="more-than-a-pluginits-part-of-moodle">More Than a Plugin—It's Part of Moodle<a href="https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration#more-than-a-pluginits-part-of-moodle" class="hash-link" aria-label="Direct link to More Than a Plugin—It's Part of Moodle" title="Direct link to More Than a Plugin—It's Part of Moodle" translate="no">​</a></h3>
+<p>We moved beyond simple embedding to deeply integrate plugNmeet into Moodle’s core systems.</p>
+<ul>
+<li class=""><strong>Advanced Completion Tracking:</strong> Go beyond simple "viewed" metrics. Our plugin introduces <strong>cumulative completion criteria</strong>. Track user engagement across <em>all</em> sessions within a single Moodle activity. Mark the activity complete based on:<!-- -->
+<ul>
+<li class="">Total minutes attended</li>
+<li class="">Total webcam or microphone duration</li>
+<li class="">Number of chat messages sent</li>
+<li class="">Raised hand, voted in a poll, and more...</li>
+</ul>
+</li>
+<li class=""><strong>Automatic Calendar Integration:</strong> When you schedule a session using the "Available from" date, the plugin automatically creates an event in the Moodle Calendar. Your students will see upcoming classes on their dashboard and course calendars, boosting visibility and attendance.</li>
+<li class=""><strong>Gradebook Integration:</strong> Assign a grade for your plugNmeet activity. The plugin can automatically calculate a grade based on the completion progress of the criteria you set.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_q1dW" id="transparency-and-data-driven-insights">Transparency and Data-Driven Insights<a href="https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration#transparency-and-data-driven-insights" class="hash-link" aria-label="Direct link to Transparency and Data-Driven Insights" title="Direct link to Transparency and Data-Driven Insights" translate="no">​</a></h3>
+<p>Knowledge is power—not just for teachers, but for students too. This plugin gives you the data you need to understand engagement like never before. For a deeper dive into how to use this data, see our guide on <a class="" href="https://www.plugnmeet.org/blog/classroom-analytics-for-educators">Classroom Analytics for Educators</a>.</p>
+<ul>
+<li class=""><strong>New Student Self-Reporting Dashboard:</strong> Students no longer have to wonder about their progress. They now have access to a beautiful, personalized dashboard that shows their cumulative participation data in a modern, card-based layout.</li>
+<li class=""><strong>Visual Progress Tracking:</strong> If completion criteria are set, students see color-coded status cards (Green for met, Yellow for pending) with clear badges indicating exactly what they need to do to complete the activity.</li>
+<li class=""><strong>Cumulative Attendance Reporting:</strong> Teachers get a consolidated attendance list for the entire activity. See at a glance who is attending and for how long across a series of classes, with the ability to export the data to Excel.</li>
+<li class=""><strong>Live Session Dashboard:</strong> Need to know what's happening in a live class right now? Teachers can view a real-time dashboard showing the number of participants, active webcams, microphones, and more.</li>
+<li class=""><strong>Session Artifacts in Moodle:</strong> After a session, all generated files—including AI-powered meeting summaries, full transcriptions (VTT files), and detailed analytics reports—are available directly on the Moodle activity page. To learn more about the AI capabilities, read our guide on <a class="" href="https://www.plugnmeet.org/blog/how-to-add-ai-meeting-assistant-features">how to add AI features to your video conferences</a>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_q1dW" id="built-for-administrators-and-developers">Built for Administrators and Developers<a href="https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration#built-for-administrators-and-developers" class="hash-link" aria-label="Direct link to Built for Administrators and Developers" title="Direct link to Built for Administrators and Developers" translate="no">​</a></h3>
+<p>We built this plugin to be as powerful for administrators as it is for teachers.</p>
+<ul>
+<li class=""><strong>100% White-Label Experience:</strong> Using the <code>local</code> client mode, the plugNmeet classroom loads directly within your Moodle site's layout. There are no redirects and no third-party branding. To your users, it’s simply <em>your</em> virtual classroom, powered by Moodle.</li>
+<li class=""><strong>Granular, Role-Based Access:</strong> We've implemented a comprehensive set of Moodle capabilities to give you fine-grained control over who can manage rooms, view recordings, download artifacts, and see attendance reports.</li>
+<li class=""><strong>Extensible Events API:</strong> The plugin receives real-time data from your plugNmeet server via webhooks and immediately re-broadcasts them as standard Moodle events. This allows developers to easily hook into events like <code>participant_joined</code> or <code>recording_proceeded</code> to build custom integrations and extend functionality.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_q1dW" id="a-seamless-experience-for-everyone">A Seamless Experience for Everyone<a href="https://www.plugnmeet.org/blog/new-plugnmeet-moodle-plugin-deep-integration#a-seamless-experience-for-everyone" class="hash-link" aria-label="Direct link to A Seamless Experience for Everyone" title="Direct link to A Seamless Experience for Everyone" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Secure Guest Access:</strong> A new, secure workflow allows you to generate time-limited, single-use guest links for guest speakers or external participants, without compromising your site's security. For maximum security in sensitive meetings, you can also enable <a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">end-to-end encryption</a>.</li>
+<li class=""><strong>Redesigned Recordings Page:</strong> Managing cloud recordings is now a breeze. View and control the visibility of your recordings from a clean and intuitive interface within the activity page.</li>
+</ul>
+<p>To get started, check out our <a class="" href="https://www.plugnmeet.org/blog/moodle-video-conferencing-guide">Ultimate Guide to Moodle Video Conferencing</a> or our tutorial on <a class="" href="https://www.plugnmeet.org/blog/no-code-video-conferencing-moodle">How to Add No-Code Video Conferencing to Your Moodle Courses</a>.</p>
+<hr>
+<p><strong>Ready to enhance your Moodle courses?</strong></p>
+<ul>
+<li class=""><strong><a href="https://moodle.org/plugins/mod_plugnmeet" target="_blank" rel="noopener noreferrer" class="">Download the official Moodle Plugin</a></strong></li>
+<li class=""><strong><a href="https://demo.plugnmeet.com/landing.html" target="_blank" rel="noopener noreferrer" class="">Try the Live Demo</a> to explore the teaching tools.</strong></li>
+<li class=""><strong>Follow our <a class="" href="https://www.plugnmeet.org/docs/installation">Installation Guide</a> to get your server running.</strong></li>
+</ul>]]></content:encoded>
+            <category>moodle</category>
+            <category>plugnmeet</category>
+            <category>virtual classroom</category>
+            <category>e-learning</category>
+            <category>video conferencing</category>
+            <category>moodle-virtual-classroom</category>
+            <category>moodle-plugin</category>
+            <category>moodle-integration</category>
+            <category>online-learning</category>
+            <category>education-technology</category>
+        </item>
         <item>
             <title><![CDATA[Unlock True Control: Why Self-Hosted, Open Source Webinar Software is Your Best Bet]]></title>
             <link>https://www.plugnmeet.org/blog/self-hosted-open-source-webinar-software</link>
@@ -1307,76 +1372,6 @@ You'll see an option called "Input Type." This lets you choose the technology fo
             <category>bandwidth</category>
             <category>user-experience</category>
             <category>accessibility</category>
-        </item>
-        <item>
-            <title><![CDATA[Privacy by Design: Why Plug-N-Meet is Built for the Zero-Trust Era]]></title>
-            <link>https://www.plugnmeet.org/blog/privacy-by-design-zero-trust</link>
-            <guid>https://www.plugnmeet.org/blog/privacy-by-design-zero-trust</guid>
-            <pubDate>Sat, 20 Dec 2025 00:00:00 GMT</pubDate>
-            <description><![CDATA[In an era where data breaches are daily news and "free" services monetize your conversations, privacy can no longer be an afterthought. It must be the foundation.]]></description>
-            <content:encoded><![CDATA[<p>In an era where data breaches are daily news and "free" services monetize your conversations, privacy can no longer be an afterthought. It must be the foundation.</p>
-<p>When we built Plug-N-Meet, we didn't just want to create another video conferencing tool. We wanted to build a platform that respects the user's right to privacy by default. This meant making hard architectural choices—prioritizing security over easy data harvesting, and giving control back to the user rather than hoarding it on the server.</p>
-<p>If you are building a telehealth platform, a legal consultation app, or simply a secure meeting space for your team, you need more than just a "secure" sticker. You need an architecture designed for the Zero-Trust era.</p>
-<p>Here is how Plug-N-Meet delivers on that promise.</p>
-<hr>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="1-the-gold-standard-true-zero-trust-e2ee">1. The Gold Standard: True Zero-Trust E2EE<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#1-the-gold-standard-true-zero-trust-e2ee" class="hash-link" aria-label="Direct link to 1. The Gold Standard: True Zero-Trust E2EE" title="Direct link to 1. The Gold Standard: True Zero-Trust E2EE" translate="no">​</a></h2>
-<p>Most video platforms claim to be "secure" because they use encryption in transit (TLS/DTLS). While this protects your data from hackers on the coffee shop Wi-Fi, it has a major flaw: the server itself still decrypts your video to process it. This means the service provider (and anyone who hacks them) can see and hear everything.</p>
-<p>Plug-N-Meet offers a <strong>Zero-Trust</strong> alternative: <strong>User-Provided Key End-to-End Encryption (E2EE)</strong>.</p>
-<p>When you enable this mode (<code>enabled_self_insert_encryption_key: true</code>), the encryption keys are generated by the participants and shared directly between them (e.g., via a password manager or secure chat). <strong>These keys never leave the user's device.</strong></p>
-<ul>
-<li class=""><strong>The Result:</strong> The server only relays encrypted packets. It mathematically cannot decrypt the video or audio.</li>
-<li class=""><strong>The Benefit:</strong> You achieve true "Zero Knowledge" privacy. Even if the server is compromised, your meetings remain a black box.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="2-data-minimization--ephemeral-storage">2. Data Minimization &amp; Ephemeral Storage<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#2-data-minimization--ephemeral-storage" class="hash-link" aria-label="Direct link to 2. Data Minimization &amp; Ephemeral Storage" title="Direct link to 2. Data Minimization &amp; Ephemeral Storage" translate="no">​</a></h2>
-<p>A core principle of modern privacy (and regulations like GDPR) is <strong>Data Minimization</strong>: don't collect what you don't need, and don't keep it longer than necessary.</p>
-<p>Plug-N-Meet is designed with <strong>ephemeral storage</strong> at its core:</p>
-<ul>
-<li class=""><strong>Volatile Session State:</strong> Active meeting data (who is in the room, who is muted) lives in high-performance, in-memory stores like Redis or NATS KV. When the meeting ends, this data is naturally cleared.</li>
-<li class=""><strong>Client-Side History:</strong> Chat history and user preferences are stored in the user's own browser using <code>IndexedDB</code>, not permanently on our servers. This puts the user in control of their own data footprint.</li>
-<li class=""><strong>Granular Analytics:</strong> You have the power to disable analytics entirely (<code>enable_analytics: false</code>) or configure the system to store only metadata (e.g., "User A spoke for 5 minutes") without ever recording the content of what was said.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="3-the-nats-advantage-protocol-level-access-control">3. The NATS Advantage: Protocol-Level Access Control<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#3-the-nats-advantage-protocol-level-access-control" class="hash-link" aria-label="Direct link to 3. The NATS Advantage: Protocol-Level Access Control" title="Direct link to 3. The NATS Advantage: Protocol-Level Access Control" translate="no">​</a></h2>
-<p>Many web applications rely solely on application-level logic (e.g., <code>if (user.isAdmin)</code>) to check if a user should see a message. If that logic has a bug, data leaks.</p>
-<p>Plug-N-Meet takes a more robust approach by leveraging the powerful security features of <strong>NATS JetStream</strong> to enforce the <strong>Principle of Least Privilege</strong>.</p>
-<ul>
-<li class=""><strong>Dynamic Permissions:</strong> When a user joins, the system generates a custom set of NATS permissions specific to that user's session.</li>
-<li class=""><strong>Protocol Enforcement:</strong> These permissions are enforced by the NATS server itself, not just the Plug-N-Meet application code.</li>
-<li class=""><strong>The Result:</strong> A participant literally <strong>cannot</strong> subscribe to a data stream they aren't authorized for. Even if a modified client tries to "listen in" on another room or a private chat, the NATS server will reject the subscription request at the protocol level.</li>
-</ul>
-<p>This provides a hard security boundary that is rare in self-hosted web conferencing tools, ensuring that data isolation is enforced by the infrastructure, not just the code.</p>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="4-defense-in-depth-security">4. Defense-in-Depth Security<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#4-defense-in-depth-security" class="hash-link" aria-label="Direct link to 4. Defense-in-Depth Security" title="Direct link to 4. Defense-in-Depth Security" translate="no">​</a></h2>
-<p>Privacy relies on security, and security requires layers. Beyond NATS and E2EE, we employ multiple other safeguards:</p>
-<ul>
-<li class=""><strong>Token-Based Access:</strong> Every user joins with a short-lived, one-time-use token. This prevents "replay attacks" where a hacker tries to reuse an old link to crash a meeting.</li>
-<li class=""><strong>Salted Key Derivation:</strong> As detailed in our <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Overview</a>, we use the unique <code>session_id</code> as a salt when deriving encryption keys. This ensures that even if a room ID is reused, every single session has a unique, cryptographically isolated key.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="5-privacy-aware-ai">5. Privacy-Aware AI<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#5-privacy-aware-ai" class="hash-link" aria-label="Direct link to 5. Privacy-Aware AI" title="Direct link to 5. Privacy-Aware AI" translate="no">​</a></h2>
-<p>Integrating AI into meetings is powerful, but it's often a privacy nightmare. We've solved this with a "Privacy First" integration strategy.</p>
-<p>The system is designed to be <strong>context-aware</strong>. If you enable End-to-End Encryption (E2EE) with a user-provided key, Plug-N-Meet <strong>automatically disables</strong> all audio-based AI features (like transcription and recording).</p>
-<p>Why? Because the AI bot on the server cannot decrypt the audio stream. This prevents the dangerous scenario where a user <em>thinks</em> they are in a secure, private meeting, but an AI service is silently listening in the background. With Plug-N-Meet, if you choose maximum privacy, the system enforces it across the board.</p>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="6-the-ultimate-privacy-feature-self-hosting">6. The Ultimate Privacy Feature: Self-Hosting<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#6-the-ultimate-privacy-feature-self-hosting" class="hash-link" aria-label="Direct link to 6. The Ultimate Privacy Feature: Self-Hosting" title="Direct link to 6. The Ultimate Privacy Feature: Self-Hosting" translate="no">​</a></h2>
-<p>Finally, the most important privacy feature of Plug-N-Meet is that <strong>you own it</strong>.</p>
-<ul>
-<li class=""><strong>No Black Boxes:</strong> Because the code is open source, it can be audited. There are no hidden "telemetry" trackers sending your data back to a headquarters.</li>
-<li class=""><strong>Your Infrastructure, Your Rules:</strong> You aren't renting privacy from a third-party SaaS provider. You host the server, you control the database, and you own the logs.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_q1dW" id="conclusion">Conclusion<a href="https://www.plugnmeet.org/blog/privacy-by-design-zero-trust#conclusion" class="hash-link" aria-label="Direct link to Conclusion" title="Direct link to Conclusion" translate="no">​</a></h2>
-<p>In a world of surveillance capitalism, privacy is a competitive advantage. Whether you are building for healthcare (HIPAA), education (FERPA), or enterprise security, Plug-N-Meet provides a foundation that doesn't just "support" privacy—it enforces it.</p>
-<p>By combining Zero-Trust E2EE, protocol-level access control, and the transparency of open source, we've built a platform where you don't have to trust us. You just have to trust the code.</p>
-<hr>
-<p><strong>Ready to build your secure platform?</strong></p>
-<ul>
-<li class=""><strong>Deep dive into our <a class="" href="https://www.plugnmeet.org/docs/security-overview">Security Architecture</a></strong></li>
-<li class=""><strong>Learn about our <a class="" href="https://www.plugnmeet.org/blog/e2ee-key-models-guide">E2EE Key Models</a></strong></li>
-<li class=""><strong>Get started with the <a class="" href="https://www.plugnmeet.org/docs/installation">Installation Guide</a></strong></li>
-</ul>]]></content:encoded>
-            <category>privacy</category>
-            <category>security</category>
-            <category>zero-trust</category>
-            <category>e2ee</category>
-            <category>open-source</category>
-            <category>architecture</category>
-            <category>gdpr</category>
         </item>
     </channel>
 </rss>
