@@ -44,7 +44,7 @@ Knowledge is power—not just for teachers, but for students too. This plugin gi
 
 We built this plugin to be as powerful for administrators as it is for teachers.
 
-*   **100% White-Label Experience:** Using the `local` client mode, the plugNmeet classroom loads directly within your Moodle site's layout. There are no redirects and no third-party branding. To your users, it’s simply *your* virtual classroom, powered by Moodle.
+*   **100% White-Label Experience:** Using the `Remote (Embedded)` client mode, the plugNmeet classroom loads directly within your Moodle site's layout. There are no redirects and no third-party branding. To your users, it’s simply *your* virtual classroom, powered by Moodle.
 *   **Granular, Role-Based Access:** We've implemented a comprehensive set of Moodle capabilities to give you fine-grained control over who can manage rooms, view recordings, download artifacts, and see attendance reports.
 *   **Extensible Events API:** The plugin receives real-time data from your plugNmeet server via webhooks and immediately re-broadcasts them as standard Moodle events. This allows developers to easily hook into events like `participant_joined` or `recording_proceeded` to build custom integrations and extend functionality.
 
