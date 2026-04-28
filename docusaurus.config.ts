@@ -27,7 +27,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
   },
 
   presets: [
@@ -115,6 +115,10 @@ const config: Config = {
         {
           href: 'https://github.com/mynaparrot/plugNmeet-server',
           label: 'GitHub',
+          position: 'right',
+        },
+        {
+          type: 'localeDropdown',
           position: 'right',
         },
       ],

@@ -1,8 +1,8 @@
 ---
 title: "BigBlueButton vs. Plug-N-Meet: Una Alternativa Moderna para Video Conferencias Escalables"
-slug: bigbluebutton-vs-plugnmeet-alternativa
+slug: bigbluebutton-vs-plugnmeet-alternative
 authors: [simon]
-tags: [bigbluebutton, bbb-alternative, plugnmeet-vs-bbb, codigo-abierto, video-conferencia, escalable, comparacion]
+tags: [bigbluebutton, bbb-alternative, plugnmeet-vs-bbb, open-source, video-conferencing, scalability, comparison]
 ---
 
 Si formas parte del mundo de la educación o la comunicación de código abierto, le debes una deuda de gratitud a BigBlueButton. Fue una plataforma pionera que mostró al mundo lo que era posible. Sin embargo, a medida que la web ha evolucionado, ha crecido exponencialmente la demanda de escalabilidad, experiencia del desarrollador y rendimiento rentable.

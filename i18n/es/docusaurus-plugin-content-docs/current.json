@@ -1,0 +1,42 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.User Guide": {
+    "message": "User Guide",
+    "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Developer Guide": {
+    "message": "Developer Guide",
+    "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Tutorials": {
+    "message": "Tutorials",
+    "description": "The label for category 'Tutorials' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.API": {
+    "message": "API",
+    "description": "The label for category 'API' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Room": {
+    "message": "Room",
+    "description": "The label for category 'Room' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Recording": {
+    "message": "Recording",
+    "description": "The label for category 'Recording' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Artifact": {
+    "message": "Artifact",
+    "description": "The label for category 'Artifact' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Analytics (Deprecated)": {
+    "message": "Analytics (Deprecated)",
+    "description": "The label for category 'Analytics (Deprecated)' in sidebar 'tutorialSidebar'"
+  },
+  "sidebar.tutorialSidebar.category.Others": {
+    "message": "Others",
+    "description": "The label for category 'Others' in sidebar 'tutorialSidebar'"
+  }
+}
