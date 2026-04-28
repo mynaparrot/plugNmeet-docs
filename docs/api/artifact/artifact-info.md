@@ -33,7 +33,7 @@ This endpoint allows you to retrieve information about a single artifact using i
 | ----------- | ------------------ | --------------------------------------------------------------- |
 | artifact_id | string             | The unique identifier for this artifact.                        |
 | room_id     | string             | The ID of the room this artifact belongs to.                    |
-| type        | string             | The type of the artifact. See [Artifact Types](./fetch.md#artifact-types). |
+| type        | string             | The type of the artifact. See [Artifact Types](./fetch#artifact-types). |
 | created     | string             | The creation timestamp of the artifact.                         |
 | metadata    | RoomArtifactMetadata | Additional metadata about the artifact, which varies by type.   |
 

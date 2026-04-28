@@ -23,14 +23,14 @@ This section covers the initial installation and server setup for the Plug-N-Mee
 - You will be redirected to the Moodle plugin directory. In the search box, type **plugnmeet** and click **Search**.
 - Find the official Plug-N-Meet plugin and click **Install now**.
 
-<img src="/img/moodle/Moodle-install-plugnmeet.png" alt="Install PlugNmeet from Moodle Directory" loading="lazy"/>
+![Moodle-install-plugnmeet.png](/img/moodle/Moodle-install-plugnmeet.png)
 
 ### 2. Complete the Installation
 
 - You will be guided through several confirmation screens.
 - Click **Continue** on each screen to proceed through the installation checks and database upgrade steps.
 
-<img src="/img/moodle/Moodle-continue-4.png" alt="Update Moodle Database" loading="lazy"/>
+![Moodle-continue-4.png](/img/moodle/Moodle-continue-4.png)
 
 ### 3. Configure Server Settings
 
@@ -98,7 +98,7 @@ As an administrator, you can configure global settings that apply to all PlugNme
 - In the settings area, click the **Design Customization** tab.
 - Here you can change the logo, background, and all primary and secondary colors to match your school or organization's branding.
 
-<img src="/img/moodle/Moodle-designcust.png" width="600" alt="Moodle Design Customization" loading="lazy" />
+![Moodle-designcust.png](/img/moodle/Moodle-designcust.png)
 
 ### Client Version Settings
 
@@ -106,7 +106,7 @@ As an administrator, you can configure global settings that apply to all PlugNme
 - **Remote (Default):** The client is automatically updated when you update the plugin. This is recommended for most users.
 - **Local:** Allows you to use a custom-hosted version of the client if you have specific modifications.
 
-<img src="/img/moodle/Moodle-client-version.png" loading="lazy"/>
+![Moodle-client-version.png](/img/moodle/Moodle-client-version.png)
 
 ---
 

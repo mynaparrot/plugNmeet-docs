@@ -1,18 +1,18 @@
 {
   "version.label": {
-    "message": "Next",
+    "message": "Próximo",
     "description": "The label for version current"
   },
   "sidebar.tutorialSidebar.category.User Guide": {
-    "message": "User Guide",
+    "message": "Guía de Usuario",
     "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Developer Guide": {
-    "message": "Developer Guide",
+    "message": "Guía de Desarrollador",
     "description": "The label for category 'Developer Guide' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Tutorials": {
-    "message": "Tutorials",
+    "message": "Tutoriales",
     "description": "The label for category 'Tutorials' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.API": {
@@ -20,23 +20,23 @@
     "description": "The label for category 'API' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Room": {
-    "message": "Room",
+    "message": "Sala",
     "description": "The label for category 'Room' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Recording": {
-    "message": "Recording",
+    "message": "Grabación",
     "description": "The label for category 'Recording' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Artifact": {
-    "message": "Artifact",
+    "message": "Artefacto",
     "description": "The label for category 'Artifact' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Analytics (Deprecated)": {
-    "message": "Analytics (Deprecated)",
+    "message": "Analíticas (Obsoleto)",
     "description": "The label for category 'Analytics (Deprecated)' in sidebar 'tutorialSidebar'"
   },
   "sidebar.tutorialSidebar.category.Others": {
-    "message": "Others",
+    "message": "Otros",
     "description": "The label for category 'Others' in sidebar 'tutorialSidebar'"
   }
 }
