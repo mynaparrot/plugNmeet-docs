@@ -30,7 +30,7 @@ Este documento proporciona una visión integral de la arquitectura de seguridad 
 
 ### 1. Autenticación de API
 
-Todas las solicitudes de API de servidor a servidor, como crear una sala o generar un token de unión, deben estar autenticadas para evitar el acceso no autorizado. Esto se logra a través de un robusto proceso de verificación de firma basado en HMAC. Para obtener información detallada sobre los puntos finales de la API y sus parámetros, consulte la [Documentación de la API](/docs/api/intro.md).
+Todas las solicitudes de API de servidor a servidor, como crear una sala o generar un token de unión, deben estar autenticadas para evitar el acceso no autorizado. Esto se logra a través de un robusto proceso de verificación de firma basado en HMAC. Para obtener información detallada sobre los puntos finales de la API y sus parámetros, consulte la [Documentación de la API](/docs/api/intro).
 
 -   **API Key**: Cada solicitud debe incluir una `API-KEY` válida en sus encabezados.
 -   **Firma HMAC**: Se debe proporcionar un encabezado `HASH-SIGNATURE`, que es un hash **HMAC-SHA256** del cuerpo de la solicitud, firmado con el `API-SECRET` compartido.

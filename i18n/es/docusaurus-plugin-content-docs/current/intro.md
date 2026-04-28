@@ -83,15 +83,15 @@ Una vez que tenga las credenciales de API de su servidor (ya sea de su configura
 
 #### Para sitios WordPress, Joomla y Moodle
 Si usa un CMS popular, nuestros plugins oficiales son la forma más fácil de integrar. Simplemente instale el plugin y proporcione los detalles de su servidor.
-- [Plugin de WordPress](/docs/user-guide/wordPress-integration.md)
-- [Componente de Joomla](/docs/user-guide/joomla-integration.md)
-- [Plugin de Moodle](/docs/user-guide/moodle-integration.md)
-- [LTI para plataformas educativas](/docs/user-guide/lti.md)
+- [Plugin de WordPress](/docs/user-guide/wordPress-integration)
+- [Componente de Joomla](/docs/user-guide/joomla-integration)
+- [Plugin de Moodle](/docs/user-guide/moodle-integration)
+- [LTI para plataformas educativas](/docs/user-guide/lti)
 
 #### Para aplicaciones personalizadas
 Para los desarrolladores que crean aplicaciones personalizadas, proporcionamos SDKs oficiales y documentación completa de la API.
 
-- **[Documentación de la API](/docs/api/intro.md):** La referencia completa para todos los puntos finales, parámetros y eventos en tiempo real disponibles.
+- **[Documentación de la API](/docs/api/intro):** La referencia completa para todos los puntos finales, parámetros y eventos en tiempo real disponibles.
 - **SDKs:** Envoltorios convenientes para acelerar su desarrollo.
   - [PHP SDK](https://github.com/mynaparrot/plugNmeet-sdk-php)
   - [JavaScript SDK](https://github.com/mynaparrot/plugNmeet-sdk-js) ([NodeJS](https://www.npmjs.com/package/plugnmeet-sdk-js) & [Deno](https://deno.land/x/plugnmeet))

@@ -9,7 +9,7 @@ sidebar_label: Download
 # Download Analytics (Token)
 
 :::danger[Deprecated]
-This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/getDownloadToken`](../artifact/download.md)** endpoint instead.
+This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/getDownloadToken`](../artifact/download)** endpoint instead.
 
 You can get a download token for an analytics artifact by using its `artifact_id` from the `/artifact/fetch` response.
 :::

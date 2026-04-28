@@ -24,9 +24,9 @@ Endpoint: `/recording/info`
 
 ## Response
 
-| Field  | Type    | Position | Description               |
-| :----- | ------- | -------- | :------------------------ |
-| status | boolean | root     | The status of the request |
-| msg    | string  | root     | Response message          |
-| [recording_info](/docs/api/recording/fetch.md#recording-info)    | obect\<[Recording Info](/docs/api/recording/fetch.md#recording-info)>  | root     | Response message          |
-| [room_info](/docs/api/room/fetch-past.md#past-room-info)    | obect\<[past-room-info](/docs/api/room/fetch-past.md#past-room-info)>  | root     | Response message          |
+| Field                                                          | Type    | Position | Description               |
+|:---------------------------------------------------------------| ------- | -------- | :------------------------ |
+| status                                                         | boolean | root     | The status of the request |
+| msg                                                            | string  | root     | Response message          |
+| [recording_info](/docs/api/recording/fetch#recording-info)     | obect\<[Recording Info](/docs/api/recording/fetch#recording-info)> | root     | Response message          |
+| [room_info](/docs/api/room/fetch-past#past-room-info)          | obect\<[past-room-info](/docs/api/room/fetch-past#past-room-info)> | root     | Response message          |

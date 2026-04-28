@@ -9,7 +9,7 @@ sidebar_label: Fetch
 # Fetch Analytics
 
 :::danger[Deprecated]
-This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/fetch`](../artifact/fetch.md)** endpoint instead.
+This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/fetch`](../artifact/fetch)** endpoint instead.
 
 To fetch analytics data, you can make the following request:
 `POST /auth/artifact/fetch`

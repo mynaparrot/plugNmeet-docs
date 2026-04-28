@@ -358,4 +358,4 @@ Esta característica solo está disponible si la configuración del servidor `cl
 | :--------------------- | ------------------------------ | ------------------------- |
 | status                 | boolean                        | Indica si la solicitud fue exitosa. |
 | msg                    | string                         | Mensaje de respuesta.         |
-| [room_info](/docs/api/room/room-info.md#información-de-la-sala) | object | Detalles sobre la sala.   |
+| [room_info](../room/room-info#información-de-la-sala) | object | Detalles sobre la sala.   |

@@ -22,11 +22,11 @@ Punto final: `/recording/info`
 }
 ```
 
-## Respuesta
+## Response
 
-| Campo  | Tipo    | Posición | Descripción               |
-| :----- | ------- | -------- | :------------------------ |
-| status | boolean | raíz     | El estado de la solicitud |
-| msg    | string  | raíz     | Mensaje de respuesta          |
-| [recording_info](/docs/api/recording/fetch.md#información-de-la-grabación)    | object\<[Información de la Grabación](/docs/api/recording/fetch.md#información-de-la-grabación)>  | raíz     | Mensaje de respuesta          |
-| [room_info](/docs/api/room/fetch-past.md#información-de-sala-anterior)    | object\<[información-de-sala-anterior](/docs/api/room/fetch-past.md#información-de-sala-anterior)>  | raíz     | Mensaje de respuesta          |
+| Field                                                          | Type    | Position | Description               |
+|:---------------------------------------------------------------| ------- | -------- | :------------------------ |
+| status                                                         | boolean | raíz     | El estado de la solicitud |
+| msg                                                            | string  | raíz     | Mensaje de respuesta          |
+| [recording_info](/docs/api/recording/fetch#información-de-la-grabación)     | obect\<[Recording Info](/docs/api/recording/fetch#información-de-la-grabación)> | raíz     | Mensaje de respuesta          |
+| [room_info](/docs/api/room/fetch-past#información-de-sala-anterior)          | obect\<[past-room-info](/docs/api/room/fetch-past#información-de-sala-anterior)> | raíz     | Mensaje de respuesta          |
