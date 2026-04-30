@@ -1,33 +1,33 @@
 ---
-title: Guía de inicio rápido de PHP | Cree una reunión de video con plugNmeet
+title: Guía de Inicio Rápido con PHP | Cree una Reunión de Video con plugNmeet
 description: Un tutorial de inicio rápido para desarrolladores de PHP que muestra cómo usar el SDK de PHP de plugNmeet para crear y unirse a una sala de videoconferencia segura en minutos.
 keywords: [php, tutorial, inicio rápido, sdk php, código de ejemplo, integración, webrtc php, video api php]
 sidebar_position: 1
-sidebar_label: Inicio rápido de PHP
+sidebar_label: Inicio Rápido con PHP
 ---
 
-# Inicio rápido de PHP: Crear y unirse a una reunión
+# Inicio Rápido con PHP: Crear y Unirse a una Reunión
 
-Este tutorial proporciona un ejemplo completo y paso a paso de cómo usar la biblioteca `plugNmeet-sdk-php` para crear una nueva sala de reuniones y generar un token de unión seguro para un usuario.
+Este tutorial proporciona un ejemplo completo y paso a paso de cómo utilizar la biblioteca `plugNmeet-sdk-php` para crear una nueva sala de reuniones y generar un token de acceso seguro para un usuario.
 
-La lógica sigue un flujo de trabajo común: verificar si una sala existe, crearla si no existe y luego generar una URL para que un usuario se una.
+La lógica sigue un flujo de trabajo común: verificar si una sala ya existe, crearla si no es así, y luego generar una URL para que un usuario pueda unirse.
 
 <img src="/img/tutorials/quick_join_flow.png" width="400" alt="Flujo lógico de unión rápida" loading="lazy"/>
 
 ---
 
-## Requisitos previos
+## Requisitos Previos
 
 Antes de comenzar, asegúrese de tener lo siguiente:
 
-- Un servidor PlugNmeet en funcionamiento con su clave API y secreto.
+- Un servidor de PlugNmeet en funcionamiento con su clave de API y secreto.
 - La última versión de la biblioteca [plugNmeet-sdk-php](https://github.com/mynaparrot/plugNmeet-sdk-php/releases) descargada.
 
 ---
 
-## Paso 1: Configuración
+## Paso 1: Configuración Inicial
 
-Primero, cree un archivo PHP (por ejemplo, `quickJoin.php`) e incluya la clase `plugNmeetConnect.php` del SDK. Luego, cree un objeto de configuración con los detalles de su servidor.
+Primero, cree un archivo PHP (por ejemplo, `quickJoin.php`) e incluya la clase `plugNmeetConnect.php` del SDK. Luego, cree un objeto de configuración con los datos de su servidor.
 
 ```php
 <?php
@@ -35,25 +35,25 @@ require __DIR__ . "/plugNmeetConnect.php";
 
 // Paso 1: Configuración
 $config = new stdClass();
-$config->plugnmeet_server_url = "http://localhost:8080"; // Su URL del servidor
-$config->plugnmeet_api_key = "plugnmeet"; // Su clave API
-$config->plugnmeet_secret = "zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"; // Su secreto API
+$config->plugnmeet_server_url = "http://localhost:8080"; // La URL de su servidor
+$config->plugnmeet_api_key = "plugnmeet"; // Su clave de API
+$config->plugnmeet_secret = "zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"; // Su secreto de API
 
 $connect = new plugNmeetConnect($config);
 ```
 
 ---
 
-## Paso 2: Definir parámetros de sala y usuario
+## Paso 2: Definir Parámetros de la Sala y del Usuario
 
-A continuación, defina los parámetros básicos para la sala que desea crear y el usuario que se unirá. La matriz `$roomMetadata` le permite personalizar cada aspecto de las funciones de la sala, desde habilitar cámaras web hasta establecer permisos de bloqueo predeterminados.
+A continuación, defina los parámetros básicos para la sala que desea crear y el usuario que se unirá. El array `$roomMetadata` le permite personalizar cada aspecto de las funciones de la sala, desde habilitar cámaras web hasta establecer permisos de bloqueo predeterminados.
 
 ```php
-// Paso 2: Definiciones de sala y usuario
-$roomId = "room01"; // Debe ser único. También puede usar $connect->getUUID();
+// Paso 2: Definiciones de la sala y el usuario
+$roomId = "sala01"; // Debe ser único. También puede usar $connect->getUUID();
 $max_participants = 0; // 0 = sin límite
-$user_full_name = "Su nombre";
-$userId = "su-id-de-usuario-único"; // Debe ser único para cada usuario.
+$user_full_name = "Su Nombre";
+$userId = "su-id-de-usuario-unico"; // Debe ser único para cada usuario.
 $isAdmin = true;
 
 // Definir todas las características para esta sala específica.
@@ -67,7 +67,7 @@ $roomMetadata = array(
         "allow_view_other_users_list" => true,
         "admin_only_webcams" => false,
         "enable_analytics" => true,
-        "room_duration" => 0, // en minutos. 0 = sin límite/ilimitado
+        "room_duration" => 0, // en minutos. 0 = sin límite
         "allow_virtual_bg" => true,
         "allow_raise_hand" => true,
         // si es falso, deberá proporcionar un ID de usuario único
@@ -87,7 +87,7 @@ $roomMetadata = array(
         ),
         "whiteboard_features" => array(
             "is_allow" => true,
-            //"preload_file" => "https://mydomain.com/text_book.pdf"
+            //"preload_file" => "https://midominio.com/libro_de_texto.pdf"
         ),
         "external_media_player_features" => array(
             "is_allow" => true
@@ -132,7 +132,7 @@ $roomMetadata = array(
             "is_enabled" => false,
             "enabled_self_insert_encryption_key" => false,
             "included_chat_messages" => false,
-            // esto puede usar más CPU para el usuario final.
+            // esto puede consumir más CPU para el usuario final.
             // no lo habilite a menos que sea realmente necesario
             "included_whiteboard" => false,
         ),
@@ -148,8 +148,8 @@ $roomMetadata = array(
         "lock_chat_file_share" => false,
         "lock_private_chat" => false // el usuario siempre puede enviar mensajes privados al moderador
     ),
-    // copyright_conf solo funcionará si la configuración del servidor se ha
-    // establecido en true para `allow_override`, de lo contrario, esto se ignorará
+    // copyright_conf solo funcionará si la configuración del servidor
+    // se ha establecido en true para `allow_override`, de lo contrario, se ignorará
     "copyright_conf" => array(
         "display" => true,
         "text" => "Desarrollado por <a href=\"https://www.plugnmeet.org\" target=\"_blank\">plugNmeet</a>"
@@ -159,13 +159,13 @@ $roomMetadata = array(
 
 ---
 
-## Paso 3: El flujo lógico - Verificar, crear, unirse
+## Paso 3: El Flujo Lógico - Verificar, Crear, Unirse
 
 Los siguientes bloques de código implementan la lógica central.
 
-### 3.1 Verificar si la sala está activa
+### 3.1 Verificar si la Sala está Activa
 
-Primero, llamamos a la API para ver si una sala con el `$roomId` especificado ya existe y está activa.
+Primero, consultamos la API para determinar si una sala con el `$roomId` especificado ya existe y está activa.
 
 ```php
 $isRoomActive = false;
@@ -186,14 +186,14 @@ try {
 }
 ```
 
-### 3.2 Si no, crear la sala
+### 3.2 Si no, Crear la Sala
 
-Si la sala no está activa, procedemos a crearla usando los parámetros que definimos anteriormente.
+Si la sala no está activa, procedemos a crearla utilizando los parámetros que definimos anteriormente.
 
 ```php
 if (!$isRoomActive && $output->status) {
     try {
-        $create = $connect->createRoom($roomId, "Sala de prueba", $roomMetadata, "Bienvenido a la sala", "", "", $max_participants);
+        $create = $connect->createRoom($roomId, "Sala de Prueba", $roomMetadata, "Bienvenido a la sala", "", "", $max_participants);
 
         $isRoomActive = $create->getStatus();
         $output->status = $create->getStatus();
@@ -204,9 +204,9 @@ if (!$isRoomActive && $output->status) {
 }
 ```
 
-### 3.3 Generar el token de unión
+### 3.3 Generar el Token de Acceso
 
-Una vez que hemos confirmado que la sala está activa (ya sea porque ya existía o la acabamos de crear), podemos generar un token de unión seguro y de un solo uso para nuestro usuario.
+Una vez que hemos confirmado que la sala está activa (ya sea porque existía o porque la acabamos de crear), podemos generar un token de acceso seguro y de un solo uso para nuestro usuario.
 
 ```php
 if ($isRoomActive && $output->status) {
@@ -216,7 +216,7 @@ if ($isRoomActive && $output->status) {
         if ($join->getStatus()) {
             $output->token = "<br>" . $join->getToken();
             $output->url = "<br>" . $config->plugnmeet_server_url . "?access_token=" . $join->getToken();
-            // o puede establecer el nombre de la cookie `pnm_access_token` con ese token y redirigir
+            // o puede establecer la cookie `pnm_access_token` con ese token y redirigir
         }
         $output->status = $join->getStatus();
         $output->msg = $join->getMsg();
@@ -228,9 +228,9 @@ if ($isRoomActive && $output->status) {
 
 ---
 
-## Paso 4: Redirigir al usuario
+## Paso 4: Redirigir al Usuario
 
-Después de generar con éxito el token de unión, la URL completa de la reunión estará en la variable `$output->url`. Ahora puede redirigir a su usuario a esta URL para unirse a la reunión.
+Después de generar con éxito el token de acceso, la URL completa de la reunión estará en la variable `$output->url`. Ahora puede redirigir a su usuario a esta URL para que se una a la reunión.
 
 ```php
 if ($output->status) {
@@ -243,8 +243,8 @@ if ($output->status) {
 
 ---
 
-## Próximos pasos
+## Próximos Pasos
 
-Esta guía de inicio rápido utiliza el método más simple para que un usuario entre en una sala. Para una experiencia más profundamente integrada, puede construir una interfaz de cliente personalizada utilizando el método API [getClientFiles()](/docs/api/get-client-files). Esto le permite alojar el cliente en su propia página sin usar un iframe.
+Esta guía de inicio rápido utiliza el método más simple para que un usuario entre en una sala. Para una experiencia más integrada, puede construir una interfaz de cliente personalizada utilizando el método de la API [getClientFiles()](/docs/api/get-client-files). Esto le permite alojar el cliente en su propia página sin necesidad de usar un iframe.
 
-Consulte el archivo [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) en nuestro PHP-SDK para ver un ejemplo completo.
+Consulte el archivo [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) en nuestro SDK de PHP para ver un ejemplo completo.
