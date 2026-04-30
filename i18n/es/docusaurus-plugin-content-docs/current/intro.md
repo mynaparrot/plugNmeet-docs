@@ -79,7 +79,7 @@ Puede comenzar con un [plan gratuito](https://www.plugnmeet.cloud/pricing) y act
 
 ## Paso 2: Integración con su Sitio Web
 
-Una vez que tenga las credenciales de la API de su servidor (ya sea de su configuración autoalojada o de su cuenta en la nube), puede conectarlo a su sitio web.
+Una vez que tenga las credenciales de la API de su servidor (ya sea de su configuración autoalojada o de su cuenta en el cloud), puede conectarlo a su sitio web.
 
 #### Para Sitios de WordPress, Joomla y Moodle
 Si utiliza un CMS popular, nuestros plugins oficiales son la forma más fácil de integrar. Simplemente instale el plugin y configure los datos de su servidor.
