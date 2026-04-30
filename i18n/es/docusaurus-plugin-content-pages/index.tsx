@@ -7,8 +7,8 @@ import HeroBanner from "./components/HeroBanner";
 export default function Home() {
   return (
     <Layout
-    title="plugNmeet: Sistema de videoconferencia de código abierto"
-    description="El software de videoconferencia gratuito y de código abierto para un control y privacidad totales. Organice reuniones seguras, escalables y personalizables potenciadas por IA en sus propios servidores.">
+    title="plugNmeet: Sistema de Videoconferencia de Código Abierto"
+    description="El software de videoconferencia gratuito y de código abierto que le da control y privacidad total. Organice reuniones seguras, escalables y personalizables, potenciadas por IA, en sus propios servidores.">
       <HeroBanner />
       <main>
         <HomepageFeatures />

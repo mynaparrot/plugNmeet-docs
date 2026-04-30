@@ -1,6 +1,6 @@
 ---
-title: Guía de configuración del Firewall para Plug-N-Meet
-description: Cómo configurar su firewall y NAT para un servidor Plug-N-Meet auto-alojado, incluyendo los puertos TCP/UDP requeridos para WebRTC, TURN y HTTPS.
+title: Guía de Configuración de Firewall para Plug-N-Meet
+description: Aprenda a configurar su firewall y NAT para un servidor Plug-N-Meet autoalojado, incluyendo los puertos TCP/UDP necesarios para WebRTC, TURN y HTTPS.
 keywords: [firewall, puertos, redes, nat, turn, stun, udp, tcp, puertos webrtc, sip, voip]
 sidebar_position: 2
 sidebar_label: Firewall y Puertos
@@ -8,9 +8,9 @@ sidebar_label: Firewall y Puertos
 
 # Configuración de Firewall y Puertos
 
-Un firewall correctamente configurado es el paso más crítico para una instalación exitosa de Plug-N-Meet. Si su servidor está detrás de un firewall o NAT (lo cual es cierto para casi todos los proveedores de la nube como AWS, Google Cloud, Azure, etc.), debe asegurarse de que los puertos correctos estén abiertos para permitir que el tráfico llegue al servidor.
+Una configuración correcta del firewall es el paso más crítico para una instalación exitosa de Plug-N-Meet. Si su servidor se encuentra detrás de un firewall o un sistema NAT (como ocurre con casi todos los proveedores de nube como AWS, Google Cloud, Azure, etc.), es indispensable asegurarse de que los puertos adecuados estén abiertos para permitir que el tráfico llegue al servidor.
 
-Esta guía le mostrará qué puertos abrir y cómo probar su configuración.
+Esta guía le mostrará qué puertos debe abrir y cómo verificar su configuración.
 
 ---
 
@@ -21,35 +21,35 @@ Debe permitir el tráfico entrante en los siguientes puertos:
 | Puerto          | Protocolo | Requerido | Descripción                                                  |
 | :------------ | :------- | :------- | :----------------------------------------------------------- |
 | **80**        | TCP      | **Sí**  | Requerido por Let's Encrypt para emitir certificados SSL.         |
-| **443**       | TCP      | **Sí**  | El puerto HTTPS principal para todo el tráfico de aplicaciones y API.  |
-| **7881**      | TCP      | **Sí**  | Un puerto de respaldo para medios WebRTC cuando UDP está bloqueado.        |
+| **443**       | TCP      | **Sí**  | El puerto HTTPS principal para todo el tráfico de la aplicación y la API.  |
+| **7881**      | TCP      | **Sí**  | Un puerto de respaldo para los medios WebRTC cuando UDP está bloqueado.        |
 | **50000-60000** | UDP      | **Sí**  | El rango de puertos principal para todos los medios de audio y video de WebRTC. |
 
-:::info[¿Qué pasa con TURN?]
-El script de instalación configura automáticamente un servidor TURN para usted en el puerto 443 a través de TCP/UDP, por lo que normalmente no necesita abrir un puerto separado para ello.
+:::info ¿Y qué hay de TURN?
+El script de instalación configura automáticamente un servidor TURN en el puerto 443 a través de TCP/UDP, por lo que normalmente no necesita abrir un puerto separado para ello.
 :::
 
 ---
 
-### Puertos de marcado SIP/VoIP
+### Puertos para Marcación SIP/VoIP
 
-Si planea usar la función de marcado SIP/VoIP, también debe abrir los siguientes puertos para permitir la comunicación con su proveedor externo de troncales SIP.
+Si planea utilizar la función de marcación SIP/VoIP, también debe abrir los siguientes puertos para permitir la comunicación con su proveedor externo de troncales SIP.
 
 | Puerto          | Protocolo | Requerido | Descripción                                                  |
 | :------------ | :------- | :------- | :----------------------------------------------------------- |
 | **5060-5061** | TCP      | **Sí**  | Puertos de señalización SIP.                                         |
 | **5060-5061** | UDP      | **Sí**  | Puertos de señalización SIP.                                         |
-| **10000-20000** | UDP      | **Sí**  | Rango de puertos de medios RTP (Protocolo de transporte en tiempo real) para audio. |
+| **10000-20000** | UDP      | **Sí**  | Rango de puertos para medios RTP (Protocolo de Transporte en Tiempo Real) para el audio. |
 
-:::info[Más detalles]
-Para una comprensión más profunda de los requisitos de red del gateway SIP y configuraciones avanzadas, consulte el [repositorio oficial de livekit/sip en GitHub](https://github.livekit/sip).
+:::info Para más detalles
+Para una comprensión más profunda de los requisitos de red de la pasarela SIP y configuraciones avanzadas, consulte el [repositorio oficial de livekit/sip en GitHub](https://github.com/livekit/sip).
 :::
 
 ---
 
-## Guías de Proveedores de la Nube
+## Guías de Proveedores de Nube
 
-La mayoría de los proveedores de la nube tienen una sección de "Grupo de seguridad" o "Firewall" donde puede crear estas reglas. Aquí hay enlaces a la documentación oficial de proveedores populares:
+La mayoría de los proveedores de nube tienen una sección de "Grupo de Seguridad" o "Firewall" donde puede crear estas reglas. Aquí tiene enlaces a la documentación oficial de los proveedores más populares:
 
 *   [Amazon AWS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html)
 *   [Google Cloud](https://cloud.google.com/vpc/docs/using-firewalls)
@@ -58,7 +58,7 @@ La mayoría de los proveedores de la nube tienen una sección de "Grupo de segur
 
 ---
 
-## Probando su configuración (Opcional pero recomendado)
+## Probando su Configuración (Opcional pero Recomendado)
 
 Antes de ejecutar el script de instalación principal, es una buena idea verificar que sus puertos estén abiertos. La herramienta `ncat` (una versión mejorada de `netcat`) es perfecta para esto.
 
@@ -78,11 +78,11 @@ El servidor ahora esperará una conexión.
 
 ### 2. Desde una computadora externa
 
-En una *computadora diferente* (como su computadora portátil), use `ncat` para conectarse a su servidor. Reemplace `su_ip_de_servidor` con la dirección IP pública de su servidor.
+En una *computadora diferente* (como su portátil), use `ncat` para conectarse a su servidor. Reemplace `su_ip_de_servidor` con la dirección IP pública de su servidor.
 
 ```bash
 # En macOS (con Homebrew) o Linux: brew install nmap
-# On Windows: descargar de nmap.org
+# En Windows: descargar desde nmap.org
 
 ncat su_ip_de_servidor 443 --verbose
 ```
@@ -92,6 +92,6 @@ Ahora, escriba `hola` y presione Enter.
 ### 3. Verifique los resultados
 
 *   Si la conexión es **exitosa**, verá "Conexión recibida de [su_ip]" en su servidor, y aparecerá la palabra `hola`.
-*   Si la conexión **falla** (se agota el tiempo o se rechaza), su regla de firewall es incorrecta. Verifique dos veces la configuración de su proveedor de la nube e intente nuevamente.
+*   Si la conexión **falla** (se agota el tiempo de espera o es rechazada), su regla de firewall es incorrecta. Revise la configuración de su proveedor de nube e inténtelo de nuevo.
 
-Puede repetir esta prueba para los otros puertos (`80`, `7881`) y para UDP agregando el flag `-u` (ej., `sudo ncat -u -l -p 50005 ...`).
+Puede repetir esta prueba para los otros puertos (`80`, `7881`) y para UDP agregando la bandera `-u` (ej., `sudo ncat -u -l -p 50005 ...`).

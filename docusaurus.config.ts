@@ -139,7 +139,7 @@ const config: Config = {
             },
             {
               label: 'Cloud',
-              href: 'https://www.plugnmeet.com',
+              href: 'https://www.plugnmeet.cloud',
             },
           ],
         },

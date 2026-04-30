@@ -78,16 +78,16 @@ const HeroBanner = () => {
           <div className="container">
             <div className="content">
               <h1>
-                Conferencias WebRTC de Código Abierto: Seguras, Escalables, Personalizables y Auto-alojadas.
+                Conferencias WebRTC de Código Abierto: Seguras, Escalables, Personalizables y Autoalojadas.
               </h1>
               <h2>
-                Integre una potente solución de videoconferencia mejorada con IA en su sitio web con facilidad.
+                Integre fácilmente una solución potente de videoconferencia, mejorada con IA, en su sitio web.
               </h2>
               <Link
                 className="button button--secondary button--lg"
                 to="/docs/intro"
               >
-                Empezar
+                Comenzar
               </Link>
             </div>
           </div>
@@ -101,7 +101,7 @@ const HeroBanner = () => {
       </div>
       <section className="features-section slider-section">
         <div className="container">
-          <h2 className="headline">Explorar características clave</h2>
+          <h2 className="headline">Explore las Características Claves</h2>
           <div className="slider-wrapper">
             <img
               className="desktop-back"

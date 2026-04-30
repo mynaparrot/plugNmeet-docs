@@ -12,11 +12,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Fácil instalación y auto-alojamiento</h3>
+        <h3>Instalación Sencilla y Autoalojamiento</h3>
         <p>
-          Integre una solución de videoconferencia con todas las funciones en sus
-          aplicaciones y sitios web existentes en minutos. Mantenga sus datos seguros con una
-          plataforma WebRTC auto-alojada y local.
+          Integre una solución completa de videoconferencia en sus aplicaciones y sitios web en cuestión de minutos. Mantenga sus datos seguros con una plataforma WebRTC autoalojada y bajo su control.
         </p>
       </>
     ),
@@ -27,9 +25,9 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Totalmente personalizable y con marca</h3>
+        <h3>Personalización Total y Marca Blanca</h3>
         <p>
-          Personalice cada aspecto de sus reuniones con una API sencilla, sin necesidad de cambios en el código. Personalice URLs, logotipos, colores de marca y características disponibles para crear una experiencia verdaderamente de marca blanca.
+          Adapte cada aspecto de sus reuniones con una API sencilla, sin necesidad de modificar el código. Personalice URLs, logotipos, colores de marca y funciones para crear una experiencia completamente suya.
         </p>
       </>
     ),
@@ -39,9 +37,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/video-call-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Grabación y transmisión</h3>
+        <h3>Grabación y Transmisión</h3>
         <p>
-          Capture sus sesiones en calidad HD cristalina como archivos MP4 portátiles. O bien, amplíe su alcance transmitiendo directamente a plataformas como YouTube y Facebook con soporte integrado para RTMP/WHIP.
+          Capture sus sesiones con una calidad HD nítida en archivos MP4 portátiles. O bien, amplíe su alcance transmitiendo en directo a plataformas como YouTube y Facebook con soporte integrado para RTMP/WHIP.
         </p>
       </>
     ),
@@ -52,8 +50,8 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Agente de reuniones con IA</h3>
-        <p>Convierta sus reuniones en inteligencia procesable. Nuestro potente agente de IA proporciona traducciones habladas en vivo, genera resúmenes automatizados, crea transcripciones completas, <strong>y mucho más...</strong></p>
+        <h3>Asistente de Reuniones con IA</h3>
+        <p>Convierta sus reuniones en inteligencia procesable. Nuestro potente asistente de IA ofrece traducciones habladas en vivo, genera resúmenes automáticos, crea transcripciones completas, <strong>y mucho más...</strong></p>
       </>
     ),
   },
@@ -63,10 +61,9 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Colaboración en tiempo real</h3>
+        <h3>Colaboración en Tiempo Real</h3>
         <p>
-          Aumente la productividad durante su videoconferencia con potentes herramientas de colaboración. Trabajen juntos en
-          tiempo real utilizando una pizarra compartida y un bloc de notas colaborativo.
+          Aumente la productividad durante sus videoconferencias con potentes herramientas colaborativas. Trabajen en equipo en tiempo real utilizando una pizarra compartida y un bloc de notas colaborativo.
         </p>
       </>
     ),
@@ -76,9 +73,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Privado por diseño</h3>
+        <h3>Privacidad por Diseño</h3>
         <p>
-          Para la máxima privacidad, añadimos una capa de cifrado verdadero de extremo a extremo (E2EE) sobre la seguridad WebRTC por defecto, asegurando que ni siquiera el servidor pueda acceder a su conversación privada.
+          Para una máxima privacidad, añadimos una capa de cifrado de extremo a extremo (E2EE) real sobre la seguridad estándar de WebRTC, garantizando que ni siquiera el servidor pueda acceder a sus conversaciones privadas.
         </p>
       </>
     ),
@@ -88,9 +85,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>No requiere instalación</h3>
+        <h3>Sin Instalaciones</h3>
         <p>
-          Únase a las reuniones al instante con su navegador. Nuestra plataforma significa sin descargas, sin complementos y sin fricciones para sus usuarios en cualquier dispositivo móvil o de escritorio moderno.
+          Únase a las reuniones al instante desde su navegador. Nuestra plataforma elimina la necesidad de descargas, plugins y cualquier fricción para sus usuarios en cualquier dispositivo moderno, ya sea de escritorio o móvil.
         </p>
       </>
     ),
@@ -101,9 +98,9 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Una conexión estable, en cualquier lugar</h3>
+        <h3>Conexión Estable, Donde Sea</h3>
         <p>
-          Disfrute de una experiencia de video fluida, incluso con Wi-Fi débil o móvil. Nuestra tecnología inteligente ajusta automáticamente la calidad del video para evitar el almacenamiento en búfer y mantener la conversación fluyendo.
+          Disfrute de una experiencia de video fluida, incluso con una conexión Wi-Fi o móvil débil. Nuestra tecnología inteligente ajusta automáticamente la calidad del video para evitar interrupciones y mantener la conversación en marcha.
         </p>
       </>
     ),
@@ -113,9 +110,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Construido para escalar</h3>
+        <h3>Diseñado para Escalar</h3>
         <p>
-          Haga crecer su plataforma con confianza. Nuestro backend moderno está construido para el escalado horizontal utilizando Go, <strong>LiveKit</strong> y <strong>NATS</strong>. Este stack de alto rendimiento admite más usuarios con menos recursos y se despliega como un binario único y sencillo.
+          Haga crecer su plataforma con total confianza. Nuestro moderno backend está construido para escalar horizontalmente usando Go, <strong>LiveKit</strong> y <strong>NATS</strong>. Esta arquitectura de alto rendimiento soporta más usuarios con menos recursos y se despliega como un único y sencillo binario.
         </p>
       </>
     ),
@@ -140,7 +137,7 @@ export default function HomepageFeatures(): JSX.Element {
   return (
     <section className="features-section">
       <div className="container">
-        <h2 className="headline">Características principales</h2>
+        <h2 className="headline">Características Principales</h2>
         <div className="features-wrapper">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
