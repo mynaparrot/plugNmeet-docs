@@ -10,7 +10,7 @@ sidebar_label: Guía de Instalación
 
 Esta guía le mostrará la forma más rápida y sencilla de poner en marcha su propia plataforma de videoconferencias autoalojada.
 
-Nuestro método recomendado utiliza un sencillo script automatizado que configura todos los componentes necesarios para ejecutar la plataforma en un servidor limpio con Ubuntu o Debian. Como alternativa, para quienes prefieren un servicio gestionado, nuestra **[solución oficial en la nube, PlugNmeet Cloud](https://www.plugnmeet.cloud)**, proporciona un servidor listo para usar, permitiéndole omitir por completo el proceso de instalación.
+Nuestro método recomendado utiliza un sencillo script automatizado que configura todos los componentes necesarios para ejecutar la plataforma en un servidor limpio con Ubuntu o Debian. Como alternativa, para quienes prefieren un servicio gestionado, nuestra **[solución oficial en el Cloud, PlugNmeet Cloud](https://www.plugnmeet.cloud)**, proporciona un servidor listo para usar, permitiéndole omitir por completo el proceso de instalación.
 
 Comencemos a configurar su servidor.
 

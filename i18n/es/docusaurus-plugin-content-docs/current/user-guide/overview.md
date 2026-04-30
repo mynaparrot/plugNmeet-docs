@@ -8,26 +8,26 @@ sidebar_label: Descripción General
 
 # Guía de Usuario de Plug-N-Meet
 
-Bienvenido a la Guía de Usuario de Plug-N-Meet. Esta sección proporciona guías completas para todos los que usan la plataforma.
+Le damos la bienvenida a la Guía de Usuario de Plug-N-Meet. En esta sección encontrará guías completas para todos los usuarios de la plataforma.
 
-Ya sea que sea un **moderador** que gestiona una sesión en vivo, un **asistente** que se une a una reunión o un **administrador** que integra Plug-N-Meet con una plataforma como WordPress, Moodle o Joomla, aquí encontrará la información que necesita.
+Tanto si es un **moderador** que gestiona una sesión en vivo, un **asistente** que se une a una reunión o un **administrador** que integra Plug-N-Meet con una plataforma como WordPress, Moodle o Joomla, aquí encontrará la información necesaria.
 
 ---
 
 ## Experiencia en la Reunión
 
-Aprenda a usar las funciones dentro de una sala de Plug-N-Meet. Las capacidades dependen de su rol.
+Descubra cómo utilizar las funciones dentro de una sala de Plug-N-Meet. Las capacidades disponibles dependerán de su rol.
 
-- **[Guía del Moderador](./moderator):** Una guía completa para los anfitriones sobre cómo gestionar reuniones, participantes, grabaciones y usar funciones avanzadas como salas de grupos y encuestas.
-- **[Guía del Asistente](./attendee):** Una guía sencilla para los participantes sobre cómo unirse a las reuniones y usar funciones como el chat, compartir pantalla y levantar la mano.
+- **[Guía del Moderador](./moderator):** Una guía completa para anfitriones sobre cómo gestionar reuniones, participantes y grabaciones, así como el uso de funciones avanzadas como salas de grupos y encuestas.
+- **[Guía del Asistente](./attendee):** Una guía sencilla para participantes sobre cómo unirse a las reuniones y utilizar funciones como el chat, compartir pantalla y levantar la mano.
 
 ---
 
-## Guías de Integración de Plataforma
+## Guías de Integración de Plataformas
 
-Instrucciones paso a paso para integrar Plug-N-Meet con plataformas populares.
+Instrucciones paso a paso para integrar Plug-N-Meet con las plataformas más populares.
 
-- **[Integración con WordPress](./wordPress-integration):** Cómo agregar videoconferencias a su sitio de WordPress.
-- **[Integración con Moodle](./moodle-integration):** Cómo agregar una actividad de videoconferencia a sus cursos de Moodle.
-- **[Integración con Joomla](./joomla-integration):** Cómo agregar reuniones de video a su sitio de Joomla.
+- **[Integración con WordPress](./wordPress-integration):** Cómo añadir videoconferencias a su sitio web de WordPress.
+- **[Integración con Moodle](./moodle-integration):** Cómo añadir una actividad de videoconferencia a sus cursos de Moodle.
+- **[Integración con Joomla](./joomla-integration):** Cómo incorporar reuniones de video en su sitio de Joomla.
 - **[Integración con cualquier LMS usando LTI](./lti):** Una guía para conectarse a Canvas, Chamilo o cualquier otra plataforma compatible con LTI.

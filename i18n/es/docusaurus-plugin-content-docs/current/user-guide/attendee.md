@@ -8,30 +8,30 @@ sidebar_label: Guía del Asistente
 
 # Guía del Asistente: Cómo Unirse y Participar en una Reunión
 
-¡Bienvenido a la Guía del Asistente! Este documento lo guiará a través de todo lo que necesita saber para unirse y participar con éxito en una videoconferencia de Plug-N-Meet.
+¡Le damos la bienvenida a la Guía del Asistente! Este documento le guiará a través de todo lo que necesita saber para unirse y participar con éxito en una videoconferencia de Plug-N-Meet.
 
 ---
 
 ## Primeros Pasos: Unirse a una Reunión
 
-Cuando ingrese por primera vez a una sala de PlugNmeet, se le pedirá que elija cómo desea unirse a la sesión de audio. Este es su primer paso más importante.
+Cuando acceda por primera vez a una sala de PlugNmeet, se le solicitará que elija cómo desea unirse a la sesión de audio. Este es el paso inicial más importante.
 
 ![Onboarding-Desktop.jpg](/img/moderator/Onboarding-Desktop.jpg)
 
--   **Habilitar Micrófono y Cámara:** Elija esta opción para hablar y compartir su video en la reunión. Su navegador le pedirá permiso para acceder a su micrófono y cámara.
--   **Continuar como oyente:** Elija esta opción para unirse sin micrófono ni cámara. Podrá escuchar todo pero no podrá hablar ni compartir video.
+-   **Habilitar Micrófono y Cámara:** Seleccione esta opción para hablar y compartir su video en la reunión. Su navegador le solicitará permiso para acceder a su micrófono y cámara.
+-   **Continuar como oyente:** Elija esta opción para unirse sin micrófono ni cámara. Podrá escuchar todo, pero no podrá hablar ni compartir video.
 
-**Importante:** Esta elección no es permanente. Si decide **Continuar como oyente**, puede activar fácilmente su micrófono y cámara más tarde desde la barra de control principal (si el moderador lo permite).
+**Importante:** Esta elección no es permanente. Si decide **Continuar como oyente**, podrá activar su micrófono y cámara más tarde desde la barra de control principal (siempre que el moderador lo permita).
 
 ---
 
 ## Sección 1: La Barra de Control del Asistente
 
-Estos son los controles básicos que usará durante la reunión, ubicados en la parte inferior de la pantalla.
+Estos son los controles básicos que utilizará durante la reunión, ubicados en la parte inferior de la pantalla.
 
 -   **Micrófono:** Haga clic en este icono para silenciar o activar su sonido.
--   **Cámara web:** Haga clic en este icono para iniciar o detener el uso compartido de su cámara web. Puede elegir un fondo virtual antes de compartir.
--   **Levantar la Mano:** Haga clic en este icono para señalar al moderador que tiene una pregunta o desea hablar.
+-   **Cámara web:** Haga clic en este icono para iniciar o detener el uso compartido de su cámara web. Puede elegir un fondo virtual antes de comenzar a compartir.
+-   **Levantar la Mano:** Haga clic en este icono para indicar al moderador que tiene una pregunta o desea intervenir.
 
 ![attendee-control-bar.webp](/img/moderator/attendee-control-bar.webp)
 
@@ -39,22 +39,22 @@ Estos son los controles básicos que usará durante la reunión, ubicados en la 
 
 ## Sección 2: Participar en la Reunión
 
-Estas funciones le permiten interactuar con el moderador y otros participantes.
+Estas funciones le permiten interactuar con el moderador y los demás participantes.
 
-### Usando el Chat
+### Uso del Chat
 
--   **Chat Público:** Haga clic en el icono de **Chat** para abrir el panel de chat principal donde puede enviar mensajes a todos.
+-   **Chat Público:** Haga clic en el icono de **Chat** para abrir el panel de chat principal, donde podrá enviar mensajes a todos los asistentes.
 -   **Chat Privado:** Para enviar un mensaje privado, abra la lista de **Participantes**, haga clic en el menú de tres puntos junto al nombre de un usuario y seleccione **Enviar mensaje privado**.
 
 ![attendee-Chat.webp](/img/moderator/attendee-Chat.webp)
 
 ### Ver la Lista de Participantes
 
--   Haga clic en el icono de **Participantes** para ver una lista de todos los que están actualmente en la reunión.
+-   Haga clic en el icono de **Participantes** para ver una lista de todas las personas que se encuentran actualmente en la reunión.
 
 ### Responder a las Encuestas
 
--   Si el moderador inicia una encuesta, verá una notificación. Puede abrir la pestaña de **Encuestas** en el panel de participantes para emitir su voto.
+-   Si el moderador inicia una encuesta, recibirá una notificación. Puede abrir la pestaña de **Encuestas** en el panel de participantes para emitir su voto.
 
 ![attendee-polls.webp](/img/moderator/attendee-polls.webp)
 
@@ -63,13 +63,13 @@ Estas funciones le permiten interactuar con el moderador y otros participantes.
 
 ![attendee-transcriptions.webp](/img/moderator/attendee-transcriptions.webp)
 
-- **Historial:** Puede ver la **Transcripción y Traducción en Vivo** en tiempo real. Haga clic en el icono de **Historial** para ver el historial completo de la transcripción.
+- **Historial:** Puede ver la **Transcripción y Traducción en Vivo** en tiempo real. Haga clic en el icono de **Historial** para consultar el historial completo de la transcripción.
 
 ![attendee-transcriptions-history.webp](/img/moderator/attendee-transcriptions-history.webp)
 
-**Importante:** Debe **Habilitar el Micrófono** para usar la **Transcripción y Traducción**.
+**Importante:** Es necesario **Habilitar el Micrófono** para utilizar la **Transcripción y Traducción**.
 
-### Usando el Asistente de IA
+### Uso del Asistente de IA
 
 - **Habilitar/Deshabilitar:** Haga clic en el icono del **Asistente de IA** en la barra de control principal del pie de página para iniciar el Asistente de IA (si el moderador lo ha habilitado para usted).
 
@@ -77,22 +77,22 @@ Estas funciones le permiten interactuar con el moderador y otros participantes.
 
 ---
 
-## Sección 3: Ver Contenido
+## Sección 3: Visualización de Contenido
 
-El moderador puede compartir varios tipos de contenido durante la reunión.
+El moderador puede compartir diversos tipos de contenido durante la reunión.
 
--   **Ver una Pantalla Compartida:** Si el moderador comparte su pantalla, aparecerá automáticamente en el área principal de la interfaz.
--   **Interactuar con la Pizarra:** Si el moderador activa la pizarra, podrá ver lo que están dibujando. También pueden darle permiso para dibujar en la pizarra usted mismo.
--   **Ver un Video Compartido:** Si el moderador comparte un video, aparecerá en su pantalla con controles de reproducción.
+-   **Ver una Pantalla Compartida:** Si el moderador comparte su pantalla, esta aparecerá automáticamente en el área principal de la interfaz.
+-   **Interactuar con la Pizarra:** Si el moderador activa la pizarra, podrá ver lo que se está dibujando. También es posible que le otorguen permisos para dibujar usted mismo en ella.
+-   **Ver un Video Compartido:** Si el moderador comparte un video, este aparecerá en su pantalla con controles de reproducción.
 
 ---
 
-## Sección 4: Salas de Grupos Pequeños
+## Sección 4: Salas de Grupos Pequeños (Breakout Rooms)
 
-El moderador puede dividir la sesión principal en Salas de Grupos Pequeños más pequeñas para actividades grupales.
+El moderador puede dividir la sesión principal en salas más pequeñas para realizar actividades grupales.
 
--   Si se le asigna a una sala, verá una notificación que lo invita a **Unirse**.
--   Será llevado a una nueva sala de reuniones más pequeña. Cuando termine la sesión de grupos pequeños, volverá automáticamente a la sala principal.
+-   Si se le asigna a una sala, verá una notificación invitándole a **Unirse**.
+-   Se le redirigirá a una nueva sala de reuniones de menor tamaño. Al finalizar la sesión de grupos, volverá automáticamente a la sala principal.
 
 ![attendee-breakout-room.webp](/img/moderator/attendee-breakout-room.webp)
 
@@ -101,6 +101,6 @@ El moderador puede dividir la sesión principal en Salas de Grupos Pequeños má
 
 ## Sección 5: Salir de la Reunión
 
-- **Salir de la Reunión:** Si selecciona **Salir de la Reunión** en el menú superior derecho o en el botón inferior derecho, abandonará la reunión, pero la sesión permanecerá activa para los demás participantes.
+- **Salir de la Reunión:** Si selecciona **Salir de la Reunión** en el menú superior derecho o en el botón inferior derecho, abandonará la sesión, pero esta permanecerá activa para los demás participantes.
 
 ![attendee-end-meeting.webp](/img/moderator/attendee-end-meeting.webp)

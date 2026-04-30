@@ -1,12 +1,12 @@
 ---
-title: API para Descargar Grabación | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener una URL firmada y temporal para descargar un archivo de grabación de reunión específico.
+title: API para Descargar una Grabación | Referencia de la API de plugNmeet
+description: Documentación del punto final de la API para obtener una URL firmada y temporal para descargar un archivo de grabación de una reunión específica.
 keywords: [api, descargar grabación, obtener url de grabación, api de grabación, punto final]
 sidebar_position: 3
 sidebar_label: Descargar
 ---
 
-# Descargar Grabación (Token)
+# Descargar una Grabación (Token)
 
 Punto final: `/recording/getDownloadToken`
 
@@ -28,9 +28,9 @@ Punto final: `/recording/getDownloadToken`
 | :----- | ------- | -------- | :------------------------------- |
 | status | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | msg    | string  | raíz     | Mensaje de respuesta.                |
-| token  | string  | raíz     | Token de descarga.                  |
+| token  | string  | raíz     | El token de descarga.                  |
 
 Una vez que reciba el token, puede construir la URL de descarga utilizando el siguiente formato:
 ```
-https://Su-Servidor-Plug-N-Meet.com/download/recording/<TOKEN AQUÍ>
+https://Su-Servidor-Plug-N-Meet.com/download/recording/<TOKEN_AQUÍ>
 ```

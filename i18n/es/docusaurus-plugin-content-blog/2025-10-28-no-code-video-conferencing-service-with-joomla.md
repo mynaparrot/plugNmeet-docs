@@ -1,5 +1,5 @@
 ---
-title: "Cómo lanzar su propio servicio de videoconferencia con Joomla (no se requiere código)"
+title: "Cómo lanzar su propio servicio de videoconferencia con Joomla (sin necesidad de código)"
 slug: no-code-video-conferencing-service-with-joomla
 authors: [simon]
 tags: [joomla, no-code, business, saas, monetization, white-label, video-conferencing, joomla-video-conferencing]
@@ -7,7 +7,7 @@ tags: [joomla, no-code, business, saas, monetization, white-label, video-confere
 
 ¿Alguna vez ha soñado con lanzar su propio servicio en línea o "micro-SaaS", pero se ha sentido bloqueado por el mayor obstáculo: la codificación? No está solo. La idea de construir, gestionar y escalar un producto de software es desalentadora.
 
-Pero ¿y si pudiera crear un servicio de videoconferencia totalmente personalizado, monetizado y profesional utilizando una herramienta que ya conoce y en la que confía?
+Pero, ¿y si pudiera crear un servicio de videoconferencia totalmente personalizado, monetizado y profesional utilizando una herramienta que ya conoce y en la que confía?
 
 Con el poder de Joomla y el componente **plugNmeet**, puede hacerlo. Esta guía le guiará a través del proceso simple y paso a paso para lanzar su propio servicio de videoconferencia de marca blanca, sin escribir una sola línea de código.
 
@@ -15,9 +15,9 @@ Con el poder de Joomla y el componente **plugNmeet**, puede hacerlo. Esta guía 
 
 ---
 
-### La pila tecnológica "sin código": Las tres piezas simples
+### La pila tecnológica "sin código": Las tres piezas sencillas
 
-Para construir su servicio, solo necesita tres cosas:
+Para construir su servicio, solo necesita tres elementos:
 
 1.  **Un sitio web de Joomla:** Su centro de comando y escaparate.
 2.  **El componente Plug-N-Meet para Joomla:** La herramienta gratuita que integra la videoconferencia directamente en su sitio.
@@ -50,7 +50,7 @@ Haga clic en **Guardar**. Felicidades, ahora tiene una plataforma de videoconfer
 Su "producto" son los diferentes tipos de salas de reuniones que ofrecerá.
 
 1.  Desde el panel de administrador de Joomla, vaya a **Componentes > Plug N Meet > Gestionar salas**.
-2.  Haga clic en **+ Nuevo** y defina su oferta de servicio. For ejemplo:
+2.  Haga clic en **+ Nuevo** y defina su oferta de servicio. Por ejemplo:
     *   **"Sala de reuniones básica":** Límite de 10 participantes y una duración de 60 minutos.
     *   **"Sala de seminarios web premium":** Permitir hasta 100 participantes, duración ilimitada y habilitar la **grabación en la nube**.
 
@@ -93,7 +93,7 @@ Recapitulemos. En menos de una hora, utilizando solo Joomla y una extensión de 
 *   Integrado un sistema de pago para monetizar su servicio.
 *   Personalizado la marca para que sea completamente suya.
 
-No solo ha agregado una función a su sitio web; ha construido un negocio. Este es el poder del movimiento sin código combinado con plataformas flexibles y API-first como plugNmeet. Ya no está simplemente alquilando una herramienta genérica, es dueño de la plataforma.
+No solo ha añadido una función a su sitio web; ha construido un negocio. Este es el poder del movimiento sin código combinado con plataformas flexibles y API-first como plugNmeet. Ya no está simplemente alquilando una herramienta genérica, es dueño de la plataforma.
 
 ---
 

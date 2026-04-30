@@ -10,12 +10,12 @@ sidebar_label: Obtener Salas Anteriores
 
 Punto final: `/room/fetchPastRooms`
 
-## Parámetros de Solicitud
+## Parámetros de la Solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                 |
 | -------- | ------ | -------- | ------------------------------------------- |
-| room_ids | array  | Sí      | Array de IDs de sala para consultar.                 |
-| from     | number | No       | Índice de inicio para los registros. El valor predeterminado es 0.   |
+| room_ids | array  | Sí      | Un array de IDs de sala para consultar.                 |
+| from     | number | No       | Índice inicial para los registros. El valor predeterminado es 0.   |
 | limit    | number | No       | Número máximo de registros a devolver. El valor predeterminado es 20. |
 | order_by | string | No       | Orden de clasificación: `DESC` o `ASC`. El valor predeterminado es `DESC`. |
 
@@ -23,7 +23,7 @@ Punto final: `/room/fetchPastRooms`
 
 ```json
 {
-  "room_ids": ["room01"],
+  "room_ids": ["sala01"],
   "from": 0,
   "limit": 20,
   "order_by": "DESC"
@@ -43,7 +43,7 @@ Punto final: `/room/fetchPastRooms`
 | Campo            | Tipo                                      | Descripción                                 |
 | ---------------- | ----------------------------------------- | ------------------------------------------- |
 | total_rooms      | number                                    | Número total de salas encontradas para la consulta.  |
-| from             | number                                    | Índice de inicio para los registros devueltos.    |
+| from             | number                                    | Índice inicial de los registros devueltos.    |
 | limit            | number                                    | Número de registros devueltos.                 |
 | order_by         | string                                    | Orden de clasificación utilizado para los registros.            |
 | rooms_list       | Array\<[Información de Sala Anterior](#información-de-sala-anterior)> | Lista de registros de salas anteriores.                  |
@@ -53,10 +53,10 @@ Punto final: `/room/fetchPastRooms`
 | Campo               | Tipo   | Descripción                                                                                   |
 | ------------------- | ------ | --------------------------------------------------------------------------------------------- |
 | room_title          | string | Título de la sala.                                                                            |
-| room_id             | string | Identificador único para la sala.                                                               |
-| room_sid            | string | SID de la sala.                                                                              |
-| joined_participants | number | Número de participantes que se unieron (puede no ser exacto; use análisis para obtener información detallada). |
-| webhook_url         | string | URL de webhook asociada con la sala.                                                         |
-| created             | string | Hora de creación de la sala.                                                                           |
-| ended               | string | Hora de finalización de la sala.                                                                                |
+| room_id             | string | Identificador único de la sala.                                                               |
+| room_sid            | string | SID (Identificador de Sesión) de la sala.                                                                              |
+| joined_participants | number | Número de participantes que se unieron (puede no ser exacto; utilice los análisis para obtener información detallada). |
+| webhook_url         | string | URL del webhook asociada a la sala.                                                         |
+| created             | string | Fecha y hora de creación de la sala.                                                                           |
+| ended               | string | Fecha y hora de finalización de la sala.                                                                                |
 | analytics_file_id   | string | Identificador del archivo de análisis, si está disponible.                                                      |

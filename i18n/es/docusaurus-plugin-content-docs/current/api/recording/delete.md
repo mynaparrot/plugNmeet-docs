@@ -1,18 +1,18 @@
 ---
-title: API para Eliminar Grabación | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para eliminar una grabación de reunión específica del servidor.
+title: API para Eliminar una Grabación | Referencia de la API de plugNmeet
+description: Documentación del punto final de la API para eliminar una grabación de una reunión específica del servidor.
 keywords: [api, eliminar grabación, quitar grabación, api de grabación, punto final]
 sidebar_position: 4
 sidebar_label: Eliminar
 ---
 
-# Eliminar grabación
+# Eliminar una Grabación
 
 Punto final: `/recording/delete`
 
 | Campo     | Tipo   | Posición | Requerido | Descripción                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
-| record_id | string | raíz     | Sí      | ID de la grabación que desea eliminar |
+| record_id | string | raíz     | Sí      | El ID de la grabación que desea eliminar. |
 
 **Ejemplo**:
 
@@ -26,5 +26,5 @@ Punto final: `/recording/delete`
 
 | Campo  | Tipo    | Posición | Descripción               |
 | :----- | ------- | -------- | :------------------------ |
-| status | boolean | raíz     | El estado de la solicitud |
-| msg    | string  | raíz     | Mensaje de respuesta          |
+| status | boolean | raíz     | El estado de la solicitud. |
+| msg    | string  | raíz     | Mensaje de respuesta.          |

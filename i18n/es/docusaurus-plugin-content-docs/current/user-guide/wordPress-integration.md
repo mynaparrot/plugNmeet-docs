@@ -1,14 +1,14 @@
 ---
-title: Plugin de WordPress para plugNmeet | Agregue Videoconferencias a su Sitio
-description: Cómo instalar y configurar el plugin de WordPress para plugNmeet para agregar videoconferencias seguras y autoalojadas directamente a su sitio web de WordPress.
+title: Plugin de WordPress para plugNmeet | Añada Videoconferencias a su Sitio
+description: Cómo instalar y configurar el plugin de WordPress para plugNmeet para añadir videoconferencias seguras y autoalojadas directamente a su sitio web de WordPress.
 keywords: [wordpress, plugin, integración con wordpress, videoconferencia en wordpress, webrtc en wordpress, alternativa a zoom en wordpress]
 sidebar_position: 4
 sidebar_label: Integración con WordPress
 ---
 
-# Cómo Agregar Videoconferencias a WordPress con el Plugin Plug-N-Meet
+# Cómo Añadir Videoconferencias a WordPress con el Plugin Plug-N-Meet
 
-Esta guía proporciona un recorrido completo para integrar la potente solución de videoconferencia autoalojada Plug-N-Meet con su sitio web de WordPress. Al final, podrá alojar reuniones de video seguras directamente desde su propio dominio.
+Esta guía proporciona un recorrido completo para integrar la potente solución de videoconferencia autoalojada Plug-N-Meet con su sitio web de WordPress. Al finalizar, podrá organizar reuniones de video seguras directamente desde su propio dominio.
 
 ---
 
@@ -20,7 +20,7 @@ Esta sección cubre la instalación del plugin y su conexión a su servidor Plug
 
 - Desde su panel de WordPress, navegue a **Plugins > Añadir nuevo**.
 - En la barra de búsqueda, escriba **plugnmeet**.
-- Encuentre el plugin oficial de Plug-N-Meet en los resultados de búsqueda y haga clic en **Instalar ahora**.
+- Localice el plugin oficial de Plug-N-Meet en los resultados de búsqueda y haga clic en **Instalar ahora**.
 
 ![plugin-min.png](/img/wordpress/plugin-min.png)
 
@@ -32,15 +32,15 @@ Esta sección cubre la instalación del plugin y su conexión a su servidor Plug
 
 ### 3. Conectarse a su Servidor (Configuración de la API)
 
-Este es el paso más importante. Debe conectar el plugin a un servidor PlugNmeet en funcionamiento.
+Este es el paso más importante. Debe conectar el plugin a un servidor PlugNmeet que esté en funcionamiento.
 
 - Desde su panel de WordPress, navegue al nuevo elemento de menú **Plug-N-Meet** y seleccione **Ajustes**.
 - Verá tres campos: **URL del Servidor**, **Clave de API** y **Secreto de API**.
 
 ![server-settings-min.png](/img/wordpress/server-settings-min.png)
 
-- Estos campos deben llenarse con las credenciales de la API de su servidor. Después de la activación, pueden estar pre-llenados con credenciales de demostración.
-- **Debe reemplazarlos con los detalles de la API de su propio servidor autoalojado o de PlugNmeet Cloud para garantizar la funcionalidad completa.**
+- Estos campos deben rellenarse con las credenciales de la API de su servidor. Después de la activación, es posible que estén pre-rellenados con credenciales de demostración.
+- **Debe sustituirlos por los detalles de la API de su propio servidor autoalojado o de PlugNmeet Cloud para garantizar la funcionalidad completa.**
 
 ---
 
@@ -57,12 +57,12 @@ Ahora que el plugin está configurado, puede crear y mostrar una sala de reunion
 
 ### 2. Configurar los Ajustes de la Sala
 
-- **Título y Descripción:** Dé a su sala de reuniones un título claro.
+- **Título y Descripción:** Asigne un título claro a su sala de reuniones.
 - **Contraseñas:** Establezca contraseñas para moderadores y asistentes.
 - **Mensaje de Bienvenida:** Personalice el mensaje inicial que aparece en el chat.
 - **Máximo de Participantes:** Establezca un límite en el número de usuarios que pueden unirse (use `0` para ilimitado).
 - **Características de la Sala:** Habilite o deshabilite funciones principales como cámaras web, uso compartido de pantalla y grabación.
-- **Ajustes de Bloqueo Predeterminados:** Configure qué funciones están bloqueadas por defecto cuando un usuario se une (p. ej., micrófono, chat).
+- **Ajustes de Bloqueo Predeterminados:** Configure qué funciones estarán bloqueadas por defecto cuando un usuario se una (por ejemplo, micrófono, chat).
 
 ### 3. Publicar la Sala
 
@@ -72,7 +72,7 @@ Ahora que el plugin está configurado, puede crear y mostrar una sala de reunion
 
 ### 4. Mostrar la Sala en una Página
 
-- Vaya a **Plug-N-Meet > Salas** y encuentre la sala que acaba de crear.
+- Vaya a **Plug-N-Meet > Salas** y localice la sala que acaba de crear.
 - En la columna **Shortcode**, copie el shortcode único para esa sala.
 
 ![select-shortcodes.png](/img/wordpress/select-shortcodes.png)
@@ -83,16 +83,16 @@ Ahora que el plugin está configurado, puede crear y mostrar una sala de reunion
 ![paste-shortcodes.png](/img/wordpress/paste-shortcodes.png)
 
 - Haga clic en **Actualizar** o **Publicar**.
-- Ahora puede ver la página para ver su sala de reuniones en vivo.
+- Ahora puede ver la página para acceder a su sala de reuniones en vivo.
 
 ---
 
 ## Parte 3: La Experiencia del Asistente
 
-Cuando un usuario visita la página que contiene el shortcode de su sala de reuniones, verá una pantalla de inicio de sesión simple.
+Cuando un usuario visita la página que contiene el shortcode de su sala de reuniones, verá una pantalla de inicio de sesión sencilla.
 
-- **Unirse:** Los asistentes ingresan su nombre y la contraseña requerida para unirse a la reunión.
-- **Sin Contraseña:** Si no estableció una contraseña, solo necesitarán ingresar su nombre.
+- **Unirse:** Los asistentes introducen su nombre y la contraseña requerida para unirse a la reunión.
+- **Sin Contraseña:** Si no estableció una contraseña, solo necesitarán introducir su nombre.
 
 ![wordpress-join-pass.png](/img/wordpress/wordpress-join-pass.png)
 

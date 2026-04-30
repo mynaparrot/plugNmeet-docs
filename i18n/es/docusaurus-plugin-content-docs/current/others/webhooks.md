@@ -12,15 +12,15 @@ Plug-N-Meet puede notificar a su aplicación sobre diversos eventos enviando sol
 
 ## Recepción de Webhooks
 
-Las solicitudes de webhook se envían como peticiones HTTP POST a las URLs que haya configurado, ya sea en el archivo `config.yml` del servidor o durante la creación de la sala. Cada evento de webhook se codifica como JSON y se incluye en el cuerpo de la solicitud.
+Las solicitudes de webhook se envían como solicitudes HTTP POST a las URLs que haya configurado, ya sea en el archivo `config.yml` del servidor o durante la creación de la sala. Cada evento de webhook se codifica como JSON y se incluye en el cuerpo de la solicitud.
 
 La solicitud tendrá la cabecera `Content-Type` establecida en `application/webhook+json`. Asegúrese de que su servidor web esté configurado para aceptar cargas útiles con este tipo de contenido.
 
-Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de Plug-N-Meet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
+Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de plugNmeet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
 ## Eventos
 
-Puede revisar las definiciones de los eventos [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L10).
+Puede consultar las definiciones de los eventos [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L10).
 
 Todos los eventos de webhook incluyen los siguientes campos:
 - `id`: Un UUID que identifica el evento
@@ -63,7 +63,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Participante se ha Ido
+### Participante Abandonó la Sala
 
 ```js
 interface CommonNotifyEvent {
@@ -151,7 +151,7 @@ interface CommonNotifyEvent {
 
 ### Artefacto Creado
 
-Este evento único y unificado se activa cada vez que el sistema genera un nuevo artefacto, como una transcripción o un resumen de la reunión. Reemplaza múltiples webhooks individuales y más antiguos con un modelo más flexible y escalable.
+Este evento único y unificado se activa cada vez que el sistema genera un nuevo artefacto, como una transcripción o un resumen de la reunión. Sustituye a múltiples webhooks individuales y más antiguos por un modelo más flexible y escalable.
 
 Para obtener detalles sobre la estructura de la carga útil y los posibles tipos de artefactos, consulte la [definición de protobuf](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto#L91).
 
@@ -175,9 +175,9 @@ interface CommonNotifyEvent {
 
 ---
 
-## Ejemplo de Manejador de Webhook
+## Ejemplo de Gestor de Webhook
 
-El siguiente pseudocódigo demuestra cómo manejar los webhooks entrantes. Su aplicación debe inspeccionar la propiedad `event` para determinar qué acción tomar. El evento `artifact_created` es especial, ya que requiere verificar un campo anidado `type` para entender la carga útil.
+El siguiente pseudocódigo demuestra cómo gestionar los webhooks entrantes. Su aplicación debe inspeccionar la propiedad `event` para determinar la acción a realizar. El evento `artifact_created` es especial, ya que requiere verificar un campo anidado `type` para comprender la carga útil.
 
 ```javascript
 // Un mapeo del número del enum a una cadena legible por humanos.
@@ -189,17 +189,17 @@ const ArtifactType = {
   5: 'SPEECH_TRANSCRIPTION_USAGE',
 };
 
-function manejarWebhook(payload) {
+function handleWebhook(payload) {
   console.log(`Evento recibido: ${payload.event}`);
-  const infoSala = payload.room;
+  const sala = payload.room;
 
   switch (payload.event) {
     case 'room_started':
-      console.log(`La sala '${infoSala.name}' ha comenzado.`);
+      console.log(`La sala '${sala.name}' ha comenzado.`);
       break;
 
     case 'participant_joined':
-      console.log(`El usuario '${payload.participant.name}' se unió a la sala '${infoSala.name}'.`);
+      console.log(`El usuario '${payload.participant.name}' se unió a la sala '${sala.name}'.`);
       break;
 
     case 'artifact_created':
@@ -207,16 +207,16 @@ function manejarWebhook(payload) {
       break;
       
     case 'room_finished':
-      console.log(`La sala '${infoSala.name}' ha finalizado.`);
+      console.log(`La sala '${sala.name}' ha finalizado.`);
       break;
 
     default:
-      console.log(`Se recibió un evento no manejado: ${payload.event}`);
+      console.log(`Se recibió un evento no gestionado: ${payload.event}`);
   }
 }
 
-// Un manejador dedicado para el evento 'artifact_created'
-function manejarArtefactoCreado(payload) {
+// Un gestor dedicado para el evento 'artifact_created'
+function handleArtifactCreated(payload) {
   const artefacto = payload.room_artifact;
   const tipoArtefacto = ArtifactType[artefacto.type] || 'UNKNOWN_ARTIFACT';
   
@@ -229,7 +229,7 @@ function manejarArtefactoCreado(payload) {
       if (artefacto.metadata && artefacto.metadata.file_info) {
         const infoArchivo = artefacto.metadata.file_info;
         console.log(`Archivo disponible en: ${infoArchivo.file_path}`);
-        // Su lógica aquí: p. ej., descargar el archivo, vincularlo a una grabación.
+        // Su lógica aquí: por ejemplo, descargar el archivo, vincularlo a una grabación.
       }
       break;
       
@@ -238,12 +238,12 @@ function manejarArtefactoCreado(payload) {
       if (artefacto.metadata && artefacto.metadata.duration_usage) {
         const uso = artefacto.metadata.duration_usage;
         console.log(`Uso de transcripción registrado: ${uso.duration_sec} segundos.`);
-        // Su lógica aquí: p. ej., actualizar los registros de facturación.
+        // Su lógica aquí: por ejemplo, actualizar los registros de facturación.
       }
       break;
       
     default:
-      console.log(`Se recibió un tipo de artefacto no manejado: ${tipoArtefacto}`);
+      console.log(`Se recibió un tipo de artefacto no gestionado: ${tipoArtefacto}`);
   }
 }
 
@@ -270,6 +270,6 @@ const samplePayload = {
   }
 };
 
-// Llamaría a su manejador con el cuerpo de la solicitud POST.
-manejarWebhook(samplePayload);
+// Debería llamar a su gestor con el cuerpo de la solicitud POST.
+handleWebhook(samplePayload);
 ```

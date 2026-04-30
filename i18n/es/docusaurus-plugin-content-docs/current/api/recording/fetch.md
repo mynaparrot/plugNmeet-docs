@@ -3,19 +3,19 @@ title: API para Obtener Grabaciones | Referencia de la API de plugNmeet
 description: Documentación del punto final de la API para obtener una lista de todas las grabaciones disponibles en el servidor.
 keywords: [api, obtener grabaciones, listar grabaciones, api de grabación, punto final]
 sidebar_position: 1
-sidebar_label: Obtener
+sidebar_label: Obtener Grabaciones
 ---
 
 # Obtener Grabaciones
 
 Punto final: `/recording/fetch`
 
-## Parámetros de Solicitud
+## Parámetros de la Solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                   |
 | -------- | ------ | -------- | --------------------------------------------- |
-| room_ids | array  | Sí      | Array de IDs de sala para obtener grabaciones.    |
-| from     | number | No       | Índice de inicio para los registros. El valor predeterminado es 0.     |
+| room_ids | array  | Sí      | Un array de IDs de sala para obtener sus grabaciones.    |
+| from     | number | No       | Índice inicial para los registros. El valor predeterminado es 0.     |
 | limit    | number | No       | Número máximo de registros a devolver. El valor predeterminado es 20. |
 | order_by | string | No       | Orden de clasificación: `DESC` o `ASC`. El valor predeterminado es `DESC`. |
 
@@ -23,7 +23,7 @@ Punto final: `/recording/fetch`
 
 ```json
 {
-  "room_ids": ["room01"],
+  "room_ids": ["sala01"],
   "from": 0,
   "limit": 20,
   "order_by": "DESC"
@@ -43,23 +43,23 @@ Punto final: `/recording/fetch`
 | Campo              | Tipo                                      | Descripción                                 |
 | ------------------ | ----------------------------------------- | ------------------------------------------- |
 | total_recordings   | number                                    | Número total de grabaciones encontradas.           |
-| from               | number                                    | Índice de inicio para los registros devueltos.    |
+| from               | number                                    | Índice inicial de los registros devueltos.    |
 | limit              | number                                    | Número de registros devueltos.                 |
 | order_by           | string                                    | Orden de clasificación utilizado para los registros.            |
-| recordings_list    | Array\<[Información de la Grabación](#información-de-la-grabación)> | Lista de registros de grabaciones.                  |
+| recordings_list    | Array\<[Información de la Grabación](#información-de-la-grabación)> | Lista de los registros de grabaciones.                  |
 
 ### Información de la Grabación
 
 | Campo              | Tipo   | Descripción                                 |
 | ------------------ | ------ | ------------------------------------------- |
-| record_id          | string | Identificador único para la grabación.        |
-| room_id            | string | ID de la sala asociada con la grabación.|
-| room_sid           | string | SID de la sala.                            |
-| file_path          | string | Ruta al archivo de grabación.                 |
-| file_size          | number | Tamaño del archivo de grabación en bytes.        |
-| creation_time      | number | Hora de creación de la grabación (marca de tiempo Unix).   |
-| room_creation_time | number | Hora de creación de la sala (marca de tiempo Unix).        |
-| metadata           | [Objeto de Metadatos de Grabación](#objeto-de-metadatos-de-grabación) | Metadatos asociados con la grabación.     |
+| record_id          | string | Identificador único de la grabación.        |
+| room_id            | string | ID de la sala asociada a la grabación.|
+| room_sid           | string | SID (Identificador de Sesión) de la sala.                            |
+| file_path          | string | Ruta al archivo de la grabación.                 |
+| file_size          | number | Tamaño del archivo de la grabación en bytes.        |
+| creation_time      | number | Fecha y hora de creación de la grabación (marca de tiempo Unix).   |
+| room_creation_time | number | Fecha y hora de creación de la sala (marca de tiempo Unix).        |
+| metadata           | [Objeto de Metadatos de Grabación](#objeto-de-metadatos-de-grabación) | Metadatos asociados a la grabación.     |
 
 ### Objeto de Metadatos de Grabación
 
@@ -67,8 +67,8 @@ Punto final: `/recording/fetch`
 | ----------- |----------------------------------------------------|----------------------------------------------------------------------------|
 | title       | string                                             | El título de la grabación.                                                |
 | description | string                                             | La descripción de la grabación.                                          |
-| subtitles   | map [Objeto de Subtítulo de Grabación](#objeto-de-subtítulo-de-grabación) | Un mapa de códigos de idioma a objetos de subtítulos. p. ej. `{"en": {"url": "..."}}` |
-| extra_data  | map                               | Un mapa de datos adicionales almacenados con la grabación. p. ej. `{"key": "value"}`     |
+| subtitles   | map [Objeto de Subtítulo de Grabación](#objeto-de-subtítulo-de-grabación) | Un mapa de códigos de idioma a objetos de subtítulos. Por ejemplo: `{"en": {"url": "..."}}` |
+| extra_data  | map                               | Un mapa de datos adicionales almacenados con la grabación. Por ejemplo: `{"key": "value"}`     |
 
 #### Objeto de Subtítulo de Grabación
 

@@ -1,6 +1,6 @@
 ---
 title: Integración LTI para LMS | Use plugNmeet con Canvas, Chamilo, etc.
-description: Una guía para conectar plugNmeet a cualquier Sistema de Gestión de Aprendizaje (LMS) compatible con LTI como Canvas, Chamilo u otros para la educación en línea.
+description: Una guía para conectar plugNmeet a cualquier Sistema de Gestión del Aprendizaje (LMS) compatible con LTI, como Canvas, Chamilo u otros, para la educación en línea.
 keywords: [lti, lms, sistema de gestión de aprendizaje, canvas, chamilo, e-learning, integración]
 sidebar_position: 7
 sidebar_label: Integración LTI
@@ -8,9 +8,9 @@ sidebar_label: Integración LTI
 
 # Integración con cualquier LMS usando LTI
 
-Learning Tools Interoperability (LTI) es un protocolo estándar que le permite conectar de forma segura Plug-N-Meet a prácticamente cualquier Sistema de Gestión de Aprendizaje (LMS) como Canvas, Moodle, Chamilo y más.
+Learning Tools Interoperability (LTI) es un protocolo estándar que le permite conectar de forma segura Plug-N-Meet a prácticamente cualquier Sistema de Gestión del Aprendizaje (LMS) como Canvas, Moodle, Chamilo y otros.
 
-Este método es ideal si no hay un complemento dedicado para su plataforma o si su institución restringe la instalación de complementos personalizados. Permite a los instructores y estudiantes unirse a las reuniones y ver las grabaciones directamente desde la página de su curso.
+Este método es ideal si no existe un complemento dedicado para su plataforma o si su institución restringe la instalación de complementos personalizados. Permite a los instructores y estudiantes unirse a las reuniones y ver las grabaciones directamente desde la página de su curso.
 
 ---
 
@@ -40,11 +40,11 @@ Secreto compartido: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ### Descripción General de la Interfaz de Usuario
 
-- **Vista del Instructor/Moderador:** Cuando un usuario con rol de instructor lanza la herramienta LTI, verá una vista administrativa que le permitirá gestionar las sesiones y ver las grabaciones.
+- **Vista del Instructor/Moderador:** Cuando un usuario con rol de instructor inicia la herramienta LTI, verá una vista administrativa que le permitirá gestionar las sesiones y ver las grabaciones.
 
 ![lti1.png](/img/lti/lti1.png)
 
-- **Vista del Estudiante/Asistente:** Cuando un estudiante lanza la herramienta, verá una página simple para unirse a la sesión en vivo actual.
+- **Vista del Estudiante/Asistente:** Cuando un estudiante inicia la herramienta, verá una página simple para unirse a la sesión en vivo actual.
 
 ![lti3.png](/img/lti/lti3.png)
 
@@ -70,7 +70,7 @@ Puede pasar estos parámetros opcionales durante la configuración de LTI en su 
 
 ## Parte 2: Ejemplos de Integración con LMS
 
-Esta sección proporciona ejemplos paso a paso para Sistemas de Gestión de Aprendizaje populares.
+Esta sección proporciona ejemplos paso a paso para Sistemas de Gestión del Aprendizaje populares.
 
 ### Ejemplo con Canvas LMS
 
@@ -116,7 +116,7 @@ Este método LTI es una excelente alternativa si su proveedor de alojamiento de 
 ## Preguntas Comunes y Solución de Problemas
 
 **¿Cuál es la diferencia entre usar LTI y el complemento dedicado de Moodle?**
-El complemento dedicado de Moodle ofrece una integración más profunda con las funciones de Moodle como las calificaciones y los permisos. Sin embargo, el método LTI es una solución universal que funciona para casi cualquier LMS y es una excelente alternativa si no puede instalar complementos personalizados.
+El complemento dedicado de Moodle ofrece una integración más profunda con las funciones de Moodle, como las calificaciones y los permisos. Sin embargo, el método LTI es una solución universal que funciona para casi cualquier LMS y es una excelente alternativa si no puede instalar complementos personalizados.
 
 **¿Por qué recibo un error de 'Autenticación Fallida'?**
 Esto casi siempre significa que la **Clave de Consumidor** o el **Secreto Compartido** son incorrectos. Verifique dos veces que ha copiado estos valores correctamente de la configuración de la API de su servidor PlugNmeet y que están ingresados correctamente en su LMS.

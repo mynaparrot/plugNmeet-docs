@@ -1,27 +1,27 @@
 ---
-title: API para Actualizar Metadatos de Grabación | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para actualizar los metadatos de una grabación específica.
-keywords: [api, actualizar metadatos de grabación, api de grabación, punto final]
+title: Actualizar Metadatos de Grabación | Referencia de la API de plugNmeet
+description: Documentación del endpoint de la API para actualizar los metadatos de una grabación específica.
+keywords: [api, actualizar metadatos de grabación, api de grabación, endpoint]
 sidebar_position: 6
 sidebar_label: Actualizar Metadatos
 ---
 
 # Actualizar Metadatos de Grabación
 
-Punto final: `/recording/updateMetadata`
+Endpoint: `/recording/updateMetadata`
 
-Esta API le permite actualizar los metadatos de una grabación específica. Maneja de forma inteligente las actualizaciones parciales basadas en los campos proporcionados:
+Esta API le permite actualizar los metadatos de una grabación específica. Gestiona de manera inteligente las actualizaciones parciales basándose en los campos proporcionados:
 - Para actualizar un campo, proporcione un nuevo valor.
-- Para borrar un campo de texto (como Título), proporcione una cadena vacía "".
+- Para borrar un campo de texto (como el Título), proporcione una cadena vacía "".
 - Para borrar una entrada de mapa específica (como un subtítulo), proporcione un objeto vacío para esa clave.
-- Si se omite un campo (es decir, nulo), se mantiene su valor existente.
+- Si se omite un campo (es decir, es nulo), se conservará su valor actual.
 
-| Campo     | Tipo   | Posición | Requerido | Descripción                          |
+| Campo     | Tipo   | Ubicación | Requerido | Descripción                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
-| record_id | string | raíz     | Sí      | El ID de la grabación a actualizar. |
-| metadata  | [Metadatos de Grabación](/docs/api/recording/fetch#objeto-de-metadatos-de-grabación) | raíz     | No       | Los metadatos a actualizar.   |
+| record_id | string | raíz     | Sí      | El ID de la grabación que desea actualizar. |
+| metadata  | [Metadatos de Grabación](/docs/api/recording/fetch#objeto-de-metadatos-de-grabación) | raíz     | No       | Los metadatos que se actualizarán.   |
 
-**Ejemplo de Solicitud:**
+**Ejemplo de solicitud:**
 
 ```json
 {
@@ -45,7 +45,7 @@ Esta API le permite actualizar los metadatos de una grabación específica. Mane
 
 ## Respuesta
 
-| Campo  | Tipo    | Posición | Descripción               |
+| Campo  | Tipo    | Ubicación | Descripción               |
 | :----- | ------- | -------- | :------------------------ |
 | status | boolean | raíz     | El estado de la solicitud |
-| msg    | string  | raíz     | Mensaje de respuesta          |
+| msg    | string  | raíz     | Mensaje de la respuesta   |

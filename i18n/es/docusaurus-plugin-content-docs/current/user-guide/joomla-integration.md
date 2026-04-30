@@ -6,7 +6,7 @@ sidebar_position: 6
 sidebar_label: Integración con Joomla
 ---
 
-# Cómo Agregar Videoconferencias a Joomla con la Extensión Plug-N-Meet
+# Cómo Añadir Videoconferencias a Joomla con la Extensión Plug-N-Meet
 
 Esta guía proporciona un recorrido completo para integrar el componente de videoconferencia Plug-N-Meet con su sitio web de Joomla. Siguiendo estos pasos, podrá alojar reuniones de video seguras directamente desde su propio dominio.
 
@@ -55,7 +55,7 @@ Ahora que la extensión está configurada, necesita crear una sala y luego hacer
 - Desde el panel de administrador de Joomla, vaya a **Componentes > Plug N Meet > Administrar Salas**.
 - Haga clic en **+ Nuevo** para crear una nueva sala de reuniones.
 - **Configurar los Ajustes de la Sala:**
-  - **Título y Descripción:** Dé a su sala de reuniones un título claro.
+  - **Título y Descripción:** Asigne un título claro a su sala de reuniones.
   - **Contraseñas:** Establezca contraseñas para moderadores y asistentes.
   - **Mensaje de Bienvenida:** Personalice el mensaje inicial que aparece en el chat.
   - **Máximo de Participantes:** Establezca un límite en el número de usuarios que pueden unirse (use `0` para ilimitado).
@@ -75,7 +75,7 @@ Para permitir que los usuarios accedan a la sala, debe vincularla desde un menú
 ![Joomla-25.png](/img/Joomla/Joomla-25.png)
 
 - En el menú desplegable **Seleccionar una sala**, elija la sala que acaba de crear.
-- Dé al elemento del menú un **Título** (p. ej., "Clase en Vivo" o "Reunión Semanal").
+- Asigne un **Título** al elemento del menú (p. ej., "Clase en Vivo" o "Reunión Semanal").
 - Haga clic en **Guardar**.
 
 ![Joomla-26.png](/img/Joomla/Joomla-26.png)
@@ -88,7 +88,7 @@ Para permitir que los usuarios accedan a la sala, debe vincularla desde un menú
 
 Cuando un usuario haga clic en el nuevo elemento del menú en su sitio web, será llevado a la página de inicio de sesión de la reunión.
 
-- Para unirse, simplemente necesitan ingresar su nombre y la contraseña que configuró para la sala.
+- Para unirse, simplemente necesita ingresar su nombre y la contraseña que configuró para la sala.
 
 ![Joomla-28.png](/img/Joomla/Joomla-28.png)
 

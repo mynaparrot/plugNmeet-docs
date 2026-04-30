@@ -1,26 +1,26 @@
 ---
-title: API para Eliminar Artefacto | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para eliminar un archivo de artefacto de reunión.
+title: API para Eliminar un Artefacto | Referencia de la API de plugNmeet
+description: Documentación del punto final de la API para eliminar un archivo de artefacto de una reunión.
 keywords: [api, artefacto, eliminar, quitar artefacto]
 sidebar_position: 4
 sidebar_label: Eliminar
 ---
 
-# Eliminar Artefacto
+# Eliminar un Artefacto
 
 Punto final: `/artifact/delete`
 
 Este punto final le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
 
-:::info[¿Qué Artefactos son Eliminables?]
-Este punto final es solo para eliminar los archivos físicos asociados con ciertos tipos de artefactos (p. ej., `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`). No se aplica a los artefactos que solo contienen metadatos.
+:::info[¿Qué Artefactos se Pueden Eliminar?]
+Este punto final solo se utiliza para eliminar los archivos físicos asociados a ciertos tipos de artefactos (p. ej., `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`). No se aplica a los artefactos que solo contienen metadatos.
 :::
 
 :::info[Retención de Datos]
-Esta acción elimina el **archivo** del artefacto (p. ej., el archivo de texto VTT o de resumen) para ahorrar espacio de almacenamiento. Los **metadatos** asociados sobre el artefacto (p. ej., su ID, tipo y estadísticas de uso) se conservan en la base de datos para fines históricos y de auditoría.
+Esta acción elimina el **archivo** del artefacto (p. ej., el archivo de texto VTT o el resumen) para ahorrar espacio de almacenamiento. Los **metadatos** asociados al artefacto (p. ej., su ID, tipo y estadísticas de uso) se conservan en la base de datos para fines históricos y de auditoría.
 :::
 
-## Parámetros de Solicitud
+## Parámetros de la Solicitud
 
 | Campo       | Tipo   | Requerido | Descripción                            |
 | ----------- | ------ | -------- | -------------------------------------- |
