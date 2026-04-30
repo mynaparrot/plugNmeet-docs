@@ -73,7 +73,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/webrtc-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Privacidad por Diseño</h3>
+        <h3>Diseñado para la Privacidad</h3>
         <p>
           Para una máxima privacidad, añadimos una capa de cifrado de extremo a extremo (E2EE) real sobre la seguridad estándar de WebRTC, garantizando que ni siquiera el servidor pueda acceder a sus conversaciones privadas.
         </p>
