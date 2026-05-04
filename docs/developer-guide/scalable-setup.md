@@ -84,7 +84,7 @@ Its core responsibility is to handle API requests, authenticate users, and coord
 LiveKit also works behind a load balancer for initial connections.
 *   **Action:** The load balancer can terminate SSL and proxy the initial connection to any available LiveKit node.
 *   **Critical Note:** Once the connection is established, LiveKit's own internal clustering logic handles all complex media routing. It is **essential to follow the official LiveKit documentation for clustering** to configure the backend correctly.
-*   **Firewall Configuration:** Ensure that your firewall rules allow the necessary TCP and UDP ports for WebRTC traffic to reach your LiveKit instances. For a detailed list of required ports, please refer to our **[Firewall Configuration Guide](/docs/firewall.md)**.
+*   **Firewall Configuration:** Ensure that your firewall rules allow the necessary TCP and UDP ports for WebRTC traffic to reach your LiveKit instances. For a detailed list of required ports, please refer to our **[Firewall Configuration Guide](/docs/firewall)**.
 *   **Dependency:** A standalone or clustered Redis instance is required for LiveKit clustering.
 
 **(Link: [Official LiveKit Clustering Guide](https://docs.livekit.io/home/self-hosting/distributed))

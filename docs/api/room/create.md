@@ -354,8 +354,8 @@ This feature is available only if the server configuration `client > copyright_c
 
 ## Response
 
-| Field                  | Type                           | Description               |
-| :--------------------- | ------------------------------ | ------------------------- |
-| status                 | boolean                        | Indicates if the request was successful. |
-| msg                    | string                         | Response message.         |
-| [room_info](/docs/api/room/room-info.md#room-info) | object | Details about the room.   |
+| Field                                           | Type                           | Description               |
+|:------------------------------------------------| ------------------------------ | ------------------------- |
+| status                                          | boolean                        | Indicates if the request was successful. |
+| msg                                             | string                         | Response message.         |
+| [room_info](/docs/api/room/room-info#room-info) | object | Details about the room.   |

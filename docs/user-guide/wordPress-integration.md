@@ -94,7 +94,7 @@ When a user visits the page containing your meeting room shortcode, they will se
 - **Joining:** Attendees enter their name and the required password to join the meeting.
 - **No Password:** If you did not set a password, they will only need to enter their name.
 
-<img src="/img/wordpress/wordpress-join-pass.png" loading="lazy"/>
+![wordpress-join-pass.png](/img/wordpress/wordpress-join-pass.png)
 
 ---
 
@@ -111,13 +111,13 @@ You can customize colors and logos globally (for all rooms) or for a single, spe
 
 Here you can change the logo, background, and all primary and secondary colors to match your brand.
 
-<img src="/img/wordpress/plugin-room-customization-page.png" width="600" alt="/img/wordpress/plugin-room-customization-page.png" loading="lazy" />
+![plugin-room-customization-page.png](/img/wordpress/plugin-room-customization-page.png)
 
 ### User Role Permissions
 
 From the **Plug-N-Meet > Settings** page, click the **Permission** tab to configure how different WordPress user roles interact with the meeting rooms. You can control who can join as a moderator, who needs a password, and who can manage recordings.
 
-<img src="/img/wordpress/wordpress-permission-config.png"loading="lazy"/>
+![wordpress-permission-config.png](/img/wordpress/wordpress-permission-config.png)
 
 ### Client Version Settings
 
@@ -126,7 +126,7 @@ Under **Plug-N-Meet > Settings**, you can choose how the client is loaded.
 - **Remote (Default):** The client is automatically updated when you update the plugin. This is recommended for most users.
 - **Local:** Allows you to use a custom-hosted version of the client if you have specific modifications.
 
-<img src="/img/wordpress/client-version.png"loading="lazy"/>
+![client-version.png](/img/wordpress/client-version.png)
 
 ---
 

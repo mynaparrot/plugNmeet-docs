@@ -18,8 +18,8 @@ Whether you are a **moderator** managing a live session, an **attendee** joining
 
 Learn how to use the features inside a Plug-N-Meet room. The capabilities depend on your role.
 
-- **[Moderator Guide](./moderator.md):** A complete guide for hosts on how to manage meetings, participants, recordings, and use advanced features like breakout rooms and polling.
-- **[Attendee Guide](./attendee.md):** A simple guide for participants on how to join meetings and use features like chat, screen sharing, and raising your hand.
+- **[Moderator Guide](./moderator):** A complete guide for hosts on how to manage meetings, participants, recordings, and use advanced features like breakout rooms and polling.
+- **[Attendee Guide](./attendee):** A simple guide for participants on how to join meetings and use features like chat, screen sharing, and raising your hand.
 
 ---
 
@@ -27,7 +27,7 @@ Learn how to use the features inside a Plug-N-Meet room. The capabilities depend
 
 Step-by-step instructions for integrating Plug-N-Meet with popular platforms.
 
-- **[WordPress Integration](./wordPress-integration.md):** How to add video conferencing to your WordPress site.
-- **[Moodle Integration](./moodle-integration.md):** How to add a video conference activity to your Moodle courses.
-- **[Joomla Integration](./joomla-integration.md):** How to add video meetings to your Joomla site.
-- **[Integrating with any LMS using LTI](./lti.md):** A guide for connecting to Canvas, Chamilo, or any other LTI-compatible platform.
+- **[WordPress Integration](./wordPress-integration):** How to add video conferencing to your WordPress site.
+- **[Moodle Integration](./moodle-integration):** How to add a video conference activity to your Moodle courses.
+- **[Joomla Integration](./joomla-integration):** How to add video meetings to your Joomla site.
+- **[Integrating with any LMS using LTI](./lti):** A guide for connecting to Canvas, Chamilo, or any other LTI-compatible platform.

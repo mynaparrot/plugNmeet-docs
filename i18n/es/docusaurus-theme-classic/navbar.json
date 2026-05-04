@@ -1,0 +1,34 @@
+{
+  "logo.alt": {
+    "message": "plugNmeet",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Getting Started": {
+    "message": "Primeros pasos",
+    "description": "Navbar item with label Getting Started"
+  },
+  "item.label.User Guide": {
+    "message": "Guía del usuario",
+    "description": "Navbar item with label User Guide"
+  },
+  "item.label.API": {
+    "message": "API",
+    "description": "Navbar item with label API"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.Cloud": {
+    "message": "Cloud",
+    "description": "Navbar item with label Cloud"
+  },
+  "item.label.Demo": {
+    "message": "Demo",
+    "description": "Navbar item with label Demo"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  }
+}

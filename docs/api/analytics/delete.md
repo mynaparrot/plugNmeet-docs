@@ -9,7 +9,7 @@ sidebar_label: Delete
 # Delete analytics
 
 :::danger[Deprecated]
-This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/delete`](../artifact/delete.md)** endpoint instead.
+This endpoint is deprecated and will be removed in a future version. Please use the new, more flexible **[`/artifact/delete`](../artifact/delete)** endpoint instead.
 
 You can delete an analytics artifact by using its `artifact_id` from the `/artifact/fetch` response.
 :::

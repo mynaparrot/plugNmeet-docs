@@ -22,11 +22,11 @@ This section covers installing the extension and connecting it to your PlugNmeet
 - Select the **Install from Web** tab and search for **plugnmeet**.
 - Find the official Plug-N-Meet extension and click **Install**.
 
-<img src="/img/Joomla/Joomla-install.png"loading="lazy"/>
+![Joomla-install.png](/img/Joomla/Joomla-install.png)
 
 - After a moment, you should see a confirmation that the installation was successful.
 
-<img src="/img/Joomla/Joomla-success.png"loading="lazy"/>
+![Joomla-success.png](/img/Joomla/Joomla-success.png)
 
 ### 2. Connect to Your Server (API Settings)
 
@@ -35,12 +35,12 @@ This is the most important step. You must connect the extension to a working Plu
 - From your Joomla administrator panel, navigate to **System > Global Configuration**.
 - In the left-hand menu, select **plugNmeet**.
 
-<img src="/img/Joomla/Joomla-plugin-config.png" width="600" alt="Joomla Global Configuration" loading="lazy" />
+![Joomla-plugin-config.png](/img/Joomla/Joomla-plugin-config.png)
 
 - You will see three fields: **Server URL**, **API Key**, and **API Secret**.
 - After installation, these fields will be pre-filled with demo credentials. **You must replace these with the API details from your own self-hosted or PlugNmeet Cloud server.** The demo server is for temporary testing only and has limitations.
 
-<img src="/img/Joomla/Joomla-plugnmeet-config.png" width="600" alt="PlugNmeet API Configuration" loading="lazy" />
+![Joomla-plugnmeet-config.png](/img/Joomla/Joomla-plugnmeet-config.png)
 
 - After entering your own credentials, click **Save**.
 
@@ -107,7 +107,7 @@ You can customize colors and logos to match your brand.
 
 Here you can change the logo, background, and all primary and secondary colors.
 
-<img src="/img/Joomla/Joomla-globalcust.png" width="600" alt="Joomla Design Customization" loading="lazy" />
+![Joomla-globalcust.png](/img/Joomla/Joomla-globalcust.png)
 
 ### User Permissions
 

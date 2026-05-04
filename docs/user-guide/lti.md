@@ -82,7 +82,7 @@ This example demonstrates how to add Plug-N-Meet as an external LTI app in Canva
 4.  Fill in the fields with your PlugNmeet LTI credentials (Name, Consumer Key, Shared Secret, and Launch URL).
 5.  Click **Submit**. The PlugNmeet app will now be available as an external tool for assignments and modules.
 
-<img src="/img/lti/lti-canvas-1.png"loading="lazy"/>
+![lti-canvas-1.png](/img/lti/lti-canvas-1.png)
 
 ### Chamilo LMS Example
 
@@ -92,7 +92,7 @@ This example demonstrates how to add Plug-N-Meet as an external LTI app in Canva
 4.  Click **Add external tool** and fill in the form with your PlugNmeet LTI credentials.
 5.  After saving, **plugNmeet** will appear as an available tool in the **Interaction** section of your course.
 
-<img src="/img/lti/lti-chamilo-8.png"loading="lazy"/>
+![lti-chamilo-8.png](/img/lti/lti-chamilo-8.png)
 
 ### Moodle LMS Example
 
@@ -106,11 +106,11 @@ This LTI method is a great alternative if your Moodle hosting provider does not 
 6.  From the **Preconfigured tool** dropdown, select the **plugNmeet** tool you just created.
 7.  Give the activity a name, save, and it will be ready for your students.
 
-<img src="/img/lti/lti-moodle-3.png" loading="lazy"/>
-<img src="/img/lti/lti-moodle-4.png" loading="lazy"/>
-<img src="/img/lti/lti-moodle-5.png" loading="lazy"/>
-<img src="/img/lti/lti-moodle-12.png" loading="lazy"/>
-<img src="/img/lti/lti-moodle-13.png" loading="lazy"/>
+![lti-moodle-3.png](/img/lti/lti-moodle-3.png)
+![lti-moodle-4.png](/img/lti/lti-moodle-4.png)
+![lti-moodle-5.png](/img/lti/lti-moodle-5.png)
+![lti-moodle-12.png](/img/lti/lti-moodle-12.png)
+![lti-moodle-13.png](/img/lti/lti-moodle-13.png)
 ---
 
 ## Common Questions & Troubleshooting

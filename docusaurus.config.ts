@@ -27,7 +27,7 @@ const config: Config = {
   // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
-    locales: ['en'],
+    locales: ['en', 'es'],
   },
 
   presets: [
@@ -117,6 +117,10 @@ const config: Config = {
           label: 'GitHub',
           position: 'right',
         },
+        {
+          type: 'localeDropdown',
+          position: 'right',
+        },
       ],
     },
     footer: {
@@ -135,7 +139,7 @@ const config: Config = {
             },
             {
               label: 'Cloud',
-              href: 'https://www.plugnmeet.com',
+              href: 'https://www.plugnmeet.cloud',
             },
           ],
         },
