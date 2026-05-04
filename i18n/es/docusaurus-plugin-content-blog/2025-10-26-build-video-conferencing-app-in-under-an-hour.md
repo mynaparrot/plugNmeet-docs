@@ -2,7 +2,7 @@
 title: "Cómo construir su propia aplicación de videoconferencia en menos de una hora"
 slug: build-video-conferencing-app-in-under-an-hour
 authors: [jibon]
-tags: [webrtc, api, sdk, developer, tutorial, programming,video-conferencing]
+tags: [webrtc, api, sdk, developer, tutorial, programación, video-conferencia]
 ---
 
 Construir una aplicación de videoconferencia puede parecer una tarea monumental. Implica lidiar con las complejidades de WebRTC, configurar servidores de señalización, gestionar STUN/TURN para el paso a través de NAT y manejar el trabajo intensivo de enrutar transmisiones de medios. La infraestructura de backend por sí sola puede llevar meses en construirse y estabilizarse.
@@ -11,13 +11,13 @@ Pero, ¿y si pudiera omitir todo eso?
 
 ¿Y si pudiera aprovechar una plataforma potente y de código abierto que gestiona toda la complejidad del backend, permitiéndole construir una aplicación de videoconferencia personalizada y totalmente funcional en menos de una hora? Con **plugNmeet**, es posible.
 
-Esta guía le mostrará los tres pasos fundamentales para construir su propia aplicación de video utilizando la arquitectura API-first de plugNmeet.
+Esta guía le mostrará los tres pasos fundamentales para construir su propia aplicación de video utilizando la arquitectura arquitectura centrada en API de plugNmeet.
 
 <!--truncate-->
 
 ---
 
-## La forma tradicional: La complejidad inherente
+## La manera tradicional: Una complejidad abrumadora
 
 Antes de mostrarle la manera sencilla, es importante apreciar los problemas que plugNmeet resuelve. Construir una aplicación WebRTC desde cero requiere que se convierta en un experto en:
 
@@ -29,7 +29,7 @@ Antes de mostrarle la manera sencilla, es importante apreciar los problemas que 
 
 Esta es una tarea enorme.
 
-## El enfoque de plugNmeet: Un marco de trabajo API-First
+## El enfoque de plugNmeet: Un framework centrado en API
 
 plugNmeet agrupa toda esta complejidad en un único servidor de código abierto que puede instalar con un script automatizado. Le proporciona un conjunto de APIs simple y potente que actúa como sus bloques de construcción.
 
@@ -134,7 +134,7 @@ Cuando un usuario visita este enlace, la aplicación cliente de plugNmeet se car
 
 ### La alternativa sin código: Complementos oficiales
 
-El enfoque API-first le brinda la máxima flexibilidad para construir una aplicación personalizada. Pero, ¿qué sucede si está utilizando una plataforma popular como WordPress, Moodle o Joomla y desea comenzar sin escribir ningún código?
+El enfoque centrado en API le brinda la máxima flexibilidad para construir una aplicación personalizada. Pero, ¿qué sucede si está utilizando una plataforma popular como WordPress, Moodle o Joomla y desea comenzar sin escribir ningún código?
 
 Para estas plataformas, hemos realizado todo el trabajo de integración por usted. Nuestros complementos oficiales gestionan las llamadas a la API, la generación de shortcodes y los permisos de usuario automáticamente, lo que le permite añadir e incluso monetizar un servicio de videoconferencia con todas las funciones directamente desde su panel de administración.
 
@@ -152,9 +152,9 @@ En el tiempo que le tomó leer este artículo, ha aprendido todo el flujo de tra
 2.  **Usar una llamada simple a la API** para controlar salas y usuarios.
 3.  **Integrar el cliente pre-construido** para una interfaz de usuario instantánea.
 
-Ha evitado la complejidad de WebRTC y ha ido directamente a construir su aplicación. A partir de aquí, su siguiente paso es hacerla verdaderamente suya. Aprenda **[cómo integrar profundamente y personalizar el cliente (white label)](/blog/deep-integration-white-label-guide)** para crear una experiencia de usuario fluida que coincida perfectamente con su marca.
+Ha evitado la complejidad de WebRTC e ido directamente a construir su aplicación. A partir de aquí, su siguiente paso es hacerla verdaderamente suya. Aprenda **[cómo integrar a fondo y personalizar con marca blanca el cliente](/blog/deep-integration-white-label-guide)** para crear una experiencia de usuario fluida que coincida perfectamente con su marca.
 
-El poder de una plataforma WebRTC completa está ahora al alcance de su mano. ¿Qué construirá?
+Ahora tiene al alcance de su mano el poder de una plataforma WebRTC completa. ¿Qué proyecto va a realizar?
 
 ---
 **¿Listo para comenzar?**
