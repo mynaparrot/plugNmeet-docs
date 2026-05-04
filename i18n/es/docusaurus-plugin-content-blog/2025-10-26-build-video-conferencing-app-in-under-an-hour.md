@@ -132,11 +132,11 @@ Cuando un usuario visita este enlace, la aplicación cliente de plugNmeet se car
 
 ---
 
-### La alternativa sin código: Complementos oficiales
+### La alternativa sin código: Plugins oficiales
 
 El enfoque centrado en API le brinda la máxima flexibilidad para construir una aplicación personalizada. Pero, ¿qué sucede si está utilizando una plataforma popular como WordPress, Moodle o Joomla y desea comenzar sin escribir ningún código?
 
-Para estas plataformas, hemos realizado todo el trabajo de integración por usted. Nuestros complementos oficiales gestionan las llamadas a la API, la generación de shortcodes y los permisos de usuario automáticamente, lo que le permite añadir e incluso monetizar un servicio de videoconferencia con todas las funciones directamente desde su panel de administración.
+Para estas plataformas, hemos realizado todo el trabajo de integración por usted. Nuestros plugins oficiales gestionan las llamadas a la API, la generación de shortcodes y los permisos de usuario automáticamente, lo que le permite añadir e incluso monetizar un servicio de videoconferencia con todas las funciones directamente desde su panel de administración.
 
 *   **[Lanzar un servicio de videoconferencia para WordPress](/blog/no-code-video-conferencing-service-with-wordpress)**
 *   **[Añadir una videoconferencia de Moodle a sus cursos](/blog/no-code-video-conferencing-moodle)**
