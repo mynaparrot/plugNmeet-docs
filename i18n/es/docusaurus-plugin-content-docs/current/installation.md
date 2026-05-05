@@ -10,7 +10,7 @@ sidebar_label: Guía de Instalación
 
 Esta guía le mostrará la forma más rápida y sencilla de poner en marcha su propia plataforma de videoconferencias autoalojada.
 
-Nuestro método recomendado utiliza un sencillo script automatizado que configura todos los componentes necesarios para ejecutar la plataforma en un servidor limpio con Ubuntu o Debian. Como alternativa, para quienes prefieren un servicio gestionado, nuestra **[solución oficial en el Cloud, PlugNmeet Cloud](https://www.plugnmeet.cloud)**, proporciona un servidor listo para usar, permitiéndole omitir por completo el proceso de instalación.
+Nuestro método recomendado utiliza un sencillo script automatizado que configura todos los componentes necesarios para ejecutar la plataforma en un servidor limpio con Ubuntu o Debian. Como alternativa, para quienes prefieren un servicio gestionado, nuestra **[solución oficial en la nube, PlugNmeet Cloud](https://www.plugnmeet.cloud)**, proporciona un servidor listo para usar, permitiéndole omitir por completo el proceso de instalación.
 
 Comencemos a configurar su servidor.
 
@@ -21,12 +21,12 @@ Comencemos a configurar su servidor.
 Antes de comenzar, asegúrese de contar con lo siguiente:
 
 *   Un **servidor limpio con Ubuntu o Debian** y una **dirección IP pública**. Recomendamos cualquier versión LTS de Ubuntu. Es fundamental que el servidor **no** tenga otros servidores web como Apache o Nginx en ejecución, ya que esto provocará conflictos.
-*   **Hardware y Ancho de Banda:** El servidor Plug-N-Meet en sí es una aplicación muy ligera. El hardware que necesita dependerá de la carga de trabajo que espere, específicamente del número de usuarios concurrentes y de la frecuencia con la que grabe sesiones.
+*   **Hardware y Ancho de Banda:** El servidor Plug-N-Meet en sí es una aplicación muy ligera. El hardware que necesita depende de la carga de trabajo prevista, específicamente del número de usuarios concurrentes y de la frecuencia con la que grabe sesiones.
 
     Para un grupo pequeño o para realizar pruebas, un servidor simple (p. ej., 2 núcleos de CPU, 2-4 GB de RAM) es suficiente.
 
     Para un entorno de producción, recomendamos:
-    *   **Ancho de Banda:** Este es el factor más crítico. Se recomienda un **mínimo de 100 Mbits/s**, pero más siempre es mejor para una experiencia de usuario de calidad.
+    *   **Ancho de Banda:** Este es el factor más crítico. Se recomienda un **mínimo de 100 Mbits/s**, pero cuanto más tenga, mejor será la experiencia de usuario.
     *   **CPU:** Al menos 4 núcleos (se recomiendan 8 o más si se utiliza el grabador).
     *   **RAM:** Al menos 4 GB (se recomiendan 8 GB o más si se utiliza el grabador).
 *   **Dos subdominios** que apunten a la IP pública de su servidor (p. ej., `plugnmeet.ejemplo.com` y `turn.ejemplo.com`).
@@ -60,7 +60,7 @@ El script es interactivo y le solicitará la información necesaria, como sus no
 Al final del proceso, el script mostrará su **URL del Servidor**, **Clave de API** y **Secreto de API**.
 
 :::info[Sus Credenciales de Servidor]
-Recomendamos guardar estas credenciales ahora para un fácil acceso. Sin embargo, si cierra la ventana, ¡no se preocupe! Siempre podrá encontrarlas más tarde en el archivo `/opt/plugNmeet/config.yaml` de su servidor.
+Recomendamos guardar estas credenciales ahora para tenerlas a mano. Si cierra la ventana, ¡no se preocupe! Siempre podrá recuperarlas después desde el archivo `/opt/plugNmeet/config.yaml` en su servidor.
 :::
 
 ---
@@ -92,7 +92,7 @@ Una vez completada la instalación, puede verificar que todo funcione correctame
 ¡Felicidades! Ahora tiene una plataforma de videoconferencias autoalojada y completamente funcional. Aquí hay algunas cosas que puede hacer a continuación:
 
 *   **Comenzar a usar Plug-N-Meet:** Ahora que su servidor está en funcionamiento, visite nuestro **[Resumen de la Guía del Usuario](/docs/user-guide/overview)** para conocer las diferentes formas en que puede integrar y usar su nueva plataforma, desde plugins sin código hasta nuestra potente API.
-*   **Explorar la API:** Para los desarrolladores listos para sumergirse, nuestra **[Documentación de la API](/docs/api/intro)** proporciona todos los detalles que necesita para comenzar a construir.
+*   **Explorar la API:** Para desarrolladores listos para empezar, nuestra **[Documentación de la API](/docs/api/intro)** proporciona todos los detalles que necesita para comenzar a construir.
 *   **Administrar su servidor:** Conozca los comandos comunes para **[administrar sus servicios](#administrando-servicios)**, incluyendo iniciar, detener y ver registros.
 
 ---
