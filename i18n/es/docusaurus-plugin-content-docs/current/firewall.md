@@ -31,9 +31,9 @@ El script de instalación configura automáticamente un servidor TURN en el puer
 
 ---
 
-### Puertos para Marcación SIP/VoIP
+### Puertos de entrada SIP/VoIP
 
-Si planea utilizar la función de marcación SIP/VoIP, también debe abrir los siguientes puertos para permitir la comunicación con su proveedor externo de troncales SIP.
+Si planea usar la función de entrada SIP/VoIP, también debe abrir los siguientes puertos para permitir la comunicación con su proveedor externo de troncales SIP.
 
 | Puerto          | Protocolo | Requerido | Descripción                                                  |
 | :------------ | :------- | :------- | :----------------------------------------------------------- |
