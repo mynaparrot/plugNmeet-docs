@@ -8,7 +8,7 @@ sidebar_label: Seguridad y Privacidad
 
 # Resumen de Seguridad y Privacidad de Plug-N-Meet
 
-Este documento ofrece un panorama completo de la arquitectura de seguridad y los principios de privacidad que rigen la plataforma Plug-N-Meet. No solo detalla las medidas técnicas que implementamos para proteger sus reuniones contra accesos no autorizados, sino que también ofrece una explicación transparente sobre cómo se manejan, almacenan y gestionan sus datos durante todo su ciclo de vida. El sistema está diseñado desde su concepción para ser seguro por defecto y para otorgarle a usted, como operador, el control total sobre sus datos.
+Este documento ofrece un panorama completo de la arquitectura de seguridad y los principios de privacidad que rigen la plataforma Plug-N-Meet. No solo detalla las medidas técnicas que implementamos para proteger sus reuniones contra accesos no autorizados, sino que también ofrece una explicación transparente sobre cómo se manejan, almacenan y gestionan sus datos durante todo su ciclo de vida. El sistema está diseñado desde cero para ser seguro por defecto y brindarle a usted, como operador, el control total sobre sus datos.
 
 ## Tabla de Contenidos
 
@@ -20,8 +20,8 @@ Este documento ofrece un panorama completo de la arquitectura de seguridad y los
 4.  [Seguridad del Transporte y de los Datos en Tránsito](#4-seguridad-del-transporte-y-de-los-datos-en-tránsito)
     -   [Comunicación NATS](#41-comunicación-nats)
     -   [Servidor de Medios (LiveKit)](#42-servidor-de-medios-livekit)
-    -   [Pasarela SIP (SIP Gateway)](#43-pasarela-sip-sip-gateway)
-5.  [Servicios de IA y Privacidad de Datos (La Plataforma Insights)](#5-servicios-de-ia-y-privacidad-de-datos-la-plataforma-insights)
+    -   [Puerta de enlace SIP (SIP Gateway)](#43-puerta-de-enlace-sip-sip-gateway)
+5.  [Servicios de IA y Privacidad de Datos (Plataforma de Análisis)](#5-servicios-de-ia-y-privacidad-de-datos-plataforma-de-análisis)
 6.  [Flujo de Sesión Segura](#6-flujo-de-sesión-segura)
 7.  [Almacenamiento en el Navegador (IndexedDB)](#7-almacenamiento-en-el-navegador-indexeddb)
 8.  [Manejo y Persistencia de Datos en el Servidor](#8-manejo-y-persistencia-de-datos-en-el-servidor)
@@ -93,21 +93,21 @@ La comunicación para la señalización, el chat y otros mensajes de datos se ma
 Los flujos de medios son gestionados por LiveKit, que tiene soporte integrado para E2EE.
 
 -   La misma clave criptográfica utilizada para los datos de NATS se pasa al SDK de LiveKit.
--   El SDK del cliente de LiveKit maneja el cifrado y descifrado de todas las pistas de audio, cámara web y pantalla compartida directamente en el dispositivo del usuario. El servidor de medios (SFU) retransmite únicamente paquetes de medios cifrados.
+-   El SDK de LiveKit se encarga de cifrar y descifrar todas las pistas de audio, la cámara web y la pantalla compartida directamente en el dispositivo del usuario. El servidor de medios (SFU) solo retransmite paquetes de medios cifrados.
 
 *Referencia: `client/src/helpers/livekit/ConnectLivekit.ts`*
 
-#### 4.3. Pasarela SIP (SIP Gateway)
+#### 4.3. Puerta de enlace SIP (SIP Gateway)
 
-La función de marcación telefónica está impulsada por el proyecto **[livekit/sip](https://github.com/livekit/sip)**. Esta es una función avanzada que requiere que el administrador del servidor la configure con un proveedor externo de troncales SIP para servir de puente para las llamadas entre la red telefónica (PSTN) y su sesión de WebRTC.
+La función de acceso telefónico está impulsada por el proyecto **[livekit/sip](https://github.com/livekit/sip)**. Esta es una función avanzada que requiere que el administrador del servidor la configure con un proveedor externo de troncales SIP para enlazar llamadas entre la red telefónica (PSTN) y la sesión WebRTC.
 
 -   **Responsabilidad del administrador:** Usted, como administrador, es responsable de la configuración y seguridad de esta integración. Para obtener instrucciones detalladas de configuración, consulte el [repositorio oficial de livekit/sip en GitHub](https://github.com/livekit/sip).
--   **Cifrado de transporte (SRTP):** El servicio `livekit/sip` admite `SIPMediaEncryption` (SRTP), que cifra el flujo de audio entre la pasarela SIP y su proveedor. Es su responsabilidad habilitar esto y asegurarse de que su proveedor lo admita.
--   **Incompatibilidad con E2EE:** La pasarela SIP debe procesar audio sin cifrar para conectar la llamada entre las redes PSTN y WebRTC. Debido a esto, es, **por su naturaleza, incompatible** con el cifrado de extremo a extremo. La función de marcación SIP se desactiva automáticamente para cualquier sala donde el E2EE esté activo.
+-   **Cifrado de transporte (SRTP):** El servicio `livekit/sip` admite `SIPMediaEncryption` (SRTP), que cifra el flujo de audio entre la puerta de enlace SIP y su proveedor. Es su responsabilidad habilitar esto y asegurarse de que su proveedor lo admita.
+-   **Incompatibilidad con E2EE:** La puerta de enlace SIP debe procesar audio sin cifrar para conectar la llamada entre las redes PSTN y WebRTC. Debido a esto, es, **por su naturaleza, incompatible** con el cifrado de extremo a extremo. La función de acceso telefónico SIP se desactiva automáticamente en cualquier sala donde esté activo el E2EE.
 
-### 5. Servicios de IA y Privacidad de Datos (La Plataforma Insights)
+### 5. Servicios de IA y Privacidad de Datos (Plataforma de Análisis)
 
-La plataforma Insights de Plug-N-Meet se integra con proveedores de IA de terceros (como Microsoft Azure y Google) para ofrecer funciones avanzadas. Como operador de la plataforma, es su responsabilidad comprender cómo se manejan estos datos y actualizar su propia política de privacidad para reflejarlo.
+La plataforma de análisis de Plug-N-Meet se integra con proveedores de IA de terceros (como Microsoft Azure y Google) para ofrecer funciones avanzadas. Como operador de la plataforma, es su responsabilidad comprender cómo se manejan estos datos y actualizar su propia política de privacidad para reflejarlo.
 
 #### 5.1. Funciones de IA Basadas en Audio
 
@@ -157,14 +157,14 @@ Para lograr esto, la aplicación almacena temporalmente datos de sesión efímer
 
 Los datos almacenados en IndexedDB están diseñados para ser efímeros y se manejan de la siguiente manera:
 
-*   **Cifrado:** Los datos almacenados en IndexedDB **no están cifrados** por la aplicación. Esta es una elección de diseño deliberada, ya que los datos residen en el propio dispositivo del usuario final y están protegidos por las medidas de seguridad del sistema operativo y el perfil del navegador del usuario. El enfoque principal de seguridad está en cifrar los datos *en tránsito* y asegurar que no se persistan en ningún servidor.
-*   **Fin de sesión normal:** Cuando un usuario finaliza correctamente su sesión (p. ej., haciendo clic en "Finalizar reunión" o "Salir de la reunión"), todos los datos almacenados para esa sesión se **eliminan de forma inmediata y permanente** del navegador.
+*   **Cifrado:** La aplicación **no cifra** los datos almacenados en IndexedDB. Esta es una elección de diseño deliberada, ya que los datos residen en el propio dispositivo del usuario final y están protegidos por las medidas de seguridad del sistema operativo y el perfil del navegador del usuario. El principal objetivo de seguridad es cifrar los datos *mientras se transmiten* y asegurarse de que no queden almacenados en ningún servidor.
+*   **Fin de sesión normal:** Cuando un usuario finaliza correctamente su sesión (p. ej., haciendo clic en "Finalizar reunión" o "Salir de la reunión"), todos los datos almacenados de esa sesión **se eliminan del navegador de forma inmediata y permanente**.
 *   **Fin de sesión anormal (p. ej., cerrar la pestaña del navegador):** Si una sesión no finaliza correctamente, los datos permanecen en el IndexedDB del navegador. Sin embargo, en el siguiente inicio de la aplicación, se ejecuta un proceso de limpieza. Este proceso identifica y elimina automáticamente cualquier dato almacenado de sesiones anteriores que haya superado una antigüedad máxima predefinida (p. ej., varias horas). Esta antigüedad máxima es configurable y está sujeta a cambios en futuras versiones para optimizar el rendimiento y la privacidad.
 
 **Puntos Clave:**
 
 *   Estos datos se almacenan **solo en el navegador del usuario final** y nunca se transmiten a otro lugar con fines de almacenamiento.
-*   El almacenamiento es esencial para la funcionalidad esperada de la aplicación y no se utiliza para seguimiento o análisis.
+*   El almacenamiento es esencial para el funcionamiento esperado de la aplicación y no se utiliza para seguimiento ni análisis.
 
 **Aviso legal para operadores:** Como la persona u organización que despliega este software, usted es responsable de crear y mantener su propia Política de Privacidad. Debe utilizar esta información para asegurarse de que su política sea transparente y cumpla con cualquier regulación de protección de datos aplicable (p. ej., GDPR).
 
@@ -174,7 +174,7 @@ Para proporcionar una imagen completa del ciclo de vida de los datos, esta secci
 
 #### 8.1. Estado de la Sesión en Tiempo Real (Redis o NATS KV)
 
-Durante una reunión activa, el servidor necesita gestionar el estado en tiempo real de la sala, como la lista de participantes, su estado de silencio y otros metadatos inmediatos. Esto se maneja mediante un almacén de clave-valor en memoria de alto rendimiento (ya sea Redis o NATS KV).
+Durante una reunión activa, el servidor necesita gestionar el estado en tiempo real de la sala, como la lista de participantes, su estado de silencio y otros metadatos inmediatos. Esto se gestiona mediante un almacén en memoria de clave-valor de alto rendimiento (ya sea Redis o NATS KV).
 
 -   **Propósito:** Coordinación rápida y en tiempo real de una sesión activa.
 -   **Ciclo de vida:** Estos datos son volátiles y están vinculados a la vida de la sesión. Se borran automáticamente cuando finaliza la sesión.
@@ -188,18 +188,18 @@ Para fines de referencia histórica y administrativos, se almacena un pequeño s
 
 #### 8.3. Datos de Análisis Opcionales
 
-PlugNmeet ofrece la opción de persistir análisis detallados de una sesión para ayudar a los administradores a comprender los patrones de uso. Esta función se rige por una configuración que proporciona a los administradores el control sobre la retención de datos.
+PlugNmeet ofrece la opción de guardar análisis detallados de una sesión para ayudar a los administradores a comprender los patrones de uso. Esta función se rige por una configuración que proporciona a los administradores el control sobre la retención de datos.
 
--   **Control del usuario:** La decisión de **persistir** los datos de análisis la toma el administrador por cada sala mediante el flag `enable_analytics`, adhiriéndose al principio de privacidad por defecto.
+-   **Control del usuario:** La decisión de **conservar** los datos de análisis la toma el administrador por cada sala mediante el flag `enable_analytics`, adhiriéndose al principio de privacidad por defecto.
 -   **Datos recopilados (Metadatos, no contenido):** Para proteger la privacidad del usuario, PlugNmeet **no almacena el contenido sin procesar** de las interacciones del usuario en sus análisis. En su lugar, agrega metadatos y contadores de eventos. Por ejemplo, el sistema registra:
     -   El *número de veces* que un usuario envió un mensaje de chat, no los mensajes de chat en sí.
     -   El *número de veces* que un usuario dibujó en la pizarra, no el contenido de los dibujos.
     -   La *duración total* que un usuario habló, no el audio de lo que dijo.
     -   Otros eventos de participación como horas de unión/salida, archivos cargados y votos en encuestas.
--   **Almacenamiento:** Si se persisten, estos metadatos agregados **siempre se almacenan como un archivo JSON** en el sistema de archivos del servidor. Una referencia al nombre del archivo y su sala asociada se almacena luego en una tabla dedicada en la base de datos persistente para una fácil recuperación.
--   **Ciclo de vida:** Los datos de análisis se agregan en memoria durante el transcurso de una sesión activa. Al finalizar la sesión, el sistema verifica la configuración `enable_analytics` de la sala.
+-   **Almacenamiento:** Si se conserva, esta metadata agregada **siempre se almacena como un archivo JSON** en el sistema de archivos del servidor. Luego, se guarda una referencia al nombre del archivo y a la sala asociada en una tabla dedicada de la base de datos persistente para facilitar su recuperación.
+-   **Ciclo de vida:** Los datos analíticos se agrupan en memoria durante el transcurso de una sesión activa. Al finalizar la sesión, el sistema verifica la configuración `enable_analytics` de la sala.
     -   Si es `true`, los metadatos agregados se escriben en un archivo JSON y su referencia se guarda en la base de datos.
-    -   Si es `false`, los datos en memoria se descartan inmediatamente y no se persisten de ninguna forma.
+    -   Si es `false`, los datos en memoria se descartan inmediatamente y no se almacenan de ninguna forma.
 
 #### 8.4. Grabaciones en la Nube
 
@@ -223,4 +223,4 @@ Cuando se utilizan funciones de IA como la transcripción o el resumen, estas ge
 
 ---
 
-Este enfoque por capas para la seguridad y el manejo de datos hace más que solo proteger contra amenazas comunes; proporciona un marco transparente y flexible que lo pone a usted, el operador, al mando. Al combinar medidas de seguridad sólidas con una filosofía de "**_privacidad por diseño_**", Plug-N-Meet le brinda las herramientas y la transparencia necesarias para cumplir con sus propias obligaciones de privacidad y cumplimiento con confianza.
+Este enfoque de seguridad y gestión de datos en múltiples capas hace más que proteger contra amenazas comunes; proporciona un marco transparente y flexible que lo pone a usted, el operador, al mando. Al combinar medidas de seguridad sólidas con una filosofía de "**_privacidad por diseño_**", Plug-N-Meet le brinda las herramientas y la transparencia necesarias para cumplir con sus propias obligaciones de privacidad y cumplimiento con confianza.
