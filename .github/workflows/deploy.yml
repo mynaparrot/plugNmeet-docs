@@ -9,6 +9,10 @@ on:
 
 jobs:
   deploy:
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
@@ -19,7 +23,7 @@ jobs:
       - uses: pnpm/action-setup@v6
         name: Install pnpm
         with:
-          version: 10
+          version: 'latest'
       - name: Install dependencies
         run: pnpm install
       - name: Run Update Browserslist
@@ -27,11 +31,12 @@ jobs:
       - name: Build website
         run: pnpm run build
 
-      # Popular action to deploy to GitHub Pages:
-      # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v5
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Build output to publish to the `gh-pages` branch:
-          publish_dir: ./build
+          path: build/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
