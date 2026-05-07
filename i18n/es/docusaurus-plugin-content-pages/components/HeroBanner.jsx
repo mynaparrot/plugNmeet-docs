@@ -37,7 +37,7 @@ const SlideItems = [
   },
   {
     imgSrc: CamGrid,
-    altText: 'Vista de cuadrícula de 24 cámaras de plugNmeet en videoconferencia',
+    altText: 'Vista cuadrícula de 24 cámaras en videoconferencia de plugNmeet',
   },
   {
     imgSrc: CamModal,
@@ -101,7 +101,7 @@ const HeroBanner = () => {
       </div>
       <section className="features-section slider-section">
         <div className="container">
-          <h2 className="headline">Explore las Características Claves</h2>
+          <h2 className="headline">Explore las Características Clave</h2>
           <div className="slider-wrapper">
             <img
               className="desktop-back"
