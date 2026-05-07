@@ -12,9 +12,9 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
     description: (
       <>
-        <h3>Instalación Sencilla y Autoalojamiento</h3>
+        <h3>Instalación Sencilla y Autoalojada</h3>
         <p>
-          Integre una solución completa de videoconferencia en sus aplicaciones y sitios web en cuestión de minutos. Mantenga sus datos seguros con una plataforma WebRTC autoalojada y bajo su control.
+          Integre una solución completa de videoconferencia en sus aplicaciones y sitios web en cuestión de minutos. Mantenga sus datos seguros con una plataforma WebRTC autoalojada y local.
         </p>
       </>
     ),
@@ -25,7 +25,7 @@ const FeatureList: FeatureItem[] = [
       .default,
     description: (
       <>
-        <h3>Personalización Total y Marca Blanca</h3>
+        <h3>Personalizable con Marca Blanca</h3>
         <p>
           Adapte cada aspecto de sus reuniones con una API sencilla, sin necesidad de modificar el código. Personalice URLs, logotipos, colores de marca y funciones para crear una experiencia completamente suya.
         </p>
@@ -51,7 +51,7 @@ const FeatureList: FeatureItem[] = [
     description: (
       <>
         <h3>Asistente de Reuniones con IA</h3>
-        <p>Convierta sus reuniones en inteligencia procesable. Nuestro potente asistente de IA ofrece traducciones habladas en vivo, genera resúmenes automáticos, crea transcripciones completas, <strong>y mucho más...</strong></p>
+        <p>Convierta sus reuniones en información útil y accionable. Nuestro potente asistente de IA ofrece traducciones habladas en vivo, genera resúmenes automáticos, crea transcripciones completas, <strong>y mucho más...</strong></p>
       </>
     ),
   },
@@ -63,7 +63,7 @@ const FeatureList: FeatureItem[] = [
       <>
         <h3>Colaboración en Tiempo Real</h3>
         <p>
-          Aumente la productividad durante sus videoconferencias con potentes herramientas colaborativas. Trabajen en equipo en tiempo real utilizando una pizarra compartida y un bloc de notas colaborativo.
+          Aumente la productividad durante sus videoconferencias con potentes herramientas colaborativas. Trabaje en equipo en tiempo real con una pizarra compartida y un bloc de notas colaborativo.
         </p>
       </>
     ),
@@ -100,7 +100,7 @@ const FeatureList: FeatureItem[] = [
       <>
         <h3>Conexión Estable, Donde Sea</h3>
         <p>
-          Disfrute de una experiencia de video fluida, incluso con una conexión Wi-Fi o móvil débil. Nuestra tecnología inteligente ajusta automáticamente la calidad del video para evitar interrupciones y mantener la conversación en marcha.
+          Disfrute de una experiencia de video fluida, incluso con una conexión Wi-Fi o móvil débil. Nuestra tecnología inteligente ajusta automáticamente la calidad del video para evitar interrupciones y mantener la conversación fluida.
         </p>
       </>
     ),
@@ -112,7 +112,7 @@ const FeatureList: FeatureItem[] = [
       <>
         <h3>Diseñado para Escalar</h3>
         <p>
-          Haga crecer su plataforma con total confianza. Nuestro moderno backend está construido para escalar horizontalmente usando Go, <strong>LiveKit</strong> y <strong>NATS</strong>. Esta arquitectura de alto rendimiento soporta más usuarios con menos recursos y se despliega como un único y sencillo binario.
+          Haga crecer su plataforma con confianza. Nuestro backend moderno está diseñado para escalar horizontalmente con Go, <strong>LiveKit</strong> y <strong>NATS</strong>. Esta arquitectura de alto rendimiento permite atender a más usuarios con menos recursos y se despliega como un sencillo y único binario.
         </p>
       </>
     ),
