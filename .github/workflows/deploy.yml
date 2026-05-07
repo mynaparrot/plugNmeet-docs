@@ -4,14 +4,16 @@ on:
   push:
     branches:
       - main
-    # Review gh actions docs if you want to further define triggers, paths, etc
-    # https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#on
 
 jobs:
   deploy:
     permissions:
-      pages: write      # to deploy to Pages
-      id-token: write   # to verify the deployment originates from an appropriate source
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
@@ -32,7 +34,6 @@ jobs:
         run: pnpm run build
 
       - name: Upload static files as artifact
-        id: deployment
         uses: actions/upload-pages-artifact@v5
         with:
           path: build/
