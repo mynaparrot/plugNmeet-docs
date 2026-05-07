@@ -25,6 +25,7 @@ jobs:
       - name: Build website
         run: pnpm run build
       - name: Upload artifact
+        id: deployment
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./build
