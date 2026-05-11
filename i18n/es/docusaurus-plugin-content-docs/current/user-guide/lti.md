@@ -10,7 +10,7 @@ sidebar_label: Integración LTI
 
 Learning Tools Interoperability (LTI) es un protocolo estándar que le permite conectar de forma segura Plug-N-Meet a prácticamente cualquier Sistema de Gestión del Aprendizaje (LMS) como Canvas, Moodle, Chamilo y otros.
 
-Este método es ideal si no existe un complemento dedicado para su plataforma o si su institución restringe la instalación de complementos personalizados. Permite a los instructores y estudiantes unirse a las reuniones y ver las grabaciones directamente desde la página de su curso.
+Este método es ideal si no existe un plugin dedicado para su plataforma o si su institución restringe la instalación de plugins personalizados. Permite a los instructores y estudiantes unirse a las reuniones y ver las grabaciones directamente desde la página de su curso.
 
 ---
 
@@ -96,9 +96,9 @@ Este ejemplo demuestra cómo agregar Plug-N-Meet como una aplicación LTI extern
 
 ### Ejemplo con Moodle LMS
 
-Este método LTI es una excelente alternativa si su proveedor de alojamiento de Moodle no permite la instalación de complementos de actividad personalizados.
+Este método LTI es una excelente alternativa si su proveedor de alojamiento de Moodle no permite la instalación de plugins de actividad personalizados.
 
-1.  Como administrador, vaya a **Administración del sitio > Complementos > Gestionar herramientas**.
+1.  Como administrador, vaya a **Administración del sitio > Plugins > Gestionar herramientas**.
 2.  Haga clic en **Configurar una herramienta manualmente**.
 3.  Llene el formulario con sus credenciales LTI de PlugNmeet (Nombre de la herramienta, URL de la herramienta, Clave de consumidor, Secreto compartido).
 4.  Haga clic en **Guardar cambios**.
@@ -115,8 +115,8 @@ Este método LTI es una excelente alternativa si su proveedor de alojamiento de 
 
 ## Preguntas Comunes y Solución de Problemas
 
-**¿Cuál es la diferencia entre usar LTI y el complemento dedicado de Moodle?**
-El complemento dedicado de Moodle ofrece una integración más profunda con las funciones de Moodle, como las calificaciones y los permisos. Sin embargo, el método LTI es una solución universal que funciona para casi cualquier LMS y es una excelente alternativa si no puede instalar complementos personalizados.
+**¿Cuál es la diferencia entre usar LTI y el plugin dedicado de Moodle?**
+El complemento dedicado de Moodle ofrece una integración más profunda con las funciones de Moodle, como las calificaciones y los permisos. Sin embargo, el método LTI es una solución universal que funciona para casi cualquier LMS y es una excelente alternativa si no puede instalar plugins personalizados.
 
 **¿Por qué recibo un error de 'Autenticación Fallida'?**
 Esto casi siempre significa que la **Clave de Consumidor** o el **Secreto Compartido** son incorrectos. Verifique dos veces que ha copiado estos valores correctamente de la configuración de la API de su servidor PlugNmeet y que están ingresados correctamente en su LMS.
