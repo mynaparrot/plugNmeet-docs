@@ -1,6 +1,6 @@
 ---
 title: Guía de Usuario para Videoconferencias plugNmeet
-description: Una descripción general de la guía de usuario de plugNmeet, con enlaces a guías para moderadores, asistentes e integraciones de plataforma como WordPress, Moodle y Joomla.
+description: Resumen general de la guía de usuario de plugNmeet, con enlaces a guías para moderadores, participantes e integraciones con plataformas como WordPress, Moodle y Joomla.
 keywords: [guía de usuario, moderador, asistente, wordpress, moodle, joomla, lti, docs]
 sidebar_position: 1
 sidebar_label: Descripción General
@@ -10,11 +10,11 @@ sidebar_label: Descripción General
 
 Le damos la bienvenida a la Guía de Usuario de Plug-N-Meet. En esta sección encontrará guías completas para todos los usuarios de la plataforma.
 
-Tanto si es un **moderador** que gestiona una sesión en vivo, un **asistente** que se une a una reunión o un **administrador** que integra Plug-N-Meet con una plataforma como WordPress, Moodle o Joomla, aquí encontrará la información necesaria.
+Ya sea usted un **moderador** que gestiona una sesión en vivo, un **asistente** que se une a una reunión o un **administrador** que integra Plug-N-Meet con una plataforma como WordPress, Moodle o Joomla, aquí encontrará la información necesaria.
 
 ---
 
-## Experiencia en la Reunión
+## Experiencia Durante la Reunión
 
 Descubra cómo utilizar las funciones dentro de una sala de Plug-N-Meet. Las capacidades disponibles dependerán de su rol.
 
