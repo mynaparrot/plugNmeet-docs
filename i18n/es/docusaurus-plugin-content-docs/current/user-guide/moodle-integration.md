@@ -1,6 +1,6 @@
 ---
-title: Plugin de Moodle para plugNmeet | Añada Videoconferencias a Moodle
-description: Cómo instalar y configurar el plugin de Moodle para plugNmeet para añadir una actividad de videoconferencia en vivo a sus cursos de Moodle para clases en línea.
+title: El plugin de plugNmeet para Moodle | Añada Videoconferencias a Moodle
+description: Cómo instalar y configurar el plugin de plugNmeet para Moodle y así agregar actividades de videoconferencia en vivo a tus clases en línea.
 keywords: [moodle, plugin, integración con moodle, aula virtual, clase en línea, e-learning, webrtc en moodle]
 sidebar_position: 5
 sidebar_label: Integración con Moodle
@@ -8,7 +8,7 @@ sidebar_label: Integración con Moodle
 
 # Cómo Añadir una Actividad de Videoconferencia a Moodle con Plug-N-Meet
 
-Esta guía ofrece una explicación detallada para instalar y configurar el módulo de actividad Plug-N-Meet en su entorno de aprendizaje Moodle. Al seguir estos pasos, podrá organizar videoconferencias seguras e integradas directamente en sus cursos de Moodle.
+Esta guía le mostrará paso a paso cómo instalar y configurar el módulo de actividad Plug-N-Meet en el entorno de aprendizaje Moodle. Siguiendo este proceso, podrá realizar videoconferencias seguras e integradas directamente desde sus cursos.
 
 ---
 
@@ -18,9 +18,9 @@ Esta sección cubre la instalación inicial y la configuración del servidor par
 
 ### 1. Instalar desde el Directorio de Plugins de Moodle
 
-- Como administrador de Moodle, navegue a **Administración del sitio > Plugins > Instalar plugins**.
-- Haga clic en el botón **Instalar plugins desde el directorio de plugins de Moodle**.
-- Se le redirigirá al directorio oficial de plugins de Moodle. En el cuadro de búsqueda, escriba **plugnmeet** y haga clic en **Buscar**.
+- Como administrador de Moodle, navegue a **Administración del sitio > Extensiones > Instalar complementos (plugins)**.
+- Haga clic en el botón **Instalar complementos desde el directorio de extensiones de Moodle.**.
+- Será redirigido al directorio de plugins de Moodle. En el cuadro de búsqueda, escriba **plugnmeet** y haga clic en **Buscar**.
 - Localice el plugin oficial de Plug-N-Meet y haga clic en **Instalar ahora**.
 
 ![Moodle-install-plugnmeet.png](/img/moodle/Moodle-install-plugnmeet.png)
@@ -35,8 +35,8 @@ Esta sección cubre la instalación inicial y la configuración del servidor par
 ### 3. Configurar los Ajustes del Servidor
 
 - Tras el proceso de instalación, se le redirigirá a la página de configuración principal de Plug-N-Meet.
-- **Este paso es fundamental.** Debe conectar el plugin a un servidor PlugNmeet que esté en funcionamiento.
-- Es posible que los campos **URL del Servidor**, **Clave de API** y **Secreto de API** contengan credenciales de demostración por defecto.
+- **Este es el paso más importante.** Debe conectar el plugin a un servidor PlugNmeet que esté en funcionamiento.
+- Los campos **URL del Servidor**, **Clave de API** y **Secreto de API** pueden venir prellenados con credenciales de demostración.
 - **Deberá sustituirlos por los detalles de la API de su propio servidor (ya sea autoalojado o en PlugNmeet Cloud).** El servidor de demostración está destinado únicamente a pruebas temporales y presenta limitaciones.
 
 ![Moodle-8.png](/img/moodle/Moodle-8.png)
@@ -49,7 +49,7 @@ Esta sección cubre la instalación inicial y la configuración del servidor par
 
 Una vez que el plugin esté instalado y configurado, podrá añadir actividades de videoconferencia a cualquier curso.
 
-### 1. Añadir la Actividad PlugNmeet
+### 1. Añadir la Actividad de PlugNmeet
 
 - Diríjase al curso de Moodle donde desea incorporar la videoconferencia.
 - Haga clic en el botón **Activar edición**.
@@ -73,7 +73,7 @@ Al crear una actividad de PlugNmeet, dispondrá de múltiples opciones de person
 - **Características de la Sala:** Permite habilitar o deshabilitar funciones principales como el uso de cámaras web, compartir pantalla y la grabación.
 - **Características del Chat:** Permite controlar si el chat está activo y si se permite el envío de archivos.
 - **Bloc de Notas Compartido y Pizarra:** Permite habilitar o deshabilitar estas herramientas de colaboración.
-- **Ajustes de Bloqueo Predeterminados:** Configure qué funciones estarán bloqueadas por defecto para los asistentes al unirse (por ejemplo, micrófono o chat). Esto resulta muy útil para sesiones tipo conferencia.
+- **Configuración de bloqueo predeterminada:** Defina qué funciones estarán bloqueadas por defecto para los asistentes al unirse (por ejemplo, micrófono o chat). Esto resulta muy útil para sesiones tipo conferencia.
 - **Ajustes Específicos de Moodle:** También puede configurar ajustes estándar de Moodle como **Calificación**, **Restricción de acceso** y **Finalización de la actividad** para integrar la videoconferencia con el libro de calificaciones y el progreso del estudiante.
 
 ![Moodle-15.png](/img/moodle/Moodle-15.png)
@@ -91,12 +91,12 @@ Al crear una actividad de PlugNmeet, dispondrá de múltiples opciones de person
 
 Como administrador, tiene la posibilidad de establecer una configuración global aplicable a todas las actividades de PlugNmeet.
 
-- **Ubicación:** Navegue a **Administración del sitio > Plugins > Módulos de actividad > plugNmeet**.
+- **Ubicación:** Navegue a **Administración del sitio > Extensiones > Módulos de actividad > plugNmeet**.
 
 ### Personalización del Diseño
 
-- En el área de configuración, haga clic en la pestaña **Personalización del Diseño**.
-- Desde aquí puede modificar el logotipo, el fondo y los colores principales y secundarios para que coincidan con la identidad visual de su institución u organización.
+- En el área de configuración, desplácese hacia abajo hasta la sección **Marca y personalización**.
+- Desde aquí puede personalizar el logotipo, el fondo y los colores principales y secundarios para adaptarlos a la identidad visual de su organización o institución.
 
 ![Moodle-designcust.png](/img/moodle/Moodle-designcust.png)
 
@@ -116,4 +116,4 @@ Como administrador, tiene la posibilidad de establecer una configuración global
 Este es el problema más frecuente. Significa que aún se están utilizando las credenciales de demostración predeterminadas en la configuración principal del plugin. Debe sustituirlas por los datos de la API de su propio servidor o de PlugNmeet Cloud.
 
 **¿Cómo accedo a la configuración principal del plugin después de la instalación?**
-Como administrador de Moodle, encontrará la configuración global en **Administración del sitio > Plugins > Módulos de actividad > plugNmeet**.
+Como administrador de Moodle, encontrará la configuración global en **Administración del sitio > Extensiones > Módulos de actividad > plugNmeet**.
