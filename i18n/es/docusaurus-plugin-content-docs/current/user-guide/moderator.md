@@ -29,7 +29,7 @@ Al entrar por primera vez a una sala de PlugNmeet, se le solicitará que elija c
  
 ## Sección 1: Controles Principales de Multimedia
 
-Estos son los controles básicos para su audio y video, situados en la parte inferior izquierda de la barra de control.
+Estos son los controles básicos de audio y video, ubicados en la parte inferior izquierda de la barra de controles.
 
 ### Gestión de Micrófono y Audio
 
@@ -219,7 +219,7 @@ Divida a los participantes en grupos reducidos y temporales para debates especí
 - En el menú **Más Opciones** (...), elija **Gestionar Salas de Grupos Pequeños**.
 - Configure el número de salas, la duración y asigne a los participantes (manualmente o de forma aleatoria).
 - Haga clic en **Iniciar salas de grupos pequeños**.
-- Mientras las salas estén activas, podrá enviar mensajes a todos los grupos, unirse a salas concretas o finalizar la sesión grupal.
+- Mientras las salas estén activas, podrá enviar mensajes a todos los grupos, unirse a salas específicas o finalizar la sesión grupal.
 
 ![breakout-room.webp](/img/moderator/breakout-room.webp)
 
@@ -271,7 +271,7 @@ Ahora, configure su software (usaremos OBS como ejemplo) para enviar la señal.
 
 Al pulsar **"Iniciar Transmisión"** en OBS, su señal aparecerá como un nuevo participante en la sala de plugNmeet. Para más detalles, consulte nuestra entrada de blog: [Retransmita como un profesional: Cómo integrar OBS en su sala de plugNmeet](https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress)
 
-### Marcación Telefónica SIP/VoIP
+### Acceso Telefónico SIP/VoIP
 
 :::note[Requiere Configuración del Servidor]
 Esta es una función avanzada disponible solo si el administrador del sistema ha configurado la integración SIP en el servidor.
@@ -282,12 +282,12 @@ Esta función permite que los participantes se unan al audio de la reunión marc
 ![sip_1.png](/img/moderator/sip_1.png)
 
 - Haga clic en el menú de tres puntos en la esquina **superior derecha** y seleccione **Configuración**.
-- Diríjase a la pestaña **Marcación de Entrada SIP/VoIP**.
-- **Habilitar Servicio:** Si el servicio no está activo, haga clic en el botón **Activar** para iniciar la pasarela SIP de esta sesión.
+- Diríjase a la pestaña de **Acceso telefónico SIP/VoIP**.
+- **Habilitar Servicio:** Si el servicio no está activo, haga clic en el botón **Activar** para iniciar la puerta de enlace SIP en esta sesión.
 
 ![sip_2.png](/img/moderator/sip_2.png)
 
-- **Ver Información de Marcación:** Una vez activo, verá los **Números de Marcación** y el **PIN** único de la reunión.
+- **Ver Información de Acceso Telefónico:** una vez activo, este panel mostrará los **Números de Acceso** y el **PIN** único de la reunión actual.
 - **Compartir en el Chat:** Haga clic en **Compartir en el Chat** para publicar automáticamente estos datos en el chat público.
 
 ---
@@ -321,14 +321,14 @@ Para capturar todo el audio de la sesión, la grabación debe realizarla un segu
 **Instrucciones paso a paso:**
 
 1.  **Abra una nueva ventana de Chrome** (no una pestaña).
-2.  **Acceda a la misma reunión con una cuenta diferente** que tenga permisos de moderador.
+2.  En la nueva ventana, **acceda a la misma reunión con una cuenta diferente** que tenga permisos de moderador. Ahora tendrá dos sesiones suyas dentro de la reunión.
 3.  En esta segunda ventana, haga clic en el icono **REC** y elija **Grabación Local**.
 4.  En el aviso de Chrome, seleccione la pestaña de su sesión original.
-5.  **Paso Crucial:** Marque la casilla **"Compartir audio de la pestaña"**. Sin esto, no se grabará el sonido.
+5.  **Paso Crucial:** En la parte inferior de la ventana, marque la casilla **"Compartir el audio de la pestaña"**. Sin esto, no se grabará el sonido.
 
 **Método Alternativo (solo su micrófono):**
 
-Si solo desea grabar su micrófono y el video, puede hacerlo sin un segundo usuario. Debe **compartir su micrófono primero** y *luego* iniciar la grabación.
+Si solo necesita grabar su micrófono junto con el video principal, puede hacerlo sin necesidad de un segundo usuario. Debe **compartir su micrófono primero** y *luego* iniciar la grabación. Si comienza la grabación antes de compartir su micrófono, su propio audio no estará incluido.
 
 ### Ajustes de la Aplicación
 
