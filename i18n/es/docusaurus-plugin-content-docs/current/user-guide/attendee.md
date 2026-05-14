@@ -59,7 +59,7 @@ Estas funciones le permiten interactuar con el moderador y los demás participan
 ![attendee-polls.webp](/img/moderator/attendee-polls.webp)
 
 ### Transcripción y Traducción
-- **Iniciar Transcripción y Traducción:** Haga clic en el icono de **Transcripción y Traducción** en la barra de control principal del pie de página para iniciar el servicio (si el moderador lo ha habilitado para usted).
+- **Iniciar Transcripción y Traducción:** Haga clic en el icono de **Transcripción y Traducción** en la barra de control principal inferior para iniciar el servicio (si el moderador lo ha habilitado para usted).
 
 ![attendee-transcriptions.webp](/img/moderator/attendee-transcriptions.webp)
 
@@ -71,7 +71,7 @@ Estas funciones le permiten interactuar con el moderador y los demás participan
 
 ### Uso del Asistente de IA
 
-- **Habilitar/Deshabilitar:** Haga clic en el icono del **Asistente de IA** en la barra de control principal del pie de página para iniciar el Asistente de IA (si el moderador lo ha habilitado para usted).
+- **Habilitar/Deshabilitar:** Haga clic en el icono del **Asistente de IA** en la barra de control principal inferior para iniciar el Asistente de IA (si el moderador lo ha habilitado para usted).
 
 ![attendee-ai-tools.webp](/img/moderator/attendee-ai-tools.webp)
 
