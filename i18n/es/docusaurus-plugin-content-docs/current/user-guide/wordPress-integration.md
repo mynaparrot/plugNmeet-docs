@@ -8,13 +8,13 @@ sidebar_label: Integración con WordPress
 
 # Cómo Añadir Videoconferencias a WordPress con el Plugin Plug-N-Meet
 
-Esta guía proporciona un recorrido completo para integrar la potente solución de videoconferencia autoalojada Plug-N-Meet con su sitio web de WordPress. Al finalizar, podrá organizar reuniones de video seguras directamente desde su propio dominio.
+Esta guía le ofrece un recorrido completo para integrar la potente solución de videoconferencias Plug-N-Meet, alojada en su propio servidor, con su sitio web en WordPress. Al finalizar, podrá organizar reuniones seguras directamente desde su propio dominio.
 
 ---
 
 ## Parte 1: Instalación y Configuración Inicial
 
-Esta sección cubre la instalación del plugin y su conexión a su servidor PlugNmeet.
+Esta sección explica cómo instalar el plugin y conectarlo a tu servidor de PlugNmeet.
 
 ### 1. Instalar el Plugin
 
@@ -35,11 +35,11 @@ Esta sección cubre la instalación del plugin y su conexión a su servidor Plug
 Este es el paso más importante. Debe conectar el plugin a un servidor PlugNmeet que esté en funcionamiento.
 
 - Desde su panel de WordPress, navegue al nuevo elemento de menú **Plug-N-Meet** y seleccione **Ajustes**.
-- Verá tres campos: **URL del Servidor**, **Clave de API** y **Secreto de API**.
+- Verá tres campos: **URL del Servidor**, **Clave API** y **Secreto API**.
 
 ![server-settings-min.png](/img/wordpress/server-settings-min.png)
 
-- Estos campos deben rellenarse con las credenciales de la API de su servidor. Después de la activación, es posible que estén pre-rellenados con credenciales de demostración.
+- Estos campos deben rellenarse con las credenciales de la API de su servidor. Después de la activación, es posible que estén prellenados con credenciales de demostración.
 - **Debe sustituirlos por los detalles de la API de su propio servidor autoalojado o de PlugNmeet Cloud para garantizar la funcionalidad completa.**
 
 ---
