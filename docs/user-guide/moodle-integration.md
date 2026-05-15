@@ -8,112 +8,195 @@ sidebar_label: Moodle Integration
 
 # How to Add a Video Conferencing Activity to Moodle with Plug-N-Meet
 
-This guide provides a complete walkthrough for installing and configuring the Plug-N-Meet activity module for your Moodle learning environment. By following these steps, you can host secure, integrated video conferences directly within your Moodle courses.
+Welcome to the definitive guide for integrating **plugNmeet**, a powerful, open-source **Moodle video conferencing** platform, into your Moodle courses. This document provides a comprehensive walkthrough, from initial setup to leveraging advanced features, ensuring you can build a seamless and engaging **virtual classroom** experience. With this **free video conference software**, you can host **live online classes**, webinars, and meetings without ever leaving your Moodle site.
 
 ---
 
-## Part 1: Plugin Installation & Configuration
+## 1. Introduction: Why plugNmeet is the Best Choice for Moodle
 
-This section covers the initial installation and server setup for the Plug-N-Meet module.
+plugNmeet is not just another video meeting tool; it's a complete **virtual classroom** solution built for deep integration with Moodle.
 
-### 1. Install from Moodle Plugin Directory
-
-- As a Moodle administrator, navigate to **Site administration > Plugins > Install plugins**.
-- Click the button **Install plugins from the Moodle plugins directory**.
-- You will be redirected to the Moodle plugin directory. In the search box, type **plugnmeet** and click **Search**.
-- Find the official Plug-N-Meet plugin and click **Install now**.
-
-![Moodle-install-plugnmeet.png](/img/moodle/Moodle-install-plugnmeet.png)
-
-### 2. Complete the Installation
-
-- You will be guided through several confirmation screens.
-- Click **Continue** on each screen to proceed through the installation checks and database upgrade steps.
-
-![Moodle-continue-4.png](/img/moodle/Moodle-continue-4.png)
-
-### 3. Configure Server Settings
-
-- After the installation process, you will be taken to the main settings page for Plug-N-Meet.
-- **This is the most important step.** You must connect the plugin to a working PlugNmeet server.
-- The **Server URL**, **API Key**, and **API Secret** fields may be pre-filled with demo credentials.
-- **You must replace these with the API details from your own self-hosted or PlugNmeet Cloud server.** The demo server is for temporary testing only and has limitations.
-
-![Moodle-8.png](/img/moodle/Moodle-8.png)
-
-- Scroll down and click **Save changes**.
+-   **Seamless Native Experience**: The classroom loads directly within your Moodle layout. To your students and teachers, it feels like a natural part of your site, not a third-party tool. This boosts user adoption and reduces confusion.
+-   **Open Source and Free**: As a leading **open source video conferencing** solution, plugNmeet gives you complete ownership. You control your data, your infrastructure, and your costs.
+-   **Deep Moodle Integration**: plugNmeet hooks directly into Moodle's core systems, including the calendar, activity completion, grading, and user permissions, for a truly integrated experience.
+-   **Rich Feature Set**: It's packed with tools designed for education, including an interactive whiteboard, breakout rooms, live polling, and advanced analytics.
+-   **Unmatched Customization**: Brand the entire virtual classroom—from logos and colors to the layout itself—to perfectly match your institution's identity.
 
 ---
 
-## Part 2: Adding a Video Conference to a Course
+## 2. Installation and Configuration
 
-Once the plugin is installed and configured, you can add video conference activities to any course.
+To get started with plugNmeet, your Moodle administrator must install the plugin and connect it to a plugNmeet server. This section covers the installation and configuration of the Moodle plugin itself.
 
-### 1. Add the PlugNmeet Activity
+### Step 2.1: Install the plugNmeet Moodle Plugin
 
-- Navigate to the Moodle course where you want to add the video conference.
-- Click the **Turn editing on** button.
-- In the desired course Topic, click **Add an activity or resource**.
-- Select **PlugNmeet** from the list of activities.
+1.  Download the latest version of the plugin from the [Moodle Plugin Directory](https://moodle.org/plugins/mod_plugnmeet) or the [official GitHub repository](https://github.com/mynaparrot/moodle-mod_plugnmeet).
+2.  Log in to your Moodle site as an administrator.
+3.  Navigate to `Site administration > Plugins > Install plugins`.
+4.  Upload the plugin's ZIP file and click **"Install plugin from the ZIP file"**.
+5.  Moodle will check the plugin and prompt you to **"Upgrade Moodle database now"**. Proceed with the upgrade.
 
-![Moodle-11.png](/img/moodle/Moodle-11.png)
+### Step 2.2: Configure the Plugin Connection
 
-### 2. Configure the Activity
+This is the most critical step. You need to tell Moodle how to connect to your plugNmeet server. Your server administrator will provide you with the necessary credentials.
 
-- **Meeting Name & Description:** Give your video conference a clear name and description.
-- **Welcome Message:** Customize the initial message that appears in the meeting chat.
-- **Max Participants:** Set a limit on the number of users who can join (use `0` for unlimited).
+1.  After installation, you will be taken to the settings page. You can also find it later at `Site administration > Plugins > plugNmeet`.
+2.  **API Configuration**:
+    -   **Server URL**: Enter the full URL of your plugNmeet server (e.g., `https://pnm.yourdomain.com`).
+    -   **API Key**: Enter the `PLUGNMEET_API_KEY` provided by your server administrator.
+    -   **API Secret**: Enter the `PLUGNMEET_SECRET` provided by your server administrator.
+3.  **Client Loading Method**:
+    -   Choose **Remote (Embedded)**. This is the recommended setting for a seamless, white-label experience where the classroom loads inside your Moodle page.
+    -   `Redirect` is a fallback that sends users to the plugNmeet server's default interface, which is not ideal for branding.
+4.  **Save changes**. The plugin will attempt to connect to the server. If successful, you're ready to go! If not, double-check your credentials and server URL.
 
-![Moodle-12.png](/img/moodle/Moodle-12.png)
-
-### 3. Understanding Activity Settings
-
-When creating a PlugNmeet activity, you have many options to customize the experience. These are grouped into sections:
-
-- **Room Features:** Enable or disable core features like webcams, screen sharing, and recording.
-- **Chat Features:** Control if the chat is enabled and if file uploads are allowed.
-- **Shared Notepad & Whiteboard:** Enable or disable these collaborative tools.
-- **Default Lock Settings:** Configure which features are locked by default for attendees when they join (e.g., microphone, chat). This is useful for lecture-style meetings.
-- **Moodle-Specific Settings:** You can also configure standard Moodle settings like **Grade**, **Restrict access**, and **Activity completion** to control how the video conference integrates with your course gradebook and student progress.
-
-![Moodle-15.png](/img/moodle/Moodle-15.png)
-
-### 4. Save and Join
-
-- Once you have configured all the settings, click **Save and display**.
-- You and your students can now enter the meeting by clicking the **Join Session** button.
-
-![Moodle-27.png](/img/moodle/Moodle-27.png)
+![Screenshot of the Moodle admin settings page with fields for API credentials and the client loading method highlighted.](/img/moodle/moodle_1.png)
 
 ---
 
-## Part 3: Global & Advanced Settings (Optional)
+## 3. Creating and Managing a Live Session
 
-As an administrator, you can configure global settings that apply to all PlugNmeet activities.
+Adding a video conference to a course is simple.
 
-- **Location:** Navigate to **Site administration > Plugins > Activity modules > plugNmeet**.
+1.  Navigate to the Moodle course where you want to add the session.
+2.  Turn **Edit mode** on.
+3.  In the desired section, click **Add an activity or resource**.
+4.  Select **plugNmeet** from the activity chooser. You will be taken to the activity settings page.
 
-### Design Customization
+![add plugnmeet activity](/img/moodle/moodle_2.png)
 
-- In the settings area, click the **Design Customization** tab.
-- Here you can change the logo, background, and all primary and secondary colors to match your school or organization's branding.
+### Detailed Configuration Options
 
-![Moodle-designcust.png](/img/moodle/Moodle-designcust.png)
+This form gives you granular control over every aspect of the session.
 
-### Client Version Settings
+-   **General Settings**:
+    -   **Room Title**: The name of your session (e.g., "Weekly Biology Seminar"). This is what students will see.
+    -   **Welcome Message**: A custom message that appears in the chat when users join. Great for posting an agenda or instructions.
+    -   **Max Participants**: Limit the number of users who can join the session.
 
-- In the main settings area, you can choose how the client is loaded.
-- **Remote (Default):** The client is automatically updated when you update the plugin. This is recommended for most users.
-- **Local:** Allows you to use a custom-hosted version of the client if you have specific modifications.
+-   **Room Features (Collapsible Section)**:
+    -   **Moderator must join first**: Prevents students from starting the session without a teacher present.
+    -   **Mute on start**: A great classroom management tool to ensure a quiet start to the session.
+    -   **Allow Screen Share / Webcams**: Enable or disable these core features. You can even set it to "Admin only webcams" for a presentation-style webinar.
 
-![Moodle-client-version.png](/img/moodle/Moodle-client-version.png)
+-   **Recording Features**:
+    -   **Allow Recording**: Master switch to enable/disable all recording types.
+    -   **Allow Cloud Recording**: Enables recording directly to the server. This is the most common and useful option.
+    -   **Enable Auto Start Cloud Recording**: The session will automatically start recording as soon as the first person joins.
+
+-   **Default Lock Settings**:
+    -   These settings establish the *initial* state of the room locks for participants (not moderators).
+    -   For a secure-by-default classroom, you can **Lock Screen Sharing**, **Lock Whiteboard**, and **Lock Shared Notepad**. Participants will have to ask for permission (raise their hand) to use these tools.
+
+-   **Availability**:
+    -   **Available from**: Sets the start time for the session. This automatically creates an event in the Moodle Calendar, making it a crucial tool for scheduling your **Moodle webinar** or class.
+    -   **Deadline**: Sets the end time. After this time, the "Join" button will disappear.
 
 ---
 
-## Common Questions & Troubleshooting
+## 4. In-Room Features for Engaging Online Classes
 
-**Why do my students see an 'Invalid API' or other errors?**
-This is the most common issue. It means you are still using the default demo credentials in the main plugin settings. You must replace these with the API details from your own self-hosted or PlugNmeet Cloud server. The demo server is for temporary testing only.
+plugNmeet is packed with tools to foster interaction and collaboration.
 
-**How do I find the main plugin settings after installation?**
-As a Moodle administrator, you can find the global settings under **Site administration > Plugins > Activity modules > plugNmeet**.
+-   **Interactive Whiteboard**: A powerful tool for real-time collaboration. You can draw, write text, upload and annotate PDFs/presentations, and work together with students.
+-   **Screen Sharing**: Share your entire screen, a single application window, or a browser tab with high-quality resolution.
+-   **Breakout Rooms**: Split your main session into smaller, private groups for focused discussions or project work. Moderators can move between rooms and broadcast messages to all.
+-   **Polls**: Create polls on the fly to engage students, check for understanding, or vote on topics. Results can be published live.
+-   **Shared Notepad**: A simple, real-time collaborative text editor for taking shared notes.
+-   **AI-Powered Features**: If enabled on the server, you can access:
+    -   **Live Transcription & Translation**: Get a real-time transcript of the conversation, which can be translated by users into their preferred language.
+    -   **AI Meeting Summarization**: Automatically generate and download a summary of the meeting's key points.
+
+---
+
+## 6. Advanced Analytics, Attendance, Completion Tracking and Live Session
+
+plugNmeet's integration with Moodle provides unparalleled insights into student engagement.
+
+### Cumulative Attendance Reporting
+
+Unlike tools that only report on a single session, plugNmeet aggregates data across *all* sessions within a single Moodle activity.
+
+-   **For Teachers**: Access the **Attendance** report from the activity page to see a summary of each student's total participation. This includes total time attended, whether they raised their hand, sent chat messages, etc.
+-   **For Students**: Students have their own self-service dashboard where they can see their attendance status and track their own engagement against the activity's requirements.
+
+![Screenshot of the teacher's attendance report, showing a list of students with their status and participation metrics.](/img/moodle/moodle_3.png)
+![Screenshot of the students's attendance report, showing their participation metrics.](/img/moodle/moodle_4.png)
+
+### Advanced Activity Completion
+
+This is one of the most powerful features for **Moodle virtual classrooms**. You can set highly specific, automated completion rules based on active participation.
+
+1.  In the activity settings, go to the **Activity completion** section.
+2.  Set **Completion tracking** to "Show activity as complete when conditions are met".
+3.  Check the boxes for the criteria you want to enforce. Examples:
+    -   Require students to attend for a cumulative total of **45 minutes**.
+    -   Require students to **send at least one chat message**.
+    -   Require students to **enable their webcam** at least once.
+
+This system moves beyond passive viewing and encourages active, measurable engagement.
+
+![Screenshot of the activity completion settings, with custom plugNmeet rules like "completionminutes" and "completionchatmessages" checked.](/img/moodle/moodle_5.png)
+
+### Real-Time Session Monitoring
+
+#### In-Activity Live Dashboard
+
+Once a session is live, teachers and moderators gain access to a real-time dashboard directly on the Moodle activity page. This powerful tool provides an at-a-glance overview of the session's status and participant engagement. You can instantly see:
+
+*   **Live Participant List**: A list of all users currently in the session.
+*   **Activity Status**: See who has their webcam or microphone active.
+*   **Session Summary**: A summary of key metrics, including:
+    *   **Room ID**: The unique identifier for the session.
+    *   **Recording Status**: Whether the session is currently being recorded.
+    *   **Participant Count**: The total number of users in the room.
+    *   **Active Media**: The total number of active webcams, microphones, and screen shares.
+    *   **Creation Time**: When the session was started.
+
+This live data allows moderators to manage the classroom effectively without having to constantly switch between windows.
+
+![Screenshot of the Active live sessions with participant details.](/img/moodle/moodle_7.png)
+
+#### Site-Wide Active Session Report (Admin Data Pull)
+
+For administrators, plugNmeet offers a real-time "live data pull" of all active sessions across the entire Moodle site. This is an essential tool for monitoring site-wide activity.
+
+-   **How to Access**: An administrator can add a custom link to their admin dashboard or simply navigate to `https://youmoodlesite.com/mod/plugnmeet/index.php`.
+-   **What it Shows**: The report displays a list of all currently running rooms, showing the room title, course, number of participants, and session duration. This allows admins to see at a glance how the **Moodle video conferencing** system is being used.
+
+![Screenshot of the Active Rooms Report, showing a table of live sessions with participant counts.](/img/moodle/moodle_6.png)
+
+---
+
+## 7. Managing Post-Session Recordings and Artifacts
+
+All files generated during your sessions are neatly organized and accessible directly from the Moodle activity page.
+
+-   **Recordings Tab**: Here you can find all cloud recordings. Teachers can:
+    -   Play the recording.
+    -   Control visibility (show/hide from students).
+    -   Download the recording file.
+    -   Delete the recording.
+-   **Artifacts Tab**: This tab contains all other session-generated files, governed by Moodle permissions. This includes:
+    -   AI-generated meeting summaries.
+    -   Transcription files (e.g., VTT, SRT).
+    -   Detailed per-session analytics reports in JSON format.
+
+![Screenshot of the Active Recordings.](/img/moodle/moodle_8.png)
+
+![Screenshot of the Artifacts.](/img/moodle/moodle_9.png)
+
+![Screenshot of the Analytics.](/img/moodle/moodle_10.png)
+
+---
+
+## 8. Security and Privacy
+
+plugNmeet is designed with security in mind for educational institutions.
+
+-   **Role-Based Permissions**: The plugin respects Moodle's roles. For example, only users with the `mod/plugnmeet:viewrecordings` capability can see the recordings tab. The Active Rooms Report is also protected by a specific capability (`mod/plugnmeet:viewactiveroomsreport`).
+-   **Secure by Default**: Use the **Default Lock Settings** in your activity to create a controlled environment where students must request permission to share their screen or whiteboard.
+-   **End-to-End Encryption (E2EE)**: For maximum security, you can enable E2EE for your sessions.
+-   **Guest Access Control**: Guest access can be disabled globally from the admin settings, and each session's guest link has a configurable expiration time.
+
+This concludes the detailed guide to the **plugNmeet Moodle plugin**. You are now ready to build a secure, engaging, and fully-branded **Moodle video conferencing** experience for your users.
