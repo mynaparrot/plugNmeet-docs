@@ -109,7 +109,7 @@ plugNmeet is packed with tools to foster interaction and collaboration.
 
 ---
 
-## 6. Advanced Analytics, Attendance, Completion Tracking and Live Session
+## 5. Advanced Analytics, Attendance, and Completion Tracking
 
 plugNmeet's integration with Moodle provides unparalleled insights into student engagement.
 
@@ -138,7 +138,9 @@ This system moves beyond passive viewing and encourages active, measurable engag
 
 ![Screenshot of the activity completion settings, with custom plugNmeet rules like "completionminutes" and "completionchatmessages" checked.](/img/moodle/moodle_5.png)
 
-### Real-Time Session Monitoring
+---
+
+## 6. Real-Time Session Monitoring
 
 #### In-Activity Live Dashboard
 
