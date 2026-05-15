@@ -109,7 +109,7 @@ plugNmeet está repleto de herramientas para fomentar la interacción y la colab
 
 ---
 
-## 6. Análisis Avanzado, Asistencia, Seguimiento de Finalización y Sesiones en Vivo
+## 5. Análisis Avanzado, Asistencia, y Seguimiento de Finalización
 
 La integración de plugNmeet con Moodle proporciona información inigualable sobre la participación de los estudiantes.
 
@@ -138,9 +138,11 @@ Este sistema va más allá de la visualización pasiva y fomenta una participaci
 
 ![Captura de pantalla de la configuración de finalización de la actividad, con reglas personalizadas de plugNmeet como "completionminutes" y "completionchatmessages" marcadas.](/img/moodle/moodle_5.png)
 
-### Monitorización de Sesiones en Tiempo Real
+---
 
-#### Panel de Control en Vivo Dentro de la Actividad
+## 6. Monitorización de Sesiones en Tiempo Real
+
+### Panel de Control en Vivo Dentro de la Actividad
 
 Una vez que una sesión está activa, los profesores y moderadores acceden a un panel de control en tiempo real directamente en la página de la actividad de Moodle. Esta potente herramienta proporciona una visión general instantánea del estado de la sesión y la participación de los asistentes. Puede ver al instante:
 
@@ -157,7 +159,7 @@ Estos datos en vivo permiten a los moderadores gestionar el **aula virtual** de 
 
 ![Captura de pantalla de las sesiones activas en vivo con detalles de los participantes.](/img/moodle/moodle_7.png)
 
-#### Informe de Sesiones Activas en Todo el Sitio (Para Administradores)
+### Informe de Sesiones Activas en Todo el Sitio (Para Administradores)
 
 Para los administradores, plugNmeet ofrece un informe en tiempo real de todas las sesiones activas en la totalidad del sitio Moodle. Esta es una herramienta fundamental para supervisar el uso de la plataforma de **videoconferencia para Moodle**.
 
