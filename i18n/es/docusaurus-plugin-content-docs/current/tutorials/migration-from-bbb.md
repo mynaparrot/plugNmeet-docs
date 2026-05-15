@@ -24,7 +24,7 @@ Para una comparación detallada y directa de ambas plataformas, le recomendamos 
 A continuación, las ventajas clave de la arquitectura de Plug-N-Meet:
 
 -   **Construido sobre una Base de Clase Mundial:** Plug-N-Meet está impulsado por **LiveKit** como su servidor de medios y **NATS** para la mensajería en tiempo real (chat, sincronización de pizarra, etc.). Estos son componentes extremadamente rápidos, escalables y modernos que permiten a Plug-N-Meet manejar una gran cantidad de usuarios con menos recursos de servidor.
--   **Pila Tecnológica Simplificada y Ligera:** Al aprovechar estos componentes, Plug-N-Meet evita la compleja red de dependencias que se encuentra en BigBlueButton (como FreeSWITCH y Kurento). Esto resulta en una huella de recursos significativamente menor, una instalación más fácil y un mantenimiento más simple.
+-   **Stack Tecnológico Simplificado y Ligero:** Al aprovechar estos componentes, Plug-N-Meet evita la compleja red de dependencias que se encuentra en BigBlueButton (como FreeSWITCH y Kurento). Esto se traduce en una instalación mucho más ligera, más sencilla y con un mantenimiento más fácil.
 -   **Grabaciones Simplificadas en un Solo Archivo:** A diferencia del complejo flujo de trabajo de post-procesamiento de BigBlueButton, plugNmeet genera un único archivo MP4 estándar para cada grabación. Esto hace que sus grabaciones sean instantáneamente portátiles, más fáciles de gestionar y más rápidas de acceder.
 -   **Diseñado para el Escalado Distribuido:** Plug-N-Meet no está construido como una única aplicación monolítica. Cada componente central (LiveKit para medios, NATS para mensajería, el grabador y el servidor de plugNmeet) está diseñado para escalar de forma independiente. Esto le permite agregar recursos precisamente donde los necesita, por ejemplo, escalando su infraestructura de grabación sin afectar el rendimiento de las reuniones en vivo.
 -   **Personalización sin Esfuerzo:** La plataforma está diseñada para una personalización profunda y sencilla. El cliente de front-end es una aplicación moderna y autónoma, y el back-end es un único binario. Esta clara separación permite a los desarrolladores modificar rápidamente la interfaz de usuario, agregar funciones o integrar flujos de trabajo personalizados sin tener que navegar por el complejo entorno de múltiples servicios de BigBlueButton.
@@ -34,11 +34,11 @@ A continuación, las ventajas clave de la arquitectura de Plug-N-Meet:
 
 ## El Proceso de Migración de 2 Minutos
 
-Gracias a nuestra API compatible con BBB, migrar su aplicación existente es tan simple como cambiar el punto final de la API y las credenciales en su configuración.
+Gracias a nuestra API compatible con BBB, migrar su aplicación existente es tan simple como cambiar el endpoint de la API y las credenciales en su configuración.
 
 En la configuración de su aplicación, localice los ajustes de la API de BigBlueButton y actualice los siguientes dos valores:
 
-1.  **URL del Punto Final de la API:** Cambie la URL para que apunte a su servidor de PlugNmeet, seguida de `/bigbluebutton/`.
+1.  **URL del Endpoint de la API:** Cambie la URL para que apunte a su servidor de PlugNmeet, seguida de `/bigbluebutton/`.
 2.  **Secreto de la API:** Cambie el secreto para que coincida con su secreto de API de PlugNmeet.
 
 Eso es todo. Su `API Key` de PlugNmeet se pasará como el `user` en la URL.
@@ -59,11 +59,11 @@ Secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ---
 
-## Después de la Migración: Desbloqueando el Conjunto Completo de Funciones
+## Después de la Migración: Acceda a Todas las Funciones Disponibles
 
 Para proporcionar esta migración transparente, Plug-N-Meet utiliza una potente capa de API compatible con BBB. Esto asegura que todas las funciones principales de BigBlueButton en las que se basa su aplicación existente funcionarán de inmediato.
 
-Sin embargo, esta capa de compatibilidad está diseñada como un puente. Para experimentar todo el poder de Plug-N-Meet, incluidas nuestras funciones más avanzadas, un rendimiento superior y opciones de personalización sin esfuerzo, **recomendamos encarecidamente cambiar a nuestros plugins o SDKs dedicados** cuando esté listo.
+Sin embargo, esta capa de compatibilidad está diseñada como un puente. Para aprovechar todo el potencial de Plug-N-Meet, incluidas nuestras funciones más avanzadas, un rendimiento superior y opciones de personalización sin esfuerzo, **recomendamos encarecidamente cambiar a nuestros plugins o SDKs dedicados** cuando esté listo.
 
 El uso de las integraciones nativas proporcionará la experiencia más estable, rica en funciones y preparada para el futuro para sus usuarios.
 
