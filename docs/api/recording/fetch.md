@@ -15,6 +15,7 @@ Endpoint: `/recording/fetch`
 | Field    | Type   | Required | Description                                   |
 | -------- | ------ | -------- | --------------------------------------------- |
 | room_ids | array  | Yes      | Array of room IDs to fetch recordings for.    |
+| room_sid   | string           | No       | Filter recordings from a specific room session by providing its `sid`.                                                                                                   |
 | from     | number | No       | Starting index for records. Default is 0.     |
 | limit    | number | No       | Maximum number of records to return. Default is 20. |
 | order_by | string | No       | Sort order: `DESC` or `ASC`. Default is `DESC`. |
@@ -36,6 +37,7 @@ Endpoint: `/recording/fetch`
 | ----------------- | -------------------------- | -------- | ------------------------------------------- |
 | status            | boolean                     | root     | Indicates if the request was successful.    |
 | msg               | string                      | root     | Response message.                           |
+| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [result](#result) | object                      | root     | Contains the recordings data.               |
 
 ### Result

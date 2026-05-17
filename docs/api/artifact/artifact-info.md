@@ -20,12 +20,13 @@ This endpoint allows you to retrieve information about a single artifact using i
 
 ## Response
 
-| Field         | Type         | Description                                         |
-| :------------ | :----------- | --------------------------------------------------- |
-| status        | boolean      | Indicates if the request was successful.            |
-| msg           | string       | Response message.                                   |
-| artifact_info | ArtifactInfo | Details about the requested artifact.               |
-| room_info     | PastRoomInfo | Details about the room session this artifact belongs to. |
+| Field         | Type         | Description                                                                                                                    |
+| :------------ | :----------- |--------------------------------------------------------------------------------------------------------------------------------|
+| status        | boolean      | Indicates if the request was successful.                                                                                       |
+| msg           | string       | Response message.                                                                                                              |
+| status_code | number  | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| artifact_info | ArtifactInfo | Details about the requested artifact.                                                                                          |
+| room_info     | PastRoomInfo | Details about the room session this artifact belongs to.                                                                       |
 
 ### ArtifactInfo
 

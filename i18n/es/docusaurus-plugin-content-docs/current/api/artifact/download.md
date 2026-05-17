@@ -28,6 +28,7 @@ Este punto final solo es aplicable a tipos de artefactos que representan un arch
 | :----- | :----- | -------------------------------- |
 | status | boolean| Indica si la solicitud fue exitosa. |
 | msg    | string | Mensaje de respuesta.                |
+| status_code | number      | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | token  | string | El token de descarga de un solo uso.   |
 
 Una vez que reciba el token, puede proporcionar la siguiente URL de descarga a su usuario:

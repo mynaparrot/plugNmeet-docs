@@ -49,3 +49,4 @@ This API allows you to update the metadata of a specific recording. It intellige
 | :----- | ------- | -------- | :------------------------ |
 | status | boolean | root     | The status of the request |
 | msg    | string  | root     | Response message          |
+| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |

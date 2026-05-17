@@ -29,3 +29,4 @@ Punto final: `/room/isRoomActive`
 | status    | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | is_active | boolean | raíz     | Indica si la sala se encuentra actualmente activa. |
 | msg       | string  | raíz     | Mensaje de respuesta.                    |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |

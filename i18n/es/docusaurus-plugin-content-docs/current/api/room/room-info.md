@@ -30,6 +30,7 @@ Punto final: `/room/getActiveRoomInfo`
 | ------- | --------------------- | -------- | ------------------------- |
 | status  | boolean               | raíz     | Indica si la solicitud fue exitosa. |
 | msg     | string                | raíz     | Mensaje de respuesta.         |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | room    | object\<[Sala](#sala)>| raíz     | Contiene los detalles de la sala.    |
 
 ### Sala

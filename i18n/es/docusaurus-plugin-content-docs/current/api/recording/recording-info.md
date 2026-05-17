@@ -28,5 +28,6 @@ Endpoint: `/recording/info`
 |:---------------------------------------------------------------| ------- | -------- | :------------------------ |
 | status                                                         | boolean | raíz     | El estado de la solicitud |
 | msg                                                            | string  | raíz     | Mensaje de la respuesta   |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [recording_info](/docs/api/recording/fetch#información-de-la-grabación)     | object\<[Recording Info](/docs/api/recording/fetch#información-de-la-grabación)> | raíz     | Información detallada de la grabación |
 | [room_info](/docs/api/room/fetch-past#información-de-sala-anterior)          | object\<[past-room-info](/docs/api/room/fetch-past#información-de-sala-anterior)> | raíz     | Información de la sala anterior |

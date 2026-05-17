@@ -28,6 +28,7 @@ Punto final: `/recording/getDownloadToken`
 | :----- | ------- | -------- | :------------------------------- |
 | status | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | msg    | string  | raíz     | Mensaje de respuesta.                |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | token  | string  | raíz     | El token de descarga.                  |
 
 Una vez que reciba el token, puede construir la URL de descarga utilizando el siguiente formato:

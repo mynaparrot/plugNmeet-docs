@@ -12,12 +12,13 @@ Punto final: `/recording/fetch`
 
 ## Parámetros de la Solicitud
 
-| Campo    | Tipo   | Requerido | Descripción                                   |
-| -------- | ------ | -------- | --------------------------------------------- |
-| room_ids | array  | Sí      | Un array de IDs de sala para obtener sus grabaciones.    |
-| from     | number | No       | Índice inicial para los registros. El valor predeterminado es 0.     |
-| limit    | number | No       | Número máximo de registros a devolver. El valor predeterminado es 20. |
-| order_by | string | No       | Orden de clasificación: `DESC` o `ASC`. El valor predeterminado es `DESC`. |
+| Campo    | Tipo   | Requerido | Descripción                                                                    |
+| -------- | ------ | -------- |--------------------------------------------------------------------------------|
+| room_ids | array  | Sí      | Un array de IDs de sala para obtener sus grabaciones.                          |
+| room_sid   | string           | No       | Filtrar grabaciones de una sesión de sala específica proporcionando su `sid`.  |
+| from     | number | No       | Índice inicial para los registros. El valor predeterminado es 0.               |
+| limit    | number | No       | Número máximo de registros a devolver. El valor predeterminado es 20.          |
+| order_by | string | No       | Orden de clasificación: `DESC` o `ASC`. El valor predeterminado es `DESC`.     |
 
 **Ejemplo de Solicitud:**
 
@@ -36,6 +37,7 @@ Punto final: `/recording/fetch`
 | ----------------- | -------------------------- | -------- | ------------------------------------------- |
 | status            | boolean                     | raíz     | Indica si la solicitud fue exitosa.    |
 | msg               | string                      | raíz     | Mensaje de respuesta.                           |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [result](#resultado) | object                      | raíz     | Contiene los datos de las grabaciones.               |
 
 ### Resultado

@@ -37,12 +37,13 @@ For implementation examples, refer to the [conference.php](https://github.com/my
 
 ## Response
 
-| Field  | Type    | Position | Description                                 |
-| :----- | :------ | :------- | :------------------------------------------ |
-| status | boolean | root     | Indicates whether the request was successful |
-| msg    | string  | root     | Response message                            |
-| css    | array   | root     | An array of required CSS filenames.         |
-| js     | array   | root     | An array of required JavaScript filenames.  |
+| Field       | Type    | Position | Description                                                                                                                    |
+|:------------|:--------| :------- |:-------------------------------------------------------------------------------------------------------------------------------|
+| status      | boolean | root     | Indicates whether the request was successful                                                                                   |
+| msg         | string  | root     | Response message                                                                                                               |
+| status_code | number  | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| css         | array   | root     | An array of required CSS filenames.                                                                                            |
+| js          | array   | root     | An array of required JavaScript filenames.                                                                                     |
 
 ### Example HTML Structure
 

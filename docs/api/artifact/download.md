@@ -28,6 +28,7 @@ This endpoint is only for artifact types that represent a physical file, such as
 | :----- | :----- | -------------------------------- |
 | status | boolean| Indicates if the request was successful. |
 | msg    | string | Response message.                |
+| status_code | number  | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | token  | string | The one-time-use download token.   |
 
 After receiving the token, you can provide the following download URL to your user:

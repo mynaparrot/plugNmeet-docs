@@ -39,10 +39,11 @@ Para ver ejemplos de implementación, consulte el archivo [conference.php](https
 
 | Campo  | Tipo    | Posición | Descripción                                 |
 | :----- | :------ | :------- | :------------------------------------------ |
-| status | boolean | root     | Indica si la solicitud fue exitosa. |
-| msg    | string  | root     | Mensaje de respuesta.                            |
-| css    | array   | root     | Un array de nombres de archivo CSS requeridos.         |
-| js     | array   | root     | Un array de nombres de archivo JavaScript requeridos.  |
+| status | boolean | raíz     | Indica si la solicitud fue exitosa. |
+| msg    | string  | raíz     | Mensaje de respuesta.                            |
+| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| css    | array   | raíz     | Un array de nombres de archivo CSS requeridos.         |
+| js     | array   | raíz     | Un array de nombres de archivo JavaScript requeridos.  |
 
 ### Ejemplo de Estructura HTML
 
