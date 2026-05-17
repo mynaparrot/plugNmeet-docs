@@ -2,7 +2,7 @@
 title: API para Obtener Salas Anteriores | Referencia de la API de plugNmeet
 description: Documentación del punto final de la API para obtener una lista de salas de videoconferencia pasadas (inactivas) dentro de un rango de fechas especificado.
 keywords: [api, obtener salas anteriores, historial de salas, historial de reuniones, api de sala, punto final]
-sidebar_position: 6
+sidebar_position: 7
 sidebar_label: Obtener Salas Anteriores
 ---
 
