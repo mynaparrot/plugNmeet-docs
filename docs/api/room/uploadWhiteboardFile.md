@@ -29,21 +29,30 @@ For this API call to succeed, the following conditions must be met:
 
 This functionality is different from the `preload_file` option available in the [Create Room API](/docs/api/room/create). The `preload_file` option accepts a direct URL and prepares the file when the room is created (before it is active). This endpoint, in contrast, is designed for uploading files to an already running session.
 
-## Request Parameters
+## Request
 
-The request must be sent as a `multipart/form-data` request.
+The request must be sent as a `multipart/form-data` request and include the required headers.
 
-| Field     | Type   | Required | Description                                                                                                                                                                                                    |
-| --------- | ------ | -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `room_id` | string | Yes      | The unique identifier of the active room to which you want to upload the file.                                                                                                                                 |
-| `document`| file   | Yes      | The file to be uploaded. The file size must not exceed the `max_size_whiteboard_file` limit defined in the server settings. The supported file types are also configured on the server (e.g., PDF, Doc, etc.). |
+### Headers
+
+| Header           | Type   | Required | Description                                                                 |
+| ---------------- | ------ | -------- | --------------------------------------------------------------------------- |
+| `API-KEY`        | string | Yes      | Your API key for authentication.                                            |
+| `HASH-SIGNATURE` | string | Yes      | The HMAC-SHA256 signature. See [Authentication](#authentication-for-multipart-requests) for details. |
+| `Room-Id`        | string | Yes      | The unique identifier of the active room to which you want to upload the file. |
+
+### Body
+
+| Field      | Type | Required | Description                                                                                                                                                                                                    |
+| ---------- | ---- | -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `document` | file | Yes      | The file to be uploaded. The file size must not exceed the `max_size_whiteboard_file` limit defined in the server settings. The supported file types are also configured on the server (e.g., PDF, Doc, etc.). |
 
 ## Authentication for Multipart Requests
 
-Unlike standard JSON requests, `multipart/form-data` requests require a special authentication method. Because the exact body content can vary between requests due to multipart boundaries, the `HASH-SIGNATURE` **must be generated from an empty string**.
+Unlike standard JSON requests, `multipart/form-data` requests require a special authentication method. For this specific endpoint, the `HASH-SIGNATURE` **must be generated from the value of the `Room-Id` header**.
 
 -   **`Content-Type`**: Should be `multipart/form-data`. cURL and most HTTP clients will set this automatically when you use form fields.
--   **`HASH-SIGNATURE`**: An HMAC-SHA256 signature generated using your API Secret, with an **empty string** as the message body.
+-   **`HASH-SIGNATURE`**: An HMAC-SHA256 signature generated using your API Secret, with the `Room-Id` as the message body.
 
 ## Example cURL Request
 
@@ -53,16 +62,17 @@ This example demonstrates how to correctly generate the signature and send a fil
 # Your API credentials
 API_KEY="plugnmeet"
 SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+ROOM_ID="room01"
 
-# 1. For multipart/form-data, generate the signature from an empty body.
-SIGNATURE=$(echo -n "" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+# 1. For this multipart/form-data request, generate the signature from the Room-Id value.
+SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
 # 2. Make the POST request with the correct headers and form data.
 #    cURL will automatically set the Content-Type to multipart/form-data.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
---form 'room_id="room01"' \
+--header "Room-Id: $ROOM_ID" \
 --form 'document=@"/path/to/your/presentation.pdf"'
 ```
 

@@ -29,21 +29,30 @@ Para que esta llamada a la API tenga éxito, se deben cumplir las siguientes con
 
 Esta funcionalidad es diferente de la opción `preload_file` disponible en la [API de Creación de Sala](/docs/api/room/create). La opción `preload_file` acepta una URL directa y prepara el archivo cuando se crea la sala (antes de que esté activa). Este endpoint, en cambio, está diseñado para subir archivos a una sesión que ya está en curso.
 
-## Parámetros de la Solicitud
+## Solicitud
 
-La solicitud debe enviarse como una petición `multipart/form-data`.
+La solicitud debe enviarse como una petición `multipart/form-data` e incluir las cabeceras requeridas.
 
-| Campo      | Tipo   | Requerido | Descripción                                                                                                                                                                                            |
-| ---------- | ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `room_id`  | string | Sí        | El identificador único de la sala activa a la que desea subir el archivo.                                                                                                                            |
-| `document` | file   | Sí        | El archivo a subir. El tamaño del archivo no debe exceder el límite `max_size_whiteboard_file` definido en la configuración del servidor. Los tipos de archivo admitidos también se configuran en el servidor (p. ej., PDF, Doc, etc.). |
+### Cabeceras
+
+| Cabecera         | Tipo   | Requerido | Descripción                                                                 |
+| ---------------- | ------ | --------- | --------------------------------------------------------------------------- |
+| `API-KEY`        | string | Sí        | Su clave de API para la autenticación.                                      |
+| `HASH-SIGNATURE` | string | Sí        | La firma HMAC-SHA256. Consulte [Autenticación](#autenticación-para-solicitudes-multipart) para más detalles. |
+| `Room-Id`        | string | Sí        | El identificador único de la sala activa a la que desea subir el archivo. |
+
+### Cuerpo
+
+| Campo      | Tipo | Requerido | Descripción                                                                                                                                                                                            |
+| ---------- | ---- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `document` | file | Sí        | El archivo a subir. El tamaño del archivo no debe exceder el límite `max_size_whiteboard_file` definido en la configuración del servidor. Los tipos de archivo admitidos también se configuran en el servidor (p. ej., PDF, Doc, etc.). |
 
 ## Autenticación para Solicitudes Multipart
 
-A diferencia de las solicitudes JSON estándar, las solicitudes `multipart/form-data` requieren un método de autenticación especial. Dado que el contenido exacto del cuerpo puede variar entre solicitudes debido a los límites de las partes múltiples, la `HASH-SIGNATURE` **debe generarse a partir de una cadena vacía**.
+A diferencia de las solicitudes JSON estándar, las solicitudes `multipart/form-data` requieren un método de autenticación especial. Para este punto final específico, la `HASH-SIGNATURE` **debe generarse a partir del valor de la cabecera `Room-Id`**.
 
 -   **`Content-Type`**: Debe ser `multipart/form-data`. cURL y la mayoría de los clientes HTTP lo establecerán automáticamente cuando utilice campos de formulario.
--   **`HASH-SIGNATURE`**: Una firma HMAC-SHA256 generada usando su Secreto de API, con una **cadena vacía** como cuerpo del mensaje.
+-   **`HASH-SIGNATURE`**: Una firma HMAC-SHA256 generada usando su Secreto de API, con el `Room-Id` como cuerpo del mensaje.
 
 ## Ejemplo de Solicitud cURL
 
@@ -53,16 +62,17 @@ Este ejemplo demuestra cómo generar correctamente la firma y enviar una solicit
 # Sus credenciales de API
 API_KEY="plugnmeet"
 SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+ROOM_ID="sala01"
 
-# 1. Para multipart/form-data, genere la firma a partir de un cuerpo vacío.
-SIGNATURE=$(echo -n "" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+# 1. Para esta solicitud multipart/form-data, genere la firma a partir del valor de Room-Id.
+SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
 # 2. Realice la solicitud POST con las cabeceras y los datos de formulario correctos.
 #    cURL establecerá automáticamente el Content-Type a multipart/form-data.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
---form 'room_id="sala01"' \
+--header "Room-Id: $ROOM_ID" \
 --form 'document=@"/ruta/a/su/presentacion.pdf"'
 ```
 
