@@ -40,13 +40,13 @@ Para comenzar con plugNmeet, el administrador de su Moodle debe instalar el plug
 
 Este es el paso más crítico. Debe indicar a Moodle cómo conectarse a su servidor plugNmeet. El administrador de su servidor le proporcionará las credenciales necesarias.
 
-1.  Después de la instalación, será dirigido a la página de configuración. También puede encontrarla más tarde en `Administración del sitio > Extensiones > plugNmeet`.
+1.  Después de la instalación, será dirigido a la página de configuración. También puede encontrarla más tarde en `Administración del sitio > Extensiones > Módulos de Actividad > plugNmeet`.
 2.  **Configuración de la API**:
     -   **URL del Servidor**: Ingrese la URL completa de su servidor plugNmeet (p. ej., `https://pnm.sudominio.com`).
     -   **Clave de API**: Ingrese la `PLUGNMEET_API_KEY` proporcionada por el administrador de su servidor.
     -   **Secreto de API**: Ingrese el `PLUGNMEET_SECRET` proporcionado por el administrador de su servidor.
 3.  **Método de Carga del Cliente**:
-    -   Elija **Remoto (Incrustado)**. Esta es la configuración recomendada para una experiencia fluida y de marca blanca donde el aula se carga dentro de su página de Moodle.
+    -   Elija **Remoto (Embebido)**. Esta es la configuración recomendada para una experiencia fluida y de marca blanca donde el aula se carga dentro de su página de Moodle.
     -   `Redirigir` es una alternativa que envía a los usuarios a la interfaz predeterminada del servidor plugNmeet, lo cual no es ideal para la personalización de marca.
 4.  **Guardar cambios**. El plugin intentará conectarse al servidor. Si tiene éxito, ¡está listo! Si no, verifique nuevamente sus credenciales y la URL del servidor.
 
@@ -127,8 +127,8 @@ A diferencia de las herramientas que solo informan sobre una única sesión, plu
 
 Esta es una de las características más potentes para las **aulas virtuales de Moodle**. Puede establecer reglas de finalización automatizadas y muy específicas basadas en la participación activa.
 
-1.  En la configuración de la actividad, vaya a la sección **Finalización de la actividad**.
-2.  Establezca **Seguimiento de la finalización** en "Mostrar la actividad como completada cuando se cumplan las condiciones".
+1.  En la configuración de la actividad, vaya a la sección **Condiciones de finalización de la actividad**.
+2.  Seleccione **Añadir requisitos**.
 3.  Marque las casillas de los criterios que desea aplicar. Ejemplos:
     -   Requerir que los estudiantes asistan por un total acumulado de **45 minutos**.
     -   Requerir que los estudiantes **envíen al menos un mensaje de chat**.
