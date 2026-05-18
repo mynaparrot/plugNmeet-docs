@@ -10,6 +10,10 @@ sidebar_label: Room Status
 
 Endpoint: `/room/isRoomActive`
 
+This endpoint allows you to check whether a room session is currently active. A room is considered "active" if it has been created and has not yet been terminated.
+
+This is a simple way to determine if a meeting is in progress. It's often used in application logic to decide whether to create a new room or allow a user to join an existing one. For example, before calling the `create` API, you can use this endpoint to see if a session with the same `room_id` is already running.
+
 | Field   | Type   | Position | Required | Description           |
 | ------- | ------ | -------- | :------- | --------------------- |
 | room_id | string | root     | Yes      | The unique ID of the room to check. |

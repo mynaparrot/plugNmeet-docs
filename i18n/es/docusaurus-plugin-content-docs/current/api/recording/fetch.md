@@ -10,6 +10,10 @@ sidebar_label: Obtener Grabaciones
 
 Punto final: `/recording/fetch`
 
+Este punto final le permite recuperar una lista paginada de las grabaciones disponibles. Las grabaciones se generan cuando se graba una sesión de sala y se almacenan en el servidor una vez que finaliza la sesión.
+
+Esta API es esencial para crear una biblioteca de grabaciones orientada al usuario donde los usuarios pueden navegar, ver y administrar sus grabaciones pasadas. Puede filtrar las grabaciones por `room_id` o un `sid` de sala específico para acotar los resultados, lo que facilita la visualización de contenido relevante para sus usuarios.
+
 ## Parámetros de la Solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                                                    |
@@ -37,7 +41,7 @@ Punto final: `/recording/fetch`
 | ----------------- | -------------------------- | -------- | ------------------------------------------- |
 | status            | boolean                     | raíz     | Indica si la solicitud fue exitosa.    |
 | msg               | string                      | raíz     | Mensaje de respuesta.                           |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | [result](#resultado) | object                      | raíz     | Contiene los datos de las grabaciones.               |
 
 ### Resultado

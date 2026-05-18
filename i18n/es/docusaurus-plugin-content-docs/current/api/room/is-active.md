@@ -10,6 +10,10 @@ sidebar_label: Estado de la Sala
 
 Punto final: `/room/isRoomActive`
 
+Este punto final le permite verificar si una sesión de sala está actualmente activa. Se considera que una sala está "activa" si ha sido creada y aún no ha sido terminada.
+
+Esta es una forma sencilla de determinar si una reunión está en curso. A menudo se utiliza en la lógica de la aplicación para decidir si crear una nueva sala o permitir que un usuario se una a una existente. Por ejemplo, antes de llamar a la API `create`, puede usar este punto final para ver si ya se está ejecutando una sesión con el mismo `room_id`.
+
 | Campo   | Tipo   | Posición | Requerido | Descripción           |
 | ------- | ------ | -------- | :------- | --------------------- |
 | room_id | string | raíz     | Sí      | El ID único de la sala que se desea verificar. |
@@ -29,4 +33,4 @@ Punto final: `/room/isRoomActive`
 | status    | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | is_active | boolean | raíz     | Indica si la sala se encuentra actualmente activa. |
 | msg       | string  | raíz     | Mensaje de respuesta.                    |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |

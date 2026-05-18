@@ -10,6 +10,10 @@ sidebar_label: Obtener Salas Anteriores
 
 Punto final: `/room/fetchPastRooms`
 
+Este punto final le permite recuperar información histórica sobre las sesiones de sala que ya han concluido. Después de que finaliza una sesión, ya sea cuando el último participante se va o cuando se termina a través de la API `end`, sus metadatos se almacenan y se pueden acceder mediante esta API.
+
+Esto es particularmente útil para crear funciones que requieren un historial de reuniones pasadas, como mostrar una lista de sesiones anteriores en la interfaz de usuario de su aplicación. Puede consultar uno o más `room_id` para obtener detalles como cuándo se creó la sesión, cuándo terminó y cuántos participantes se unieron.
+
 ## Parámetros de la Solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                 |
@@ -36,7 +40,7 @@ Punto final: `/room/fetchPastRooms`
 | ----------------- | -------------------------- | -------- | --------------------------------- |
 | status            | boolean                     | raíz     | Indica si la solicitud fue exitosa. |
 | msg               | string                      | raíz     | Mensaje de respuesta.                 |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | [result](#resultado) | object                      | raíz     | Contiene los datos de los resultados.        |
 
 ### Resultado

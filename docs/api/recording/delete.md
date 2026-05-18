@@ -10,6 +10,10 @@ sidebar_label: Delete
 
 Endpoint: `/recording/delete`
 
+This endpoint allows you to permanently delete a recording from the server. This action is irreversible and will remove the recording file and all associated metadata.
+
+This is a critical administrative function for managing storage and ensuring compliance with data retention policies. You would typically integrate this into your application's interface to allow authorized users to remove recordings they no longer need.
+
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
 | record_id | string | root     | Yes      | Recording Id that you want to delete |

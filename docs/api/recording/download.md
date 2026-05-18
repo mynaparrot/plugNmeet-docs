@@ -10,6 +10,15 @@ sidebar_label: Download
 
 Endpoint: `/recording/getDownloadToken`
 
+This endpoint generates a secure, temporary token that can be used to download a recording file. Instead of providing a direct, permanent link to the recording, this API creates a short-lived, single-use token.
+
+This is a security best practice that prevents unauthorized access and sharing of your recording files. The typical workflow is:
+1. A user in your application clicks a "Download" button.
+2. Your backend calls this API to get a token.
+3. Your application constructs the download URL with the token and redirects the user to it.
+
+The token will expire after a short period, ensuring that the download link cannot be reused or shared.
+
 | Field     | Type   | Position | Required | Description                                 |
 | --------- | ------ | -------- | :------- | ------------------------------------------- |
 | record_id | string | root     | Yes      | The ID of the recording you want to download. |

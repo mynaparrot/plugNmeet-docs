@@ -10,6 +10,10 @@ sidebar_label: End
 
 Endpoint: `/room/endRoom`
 
+This endpoint allows you to forcefully terminate a live room session. When you call this API with a `room_id`, the session is immediately closed, and all participants are disconnected.
+
+This is a server-side administrative action, typically used to moderate sessions or to ensure that a meeting has definitively concluded. For example, you might integrate this into a "End Meeting for All" button in your application's administrative dashboard. Once a room is ended, its data is cleared, and it can be recreated for a new session.
+
 | Field   | Type   | Position | Required | Description |
 | ------- | ------ | -------- | :------- | ----------- |
 | room_id | string | root     | Yes      | Room Id     |

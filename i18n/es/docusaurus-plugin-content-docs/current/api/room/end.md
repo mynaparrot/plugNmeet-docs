@@ -10,6 +10,10 @@ sidebar_label: Finalizar
 
 Punto final: `/room/endRoom`
 
+Este punto final le permite terminar de forma forzada una sesión de sala en vivo. Cuando llama a esta API con un `room_id`, la sesión se cierra inmediatamente y todos los participantes son desconectados.
+
+Esta es una acción administrativa del lado del servidor, típicamente utilizada para moderar sesiones o para asegurar que una reunión ha concluido definitivamente. Por ejemplo, podría integrar esto en un botón "Finalizar Reunión para Todos" en el panel de administración de su aplicación. Una vez que se finaliza una sala, sus datos se borran y se puede volver a crear para una nueva sesión.
+
 | Campo   | Tipo   | Posición | Requerido | Descripción |
 | ------- | ------ | -------- | :------- | ----------- |
 | room_id | string | raíz     | Sí      | El ID de la sala.     |
@@ -28,4 +32,4 @@ Punto final: `/room/endRoom`
 | :----- | ------- | -------- | :------------------------ |
 | status | boolean | raíz     | El estado de la solicitud. |
 | msg    | string  | raíz     | Mensaje de respuesta.          |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |

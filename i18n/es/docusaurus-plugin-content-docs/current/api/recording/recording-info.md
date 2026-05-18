@@ -10,6 +10,10 @@ sidebar_label: Información de la Grabación
 
 Endpoint: `/recording/info`
 
+Este punto final recupera todos los metadatos y detalles asociados con una grabación específica. Al proporcionar un `record_id`, puede obtener información completa sobre la grabación, incluido el tamaño del archivo, la hora de creación y los detalles de la sala asociada.
+
+Esto es útil para mostrar información detallada sobre una grabación en la interfaz de su aplicación, como en una página de reproducción de grabación dedicada.
+
 | Campo     | Tipo   | Ubicación | Requerido | Descripción                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
 | record_id | string | raíz     | Sí      | El ID de la grabación de la cual desea obtener los detalles. |
@@ -28,6 +32,6 @@ Endpoint: `/recording/info`
 |:---------------------------------------------------------------| ------- | -------- | :------------------------ |
 | status                                                         | boolean | raíz     | El estado de la solicitud |
 | msg                                                            | string  | raíz     | Mensaje de la respuesta   |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | [recording_info](/docs/api/recording/fetch#información-de-la-grabación)     | object\<[Recording Info](/docs/api/recording/fetch#información-de-la-grabación)> | raíz     | Información detallada de la grabación |
 | [room_info](/docs/api/room/fetch-past#información-de-sala-anterior)          | object\<[past-room-info](/docs/api/room/fetch-past#información-de-sala-anterior)> | raíz     | Información de la sala anterior |

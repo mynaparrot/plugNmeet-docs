@@ -80,7 +80,7 @@ Este punto final genera un token temporal que otorga a un usuario acceso a una s
 | ------ | ------- | -------- | ------------------------- |
 | status | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | msg    | string  | raíz     | Mensaje de respuesta.         |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | token  | string  | raíz     | El token de acceso.           |
 
 ### Uso del Token de Acceso

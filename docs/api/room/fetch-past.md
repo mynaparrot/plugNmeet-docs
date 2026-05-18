@@ -10,6 +10,10 @@ sidebar_label: Fetch Past Rooms
 
 Endpoint: `/room/fetchPastRooms`
 
+This endpoint allows you to retrieve historical information about room sessions that have already concluded. After a session ends—either when the last participant leaves or when terminated via the `end` API—its metadata is stored and can be accessed using this API.
+
+This is particularly useful for building features that require a history of past meetings, such as displaying a list of previous sessions in your application's user interface. You can query for one or more `room_id`s to get details like when the session was created, when it ended, and how many participants joined.
+
 ## Request Parameters
 
 | Field    | Type   | Required | Description                                 |

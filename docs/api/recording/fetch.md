@@ -10,6 +10,10 @@ sidebar_label: Fetch
 
 Endpoint: `/recording/fetch`
 
+This endpoint allows you to retrieve a paginated list of available recordings. Recordings are generated when a room session is recorded and are stored on the server after the session ends.
+
+This API is essential for building a user-facing recording library where users can browse, view, and manage their past recordings. You can filter recordings by `room_id` or a specific room `sid` to narrow down the results, making it easy to display relevant content to your users.
+
 ## Request Parameters
 
 | Field    | Type   | Required | Description                                   |

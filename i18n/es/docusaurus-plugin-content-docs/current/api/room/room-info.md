@@ -10,6 +10,10 @@ sidebar_label: Información de la Sala
 
 Punto final: `/room/getActiveRoomInfo`
 
+Este punto final recupera información detallada y en tiempo real sobre una sala activa específica. Mientras que `isRoomActive` simplemente le indica si una sala está en funcionamiento, esta API proporciona una instantánea completa de la sesión, incluido su estado actual, una lista de todos los participantes y sus detalles individuales.
+
+Esto es útil para crear paneles de administración o herramientas de moderación donde necesite monitorear reuniones en vivo. Puede ver quién está en la sala, cuándo se unieron y otros metadatos asociados tanto con la sala como con los participantes.
+
 ## Parámetros de la Solicitud
 
 | Campo   | Tipo   | Posición | Requerido | Descripción           |
@@ -30,7 +34,7 @@ Punto final: `/room/getActiveRoomInfo`
 | ------- | --------------------- | -------- | ------------------------- |
 | status  | boolean               | raíz     | Indica si la solicitud fue exitosa. |
 | msg     | string                | raíz     | Mensaje de respuesta.         |
-| status_code | number | raíz     | Respuesta [código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | room    | object\<[Sala](#sala)>| raíz     | Contiene los detalles de la sala.    |
 
 ### Sala

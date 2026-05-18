@@ -10,6 +10,10 @@ sidebar_label: Recording Info
 
 Endpoint: `/recording/info`
 
+This endpoint retrieves all the metadata and details associated with a specific recording. By providing a `record_id`, you can get comprehensive information about the recording, including its file size, creation time, and associated room details.
+
+This is useful for displaying detailed information about a recording in your application's interface, such as on a dedicated recording playback page.
+
 | Field     | Type   | Position | Required | Description                          |
 | --------- | ------ | -------- | :------- | ------------------------------------ |
 | record_id | string | root     | Yes      | Recording Id that you want to get details |

@@ -10,6 +10,10 @@ sidebar_label: Rooms Info
 
 Endpoint: `/room/getActiveRoomsInfo`
 
+This endpoint provides a comprehensive overview of all currently active rooms on the server. It returns an array of room objects, each containing the same detailed information as the `/room/getActiveRoomInfo` endpoint, including participant lists and room metadata.
+
+This is a powerful tool for server-wide monitoring and administration. It's ideal for building a real-time dashboard that shows all ongoing meetings, the number of participants in each, and other session details.
+
 **Example**:
 
 ```json

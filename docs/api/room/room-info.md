@@ -10,6 +10,10 @@ sidebar_label: Room Info
 
 Endpoint: `/room/getActiveRoomInfo`
 
+This endpoint retrieves detailed, real-time information about a specific active room. While `isRoomActive` simply tells you if a room is running, this API provides a comprehensive snapshot of the session, including its current state, a list of all participants, and their individual details.
+
+This is useful for building administrative dashboards or moderation tools where you need to monitor live meetings. You can see who is in the room, when they joined, and other metadata associated with both the room and the participants.
+
 ## Request Parameters
 
 | Field   | Type   | Position | Required | Description           |
@@ -65,4 +69,4 @@ Endpoint: `/room/getActiveRoomInfo`
 | state      | string  | Participant state.                          |
 | metadata   | string  | Participant metadata.                       |
 | joined_at  | number  | Time the participant joined (Unix timestamp).|
-| version    | number  | Version information.
+| version    | number  | Version information.                        |
