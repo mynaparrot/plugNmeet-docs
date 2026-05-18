@@ -26,6 +26,14 @@ This action deletes the artifact **file** (e.g., the VTT or summary text file) t
 | ----------- | ------ | -------- | -------------------------------------- |
 | artifact_id | string | Yes      | The unique identifier of the artifact. |
 
+### Example Request
+
+```json
+{
+  "artifact_id": "ARTIFACT_ID"
+}
+```
+
 ## Response
 
 | Field  | Type    | Description                              |

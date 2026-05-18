@@ -22,6 +22,14 @@ This endpoint is only for artifact types that represent a physical file, such as
 | ----------- | ------ | -------- | -------------------------------------- |
 | artifact_id | string | Yes      | The unique identifier of the artifact. |
 
+### Example Request
+
+```json
+{
+  "artifact_id": "ARTIFACT_ID"
+}
+```
+
 ## Response
 
 | Field  | Type   | Description                      |

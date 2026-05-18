@@ -18,6 +18,14 @@ This endpoint allows you to retrieve information about a single artifact using i
 | ----------- | ------ | -------- | -------------------------------------- |
 | artifact_id | string | Yes      | The unique identifier of the artifact. |
 
+### Example Request
+
+```json
+{
+  "artifact_id": "ARTIFACT_ID"
+}
+```
+
 ## Response
 
 | Field         | Type         | Description                                                                                                                    |

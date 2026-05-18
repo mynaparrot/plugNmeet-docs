@@ -23,6 +23,16 @@ This endpoint allows you to retrieve a paginated list of all generated meeting a
 | limit      | number           | No       | The maximum number of artifacts to return. Default: `20`, Maximum: `100`.                                                                                               |
 | order_by   | string           | No       | The sort order for the results. Can be `ASC` or `DESC`. Default: `DESC`.                                                                                                |
 
+### Example Request
+
+```json
+{
+  "room_ids": ["room01", "room02"],
+  "type": "MEETING_ANALYTICS",
+  "limit": 10
+}
+```
+
 ## Response
 
 | Field  | Type              | Description                                |
