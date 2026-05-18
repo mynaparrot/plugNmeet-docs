@@ -10,11 +10,24 @@ sidebar_label: Subir Archivo a la Pizarra
 
 Endpoint: `/room/uploadWhiteboardFile`
 
-Esta API permite que su aplicación suba un archivo directamente a la pizarra de una sesión activa de Plug-N-Meet. Puede usarla para añadir documentos a la pizarra de forma programática para que todos los participantes los vean y colaboren en ellos.
+Aunque los presentadores pueden subir archivos directamente a través de la interfaz del cliente de Plug-N-Meet, este endpoint de la API proporciona la flexibilidad de inyectar archivos en una sesión en vivo desde un sistema externo. Actúa como un puente entre el backend de su aplicación y la sala de Plug-N-Meet, permitiendo flujos de trabajo potentes y automatizados.
 
-Este endpoint es particularmente útil para:
-*   Integrarse con sistemas externos de gestión de documentos.
-*   Crear flujos de trabajo automatizados que impliquen compartir archivos durante una sesión en vivo.
+Por ejemplo, podría construir una integración que permita a los usuarios seleccionar un archivo de un servicio de almacenamiento en la nube como Google Drive o un bucket de S3. Su aplicación se encargaría de descargar el archivo del servicio y luego usaría esta API para enviarlo a la sesión activa de Plug-N-Meet.
+
+Después de una subida exitosa a través de esta API:
+1.  El presentador recibe una notificación dentro de la sala.
+2.  El nuevo archivo aparece en la **lista de archivos de la pizarra**.
+3.  El presentador puede entonces elegir cuándo mostrar el archivo en la pizarra para todos los participantes.
+
+Esto permite precargar múltiples archivos en la lista de archivos de la sesión. Tenga en cuenta que cada solicitud de API solo puede contener un archivo a la vez.
+
+## Prerrequisitos
+
+Para que esta llamada a la API tenga éxito, se deben cumplir las siguientes condiciones:
+1.  La sesión (`room_id`) debe estar activa.
+2.  Al menos un usuario con el rol de `presenter` (presentador) debe estar presente en la sala.
+
+Esta funcionalidad es diferente de la opción `preload_file` disponible en la [API de Creación de Sala](/docs/api/room/create). La opción `preload_file` acepta una URL directa y prepara el archivo cuando se crea la sala (antes de que esté activa). Este endpoint, en cambio, está diseñado para subir archivos a una sesión que ya está en curso.
 
 ## Parámetros de la Solicitud
 

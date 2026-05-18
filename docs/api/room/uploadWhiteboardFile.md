@@ -10,11 +10,24 @@ sidebar_label: Upload Whiteboard File
 
 Endpoint: `/room/uploadWhiteboardFile`
 
-This API allows your application to upload a file directly to the whiteboard of an active Plug-N-Meet session. You can use this to programmatically add documents to the whiteboard for all participants to see and collaborate on.
+While presenters can upload files directly through the Plug-N-Meet client interface, this API endpoint provides the flexibility to inject files into a live session from an external system. It acts as a bridge between your application's backend and the Plug-N-Meet room, allowing for powerful, automated workflows.
 
-This endpoint is particularly useful for:
-*   Integrating with external document management systems.
-*   Creating automated workflows that involve sharing files during a live session.
+For example, you could build an integration that allows users to select a file from a cloud storage service like Google Drive or an S3 bucket. Your application would handle downloading the file from the service and then use this API to push it into the active Plug-N-Meet session.
+
+After a successful upload via this API:
+1.  The presenter receives a notification within the room.
+2.  The new file appears in the **whiteboard files list**.
+3.  The presenter can then choose when to display the file on the whiteboard for all participants.
+
+This allows for pre-loading multiple files into the session's file list. Note that each API request can only contain one file at a time.
+
+## Prerequisites
+
+For this API call to succeed, the following conditions must be met:
+1.  The session (`room_id`) must be active.
+2.  At least one user with a `presenter` role must be present in the room.
+
+This functionality is different from the `preload_file` option available in the [Create Room API](/docs/api/room/create). The `preload_file` option accepts a direct URL and prepares the file when the room is created (before it is active). This endpoint, in contrast, is designed for uploading files to an already running session.
 
 ## Request Parameters
 
