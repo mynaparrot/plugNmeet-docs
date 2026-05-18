@@ -59,7 +59,7 @@ SIGNATURE=$(echo -n "" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | 
 
 # 2. Make the POST request with the correct headers and form data.
 #    cURL will automatically set the Content-Type to multipart/form-data.
-curl --location 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
+curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
 --form 'room_id="room01"' \
