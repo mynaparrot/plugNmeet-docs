@@ -2,7 +2,7 @@
 title: Fetch Past Rooms API | plugNmeet API Reference
 description: API endpoint documentation to fetch a list of past (inactive) video conference rooms within a specified date range.
 keywords: [api, fetch past rooms, room history, meeting history, room api, endpoint]
-sidebar_position: 7
+sidebar_position: 8
 sidebar_label: Fetch Past Rooms
 ---
 
