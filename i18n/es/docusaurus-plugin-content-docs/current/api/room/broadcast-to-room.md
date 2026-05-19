@@ -24,54 +24,74 @@ La solicitud debe contener un objeto `chat_msg` o `notification_msg`.
 | Campo            | Tipo    | Requerido | Descripción                                                                                             |
 | ---------------- | ------- | --------- | ------------------------------------------------------------------------------------------------------- |
 | room_id          | string  | Sí        | El identificador único de la sala activa a la que desea transmitir.                                     |
-| only_to_admins   | boolean | No        | Si es `true`, el mensaje o la notificación se enviará solo a los participantes con privilegios de administrador/moderador. |
-| chat_msg         | object  | No        | Un objeto de [mensaje de chat](#chatmessage) para ser enviado.                           |
-| notification_msg | object  | No        | Un objeto de [mensaje de notificación](#notificationmsg) para ser mostrado.              |
+| only_to_admins   | boolean | No        | Si es `true`, el mensaje se enviará a todos los participantes con privilegios de administrador/moderador. |
+| to_user_id       | string  | No        | Si se proporciona, el mensaje se enviará al usuario especificado.                                       |
+| chat_msg         | object  | No        | Un objeto de [mensaje de chat](#chatmessage) para ser enviado.                                          |
+| notification_msg | object  | No        | Un objeto de [mensaje de notificación](#notificationmsg) para ser mostrado.                             |
+
+### Lógica de Destinatarios
+
+La entrega del mensaje está determinada por los campos `only_to_admins` y `to_user_id`:
+-   Si **ninguno** de los campos está configurado, el mensaje se envía a **todos** en la sala.
+-   Si `only_to_admins` es `true`, el mensaje se envía a **todos los administradores**.
+-   Si se proporciona `to_user_id`, el mensaje se envía a ese **usuario específico**.
+-   Si se proporcionan **ambos**, `only_to_admins` y `to_user_id`, el mensaje se envía a **todos los administradores Y al usuario específico**.
 
 ### ChatMessage
 
 Este objeto representa un mensaje que aparecerá en el panel de chat de la sala.
 
-| Campo      | Tipo   | Requerido | Descripción                                                                                                                            |
-| ---------- | ------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| message    | string | Sí        | El contenido del mensaje de chat.                                                                                                        |
-| to_user_id | string | No        | Si se proporciona, el mensaje se enviará como un chat privado al usuario especificado. Si se omite, el mensaje se enviará al chat público. |
+| Campo   | Tipo   | Requerido | Descripción                      |
+| ------- | ------ | --------- | -------------------------------- |
+| message | string | Sí        | El contenido del mensaje de chat. |
 
 ### NotificationMsg
 
 Este objeto representa una notificación a nivel de sistema que aparecerá en la pantalla del usuario.
 
-| Campo      | Tipo                            | Requerido | Descripción                                                                                                                                                         |
-| ---------- |---------------------------------| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| text       | string                          | Sí        | El contenido de texto de la notificación.                                                                                                                           |
-| type       | [NatsSystemNotificationTypes](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_nats_msg.proto#L142) | No        | El estilo de la notificación.  `0 = info`; `1 = warning`; `3 = error`                    |
-| with_sound | boolean                         | No        | Si es `true`, la notificación reproducirá un sonido para el destinatario.                                                                                           |
-| to_user_id | string                          | No        | Si se proporciona, la notificación se enviará solo al usuario especificado. Si se omite, se enviará a todos los participantes (o a todos los administradores si `only_to_admins` es `true`). |
+| Campo      | Tipo                                                                                                                           | Requerido | Descripción                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------ | --------- | --------------------------------------------------------------------------- |
+| text       | string                                                                                                                         | Sí        | El contenido de texto de la notificación.                                   |
+| type       | [NatsSystemNotificationTypes](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_nats_msg.proto#L142) | No        | El estilo de la notificación. `0 = info`; `1 = warning`; `3 = error`       |
+| with_sound | boolean                                                                                                                        | No        | Si es `true`, la notificación reproducirá un sonido para el destinatario.   |
 
 ## Ejemplo
 
-### Ejemplo 1: Enviar un Mensaje de Chat Público
+### Ejemplo 1: Enviar un Mensaje de Chat Público a Todos
 
 ```json
 {
   "room_id": "sala01",
   "chat_msg": {
-    "message": "Hola a todos, el webinar comenzará en 5 minutos."
+    "message": "Hola a todos, el seminario web comenzará en 5 minutos."
   }
 }
 ```
 
-### Ejemplo 2: Enviar una Notificación Privada a un Administrador
+### Ejemplo 2: Enviar una Notificación Privada a un Usuario Específico
+
+```json
+{
+  "room_id": "sala01",
+  "to_user_id": "usuario-456",
+  "notification_msg": {
+    "text": "Su documento privado está listo para su revisión.",
+    "type": 0
+  }
+}
+```
+
+### Ejemplo 3: Enviar una Notificación a Todos los Administradores y a un Usuario Específico
 
 ```json
 {
   "room_id": "sala01",
   "only_to_admins": true,
+  "to_user_id": "usuario-vip-789",
   "notification_msg": {
     "text": "Un VIP acaba de unirse a la sala de espera.",
-    "type": 0, 
-    "with_sound": true,
-    "to_user_id": "admin-usuario-123"
+    "type": 1,
+    "with_sound": true
   }
 }
 ```
