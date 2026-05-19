@@ -102,7 +102,15 @@ curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 
 ## Response
 
-If the file is uploaded successfully, the server will broadcast the necessary information to all participants in the room to display the new whiteboard page.
+**Important Notes on Concurrent Uploads and Timeouts:**
+
+The server enforces a strict one-file-at-a-time upload policy per room to ensure data integrity. This applies whether you are uploading a file directly (`document`) or providing a URL (`document_link`).
+
+-   **Concurrent Uploads**: The server will reject any new upload requests for a room if another upload is already in progress. If you attempt a concurrent upload, the API will respond with an HTTP status code of `409` (Conflict).
+-   **Timeouts and Background Processing**: The file conversion process can be resource-intensive. If the initial request times out, the server will continue processing the file in the background. Once completed, it will notify the client, and the room's upload lock will be released, allowing for another file to be uploaded.
+-   **Upload Lock Duration**: By default, the upload lock for a room is set to 5 minutes. If the file processing does not complete within this window, the operation will time out. It is crucial to select files that can be reasonably processed within this timeframe.
+
+If the file is uploaded and processed successfully, the server will broadcast the necessary information to all participants in the room, making the new file available on the whiteboard.
 
 | Field       | Type    | Description                              |
 | ----------- | ------- | ---------------------------------------- |

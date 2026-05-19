@@ -102,7 +102,15 @@ curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 
 ## Respuesta
 
-Si el archivo se sube con éxito, el servidor transmitirá la información necesaria a todos los participantes de la sala para mostrar la nueva página de la pizarra.
+**Notas Importantes sobre Subidas Concurrentes y Tiempos de Espera:**
+
+El servidor aplica una estricta política de subida de un solo archivo a la vez por sala para garantizar la integridad de los datos. Esto se aplica tanto si está subiendo un archivo directamente (`document`) como si proporciona una URL (`document_link`).
+
+-   **Subidas Concurrentes**: El servidor rechazará cualquier nueva solicitud de subida para una sala si ya hay otra subida en progreso. Si intenta una subida concurrente, la API responderá con un código de estado HTTP `409` (Conflicto).
+-   **Tiempos de Espera y Procesamiento en Segundo Plano**: El proceso de conversión de archivos puede consumir muchos recursos. Si la solicitud inicial excede el tiempo de espera, el servidor continuará procesando el archivo en segundo plano. Una vez completado, notificará al cliente y se liberará el bloqueo de subida de la sala, permitiendo subir otro archivo.
+-   **Duración del Bloqueo de Subida**: Por defecto, el bloqueo de subida para una sala está configurado en 5 minutos. Si el procesamiento del archivo no se completa en este intervalo, la operación excederá el tiempo de espera. Es crucial seleccionar archivos que puedan ser procesados razonablemente dentro de este marco de tiempo.
+
+Si el archivo se sube y procesa con éxito, el servidor transmitirá la información necesaria a todos los participantes de la sala, haciendo que el nuevo archivo esté disponible en la pizarra.
 
 | Campo       | Tipo    | Descripción                              |
 | ----------- | ------- | ---------------------------------------- |
