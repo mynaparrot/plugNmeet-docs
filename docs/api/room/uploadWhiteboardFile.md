@@ -43,9 +43,12 @@ The request must be sent as a `multipart/form-data` request and include the requ
 
 ### Body
 
-| Field      | Type | Required | Description                                                                                                                                                                                                    |
-| ---------- | ---- | -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `document` | file | Yes      | The file to be uploaded. The file size must not exceed the `max_size_whiteboard_file` limit defined in the server settings. The supported file types are also configured on the server (e.g., PDF, Doc, etc.). |
+You must provide either `document` (for direct file upload) or `document_link` (for server-side download), but not both.
+
+| Field          | Type   | Required | Description                                                                                                                                                                                                    |
+| -------------- | ------ | -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `document`     | file   | No       | The file to be uploaded. The file size must not exceed the `max_size_whiteboard_file` limit defined in the server settings. The supported file types are also configured on the server (e.g., PDF, Doc, etc.). |
+| `document_link`| string | No       | A URL from which the server will download the file. The server will process this file the same way as a direct upload.                                                                                         |
 
 ## Authentication for Multipart Requests
 
@@ -54,9 +57,11 @@ Unlike standard JSON requests, `multipart/form-data` requests require a special 
 -   **`Content-Type`**: Should be `multipart/form-data`. cURL and most HTTP clients will set this automatically when you use form fields.
 -   **`HASH-SIGNATURE`**: An HMAC-SHA256 signature generated using your API Secret, with the `Room-Id` as the message body.
 
-## Example cURL Request
+## Example cURL Requests
 
-This example demonstrates how to correctly generate the signature and send a file upload request.
+This section demonstrates how to correctly generate the signature and send a file upload request using both methods.
+
+### Example 1: Uploading a file directly
 
 ```bash
 # Your API credentials
@@ -64,16 +69,35 @@ API_KEY="plugnmeet"
 SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
 ROOM_ID="room01"
 
-# 1. For this multipart/form-data request, generate the signature from the Room-Id value.
+# 1. Generate the signature from the Room-Id value.
 SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
 # 2. Make the POST request with the correct headers and form data.
-#    cURL will automatically set the Content-Type to multipart/form-data.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
 --header "Room-Id: $ROOM_ID" \
 --form 'document=@"/path/to/your/presentation.pdf"'
+```
+
+### Example 2: Uploading a file via a link
+
+```bash
+# Your API credentials
+API_KEY="plugnmeet"
+SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+ROOM_ID="room01"
+DOCUMENT_LINK="https://example.com/my_presentation.pdf"
+
+# 1. Generate the signature from the Room-Id value.
+SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+
+# 2. Make the POST request with the correct headers and form data.
+curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
+--header "API-KEY: $API_KEY" \
+--header "HASH-SIGNATURE: $SIGNATURE" \
+--header "Room-Id: $ROOM_ID" \
+--form "document_link=$DOCUMENT_LINK"
 ```
 
 ## Response

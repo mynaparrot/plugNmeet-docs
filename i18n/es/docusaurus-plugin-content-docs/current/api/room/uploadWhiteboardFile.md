@@ -43,9 +43,12 @@ La solicitud debe enviarse como una petición `multipart/form-data` e incluir la
 
 ### Cuerpo
 
-| Campo      | Tipo | Requerido | Descripción                                                                                                                                                                                            |
-| ---------- | ---- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `document` | file | Sí        | El archivo a subir. El tamaño del archivo no debe exceder el límite `max_size_whiteboard_file` definido en la configuración del servidor. Los tipos de archivo admitidos también se configuran en el servidor (p. ej., PDF, Doc, etc.). |
+Debe proporcionar `document` (para la subida directa de archivos) o `document_link` (para la descarga desde el servidor), pero no ambos.
+
+| Campo           | Tipo   | Requerido | Descripción                                                                                                                                                                                            |
+| --------------- | ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `document`      | file   | No        | El archivo a subir. El tamaño del archivo no debe exceder el límite `max_size_whiteboard_file` definido en la configuración del servidor. Los tipos de archivo admitidos también se configuran en el servidor (p. ej., PDF, Doc, etc.). |
+| `document_link` | string | No        | Una URL desde la cual el servidor descargará el archivo. El servidor procesará este archivo de la misma manera que una subida directa.                                                                   |
 
 ## Autenticación para Solicitudes Multipart
 
@@ -54,9 +57,11 @@ A diferencia de las solicitudes JSON estándar, las solicitudes `multipart/form-
 -   **`Content-Type`**: Debe ser `multipart/form-data`. cURL y la mayoría de los clientes HTTP lo establecerán automáticamente cuando utilice campos de formulario.
 -   **`HASH-SIGNATURE`**: Una firma HMAC-SHA256 generada usando su Secreto de API, con el `Room-Id` como cuerpo del mensaje.
 
-## Ejemplo de Solicitud cURL
+## Ejemplos de Solicitudes cURL
 
-Este ejemplo demuestra cómo generar correctamente la firma y enviar una solicitud de subida de archivo.
+Esta sección demuestra cómo generar correctamente la firma y enviar una solicitud de subida de archivo utilizando ambos métodos.
+
+### Ejemplo 1: Subir un archivo directamente
 
 ```bash
 # Sus credenciales de API
@@ -64,16 +69,35 @@ API_KEY="plugnmeet"
 SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
 ROOM_ID="sala01"
 
-# 1. Para esta solicitud multipart/form-data, genere la firma a partir del valor de Room-Id.
+# 1. Genere la firma a partir del valor de Room-Id.
 SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
 # 2. Realice la solicitud POST con las cabeceras y los datos de formulario correctos.
-#    cURL establecerá automáticamente el Content-Type a multipart/form-data.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
 --header "Room-Id: $ROOM_ID" \
 --form 'document=@"/ruta/a/su/presentacion.pdf"'
+```
+
+### Ejemplo 2: Subir un archivo a través de un enlace
+
+```bash
+# Sus credenciales de API
+API_KEY="plugnmeet"
+SECRET="zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6"
+ROOM_ID="sala01"
+DOCUMENT_LINK="https://example.com/mi_presentacion.pdf"
+
+# 1. Genere la firma a partir del valor de Room-Id.
+SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
+
+# 2. Realice la solicitud POST con las cabeceras y los datos de formulario correctos.
+curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
+--header "API-KEY: $API_KEY" \
+--header "HASH-SIGNATURE: $SIGNATURE" \
+--header "Room-Id: $ROOM_ID" \
+--form "document_link=$DOCUMENT_LINK"
 ```
 
 ## Respuesta
