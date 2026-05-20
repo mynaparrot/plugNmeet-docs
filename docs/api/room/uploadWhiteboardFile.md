@@ -43,12 +43,17 @@ The request must be sent as a `multipart/form-data` request and include the requ
 
 ### Body
 
-You must provide either `document` (for direct file upload) or `document_link` (for server-side download), but not both.
+You must provide either `document` (for direct file upload) or `document_link` (for server-side download), but not both. All uploads are subject to the [File Constraints](#file-constraints) detailed below.
 
-| Field          | Type   | Required | Description                                                                                                                                                                                                    |
-| -------------- | ------ | -------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `document`     | file   | No       | The file to be uploaded. The file size must not exceed the `max_size_whiteboard_file` limit defined in the server settings. The supported file types are also configured on the server (e.g., PDF, Doc, etc.). |
-| `document_link`| string | No       | A URL from which the server will download the file. The server will process this file the same way as a direct upload.                                                                                         |
+| Field          | Type   | Required | Description                                                                 |
+| -------------- | ------ | -------- |-----------------------------------------------------------------------------|
+| `document`     | file   | No       | The file to be uploaded. See [File Constraints](#file-constraints).         |
+| `document_link`| string | No       | A URL from which the server will download the file. See [File Constraints](#file-constraints). |
+
+### File Constraints
+
+-   **Supported File Types**: This endpoint is designed for office documents and presentations. Supported formats include **PDF, DOC, DOCX, PPT, PPTX, etc.** Image files (e.g., JPG, PNG) are not supported and will be rejected.
+-   **File Size Limit**: The size of the file, whether uploaded directly or downloaded via `document_link`, must not exceed the `max_size_whiteboard_file` limit defined in your server's configuration.
 
 ## Authentication for Multipart Requests
 

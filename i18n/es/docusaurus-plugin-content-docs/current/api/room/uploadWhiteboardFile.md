@@ -43,12 +43,17 @@ La solicitud debe enviarse como una petición `multipart/form-data` e incluir la
 
 ### Cuerpo
 
-Debe proporcionar `document` (para la subida directa de archivos) o `document_link` (para la descarga desde el servidor), pero no ambos.
+Debe proporcionar `document` (para la subida directa de archivos) o `document_link` (para la descarga desde el servidor), pero no ambos. Todas las subidas están sujetas a las [Restricciones de Archivo](#restricciones-de-archivo) detalladas a continuación.
 
-| Campo           | Tipo   | Requerido | Descripción                                                                                                                                                                                            |
-| --------------- | ------ | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `document`      | file   | No        | El archivo a subir. El tamaño del archivo no debe exceder el límite `max_size_whiteboard_file` definido en la configuración del servidor. Los tipos de archivo admitidos también se configuran en el servidor (p. ej., PDF, Doc, etc.). |
-| `document_link` | string | No        | Una URL desde la cual el servidor descargará el archivo. El servidor procesará este archivo de la misma manera que una subida directa.                                                                   |
+| Campo           | Tipo   | Requerido | Descripción                                                                 |
+| --------------- | ------ | --------- | --------------------------------------------------------------------------- |
+| `document`      | file   | No        | El archivo a subir. Consulte [Restricciones de Archivo](#restricciones-de-archivo). |
+| `document_link` | string | No        | Una URL desde la cual el servidor descargará el archivo. Consulte [Restricciones de Archivo](#restricciones-de-archivo). |
+
+### Restricciones de Archivo
+
+-   **Tipos de Archivo Admitidos**: Este punto final está diseñado para documentos de oficina y presentaciones. Los formatos admitidos incluyen **PDF, DOC, DOCX, PPT, PPTX, etc.** Los archivos de imagen (p. ej., JPG, PNG) no son compatibles y serán rechazados.
+-   **Límite de Tamaño de Archivo**: El tamaño del archivo, ya sea subido directamente o descargado a través de `document_link`, no debe exceder el límite `max_size_whiteboard_file` definido en la configuración de su servidor.
 
 ## Autenticación para Solicitudes Multipart
 
@@ -72,7 +77,7 @@ ROOM_ID="sala01"
 # 1. Genere la firma a partir del valor de Room-Id.
 SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
-# 2. Realice la solicitud POST con las cabeceras y los datos de formulario correctos.
+# 2. Realice la solicitud POST.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
@@ -92,7 +97,7 @@ DOCUMENT_LINK="https://example.com/mi_presentacion.pdf"
 # 1. Genere la firma a partir del valor de Room-Id.
 SIGNATURE=$(echo -n "$ROOM_ID" | openssl dgst -sha256 -mac HMAC -macopt key:"$SECRET" | awk '{print $2}')
 
-# 2. Realice la solicitud POST con las cabeceras y los datos de formulario correctos.
+# 2. Realice la solicitud POST.
 curl -X POST 'https://plugnmeet.example.com/auth/room/uploadWhiteboardFile' \
 --header "API-KEY: $API_KEY" \
 --header "HASH-SIGNATURE: $SIGNATURE" \
