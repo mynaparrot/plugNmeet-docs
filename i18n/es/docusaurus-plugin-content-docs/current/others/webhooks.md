@@ -20,7 +20,7 @@ Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar qu
 
 ## Eventos
 
-Puede consultar las definiciones de los eventos [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L10).
+Puede revisar [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L10) las definiciones de los eventos.
 
 Todos los eventos de webhook incluyen los siguientes campos:
 - `id`: Un UUID que identifica el evento
@@ -163,7 +163,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Análisis Procesado
+### Analíticas procesadas
 
 ```js
 interface CommonNotifyEvent {
