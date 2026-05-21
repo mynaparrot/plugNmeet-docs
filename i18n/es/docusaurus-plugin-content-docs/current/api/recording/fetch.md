@@ -41,7 +41,7 @@ Esta API es esencial para crear una biblioteca de grabaciones orientada al usuar
 | ----------------- | -------------------------- | -------- | ------------------------------------------- |
 | status            | boolean                     | raíz     | Indica si la solicitud fue exitosa.    |
 | msg               | string                      | raíz     | Mensaje de respuesta.                           |
-| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | string | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | [result](#resultado) | object                      | raíz     | Contiene los datos de las grabaciones.               |
 
 ### Resultado

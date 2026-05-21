@@ -26,5 +26,5 @@ This is a powerful tool for server-wide monitoring and administration. It's idea
 | :----- | ------- | -------- | :---------------------------------------------------------------------------------------- |
 | status | boolean | root     | The status of the request                                                                 |
 | msg    | string  | root     | Response message                                                                          |
-| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | rooms  | array\<[room](/docs/api/room/room-info#room)>   | root     | Array of Room |

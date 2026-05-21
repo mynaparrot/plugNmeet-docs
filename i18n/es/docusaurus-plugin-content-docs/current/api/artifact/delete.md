@@ -40,4 +40,4 @@ Esta acción elimina el **archivo** del artefacto (p. ej., el archivo de texto V
 | :---------- | :------ | ---------------------------------------- |
 | status      | boolean | Indica si la solicitud fue exitosa.      |
 | msg         | string  | Mensaje de respuesta.                    |
-| status_code | number  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | string  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |

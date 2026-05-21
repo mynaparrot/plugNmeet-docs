@@ -36,7 +36,7 @@ Este punto final es solo para tipos de artefactos que representan un archivo fí
 | :---------- | :------ | -------------------------------- |
 | status      | boolean | Indica si la solicitud fue exitosa. |
 | msg         | string  | Mensaje de respuesta.            |
-| status_code | number  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | string  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | token       | string  | El token de descarga de un solo uso. |
 
 Después de recibir el token, puede proporcionar la siguiente URL de descarga a su usuario:

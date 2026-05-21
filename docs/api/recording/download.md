@@ -37,7 +37,7 @@ The token will expire after a short period, ensuring that the download link cann
 | :----- | ------- | -------- | :------------------------------- |
 | status | boolean | root     | Indicates if the request was successful. |
 | msg    | string  | root     | Response message.                |
-| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | token  | string  | root     | Download token.                  |
 
 Once you receive the token, you can construct the download URL using the following format:

@@ -40,4 +40,4 @@ This action deletes the artifact **file** (e.g., the VTT or summary text file) t
 | :----- | :------ | ---------------------------------------- |
 | status | boolean | Indicates if the request was successful. |
 | msg    | string  | Response message.                        |
-| status_code | number  | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string  | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |

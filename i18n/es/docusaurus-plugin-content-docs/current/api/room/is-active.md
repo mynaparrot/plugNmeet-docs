@@ -33,4 +33,4 @@ Esta es una forma sencilla de determinar si una reunión está en curso. A menud
 | status    | boolean | raíz     | Indica si la solicitud fue exitosa. |
 | is_active | boolean | raíz     | Indica si la sala se encuentra actualmente activa. |
 | msg       | string  | raíz     | Mensaje de respuesta.                    |
-| status_code | number | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | string | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |

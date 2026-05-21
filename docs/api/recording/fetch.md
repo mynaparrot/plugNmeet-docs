@@ -41,7 +41,7 @@ This API is essential for building a user-facing recording library where users c
 | ----------------- | -------------------------- | -------- | ------------------------------------------- |
 | status            | boolean                     | root     | Indicates if the request was successful.    |
 | msg               | string                      | root     | Response message.                           |
-| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [result](#result) | object                      | root     | Contains the recordings data.               |
 
 ### Result

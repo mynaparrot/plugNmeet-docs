@@ -32,7 +32,7 @@ Este punto final le permite recuperar información sobre un único artefacto uti
 | :------------ | :----------- | ------------------------------------------------------------------------------------------------------------------------------ |
 | status        | boolean      | Indica si la solicitud fue exitosa.                                                                                            |
 | msg           | string       | Mensaje de respuesta.                                                                                                          |
-| status_code   | number       | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code   | string       | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | artifact_info | ArtifactInfo | Detalles sobre el artefacto solicitado.                                                                                        |
 | room_info     | PastRoomInfo | Detalles sobre la sesión de la sala a la que pertenece este artefacto.                                                         |
 

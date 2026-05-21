@@ -121,4 +121,4 @@ Si el archivo se sube y procesa con éxito, el servidor transmitirá la informac
 | ----------- | ------- | ---------------------------------------- |
 | status      | boolean | Indica si la solicitud fue exitosa.      |
 | msg         | string  | Mensaje de respuesta.                    |
-| status_code | number  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | string  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |

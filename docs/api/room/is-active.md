@@ -33,4 +33,4 @@ This is a simple way to determine if a meeting is in progress. It's often used i
 | status    | boolean | root     | Indicates if the request was successful. |
 | is_active | boolean | root     | Indicates whether the room is currently active. |
 | msg       | string  | root     | Response message.                    |
-| status_code | number  | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string  | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |

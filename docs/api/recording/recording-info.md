@@ -32,6 +32,6 @@ This is useful for displaying detailed information about a recording in your app
 |:---------------------------------------------------------------| ------- | -------- | :------------------------ |
 | status                                                         | boolean | root     | The status of the request |
 | msg                                                            | string  | root     | Response message          |
-| status_code | number | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | string | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [recording_info](/docs/api/recording/fetch#recording-info)     | obect\<[Recording Info](/docs/api/recording/fetch#recording-info)> | root     | Response message          |
 | [room_info](/docs/api/room/fetch-past#past-room-info)          | obect\<[past-room-info](/docs/api/room/fetch-past#past-room-info)> | root     | Response message          |
