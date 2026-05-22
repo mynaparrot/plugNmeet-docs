@@ -60,7 +60,6 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | allow_webcams                                                        | boolean | Yes      | Enable or disable webcam support.                                                                      |
 | mute_on_start                                                        | boolean | Yes      | Automatically mute microphones when participants join.                                                 |
 | allow_screen_share                                                   | boolean | Yes      | Enable or disable screen sharing.                                                                      |
-| allow_rtmp                                                           | boolean | Yes      | Enable or disable RTMP streaming.                                                                      |
 | admin_only_webcams                                                   | boolean | Yes      | Allow webcam access only for admins.                                                                   |
 | allow_view_other_webcams                                             | boolean | Yes      | Allow participants to view each other's webcams. If `false`, only moderators can see all webcams. |
 | allow_view_other_users_list                                          | boolean | Yes      | Restrict viewing of the user list to moderators only.                                                  |
@@ -74,6 +73,7 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | [shared_note_pad_features](#shared-notepad-features)                | object  | Yes      | Shared notepad settings.                                                                               |
 | [whiteboard_features](#whiteboard-features)                          | object  | Yes      | Whiteboard settings.                                                                                   |
 | [external_media_player_features](#external-media-player-features)    | object  | Yes      | External media player settings.                                                                        |
+| [external_broadcasting_features](#external-broadcasting-features)    | object  | No       | External broadcasting settings.                                                                        |
 | [waiting_room_features](#waiting-room-features)                      | object  | Yes      | Waiting room settings.                                                                                 |
 | [breakout_room_features](#breakout-room-features)                    | object  | Yes      | Breakout room settings.                                                                                |
 | [display_external_link_features](#display-external-link-features)    | object  | Yes      | Settings for displaying external links.                                                                |
@@ -91,6 +91,8 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | is_allow_cloud              | boolean | Yes      | Enable or disable cloud recording.                                                    |
 | is_allow_local              | boolean | Yes      | Enable or disable local recording.                                                    |
 | enable_auto_cloud_recording | boolean | No       | Automatically start cloud recording when a moderator or admin joins.                  |
+| only_record_admin_webcams   | boolean | No       | If `true`, only the webcams of admin users will be included in the recording.           |
+| [recorder_bot_options](#recorder-bot-options) | object | No | Advanced options for the recorder bot.                                        |
 
 ### Chat Features
 
@@ -117,6 +119,14 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | Field    | Type    | Required | Description                                                                              |
 | -------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable playback of video/audio from external sources. Moderators can also upload local media. |
+
+### External Broadcasting Features
+
+| Field                | Type   | Required | Description                                                              |
+| -------------------- | ------ | -------- | ------------------------------------------------------------------------ |
+| is_allow             | boolean| Yes      | Enable or disable external broadcasting features.                        |
+| is_allow_rtmp        | boolean| Yes      | When enabled, moderators can start live streaming the room to external platforms like YouTube. |
+| [recorder_bot_options](#recorder-bot-options) | object | No | Advanced options for the recorder bot used for broadcasting. |
 
 ### Waiting Room Features
 
@@ -227,6 +237,13 @@ Please refer to the server configuration guide and the [livekit/sip GitHub repos
 | included_chat_messages              | boolean | No       | Enable or disable E2EE for chat messages.                                                                                                                                                                                                                                                        |
 | included_whiteboard                 | boolean | No       | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary.                                                                                                                                                                                                |
 
+### Recorder Bot Options
+
+| Field                         | Type   | Required | Description                                                              |
+| ----------------------------- | ------ | -------- | ------------------------------------------------------------------------ |
+| enable_auto_close_chat_panel  | boolean| No       | If `true`, the chat panel will be closed automatically after a certain duration. |
+| duration_after_last_message   | number | No       | Duration in seconds. After this duration, the chat panel will be closed. |
+
 ### Default Lock Settings
 
 | Field                  | Type    | Required | Description                  |
@@ -260,7 +277,6 @@ This feature is available only if the server configuration `client > copyright_c
       "allow_webcams": true,
       "mute_on_start": false,
       "allow_screen_share": true,
-      "allow_rtmp": true,
       "admin_only_webcams": false,
       "allow_view_other_webcams": true,
       "allow_view_other_users_list": true,
@@ -272,7 +288,12 @@ This feature is available only if the server configuration `client > copyright_c
         "is_allow": true,
         "is_allow_cloud": true,
         "is_allow_local": true,
-        "enable_auto_cloud_recording": false
+        "enable_auto_cloud_recording": false,
+        "only_record_admin_webcams": false,
+        "recorder_bot_options": {
+          "enable_auto_close_chat_panel": true,
+          "duration_after_last_message": 10
+        }
       },
       "chat_features": {
         "is_allow": true,
@@ -286,6 +307,14 @@ This feature is available only if the server configuration `client > copyright_c
       },
       "external_media_player_features": {
         "is_allow": true
+      },
+      "external_broadcasting_features": {
+        "is_allow": true,
+        "is_allow_rtmp": true,
+        "recorder_bot_options": {
+          "enable_auto_close_chat_panel": true,
+          "duration_after_last_message": 10
+        }
       },
       "waiting_room_features": {
         "is_active": false
@@ -358,5 +387,5 @@ This feature is available only if the server configuration `client > copyright_c
 |:------------------------------------------------| ------------------------------ | ------------------------- |
 | status                                          | boolean                        | Indicates if the request was successful. |
 | msg                                             | string                         | Response message.         |
-| status_code | string      | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
+| status_code | number      | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
 | [room_info](/docs/api/room/room-info#room-info) | object | Details about the room.   |

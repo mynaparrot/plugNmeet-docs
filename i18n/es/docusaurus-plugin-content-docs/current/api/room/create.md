@@ -60,7 +60,6 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | allow_webcams                                                        | boolean | Sí       | Habilitar o deshabilitar el uso de cámaras web.                                                                      |
 | mute_on_start                                                        | boolean | Sí       | Silenciar automáticamente los micrófonos cuando los participantes se unen.                                                 |
 | allow_screen_share                                                   | boolean | Sí       | Habilitar o deshabilitar la función de compartir pantalla.                                                                      |
-| allow_rtmp                                                           | boolean | Sí       | Habilitar o deshabilitar la transmisión por RTMP.                                                                      |
 | admin_only_webcams                                                   | boolean | Sí       | Permitir el acceso a la cámara web solo a los administradores.                                                                   |
 | allow_view_other_webcams                                             | boolean | Sí       | Permitir que los participantes vean las cámaras de los demás. Si es `false`, solo los moderadores podrán ver todas las cámaras. |
 | allow_view_other_users_list                                          | boolean | Sí       | Restringir la visualización de la lista de usuarios solo a los moderadores.                                                  |
@@ -74,6 +73,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [shared_note_pad_features](#características-del-bloc-de-notas-compartido)                | object  | Sí       | Configuraciones del bloc de notas compartido.                                                                               |
 | [whiteboard_features](#características-de-la-pizarra)                          | object  | Sí       | Configuraciones de la pizarra.                                                                                   |
 | [external_media_player_features](#características-del-reproductor-multimedia-externo)    | object  | Sí       | Configuraciones del reproductor multimedia externo.                                                                        |
+| [external_broadcasting_features](#características-de-transmisión-externa)    | object  | No       | Configuraciones de transmisión externa.                                                                        |
 | [waiting_room_features](#características-de-la-sala-de-espera)                      | object  | Sí       | Configuraciones de la sala de espera.                                                                                 |
 | [breakout_room_features](#características-de-las-salas-para-grupos)                    | object  | Sí       | Configuraciones de las salas para grupos.                                                                                |
 | [display_external_link_features](#características-de-visualización-de-enlaces-externos)    | object  | Sí       | Configuraciones para mostrar enlaces externos.                                                                |
@@ -91,6 +91,8 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | is_allow_cloud              | boolean | Sí       | Habilitar o deshabilitar la grabación en la nube.                                                    |
 | is_allow_local              | boolean | Sí       | Habilitar o deshabilitar la grabación local.                                                    |
 | enable_auto_cloud_recording | boolean | No       | Iniciar automáticamente la grabación en la nube cuando un moderador o administrador se una.                  |
+| only_record_admin_webcams   | boolean | No       | Si es `true`, solo se incluirán en la grabación las cámaras web de los usuarios administradores. |
+| [recorder_bot_options](#opciones-del-bot-grabador) | object | No | Opciones avanzadas para el bot grabador.                                        |
 
 ### Características del Chat
 
@@ -117,6 +119,14 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | Campo    | Tipo    | Requerido | Descripción                                                                              |
 | -------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la reproducción de video/audio de fuentes externas. Los moderadores también pueden subir archivos multimedia locales. |
+
+### Características de Transmisión Externa
+
+| Campo                | Tipo   | Requerido | Descripción                                                              |
+| -------------------- | ------ | -------- | ------------------------------------------------------------------------ |
+| is_allow             | boolean| Sí       | Habilitar o deshabilitar las funciones de transmisión externa.           |
+| is_allow_rtmp        | boolean| Sí       | Cuando está habilitado, los moderadores pueden iniciar la transmisión en vivo de la sala a plataformas externas como YouTube. |
+| [recorder_bot_options](#opciones-del-bot-grabador) | object | No | Opciones avanzadas para el bot grabador utilizado para la transmisión. |
 
 ### Características de la Sala de Espera
 
@@ -227,6 +237,13 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 | included_chat_messages              | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de chat.                                                                                                                            |
 | included_whiteboard                 | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de la pizarra (SCENE_UPDATE, POINTER_UPDATE). Puede aumentar el uso de la CPU; habilítelo solo si es necesario.                                                                                                                                                                                                |
 
+### Opciones del Bot Grabador
+
+| Campo                         | Tipo   | Requerido | Descripción                                                              |
+| ----------------------------- | ------ | -------- | ------------------------------------------------------------------------ |
+| enable_auto_close_chat_panel  | boolean| No       | Si es `true`, el panel de chat se cerrará automáticamente después de una cierta duración. |
+| duration_after_last_message   | number | No       | Duración en segundos. Después de esta duración, el panel de chat se cerrará. |
+
 ### Configuraciones de Bloqueo Predeterminadas
 
 | Campo                  | Tipo    | Requerido | Descripción                  |
@@ -260,7 +277,6 @@ Esta característica solo está disponible si la configuración del servidor `cl
       "allow_webcams": true,
       "mute_on_start": false,
       "allow_screen_share": true,
-      "allow_rtmp": true,
       "admin_only_webcams": false,
       "allow_view_other_webcams": true,
       "allow_view_other_users_list": true,
@@ -272,7 +288,12 @@ Esta característica solo está disponible si la configuración del servidor `cl
         "is_allow": true,
         "is_allow_cloud": true,
         "is_allow_local": true,
-        "enable_auto_cloud_recording": false
+        "enable_auto_cloud_recording": false,
+        "only_record_admin_webcams": false,
+        "recorder_bot_options": {
+          "enable_auto_close_chat_panel": true,
+          "duration_after_last_message": 10
+        }
       },
       "chat_features": {
         "is_allow": true,
@@ -286,6 +307,14 @@ Esta característica solo está disponible si la configuración del servidor `cl
       },
       "external_media_player_features": {
         "is_allow": true
+      },
+      "external_broadcasting_features": {
+        "is_allow": true,
+        "is_allow_rtmp": true,
+        "recorder_bot_options": {
+          "enable_auto_close_chat_panel": true,
+          "duration_after_last_message": 10
+        }
       },
       "waiting_room_features": {
         "is_active": false
@@ -358,5 +387,5 @@ Esta característica solo está disponible si la configuración del servidor `cl
 | :--------------------- | ------------------------------ | ------------------------- |
 | status                 | boolean                        | Indica si la solicitud fue exitosa. |
 | msg                    | string                         | Mensaje de respuesta.         |
-| status_code | string     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
+| status_code | number     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | [room_info](./room-info#información-de-la-sala) | object | Detalles sobre la sala.   |
