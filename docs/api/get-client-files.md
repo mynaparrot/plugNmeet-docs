@@ -75,7 +75,7 @@ $assets_path = $plugnmeet_server_url . '/assets';
     <title>plugNmeet</title>
 
     <!-- 4. Dynamically generate <link> tags for CSS files. -->
-    <?php foreach ($api_response['css'] as $css_file): ?>
+    <?php foreach ($api_response['css_files'] as $css_file): ?>
         <link href="<?php echo $assets_path . '/css/' . $css_file ?>" rel="stylesheet" />
     <?php endforeach; ?>
 
@@ -103,7 +103,7 @@ $assets_path = $plugnmeet_server_url . '/assets';
     <div id="plugNmeet-app"></div>
 
     <!-- 6. Dynamically generate <script> tags for JS files. -->
-    <?php foreach ($api_response['js'] as $js_file): ?>
+    <?php foreach ($api_response['js_files'] as $js_file): ?>
         <?php if (str_starts_with($js_file, 'main-module.')): ?>
             <script src="<?php echo $assets_path . '/js/' . $js_file ?>" type="module"></script>
         <?php else: ?>
