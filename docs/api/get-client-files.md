@@ -42,8 +42,8 @@ For implementation examples, refer to the [conference.php](https://github.com/my
 | status      | boolean | root     | Indicates whether the request was successful                                                                                   |
 | msg         | string  | root     | Response message                                                                                                               |
 | status_code | string  | root     | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
-| css         | array   | root     | An array of required CSS filenames.                                                                                            |
-| js          | array   | root     | An array of required JavaScript filenames.                                                                                     |
+| css_files         | array   | root     | An array of required CSS filenames.                                                                                            |
+| js_files          | array   | root     | An array of required JavaScript filenames.                                                                                     |
 
 ### Example HTML Structure
 
@@ -58,8 +58,8 @@ $plugnmeet_server_url = 'https://plugnmeet.example.com';
 // This is a sample response for demonstration.
 $api_response = [
     'status' => true,
-    'css' => ['styles.8f34.css', 'vendor.9c3a.css'],
-    'js' => ['runtime.3e4a.js', 'vendor.b12c.js', 'app.5d6e.js', 'main-module.a4f1.js'],
+    'css_files' => ['styles.8f34.css', 'vendor.9c3a.css'],
+    'js_files' => ['runtime.3e4a.js', 'vendor.b12c.js', 'app.5d6e.js', 'main-module.a4f1.js'],
 ];
 
 // 3. Construct the base path for your assets.
