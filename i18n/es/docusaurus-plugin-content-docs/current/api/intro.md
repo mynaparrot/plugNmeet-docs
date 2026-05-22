@@ -10,6 +10,19 @@ sidebar_label: Introducción
 
 Plug-N-Meet proporciona una API segura para interactuar con su servidor. Todas las solicitudes de API autenticadas comparten una ruta base común.
 
+## Demostración en Vivo
+
+Explore las características de Plug-N-Meet y pruebe su API con nuestra demostración en vivo.
+
+**Explore las características:** [https://demo.plugnmeet.com/landing.html](https://demo.plugnmeet.com/landing.html)
+
+**Credenciales de la API de Demostración para Desarrolladores:**
+```
+URL del servidor plugNmeet: https://demo.plugnmeet.com
+Clave API de plugNmeet: plugnmeet
+Secreto de API de plugNmeet: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
+```
+
 ### Estructura de los puntos finales
 
 Para usar la API, enviará una solicitud `POST` a un punto final que comienza con la URL de su servidor seguida de la ruta `/auth`. Luego se le añade la ruta del método API específico.

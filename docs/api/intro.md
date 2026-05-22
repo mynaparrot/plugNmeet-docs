@@ -10,6 +10,19 @@ sidebar_label: Intro
 
 Plug-N-Meet provides a secure API for interacting with your server. All authenticated API requests share a common base path.
 
+## Live Demo
+
+Explore Plug-N-Meet's features and test its API with our live demo.
+
+**Explore the features:** [https://demo.plugnmeet.com/landing.html](https://demo.plugnmeet.com/landing.html)
+
+**Demo API Credentials for Developers:**
+```
+plugNmeet server URL: https://demo.plugnmeet.com
+plugNmeet API KEY: plugnmeet
+plugNmeet API SECRET: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
+```
+
 ### Endpoint Structure
 
 To use the API, you will send a `POST` request to an endpoint that starts with your server's URL followed by the `/auth` path. The specific API method path is then appended to it.
