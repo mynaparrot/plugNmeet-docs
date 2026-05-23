@@ -27,7 +27,7 @@ The token will expire after a short period, ensuring that the download link cann
 
 ```json
 {
-  "record_id": "RM_RKD4jeiFMZDS-1645753430902"
+  "record_id": "7f867cd7-7956-4a17-af46-6ddd4015a497-1761814595173"
 }
 ```
 
