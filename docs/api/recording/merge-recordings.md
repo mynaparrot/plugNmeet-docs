@@ -1,0 +1,54 @@
+---
+title: Merge Recordings API | plugNmeet API Reference
+description: API endpoint documentation for merging multiple recording files from a single session into one continuous recording. Learn how to combine separate recording segments.
+keywords: [api, recording, merge, combine, video api, endpoint]
+sidebar_position: 7
+sidebar_label: Merge Recordings
+---
+
+# Merge Recordings
+
+Endpoint: `/recording/mergeRecordings`
+
+In long-running sessions, it's common for administrators or presenters to stop and restart a recording to create breaks, resulting in multiple separate video files. This API provides a powerful solution to consolidate these segments from a single session (`room_sid`) into one continuous recording, improving the viewing experience.
+
+Using FFmpeg's append feature, this endpoint stitches together all recording files from a specific session into a new recording with a unique `record_id`. The recordings are appended chronologically in ascending order (ASC) as they were saved, ensuring a natural sequence. The original recording files are not deleted, giving you the flexibility to manage or discard them as needed. This is ideal for creating a polished, final version of a session that was recorded in parts.
+
+## Asynchronous Operation & Webhook Notification
+
+This API operation is asynchronous. When you call this endpoint, the request is immediately assigned to a `plugnmeet-recorder` instance to be processed in the background. This requires you to have at least one active recorder running in either `both` or `transcoderOnly` mode. The API will instantly return a confirmation that the job has been scheduled.
+
+Because the merging happens in the background, the final result is delivered via a webhook. Once the new recording file is ready, your server will receive a `recording_proceeded` event containing the `record_id` and other metadata for the newly merged file, just like a standard recording.
+
+## Use Cases
+*   **Creating a single file for long webinars:** If you pause a recording during a break, you can merge the parts for a seamless replay.
+*   **Combining training session modules:** Merge separate recorded modules into one comprehensive training video.
+*   **Post-production simplification:** Provide a single file for easier editing and distribution.
+
+## Request Parameters
+
+| Field                 | Type           | Required | Description                                                                                                                                                             |
+| --------------------- | -------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| room_sid              | string         | Yes      | The unique session identifier (`sid`) of the room whose recordings you want to merge. All recordings under this `room_sid` will be considered for the merge.              |
+| exclude_recording_ids | array (string) | No       | An array of `record_id`s to exclude from the merge. This is useful if you need to omit specific segments, such as a false start or an unwanted portion of the session. |
+
+## Example Request
+
+```json
+{
+  "room_sid": "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd",
+  "exclude_recording_ids": [
+    "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd-1779521611869"
+  ]
+}
+```
+
+## Response
+
+The API provides an immediate response indicating that the merge job has been successfully scheduled. The final result of the merge operation will be delivered via a `recording_proceeded` webhook event once the process is complete.
+
+| Field       | Type    | Description                                                                                                                              |
+| ----------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| status      | boolean | Indicates if the request was successful.                                                                                                 |
+| msg         | string  | A message confirming the job was queued.                                                                                                 |
+| status_code | number  | Response [status code](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10). |
