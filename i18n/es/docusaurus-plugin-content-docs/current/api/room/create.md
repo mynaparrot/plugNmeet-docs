@@ -84,6 +84,8 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [end_to_end_encryption_features](#características-de-cifrado-de-extremo-a-extremo-e2ee) | object  | No       | Configuraciones de Cifrado de Extremo a Extremo (E2EE).                                                                 |
 
 ### Características de Grabación
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                       | Tipo    | Requerido | Descripción                                                                           |
 | --------------------------- | ------- | -------- | ------------------------------------------------------------------------------------- |
@@ -94,33 +96,53 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | only_record_admin_webcams   | boolean | No       | Si es `true`, solo se incluirán en la grabación las cámaras web de los usuarios administradores. |
 | [recorder_bot_options](#opciones-del-bot-grabador) | object | No | Opciones avanzadas para el bot grabador.                                        |
 
+</details>
+
 ### Características del Chat
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo               | Tipo    | Requerido | Descripción                             |
 | ------------------- | ------- | -------- | --------------------------------------- |
 | is_allow            | boolean | Sí       | Habilitar o deshabilitar el chat para la reunión. |
 | is_allow_file_upload | boolean | Sí       | Habilitar o deshabilitar la carga de archivos en el chat. |
 
+</details>
+
 ### Características del Bloc de Notas Compartido
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                                   |
 | -------- | ------- | -------- | --------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la función de bloc de notas compartido. |
 
+</details>
+
 ### Características de la Pizarra
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo        | Tipo    | Requerido | Descripción                                                                                                   |
 | ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | is_allow     | boolean | Sí       | Habilitar o deshabilitar la función de pizarra.                                                                     |
 | preload_file | string  | No       | Precargar un archivo de presentación remoto (http/https) para la pizarra. El archivo debe ser accesible directamente, sin redirecciones. |
 
+</details>
+
 ### Características del Reproductor Multimedia Externo
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                                                                              |
 | -------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la reproducción de video/audio de fuentes externas. Los moderadores también pueden subir archivos multimedia locales. |
 
+</details>
+
 ### Características de Transmisión Externa
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                | Tipo   | Requerido | Descripción                                                              |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------ |
@@ -128,38 +150,62 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | is_allow_rtmp        | boolean| Sí       | Cuando está habilitado, los moderadores pueden iniciar la transmisión en vivo de la sala a plataformas externas como YouTube. |
 | [recorder_bot_options](#opciones-del-bot-grabador) | object | No | Opciones avanzadas para el bot grabador utilizado para la transmisión. |
 
+</details>
+
 ### Características de la Sala de Espera
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo     | Tipo    | Requerido | Descripción                                                                                                     |
 | --------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------- |
 | is_active | boolean | Sí       | Habilitar para activar la sala de espera. Los usuarios permanecerán en ella hasta que un moderador les permita el acceso. |
 
+</details>
+
 ### Características de las Salas para Grupos
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                | Tipo    | Requerido | Descripción                                                           |
 | -------------------- | ------- | -------- | --------------------------------------------------------------------- |
 | is_allow             | boolean | Sí       | Habilitar o deshabilitar las salas para grupos.                                     |
 | allowed_number_rooms | number  | No       | Número máximo de salas para grupos que se pueden crear simultáneamente. Predeterminado: 6. |
 
+</details>
+
 ### Características de Visualización de Enlaces Externos
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                                                                                                                                                                                                                                                                                       |
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la visualización de enlaces externos dentro de un iframe. Útil para mostrar sitios web, cuestionarios o juegos. **Nota:** El sitio externo debe permitir ser incrustado en un iframe. Los moderadores pueden pasar valores como `name`, `userId`, `role` y `meetingId` a la URL. |
 
+</details>
+
 ### Características de Ingesta
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                                                                                                   |
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar la ingesta de medios para transmitir contenido directamente a la sesión. Esto es útil para transmisiones profesionales con software como OBS Studio. Plug-N-Meet admite tanto RTMP como WHIP (Protocolo de Ingesta HTTP de WebRTC) para una transmisión de baja latencia. |
 
+</details>
+
 ### Características de Encuestas
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                       |
 | -------- | ------- | -------- | --------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la función de encuestas. |
 
+</details>
+
 ### Características de Insights
+<details>
+<summary>Ver Detalles</summary>
 
 :::note[Se Requiere Configuración del Servidor]
 Para que cualquiera de estas características funcione, primero debe configurar la sección `insights` en el archivo principal `config.yaml` de su servidor.
@@ -202,19 +248,23 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | [ai_text_chat_features](#características-del-chat-de-texto-con-ia)    | object | No       | Configuraciones para el Asistente de Chat con IA.        |
 | [meeting_summarization_features](#características-de-resumen-de-reunión) | object | No       | Configuraciones para los resúmenes de reuniones impulsados por IA. |
 
-##### Características del Chat de Texto con IA
+#### Características del Chat de Texto con IA
 
 | Campo    | Tipo    | Requerido | Descripción                          |
 | -------- | ------- | -------- | ------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar el Asistente de Chat con IA. |
 
-##### Características de Resumen de Reunión
+#### Características de Resumen de Reunión
 
 | Campo    | Tipo    | Requerido | Descripción                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la generación de resúmenes de reuniones. |
 
+</details>
+
 ### Características de Marcado de Entrada SIP
+<details>
+<summary>Ver Detalles</summary>
 
 :::note[Se Requiere Configuración del Servidor]
 Para que la marcación de entrada SIP funcione, primero debe configurar la sección `livekit_sip_info` en el archivo principal `config.yaml` de su servidor. Esto implica configurar la pasarela SIP (p. ej., `livekit/sip`) e integrarla con un proveedor de troncales SIP externo.
@@ -228,7 +278,11 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 | enable_dial_in_on_create   | boolean | No       | Si es `true`, el servicio de marcación de entrada SIP se iniciará automáticamente cuando se cree la sala. Si es `false`, un moderador deberá iniciarlo manualmente desde la reunión. Predeterminado: `false`.                                                                                                                                                                                                                                                |
 | hide_phone_number          | boolean | No       | Si es `true`, el número de teléfono de marcación de entrada se ocultará en la lista de participantes, mostrando solo los últimos 4 dígitos. Predeterminado: `false`.                                                                                                                                                                                                                                                                    |
 
+</details>
+
 ### Características de Cifrado de Extremo a Extremo (E2EE)
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                               | Tipo    | Requerido | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -237,14 +291,22 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 | included_chat_messages              | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de chat.                                                                                                                            |
 | included_whiteboard                 | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de la pizarra (SCENE_UPDATE, POINTER_UPDATE). Puede aumentar el uso de la CPU; habilítelo solo si es necesario.                                                                                                                                                                                                |
 
+</details>
+
 ### Opciones del Bot Grabador
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                         | Tipo   | Requerido | Descripción                                                              |
 | ----------------------------- | ------ | -------- | ------------------------------------------------------------------------ |
 | enable_auto_close_chat_panel  | boolean| No       | Si es `true`, el panel de chat se cerrará automáticamente después de una cierta duración. |
 | duration_after_last_message   | number | No       | Duración en segundos. Después de esta duración, el panel de chat se cerrará. |
 
+</details>
+
 ### Configuraciones de Bloqueo Predeterminadas
+<details>
+<summary>Ver Detalles</summary>
 
 | Campo                  | Tipo    | Requerido | Descripción                  |
 | ---------------------- | ------- | -------- | ---------------------------- |
@@ -256,7 +318,11 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 | lock_chat_file_share   | boolean | No       | Bloquear el envío de archivos en el chat.   |
 | lock_private_chat      | boolean | No       | Bloquear el chat privado para los usuarios. |
 
+</details>
+
 ### Configuración de Copyright
+<details>
+<summary>Ver Detalles</summary>
 
 Esta característica solo está disponible si la configuración del servidor `client > copyright_conf > allow_override` está establecida en `true`.
 
@@ -264,6 +330,8 @@ Esta característica solo está disponible si la configuración del servidor `cl
 | ------- | ------ | -------- | ----------------------------------------------------------------------------- |
 | display | boolean| Sí       | Habilitar o deshabilitar la visualización del texto de derechos de autor.                           |
 | text    | string | Sí       | Texto de derechos de autor. Sea conciso. Etiquetas HTML compatibles: `b`, `i`, `em`, `strong`, `a`. |
+
+</details>
 
 ### Ejemplo
 

@@ -84,6 +84,8 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | [end_to_end_encryption_features](#end-to-end-encryption-e2ee-features) | object  | No       | End-to-End Encryption (E2EE) settings.                                                                 |
 
 ### Recording Features
+<details>
+<summary>View Details</summary>
 
 | Field                       | Type    | Required | Description                                                                           |
 | --------------------------- | ------- | -------- | ------------------------------------------------------------------------------------- |
@@ -94,33 +96,53 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | only_record_admin_webcams   | boolean | No       | If `true`, only the webcams of admin users will be included in the recording.           |
 | [recorder_bot_options](#recorder-bot-options) | object | No | Advanced options for the recorder bot.                                        |
 
+</details>
+
 ### Chat Features
+<details>
+<summary>View Details</summary>
 
 | Field               | Type    | Required | Description                             |
 | ------------------- | ------- | -------- | --------------------------------------- |
 | is_allow            | boolean | Yes      | Enable or disable chat for the meeting. |
 | is_allow_file_upload | boolean | Yes      | Enable or disable file uploads in chat. |
 
+</details>
+
 ### Shared Notepad Features
+<details>
+<summary>View Details</summary>
 
 | Field    | Type    | Required | Description                                   |
 | -------- | ------- | -------- | --------------------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable the shared notepad feature. |
 
+</details>
+
 ### Whiteboard Features
+<details>
+<summary>View Details</summary>
 
 | Field        | Type    | Required | Description                                                                                                   |
 | ------------ | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | is_allow     | boolean | Yes      | Enable or disable the whiteboard feature.                                                                     |
 | preload_file | string  | No       | Preload a remote (http/https) presentation file for the whiteboard. The file must be directly accessible without redirection. |
 
+</details>
+
 ### External Media Player Features
+<details>
+<summary>View Details</summary>
 
 | Field    | Type    | Required | Description                                                                              |
 | -------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable playback of video/audio from external sources. Moderators can also upload local media. |
 
+</details>
+
 ### External Broadcasting Features
+<details>
+<summary>View Details</summary>
 
 | Field                | Type   | Required | Description                                                              |
 | -------------------- | ------ | -------- | ------------------------------------------------------------------------ |
@@ -128,38 +150,62 @@ Once a session is over, the room is finalized, and all associated data (like cha
 | is_allow_rtmp        | boolean| Yes      | When enabled, moderators can start live streaming the room to external platforms like YouTube. |
 | [recorder_bot_options](#recorder-bot-options) | object | No | Advanced options for the recorder bot used for broadcasting. |
 
+</details>
+
 ### Waiting Room Features
+<details>
+<summary>View Details</summary>
 
 | Field     | Type    | Required | Description                                                                                                     |
 | --------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------- |
 | is_active | boolean | Yes      | Enable to activate the waiting room feature. Users remain in the waiting room until allowed to join by a moderator. |
 
+</details>
+
 ### Breakout Room Features
+<details>
+<summary>View Details</summary>
 
 | Field                | Type    | Required | Description                                                           |
 | -------------------- | ------- | -------- | --------------------------------------------------------------------- |
 | is_allow             | boolean | Yes      | Enable or disable breakout rooms.                                     |
 | allowed_number_rooms | number  | No       | Maximum number of breakout rooms that can be created simultaneously. Default: 6 |
 
+</details>
+
 ### Display External Link Features
+<details>
+<summary>View Details</summary>
 
 | Field    | Type    | Required | Description                                                                                                                                                                                                                                                                                       |
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable the display of external links inside an iframe. Useful for showing websites, quizzes, or games. **Note:** The external site must allow being embedded in an iframe. Moderators can pass values like `name`, `userId`, `role`, and `meetingId` to the URL. |
 
+</details>
+
 ### Ingress Features
+<details>
+<summary>View Details</summary>
 
 | Field    | Type    | Required | Description                                                                                                   |
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable media ingress to stream content directly into the session. This is useful for professional broadcasting using software like OBS Studio. Plug-N-Meet supports both RTMP and WHIP (WebRTC-HTTP Ingestion Protocol) for low-latency streaming. |
 
+</details>
+
 ### Polls Features
+<details>
+<summary>View Details</summary>
 
 | Field    | Type    | Required | Description                       |
 | -------- | ------- | -------- | --------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable polls features. |
 
+</details>
+
 ### Insights Features
+<details>
+<summary>View Details</summary>
 
 :::note[Server Configuration Required]
 For any of these features to work, you must first configure the `insights` section of your server's main `config.yaml` file.
@@ -214,7 +260,11 @@ This object controls all AI-powered features provided by the Insights Platform.
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Yes      | Enable or disable the generation of meeting summaries. |
 
+</details>
+
 ### SIP Dial-In Features
+<details>
+<summary>View Details</summary>
 
 :::note[Server Configuration Required]
 For SIP dial-in to function, you must first configure the `livekit_sip_info` section of your server's main `config.yaml` file. This involves setting up the SIP gateway (e.g., `livekit/sip`) and integrating it with an external SIP trunking provider.
@@ -228,7 +278,11 @@ Please refer to the server configuration guide and the [livekit/sip GitHub repos
 | enable_dial_in_on_create   | boolean | No       | If `true`, the SIP dial-in service will automatically start when the room is created. If `false`, a moderator must manually start it from within the meeting. Default: `false`.                                                                                                                                                                                                                                                |
 | hide_phone_number          | boolean | No       | If `true`, the dial-in phone number will be masked in the participant list, showing only the last 4 digits. Default: `false`.                                                                                                                                                                                                                                                                                                   |
 
+</details>
+
 ### End-to-End Encryption (E2EE) Features
+<details>
+<summary>View Details</summary>
 
 | Field                               | Type    | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ----------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -237,14 +291,22 @@ Please refer to the server configuration guide and the [livekit/sip GitHub repos
 | included_chat_messages              | boolean | No       | Enable or disable E2EE for chat messages.                                                                                                                                                                                                                                                        |
 | included_whiteboard                 | boolean | No       | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary.                                                                                                                                                                                                |
 
+</details>
+
 ### Recorder Bot Options
+<details>
+<summary>View Details</summary>
 
 | Field                         | Type   | Required | Description                                                              |
 | ----------------------------- | ------ | -------- | ------------------------------------------------------------------------ |
 | enable_auto_close_chat_panel  | boolean| No       | If `true`, the chat panel will be closed automatically after a certain duration. |
 | duration_after_last_message   | number | No       | Duration in seconds. After this duration, the chat panel will be closed. |
 
+</details>
+
 ### Default Lock Settings
+<details>
+<summary>View Details</summary>
 
 | Field                  | Type    | Required | Description                  |
 | ---------------------- | ------- | -------- | ---------------------------- |
@@ -256,7 +318,11 @@ Please refer to the server configuration guide and the [livekit/sip GitHub repos
 | lock_chat_file_share   | boolean | No       | Lock file sharing in chat.   |
 | lock_private_chat      | boolean | No       | Lock private chat for users. |
 
+</details>
+
 ### Copyright Configuration
+<details>
+<summary>View Details</summary>
 
 This feature is available only if the server configuration `client > copyright_conf > allow_override` is set to `true`.
 
@@ -264,6 +330,8 @@ This feature is available only if the server configuration `client > copyright_c
 | ------- | ------ | -------- | ----------------------------------------------------------------------------- |
 | display | boolean| Yes      | Enable or disable the display of copyright text.                           |
 | text    | string | Yes      | Copyright text. Keep it concise. Supported HTML tags: `b`, `i`, `em`, `strong`, `a` |
+
+</details>
 
 ### Example
 
