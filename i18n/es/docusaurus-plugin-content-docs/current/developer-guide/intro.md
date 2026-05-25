@@ -27,4 +27,4 @@ plugNmeet es más que una simple herramienta de videoconferencia; es una platafo
 2.  **Revise la Guía de Personalización del Diseño:** Aprenda a usar un simple objeto de JavaScript para cambiar por completo la apariencia del cliente front-end.
 3.  **Consulte nuestros SDKs:** Para una integración más rápida, proporcionamos SDKs oficiales para lenguajes populares como PHP y JavaScript.
 
-¡Estamos deseando ver lo que usted construirá con plugNmeet!
+¡Estamos emocionados por ver lo que usted creará con plugNmeet!
