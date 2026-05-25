@@ -73,8 +73,8 @@ This example merges two specific recordings from the room `room01` in the specif
   "by_ids": {
     "room_id": "room01",
     "recording_ids": [
-      "RM_abc-123",
-      "RM_def-456"
+      "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd-1779521611869",
+      "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd-1779521613869"
     ]
   }
 }

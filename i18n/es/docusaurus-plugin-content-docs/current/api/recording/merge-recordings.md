@@ -73,8 +73,8 @@ Este ejemplo une dos grabaciones específicas de la sala `sala01` en el orden es
   "by_ids": {
     "room_id": "sala01",
     "recording_ids": [
-      "RM_abc-123",
-      "RM_def-456"
+      "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd-1779521611869",
+      "c5b79ab5-b832-4972-9f9b-ba1f1e3369bd-1779521613869"
     ]
   }
 }
