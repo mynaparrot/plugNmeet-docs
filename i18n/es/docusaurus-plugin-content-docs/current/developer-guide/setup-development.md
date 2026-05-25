@@ -1,5 +1,5 @@
 ---
-description: Una guía para configurar un entorno de desarrollo local completo para contribuir al proyecto de código abierto de plugNmeet.
+description: Una guía para configurar un entorno local de desarrollo completo y contribuir al proyecto de código abierto plugNmeet.
 title: Configuración del Entorno de Desarrollo | Guía del Desarrollador de plugNmeet
 keywords: [contribuir, configuración de desarrollo, entorno local, desarrollo de plugnmeet, docker, nodejs, pnpm, guía del desarrollador]
 sidebar_position: 2
@@ -8,7 +8,7 @@ sidebar_label: Configuración de Desarrollo
 
 # Configuración de su Entorno de Desarrollo
 
-¡Bienvenido a la guía de desarrollo de plugNmeet! Nos complace que esté interesado en contribuir. Esta guía lo guiará en la configuración de un entorno de desarrollo local completo, permitiéndole ejecutar toda la pila tecnológica de plugNmeet en su propia máquina.
+¡Bienvenido a la guía de desarrollo de plugNmeet! Nos complace que esté interesado en contribuir. Esta guía lo guiará en la configuración de un entorno de desarrollo local completo, permitiéndole ejecutar todo el stack tecnológico de plugNmeet en su propia máquina.
 
 Seguir estos pasos le permitirá probar nuevas funciones, corregir errores y ver sus cambios en tiempo real.
 
