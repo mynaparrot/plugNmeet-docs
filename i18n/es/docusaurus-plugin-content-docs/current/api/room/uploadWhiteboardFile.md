@@ -12,7 +12,7 @@ Endpoint: `/room/uploadWhiteboardFile`
 
 Aunque los presentadores pueden subir archivos directamente a través de la interfaz del cliente de Plug-N-Meet, este endpoint de la API proporciona la flexibilidad de inyectar archivos en una sesión en vivo desde un sistema externo. Actúa como un puente entre el backend de su aplicación y la sala de Plug-N-Meet, permitiendo flujos de trabajo potentes y automatizados.
 
-Por ejemplo, podría construir una integración que permita a los usuarios seleccionar un archivo de un servicio de almacenamiento en la nube como Google Drive o un bucket de S3. Su aplicación se encargaría de descargar el archivo del servicio y luego usaría esta API para enviarlo a la sesión activa de Plug-N-Meet.
+Por ejemplo, podría construir una integración que permita a los usuarios seleccionar un archivo de un servicio de almacenamiento en la nube como Google Drive o un bucket de S3. Su aplicación puede descargar el archivo y luego enviarlo al servidor mediante una solicitud `multipart/form-data`, o puede proporcionar una URL de descarga directa usando el parámetro `document_link`. Si utiliza `document_link`, es crucial que proporcione el enlace de descarga final y directo, ya que el servidor no realizará ninguna autenticación. Su aplicación es responsable de gestionar cualquier autenticación necesaria con el servicio de almacenamiento y de generar un enlace de acceso público.
 
 Después de una subida exitosa a través de esta API:
 1.  El presentador recibe una notificación dentro de la sala.
@@ -48,7 +48,7 @@ Debe proporcionar `document` (para la subida directa de archivos) o `document_li
 | Campo           | Tipo   | Requerido | Descripción                                                                 |
 | --------------- | ------ | --------- | --------------------------------------------------------------------------- |
 | `document`      | file   | No        | El archivo a subir. Consulte [Restricciones de Archivo](#restricciones-de-archivo). |
-| `document_link` | string | No        | Una URL desde la cual el servidor descargará el archivo. Consulte [Restricciones de Archivo](#restricciones-de-archivo). |
+| `document_link` | string | No        | Una URL de acceso público desde la cual el servidor descargará el archivo. **Importante**: El servidor no realizará ninguna autenticación, por lo que su aplicación debe proporcionar un enlace de descarga final y directo. Consulte Restricciones de Archivo. |
 
 ### Restricciones de Archivo
 

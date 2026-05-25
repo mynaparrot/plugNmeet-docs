@@ -12,7 +12,7 @@ Endpoint: `/room/uploadWhiteboardFile`
 
 While presenters can upload files directly through the Plug-N-Meet client interface, this API endpoint provides the flexibility to inject files into a live session from an external system. It acts as a bridge between your application's backend and the Plug-N-Meet room, allowing for powerful, automated workflows.
 
-For example, you could build an integration that allows users to select a file from a cloud storage service like Google Drive or an S3 bucket. Your application would handle downloading the file from the service and then use this API to push it into the active Plug-N-Meet session.
+For example, you could build an integration that allows users to select a file from a cloud storage service like Google Drive or an S3 bucket. Your application can either download the file and then push it to the server using a `multipart/form-data` request, or you can provide a direct download URL using the `document_link` parameter. If you use `document_link`, it is crucial that you provide the final, direct download link, as the server will not perform any authentication. Your application is responsible for handling any necessary authentication with the storage service and generating a publicly accessible link.
 
 After a successful upload via this API:
 1.  The presenter receives a notification within the room.
@@ -48,7 +48,7 @@ You must provide either `document` (for direct file upload) or `document_link` (
 | Field          | Type   | Required | Description                                                                 |
 | -------------- | ------ | -------- |-----------------------------------------------------------------------------|
 | `document`     | file   | No       | The file to be uploaded. See [File Constraints](#file-constraints).         |
-| `document_link`| string | No       | A URL from which the server will download the file. See [File Constraints](#file-constraints). |
+| `document_link`| string | No       | A publicly accessible URL from which the server will download the file. **Important**: The server will not perform any authentication, so your application must provide a final, direct download link. See File Constraints. |
 
 ### File Constraints
 
