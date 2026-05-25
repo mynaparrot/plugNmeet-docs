@@ -163,7 +163,7 @@ Las siguientes rutas en su `config.yaml` deben apuntar a esta ubicación compart
 
 ## Configuración
 
-Una vez que su infraestructura distribuida esté implementada, simplemente necesita actualizar su archivo `config.yaml` para cada instancia de `plugnmeet-server` para que apunte a los nuevos servicios en clúster.
+Una vez que su infraestructura distribuida esté implementada, simplemente necesita actualizar su archivo `config.yaml` de cada instancia de `plugnmeet-server` para que apunte a los nuevos servicios del clúster.
 
 ```yaml
 # Fragmento de configuración de ejemplo
