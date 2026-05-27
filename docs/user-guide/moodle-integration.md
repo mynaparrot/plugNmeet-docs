@@ -140,26 +140,32 @@ This system moves beyond passive viewing and encourages active, measurable engag
 
 ---
 
-## 6. Real-Time Session Monitoring
+## 6. Real-Time Session Monitoring and Interaction
 
-#### In-Activity Live Dashboard
+### In-Activity Live Dashboard
 
-Once a session is live, teachers and moderators gain access to a real-time dashboard directly on the Moodle activity page. This powerful tool provides an at-a-glance overview of the session's status and participant engagement. You can instantly see:
+Once a session is live, teachers and moderators gain access to a real-time dashboard directly on the Moodle activity page. This powerful tool provides an at-a-glance overview of the session's status and allows for direct interaction. You can instantly see:
 
 *   **Live Participant List**: A list of all users currently in the session.
 *   **Activity Status**: See who has their webcam or microphone active.
-*   **Session Summary**: A summary of key metrics, including:
-    *   **Room ID**: The unique identifier for the session.
-    *   **Recording Status**: Whether the session is currently being recorded.
-    *   **Participant Count**: The total number of users in the room.
-    *   **Active Media**: The total number of active webcams, microphones, and screen shares.
-    *   **Creation Time**: When the session was started.
+*   **Session Summary**: A summary of key metrics, including participant count, recording status, and active media.
 
 This live data allows moderators to manage the classroom effectively without having to constantly switch between windows.
 
 ![Screenshot of the Active live sessions with participant details.](/img/moodle/moodle_7.png)
 
-#### Site-Wide Active Session Report (Admin Data Pull)
+### Upload to Whiteboard from Moodle
+
+While a session is running, administrators and teachers can upload files directly to the whiteboard from Moodle's file repository. This feature streamlines the process of sharing course materials without leaving the virtual classroom.
+
+1.  From the live dashboard on the Moodle activity page, click the new **"Upload to Whiteboard"** button.
+2.  This will open the familiar Moodle file picker.
+3.  You can select an existing file from your course files.
+4.  Once selected, the file is automatically added to the whiteboard's file list inside the live session, ready for you to present to the class.
+
+![Screenshot of the Moodle file picker being used to upload a file to the whiteboard.](/img/moodle/moodle_11.png)
+
+### Site-Wide Active Session Report (Admin Data Pull)
 
 For administrators, plugNmeet offers a real-time "live data pull" of all active sessions across the entire Moodle site. This is an essential tool for monitoring site-wide activity.
 
@@ -174,15 +180,32 @@ For administrators, plugNmeet offers a real-time "live data pull" of all active 
 
 All files generated during your sessions are neatly organized and accessible directly from the Moodle activity page.
 
--   **Recordings Tab**: Here you can find all cloud recordings. Teachers can:
-    -   Play the recording.
-    -   Control visibility (show/hide from students).
-    -   Download the recording file.
-    -   Delete the recording.
--   **Artifacts Tab**: This tab contains all other session-generated files, governed by Moodle permissions. This includes:
-    -   AI-generated meeting summaries.
-    -   Transcription files (e.g., VTT, SRT).
-    -   Detailed per-session analytics reports in JSON format.
+### Recordings Tab
+Here you can find all cloud recordings. Teachers can:
+-   Play the recording.
+-   Control visibility (show/hide from students).
+-   Download the recording file.
+-   Delete the recording.
+
+![Screenshot of the Active Recordings.](/img/moodle/moodle_8.png)
+
+### Merge Multiple Recordings
+
+If a session was recorded in multiple segments, you can now easily merge them into a single, continuous video directly from the Moodle interface.
+
+1.  Navigate to the **Recordings** tab for the plugNmeet activity.
+2.  You will see checkboxes next to each recording. Select the recordings in the specific order you want them to appear in the final video.
+3.  Click the **"Merge Recordings"** button that appears at the bottom of the list.
+4.  A confirmation pop-up will show the list of recording IDs you are about to merge, verifying the sequence of your selection.
+5.  Confirm the action to start the merge process. The new, merged recording will appear in the list once it's ready.
+
+![Screenshot of the Moodle recordings list with checkboxes and a merge button, showing the merge confirmation pop-up.](/img/moodle/moodle_12.png)
+
+### Artifacts Tab
+This tab contains all other session-generated files, governed by Moodle permissions. This includes:
+-   AI-generated meeting summaries.
+-   Transcription files (e.g., VTT, SRT).
+-   Detailed per-session analytics reports in JSON format.
 
 ![Screenshot of the Active Recordings.](/img/moodle/moodle_8.png)
 
