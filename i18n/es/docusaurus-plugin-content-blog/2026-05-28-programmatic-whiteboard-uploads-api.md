@@ -2,7 +2,7 @@
 title: "Inyectando Contenido en Tiempo Real: Guía para Desarrolladores de la Nueva API `uploadWhiteboardFile`"
 slug: programmatic-whiteboard-uploads-api
 authors: [jibon, bob]
-tags: [api, developer, whiteboard, integration, automation, real-time, file-upload, use-case, moodle, moodle video conference plugin, video call server, video conference server]
+tags: [API, desarrollo, pizarra virtual, integración, automatización, tiempo real, subida de archivos, Moodle, plugin Moodle, videoconferencia, servidor de videollamadas, servidor de videoconferencia]
 ---
 
 En Plug-N-Meet, nuestro objetivo es ofrecer una plataforma, no solo un producto. Si bien nuestra interfaz de usuario es rica en funciones, el verdadero poder de nuestra arquitectura reside en su diseño "API-first". Hoy, nos complace presentar un nuevo endpoint que brinda a los desarrolladores un control sin precedentes sobre las sesiones en vivo: `/room/uploadWhiteboardFile`.
