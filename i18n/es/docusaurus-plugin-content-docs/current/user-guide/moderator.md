@@ -27,7 +27,7 @@ Al entrar por primera vez a una sala de PlugNmeet, se le solicitará que elija c
 
 ---
  
-## Sección 1: Controles Principales de Multimedia
+## Sección 1: Controles Principales de Multimedia y Grabación
 
 Estos son los controles básicos de audio y video, ubicados en la parte inferior izquierda de la barra de controles.
 
@@ -45,6 +45,40 @@ Estos son los controles básicos de audio y video, ubicados en la parte inferior
 - **Fondos Virtuales:** Al activar su cámara web, aparecerá una ventana de vista previa. Aquí podrá seleccionar un fondo virtual (desenfoque o imagen) o cargar su propia imagen (usando el icono "+") antes de hacer clic en **Compartir**.
 
 ![share-webcam-pop.webp](/img/moderator/share-webcam-pop.webp)
+
+### Grabación de la Reunión
+
+Plug-N-Meet ofrece dos métodos para grabar la sesión: **Grabación en la Nube** (en el servidor) y **Grabación Local** (en el navegador). Para iniciar cualquiera de ellas, haga clic en el icono **REC** de la barra de control y elija la opción deseada.
+
+![recording.png](/img/moderator/recording.png)
+
+#### Grabación en la Nube (Recomendado)
+
+Es el método más fiable. La grabación se procesa en el servidor, capturando toda la sesión sin depender del rendimiento de su equipo local.
+
+-   **Requisito:** Debe estar instalado el componente `plugnmeet-recorder` en el servidor.
+-   **Solución de problemas:** Si aparece el mensaje "No hay grabador disponible", el componente no se está ejecutando.
+-   **Funcionamiento:** Seleccione "Grabación en la Nube". El icono REC parpadeará para indicar que se está grabando. Haga clic de nuevo para detener.
+
+#### Grabación Local (En el Navegador)
+
+Este método utiliza el navegador para guardar la reunión directamente en su ordenador. **Solo es compatible con Google Chrome**.
+
+> **Importante:** Es una función avanzada. Para obtener los mejores resultados, siga estas instrucciones atentamente.
+
+Para capturar todo el audio de la sesión, la grabación debe realizarla un segundo usuario "virtual".
+
+**Instrucciones paso a paso:**
+
+1.  **Abra una nueva ventana de Chrome** (no una pestaña).
+2.  En la nueva ventana, **acceda a la misma reunión con una cuenta diferente** que tenga permisos de moderador. Ahora tendrá dos sesiones suyas dentro de la reunión.
+3.  En esta segunda ventana, haga clic en el icono **REC** y elija **Grabación Local**.
+4.  En el aviso de Chrome, seleccione la pestaña de su sesión original.
+5.  **Paso Crucial:** En la parte inferior de la ventana, marque la casilla **"Compartir el audio de la pestaña"**. Sin esto, no se grabará el sonido.
+
+**Método Alternativo (solo su micrófono):**
+
+Si solo necesita grabar su micrófono junto con el video principal, puede hacerlo sin necesidad de un segundo usuario. Debe **compartir su micrófono primero** y *luego* iniciar la grabación. Si comienza la grabación antes de compartir su micrófono, su propio audio no estará incluido.
 
 ---
 
@@ -295,40 +329,6 @@ Esta función permite que los participantes se unan al audio de la reunión marc
 ## Sección 5: Gestión de la Sesión
 
 Estas acciones controlan la sesión general de la reunión.
-
-### Grabación de la Reunión
-
-Plug-N-Meet ofrece dos métodos para grabar la sesión: **Grabación en la Nube** (en el servidor) y **Grabación Local** (en el navegador). Para iniciar cualquiera de ellas, haga clic en el icono **REC** de la barra de control y elija la opción deseada.
-
-![recording.png](/img/moderator/recording.png)
-
-#### Grabación en la Nube (Recomendado)
-
-Es el método más fiable. La grabación se procesa en el servidor, capturando toda la sesión sin depender del rendimiento de su equipo local.
-
--   **Requisito:** Debe estar instalado el componente `plugnmeet-recorder` en el servidor.
--   **Solución de problemas:** Si aparece el mensaje "No hay grabador disponible", el componente no se está ejecutando.
--   **Funcionamiento:** Seleccione "Grabación en la Nube". El icono REC parpadeará para indicar que se está grabando. Haga clic de nuevo para detener.
-
-#### Grabación Local (En el Navegador)
-
-Este método utiliza el navegador para guardar la reunión directamente en su ordenador. **Solo es compatible con Google Chrome**.
-
-> **Importante:** Es una función avanzada. Para obtener los mejores resultados, siga estas instrucciones atentamente.
-
-Para capturar todo el audio de la sesión, la grabación debe realizarla un segundo usuario "virtual".
-
-**Instrucciones paso a paso:**
-
-1.  **Abra una nueva ventana de Chrome** (no una pestaña).
-2.  En la nueva ventana, **acceda a la misma reunión con una cuenta diferente** que tenga permisos de moderador. Ahora tendrá dos sesiones suyas dentro de la reunión.
-3.  En esta segunda ventana, haga clic en el icono **REC** y elija **Grabación Local**.
-4.  En el aviso de Chrome, seleccione la pestaña de su sesión original.
-5.  **Paso Crucial:** En la parte inferior de la ventana, marque la casilla **"Compartir el audio de la pestaña"**. Sin esto, no se grabará el sonido.
-
-**Método Alternativo (solo su micrófono):**
-
-Si solo necesita grabar su micrófono junto con el video principal, puede hacerlo sin necesidad de un segundo usuario. Debe **compartir su micrófono primero** y *luego* iniciar la grabación. Si comienza la grabación antes de compartir su micrófono, su propio audio no estará incluido.
 
 ### Ajustes de la Aplicación
 

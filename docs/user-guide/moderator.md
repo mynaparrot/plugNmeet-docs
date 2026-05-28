@@ -27,7 +27,7 @@ When you first enter a PlugNmeet room, you will be prompted to choose how you wa
 
 ---
  
-## Section 1: Core Media Controls
+## Section 1: Core Media Controls and recording
 
 These are the basic controls for your audio and video, located in the bottom-left of the control bar.
 
@@ -45,6 +45,40 @@ These are the basic controls for your audio and video, located in the bottom-lef
 - **Virtual Backgrounds:** When starting your webcam, a preview window will appear. Here you can select a virtual background (blur or an image) or upload your own image (using the plus icon) before clicking **Share**.
 
 ![share-webcam-pop.webp](/img/moderator/share-webcam-pop.webp)
+
+### Recording the Meeting
+
+Plug-N-Meet offers two distinct methods for recording your session: **Cloud Recording** (server-side) and **Local Recording** (browser-based). To start either, click the **REC** icon in the main control bar and choose your preferred option.
+
+![recording.png](/img/moderator/recording.png)
+
+#### Cloud Recording (Recommended)
+
+This is the most reliable method. The recording is processed on your server, capturing the entire session without depending on your local computer's performance.
+
+-   **Requirement:** To use Cloud Recording, the free and open-source `plugNmeet-recorder` component must have been installed on your server. This is an option during the main installation process.
+-   **Troubleshooting:** If you see a "No recorder available" message, it means this component is not running on your server.
+-   **How it works:** Simply select "Cloud Recording" to start. The REC icon will pulse to indicate that the server is recording. Click it again to stop.
+
+#### Local Recording (Browser-Based)
+
+This method uses your web browser's capabilities to capture and save the meeting directly to your computer. It has very specific requirements and is **only supported in Google Chrome**.
+
+> **Important:** Local Recording is an advanced feature. For the best results, please read the following instructions carefully.
+
+To capture all audio within the session (not just your own microphone), the recording must be performed by a "virtual" second user.
+
+**Step-by-Step Instructions:**
+
+1.  **Open a new Chrome window** (not just a new tab).
+2.  Using the new window, **log in to the same meeting with a different user account** that has moderator privileges. You will now have two instances of yourself in the meeting.
+3.  In this second window, click the **REC** icon and choose **Local Recording**.
+4.  A Chrome prompt will appear asking you to share a tab. Select the tab of your *original* meeting session.
+5.  **Crucial Step:** At the bottom of the Chrome prompt, you **must** check the box that says **"Share tab audio"**. If you do not enable this, only the video will be recorded, with no sound.
+
+**Alternative Method (for capturing your microphone only):**
+
+If you only need to record what your microphone picks up along with the main video, you can start local recording without a second user. However, you must **share your microphone first**, and *then* start the local recording. If you start recording before sharing your mic, your own audio will be excluded.
 
 ---
 
@@ -295,40 +329,6 @@ This feature allows participants to join the meeting's audio by dialing a standa
 ## Section 5: Session Management
 
 These actions control the overall meeting session.
-
-### Recording the Meeting
-
-Plug-N-Meet offers two distinct methods for recording your session: **Cloud Recording** (server-side) and **Local Recording** (browser-based). To start either, click the **REC** icon in the main control bar and choose your preferred option.
-
-![recording.png](/img/moderator/recording.png)
-
-#### Cloud Recording (Recommended)
-
-This is the most reliable method. The recording is processed on your server, capturing the entire session without depending on your local computer's performance.
-
--   **Requirement:** To use Cloud Recording, the free and open-source `plugNmeet-recorder` component must have been installed on your server. This is an option during the main installation process.
--   **Troubleshooting:** If you see a "No recorder available" message, it means this component is not running on your server.
--   **How it works:** Simply select "Cloud Recording" to start. The REC icon will pulse to indicate that the server is recording. Click it again to stop.
-
-#### Local Recording (Browser-Based)
-
-This method uses your web browser's capabilities to capture and save the meeting directly to your computer. It has very specific requirements and is **only supported in Google Chrome**.
-
-> **Important:** Local Recording is an advanced feature. For the best results, please read the following instructions carefully.
-
-To capture all audio within the session (not just your own microphone), the recording must be performed by a "virtual" second user.
-
-**Step-by-Step Instructions:**
-
-1.  **Open a new Chrome window** (not just a new tab).
-2.  Using the new window, **log in to the same meeting with a different user account** that has moderator privileges. You will now have two instances of yourself in the meeting.
-3.  In this second window, click the **REC** icon and choose **Local Recording**.
-4.  A Chrome prompt will appear asking you to share a tab. Select the tab of your *original* meeting session.
-5.  **Crucial Step:** At the bottom of the Chrome prompt, you **must** check the box that says **"Share tab audio"**. If you do not enable this, only the video will be recorded, with no sound.
-
-**Alternative Method (for capturing your microphone only):**
-
-If you only need to record what your microphone picks up along with the main video, you can start local recording without a second user. However, you must **share your microphone first**, and *then* start the local recording. If you start recording before sharing your mic, your own audio will be excluded.
 
 ### Application Settings
 
