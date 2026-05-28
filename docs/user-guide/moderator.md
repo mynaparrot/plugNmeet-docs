@@ -60,6 +60,13 @@ This is the most reliable method. The recording is processed on your server, cap
 -   **Troubleshooting:** If you see a "No recorder available" message, it means this component is not running on your server.
 -   **How it works:** Simply select "Cloud Recording" to start. The REC icon will pulse to indicate that the server is recording. Click it again to stop.
 
+    **New Recording Options:**
+    When initiating a cloud recording, you now have additional options to optimize the recorded layout:
+    *   **Enable auto-close chat panel**: If enabled, the public chat panel will automatically hide after a period of inactivity. This provides more screen space for webcams, screen shares, or presentations in the final recording.
+    *   **Duration after last message (in minutes)**: Specify the duration of inactivity (in minutes) after which the chat panel will automatically close.
+
+    These options ensure that your recordings are clean and focused on the primary content, especially useful for RTMP broadcasting where screen real estate is crucial. Our recording philosophy ensures that what you see is what gets recorded, so controlling the chat panel visibility directly impacts the final video.
+
 #### Local Recording (Browser-Based)
 
 This method uses your web browser's capabilities to capture and save the meeting directly to your computer. It has very specific requirements and is **only supported in Google Chrome**.

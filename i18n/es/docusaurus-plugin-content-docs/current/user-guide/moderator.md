@@ -60,6 +60,13 @@ Es el método más fiable. La grabación se procesa en el servidor, capturando t
 -   **Solución de problemas:** Si aparece el mensaje "No hay grabador disponible", el componente no se está ejecutando.
 -   **Funcionamiento:** Seleccione "Grabación en la Nube". El icono REC parpadeará para indicar que se está grabando. Haga clic de nuevo para detener.
 
+    **Nuevas opciones de grabación:**
+    Al iniciar una grabación en la nube, ahora tiene opciones adicionales para optimizar el diseño grabado:
+    *   **Habilitar el cierre automático del panel de chat**: Si está habilitado, el panel de chat público se ocultará automáticamente después de un período de inactividad. Esto proporciona más espacio en pantalla para cámaras web, pantallas compartidas o presentaciones en la grabación final.
+    *   **Duración después del último mensaje (en minutos)**: Especifique la duración de la inactividad (en minutos) después de la cual el panel de chat se cerrará automáticamente.
+
+    Estas opciones aseguran que sus grabaciones sean limpias y se centren en el contenido principal, especialmente útil para la transmisión RTMP donde el espacio en pantalla es crucial. Nuestra filosofía de grabación asegura que lo que ve es lo que se graba, por lo que controlar la visibilidad del panel de chat impacta directamente en el video final.
+
 #### Grabación Local (En el Navegador)
 
 Este método utiliza el navegador para guardar la reunión directamente en su ordenador. **Solo es compatible con Google Chrome**.
