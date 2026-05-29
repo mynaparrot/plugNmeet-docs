@@ -1,7 +1,7 @@
 ---
 title: "Injecting Content in Real-Time: A Developer's Guide to the New `uploadWhiteboardFile` API"
 slug: programmatic-whiteboard-uploads-api
-authors: [jibon, bob]
+authors: [jibon]
 tags: [api, developer, whiteboard, integration, automation, real-time, file-upload, use-case, moodle, moodle video conference plugin, video call server, video conference server]
 ---
 

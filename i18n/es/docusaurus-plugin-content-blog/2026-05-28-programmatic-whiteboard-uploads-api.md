@@ -1,7 +1,7 @@
 ---
 title: "Inyectando Contenido en Tiempo Real: Guía para Desarrolladores de la Nueva API `uploadWhiteboardFile`"
 slug: programmatic-whiteboard-uploads-api
-authors: [jibon, bob]
+authors: [jibon, simon]
 tags: [API, desarrollo, pizarra virtual, integración, automatización, tiempo real, subida de archivos, Moodle, plugin Moodle, videoconferencia, servidor de videollamadas, servidor de videoconferencia]
 ---
 
