@@ -27,7 +27,7 @@ Este proceso ocurre de forma asíncrona en segundo plano, por lo que no ocupa su
 
 ### Caso de Uso Destacado: Fusión Perfecta en Nuestro Plugin de Videoconferencia para Moodle
 
-Esta no es solo una característica teórica, ya está mejorando nuestro [Plugin oficial de Plug-N-Meet para Moodle](/docs/user-guide/moodle-integration). Como un plugin líder de **videoconferencia para Moodle**, creemos en proporcionar flujos de trabajo fluidos para los educadores.
+Esta no es solo una característica teórica, ya está mejorando nuestro [Plugin oficial de Plug-N-Meet para Moodle](/docs/user-guide/moodle-integration#merge-multiple-recordings). Como un plugin líder de **videoconferencia para Moodle**, creemos en proporcionar flujos de trabajo fluidos para los educadores.
 
 **El Escenario:** Un profesor imparte una clase larga y la graba en dos partes. Después de la sesión, ve ambas grabaciones listadas en su actividad de Moodle.
 

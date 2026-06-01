@@ -27,7 +27,7 @@ This process happens asynchronously in the background, so it doesn’t tie up yo
 
 ### Use Case Spotlight: Seamless Merging in our Moodle Video Conference Plugin
 
-This isn't just a theoretical feature—it's already enhancing our official **[Plug-N-Meet Moodle Plugin](/docs/user-guide/moodle-integration)**. As a leading **moodle video conference plugin**, we believe in providing seamless workflows for educators.
+This isn't just a theoretical feature—it's already enhancing our official **[Plug-N-Meet Moodle Plugin](/docs/user-guide/moodle-integration#merge-multiple-recordings)**. As a leading **moodle video conference plugin**, we believe in providing seamless workflows for educators.
 
 **The Scenario:** A teacher conducts a long class and records it in two parts. After the session, they see both recordings listed in their Moodle activity.
 

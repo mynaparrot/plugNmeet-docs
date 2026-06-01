@@ -67,7 +67,7 @@ Let's explore what you can build with this.
 
 ### Use Case 4: Moodle Integration - Bridging Content and Classroom
 
-**The Scenario:** Our official [Plug-N-Meet Moodle Plugin](/docs/user-guide/moodle-integration) already leverages this API to create a seamless experience for educators. Teachers can manage a central repository of course materials within Moodle.
+**The Scenario:** Our official [Plug-N-Meet Moodle Plugin](/docs/user-guide/moodle-integration#upload-to-whiteboard-from-moodle) already leverages this API to create a seamless experience for educators. Teachers can manage a central repository of course materials within Moodle.
 
 **The New Way with the API:**
 1.  A teacher is conducting a live class using the Plug-N-Meet activity in Moodle.
