@@ -1,7 +1,7 @@
 ---
 title: API para Obtener Archivos de Cliente | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener los archivos de la aplicación cliente de plugNmeet. Esto permite el autoalojamiento de los activos del front-end.
-keywords: [api, obtener archivos de cliente, activos de cliente, front-end, cliente autoalojado, sdk, punto final]
+description: Documentación del endpoint de API para obtener los archivos de la aplicación cliente de plugNmeet. Esto permite alojar los recursos del front-end en un servidor propio.
+keywords: [api, obtener archivos de cliente, recursos de cliente, front-end, cliente autoalojado, sdk, punto final]
 sidebar_position: 40
 sidebar_label: Obtener Archivos de Cliente
 ---
@@ -10,7 +10,7 @@ sidebar_label: Obtener Archivos de Cliente
 
 Punto final: `/getClientFiles`
 
-El cliente de Plug-N-Meet es una potente aplicación React independiente. Aunque puede incrustarla usando un iframe, **recomendamos encarecidamente** un enfoque más fluido utilizando este punto final de la API.
+El cliente de Plug-N-Meet es una potente aplicación React independiente. Aunque puede incrustarla usando un iframe, **recomendamos encarecidamente** utilizar este endpoint de API para una integración más fluida y sencilla.
 
 La API `getClientFiles` le proporciona una lista de todos los archivos CSS y JavaScript necesarios para renderizar la interfaz de Plug-N-Meet directamente en su propia página web. Este método ofrece una integración más profunda, un mejor rendimiento y evita las complejidades de los iframes, permitiéndole crear una experiencia de videoconferencia verdaderamente nativa para sus usuarios.
 
@@ -19,12 +19,12 @@ Además, le brinda total libertad para su marca. Dado que este método no está 
 ### Cómo Utilizarlo
 
 1.  Llame al punto final `/getClientFiles` desde la aplicación de su servidor.
-2.  La API responderá con dos arrays: `css` y `js`, que contienen los nombres de los archivos de activos requeridos.
-3.  Construya la URL completa para cada nombre de archivo. La API devuelve nombres de archivo simples (p. ej., `app.js`). Usted debe anteponer la ruta de los activos de su servidor Plug-N-Meet y el subdirectorio correcto (`/js/` para archivos JavaScript, `/css/` para archivos CSS). Por ejemplo: `https://plugnmeet.ejemplo.com/assets/js/app.js`.
+2.  La API devolverá dos arrays: `css` y `js`, que contienen las URL de los archivos de recursos requeridos.
+3.  Construya la URL completa para cada nombre de archivo. La API devuelve nombres de archivo simples (p. ej., `app.js`). Usted debe anteponer la ruta de los recursos de su servidor Plug-N-Meet y el subdirectorio correcto (`/js/` para archivos JavaScript, `/css/` para archivos CSS). Por ejemplo: `https://plugnmeet.ejemplo.com/assets/js/app.js`.
 4.  En la página HTML donde desea mostrar la conferencia, genere dinámicamente las etiquetas `<link>` y `<script>` utilizando las URLs completas que acaba de crear.
 5.  Asegúrese de tener un `div` con el id `plugNmeet-app` en su `<body>`, ya que aquí es donde se montará la aplicación de React.
 
-Este proceso garantiza que su aplicación siempre cargue los activos de cliente correctos y más actualizados.
+Este proceso garantiza que su aplicación siempre cargue los recursos de cliente correctos y más actualizados.
 
 Para ver ejemplos de implementación, consulte el archivo [conference.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/conference.php) o nuestros plugins para [Moodle](https://github.com/mynaparrot/moodle-mod_plugnmeet/blob/main/conference.php), [WordPress](https://github.com/mynaparrot/plugNmeet-WordPress/blob/main/plugnmeet/public/partials/plugnmeet-public-display-client.php) y [Joomla](https://github.com/mynaparrot/plugNmeet-Joomla/blob/main/components/com_plugnmeet/tmpl/room/conference.php).
 
