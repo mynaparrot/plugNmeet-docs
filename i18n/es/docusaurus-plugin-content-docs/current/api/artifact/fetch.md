@@ -1,6 +1,6 @@
 ---
 title: API para Obtener Artefactos | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener una lista de artefactos de reuniones, como resúmenes y transcripciones generados por IA.
+description: Documentación del endpoint de API para obtener una lista de artefactos de reuniones, como resúmenes y transcripciones generados por IA.
 keywords: [api, artefacto, obtener, listar artefactos, resumen, transcripción]
 sidebar_position: 1
 sidebar_label: Obtener
@@ -8,9 +8,9 @@ sidebar_label: Obtener
 
 # Obtener Artefactos
 
-Punto final: `/artifact/fetch`
+Endpoint: `/artifact/fetch`
 
-Este punto final le permite recuperar una lista paginada de todos los artefactos de reunión generados. Puede filtrar los resultados por sala, sesión o tipo de artefacto.
+Este endpoint le permite recuperar una lista paginada de todos los artefactos de reunión generados. Puede filtrar los resultados por sala, sesión o tipo de artefacto.
 
 ## Parámetros de la Solicitud
 
