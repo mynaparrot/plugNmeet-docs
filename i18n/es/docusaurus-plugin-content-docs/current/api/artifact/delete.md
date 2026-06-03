@@ -1,6 +1,6 @@
 ---
 title: API para Eliminar Artefacto | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para eliminar un archivo de artefacto de reunión.
+description: Documentación del endpoint de API para eliminar un archivo de artefacto de reunión.
 keywords: [api, artefacto, eliminar, remover artefacto]
 sidebar_position: 4
 sidebar_label: Eliminar
