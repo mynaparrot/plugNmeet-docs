@@ -8,7 +8,7 @@ sidebar_label: Eliminar
 
 # Eliminar Artefacto
 
-Punto final: `/artifact/delete`
+Endpoint: `/artifact/delete`
 
 Este punto final le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
 
