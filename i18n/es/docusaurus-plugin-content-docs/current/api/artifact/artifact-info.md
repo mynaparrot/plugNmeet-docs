@@ -1,6 +1,6 @@
 ---
 title: API para Obtener Información de Artefacto | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener información sobre un único artefacto de reunión.
+description: Documentación del endpoint de API para obtener información sobre un único artefacto de reunión.
 keywords: [api, artefacto, información de artefacto, obtener artefacto]
 sidebar_position: 2
 sidebar_label: Información
@@ -8,9 +8,9 @@ sidebar_label: Información
 
 # Obtener Información de Artefacto
 
-Punto final: `/artifact/info`
+Endpoint: `/artifact/info`
 
-Este punto final le permite recuperar información sobre un único artefacto utilizando su `artifact_id` único.
+Este endpoint le permite recuperar información sobre un único artefacto utilizando su `artifact_id` único.
 
 ## Parámetros de la Solicitud
 

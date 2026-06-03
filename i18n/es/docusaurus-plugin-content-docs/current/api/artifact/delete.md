@@ -1,6 +1,6 @@
 ---
 title: API para Eliminar Artefacto | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para eliminar un archivo de artefacto de reunión.
+description: Documentación del endpoint de API para eliminar un archivo de artefacto de reunión.
 keywords: [api, artefacto, eliminar, remover artefacto]
 sidebar_position: 4
 sidebar_label: Eliminar
@@ -8,9 +8,9 @@ sidebar_label: Eliminar
 
 # Eliminar Artefacto
 
-Punto final: `/artifact/delete`
+Endpoint: `/artifact/delete`
 
-Este punto final le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
+Este endpoint le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
 
 :::info[¿Qué Artefactos son Eliminables?]
 Este punto final es solo para eliminar los archivos físicos asociados con ciertos tipos de artefactos (p. ej., `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`). No se aplica a artefactos que solo contienen metadatos.

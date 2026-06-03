@@ -1,7 +1,7 @@
 ---
 title: Introducción a la referencia de la API | Documentación para desarrolladores de plugNmeet
-description: Una introducción a la API de plugNmeet. Aprenda a autenticarse, realizar solicitudes y usar nuestros potentes puntos finales para crear aplicaciones de video personalizadas.
-keywords: [api, rest api, desarrollador, sdk, autenticación, clave api, puntos finales, webhook]
+description: Una introducción a la API de plugNmeet. Aprenda a autenticarse, realizar solicitudes y usar nuestros potentes endpoints para crear aplicaciones de video personalizadas.
+keywords: [api, rest api, desarrollador, sdk, autenticación, clave api, endpoints, webhook]
 sidebar_position: 1
 sidebar_label: Introducción
 ---
@@ -67,10 +67,10 @@ Siguiendo estos pasos, puede generar una firma válida en cualquier lenguaje, as
 
 La API de Plug-N-Meet se organiza en varias categorías según su funcionalidad.
 
-*   **Gestión de salas:** Puntos finales para crear, gestionar y consultar el estado de las salas de reuniones en vivo.
-*   **Autenticación:** Puntos finales para generar tokens de acceso para los participantes.
-*   **Gestión de grabaciones:** Puntos finales para obtener, descargar y eliminar grabaciones de reuniones.
-*   **Gestión de artefactos:** Puntos finales para obtener, descargar y eliminar artefactos de reuniones generados por IA, como resúmenes y transcripciones.
+*   **Gestión de salas:** Endpoints para crear, gestionar y consultar el estado de las salas de reuniones en vivo.
+*   **Autenticación:** Endpoints para generar tokens de acceso para los participantes.
+*   **Gestión de grabaciones:** Endpoints para obtener, descargar y eliminar grabaciones de reuniones.
+*   **Gestión de artefactos:** Endpoints para obtener, descargar y eliminar artefactos de reuniones generados por IA, como resúmenes y transcripciones.
 
 ---
 
