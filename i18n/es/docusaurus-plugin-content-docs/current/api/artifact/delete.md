@@ -10,7 +10,7 @@ sidebar_label: Eliminar
 
 Endpoint: `/artifact/delete`
 
-Este punto final le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
+Este endpoint le permite eliminar un archivo de artefacto del sistema de archivos del servidor.
 
 :::info[¿Qué Artefactos son Eliminables?]
 Este punto final es solo para eliminar los archivos físicos asociados con ciertos tipos de artefactos (p. ej., `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`). No se aplica a artefactos que solo contienen metadatos.
