@@ -1,14 +1,14 @@
 ---
 title: API para Obtener Archivos de Cliente | Referencia de la API de plugNmeet
 description: Documentación del endpoint de API para obtener los archivos de la aplicación cliente de plugNmeet. Esto permite alojar los recursos del front-end en un servidor propio.
-keywords: [api, obtener archivos de cliente, recursos de cliente, front-end, cliente autoalojado, sdk, punto final]
+keywords: [api, obtener archivos de cliente, recursos de cliente, front-end, cliente autoalojado, sdk, endpoint]
 sidebar_position: 40
 sidebar_label: Obtener Archivos de Cliente
 ---
 
 # Obtener Archivos de Cliente
 
-Punto final: `/getClientFiles`
+Endpoint: `/getClientFiles`
 
 El cliente de Plug-N-Meet es una potente aplicación React independiente. Aunque puede incrustarla usando un iframe, **recomendamos encarecidamente** utilizar este endpoint de API para una integración más fluida y sencilla.
 
@@ -18,7 +18,7 @@ Además, le brinda total libertad para su marca. Dado que este método no está 
 
 ### Cómo Utilizarlo
 
-1.  Llame al punto final `/getClientFiles` desde la aplicación de su servidor.
+1.  Llame al endpoint `/getClientFiles` desde la aplicación de su servidor.
 2.  La API devolverá dos arrays: `css` y `js`, que contienen las URL de los archivos de recursos requeridos.
 3.  Construya la URL completa para cada nombre de archivo. La API devuelve nombres de archivo simples (p. ej., `app.js`). Usted debe anteponer la ruta de los recursos de su servidor Plug-N-Meet y el subdirectorio correcto (`/js/` para archivos JavaScript, `/css/` para archivos CSS). Por ejemplo: `https://plugnmeet.ejemplo.com/assets/js/app.js`.
 4.  En la página HTML donde desea mostrar la conferencia, genere dinámicamente las etiquetas `<link>` y `<script>` utilizando las URLs completas que acaba de crear.
