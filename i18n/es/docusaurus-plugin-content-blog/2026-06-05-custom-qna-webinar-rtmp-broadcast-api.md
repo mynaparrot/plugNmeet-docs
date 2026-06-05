@@ -17,7 +17,7 @@ El enfoque API-first de Plug-N-Meet, combinado con sus sólidas capacidades de t
 
 Para webinars que exigen un alto valor de producción y llegan a una gran audiencia, RTMP (Real-Time Messaging Protocol) es el estándar de oro. Le permite usar herramientas profesionales como OBS Studio para crear una configuración multicámara, agregar superposiciones personalizadas y transmitir una señal pulida directamente a su sala de Plug-N-Meet. Esta sala actúa entonces como su "estudio de transmisión", que puede transmitirse simultáneamente a plataformas como YouTube, Facebook o su propio sitio web.
 
-Este "Modelo de Estudio de Transmisión" es ideal para [organizar eventos a gran escala](/blog/hosting-large-scale-events-the-smart-way), asegurando una experiencia de alta calidad para miles de espectadores. Aprenda más sobre cómo llevar transmisiones profesionales a su sala en nuestra guía sobre [Transmita como un profesional: Cómo integrar OBS en su sala plugNmeet](/blog/obs-rtmp-whip-whip-ingress).
+Este "Modelo de Estudio de Transmisión" es ideal para [organizar eventos a gran escala](/blog/hosting-large-scale-events-the-smart-way), asegurando una experiencia de alta calidad para miles de espectadores. Aprenda más sobre cómo llevar transmisiones profesionales a su sala en nuestra guía sobre [Transmita como un profesional: Cómo integrar OBS en su sala plugNmeet](/blog/obs-rtmp-whip-ingress).
 
 ### El dilema de las preguntas y respuestas: Por qué el chat estándar se queda corto
 

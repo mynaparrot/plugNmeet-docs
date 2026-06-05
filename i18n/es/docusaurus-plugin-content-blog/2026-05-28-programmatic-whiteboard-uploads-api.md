@@ -67,7 +67,7 @@ Exploremos lo que puede construir con esto.
 
 ### Caso de Uso 4: Integración con Moodle - Uniendo Contenido y Aula
 
-**El Escenario:** Nuestro [Plugin oficial de Plug-N-Meet para Moodle](/docs/user-guide/moodle-integration#upload-to-whiteboard-from-moodle) ya aprovecha esta API para crear una experiencia fluida para los educadores. Los profesores pueden gestionar un repositorio central de materiales del curso dentro de Moodle.
+**El Escenario:** Nuestro [Plugin oficial de Plug-N-Meet para Moodle](/docs/user-guide/moodle-integration) ya aprovecha esta API para crear una experiencia fluida para los educadores. Los profesores pueden gestionar un repositorio central de materiales del curso dentro de Moodle.
 
 **La Nueva Forma con la API:**
 1.  Un profesor está impartiendo una clase en vivo utilizando la actividad Plug-N-Meet en Moodle.
