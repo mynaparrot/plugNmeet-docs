@@ -15,9 +15,9 @@ El enfoque API-first de Plug-N-Meet, combinado con sus sólidas capacidades de t
 
 ### El poder de la transmisión RTMP para webinars profesionales
 
-Para webinars que exigen un alto valor de producción y llegan a una gran audiencia, RTMP (Real-Time Messaging Protocol) es el estándar de oro. Le permite usar herramientas profesionales como OBS Studio para crear una configuración multicámara, agregar superposiciones personalizadas y transmitir una señal pulida directamente a su sala de Plug-N-Meet. Esta sala actúa entonces como su "estudio de transmisión", que puede transmitirse simultáneamente a plataformas como YouTube, Facebook o su propio sitio web.
+Para webinars que exigen un alto valor de producción y llegan a una gran audiencia, la transmisión RTMP (Real-Time Messaging Protocol) es el estándar de oro. Le permite transmitir su sesión de Plug-N-Meet directamente a plataformas como YouTube, Facebook o su propio sitio web. Esta sesión, que incluye a todos los participantes, comparticiones de pantalla y pizarras, se convierte en su "estudio de transmisión", asegurando una experiencia de alta calidad para miles de espectadores.
 
-Este "Modelo de Estudio de Transmisión" es ideal para [organizar eventos a gran escala](/blog/hosting-large-scale-events-the-smart-way), asegurando una experiencia de alta calidad para miles de espectadores. Aprenda más sobre cómo llevar transmisiones profesionales a su sala en nuestra guía sobre [Transmita como un profesional: Cómo integrar OBS en su sala plugNmeet](/blog/obs-rtmp-whip-ingress).
+Este "Modelo de Estudio de Transmisión" es ideal para [organizar eventos a gran escala](/blog/hosting-large-scale-events-the-smart-way). La reunión en sí es privada para sus anfitriones y presentadores, pero la salida se transmite públicamente.
 
 ### El dilema de las preguntas y respuestas: Por qué el chat estándar se queda corto
 
@@ -38,27 +38,41 @@ Aquí está el concepto:
 2.  **Moderación del backend:** Estas preguntas se envían a *su* backend personalizado, donde un moderador puede revisarlas, editarlas o aprobarlas.
 3.  **Inyección de API:** Una vez que se aprueba una pregunta, su backend utiliza la API `room/broadcastToRoom` para enviarla como un mensaje de chat directamente al anfitrión (o a todos los administradores) dentro de la sala del estudio de transmisión de Plug-N-Meet.
 
-#### Cómo funciona la API `room/broadcastToRoom` para preguntas y respuestas
+---
 
-La API `room/broadcastToRoom` le permite enviar un `chat_msg` o un `notification_msg`. Para preguntas y respuestas, usaremos la carga útil `chat_msg`. Puede dirigirse a usuarios específicos (como su anfitrión) o a todos los administradores.
+### Más que solo Preguntas y Respuestas: Otros Casos de Uso Poderosos
 
-**Endpoint:** `/room/broadcastToRoom`
+La API `room/broadcastToRoom` abre un mundo de posibilidades más allá de las preguntas y respuestas moderadas. Al conectar su aplicación externa con la sala de reuniones en vivo, puede crear experiencias altamente interactivas y personalizadas.
 
-**Parámetros clave para preguntas y respuestas:**
-*   `room_id`: El ID de su sala de estudio de transmisión de Plug-N-Meet.
-*   `only_to_admins`: Establezca en `true` para asegurar que solo sus anfitriones y coanfitriones vean las preguntas.
-*   `chat_msg.message`: El texto real de la pregunta.
-*   `chat_msg.to_user_id` (Opcional): Si desea enviar la pregunta a un anfitrión específico, puede usar su `user_id`.
+#### E-commerce en Vivo y Venta de Productos
+-   **Escenario:** Organice un show de compras en vivo donde los espectadores puedan interactuar en tiempo real.
+-   **Cómo funciona:** Un espectador hace clic en un botón "Comprar ahora" o "Más información" en su sitio. Su backend llama a la API para enviar una notificación privada al anfitrión o a un asistente de ventas en la sala: `"El usuario 'Jane Doe' está interesado en el Producto #1234."`
+-   **Beneficio:** Cree un enlace directo y en tiempo real entre su audiencia y su equipo de ventas, capturando clientes potenciales e impulsando conversiones durante el evento en vivo.
+
+#### Programas de Entrevistas Virtuales y "Llamadas" Filtradas
+-   **Escenario:** Produzca un programa de entrevistas o podcast profesional donde desee filtrar a los miembros de la audiencia antes de que "llamen" para hablar.
+-   **Cómo funciona:** Los miembros de la audiencia solicitan hablar a través de su aplicación. Un productor revisa las solicitudes y luego usa la API para enviar un mensaje privado al anfitrión: `"A continuación: John de California, preguntando sobre nuestra nueva función."`
+-   **Beneficio:** El anfitrión puede producir un programa fluido y de calidad profesional al estar preparado para cada interacción con la audiencia, todo mientras la audiencia se siente comprometida e involucrada.
+
+#### Alertas y Anuncios a Nivel de Sistema
+-   **Escenario:** Necesita enviar un anuncio urgente a todos los participantes en una sesión en vivo.
+-   **Cómo funciona:** Su backend administrativo llama a la API para enviar un mensaje de notificación a toda la sala: `"La sesión se extenderá por 15 minutos."`
+-   **Beneficio:** Una forma confiable de comunicar información crítica a todos en la sala al instante.
+
+---
 
 ### Idea de implementación paso a paso
 
-Describamos cómo puede configurar esto:
+Describamos cómo puede configurar esto para un sistema de preguntas y respuestas:
 
 **Paso 1: Configure su sala de webinar de Plug-N-Meet**
 Cree su sala de Plug-N-Meet a través de la [API de Creación de Sala](/docs/api/room/create), asegurándose de que RTMP esté habilitado. Esta será su "estudio de transmisión" privado donde se reunirán sus presentadores y el equipo de producción.
 
 **Paso 2: Configure la transmisión RTMP**
-Conecte su software de transmisión profesional (por ejemplo, OBS Studio) para transmitir a su sala de Plug-N-Meet. Desde la sala de Plug-N-Meet, puede iniciar la transmisión RTMP a su plataforma de transmisión pública (YouTube, etc.). Consulte nuestra guía sobre [Transmita como un profesional: Cómo integrar OBS en su sala plugNmeet](/blog/obs-rtmp-whip-ingress) para obtener más detalles.
+Para transmitir su webinar a una audiencia pública, el moderador puede iniciar la transmisión en vivo desde dentro de la sala de Plug-N-Meet.
+1.  Abra el menú **Más Opciones** (...) en la barra de control inferior y seleccione **Iniciar Transmisión en Vivo**.
+2.  Ingrese la **Clave de Transmisión** y la **URL de Transmisión** proporcionadas por su plataforma de streaming (por ejemplo, YouTube, Facebook).
+3.  Haga clic en **Iniciar Transmisión** para comenzar a transmitir la sesión.
 
 **Paso 3: Desarrolle su frontend de preguntas y respuestas personalizado (orientado a la audiencia)**
 Cree un formulario web simple en su sitio web donde su audiencia pueda escribir y enviar sus preguntas. Este formulario enviará las preguntas a *su* servidor de backend personalizado.
@@ -101,6 +115,5 @@ Deje de permitir que las herramientas genéricas dicten la interacción con su a
 **¿Listo para construir su webinar de preguntas y respuestas personalizado?**
 
 *   **[Explore la documentación de la API `room/broadcastToRoom`](/docs/api/room/broadcast-to-room)**
-*   **[Obtenga más información sobre la entrada RTMP](/blog/obs-rtmp-whip-ingress)**
 *   **[Descubra cómo organizar eventos a gran escala](/blog/hosting-large-scale-events-the-smart-way)**
 *   **[Consulte nuestra documentación de la API para empezar a construir](/docs/api/intro).**

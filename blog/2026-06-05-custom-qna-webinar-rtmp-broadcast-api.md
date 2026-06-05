@@ -15,9 +15,9 @@ Plug-N-Meet's API-first approach, combined with its robust RTMP broadcasting cap
 
 ### The Power of RTMP Broadcasting for Professional Webinars
 
-For webinars that demand high production value and reach a large audience, RTMP (Real-Time Messaging Protocol) broadcasting is the gold standard. It allows you to use professional tools like OBS Studio to create a multi-camera setup, add custom overlays, and stream a polished feed directly into your Plug-N-Meet room. This room then acts as your "broadcast studio," which can be simultaneously streamed to platforms like YouTube, Facebook, or your own website.
+For webinars that demand high production value and reach a large audience, RTMP (Real-Time Messaging Protocol) broadcasting is the gold standard. It allows you to broadcast your Plug-N-Meet session directly to platforms like YouTube, Facebook, or your own website. This session, which includes all participants, screen shares, and whiteboards, becomes your "broadcast studio," ensuring a high-quality experience for thousands of viewers.
 
-This "Broadcast Studio Model" is ideal for [hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way), ensuring a high-quality experience for thousands of viewers. Learn more about bringing professional streams into your room in our guide on [Stream Like a Pro: How to Bring OBS into Your plugNmeet Room](/blog/obs-rtmp-whip-ingress).
+This "Broadcast Studio Model" is ideal for [hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way). The meeting itself is private to your hosts and presenters, but the output is streamed publicly.
 
 ### The Q&A Dilemma: Why Standard Chat Falls Short
 
@@ -58,7 +58,10 @@ Let's outline how you can set this up:
 Create your Plug-N-Meet room via the [Create Room API](/docs/api/room/create), ensuring RTMP is enabled. This will be your private "broadcast studio" where your presenters and production team will gather.
 
 **Step 2: Configure RTMP Broadcast**
-Connect your professional streaming software (e.g., OBS Studio) to stream into your Plug-N-Meet room. From within the Plug-N-Meet room, you can then initiate the RTMP broadcast to your public streaming platform (YouTube, etc.). Refer to our guide on [Stream Like a Pro: How to Bring OBS into Your plugNmeet Room](/blog/obs-rtmp-whip-ingress) for details.
+To broadcast your webinar to a public audience, the moderator can initiate the live stream from within the Plug-N-Meet room.
+1.  Open the **More Options** menu (...) in the footer control bar and select **Start Live Stream**.
+2.  Enter the **Stream Key** and **Stream URL** provided by your streaming platform (e.g., YouTube, Facebook).
+3.  Click **Start Streaming** to begin broadcasting the session.
 
 **Step 3: Develop Your Custom Q&A Frontend (Audience-Facing)**
 Create a simple web form on your website where your audience can type and submit their questions. This form will send the questions to *your* custom backend server.
@@ -101,6 +104,5 @@ Stop letting generic tools dictate your audience interaction. Start building a w
 **Ready to build your custom Q&A webinar?**
 
 *   **[Explore the `room/broadcastToRoom` API Documentation](/docs/api/room/broadcast-to-room)**
-*   **[Learn more about RTMP Ingress](/blog/obs-rtmp-whip-ingress)**
 *   **[Discover how to host large-scale events](/blog/hosting-large-scale-events-the-smart-way)**
 *   **[Check out our API Documentation to start building](/docs/api/intro).**

@@ -97,7 +97,7 @@ La `HASH-SIGNATURE` debe generarse utilizando su `API-SECRET` con el valor del e
 -   **Cargas Concurrentes**: El servidor procesa solo una carga a la vez por sala. Si envía una nueva solicitud de carga mientras otra está en curso para la misma sala, recibirá un error `409 Conflict`.
 -   **Tiempos de Espera y Procesamiento en Segundo Plano**: La conversión de archivos puede consumir muchos recursos. Si su llamada inicial a la API agota el tiempo de espera, no se preocupe. El servidor continúa procesando el archivo en segundo plano. Una vez completado, el archivo aparecerá en la sala y el bloqueo de carga se liberará.
 
-Para un ejemplo completo de `curl` y descripciones detalladas de los parámetros, consulte la **[Documentación oficial de la API uploadWhiteboardFile](/docs/api/room/uploadWhiteboardFile)**.
+Para un ejemplo completo de `curl` y descripciones detalladas de los parámetros, consulte la **[Documentación oficial de la API uploadWhiteboardFile](/docs/api/room/upload-whiteboard-file)**.
 
 ### Conclusión: Su Aplicación es Ahora el Copresentador
 
@@ -108,6 +108,6 @@ Esta función profundiza el potencial de integración, permitiéndole construir 
 ---
 **¿Listo para empezar a construir?**
 
-*   **[Explore la Documentación de la API `uploadWhiteboardFile`](/docs/api/room/uploadWhiteboardFile)**
+*   **[Explore la Documentación de la API `uploadWhiteboardFile`](/docs/api/room/upload-whiteboard-file)**
 *   **[Consulte nuestra Referencia Completa de la API](/docs/api/intro)**
 *   **[Pruebe nuestra Demostración en Vivo](https://demo.plugnmeet.com/landing.html) para ver la pizarra en acción.**

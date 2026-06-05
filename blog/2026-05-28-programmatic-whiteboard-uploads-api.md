@@ -97,7 +97,7 @@ The `HASH-SIGNATURE` must be generated using your `API-SECRET` with the value of
 -   **Concurrent Uploads**: The server processes only one upload at a time per room. If you send a new upload request while another is in progress for the same room, you will receive a `409 Conflict` error.
 -   **Timeouts & Background Processing**: File conversion can be resource-intensive. If your initial API call times out, don't worry. The server continues to process the file in the background. Once complete, the file will appear in the room, and the upload lock will be released.
 
-For a complete `curl` example and detailed parameter descriptions, please refer to the official **[uploadWhiteboardFile API Documentation](/docs/api/room/uploadWhiteboardFile)**.
+For a complete `curl` example and detailed parameter descriptions, please refer to the official **[uploadWhiteboardFile API Documentation](/docs/api/room/upload-whiteboard-file)**.
 
 ### Conclusion: Your Application is Now the Co-Presenter
 
@@ -108,6 +108,6 @@ This feature deepens the potential for integration, enabling you to build smarte
 ---
 **Ready to start building?**
 
-*   **[Explore the `uploadWhiteboardFile` API Documentation](/docs/api/room/uploadWhiteboardFile)**
+*   **[Explore the `uploadWhiteboardFile` API Documentation](/docs/api/room/upload-whiteboard-file)**
 *   **[Check out our full API Reference](/docs/api/intro)**
 *   **[Try our Live Demo](https://demo.plugnmeet.com/landing.html) to see the whiteboard in action.**
