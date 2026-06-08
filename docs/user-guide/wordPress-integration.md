@@ -46,6 +46,18 @@ This is the most important step. The plugin requires a connection to a working P
 
 **Note:** The plugin includes pre-configured demo credentials to help you test its features immediately. This demo server is a shared resource and is **not intended for production use** as it can be unreliable. For any important meetings, we strongly recommend using your own server to ensure a stable and professional experience for you and your users.
 
+#### Client Load Method
+
+In the settings, you will also find the **Client Load** option. This important setting changes *how* the video meeting is displayed to your users and how you can customize its appearance.
+
+*   **Remote (Recommended for most users):** This option loads the video conferencing interface directly from your main plugNmeet server and embeds it seamlessly into your WordPress page. It is the simplest method and always uses the most up-to-date software.
+    *   **Customization:** You can easily customize the branding (logos, colors, etc.) for each room using the **Design Customization** tab when creating or editing a room.
+
+*   **Redirect:** This option sends the user to a separate browser tab to join the meeting directly on your plugNmeet server. It is simple and keeps the meeting interface separate from your website's layout.
+    *   **Customization:** Branding is controlled by the **default configuration on your plugNmeet server**. Any changes made in the "Design Customization" tab within WordPress will **not** apply with this method.
+
+*   **Local (Advanced, for developers):** This option is for users who need to make deep, structural changes to the meeting interface. It requires you to download the client application files, modify the source code, and host them on your own server. This provides maximum control but requires web development experience and manual updates.
+
 ![API settings page for the PlugNmeet WordPress video conferencing plugin.](/img/wordpress/1.png)
 
 :::warning IMPORTANT: Refresh Your Permalinks

@@ -45,6 +45,18 @@ Este es el paso más importante. El plugin requiere una conexión a un servidor 
 
 **Nota:** El plugin incluye credenciales de demostración preconfiguradas para ayudarle a probar sus funciones de inmediato. Este servidor de demostración es un recurso compartido y **no está destinado para uso en producción**, ya que puede ser poco fiable. Para cualquier reunión importante, recomendamos encarecidamente usar su propio servidor para garantizar una experiencia estable y profesional para usted y sus usuarios.
 
+#### Método de Carga del Cliente
+
+En los ajustes, también encontrará la opción **Carga del Cliente**. Esta importante configuración cambia *cómo* se muestra la reunión de video a sus usuarios y cómo puede personalizar su apariencia.
+
+*   **Remoto (Recomendado para la mayoría de los usuarios):** Esta opción carga la interfaz de videoconferencia directamente desde su servidor principal de plugNmeet y la incrusta sin problemas en su página de WordPress. Es el método más simple y siempre utiliza el software más actualizado.
+    *   **Personalización:** Puede personalizar fácilmente la marca (logotipos, colores, etc.) para cada sala utilizando la pestaña **Personalización del Diseño** al crear o editar una sala. Estos ajustes se aplicarán cuando la reunión se cargue en su página.
+
+*   **Redireccionar:** Esta opción envía al usuario a una pestaña de navegador separada para unirse a la reunión directamente en su servidor de plugNmeet. Es simple y mantiene la interfaz de la reunión separada del diseño de su sitio web.
+    *   **Personalización:** La marca se controla mediante la **configuración predeterminada en su servidor de plugNmeet**. Cualquier cambio realizado en la pestaña "Personalización del Diseño" dentro de WordPress **no** se aplicará con este método.
+
+*   **Local (Avanzado, para desarrolladores):** Esta opción es para usuarios que necesitan realizar cambios estructurales profundos en la interfaz de la reunión. Requiere que descargue los archivos de la aplicación cliente, modifique el código fuente y los aloje en su propio servidor. Esto proporciona el máximo control, pero requiere experiencia en desarrollo web y actualizaciones manuales.
+
 ![Página de ajustes de API para el plugin de videoconferencia de PlugNmeet para WordPress.](/img/wordpress/1.png)
 
 :::warning IMPORTANTE: Actualice Sus Enlaces Permanentes
