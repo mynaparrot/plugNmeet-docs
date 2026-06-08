@@ -178,6 +178,8 @@ The **Artifacts** page contains all other files and data generated during the se
 - **AI-Generated Summaries:** Access and download meeting summaries created by the AI.
 - **Transcription Files:** Download speech-to-text transcripts of the meeting audio.
 
+![Artifact details](/img/wordpress/8.png)
+
 ---
 
 ## 5. Advanced Configuration

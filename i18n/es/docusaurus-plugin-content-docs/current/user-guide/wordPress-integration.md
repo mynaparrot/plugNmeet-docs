@@ -177,6 +177,8 @@ La página de **Artefactos** contiene todos los demás archivos y datos generado
 - **Resúmenes Generados por IA:** Accede y descarga resúmenes de reuniones creados por la IA.
 - **Archivos de Transcripción:** Descarga transcripciones de voz a texto del audio de la reunión.
 
+![Artifact details](/img/wordpress/8.png)
+
 ---
 
 ## 5. Configuración Avanzada
