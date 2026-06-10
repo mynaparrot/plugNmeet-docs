@@ -71,6 +71,7 @@ The Plug-N-Meet API is organized into several categories based on functionality.
 *   **Authentication:** Endpoints for generating access tokens for participants.
 *   **Recording Management:** Endpoints for fetching, downloading, and deleting meeting recordings.
 *   **Artifact Management:** Endpoints for fetching, downloading, and deleting AI-generated meeting artifacts like summaries and transcriptions.
+*   **Webhooks & Scripting:** Automate workflows and integrate external services using real-time [webhook events](/docs/others/webhooks) or by implementing custom [scripting and storage hooks](/docs/others/hooks).
 
 ---
 

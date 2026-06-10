@@ -71,6 +71,7 @@ La API de Plug-N-Meet se organiza en varias categorías según su funcionalidad.
 *   **Autenticación:** Endpoints para generar tokens de acceso para los participantes.
 *   **Gestión de grabaciones:** Endpoints para obtener, descargar y eliminar grabaciones de reuniones.
 *   **Gestión de artefactos:** Endpoints para obtener, descargar y eliminar artefactos de reuniones generados por IA, como resúmenes y transcripciones.
+*   **Webhooks y Scripting:** Automatice flujos de trabajo e integre servicios externos utilizando [eventos de webhook](/docs/others/webhooks) en tiempo real o implementando [hooks de scripting y almacenamiento](/docs/others/hooks) personalizados.
 
 ---
 

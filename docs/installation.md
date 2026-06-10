@@ -94,6 +94,7 @@ Congratulations! You now have a fully functional, self-hosted video conferencing
 *   **Start Using Plug-N-Meet:** Now that your server is running, visit our **[User Guide Overview](/docs/user-guide/overview)** to learn about the different ways you can integrate and use your new platform, from no-code plugins to our powerful API.
 *   **Explore the API:** For developers ready to dive in, our **[API Documentation](/docs/api/intro)** provides all the details you need to start building.
 *   **Manage Your Server:** Learn about the common commands for **[managing your services](#managing-services)**, including starting, stopping, and viewing logs.
+*   **Advanced Customization**: Explore our **[Scripting & Storage Hooks](/docs/others/hooks)** to automate workflows and integrate with external storage providers.
 
 ---
 

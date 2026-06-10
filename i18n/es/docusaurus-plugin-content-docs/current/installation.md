@@ -94,6 +94,7 @@ Una vez completada la instalación, puede verificar que todo funcione correctame
 *   **Comenzar a usar Plug-N-Meet:** Ahora que su servidor está en funcionamiento, visite nuestro **[Resumen de la Guía del Usuario](/docs/user-guide/overview)** para conocer las diferentes formas en que puede integrar y usar su nueva plataforma, desde plugins sin código hasta nuestra potente API.
 *   **Explorar la API:** Para desarrolladores listos para empezar, nuestra **[Documentación de la API](/docs/api/intro)** proporciona todos los detalles que necesita para comenzar a construir.
 *   **Administrar su servidor:** Conozca los comandos comunes para **[administrar sus servicios](#administrando-servicios)**, incluyendo iniciar, detener y ver registros.
+*   **Personalización Avanzada**: Explore nuestros **[Hooks de Scripting y Almacenamiento](/docs/others/hooks)** para automatizar flujos de trabajo e integrarse con proveedores de almacenamiento externos.
 
 ---
 

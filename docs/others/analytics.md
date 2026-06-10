@@ -8,7 +8,7 @@ sidebar_label: Analytics
 
 # Analytics data
 
-plugNmeet will provide detail analytics data about the session. After session had been finished PNM will create a `json` file with all the data. You can manage analytics data by [analytics API](/docs/api/analytics/fetch).
+plugNmeet will provide detail analytics data about the session. After session had been finished PNM will create a `json` file with all the data. You can manage analytics data by [analytics API](/docs/api/artifact/fetch).
 
 ### Room data
 
