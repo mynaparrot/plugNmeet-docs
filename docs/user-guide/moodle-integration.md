@@ -207,8 +207,6 @@ This tab contains all other session-generated files, governed by Moodle permissi
 -   Transcription files (e.g., VTT, SRT).
 -   Detailed per-session analytics reports in JSON format.
 
-![Screenshot of the Active Recordings.](/img/moodle/moodle_8.png)
-
 ![Screenshot of the Artifacts.](/img/moodle/moodle_9.png)
 
 ![Screenshot of the Analytics.](/img/moodle/moodle_10.png)

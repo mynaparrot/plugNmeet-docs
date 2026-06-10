@@ -207,8 +207,6 @@ Esta pestaña contiene todos los demás archivos generados por la sesión, regid
 -   Archivos de transcripción (por ejemplo, VTT, SRT).
 -   Informes detallados de análisis por sesión en formato JSON.
 
-![Captura de pantalla de las Grabaciones Activas.](/img/moodle/moodle_8.png)
-
 ![Captura de pantalla de los Artefactos.](/img/moodle/moodle_9.png)
 
 ![Captura de pantalla de los Análisis.](/img/moodle/moodle_10.png)
