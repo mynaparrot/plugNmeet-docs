@@ -22,15 +22,15 @@ All scripts follow a standard interface: they receive a JSON payload via **stdin
 
 1.  **`post_recording`**: Runs on the **RECORDER** after the raw file is saved.
     *   **Purpose**: Upload the raw file to shared storage (NFS, S3, etc.).
-    *   **Action**: Should return JSON with the `file_path` updated to the new network-accessible location for the transcoder.
+    *   **Action**: Should return JSON with the `output_path` updated to the new network-accessible location for the transcoder.
 
 2.  **`pre_transcoding`**: Runs on the **TRANSCODER** before `ffmpeg` starts.
     *   **Purpose**: Download the file from shared storage to a local path.
-    *   **Action**: Should return JSON with the `file_path` updated to the final local path for `ffmpeg` to use.
+    *   **Action**: Should return JSON with the `output_path` updated to the final local path for `ffmpeg` to use.
 
 3.  **`post_transcoding`**: Runs on the **TRANSCODER** after `ffmpeg` finishes.
     *   **Purpose**: Final cleanup, notification, or upload of the processed file.
-    *   **Action**: Can optionally return JSON with the `file_path` updated (e.g., to an S3 URL) to be sent to the main plugNmeet server.
+    *   **Action**: Can optionally return JSON with the `output_path` updated (e.g., to an S3 URL) to be sent to the main plugNmeet server.
 
 ### Configuration
 
@@ -50,7 +50,11 @@ hooks:
 
 ### Data Payload (`stdin`)
 
-Your script will receive a JSON object with the following structure:
+Your script will receive a JSON object with the following structure.
+**Key Fields for Path Handling:**
+*   **`input_path`**: (string, optional) The primary path for the script to process. This could be a local file path or a remote storage URL, depending on the stage.
+*   **`input_paths`**: (array of strings, optional) Used for tasks involving multiple files (e.g., merging multiple recordings).
+*   **`output_path`**: (string, optional) The path that the script returns as the result of its operation. This could be a new local path, a remote storage URL, or any identifier for the processed file.
 
 ```json
 {
@@ -60,8 +64,8 @@ Your script will receive a JSON object with the following structure:
   "room_id": "room01",
   "room_sid": "SID_d82k3s9d2l",
   "file_name": "REC_ax9s3djn2s.mp4",
-  "file_path": "/path/to/recording/files/node_01/room01/REC_ax9s3djn2s.mp4",
-  "file_paths": ["/path/to/segment1.mp4"],
+  "input_path": "/path/to/recording/files/node_01/room01/REC_ax9s3djn2s.mkv",
+  "input_paths": ["/path/to/segment1.mkv"],
   "file_size": 123.45,
   "recorder_id": "node_01"
 }
@@ -71,7 +75,7 @@ Your script will receive a JSON object with the following structure:
 
 #### Bash with `jq`
 
-This example reads the `file_path` from `stdin`, logs it, and passes the original JSON to `stdout`.
+This example reads the `input_path` from `stdin`, logs it, and passes the original JSON to `stdout`.
 
 ```bash
 #!/bin/bash
@@ -80,16 +84,19 @@ This example reads the `file_path` from `stdin`, logs it, and passes the origina
 # Read the entire stdin
 JSON_DATA=$(cat)
 
-# Use jq to extract the file_path
-FILE_PATH=$(echo $JSON_DATA | jq -r '.file_path')
+# Use jq to extract the input_path
+INPUT_PATH=$(echo $JSON_DATA | jq -r '.input_path')
 
 # Log the action (e.g., to a file or stderr)
-echo "Uploading file: $FILE_PATH" >&2
+echo "Uploading file: $INPUT_PATH" >&2
 
 # Here, you would add your upload logic (e.g., aws s3 cp ...)
-# For this example, we'll just pass the data through.
+# For this example, we'll just pass the data through, or set an output_path.
+# If you upload to S3, you might set output_path:
+# NEW_S3_PATH="s3://my-bucket/recordings/$(basename "$INPUT_PATH")"
+# echo $JSON_DATA | jq --arg new_path "$NEW_S3_PATH" '.output_path = $new_path'
 
-# Return the original JSON to stdout for the next script in the chain
+# For this example, we'll just pass the data through.
 echo $JSON_DATA
 ```
 
@@ -119,8 +126,8 @@ process.stdin.on('end', () => {
   // Your logic here
   console.error(`Processing recording: ${scriptData.recording_id}`);
 
-  // Example: Modify the file_path after an upload
-  scriptData.file_path = `s3://my-bucket/${scriptData.file_name}`;
+  // Example: Modify the output_path after an upload
+  scriptData.output_path = `s3://my-bucket/${scriptData.file_name}`;
 
   // Output the modified JSON to stdout
   process.stdout.write(JSON.stringify(scriptData));
@@ -135,7 +142,7 @@ Storage hooks allow you to override the default local file storage and integrate
 
 These hooks are primarily used for **room artifacts**. The `upload_hook` is triggered when the server generates an artifact. The `download_hook` and `delete_hook` are used for both artifacts and recordings.
 
-*   **Room Artifacts**: This includes artifact types such as `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`, and `MEETING_ANALYTICS`. For a complete list, please refer to the [official protobuf definition](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto).
+*   **Room Artifacts**: This includes artifact types such as `MEETING_SUMMARY`, `SPEECH_TRANSCRIPTION`, and `MEETING_ANALYTICS`. For a complete list, please refer to the official protobuf definition.
 *   **Recordings**: The server does **not** use the `upload_hook` for recordings. Instead, the recorder should upload the final recording to your external storage directly via its `post_transcoding` hook. The server then uses the `download_hook` and `delete_hook` to manage access to that recording.
 
 If this section is omitted from your `config.yaml`, the server will store all files on the local disk.
@@ -162,23 +169,23 @@ storage_hooks:
 *   **Request (`stdin`)** - *Used for artifacts only.*
     ```json
     {
-      "source_file_path": "/path/on/disk/analytics.json",
+      "input_path": "/path/on/disk/analytics.json",
       "service_type": "artifact",
       "room_id": "room01",
       "room_sid": "SID_d82k3s9d2l",
       "room_table_id": 123
     }
     ```
-*   **Response (`stdout`)**: The final script *must* return the `logical_path`.
+*   **Response (`stdout`)**: The final script *must* return the `output_path`.
     ```json
     {
-      "logical_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
+      "output_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
       "error": ""
     }
     ```
 
-:::info What is a `logical_path`?
-The `logical_path` is a unique identifier that your upload script creates and understands. It can be any string format you choose, such as an S3 object key (`my-bucket/artifacts/file.json`), a file ID from a storage service, or a simple filename. This same value will be passed back to your `download_hook` and `delete_hook` scripts later, so they know which file to act on.
+:::info What is an `output_path`?
+The `output_path` is a unique identifier that your upload script creates and understands. It can be any string format you choose, such as an S3 object key (`my-bucket/artifacts/file.json`), a file ID from a storage service, or a simple filename. This same value will be passed back to your `download_hook` and `delete_hook` scripts later, so they know which file to act on.
 :::
 
 #### Download Hook
@@ -186,7 +193,7 @@ The `logical_path` is a unique identifier that your upload script creates and un
 *   **Request (`stdin`)**:
     ```json
     {
-      "logical_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
+      "input_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
       "service_type": "artifact"
     }
     ```
@@ -203,14 +210,14 @@ The `action` determines how the server will provide the file to the user:
 
 *   `redirect` **(Recommended)**: Your script should return a `redirect_url`. The server will then send a `307 Temporary Redirect` to the client, allowing them to download the file directly from your external storage. This is highly efficient as the file does not pass through your server. A common use case is generating a pre-signed URL for an S3 object.
 
-*   `serve_local`: Your script must first download the file from your external storage to a temporary location on the server's local disk. It must then return the full `local_path` **and** the correct `mime_type` for the file (e.g., `application/json`, `video/mp4`). The server will read the file from this path and stream it to the client with the proper `Content-Type` header. This method consumes more server resources and is generally not recommended unless direct redirection is not possible.
+*   `serve_local`: Your script must first download the file from your external storage to a temporary location on the server's local disk. It must then return the full `output_path` **and** the correct `mime_type` for the file (e.g., `application/json`, `video/mp4`). The server will read the file from this path and stream it to the client with the proper `Content-Type` header. This method consumes more server resources and is generally not recommended unless direct redirection is not possible.
 
 #### Delete Hook
 
 *   **Request (`stdin`)**:
     ```json
     {
-      "logical_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
+      "input_path": "artifacts/room01/analytics_SID_d82k3s9d2l.json",
       "service_type": "artifact"
     }
     ```
