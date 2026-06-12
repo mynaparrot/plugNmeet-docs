@@ -24,12 +24,32 @@ Toda la comunicación con su script de hook se realiza a través de sus tubería
 *   **`stdout`**: Para cada solicitud que reciba, su script **debe** imprimir una sola línea de JSON en `stdout`. Esta línea es la respuesta.
 *   **`stderr`**: Puede usar `stderr` para registrar información dentro de su script. Esta salida es ignorada por plugNmeet pero es invaluable para depurar su lógica personalizada.
 
-El principio central del sistema de hooks es que **un script recibe un objeto JSON y devuelve exactamente el mismo objeto**, solo modificando campos específicos como `output_path` o `error`. Si se definen múltiples scripts para un solo hook, forman una tubería: la respuesta de `stdout` del primer script se convierte en la solicitud de `stdin` para el segundo, y así sucesivamente.
+:::danger IMPORTANTE
+La llamada para ejecutar un script de hook es **bloqueante**. Su script **DEBE** escribir una respuesta en `stdout` por cada solicitud que reciba en `stdin`. Si un script no devuelve una respuesta, el servicio de plugNmeet se colgará indefinidamente, esperando a que el script termine.
+:::
+
+El principio central del sistema de hooks es que un script recibe un objeto JSON y devuelve un objeto JSON. Si se definen múltiples scripts para un solo hook, forman una tubería: la respuesta de `stdout` del primer script se convierte en la solicitud de `stdin` para el segundo, y así sucesivamente.
+
+Si un script no necesita modificar los datos (por ejemplo, un script que solo llama a una API externa para registrar algo), **debe** igualmente devolver el objeto JSON original que recibió sin modificar.
+
+### Manejo de Errores
+
+Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON a `stdout`. La aplicación principal registrará este error y podrá detener la operación. Es crucial devolver siempre una respuesta JSON válida, incluso en caso de error.
+
+**Ejemplo de Respuesta de Error:**
+```json
+{
+  "recording_id": "REC_ax9s3djn2s",
+  "room_id": "room01",
+  "input_path": "/ruta/al/archivo.mp4",
+  "error": "No se pudo conectar a S3: tiempo de espera de red"
+}
+```
 
 ### Cómo Crear un Hook
 
 1.  **Cree un Script de Larga Duración:** Un "script" puede ser cualquier archivo ejecutable (un script de shell, un programa Go compilado, un script NodeJS, etc.) que se ejecute en un bucle, leyendo de `stdin` y escribiendo en `stdout`.
-2.  **Hágalo Ejecutable:** Asegúrese de que su script tenga permisos de ejecución (`chmod +x your_script.js`).
+2.  **Hágalo Executable:** Asegúrese de que su script tenga permisos de ejecución (`chmod +x your_script.js`).
 3.  **Habilite en la Configuración:** Agregue la ruta completa a su ejecutable en la sección `hooks` apropiada de su `config.yaml`.
 
 ---
@@ -81,19 +101,19 @@ Todos los hooks del grabador utilizan la misma estructura JSON `RecordingHookDat
     *   **Contexto**: Se ejecuta en el nodo del **GRABADOR** después de que el archivo de grabación en bruto se guarda.
     *   **Propósito**: Subir el archivo en bruto desde el disco local del grabador a una ubicación accesible por la red (por ejemplo, NFS, S3) para que el transcodificador pueda acceder a él.
     *   **`stdin`**: Recibe `RecordingHookData` con `input_path` apuntando al archivo en bruto en el disco del grabador.
-    *   **`stdout`**: Su script debe devolver el mismo JSON, modificando `output_path` para que sea la nueva ubicación del archivo, accesible por la red.
+    *   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea la nueva ubicación del archivo, accesible por la red.
 
 2.  **`pre_transcoding`**
     *   **Contexto**: Se ejecuta en el nodo del **TRANSCODIFICADOR** antes de que `ffmpeg` comience a procesar.
     *   **Propósito**: Descargar el archivo en bruto del almacenamiento de red a un directorio local temporal en la máquina del transcodificador.
     *   **`stdin`**: Recibe la salida JSON del hook `post_recording`.
-    *   **`stdout`**: Su script debe devolver el mismo JSON, modificando `output_path` para que sea la nueva **ruta local** en el disco del transcodificador donde `ffmpeg` puede encontrar el archivo.
+    *   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea la nueva **ruta local** en el disco del transcodificador donde `ffmpeg` puede encontrar el archivo.
 
 3.  **`post_transcoding`**
     *   **Contexto**: Se ejecuta en el nodo del **TRANSCODIFICADOR** después de que `ffmpeg` ha creado con éxito el archivo procesado final (por ejemplo, `.mp4`).
     *   **Propósito**: Realizar acciones finales, como subir el archivo procesado a un almacenamiento permanente, limpiar archivos temporales o notificar a una API externa.
     *   **`stdin`**: Recibe la salida JSON del hook `pre_transcoding`, con `output_path` ahora apuntando al archivo procesado final.
-    *   **`stdout`**: Su script puede devolver el JSON, modificando opcionalmente `output_path` de nuevo si el archivo se movió a su ubicación pública final (por ejemplo, una URL pública de S3). Este `output_path` final es lo que se envía al `server`.
+    *   **`stdout`**: Su script **debe** devolver el JSON, modificando opcionalmente `output_path` de nuevo si el archivo se movió a su ubicación pública final (por ejemplo, una URL pública de S3). Este `output_path` final es lo que se envía al `server`.
 
 ---
 
@@ -190,7 +210,7 @@ Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, 
       "service_type": "artifact"
     }
     ```
-*   **`stdout`**: Su script puede añadir opcionalmente un `msg` para el registro.
+*   **`stdout`**: Su script **debe** devolver una respuesta JSON. Puede añadir opcionalmente un `msg` para el registro.
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
@@ -224,9 +244,10 @@ const rl = readline.createInterface({
 
 // Escuchar cada línea de stdin
 rl.on('line', (line) => {
+  let requestData;
   try {
     log(`Solicitud recibida: ${line}`);
-    const requestData = JSON.parse(line);
+    requestData = JSON.parse(line);
 
     // --- Su Lógica Aquí ---
     //
@@ -239,13 +260,14 @@ rl.on('line', (line) => {
     requestData.output_path = newPath;
     // ---
 
-    // Escriba el objeto JSON modificado de vuelta a stdout, seguido de un salto de línea.
+    // SIEMPRE escriba una respuesta en stdout para evitar que el servicio se cuelgue.
     process.stdout.write(JSON.stringify(requestData) + '\n');
 
   } catch (e) {
     log(`Error al procesar la solicitud: ${e.message}`);
-    // Si ocurre un error, escriba un objeto JSON de error en stdout
-    const errorResponse = { error: e.message };
+    // Si ocurre un error, devuelva un objeto JSON con un campo 'error'.
+    // Es crucial devolver siempre una respuesta JSON válida.
+    const errorResponse = { ...requestData, error: e.message };
     process.stdout.write(JSON.stringify(errorResponse) + '\n');
   }
 });

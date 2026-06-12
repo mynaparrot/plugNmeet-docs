@@ -24,7 +24,27 @@ All communication with your hook script happens over its standard I/O pipes usin
 *   **`stdout`**: For each request it receives, your script **must** print a single line of JSON to `stdout`. This line is the response.
 *   **`stderr`**: You can use `stderr` for logging within your script. This output is ignored by plugNmeet but is invaluable for debugging your custom logic.
 
-The core principle of the hook system is that **a script receives a JSON object and returns the exact same object**, only modifying specific fields like `output_path` or `error`. If multiple scripts are defined for a single hook, they form a pipeline: the `stdout` response from the first script becomes the `stdin` request for the second, and so on.
+:::danger IMPORTANT
+The call to execute a hook script is **blocking**. Your script **MUST** write a response to `stdout` for every request it receives on `stdin`. If a script fails to return a response, the plugNmeet service will hang indefinitely, waiting for the script to finish.
+:::
+
+The core principle of the hook system is that a script receives a JSON object and returns a JSON object. If multiple scripts are defined for a single hook, they form a pipeline: the `stdout` response from the first script becomes the `stdin` request for the second, and so on.
+
+If a script does not need to modify the data (e.g., a script that only calls an external API for logging), it **must** still return the original, unmodified JSON object it received.
+
+### Error Handling
+
+If your script encounters an error, it should populate the `error` field in its JSON response to `stdout`. The main application will log this error and may halt the operation. It is crucial to always return a valid JSON response, even in case of an error.
+
+**Example Error Response:**
+```json
+{
+  "recording_id": "REC_ax9s3djn2s",
+  "room_id": "room01",
+  "input_path": "/path/to/file.mp4",
+  "error": "Failed to connect to S3: network timeout"
+}
+```
 
 ### How to Create a Hook
 
@@ -81,19 +101,19 @@ All recorder hooks use the same `RecordingHookData` JSON structure.
     *   **Context**: Runs on the **RECORDER** node after the raw recording file is saved.
     *   **Purpose**: Upload the raw file from the recorder's local disk to a network-accessible location (e.g., NFS, S3) so the transcoder can access it.
     *   **`stdin`**: Receives `RecordingHookData` with `input_path` pointing to the raw file on the recorder's disk.
-    *   **`stdout`**: Your script must return the same JSON, modifying `output_path` to be the new, network-accessible location of the file.
+    *   **`stdout`**: Your script **must** return the same JSON, modifying `output_path` to be the new, network-accessible location of the file.
 
 2.  **`pre_transcoding`**
     *   **Context**: Runs on the **TRANSCODER** node before `ffmpeg` starts processing.
     *   **Purpose**: Download the raw file from network storage to a temporary local directory on the transcoder machine.
     *   **`stdin`**: Receives the JSON output from the `post_recording` hook.
-    *   **`stdout`**: Your script must return the same JSON, modifying `output_path` to be the new **local path** on the transcoder's disk where `ffmpeg` can find the file.
+    *   **`stdout`**: Your script **must** return the same JSON, modifying `output_path` to be the new **local path** on the transcoder's disk where `ffmpeg` can find the file.
 
 3.  **`post_transcoding`**
     *   **Context**: Runs on the **TRANSCODER** node after `ffmpeg` has successfully created the final processed file (e.g., `.mp4`).
     *   **Purpose**: Perform final actions, such as uploading the processed file to permanent storage, cleaning up temporary files, or notifying an external API.
     *   **`stdin`**: Receives the JSON output from the `pre_transcoding` hook, with `output_path` now pointing to the final processed file.
-    *   **`stdout`**: Your script can return the JSON, optionally modifying `output_path` again if the file was moved to its final public location (e.g., a public S3 URL). This final `output_path` is what gets sent to the `server`.
+    *   **`stdout`**: Your script **must** return the JSON, optionally modifying `output_path` again if the file was moved to its final public location (e.g., a public S3 URL). This final `output_path` is what gets sent to the `server`.
 
 ---
 
@@ -190,7 +210,7 @@ While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more
       "service_type": "artifact"
     }
     ```
-*   **`stdout`**: Your script can optionally add a `msg` for logging.
+*   **`stdout`**: Your script **must** return a JSON response. It can optionally add a `msg` for logging.
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
@@ -224,9 +244,10 @@ const rl = readline.createInterface({
 
 // Listen for each line from stdin
 rl.on('line', (line) => {
+  let requestData;
   try {
     log(`Received request: ${line}`);
-    const requestData = JSON.parse(line);
+    requestData = JSON.parse(line);
 
     // --- Your Logic Here ---
     //
@@ -239,13 +260,14 @@ rl.on('line', (line) => {
     requestData.output_path = newPath;
     // ---
 
-    // Write the modified JSON object back to stdout, followed by a newline.
+    // ALWAYS write a response to stdout to prevent the service from hanging.
     process.stdout.write(JSON.stringify(requestData) + '\n');
 
   } catch (e) {
     log(`Error processing request: ${e.message}`);
-    // If an error occurs, write a JSON error object to stdout
-    const errorResponse = { error: e.message };
+    // If an error occurs, return a JSON object with an 'error' field.
+    // It's crucial to still return a valid JSON response.
+    const errorResponse = { ...requestData, error: e.message };
     process.stdout.write(JSON.stringify(errorResponse) + '\n');
   }
 });
