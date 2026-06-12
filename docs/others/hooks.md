@@ -246,16 +246,14 @@ const rl = readline.createInterface({
 rl.on('line', (line) => {
   let requestData;
   try {
-    log(`Received request: ${line}`);
     requestData = JSON.parse(line);
+    log(`Received request: ${line}`);
 
     // --- Your Logic Here ---
     //
-    // Perform your action (upload, download, delete) based on the requestData.
-    // For example, for an upload hook, you might upload the file at `requestData.input_path`.
+    // This is where you would perform your action (e.g., upload, API call).
+    // For this example, we'll just modify the object.
     //
-    // After your action, modify the object.
-    // For this example, we'll just add a new output_path.
     const newPath = `s3://my-bucket/new-path/${Date.now()}`;
     requestData.output_path = newPath;
     // ---
@@ -267,7 +265,13 @@ rl.on('line', (line) => {
     log(`Error processing request: ${e.message}`);
     // If an error occurs, return a JSON object with an 'error' field.
     // It's crucial to still return a valid JSON response.
-    const errorResponse = { ...requestData, error: e.message };
+    
+    // If requestData was successfully parsed, we can include it in the response.
+    // Otherwise, create a new error object.
+    const errorResponse = requestData 
+      ? { ...requestData, error: e.message } 
+      : { error: `JSON parse error: ${e.message}` };
+      
     process.stdout.write(JSON.stringify(errorResponse) + '\n');
   }
 });
