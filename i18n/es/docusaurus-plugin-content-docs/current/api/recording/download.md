@@ -1,16 +1,16 @@
 ---
 title: API para Descargar una Grabación | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener una URL firmada y temporal para descargar un archivo de grabación de una reunión específica.
-keywords: [api, descargar grabación, obtener url de grabación, api de grabación, punto final]
+description: Documentación del endpoint de la API para obtener una URL temporal firmada que permite descargar un archivo específico de grabación de una reunión.
+keywords: [api, descargar grabación, obtener url de grabación, api de grabación, endpoint]
 sidebar_position: 3
 sidebar_label: Descargar
 ---
 
 # Descargar una Grabación (Token)
 
-Punto final: `/recording/getDownloadToken`
+Endpoint: `/recording/getDownloadToken`
 
-Este punto final genera un token seguro y temporal que se puede utilizar para descargar un archivo de grabación. En lugar de proporcionar un enlace directo y permanente a la grabación, esta API crea un token de corta duración y de un solo uso.
+Este endpoint genera un token seguro y temporal que se puede utilizar para descargar un archivo de grabación. En lugar de proporcionar un enlace directo y permanente a la grabación, esta API crea un token de corta duración y de un solo uso.
 
 Esta es una de las mejores prácticas de seguridad que evita el acceso no autorizado y el uso compartido de sus archivos de grabación. El flujo de trabajo típico es:
 1. Un usuario de su aplicación hace clic en un botón "Descargar".

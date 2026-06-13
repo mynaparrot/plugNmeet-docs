@@ -1,16 +1,16 @@
 ---
 title: API para Obtener Grabaciones | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener una lista de todas las grabaciones disponibles en el servidor.
-keywords: [api, obtener grabaciones, listar grabaciones, api de grabación, punto final]
+description: Documentación del endpoint de la API para obtener una lista de todas las grabaciones disponibles en el servidor.
+keywords: [api, obtener grabaciones, listar grabaciones, api de grabación, endpoint]
 sidebar_position: 1
 sidebar_label: Obtener Grabaciones
 ---
 
 # Obtener Grabaciones
 
-Punto final: `/recording/fetch`
+Endpoint: `/recording/fetch`
 
-Este punto final le permite recuperar una lista paginada de las grabaciones disponibles. Las grabaciones se generan cuando se graba una sesión de sala y se almacenan en el servidor una vez que finaliza la sesión.
+Este endpoint le permite recuperar una lista paginada de las grabaciones disponibles. Las grabaciones se generan cuando se graba una sesión de sala y se almacenan en el servidor una vez que finaliza la sesión.
 
 Esta API es esencial para crear una biblioteca de grabaciones orientada al usuario donde los usuarios pueden navegar, ver y administrar sus grabaciones pasadas. Puede filtrar las grabaciones por `room_id` o un `sid` de sala específico para acotar los resultados, lo que facilita la visualización de contenido relevante para sus usuarios.
 
