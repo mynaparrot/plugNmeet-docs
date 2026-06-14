@@ -119,7 +119,7 @@ All recorder hooks use the same `RecordingHookData` JSON structure.
 
 ## Server Storage Hooks (`server`)
 
-Storage hooks in the `server` allow you to override the default local file storage and integrate with any external storage provider. These hooks are used for **room artifacts** (e.g., analytics, transcripts) and for managing access to **recordings**.
+Storage hooks in the `server` allow you to override the default local file storage and integrate with any external storage provider. These hooks are used for **room artifacts** (e.g., analytics, transcripts), managing **chat file uploads**, and handling access to **recordings**.
 
 **Configuration in `server/config.yaml`:**
 
@@ -131,25 +131,33 @@ storage_hooks:
     - "/path/to/your/download_script.sh"
   delete_hook:
     - "/path/to/your/delete_script.sh"
+  resumable_upload_hook:
+    - "/path/to/your/resumable_upload_script.sh"
+  room_end_hook:
+    - "/path/to/your/room_end_script.sh"
 ```
 
 ### Hook Types & Data Payloads
 
 #### `upload_hook`
 
-*   **Context**: Runs when `server` generates a room artifact. **This hook is NOT used for recordings.**
-*   **Purpose**: Upload the artifact file from the server's local disk to your external storage.
+*   **Context**: Runs when `server` generates a room artifact or a set of converted whiteboard images.
+*   **Purpose**: Upload a single file or an entire directory from the server's local disk to your external storage.
 *   **`stdin` (`UploadHookData`)**:
     ```json
     {
       "input_path": "/path/on/server/disk/analytics.json",
-      "service_type": "artifact",
+      "input_directory_path": "/path/to/converted/images/",
+      "hook_file_type": "artifact",
       "room_id": "room01",
       "room_sid": "SID_d82k3s9d2l",
       "room_table_id": 123
     }
     ```
-*   **`stdout`**: Your script **must** return the same JSON, modifying `output_path` to be a unique identifier that your other scripts will use to find the file later.
+    *   `input_path`: Used for single file uploads.
+    *   `input_directory_path`: Used for batch uploading all files within a directory. If this is present, `input_path` is ignored.
+    *   `file_id`: A unique ID for the file or set of files.
+*   **`stdout`**: Your script **must** return the same JSON, modifying `output_path` to be a unique identifier that your other scripts will use to find the file or directory later.
     ```json
     {
       "input_path": "/path/on/server/disk/analytics.json",
@@ -161,10 +169,11 @@ storage_hooks:
     }
     ```
 
-:::info What is this `output_path`?
-The `output_path` is a **logical path** or unique identifier that your upload script creates and understands. The `server` is completely agnostic to its format; it simply saves this string and passes it back to your `download_hook` and `delete_hook` later.
-
-While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more flexible pattern is to return only the object key (`artifacts/file.json`). Your download/delete scripts can then be configured with the bucket name and construct the full URL themselves. This decouples your database from your storage configuration.
+:::info Special Case: `whiteboard-converted-imgs`
+When `hook_file_type` is `whiteboard-converted-imgs`, your script receives an `input_directory_path`. It is responsible for:
+1.  Constructing the S3 prefix using the pattern: `<room_sid>/<file_id>`.
+2.  Uploading all files from the `input_directory_path` to this S3 prefix (e.g., `<room_sid>/<file_id>/page_1.png`).
+3.  Returning the abstract path in the `output_path` field, formatted as `<room_sid>/<file_id>`.
 :::
 
 #### `download_hook`
@@ -175,7 +184,7 @@ While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact"
+      "hook_file_type": "artifact"
     }
     ```
 *   **`stdout`**: Your script **must** return the same JSON, modifying the `action` field and its corresponding value.
@@ -183,7 +192,7 @@ While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more
         ```json
         {
           "input_path": "artifacts/room01/analytics.json",
-          "service_type": "artifact",
+          "hook_file_type": "artifact",
           "action": "redirect",
           "redirect_url": "https://s3.presigned.url/..."
         }
@@ -192,7 +201,7 @@ While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more
         ```json
         {
           "input_path": "artifacts/room01/analytics.json",
-          "service_type": "artifact",
+          "hook_file_type": "artifact",
           "action": "serve_local",
           "output_path": "/tmp/downloads/analytics.json",
           "mime_type": "application/json"
@@ -207,15 +216,70 @@ While you *can* use a full URL like `s3://my-bucket/artifacts/file.json`, a more
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact"
+      "hook_file_type": "artifact"
     }
     ```
 *   **`stdout`**: Your script **must** return a JSON response. It can optionally add a `msg` for logging.
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact",
+      "hook_file_type": "artifact",
       "msg": "File deleted successfully"
+    }
+    ```
+
+#### `resumable_upload_hook`
+
+*   **Context**: Runs during chat file uploads to offload chunk management to an external service.
+*   **Purpose**: Handle checking, uploading, and merging file chunks.
+*   **`stdin` (`ResumableUploadHookData`)**: The `type` field determines the action.
+    *   `type: "part-check"`: Check if a chunk exists.
+    *   `type: "part-upload"`: Upload a single chunk from `input_path`.
+    *   `type: "merge"`: Finalize the upload from all previously uploaded parts.
+    ```json
+    {
+      "type": "part-check",
+      "room_sid": "SID_d82k3s9d2l",
+      "resumable_identifier": "unique-file-id",
+      "resumable_chunk_number": 1
+    }
+    ```
+*   **`stdout`**: The response depends on the request `type`.
+    *   For `part-check`:
+        ```json
+        {"output_response_type": "part_exists"}
+        // or
+        {"output_response_type": "part_not_exists"}
+        ```
+    *   For `part-upload`:
+        ```json
+        {"output_response_type": "part_uploaded"}
+        ```
+    *   For `merge`: The `output_path` **must** be in the format `<room_sid>/<filename>`.
+        ```json
+        {
+          "output_response_type": "merge_success",
+          "output_path": "SID_d82k3s9d2l/my-file.zip",
+          "file_mime_type": "application/zip",
+          "file_extension": "zip"
+        }
+        ```
+
+#### `room_end_hook`
+
+*   **Context**: Runs once after a room session has completely ended.
+*   **Purpose**: Clean up any temporary resources associated with the room (e.g., abandoned resumable upload chunks).
+*   **`stdin` (`RoomEndHookData`)**:
+    ```json
+    {
+      "room_id": "room01",
+      "room_sid": "SID_d82k3s9d2l"
+    }
+    ```
+*   **`stdout`**:
+    ```json
+    {
+      "msg": "Cleanup for room SID_d82k3s9d2l completed."
     }
     ```
 

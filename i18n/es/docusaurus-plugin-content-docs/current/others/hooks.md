@@ -119,7 +119,7 @@ Todos los hooks del grabador utilizan la misma estructura JSON `RecordingHookDat
 
 ## Hooks de Almacenamiento del Servidor (`server`)
 
-Los hooks de almacenamiento en el `server` le permiten anular el almacenamiento de archivos local predeterminado e integrarse con cualquier proveedor de almacenamiento externo. Estos hooks se utilizan para los **artefactos de sala** (por ejemplo, análisis, transcripciones) y para gestionar el acceso a las **grabaciones**.
+Los hooks de almacenamiento en el `server` le permiten anular el almacenamiento de archivos local predeterminado e integrarse con cualquier proveedor de almacenamiento externo. Estos hooks se utilizan para los **artefactos de sala** (por ejemplo, análisis, transcripciones), la gestión de **cargas de archivos de chat** y el manejo del acceso a las **grabaciones**.
 
 **Configuración en `server/config.yaml`:**
 
@@ -131,28 +131,36 @@ storage_hooks:
     - "/ruta/a/su/script_de_descarga.sh"
   delete_hook:
     - "/ruta/a/su/script_de_eliminacion.sh"
+  resumable_upload_hook:
+    - "/ruta/a/su/script_de_subida_reanudable.sh"
+  room_end_hook:
+    - "/ruta/a/su/script_de_fin_de_sala.sh"
 ```
 
 ### Tipos de Hooks y Cargas de Datos
 
 #### `upload_hook`
 
-*   **Contexto**: Se ejecuta cuando el `server` genera un artefacto de sala. **Este hook NO se usa para grabaciones.**
-*   **Propósito**: Subir el archivo del artefacto desde el disco local del servidor a su almacenamiento externo.
+*   **Contexto**: Se ejecuta cuando el `server` genera un artefacto de sala o un conjunto de imágenes de pizarra convertidas.
+*   **Propósito**: Subir un solo archivo o un directorio completo desde el disco local del servidor a su almacenamiento externo.
 *   **`stdin` (`UploadHookData`)**:
     ```json
     {
-      "input_path": "/path/on/server/disk/analytics.json",
-      "service_type": "artifact",
+      "input_path": "/ruta/en/disco/del/servidor/analytics.json",
+      "input_directory_path": "/ruta/a/imagenes/convertidas/",
+      "hook_file_type": "artifact",
       "room_id": "room01",
       "room_sid": "SID_d82k3s9d2l",
       "room_table_id": 123
     }
     ```
-*   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea un identificador único que sus otros scripts usarán para encontrar el archivo más tarde.
+    *   `input_path`: Se utiliza para cargas de un solo archivo.
+    *   `input_directory_path`: Se utiliza para la carga por lotes de todos los archivos dentro de un directorio. Si está presente, `input_path` se ignora.
+    *   `file_id`: Un ID único para el archivo o conjunto de archivos.
+*   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea un identificador único que sus otros scripts usarán para encontrar el archivo o directorio más tarde.
     ```json
     {
-      "input_path": "/path/on/server/disk/analytics.json",
+      "input_path": "/ruta/en/disco/del/servidor/analytics.json",
       "service_type": "artifact",
       "room_id": "room01",
       "room_sid": "SID_d82k3s9d2l",
@@ -161,10 +169,11 @@ storage_hooks:
     }
     ```
 
-:::info ¿Qué es este `output_path`?
-El `output_path` es una **ruta lógica** o un identificador único que su script de subida crea y entiende. El `server` es completamente ajeno a su formato; simplemente guarda esta cadena y la pasa a sus `download_hook` y `delete_hook` más tarde.
-
-Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, un patrón más flexible es devolver solo la clave del objeto (`artifacts/file.json`). Sus scripts de descarga/eliminación pueden configurarse con el nombre del bucket y construir la URL completa ellos mismos. Esto desacopla su base de datos de su configuración de almacenamiento.
+:::info Caso Especial: `whiteboard-converted-imgs`
+Cuando `hook_file_type` es `whiteboard-converted-imgs`, su script recibe un `input_directory_path`. Es responsable de:
+1.  Construir el prefijo S3 usando el patrón: `<room_sid>/<file_id>`.
+2.  Subir todos los archivos desde `input_directory_path` a este prefijo S3 (por ejemplo, `<room_sid>/<file_id>/page_1.png`).
+3.  Devolver la ruta abstracta en el campo `output_path`, formateada como `<room_sid>/<file_id>`.
 :::
 
 #### `download_hook`
@@ -175,7 +184,7 @@ Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, 
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact"
+      "hook_file_type": "artifact"
     }
     ```
 *   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando el campo `action` y su valor correspondiente.
@@ -183,7 +192,7 @@ Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, 
         ```json
         {
           "input_path": "artifacts/room01/analytics.json",
-          "service_type": "artifact",
+          "hook_file_type": "artifact",
           "action": "redirect",
           "redirect_url": "https://s3.presigned.url/..."
         }
@@ -192,7 +201,7 @@ Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, 
         ```json
         {
           "input_path": "artifacts/room01/analytics.json",
-          "service_type": "artifact",
+          "hook_file_type": "artifact",
           "action": "serve_local",
           "output_path": "/tmp/downloads/analytics.json",
           "mime_type": "application/json"
@@ -207,15 +216,70 @@ Aunque *puede* usar una URL completa como `s3://mi-bucket/artifacts/file.json`, 
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact"
+      "hook_file_type": "artifact"
     }
     ```
 *   **`stdout`**: Su script **debe** devolver una respuesta JSON. Puede añadir opcionalmente un `msg` para el registro.
     ```json
     {
       "input_path": "artifacts/room01/analytics.json",
-      "service_type": "artifact",
+      "hook_file_type": "artifact",
       "msg": "Archivo eliminado correctamente"
+    }
+    ```
+
+#### `resumable_upload_hook`
+
+*   **Contexto**: Se ejecuta durante las cargas de archivos de chat para delegar la gestión de fragmentos a un servicio externo.
+*   **Propósito**: Manejar la verificación, carga y fusión de fragmentos de archivos.
+*   **`stdin` (`ResumableUploadHookData`)**: El campo `type` determina la acción.
+    *   `type: "part-check"`: Verificar si un fragmento existe.
+    *   `type: "part-upload"`: Cargar un solo fragmento desde `input_path`.
+    *   `type: "merge"`: Finalizar la carga de todas las partes previamente cargadas.
+    ```json
+    {
+      "type": "part-check",
+      "room_sid": "SID_d82k3s9d2l",
+      "resumable_identifier": "unique-file-id",
+      "resumable_chunk_number": 1
+    }
+    ```
+*   **`stdout`**: La respuesta depende del `type` de la solicitud.
+    *   Para `part-check`:
+        ```json
+        {"output_response_type": "part_exists"}
+        // o
+        {"output_response_type": "part_not_exists"}
+        ```
+    *   Para `part-upload`:
+        ```json
+        {"output_response_type": "part_uploaded"}
+        ```
+    *   Para `merge`: El `output_path` **debe** estar en el formato `<room_sid>/<filename>`.
+        ```json
+        {
+          "output_response_type": "merge_success",
+          "output_path": "SID_d82k3s9d2l/my-file.zip",
+          "file_mime_type": "application/zip",
+          "file_extension": "zip"
+        }
+        ```
+
+#### `room_end_hook`
+
+*   **Contexto**: Se ejecuta una vez después de que una sesión de sala ha terminado completamente.
+*   **Propósito**: Limpiar cualquier recurso temporal asociado con la sala (por ejemplo, fragmentos de carga reanudable abandonados).
+*   **`stdin` (`RoomEndHookData`)**:
+    ```json
+    {
+      "room_id": "room01",
+      "room_sid": "SID_d82k3s9d2l"
+    }
+    ```
+*   **`stdout`**:
+    ```json
+    {
+      "msg": "Limpieza para la sala SID_d82k3s9d2l completada."
     }
     ```
 
@@ -251,8 +315,8 @@ rl.on('line', (line) => {
 
     // --- Su Lógica Aquí ---
     //
-    // Realice su acción (subir, descargar, eliminar) basándose en requestData.
-    // Para este ejemplo, simplemente agregaremos un nuevo output_path.
+    // Aquí es donde realizaría su acción (por ejemplo, subir, llamar a una API).
+    // Para este ejemplo, simplemente modificaremos el objeto.
     //
     const newPath = `s3://my-bucket/new-path/${Date.now()}`;
     requestData.output_path = newPath;
@@ -265,7 +329,7 @@ rl.on('line', (line) => {
     log(`Error al procesar la solicitud: ${e.message}`);
     // Si ocurre un error, devuelva un objeto JSON con un campo 'error'.
     // Es crucial devolver siempre una respuesta JSON válida.
-
+    
     // Si requestData fue parseado con éxito, podemos incluirlo en la respuesta.
     // De lo contrario, cree un nuevo objeto de error.
     const errorResponse = requestData 
