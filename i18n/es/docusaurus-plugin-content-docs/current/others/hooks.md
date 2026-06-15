@@ -10,17 +10,18 @@ sidebar_label: Hooks
 
 plugNmeet ofrece un potente mecanismo de "hooking" para permitir una personalización y automatización avanzadas de sus flujos de trabajo de medios. Los hooks están disponibles tanto en los componentes `recorder` (grabador) como `server` (servidor), lo que le permite integrarse con cualquier proveedor de almacenamiento externo (por ejemplo, S3, Google Cloud Storage), llamar a APIs personalizadas u orquestar complejas tuberías multi-servidor.
 
-## El Modelo de Proceso de Larga Duración
+## El Modelo de Proceso de Larga Duración y de Un Solo Disparo
 
-Para un rendimiento y eficiencia máximos, todos los scripts de hook se gestionan como **procesos de larga duración**. Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza cada uno de sus scripts de hook configurados **una vez**. El script luego se ejecuta continuamente en segundo plano, esperando solicitudes.
+Para un rendimiento y flexibilidad máximos, los scripts de hook pueden configurarse como **procesos de larga duración** o **comandos de un solo disparo**.
 
-Este modelo elimina la significativa sobrecarga de iniciar un nuevo proceso para cada evento de hook, lo que resulta en una ejecución casi instantánea.
+*   **Procesos de Larga Duración**: Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza cada script de hook de larga duración configurado **una vez**. El script luego se ejecuta continuamente en segundo plano, esperando solicitudes. Este modelo elimina la significativa sobrecarga de iniciar un nuevo proceso para cada evento de hook, lo que resulta en una ejecución casi instantánea.
+*   **Comandos de Un Solo Disparo**: Son comandos (como `curl`, `wget` o el `http-request` incorporado) que se ejecutan directamente para cada evento de hook. Son adecuados para tareas simples y autocontenidas que no requieren mantener un proceso persistente.
 
 ### Protocolo de Comunicación
 
 Toda la comunicación con su script de hook se realiza a través de sus tuberías de E/S estándar utilizando **JSON delimitado por nueva línea**.
 
-*   **`stdin`**: Su script debe leer de `stdin` en un bucle. Cada línea que lea será un objeto JSON completo que representa una única solicitud del componente plugNmeet.
+*   **`stdin`**: Su script debe leer de `stdin` en un bucle (para scripts de larga duración). Cada línea que lea será un objeto JSON completo que representa una única solicitud del componente plugNmeet. Para comandos de un solo disparo, la carga útil JSON se pasa a `stdin` una vez.
 *   **`stdout`**: Para cada solicitud que reciba, su script **debe** imprimir una sola línea de JSON en `stdout`. Esta línea es la respuesta.
 *   **`stderr`**: Puede usar `stderr` para registrar información dentro de su script. Esta salida es ignorada por plugNmeet pero es invaluable para depurar su lógica personalizada.
 
@@ -32,9 +33,13 @@ El principio central del sistema de hooks es que un script recibe un objeto JSON
 
 Si un script no necesita modificar los datos (por ejemplo, un script que solo llama a una API externa para registrar algo), **debe** igualmente devolver el objeto JSON original que recibió sin modificar.
 
-### Manejo de Errores
+### Validación JSON y Manejo de Errores
 
-Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON a `stdout`. La aplicación principal registrará este error y podrá detener la operación. Es crucial devolver siempre una respuesta JSON válida, incluso en caso de error.
+Si su script devuelve una respuesta no vacía a `stdout`, plugNmeet intentará analizarla como JSON.
+*   **JSON Válido**: Si la respuesta es JSON válido, se utilizará como entrada para el siguiente script en la tubería (o como resultado final de la ejecución del hook).
+*   **JSON Inválido**: Si la respuesta no es JSON válido, plugNmeet registrará una **advertencia** y **descartará la salida**. Los datos JSON originales (recibidos por el script actual) se pasarán al siguiente script en la tubería. Esto evita que un solo script con mal comportamiento rompa toda la cadena.
+
+Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON a `stdout`. La aplicación principal registrará este error. Es crucial devolver siempre una respuesta JSON válida, incluso en caso de error.
 
 **Ejemplo de Respuesta de Error:**
 ```json
@@ -48,9 +53,9 @@ Si su script encuentra un error, debe poblar el campo `error` en su respuesta JS
 
 ### Cómo Crear un Hook
 
-1.  **Cree un Script de Larga Duración:** Un "script" puede ser cualquier archivo ejecutable (un script de shell, un programa Go compilado, un script NodeJS, etc.) que se ejecute en un bucle, leyendo de `stdin` y escribiendo en `stdout`.
+1.  **Cree un Script o Comando:** Puede ser cualquier archivo ejecutable (un script de shell, un programa Go compilado, un script NodeJS, etc.) que se ejecute en un bucle (para larga duración) o un comando simple (para un solo disparo).
 2.  **Hágalo Executable:** Asegúrese de que su script tenga permisos de ejecución (`chmod +x your_script.js`).
-3.  **Habilite en la Configuración:** Agregue la ruta completa a su ejecutable en la sección `hooks` apropiada de su `config.yaml`.
+3.  **Habilite en la Configuración:** Agregue la ruta completa a su ejecutable (o el comando) en la sección `hooks` apropiada de su `config.yaml`.
 
 ---
 
@@ -62,13 +67,42 @@ Estos hooks le permiten gestionar el archivo de grabación a medida que avanza p
 
 ```yaml
 hooks:
+  # Para cada categoría de hook, puede especificar un 'pool_size', un 'hook_timeout' y una lista de 'scripts'.
+  # 'pool_size' controla cuántas tuberías para esa categoría pueden ejecutarse en paralelo.
+  # 'hook_timeout' establece un tiempo de espera específico para esta categoría.
+  # Si un valor no se establece o es 0, se establecerá por defecto en 1 para pool_size y 1h para hook_timeout.
+
   post_recording:
-    - "/ruta/a/su/script_de_subida_post_grabacion.sh"
+    pool_size: 2
+    hook_timeout: 2h
+    scripts:
+      - script: "./scripts/post-recording/upload.sh"
+        is_one_shot: false
+      - script: "http-request http://localhost:8080/your/endpoint"
+        is_one_shot: true
+
   pre_transcoding:
-    - "/ruta/a/su/script_de_descarga_pre_transcodificacion.sh"
+    pool_size: 2
+    hook_timeout: 2h
+    scripts:
+      - script: "./scripts/pre-transcoding/download.sh"
+        is_one_shot: false
+
   post_transcoding:
-    - "/ruta/a/su/script_de_notificacion_post_transcodificacion.sh"
+    # Si pool_size y hook_timeout se omiten, se utilizarán los valores predeterminados.
+    scripts:
+      - script: "./scripts/post-transcoding/notify.sh"
+        is_one_shot: false
 ```
+
+### Comando incorporado `http-request`
+
+Un comando especial `http-request` está disponible para enviar solicitudes POST a un endpoint HTTP/HTTPS. Esto es útil para notificar a servicios externos sin escribir un script completo. La carga útil JSON recibida por el hook se enviará como el cuerpo de la solicitud.
+
+**Ejemplo:**
+`http-request http://localhost:8080/your/endpoint`
+
+Esto enviará la carga útil JSON actual a la URL especificada.
 
 ### Etapas del Hook y Carga de Datos
 
@@ -124,17 +158,48 @@ Los hooks de almacenamiento en el `server` le permiten anular el almacenamiento 
 **Configuración en `server/config.yaml`:**
 
 ```yaml
-storage_hooks:
+hooks:
+  # Para cada categoría de hook, puede especificar un 'pool_size', un 'hook_timeout' y una lista de 'scripts'.
+  # 'pool_size' controla cuántas tuberías para esa categoría pueden ejecutarse en paralelo.
+  # 'hook_timeout' establece un tiempo de espera específico para esta categoría.
+  # Si un valor no se establece o es 0, se establecerá por defecto en 1 para pool_size y 5m para hook_timeout.
+
   upload_hook:
-    - "/ruta/a/su/script_de_subida.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_subida.sh"
+        is_one_shot: false
+      - script: "http-request http://localhost:8080/your/endpoint"
+        is_one_shot: true
+
   download_hook:
-    - "/ruta/a/su/script_de_descarga.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_descarga.sh"
+        is_one_shot: false
+
   delete_hook:
-    - "/ruta/a/su/script_de_eliminacion.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_eliminacion.sh"
+        is_one_shot: false
+
   resumable_upload_hook:
-    - "/ruta/a/su/script_de_subida_reanudable.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_subida_reanudable.sh"
+        is_one_shot: false
+
   room_end_hook:
-    - "/ruta/a/su/script_de_fin_de_sala.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_fin_de_sala.sh"
+        is_one_shot: false
 ```
 
 ### Tipos de Hooks y Cargas de Datos

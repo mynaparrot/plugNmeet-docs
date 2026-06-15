@@ -10,17 +10,18 @@ sidebar_label: Hooks
 
 plugNmeet offers a powerful hooking mechanism to allow for advanced customization and automation of your media workflows. Hooks are available in both the `recorder` and `server` components, enabling you to integrate with any external storage provider (e.g., S3, Google Cloud Storage), call custom APIs, or orchestrate complex, multi-server pipelines.
 
-## The Long-Lived Process Model
+## The Long-Lived & One-shot Process Model
 
-For maximum performance and efficiency, all hook scripts are managed as **long-lived processes**. When a plugNmeet component (like `server` or `recorder`) starts, it launches each of your configured hook scripts **once**. The script then runs continuously in the background, waiting for requests.
+For maximum performance and flexibility, hook scripts can be configured as either **long-lived processes** or **one-shot commands**.
 
-This model eliminates the significant overhead of starting a new process for every hook event, resulting in near-instantaneous execution.
+*   **Long-Lived Processes**: When a plugNmeet component (like `server` or `recorder`) starts, it launches each configured long-lived hook script **once**. The script then runs continuously in the background, waiting for requests. This model eliminates the significant overhead of starting a new process for every hook event, resulting in near-instantaneous execution.
+*   **One-shot Commands**: These are commands (like `curl`, `wget`, or the built-in `http-request`) that are executed directly for each hook event. They are suitable for simple, self-contained tasks that don't require maintaining a persistent process.
 
 ### Communication Protocol
 
 All communication with your hook script happens over its standard I/O pipes using **newline-delimited JSON**.
 
-*   **`stdin`**: Your script must read from `stdin` in a loop. Each line it reads will be a complete JSON object representing a single request from the plugNmeet component.
+*   **`stdin`**: Your script must read from `stdin` in a loop (for long-lived scripts). Each line it reads will be a complete JSON object representing a single request from the plugNmeet component. For one-shot commands, the JSON payload is passed to `stdin` once.
 *   **`stdout`**: For each request it receives, your script **must** print a single line of JSON to `stdout`. This line is the response.
 *   **`stderr`**: You can use `stderr` for logging within your script. This output is ignored by plugNmeet but is invaluable for debugging your custom logic.
 
@@ -32,9 +33,13 @@ The core principle of the hook system is that a script receives a JSON object an
 
 If a script does not need to modify the data (e.g., a script that only calls an external API for logging), it **must** still return the original, unmodified JSON object it received.
 
-### Error Handling
+### JSON Validation and Error Handling
 
-If your script encounters an error, it should populate the `error` field in its JSON response to `stdout`. The main application will log this error and may halt the operation. It is crucial to always return a valid JSON response, even in case of an error.
+If your script returns a non-empty response to `stdout`, plugNmeet will attempt to parse it as JSON.
+*   **Valid JSON**: If the response is valid JSON, it will be used as the input for the next script in the pipeline (or as the final result of the hook execution).
+*   **Invalid JSON**: If the response is not valid JSON, plugNmeet will log a **warning** and **discard the output**. The original JSON data (received by the current script) will be passed to the next script in the pipeline. This prevents a single misbehaving script from breaking the entire chain.
+
+If your script encounters an error, it should populate the `error` field in its JSON response to `stdout`. The main application will log this error. It is crucial to always return a valid JSON response, even in case of an error.
 
 **Example Error Response:**
 ```json
@@ -48,9 +53,9 @@ If your script encounters an error, it should populate the `error` field in its 
 
 ### How to Create a Hook
 
-1.  **Create a Long-Lived Script:** A "script" can be any executable file (a shell script, a compiled Go program, a NodeJS script, etc.) that runs in a loop, reading from `stdin` and writing to `stdout`.
+1.  **Create a Script or Command:** This can be any executable file (a shell script, a compiled Go program, a NodeJS script, etc.) that runs in a loop (for long-lived) or a simple command (for one-shot).
 2.  **Make it Executable:** Ensure your script has execute permissions (`chmod +x your_script.js`).
-3.  **Enable in Config:** Add the full path to your executable in the appropriate `hooks` section of your `config.yaml`.
+3.  **Enable in Config:** Add the full path to your executable (or the command) in the appropriate `hooks` section of your `config.yaml`.
 
 ---
 
@@ -62,13 +67,42 @@ These hooks allow you to manage the recording file as it moves through the trans
 
 ```yaml
 hooks:
+  # For each hook category, you can specify a 'pool_size', a 'hook_timeout' and a list of 'scripts'.
+  # 'pool_size' controls how many pipelines for that category can run in parallel.
+  # 'hook_timeout' sets a specific timeout for this category.
+  # If a value is not set or is 0, it will default to 1 for pool_size and 1h for hook_timeout.
+
   post_recording:
-    - "/path/to/your/post_recording_upload_script.sh"
+    pool_size: 2
+    hook_timeout: 2h
+    scripts:
+      - script: "./scripts/post-recording/upload.sh"
+        is_one_shot: false
+      - script: "http-request http://localhost:8080/your/endpoint"
+        is_one_shot: true
+
   pre_transcoding:
-    - "/path/to/your/pre_transcoding_download_script.sh"
+    pool_size: 2
+    hook_timeout: 2h
+    scripts:
+      - script: "./scripts/pre-transcoding/download.sh"
+        is_one_shot: false
+
   post_transcoding:
-    - "/path/to/your/post_transcoding_notify_script.sh"
+    # If pool_size and hook_timeout are omitted, they will use the default values.
+    scripts:
+      - script: "./scripts/post-transcoding/notify.sh"
+        is_one_shot: false
 ```
+
+### Built-in `http-request` command
+
+A special command `http-request` is available to send POST requests to an HTTP/HTTPS endpoint. This is useful for notifying external services without writing a full script. The JSON payload received by the hook will be sent as the request body.
+
+**Example:**
+`http-request http://localhost:8080/your/endpoint`
+
+This will send the current JSON payload to the specified URL.
 
 ### Hook Stages & Data Payload
 
@@ -124,17 +158,48 @@ Storage hooks in the `server` allow you to override the default local file stora
 **Configuration in `server/config.yaml`:**
 
 ```yaml
-storage_hooks:
+hooks:
+  # For each hook category, you can specify a 'pool_size', a 'hook_timeout' and a list of 'scripts'.
+  # 'pool_size' controls how many pipelines for that category can run in parallel.
+  # 'hook_timeout' sets a specific timeout for this category.
+  # If a value is not set or is 0, it will default to 1 for pool_size and 5m for hook_timeout.
+
   upload_hook:
-    - "/path/to/your/upload_script.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/upload_script.sh"
+        is_one_shot: false
+      - script: "http-request http://localhost:8080/your/endpoint"
+        is_one_shot: true
+
   download_hook:
-    - "/path/to/your/download_script.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/download_script.sh"
+        is_one_shot: false
+
   delete_hook:
-    - "/path/to/your/delete_script.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/delete_script.sh"
+        is_one_shot: false
+
   resumable_upload_hook:
-    - "/path/to/your/resumable_upload_script.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/resumable_upload_script.sh"
+        is_one_shot: false
+
   room_end_hook:
-    - "/path/to/your/room_end_script.sh"
+    pool_size: 2
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/room_end_script.sh"
+        is_one_shot: false
 ```
 
 ### Hook Types & Data Payloads
