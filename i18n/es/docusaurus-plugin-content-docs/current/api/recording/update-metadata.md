@@ -10,7 +10,7 @@ sidebar_label: Actualizar Metadatos
 
 Endpoint: `/recording/updateMetadata`
 
-Este punto final le permite actualizar los metadatos asociados con una grabación específica. Esto es útil para agregar o cambiar información sobre una grabación después de que se haya creado, como agregar un título, una descripción o subtítulos.
+Este endpoint le permite actualizar los metadatos asociados con una grabación específica. Esto es útil para agregar o cambiar información sobre una grabación después de que se haya creado, como agregar un título, una descripción o subtítulos.
 
 Esta API maneja de forma inteligente las actualizaciones parciales. Solo necesita proporcionar los campos que desea cambiar. Por ejemplo, puede actualizar solo el título sin afectar la descripción u otros metadatos.
 
