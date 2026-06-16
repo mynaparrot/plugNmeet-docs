@@ -10,7 +10,7 @@ sidebar_label: Información de la Grabación
 
 Endpoint: `/recording/info`
 
-Este punto final recupera todos los metadatos y detalles asociados con una grabación específica. Al proporcionar un `record_id`, puede obtener información completa sobre la grabación, incluido el tamaño del archivo, la hora de creación y los detalles de la sala asociada.
+Este endpoint recupera todos los metadatos y detalles asociados con una grabación específica. Al proporcionar un `record_id`, puede obtener información completa sobre la grabación, incluido el tamaño del archivo, la hora de creación y los detalles de la sala asociada.
 
 Esto es útil para mostrar información detallada sobre una grabación en la interfaz de su aplicación, como en una página de reproducción de grabación dedicada.
 
