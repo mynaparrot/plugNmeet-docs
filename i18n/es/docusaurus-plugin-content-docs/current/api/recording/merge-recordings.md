@@ -1,6 +1,6 @@
 ---
 title: API para Unir Grabaciones | Referencia de la API de plugNmeet
-description: Documentación del endpoint de la API para unir múltiples archivos de grabación de una sola sesión en una grabación continua. Aprenda a combinar segmentos de grabación separados.
+description: Documentación del endpoint de la API para unir múltiples grabaciones de una sesión en un solo archivo continuo. Aprenda a combinar distintos segmentos de grabación.
 keywords: [api, grabación, unir, combinar, api de video, endpoint]
 sidebar_position: 7
 sidebar_label: Unir Grabaciones
