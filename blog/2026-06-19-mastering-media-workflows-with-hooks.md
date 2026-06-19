@@ -331,9 +331,6 @@ rl.on("line", async (line) => {
     // Set the final S3 key in `output_path` for the server to store in the database.
     request.output_path = final_s3_key;
     
-    // Signal to the recorder that it can clean up any intermediate raw files.
-    request.should_cleanup = true;
-
     process.stdout.write(JSON.stringify(request) + "\n");
   } catch (e) {
     log(`ERROR: ${e.message}`);
