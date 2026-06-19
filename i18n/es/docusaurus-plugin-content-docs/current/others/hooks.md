@@ -83,23 +83,29 @@ scripts:
 
 ### Responsabilidad de la Limpieza de Archivos
 
-:::danger La Limpieza de Archivos es Su Responsabilidad
-Cuando el sistema de hooks está habilitado, plugNmeet delega la gestión de archivos a sus scripts. Si un hook le proporciona un archivo local temporal (p. ej., a través de `input_path`), **plugNmeet no eliminará ese archivo**.
-
-Su script es responsable de limpiar el archivo fuente local después de haberlo procesado (p. ej., después de subirlo a un almacenamiento remoto). Esto es crítico para evitar que el disco de su servidor se llene.
+:::danger Importante
+Cuando habilita un hook que recibe una ruta de archivo (como `upload_hook` o `post_transcoding`), plugNmeet **desactiva su propia limpieza automática de archivos** para esa etapa.
 :::
+
+Esta es una característica de seguridad crítica. La aplicación delega la gestión de archivos a su script porque no puede conocer su naturaleza (p. ej., si es un cargador o solo un notificador). Si la aplicación eliminara un archivo antes de que su script pudiera procesarlo, causaría un error.
+
+Por lo tanto, la responsabilidad de la gestión de archivos se le transfiere a usted, y el rol de su script determina su responsabilidad:
+
+*   **Si su script MUEVE o SUBE el archivo** (p. ej., a S3), **DEBE** eliminar el archivo fuente local de `input_path` después de que la transferencia sea exitosa. Esto es esencial para evitar que el disco de su servidor se llene.
+
+*   **Si su script solo OBSERVA el archivo** (p. ej., para registro, análisis o envío de una notificación) y no lo mueve, **NO DEBE** eliminar el archivo. El archivo todavía es necesario para el almacenamiento interno de plugNmeet o para hooks posteriores en una tubería.
 
 ### Responsabilidad de la Consistencia de las Rutas
 
 :::warning La Consistencia de las Rutas es Su Responsabilidad
-plugNmeet **no valida** la `output_path` que usted devuelve desde un hook. Se almacena como una cadena de texto y se utiliza como `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.
+**plugNmeet no valida la `output_path` que usted devuelve desde un hook. Se almacena como una cadena de texto y se utiliza como `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.**
+:::
 
 *   **Si su script modifica `output_path`** (por ejemplo, cambiando una ruta local por una clave de S3 en un `upload_hook` o `post_transcoding_hook`), asume la total responsabilidad de esa ruta. **DEBE** implementar también los correspondientes `download_hook` y `delete_hook` que puedan entender y procesar el formato de ruta personalizado que ha definido.
 
 *   **Si su script es solo para observación** (por ejemplo, para registrar estadísticas o enviar una notificación) y no modifica la `output_path`, entonces no necesita proporcionar los otros hooks. El flujo de trabajo predeterminado continuará con la ruta original.
 
 No proporcionar scripts `download_hook` y `delete_hook` compatibles después de cambiar la `output_path` resultará en descargas y eliminaciones rotas.
-:::
 
 ---
 

@@ -83,23 +83,30 @@ scripts:
 
 ### File Cleanup Responsibility
 
-:::danger File Cleanup is Your Responsibility
-When the hook system is enabled, plugNmeet delegates file management to your scripts. If a hook provides you with a temporary local file (e.g., via `input_path`), **plugNmeet will not delete that file**.
-
-Your script is responsible for cleaning up the local source file after it has been processed (e.g., after uploading it to remote storage). This is critical to prevent your server's disk from filling up.
+:::danger Important
+When you enable a hook that receives a file path (like `upload_hook` or `post_transcoding`), plugNmeet **disables its own automatic file cleanup** for that stage.
 :::
+
+This is a critical safety feature. The application delegates file management to your script because it cannot know its nature (e.g., whether it's an uploader or just a notifier). If the application deleted a file before your script could process it, it would cause an error.
+
+Therefore, the responsibility for file management is transferred to you, and your script's role determines its responsibility:
+
+*   **If your script MOVES or UPLOADS the file** (e.g., to S3), it **MUST** delete the local source file from `input_path` after the transfer is successful. This is essential to prevent your server's disk from filling up.
+
+*   **If your script only OBSERVES the file** (e.g., for logging, analytics, or sending a notification) and does not move it, it **MUST NOT** delete the file. The file is still needed by plugNmeet for its own internal storage or for subsequent hooks in a pipeline.
 
 ### Path Consistency Responsibility
 
 :::warning Path Consistency is Your Responsibility
-plugNmeet **does not validate** the `output_path` you return from a hook. It is stored as a string and used as the `input_path` for subsequent `download_hook` and `delete_hook` calls.
+**plugNmeet does not validate the `output_path` you return from a hook. It is stored as a string and used as the `input_path` for subsequent `download_hook` and `delete_hook` calls.**
+:::
 
 *   **If your script modifies `output_path`** (e.g., changing a local path to an S3 key in an `upload_hook` or `post_transcoding` hook), you take full responsibility for that path. You **MUST** also implement a corresponding `download_hook` and `delete_hook` that can understand and process the custom path format you have defined.
 
 *   **If your script is only for observation** (e.g., logging stats or sending a notification) and does not modify the `output_path`, then you do not need to provide the other hooks. The default workflow will continue with the original path.
 
 Failing to provide compatible `download_hook` and `delete_hook` scripts after changing the `output_path` will result in broken downloads and deletions.
-:::
+
 
 ---
 
