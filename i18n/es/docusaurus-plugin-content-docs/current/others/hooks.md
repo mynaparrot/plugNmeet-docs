@@ -1,7 +1,7 @@
 ---
 title: Hooks de Scripting y Almacenamiento
-description: Aprenda a utilizar los hooks de scripting en el grabador y el servidor para automatizar flujos de trabajo de medios e integrarse con proveedores de almacenamiento externo.
-keywords: [hooks, scripting, storage, recorder, server, automation, s3, custom storage, nodejs, bash, long-lived]
+description: Aprende a usar hooks de scripting en el grabador y el servidor para automatizar flujos de trabajo de medios e integrarte con proveedores de almacenamiento externos.
+keywords: [hooks, scripting, almacenamiento, grabador, servidor, automatización, s3, almacenamiento personalizado, nodejs, bash, long-lived]
 sidebar_position: 4
 sidebar_label: Hooks
 ---
@@ -11,6 +11,10 @@ sidebar_label: Hooks
 plugNmeet cuenta con un potente sistema de "hooks" (ganchos) que le permite ejecutar scripts o comandos personalizados en puntos clave del ciclo de vida de la gestión de archivos y medios. Esto posibilita una personalización profunda, permitiéndole integrarse con cualquier proveedor de almacenamiento externo (por ejemplo, S3, Google Cloud), llamar a APIs personalizadas u orquestar complejas canalizaciones (pipelines) multiservidor.
 
 Los hooks están disponibles tanto en los componentes `server` como `recorder`.
+
+:::tip ¿Buscas Ejemplos?
+Esta página cubre los detalles técnicos del sistema de hooks. Para ejemplos prácticos del mundo real en varios lenguajes de programación, consulta nuestras publicaciones de blog etiquetadas con **[hooks](/blog/tags/hooks)**.
+:::
 
 :::info Fuente de Referencia
 Las estructuras de datos JSON para los hooks pueden cambiar con el tiempo. Esta documentación proporciona ejemplos, pero para las definiciones más actualizadas, por favor consulte el repositorio oficial `plugnmeet-protocol`:
@@ -27,7 +31,7 @@ Todos los hooks, independientemente de dónde se ejecuten, comparten el mismo di
 Para obtener el máximo rendimiento y flexibilidad, los scripts de los hooks pueden configurarse como **procesos de larga duración** o como **comandos de única ejecución**.
 
 *   **Procesos de Larga Duración**: Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza su script **una sola vez**. El script se ejecuta de forma continua, escuchando solicitudes. Este modelo es altamente eficiente ya que evita la sobrecarga de iniciar un nuevo proceso para cada evento. **Este es el enfoque recomendado para la mayoría de los casos de uso.**
-*   **Comandos de Única Ejecución**: Son comandos simples (como `curl`, `wget`, o el `http-request` integrado) que se ejecutan para cada evento de hook. Son adecuados para tareas sencillas y autocontenidas.
+*   **Comandos de Única Ejecución**: Son comandos simples (como `curl`, `wget`, o la utilidad integrada `http-request`) que se ejecutan para cada evento de hook. Son adecuados para tareas sencillas y autocontenidas.
 
 ### Protocolo de Comunicación
 
@@ -75,12 +79,26 @@ scripts:
 
 ---
 
-## Responsabilidad de la Limpieza de Archivos
+## Responsabilidades Clave
+
+### Responsabilidad de la Limpieza de Archivos
 
 :::danger La Limpieza de Archivos es Su Responsabilidad
 Cuando el sistema de hooks está habilitado, plugNmeet delega la gestión de archivos a sus scripts. Si un hook le proporciona un archivo local temporal (p. ej., a través de `input_path`), **plugNmeet no eliminará ese archivo**.
 
 Su script es responsable de limpiar el archivo fuente local después de haberlo procesado (p. ej., después de subirlo a un almacenamiento remoto). Esto es crítico para evitar que el disco de su servidor se llene.
+:::
+
+### Responsabilidad de la Consistencia de las Rutas
+
+:::warning La Consistencia de las Rutas es Su Responsabilidad
+plugNmeet **no valida** la `output_path` que usted devuelve desde un hook. Se almacena como una cadena de texto y se utiliza como `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.
+
+*   **Si su script modifica `output_path`** (por ejemplo, cambiando una ruta local por una clave de S3 en un `upload_hook` o `post_transcoding_hook`), asume la total responsabilidad de esa ruta. **DEBE** implementar también los correspondientes `download_hook` y `delete_hook` que puedan entender y procesar el formato de ruta personalizado que ha definido.
+
+*   **Si su script es solo para observación** (por ejemplo, para registrar estadísticas o enviar una notificación) y no modifica la `output_path`, entonces no necesita proporcionar los otros hooks. El flujo de trabajo predeterminado continuará con la ruta original.
+
+No proporcionar scripts `download_hook` y `delete_hook` compatibles después de cambiar la `output_path` resultará en descargas y eliminaciones rotas.
 :::
 
 ---
@@ -122,12 +140,6 @@ hooks:
     }
     ```
 *   **Tarea del Script**: Subir el contenido de `input_path` o `input_directory_path`. Devolver el JSON con `output_path` establecido a un identificador de almacenamiento único (p. ej., `artifacts/sala01/analytics.json`). **Después de una subida exitosa, debe eliminar el archivo/directorio fuente local.**
-
-:::warning La Consistencia de las Rutas es Su Responsabilidad
-plugNmeet **no valida** el `output_path` que usted devuelve. Se almacena como una cadena de texto y se utiliza como el `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.
-
-Por lo tanto, si implementa un `upload_hook` personalizado, **debe** implementar también un `download_hook` y un `delete_hook` correspondientes que puedan entender el formato de `output_path` que ha definido.
-:::
 
 #### `download_hook`
 *   **Propósito**: Proporcionar una forma segura para que los usuarios descarguen un archivo desde el almacenamiento externo.
@@ -241,12 +253,6 @@ Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON co
 *   **Entrada**: Recibe el JSON del hook `pre_transcoding`. `output_path` ahora apunta al archivo procesado final en el disco local.
 *   **Tarea del Script**: Subir el archivo final y devolver el JSON, actualizando opcionalmente `output_path`. Los campos `should_cleanup` y `source_for_cleanup` se pueden usar para gestionar la limpieza de archivos temporales de la etapa `pre_transcoding`.
 
-:::warning Se Requiere Compatibilidad del Lado del Servidor
-El `output_path` final de este hook se envía al `plugNmeet-server` y se almacena en la base de datos. Cuando un usuario solicita descargar esta grabación, el **servidor** usará su propio `download_hook` con esta ruta como `input_path`.
-
-Debe asegurarse de que el `download_hook` de su `server` sea capaz de entender y procesar el formato de `output_path` generado by este script.
-:::
-
 ---
 
 ## Ejemplo: Script de Larga Duración en Node.js
@@ -310,4 +316,3 @@ rl.on('close', () => {
   log('Stdin cerrado. Saliendo del script.');
   process.exit(0);
 });
-```

@@ -1,6 +1,6 @@
 ---
 title: "Scalable PlugNmeet Deployment | A Guide to Distributed Setups"
-description: "A high-level guide for scaling a self-hosted plugNmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."
+description: "A high-level guide for scaling a self-hosted plugnmeet deployment. Learn how to create a distributed, multi-server architecture with clustered LiveKit, NATS, and more for high availability."
 keywords: [scalable webrtc, distributed setup, plugnmeet scaling, high availability, load balancing, livekit cluster, nats cluster, redis cluster, self-hosted scaling, enterprise webrtc]
 sidebar_position: 4
 sidebar_label: Scalable Deployment
@@ -149,15 +149,32 @@ If multiple recorders share the same ID, they will all try to accept the same re
 
 ### 4. Shared Filesystem: A Critical Requirement for Data Consistency
 
-In a distributed environment where requests can be handled by any `plugnmeet-server` instance, it is **absolutely critical** that all stateless servers have access to a shared filesystem for storing and retrieving persistent files. Without this, your users will experience broken features like missing file downloads or inaccessible recordings.
+In a distributed environment, it is **absolutely critical** that all stateless servers have a consistent way to access persistent files. Without this, your users will experience broken features like missing file downloads or inaccessible recordings.
 
-You must mount a shared network storage solution (such as **NFS**, **Samba (CIFS)**, **GlusterFS**, or an **S3-compatible object store** mounted as a filesystem) to the same path on **all** of your `plugnmeet-server` and `plugnmeet-recorder` instances.
+There are two primary approaches to achieve this: a traditional shared filesystem or the more modern and flexible hooks system.
+
+#### Option 1: Traditional Shared Filesystem
+
+You can mount a shared network storage solution (such as **NFS**, **Samba (CIFS)**, **GlusterFS**, or an **S3-compatible object store** mounted as a filesystem) to the same path on **all** of your `plugnmeet-server` and `plugnmeet-recorder` instances.
 
 The following paths in your `config.yaml` must point to this shared location:
 
-*   **`recorder_info.recording_files_path`**: `plugnmeet-recorder` instances write MP4 files here, but **all** `plugnmeet-server` instances need read access to serve download requests via the API.
-*   **`artifacts_settings.storage_path`**: When a room ends, any `plugnmeet-server` might write artifacts file. Later, a request to download that file could be handled by a different server, which needs to be able to read it.
-*   **`upload_file_settings.path`**: When a user uploads a file in chat, the request might be handled by one server. When another user tries to download it, that request could go to any other server in the cluster.
+*   `recorder_info.recording_files_path`
+*   `artifacts_settings.storage_path`
+*   `upload_file_settings.path`
+
+#### Option 2: The Hooks System (Recommended for Cloud-Native Deployments)
+
+:::tip[Alternative to Shared Filesystems]
+For a more flexible and cloud-native approach, you can use the **[Scripting & Storage Hooks](/docs/others/hooks)** system instead of a shared filesystem. This is the recommended method for handling recordings and artifacts in a scalable environment.
+
+With hooks, you can directly integrate with object storage services like **AWS S3**, **Google Cloud Storage**, or **MinIO**.
+
+*   **For Recordings:** Your `post_transcoding` hook on the recorder uploads the final MP4 to your object store and returns a unique identifier (like an S3 key).
+*   **For Artifacts & Downloads:** Your `upload_hook` on the server uploads artifacts to the same object store. Your `download_hook` and `delete_hook` on the server then use the stored identifier to generate secure download links or delete files directly from the object store.
+
+This approach eliminates the need for managing a shared network disk, which is often more complex and less scalable than using a dedicated object storage service.
+:::
 
 ---
 

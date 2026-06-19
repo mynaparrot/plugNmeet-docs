@@ -149,15 +149,32 @@ Si varios grabadores comparten la misma ID, todos intentarán aceptar el mismo t
 
 ### 4. Sistema de Archivos Compartido: Un Requisito Crítico para la Consistencia de los Datos
 
-En un entorno distribuido donde las solicitudes pueden ser gestionadas por cualquier instancia de `plugnmeet-server`, es **absolutamente crítico** que todos los servidores sin estado tengan acceso a un sistema de archivos compartido para almacenar y recuperar archivos persistentes. Sin esto, sus usuarios experimentarán funciones rotas, como descargas de archivos que no se encuentran o grabaciones inaccesibles.
+En un entorno distribuido, es **absolutamente crítico** que todos los servidores sin estado tengan una forma consistente de acceder a los archivos persistentes. Sin esto, sus usuarios experimentarán funciones rotas, como descargas de archivos que no se encuentran o grabaciones inaccesibles.
 
-Debe montar una solución de almacenamiento de red compartida (como **NFS**, **Samba (CIFS)**, **GlusterFS** o un **almacén de objetos compatible con S3** montado como sistema de archivos) en la misma ruta en **todas** sus instancias de `plugnmeet-server` y `plugnmeet-recorder`.
+Existen dos enfoques principales para lograrlo: un sistema de archivos compartido tradicional o el sistema de hooks, más moderno y flexible.
+
+#### Opción 1: Sistema de Archivos Compartido Tradicional
+
+Puede montar una solución de almacenamiento de red compartida (como **NFS**, **Samba (CIFS)**, **GlusterFS** o un **almacén de objetos compatible con S3** montado como sistema de archivos) en la misma ruta en **todas** sus instancias de `plugnmeet-server` y `plugnmeet-recorder`.
 
 Las siguientes rutas en su `config.yaml` deben apuntar a esta ubicación compartida:
 
-*   **`recorder_info.recording_files_path`**: Las instancias de `plugnmeet-recorder` escriben archivos MP4 aquí, pero **todas** las instancias de `plugnmeet-server` necesitan acceso de lectura para servir las solicitudes de descarga a través de la API.
-*   **`artifacts_settings.storage_path`**: Cuando una sala finaliza, cualquier `plugnmeet-server` podría escribir un archivo de artefactos. Más tarde, una solicitud para descargar ese archivo podría ser gestionada por un servidor diferente, que necesitará poder leerlo.
-*   **`upload_file_settings.path`**: Cuando un usuario sube un archivo en el chat, la solicitud puede ser gestionada por un servidor. Cuando otro usuario intenta descargarlo, esa solicitud podría ir a cualquier otro servidor del clúster.
+*   `recorder_info.recording_files_path`
+*   `artifacts_settings.storage_path`
+*   `upload_file_settings.path`
+
+#### Opción 2: El Sistema de Hooks (Recomendado para Implementaciones Nativas de la Nube)
+
+:::tip[Alternativa a los Sistemas de Archivos Compartidos]
+Para un enfoque más flexible y nativo de la nube, puede utilizar el sistema de **[Hooks de Scripting y Almacenamiento](/docs/others/hooks)** en lugar de un sistema de archivos compartido. Este es el método recomendado para gestionar grabaciones y artefactos en un entorno escalable.
+
+Con los hooks, puede integrarse directamente con servicios de almacenamiento de objetos como **AWS S3**, **Google Cloud Storage** o **MinIO**.
+
+*   **Para Grabaciones:** Su hook `post_transcoding` en el grabador sube el MP4 final a su almacenamiento de objetos y devuelve un identificador único (como una clave de S3).
+*   **Para Artefactos y Descargas:** Su `upload_hook` en el servidor sube los artefactos al mismo almacenamiento de objetos. Sus `download_hook` y `delete_hook` en el servidor utilizan entonces el identificador almacenado para generar enlaces de descarga seguros o eliminar archivos directamente del almacenamiento de objetos.
+
+Este enfoque elimina la necesidad de gestionar un disco de red compartido, que a menudo es más complejo y menos escalable que utilizar un servicio de almacenamiento de objetos dedicado.
+:::
 
 ---
 
