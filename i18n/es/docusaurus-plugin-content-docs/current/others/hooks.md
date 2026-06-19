@@ -236,21 +236,21 @@ Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON co
 ### Etapas del Hook
 
 #### 1. `post_recording`
-*   **Cuándo**: Se ejecuta en el nodo **RECORDER** después de que se guarda el archivo de grabación en bruto.
-*   **Propósito**: Subir el archivo en bruto desde el disco local del grabador a una ubicación accesible por red (p. ej., S3, NFS) para que el transcodificador pueda acceder a él.
-*   **Entrada**: `input_path` apunta al archivo en bruto en el disco local del grabador.
-*   **Tarea del Script**: Subir el archivo y devolver el JSON con `output_path` establecido a la nueva ubicación/identificador del archivo. **Después de una subida exitosa, debe eliminar el archivo fuente local de `input_path`.**
+*   **Cuándo**: Se ejecuta en el nodo **GRABADOR** después de que se guarda el archivo de grabación en bruto.
+*   **Propósito**: Subir el archivo en bruto a una ubicación accesible por red (p. ej., S3, NFS) para que pueda ser accedido por un transcodificador.
+*   **Entrada**: El campo `input_path` contiene la ruta al archivo de grabación en bruto en el disco local del grabador.
+*   **Tarea del Script**: Subir el archivo y devolver el JSON con `output_path` establecido a la nueva ubicación/identificador de red del archivo (p. ej., una clave de S3). **Después de una subida exitosa, debe eliminar el archivo fuente local de `input_path`.**
 
 #### 2. `pre_transcoding`
-*   **Cuándo**: Se ejecuta en el nodo **TRANSCODER** antes de que comience el procesamiento con `ffmpeg`.
-*   **Propósito**: Descargar el archivo en bruto desde el almacenamiento en red a una ruta local temporal en la máquina del transcodificador.
-*   **Entrada**: Recibe el JSON del hook `post_recording`. `input_path` es la ubicación de red.
+*   **Cuándo**: Se ejecuta en el nodo **TRANSCODIFICADOR** antes de que comience el procesamiento con `ffmpeg`.
+*   **Propósito**: Descargar el archivo en bruto desde una ubicación de red a una ruta local temporal en el transcodificador.
+*   **Entrada**: El campo `input_path` contiene la ubicación/identificador de red del archivo en bruto (este es el `output_path` de la etapa `post_recording`).
 *   **Tarea del Script**: Descargar el archivo y devolver el JSON con `output_path` establecido a la nueva **ruta local** en el disco del transcodificador.
 
 #### 3. `post_transcoding`
-*   **Cuándo**: Se ejecuta en el nodo **TRANSCODER** después de que `ffmpeg` crea con éxito el archivo `.mp4` final.
+*   **Cuándo**: Se ejecuta en el nodo **TRANSCODIFICADOR** después de que `ffmpeg` crea con éxito el archivo `.mp4` final.
 *   **Propósito**: Subir el archivo procesado final al almacenamiento permanente y realizar la limpieza.
-*   **Entrada**: Recibe el JSON del hook `pre_transcoding`. `output_path` ahora apunta al archivo procesado final en el disco local.
+*   **Entrada**: El campo `input_path` contiene la ruta al archivo `.mp4` final y transcodificado en el disco local del nodo transcodificador.
 *   **Tarea del Script**: Subir el archivo final y devolver el JSON, actualizando opcionalmente `output_path`. Los campos `should_cleanup` y `source_for_cleanup` se pueden usar para gestionar la limpieza de archivos temporales de la etapa `pre_transcoding`.
 
 ---
@@ -316,3 +316,4 @@ rl.on('close', () => {
   log('Stdin cerrado. Saliendo del script.');
   process.exit(0);
 });
+```

@@ -282,6 +282,8 @@ hooks:
 
 #### The Post-Transcoding Upload Script (`post-transcoding-upload.js`)
 
+This script runs after a recording has been successfully transcoded to MP4. It receives the path to the final MP4 on the local disk via `input_path`, uploads it to a permanent S3 bucket, and returns the S3 object key in `output_path` for the server to store.
+
 ```javascript
 #!/usr/bin/env node
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
@@ -302,32 +304,34 @@ rl.on("line", async (line) => {
     request = JSON.parse(line);
     log(`Received request: ${JSON.stringify(request)}`);
 
-    // In the post_transcoding stage, `output_path` is the final MP4 on local disk.
-    const { output_path, recording_id } = request;
-    const final_s3_key = `recordings/${recording_id}.mp4`;
+    // In the post_transcoding stage, `input_path` contains the path to the final MP4 on the local disk.
+    const { input_path, file_name } = request;
+    
+    // Use the canonical file_name from the hook data to construct the final S3 key.
+    const final_s3_key = `recordings/${file_name}`;
 
     const command = new PutObjectCommand({
       Bucket: BUCKET_NAME,
       Key: final_s3_key,
-      Body: createReadStream(output_path),
+      Body: createReadStream(input_path),
       ContentType: "video/mp4",
     });
 
     await s3Client.send(command);
     log(`Successfully uploaded to ${final_s3_key}`);
 
-    // This script is responsible for cleaning up the file it was given.
+    // This script is responsible for cleaning up the local MP4 file it was given.
     try {
-      unlinkSync(output_path);
-      log(`Cleaned up local transcoded file: ${output_path}`);
+      unlinkSync(input_path);
+      log(`Cleaned up local transcoded file: ${input_path}`);
     } catch (cleanupError) {
       log(`WARN: Failed to clean up local file: ${cleanupError.message}`);
     }
 
-    // Set the final S3 key for the server to store.
+    // Set the final S3 key in `output_path` for the server to store in the database.
     request.output_path = final_s3_key;
     
-    // Signal to the recorder to clean up the intermediate (raw) file from pre_transcoding.
+    // Signal to the recorder that it can clean up any intermediate raw files.
     request.should_cleanup = true;
 
     process.stdout.write(JSON.stringify(request) + "\n");

@@ -237,20 +237,20 @@ All recorder hooks receive and are expected to return a JSON object with this st
 
 #### 1. `post_recording`
 *   **When**: Runs on the **RECORDER** node after a raw recording file is saved.
-*   **Purpose**: Upload the raw file to a network-accessible location (e.g., S3, NFS) for the transcoder.
-*   **Input**: `input_path` points to the raw file on the recorder's local disk.
-*   **Script's Job**: Upload the file and return the JSON with `output_path` set to the file's new location. **After a successful upload, you must delete the local source file from `input_path`.**
+*   **Purpose**: Upload the raw file to a network-accessible location (e.g., S3, NFS) so it can be accessed by a transcoder.
+*   **Input**: The `input_path` field contains the path to the raw recording file on the recorder's local disk.
+*   **Script's Job**: Upload the file and return the JSON with `output_path` set to the file's new network location or identifier (e.g., an S3 key). **After a successful upload, you must delete the local source file from `input_path`.**
 
 #### 2. `pre_transcoding`
 *   **When**: Runs on the **TRANSCODER** node before `ffmpeg` processing begins.
-*   **Purpose**: Download the raw file from network storage to a temporary local path on the transcoder.
-*   **Input**: Receives the JSON from the `post_recording` hook. `input_path` is the network location.
+*   **Purpose**: Download the raw file from a network location to a temporary local path on the transcoder.
+*   **Input**: The `input_path` field contains the network location/identifier of the raw file (this is the `output_path` from the `post_recording` stage).
 *   **Script's Job**: Download the file and return the JSON with `output_path` set to the new **local path** on the transcoder's disk.
 
 #### 3. `post_transcoding`
 *   **When**: Runs on the **TRANSCODER** node after `ffmpeg` successfully creates the final `.mp4` file.
 *   **Purpose**: Upload the final processed file to permanent storage and perform cleanup.
-*   **Input**: Receives the JSON from the `pre_transcoding` hook. `output_path` now points to the final processed file on the local disk.
+*   **Input**: The `input_path` field contains the path to the final, transcoded `.mp4` file on the local disk of the transcoder node.
 *   **Script's Job**: Upload the final file and return the JSON, optionally updating `output_path`. The `should_cleanup` and `source_for_cleanup` fields can be used to manage cleanup of temporary files from the `pre_transcoding` stage.
 
 ---
