@@ -1,127 +1,219 @@
 ---
 title: Hooks de Scripting y Almacenamiento
-description: Aprenda a usar los hooks de scripting en el grabador y el servidor para automatizar flujos de trabajo de medios e integrarse con proveedores de almacenamiento externos.
-keywords: [hooks, scripting, almacenamiento, grabador, servidor, automatización, s3, almacenamiento personalizado, nodejs, bash, long-lived]
+description: Aprenda a utilizar los hooks de scripting en el grabador y el servidor para automatizar flujos de trabajo de medios e integrarse con proveedores de almacenamiento externo.
+keywords: [hooks, scripting, storage, recorder, server, automation, s3, custom storage, nodejs, bash, long-lived]
 sidebar_position: 4
 sidebar_label: Hooks
 ---
 
 # Hooks de Scripting y Almacenamiento
 
-plugNmeet ofrece un potente mecanismo de "hooking" para permitir una personalización y automatización avanzadas de sus flujos de trabajo de medios. Los hooks están disponibles tanto en los componentes `recorder` (grabador) como `server` (servidor), lo que le permite integrarse con cualquier proveedor de almacenamiento externo (por ejemplo, S3, Google Cloud Storage), llamar a APIs personalizadas u orquestar complejas tuberías multi-servidor.
+plugNmeet cuenta con un potente sistema de "hooks" (ganchos) que le permite ejecutar scripts o comandos personalizados en puntos clave del ciclo de vida de la gestión de archivos y medios. Esto posibilita una personalización profunda, permitiéndole integrarse con cualquier proveedor de almacenamiento externo (por ejemplo, S3, Google Cloud), llamar a APIs personalizadas u orquestar complejas canalizaciones (pipelines) multiservidor.
 
-## El Modelo de Proceso de Larga Duración y de Un Solo Disparo
+Los hooks están disponibles tanto en los componentes `server` como `recorder`.
 
-Para un rendimiento y flexibilidad máximos, los scripts de hook pueden configurarse como **procesos de larga duración** o **comandos de un solo disparo**.
+:::info Fuente de Referencia
+Las estructuras de datos JSON para los hooks pueden cambiar con el tiempo. Esta documentación proporciona ejemplos, pero para las definiciones más actualizadas, por favor consulte el repositorio oficial `plugnmeet-protocol`:
 
-*   **Procesos de Larga Duración**: Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza cada script de hook de larga duración configurado **una vez**. El script luego se ejecuta continuamente en segundo plano, esperando solicitudes. Este modelo elimina la significativa sobrecarga de iniciar un nuevo proceso para cada evento de hook, lo que resulta en una ejecución casi instantánea.
-*   **Comandos de Un Solo Disparo**: Son comandos (como `curl`, `wget` o el `http-request` incorporado) que se ejecutan directamente para cada evento de hook. Son adecuados para tareas simples y autocontenidas que no requieren mantener un proceso persistente.
+[https://github.com/mynaparrot/plugnmeet-protocol/tree/main/hooks](https://github.com/mynaparrot/plugnmeet-protocol/tree/main/hooks)
+:::
+
+## Conceptos Fundamentales
+
+Todos los hooks, independientemente de dónde se ejecuten, comparten el mismo diseño fundamental. Comprender estos conceptos es esencial antes de implementar sus propios scripts personalizados.
+
+### Modelos de Ejecución
+
+Para obtener el máximo rendimiento y flexibilidad, los scripts de los hooks pueden configurarse como **procesos de larga duración** o como **comandos de única ejecución**.
+
+*   **Procesos de Larga Duración**: Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza su script **una sola vez**. El script se ejecuta de forma continua, escuchando solicitudes. Este modelo es altamente eficiente ya que evita la sobrecarga de iniciar un nuevo proceso para cada evento. **Este es el enfoque recomendado para la mayoría de los casos de uso.**
+*   **Comandos de Única Ejecución**: Son comandos simples (como `curl`, `wget`, o el `http-request` integrado) que se ejecutan para cada evento de hook. Son adecuados para tareas sencillas y autocontenidas.
 
 ### Protocolo de Comunicación
 
-Toda la comunicación con su script de hook se realiza a través de sus tuberías de E/S estándar utilizando **JSON delimitado por nueva línea**.
+La comunicación con su script de hook se realiza a través de las tuberías de E/S estándar utilizando **JSON delimitado por saltos de línea**.
 
-*   **`stdin`**: Su script debe leer de `stdin` en un bucle (para scripts de larga duración). Cada línea que lea será un objeto JSON completo que representa una única solicitud del componente plugNmeet. Para comandos de un solo disparo, la carga útil JSON se pasa a `stdin` una vez.
-*   **`stdout`**: Para cada solicitud que reciba, su script **debe** imprimir una sola línea de JSON en `stdout`. Esta línea es la respuesta.
-*   **`stderr`**: Puede usar `stderr` para registrar información dentro de su script. Esta salida es ignorada por plugNmeet pero es invaluable para depurar su lógica personalizada.
+*   **`stdin`**: Su script lee solicitudes desde `stdin`. Cada línea es un objeto JSON completo que representa una única solicitud.
+*   **`stdout`**: Por cada solicitud recibida, su script **debe** imprimir una única línea de JSON en `stdout` como respuesta.
+*   **`stderr`**: Puede usar `stderr` para registrar información y depurar dentro de su script. plugNmeet ignora esta salida, pero es invaluable para el desarrollo.
 
-:::danger IMPORTANTE
-La llamada para ejecutar un script de hook es **bloqueante**. Su script **DEBE** escribir una respuesta en `stdout` por cada solicitud que reciba en `stdin`. Si un script no devuelve una respuesta, el servicio de plugNmeet se colgará indefinidamente, esperando a que el script termine.
+:::danger CRÍTICO: Los Scripts son Bloqueantes
+La llamada a un script de hook es **síncrona y bloqueante**. Su script **DEBE** escribir una respuesta en `stdout` por cada solicitud que reciba. Si un script no devuelve una respuesta, el servicio de plugNmeet se quedará colgado indefinidamente.
 :::
 
-El principio central del sistema de hooks es que un script recibe un objeto JSON y devuelve un objeto JSON. Si se definen múltiples scripts para un solo hook, forman una tubería: la respuesta de `stdout` del primer script se convierte en la solicitud de `stdin` para el segundo, y así sucesivamente.
+### El Modelo de Tubería (Pipeline)
 
-Si un script no necesita modificar los datos (por ejemplo, un script que solo llama a una API externa para registrar algo), **debe** igualmente devolver el objeto JSON original que recibió sin modificar.
+Si define múltiples scripts para un solo hook, estos forman una tubería. La respuesta `stdout` del primer script se convierte en la solicitud `stdin` para el segundo, y así sucesivamente.
 
-### Validación JSON y Manejo de Errores
+Si un script en la cadena no necesita modificar los datos (por ejemplo, solo registra el evento), **debe** aun así pasar el objeto JSON original y sin modificar a `stdout`.
 
-Si su script devuelve una respuesta no vacía a `stdout`, plugNmeet intentará analizarla como JSON.
-*   **JSON Válido**: Si la respuesta es JSON válido, se utilizará como entrada para el siguiente script en la tubería (o como resultado final de la ejecución del hook).
-*   **JSON Inválido**: Si la respuesta no es JSON válido, plugNmeet registrará una **advertencia** y **descartará la salida**. Los datos JSON originales (recibidos por el script actual) se pasarán al siguiente script en la tubería. Esto evita que un solo script con mal comportamiento rompa toda la cadena.
+### Manejo de Errores y Datos
 
-Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON a `stdout`. La aplicación principal registrará este error. Es crucial devolver siempre una respuesta JSON válida, incluso en caso de error.
-
-**Ejemplo de Respuesta de Error:**
-```json
-{
-  "recording_id": "REC_ax9s3djn2s",
-  "room_id": "room01",
-  "input_path": "/ruta/al/archivo.mp4",
-  "error": "No se pudo conectar a S3: tiempo de espera de red"
-}
-```
+*   **Respuesta JSON Válida**: Si su script devuelve un JSON válido, este se pasa al siguiente script o se utiliza como el resultado final.
+*   **Respuesta JSON Inválida**: Si la respuesta no es un JSON válido, plugNmeet registra una **advertencia** y descarta la salida. Los datos JSON *originales* (el `stdin` de su script) se pasarán al siguiente script en la tubería. Esto evita que un solo script defectuoso rompa toda la cadena.
+*   **Reporte de Errores**: Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON. Es crucial **devolver siempre el objeto JSON de entrada completo, con el campo `error` poblado**, para asegurar que los scripts posteriores en una tubería reciban la estructura de datos esperada. La aplicación principal registrará este error.
 
 ### Cómo Crear un Hook
 
-1.  **Cree un Script o Comando:** Puede ser cualquier archivo ejecutable (un script de shell, un programa Go compilado, un script NodeJS, etc.) que se ejecute en un bucle (para larga duración) o un comando simple (para un solo disparo).
-2.  **Hágalo Executable:** Asegúrese de que su script tenga permisos de ejecución (`chmod +x your_script.js`).
-3.  **Habilite en la Configuración:** Agregue la ruta completa a su ejecutable (o el comando) en la sección `hooks` apropiada de su `config.yaml`.
+1.  **Cree un Script o Comando**: Escriba su lógica en cualquier lenguaje (Shell, NodeJS, Go, etc.).
+2.  **Hágalo Ejecutable**: Asegúrese de que su script tenga permisos de ejecución (p. ej., `chmod +x su_script.js`).
+3.  **Configure en `config.yaml`**: Añada la ruta absoluta de su ejecutable (o el comando) en la sección `hooks` apropiada de su `config.yaml`.
+
+### Utilidad Integrada `http-request`
+
+plugNmeet proporciona un comando de única ejecución conveniente, `http-request`, para enviar la carga útil (payload) JSON del hook a un punto final HTTP/HTTPS.
+
+**Uso:**
+`http-request <URL>`
+
+**Ejemplo en `config.yaml`:**
+```yaml
+scripts:
+  - script: "http-request http://localhost:8080/su/endpoint"
+    is_one_shot: true
+```
+
+---
+
+## Responsabilidad de la Limpieza de Archivos
+
+:::danger La Limpieza de Archivos es Su Responsabilidad
+Cuando el sistema de hooks está habilitado, plugNmeet delega la gestión de archivos a sus scripts. Si un hook le proporciona un archivo local temporal (p. ej., a través de `input_path`), **plugNmeet no eliminará ese archivo**.
+
+Su script es responsable de limpiar el archivo fuente local después de haberlo procesado (p. ej., después de subirlo a un almacenamiento remoto). Esto es crítico para evitar que el disco de su servidor se llene.
+:::
+
+---
+
+## Hooks de Almacenamiento del Servidor (`server`)
+
+Los hooks del servidor le permiten anular el almacenamiento de archivos local por defecto para artefactos de sala, archivos de chat y grabaciones, permitiendo la integración con cualquier proveedor de almacenamiento externo.
+
+**Configuración en `server/config.yaml`:**
+```yaml
+hooks:
+  # 'pool_size' controla la ejecución en paralelo. Por defecto: 1.
+  # 'hook_timeout' establece un tiempo de espera. Por defecto: 5m.
+  upload_hook:
+    pool_size: 2
+    scripts:
+      - script: "/ruta/a/su/script_de_subida.sh"
+        is_one_shot: false
+
+  download_hook:
+    scripts:
+      - script: "/ruta/a/su/script_de_descarga.sh"
+        is_one_shot: false
+  # ... otros hooks ...
+```
+
+### Tipos de Hooks
+
+#### `upload_hook`
+*   **Propósito**: Subir un archivo o directorio (p. ej., analíticas de sala, imágenes de pizarra) a un almacenamiento externo.
+*   **Entrada (`UploadHookData`)**:
+    ```json
+    {
+      "input_path": "/ruta/en/disco/servidor/analytics.json",
+      "input_directory_path": "", // o "/ruta/a/imagenes/convertidas/"
+      "hook_file_type": "artifact",
+      "room_id": "sala01",
+      "room_sid": "SID_d82k3s9d2l"
+    }
+    ```
+*   **Tarea del Script**: Subir el contenido de `input_path` o `input_directory_path`. Devolver el JSON con `output_path` establecido a un identificador de almacenamiento único (p. ej., `artifacts/sala01/analytics.json`). **Después de una subida exitosa, debe eliminar el archivo/directorio fuente local.**
+
+:::warning La Consistencia de las Rutas es Su Responsabilidad
+plugNmeet **no valida** el `output_path` que usted devuelve. Se almacena como una cadena de texto y se utiliza como el `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.
+
+Por lo tanto, si implementa un `upload_hook` personalizado, **debe** implementar también un `download_hook` y un `delete_hook` correspondientes que puedan entender el formato de `output_path` que ha definido.
+:::
+
+#### `download_hook`
+*   **Propósito**: Proporcionar una forma segura para que los usuarios descarguen un archivo desde el almacenamiento externo.
+*   **Entrada (`DownloadHookData`)**:
+    ```json
+    {
+      "input_path": "artifacts/sala01/analytics.json", // El identificador de almacenamiento
+      "hook_file_type": "artifact"
+    }
+    ```
+*   **Tarea del Script**: Devolver un JSON especificando una `action`.
+    *   **`action: "redirect"` (Recomendado)**: Generar una URL temporal y pre-firmada y devolverla en el campo `redirect_url`.
+    *   **`action: "serve_local"`**: Descargar el archivo a una ruta local temporal en el servidor y devolver la ruta en `output_path` y el `mime_type` del archivo.
+
+#### `delete_hook`
+*   **Propósito**: Eliminar un archivo del almacenamiento externo.
+*   **Entrada (`DeleteHookData`)**:
+    ```json
+    {
+      "input_path": "artifacts/sala01/analytics.json", // El identificador de almacenamiento
+      "hook_file_type": "artifact"
+    }
+    ```
+*   **Tarea del Script**: Eliminar el archivo del almacenamiento y devolver una respuesta de confirmación.
+
+#### `resumable_upload_hook`
+*   **Propósito**: Manejar subidas de archivos en trozos (chunks) para la función de chat, típicamente delegando la lógica a un servicio como S3 Multipart Upload.
+*   **Entrada (`ResumableUploadHookData`)**: Contiene un campo `type` (`part-check`, `part-upload`, `merge`) que dicta la acción requerida.
+*   **Tarea del Script**: Interactuar con su backend de almacenamiento para verificar, subir o fusionar trozos de archivo. La respuesta debe indicar el resultado (p. ej., `part_exists`, `merge_success`).
+
+#### `room_end_hook`
+*   **Propósito**: Realizar tareas de limpieza después de que una sesión de sala ha finalizado completamente (p. ej., limpiar trozos de subidas reanudables abandonadas).
+*   **Entrada (`RoomEndHookData`)**:
+    ```json
+    {
+      "room_id": "sala01",
+      "room_sid": "SID_d82k3s9d2l"
+    }
+    ```
+*   **Tarea del Script**: Realizar la limpieza y devolver un mensaje de confirmación.
 
 ---
 
 ## Hooks del Grabador (`recorder`)
 
-Estos hooks le permiten gestionar el archivo de grabación a medida que avanza por la cadena de transcodificación. Esto es fundamental para despliegues multi-servidor donde la grabación y la transcodificación se realizan en máquinas diferentes.
+Los hooks del grabador se utilizan para gestionar el archivo de grabación a medida que avanza por la tubería de transcodificación. Esto es esencial para despliegues multiservidor donde la grabación y la transcodificación pueden ocurrir en máquinas diferentes.
 
 **Configuración en `recorder/config.yaml`:**
-
 ```yaml
 hooks:
-  # Para cada categoría de hook, puede especificar un 'pool_size', un 'hook_timeout' y una lista de 'scripts'.
-  # 'pool_size' controla cuántas tuberías para esa categoría pueden ejecutarse en paralelo.
-  # 'hook_timeout' establece un tiempo de espera específico para esta categoría.
-  # Si un valor no se establece o es 0, se establecerá por defecto en 1 para pool_size y 1h para hook_timeout.
-
+  # 'pool_size' controla cuántas tuberías de hooks pueden ejecutarse en paralelo. Por defecto: 1.
+  # 'hook_timeout' establece un tiempo de espera para toda la cadena de hooks. Por defecto: 1h.
   post_recording:
     pool_size: 2
     hook_timeout: 2h
     scripts:
       - script: "./scripts/post-recording/upload.sh"
         is_one_shot: false
-      - script: "http-request http://localhost:8080/your/endpoint"
-        is_one_shot: true
 
   pre_transcoding:
-    pool_size: 2
-    hook_timeout: 2h
     scripts:
       - script: "./scripts/pre-transcoding/download.sh"
         is_one_shot: false
 
   post_transcoding:
-    # Si pool_size y hook_timeout se omiten, se utilizarán los valores predeterminados.
     scripts:
       - script: "./scripts/post-transcoding/notify.sh"
         is_one_shot: false
 ```
 
-### Comando incorporado `http-request`
+### Carga de Datos (Payload): `RecordingHookData`
 
-Un comando especial `http-request` está disponible para enviar solicitudes POST a un endpoint HTTP/HTTPS. Esto es útil para notificar a servicios externos sin escribir un script completo. La carga útil JSON recibida por el hook se enviará como el cuerpo de la solicitud.
-
-**Ejemplo:**
-`http-request http://localhost:8080/your/endpoint`
-
-Esto enviará la carga útil JSON actual a la URL especificada.
-
-### Etapas del Hook y Carga de Datos
-
-Todos los hooks del grabador utilizan la misma estructura JSON `RecordingHookData`.
-
-#### Estructura de `RecordingHookData`
+Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON con esta estructura.
 
 ```json
 {
   "task": "single",
   "recording_id": "REC_ax9s3djn2s",
   "room_table_id": 123,
-  "room_id": "room01",
+  "room_id": "sala01",
   "room_sid": "SID_d82k3s9d2l",
   "file_name": "REC_ax9s3djn2s.mp4",
   "recorder_id": "node_01",
   "file_size": 123.45,
   "input_path": "/ruta/al/archivo.mp4",
-  "input_paths": ["/ruta/al/segmento1.mp4"],
+  "input_paths": [],
   "output_path": "",
   "error": "",
   "should_cleanup": false,
@@ -129,241 +221,51 @@ Todos los hooks del grabador utilizan la misma estructura JSON `RecordingHookDat
 }
 ```
 
-#### Etapas del Hook y Responsabilidades del Script
+### Etapas del Hook
 
-1.  **`post_recording`**
-    *   **Contexto**: Se ejecuta en el nodo del **GRABADOR** después de que el archivo de grabación en bruto se guarda.
-    *   **Propósito**: Subir el archivo en bruto desde el disco local del grabador a una ubicación accesible por la red (por ejemplo, NFS, S3) para que el transcodificador pueda acceder a él.
-    *   **`stdin`**: Recibe `RecordingHookData` con `input_path` apuntando al archivo en bruto en el disco del grabador.
-    *   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea la nueva ubicación del archivo, accesible por la red.
+#### 1. `post_recording`
+*   **Cuándo**: Se ejecuta en el nodo **RECORDER** después de que se guarda el archivo de grabación en bruto.
+*   **Propósito**: Subir el archivo en bruto desde el disco local del grabador a una ubicación accesible por red (p. ej., S3, NFS) para que el transcodificador pueda acceder a él.
+*   **Entrada**: `input_path` apunta al archivo en bruto en el disco local del grabador.
+*   **Tarea del Script**: Subir el archivo y devolver el JSON con `output_path` establecido a la nueva ubicación/identificador del archivo. **Después de una subida exitosa, debe eliminar el archivo fuente local de `input_path`.**
 
-2.  **`pre_transcoding`**
-    *   **Contexto**: Se ejecuta en el nodo del **TRANSCODIFICADOR** antes de que `ffmpeg` comience a procesar.
-    *   **Propósito**: Descargar el archivo en bruto del almacenamiento de red a un directorio local temporal en la máquina del transcodificador.
-    *   **`stdin`**: Recibe la salida JSON del hook `post_recording`.
-    *   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea la nueva **ruta local** en el disco del transcodificador donde `ffmpeg` puede encontrar el archivo.
+#### 2. `pre_transcoding`
+*   **Cuándo**: Se ejecuta en el nodo **TRANSCODER** antes de que comience el procesamiento con `ffmpeg`.
+*   **Propósito**: Descargar el archivo en bruto desde el almacenamiento en red a una ruta local temporal en la máquina del transcodificador.
+*   **Entrada**: Recibe el JSON del hook `post_recording`. `input_path` es la ubicación de red.
+*   **Tarea del Script**: Descargar el archivo y devolver el JSON con `output_path` establecido a la nueva **ruta local** en el disco del transcodificador.
 
-3.  **`post_transcoding`**
-    *   **Contexto**: Se ejecuta en el nodo del **TRANSCODIFICADOR** después de que `ffmpeg` ha creado con éxito el archivo procesado final (por ejemplo, `.mp4`).
-    *   **Propósito**: Realizar acciones finales, como subir el archivo procesado a un almacenamiento permanente, limpiar archivos temporales o notificar a una API externa.
-    *   **`stdin`**: Recibe la salida JSON del hook `pre_transcoding`, con `output_path` ahora apuntando al archivo procesado final.
-    *   **`stdout`**: Su script **debe** devolver el JSON, modificando opcionalmente `output_path` de nuevo si el archivo se movió a su ubicación pública final (por ejemplo, una URL pública de S3). Este `output_path` final es lo que se envía al `server`.
+#### 3. `post_transcoding`
+*   **Cuándo**: Se ejecuta en el nodo **TRANSCODER** después de que `ffmpeg` crea con éxito el archivo `.mp4` final.
+*   **Propósito**: Subir el archivo procesado final al almacenamiento permanente y realizar la limpieza.
+*   **Entrada**: Recibe el JSON del hook `pre_transcoding`. `output_path` ahora apunta al archivo procesado final en el disco local.
+*   **Tarea del Script**: Subir el archivo final y devolver el JSON, actualizando opcionalmente `output_path`. Los campos `should_cleanup` y `source_for_cleanup` se pueden usar para gestionar la limpieza de archivos temporales de la etapa `pre_transcoding`.
+
+:::warning Se Requiere Compatibilidad del Lado del Servidor
+El `output_path` final de este hook se envía al `plugNmeet-server` y se almacena en la base de datos. Cuando un usuario solicita descargar esta grabación, el **servidor** usará su propio `download_hook` con esta ruta como `input_path`.
+
+Debe asegurarse de que el `download_hook` de su `server` sea capaz de entender y procesar el formato de `output_path` generado by este script.
+:::
 
 ---
 
-## Hooks de Almacenamiento del Servidor (`server`)
+## Ejemplo: Script de Larga Duración en Node.js
 
-Los hooks de almacenamiento en el `server` le permiten anular el almacenamiento de archivos local predeterminado e integrarse con cualquier proveedor de almacenamiento externo. Estos hooks se utilizan para los **artefactos de sala** (por ejemplo, análisis, transcripciones), la gestión de **cargas de archivos de chat** y el manejo del acceso a las **grabaciones**.
-
-**Configuración en `server/config.yaml`:**
-
-```yaml
-hooks:
-  # Para cada categoría de hook, puede especificar un 'pool_size', un 'hook_timeout' y una lista de 'scripts'.
-  # 'pool_size' controla cuántas tuberías para esa categoría pueden ejecutarse en paralelo.
-  # 'hook_timeout' establece un tiempo de espera específico para esta categoría.
-  # Si un valor no se establece o es 0, se establecerá por defecto en 1 para pool_size y 5m para hook_timeout.
-
-  upload_hook:
-    pool_size: 2
-    hook_timeout: 5m
-    scripts:
-      - script: "/ruta/a/su/script_de_subida.sh"
-        is_one_shot: false
-      - script: "http-request http://localhost:8080/your/endpoint"
-        is_one_shot: true
-
-  download_hook:
-    pool_size: 2
-    hook_timeout: 5m
-    scripts:
-      - script: "/ruta/a/su/script_de_descarga.sh"
-        is_one_shot: false
-
-  delete_hook:
-    pool_size: 2
-    hook_timeout: 5m
-    scripts:
-      - script: "/ruta/a/su/script_de_eliminacion.sh"
-        is_one_shot: false
-
-  resumable_upload_hook:
-    pool_size: 2
-    hook_timeout: 5m
-    scripts:
-      - script: "/ruta/a/su/script_de_subida_reanudable.sh"
-        is_one_shot: false
-
-  room_end_hook:
-    pool_size: 2
-    hook_timeout: 5m
-    scripts:
-      - script: "/ruta/a/su/script_de_fin_de_sala.sh"
-        is_one_shot: false
-```
-
-### Tipos de Hooks y Cargas de Datos
-
-#### `upload_hook`
-
-*   **Contexto**: Se ejecuta cuando el `server` genera un artefacto de sala o un conjunto de imágenes de pizarra convertidas.
-*   **Propósito**: Subir un solo archivo o un directorio completo desde el disco local del servidor a su almacenamiento externo.
-*   **`stdin` (`UploadHookData`)**:
-    ```json
-    {
-      "input_path": "/ruta/en/disco/del/servidor/analytics.json",
-      "input_directory_path": "/ruta/a/imagenes/convertidas/",
-      "hook_file_type": "artifact",
-      "room_id": "room01",
-      "room_sid": "SID_d82k3s9d2l",
-      "room_table_id": 123
-    }
-    ```
-    *   `input_path`: Se utiliza para cargas de un solo archivo.
-    *   `input_directory_path`: Se utiliza para la carga por lotes de todos los archivos dentro de un directorio. Si está presente, `input_path` se ignora.
-    *   `file_id`: Un ID único para el archivo o conjunto de archivos.
-*   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando `output_path` para que sea un identificador único que sus otros scripts usarán para encontrar el archivo o directorio más tarde.
-    ```json
-    {
-      "input_path": "/ruta/en/disco/del/servidor/analytics.json",
-      "service_type": "artifact",
-      "room_id": "room01",
-      "room_sid": "SID_d82k3s9d2l",
-      "room_table_id": 123,
-      "output_path": "artifacts/room01/analytics.json"
-    }
-    ```
-
-:::info Caso Especial: `whiteboard-converted-imgs`
-Cuando `hook_file_type` es `whiteboard-converted-imgs`, su script recibe un `input_directory_path`. Es responsable de:
-1.  Construir el prefijo S3 usando el patrón: `<room_sid>/<file_id>`.
-2.  Subir todos los archivos desde `input_directory_path` a este prefijo S3 (por ejemplo, `<room_sid>/<file_id>/page_1.png`).
-3.  Devolver la ruta abstracta en el campo `output_path`, formateada como `<room_sid>/<file_id>`.
-:::
-
-#### `download_hook`
-
-*   **Contexto**: Se ejecuta cuando un usuario solicita descargar una grabación o un artefacto.
-*   **Propósito**: Proporcionar una forma segura y eficiente para que los usuarios accedan al archivo desde su almacenamiento externo.
-*   **`stdin` (`DownloadHookData`)**:
-    ```json
-    {
-      "input_path": "artifacts/room01/analytics.json",
-      "hook_file_type": "artifact"
-    }
-    ```
-*   **`stdout`**: Su script **debe** devolver el mismo JSON, modificando el campo `action` y su valor correspondiente.
-    *   **`action: "redirect"` (Recomendado)**: Su script debe establecer `action` en `"redirect"` y rellenar `redirect_url` con una URL temporal pre-firmada.
-        ```json
-        {
-          "input_path": "artifacts/room01/analytics.json",
-          "hook_file_type": "artifact",
-          "action": "redirect",
-          "redirect_url": "https://s3.presigned.url/..."
-        }
-        ```
-    *   **`action: "serve_local"`**: Su script debe descargar el archivo a una ruta local temporal en el servidor, establecer `action` en `"serve_local"`, y rellenar tanto `output_path` (la ruta local) como el `mime_type` del archivo.
-        ```json
-        {
-          "input_path": "artifacts/room01/analytics.json",
-          "hook_file_type": "artifact",
-          "action": "serve_local",
-          "output_path": "/tmp/downloads/analytics.json",
-          "mime_type": "application/json"
-        }
-        ```
-
-#### `delete_hook`
-
-*   **Contexto**: Se ejecuta cuando se elimina una grabación o un artefacto.
-*   **Propósito**: Eliminar el archivo de su almacenamiento externo.
-*   **`stdin` (`DeleteHookData`)**:
-    ```json
-    {
-      "input_path": "artifacts/room01/analytics.json",
-      "hook_file_type": "artifact"
-    }
-    ```
-*   **`stdout`**: Su script **debe** devolver una respuesta JSON. Puede añadir opcionalmente un `msg` para el registro.
-    ```json
-    {
-      "input_path": "artifacts/room01/analytics.json",
-      "hook_file_type": "artifact",
-      "msg": "Archivo eliminado correctamente"
-    }
-    ```
-
-#### `resumable_upload_hook`
-
-*   **Contexto**: Se ejecuta durante las cargas de archivos de chat para delegar la gestión de fragmentos a un servicio externo.
-*   **Propósito**: Manejar la verificación, carga y fusión de fragmentos de archivos.
-*   **`stdin` (`ResumableUploadHookData`)**: El campo `type` determina la acción.
-    *   `type: "part-check"`: Verificar si un fragmento existe.
-    *   `type: "part-upload"`: Cargar un solo fragmento desde `input_path`.
-    *   `type: "merge"`: Finalizar la carga de todas las partes previamente cargadas.
-    ```json
-    {
-      "type": "part-check",
-      "room_sid": "SID_d82k3s9d2l",
-      "resumable_identifier": "unique-file-id",
-      "resumable_chunk_number": 1
-    }
-    ```
-*   **`stdout`**: La respuesta depende del `type` de la solicitud.
-    *   Para `part-check`:
-        ```json
-        {"output_response_type": "part_exists"}
-        // o
-        {"output_response_type": "part_not_exists"}
-        ```
-    *   Para `part-upload`:
-        ```json
-        {"output_response_type": "part_uploaded"}
-        ```
-    *   Para `merge`: El `output_path` **debe** estar en el formato `<room_sid>/<filename>`.
-        ```json
-        {
-          "output_response_type": "merge_success",
-          "output_path": "SID_d82k3s9d2l/my-file.zip",
-          "file_mime_type": "application/zip",
-          "file_extension": "zip"
-        }
-        ```
-
-#### `room_end_hook`
-
-*   **Contexto**: Se ejecuta una vez después de que una sesión de sala ha terminado completamente.
-*   **Propósito**: Limpiar cualquier recurso temporal asociado con la sala (por ejemplo, fragmentos de carga reanudable abandonados).
-*   **`stdin` (`RoomEndHookData`)**:
-    ```json
-    {
-      "room_id": "room01",
-      "room_sid": "SID_d82k3s9d2l"
-    }
-    ```
-*   **`stdout`**:
-    ```json
-    {
-      "msg": "Limpieza para la sala SID_d82k3s9d2l completada."
-    }
-    ```
-
-### Ejemplo de Script Node.js de Larga Duración
-
-Este ejemplo muestra la estructura básica de un script Node.js de larga duración que puede manejar solicitudes.
+Este ejemplo muestra la estructura básica de un script de larga duración que analiza JSON de forma segura, realiza una acción y devuelve una respuesta.
 
 ```javascript
 #!/usr/bin/env node
-// scripts/my_hook.js
+// scripts/mi_hook.js
 
 const readline = require('readline');
+const fs = require('fs');
 
-// Una función de registro simple para escribir en stderr
+// Usar stderr para el registro para que no interfiera con stdout
 const log = (message) => {
-  console.error(`MyHook: ${message}`);
+  console.error(`[MiHook] ${new Date().toISOString()}: ${message}`);
 };
 
-log('Iniciando mi script de hook Node.js de larga duración...');
+log('Iniciando script de hook de larga duración...');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -371,42 +273,41 @@ const rl = readline.createInterface({
   terminal: false,
 });
 
-// Escuchar cada línea de stdin
 rl.on('line', (line) => {
   let requestData;
   try {
     requestData = JSON.parse(line);
-    log(`Solicitud recibida: ${line}`);
+    log(`Solicitud recibida para la sala: ${requestData.room_id || 'N/A'}`);
 
-    // --- Su Lógica Aquí ---
-    //
-    // Aquí es donde realizaría su acción (por ejemplo, subir, llamar a una API).
-    // Para este ejemplo, simplemente modificaremos el objeto.
-    //
-    const newPath = `s3://my-bucket/new-path/${Date.now()}`;
-    requestData.output_path = newPath;
+    // --- Su Lógica Personalizada Aquí ---
+    // ej., subir a S3, llamar a una API, etc.
+    // Después de una subida exitosa, recuerde limpiar el archivo de origen.
+    if (requestData.input_path) {
+      // En un script real, haría esto DESPUÉS de una subida exitosa.
+      // fs.unlinkSync(requestData.input_path);
+      // log(`Limpiado ${requestData.input_path}`);
+    }
+    
+    requestData.processed_by_hook = true;
     // ---
 
-    // SIEMPRE escriba una respuesta en stdout para evitar que el servicio se cuelgue.
+    // SIEMPRE escriba una respuesta JSON válida en stdout
     process.stdout.write(JSON.stringify(requestData) + '\n');
 
   } catch (e) {
-    log(`Error al procesar la solicitud: ${e.message}`);
-    // Si ocurre un error, devuelva un objeto JSON con un campo 'error'.
-    // Es crucial devolver siempre una respuesta JSON válida.
-    
-    // Si requestData fue parseado con éxito, podemos incluirlo en la respuesta.
-    // De lo contrario, cree un nuevo objeto de error.
+    log(`ERROR: ${e.message}`);
+    // Si ocurre un error, devuelva el objeto requestData original con un campo 'error'.
+    // Esto asegura que la estructura completa se mantenga para los scripts posteriores.
     const errorResponse = requestData 
-      ? { ...requestData, error: e.message } 
-      : { error: `Error de parseo JSON: ${e.message}` };
+      ? { ...requestData, error: e.message, output_path: "" } // Limpiar output_path en caso de error
+      : { error: `Fallo al analizar el JSON entrante: ${e.message}` };
       
     process.stdout.write(JSON.stringify(errorResponse) + '\n');
   }
 });
 
 rl.on('close', () => {
-  log('Stdin ha sido cerrado. Saliendo del script.');
+  log('Stdin cerrado. Saliendo del script.');
   process.exit(0);
 });
 ```
