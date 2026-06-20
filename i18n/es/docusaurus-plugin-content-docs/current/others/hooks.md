@@ -73,7 +73,7 @@ plugNmeet proporciona un comando de única ejecución conveniente, `http-request
 **Ejemplo en `config.yaml`:**
 ```yaml
 scripts:
-  - script: "http-request http://localhost:8080/su/endpoint"
+  - script: "http-request http://localhost:8090/su/endpoint"
     is_one_shot: true
 ```
 

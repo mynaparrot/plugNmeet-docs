@@ -125,7 +125,7 @@ hooks:
         is_one_shot: false
   room_end_hook:
     scripts:
-      - script: "http-request http://localhost:8080/room-ended-notification"
+      - script: "http-request http://localhost:8090/room-ended-notification"
         is_one_shot: true
 ```
 

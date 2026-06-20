@@ -73,7 +73,7 @@ plugNmeet provides a convenient one-shot command, `http-request`, for sending th
 **Example in `config.yaml`:**
 ```yaml
 scripts:
-  - script: "http-request http://localhost:8080/your/endpoint"
+  - script: "http-request http://localhost:8090/your/endpoint"
     is_one_shot: true
 ```
 
