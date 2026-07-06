@@ -1,18 +1,18 @@
 ---
 title: API para Transmitir a la Sala | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para transmitir mensajes o notificaciones a una sala de videoconferencia en vivo. Aprenda a enviar mensajes de chat públicos o privados y notificaciones del sistema.
-keywords: [api, transmitir, mensaje, notificación, api de chat, api de video, punto final]
+description: Documentación del endpoint de la API para transmitir mensajes o notificaciones a una sala de videoconferencia en vivo. Aprenda a enviar mensajes de chat públicos o privados y notificaciones del sistema.
+keywords: [api, transmitir, mensaje, notificación, api de chat, api de video, endpoint]
 sidebar_position: 6
 sidebar_label: Transmitir a la Sala
 ---
 
 # Transmitir a la Sala
 
-Punto final: `/room/broadcastToRoom`
+Endpoint: `/room/broadcastToRoom`
 
 Esta potente API permite a su servidor backend inyectar mensajes o notificaciones directamente en una sesión activa de Plug-N-Meet en tiempo real. Puede usarla para enviar anuncios a todo el sistema, entregar mensajes privados a usuarios específicos o activar notificaciones personalizadas desde la lógica de su aplicación.
 
-Este punto final es ideal para construir integraciones que requieren comunicación de servidor a cliente, tales como:
+Este endpoint es ideal para construir integraciones que requieren comunicación de servidor a cliente, tales como:
 *   Enviar alertas basadas en eventos externos.
 *   Entregar mensajes o instrucciones automatizadas a los participantes.
 *   Crear sistemas de notificación privados y personalizados dentro de su aplicación.
