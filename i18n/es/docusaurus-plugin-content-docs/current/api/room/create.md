@@ -1,19 +1,19 @@
 ---
 title: API para Crear una Sala | Referencia de la API de plugNmeet
 description: Documentación del punto final de la API para crear una nueva sala de videoconferencia. Aprenda sobre los parámetros requeridos como room_id, nombres de participantes y configuraciones personalizadas.
-keywords: [api, crear sala, nueva sala, generar sala, api de sala, api de video, punto final]
+keywords: [api, crear sala, nueva sala, generar sala, api de sala, api de video, endpoint]
 sidebar_position: 1
 sidebar_label: Crear
 ---
 
 # Crear una Sala
 
-Punto final: `/room/create`
+Endpoint: `/room/create`
 
 Antes de crear su primera sala, es útil comprender cómo funcionan en Plug-N-Meet. Piense en una sala no como un espacio permanente, sino como una **sesión en vivo de carácter temporal**.
 
 Este es el ciclo de vida típico:
-1.  Usted crea una sala utilizando este punto final de la API.
+1.  Usted crea una sala utilizando este endpoint de la API.
 2.  Usted genera tokens de acceso para que los usuarios se unan a la sesión.
 3.  La sesión permanece activa mientras haya participantes presentes.
 4.  La sesión finaliza automáticamente cuando el último participante se retira o puede ser terminada mediante una llamada a la API.
@@ -26,7 +26,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 >
 > Cuando un usuario intente unirse, su aplicación debería:
 > 1.  Verificar si ya existe una sesión activa para ese `room_id` (p. ej., usando la API `isRoomActive`).
-> 2.  Si no existe ninguna sesión, llamar a este punto final `create` para iniciar una nueva.
+> 2.  Si no existe ninguna sesión, llamar a este endpoint `create` para iniciar una nueva.
 > 3.  Finalmente, generar un token de acceso para permitir que el usuario se una.
 >
 > Este enfoque le brinda la flexibilidad de tener salas que parecen persistentes, mientras aprovecha el modelo de sesiones temporales de Plug-N-Meet.
@@ -80,7 +80,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [ingress_features](#características-de-ingesta)                                | object  | No       | Configuraciones de ingesta RTMP.                                                                                 |
 | [polls_features](#características-de-encuestas)                                    | object  | No       | Configuraciones de encuestas.                                                                                        |
 | [insights_features](#características-de-insights)                              | object  | No       | Configuraciones de análisis, transcripción y traducción impulsadas por IA.                                          |
-| [sip_dial_in_features](#características-de-marcado-de-entrada-sip)                        | object  | No       | Configuraciones de marcación de entrada SIP.                                                                                  |
+| [sip_dial_in_features](#características-de-marcado-de-entrada-sip)                        | object  | No       | Configuración de llamadas SIP.                                                                                  |
 | [end_to_end_encryption_features](#características-de-cifrado-de-extremo-a-extremo-e2ee) | object  | No       | Configuraciones de Cifrado de Extremo a Extremo (E2EE).                                                                 |
 
 ### Características de Grabación
@@ -262,21 +262,21 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 
 </details>
 
-### Características de Marcado de Entrada SIP
+### Características de acceso telefónico SIP
 <details>
 <summary>Ver Detalles</summary>
 
 :::note[Se Requiere Configuración del Servidor]
-Para que la marcación de entrada SIP funcione, primero debe configurar la sección `livekit_sip_info` en el archivo principal `config.yaml` de su servidor. Esto implica configurar la pasarela SIP (p. ej., `livekit/sip`) e integrarla con un proveedor de troncales SIP externo.
+Para que la llamada por SIP funcione, primero debe configurar la sección `livekit_sip_info` en el archivo principal `config.yaml` de su servidor. Esto implica configurar la pasarela SIP (p. ej., `livekit/sip`) e integrarla con un proveedor de troncales SIP externo.
 
 Consulte la guía de configuración del servidor y el [repositorio de GitHub de livekit/sip](https://github.com/livekit/sip) para obtener instrucciones de configuración detalladas.
 :::
 
 | Campo                      | Tipo    | Requerido | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | -------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| is_allow                   | boolean | Sí       | Habilitar o deshabilitar la marcación de entrada SIP para la sala.                                                                                                                                                                                                                                                                                                                                                                                    |
-| enable_dial_in_on_create   | boolean | No       | Si es `true`, el servicio de marcación de entrada SIP se iniciará automáticamente cuando se cree la sala. Si es `false`, un moderador deberá iniciarlo manualmente desde la reunión. Predeterminado: `false`.                                                                                                                                                                                                                                                |
-| hide_phone_number          | boolean | No       | Si es `true`, el número de teléfono de marcación de entrada se ocultará en la lista de participantes, mostrando solo los últimos 4 dígitos. Predeterminado: `false`.                                                                                                                                                                                                                                                                    |
+| is_allow                   | boolean | Sí       | Habilitar o deshabilitar el acceso telefónico SIP para la sala.                                                                                                                                                                                                                                                                                                                                                                                    |
+| enable_dial_in_on_create   | boolean | No       | Si es `true`, el servicio de llamada por SIP se iniciará automáticamente cuando se cree la sala. Si es `false`, un moderador deberá iniciarlo manualmente desde la reunión. Predeterminado: `false`.                                                                                                                                                                                                                                                |
+| hide_phone_number          | boolean | No       | Si es `true`, el número del llamante quedará oculto en la lista de participantes, mostrando solo los últimos 4 dígitos. Predeterminado: `false`.                                                                                                                                                                                                                                                                    |
 
 </details>
 
