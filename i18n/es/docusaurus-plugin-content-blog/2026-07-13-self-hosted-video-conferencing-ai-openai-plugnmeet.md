@@ -8,7 +8,7 @@ keywords: ["integracion plugNmeet OpenAI", "videoconferencia IA autoalojada", "A
 
 En **plugNmeet**, nuestra plataforma de videoconferencias de código abierto basada en WebRTC se ha desarrollado en torno a la flexibilidad, la privacidad y el control de los datos. Aunque plugNmeet ya es compatible con los servicios cognitivos especializados de **Azure** y **Google**, nos complace presentar una actualización de gran relevancia para el entorno de **Insights**: el **proveedor oficial de OpenAI para plugNmeet**.
 
-Con esta integración, podrá incorporar potentes funciones de inteligencia artificial a su servidor de videoconferencias autoalojado. Entre ellas se incluyen la **transcripción en vivo**, la **traducción en tiempo real**, las **traducciones de voz mediante tecnología de texto a voz (TTS)**, la generación de **resúmenes de reuniones con IA** y un **asistente de chat con IA en la sala**.
+Con esta integración, podrá incorporar potentes funciones de inteligencia artificial a su servidor de videoconferencias autoalojado. Entre ellas se incluyen la **transcripción en vivo**, la **traducción en tiempo real**, la **traducción de chat en vivo**, las **traducciones de voz mediante tecnología de texto a voz (TTS)**, la generación de **resúmenes de reuniones con IA** y un **asistente de chat con IA en la sala**.
 
 Lo mejor de todo es que este proveedor se ha diseñado respetando el formato estándar de la API de OpenAI, lo que significa que podrá utilizar directamente los servicios de OpenAI o conectar plugNmeet a cualquier **API compatible con OpenAI**, incluyendo proveedores alternativos de IA y plataformas de modelos de lenguaje (LLM) autoalojados.
 
@@ -69,6 +69,10 @@ Esta función resulta especialmente idónea para:
 - Reuniones empresariales transfronterizas.
 - Entornos con un fuerte enfoque en el cumplimiento de normativas de accesibilidad.
 
+### Traducción de chat en vivo
+
+El proveedor de OpenAI también puede traducir los mensajes del chat en tiempo real. Esto permite a los participantes de diferentes orígenes lingüísticos comunicarse sin problemas a través del chat de texto, haciendo las reuniones más inclusivas y productivas. Cada usuario puede seleccionar su idioma preferido y ver los mensajes traducidos al instante.
+
 ### Resúmenes automatizados de las reuniones
 
 Una vez finalizada la sesión, plugNmeet es capaz de elaborar un resumen estructurado a partir del archivo de la transcripción de audio.
@@ -125,13 +129,13 @@ Para que el servicio de **transcripción en vivo** funcione correctamente, es re
 Nuestro proveedor intentará convertir de forma automática el protocolo del endpoint HTTP suministrado a su equivalente en WebSocket (por ejemplo, transformando `https://api.example.com` en `wss://api.example.com`), por lo que su servidor web intermedio o proxy debe estar preparado para gestionar este tipo de conexiones. El resto de las funciones, como la síntesis de voz (TTS) o los resúmenes de texto, continuarán operando sobre peticiones HTTP estándar.
 :::
 
-### Requisito importante: Activación de la traducción en vivo
+### Requisito importante: Activación de la traducción de la transcripción en vivo
 
-La traducción de la transcripción en tiempo real es una de las funciones más valiosas del sistema, pero cuenta con una dependencia técnica que debe considerar:
+Una de las funciones más valiosas del sistema es la capacidad de traducir las transcripciones en vivo en tiempo real, pero cuenta con una dependencia técnica que debe considerar:
 
-**Es obligatorio que tenga configurados y habilitados de forma conjunta los servicios de `transcription` y `ai_text_chat`.**
+**Es obligatorio que tenga configurados y habilitados de forma conjunta los servicios de `transcription` y `translation`.**
 
-El proceso de traducción recupera el texto consolidado del servicio de transcripción y lo procesa a través del modelo lingüístico definido para el módulo `ai_text_chat`. Sin esta última configuración, el sistema no podrá determinar qué modelo debe emplear para la traducción y la función fallará sin emitir alertas en la interfaz de usuario.
+El proceso de traducción recupera el texto consolidado del servicio de transcripción y lo procesa a través del modelo lingüístico definido para el módulo `translation`. Sin esta última configuración, el sistema no podrá determinar qué modelo debe emplear para la traducción y la función fallará sin emitir alertas en la interfaz de usuario.
 
 Una configuración mínima necesaria para contar con transcripción y traducción simultáneas se estructuraría del siguiente modo:
 
@@ -141,12 +145,13 @@ services:
     provider: "openai"
     id: "default-openai"
 
-  ai_text_chat:
+  translation:
     provider: "openai"
     id: "default-openai"
     options:
-      # Este modelo se empleará tanto para el asistente de chat como para la traducción en tiempo real.
-      chat_model: "gpt-4"
+      # Este modelo se utilizará para la traducción en tiempo real de la transcripción y del chat.
+      model: "gpt-4-turbo"
+      max_selected_trans_langs: 5
 ```
 
 ### Ejemplos completos de configuración de los servicios
@@ -186,7 +191,20 @@ services:
       # transcription_speech_rms: 500           # Umbral de nivel de audio (RMS) para detectar el inicio de voz.
       # transcription_max_buffered_silence_ms: 400 # Silencio previo al habla que se conserva para enriquecer el contexto.
 
-  # Servicio 2: Síntesis de voz (TTS) para traducciones habladas
+  # Servicio 2: Traducción en tiempo real y de chat
+  translation:
+    provider: "openai"
+    id: "default-openai"
+    options:
+      # El modelo a utilizar para traducir texto (del chat o de las transcripciones).
+      model: "gpt-4-turbo"
+      #
+      # --- Configuración avanzada (Opcional) ---
+      #
+      # Número máximo de idiomas que un usuario puede seleccionar para la traducción.
+      # max_selected_trans_langs: 5
+
+  # Servicio 3: Síntesis de voz (TTS) para traducciones habladas
   speech-synthesis:
     provider: "openai"
     id: "default-openai"
@@ -209,12 +227,12 @@ services:
       # voice-es: "nova"
       # voice-fr: "shimmer"
 
-  # Servicio 3: Chat de IA (Requerido para el funcionamiento de la traducción en vivo)
+  # Servicio 4: Chat de IA
   ai_text_chat:
     provider: "openai"
     id: "default-openai"
     options:
-      # Modelo de lenguaje principal para el asistente y las traducciones de texto.
+      # Este modelo se utiliza para el asistente de IA en la reunión.
       chat_model: "gpt-4"
       #
       # --- Configuración avanzada (Opcional) ---
@@ -225,7 +243,7 @@ services:
       # Cantidad de mensajes de chat recientes que se mantendrán activos en la memoria de contexto.
       # context_window: 5
 
-  # Servicio 4: Resúmenes de reuniones mediante procesamiento por lotes (Batch Audio)
+  # Servicio 5: Resúmenes de reuniones mediante procesamiento por lotes (Batch Audio)
   # Este servicio transcribe de manera asíncrona un archivo de audio grabado para luego resumirlo.
   meeting_summarizing:
     provider: "openai"

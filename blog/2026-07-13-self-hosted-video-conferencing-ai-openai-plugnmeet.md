@@ -8,7 +8,7 @@ keywords: ["plugNmeet OpenAI integration", "self-hosted video conferencing AI", 
 
 At **plugNmeet**, our open-source WebRTC video conferencing platform is built around flexibility, privacy, and control. While plugNmeet already supports specialized cognitive services from **Azure** and **Google**, we are excited to introduce a major upgrade to the **Insights** framework: the official **OpenAI Provider for plugNmeet**.
 
-With this integration, you can bring powerful AI features to your self-hosted video conferencing server, including **live transcription**, **real-time translation**, **spoken translations using text-to-speech**, **AI meeting summaries**, and an **in-meeting AI chatbot**.
+With this integration, you can bring powerful AI features to your self-hosted video conferencing server, including **live transcription**, **real-time translation**, **live chat translation**, **spoken translations using text-to-speech**, **AI meeting summaries**, and an **in-meeting AI chatbot**.
 
 Even better, the provider is designed around the standard OpenAI API format, which means you can use OpenAI directly or connect plugNmeet to any **OpenAI-compatible API**, including alternative AI providers and self-hosted LLM platforms.
 
@@ -70,6 +70,10 @@ This is especially useful for:
 - Cross-border business calls
 - Accessibility-focused deployments
 
+### Live Chat Translation
+
+The OpenAI provider can also translate chat messages in real time. This allows participants from different linguistic backgrounds to communicate seamlessly through text chat, making meetings more inclusive and productive. Each user can select their preferred language and view translated messages instantly.
+
 ### Automated Meeting Summarization
 
 After a meeting ends, plugNmeet can generate a concise AI-powered summary from the meeting transcript.
@@ -127,13 +131,13 @@ A key requirement for the **Live Transcription** service is that your endpoint m
 Our provider will automatically attempt to upgrade the HTTP endpoint you provide to its WebSocket equivalent (e.g., `https://api.example.com` becomes `wss://api.example.com`), but your server must be configured to handle this connection type. Other services like TTS and summarization will continue to use standard HTTP requests.
 :::
 
-### Important: Enabling Live Translation
+### Important: Enabling Live Transcription Translation
 
 One of the most powerful features is the ability to translate live transcriptions in real time. To enable this, there is a crucial dependency to be aware of:
 
-**You must have both the `transcription` and `ai_text_chat` services configured and enabled.**
+**You must have both the `transcription` and `translation` services configured and enabled.**
 
-The translation process works by taking the finalized text from the transcription service and passing it to the language model configured in the `ai_text_chat` service. Without the `ai_text_chat` configuration, the system won't know which model to use for the translation task, and it will fail silently.
+The translation process works by taking the finalized text from the transcription service and passing it to the language model configured in the `translation` service. Without the `translation` configuration, the system won't know which model to use for the translation task, and it will fail silently.
 
 Therefore, a minimal setup for live transcription with translation would look like this:
 
@@ -143,12 +147,13 @@ services:
     provider: "openai"
     id: "default-openai"
 
-  ai_text_chat:
+  translation:
     provider: "openai"
     id: "default-openai"
     options:
-      # This model will be used for both AI chat and real-time translation.
-      chat_model: "gpt-4"
+      # This model will be used for real-time transcription and chat translation.
+      model: "gpt-4-turbo"
+      max_selected_trans_langs: 5
 ```
 
 ### Complete Service Configuration Examples
@@ -188,7 +193,20 @@ services:
       # transcription_speech_rms: 500           # Audio level (RMS) threshold to detect speech.
       # transcription_max_buffered_silence_ms: 400 # Pre-speech silence to include for better context.
 
-  # Service 2: Text-to-Speech (TTS) for Spoken Translations
+  # Service 2: Real-time and Chat Translation
+  translation:
+    provider: "openai"
+    id: "default-openai"
+    options:
+      # The model to use for translating text (from chat or transcriptions).
+      model: "gpt-4-turbo"
+      #
+      # --- Advanced Customization (Optional) ---
+      #
+      # Maximum number of languages a user can select for translation.
+      # max_selected_trans_langs: 5
+
+  # Service 3: Text-to-Speech (TTS) for Spoken Translations
   speech-synthesis:
     provider: "openai"
     id: "default-openai"
@@ -211,12 +229,12 @@ services:
       # voice-es: "nova"
       # voice-fr: "shimmer"
 
-  # Service 3: AI-Powered Chat (Required for Live Translation)
+  # Service 4: AI-Powered Chat
   ai_text_chat:
     provider: "openai"
     id: "default-openai"
     options:
-      # This model is used for both AI chat and real-time translation.
+      # This model is used for the in-meeting AI assistant.
       chat_model: "gpt-4"
       #
       # --- Advanced Customization (Optional) ---
@@ -227,7 +245,7 @@ services:
       # Number of recent messages to keep in memory before summarizing.
       # context_window: 5
 
-  # Service 4: Post-Meeting Summarization (Batch Audio File)
+  # Service 5: Post-Meeting Summarization (Batch Audio File)
   # This service transcribes a recorded audio file and then summarizes it.
   meeting_summarizing:
     provider: "openai"
