@@ -152,7 +152,7 @@ services:
     id: "default-openai"
     options:
       # This model will be used for real-time transcription and chat translation.
-      model: "gpt-4-turbo"
+      model: "gpt-5.4-mini"
       max_selected_trans_langs: 5
 ```
 
@@ -199,7 +199,7 @@ services:
     id: "default-openai"
     options:
       # The model to use for translating text (from chat or transcriptions).
-      model: "gpt-4-turbo"
+      model: "gpt-5.4-mini"
       #
       # --- Advanced Customization (Optional) ---
       #
@@ -212,7 +212,7 @@ services:
     id: "default-openai"
     options:
       # The TTS model to use (e.g., "tts-1", "tts-1-hd").
-      model: "tts-1"
+      model: "gpt-4o-mini-tts"
       #
       # --- Advanced Customization (Optional) ---
       #
@@ -235,12 +235,12 @@ services:
     id: "default-openai"
     options:
       # This model is used for the in-meeting AI assistant.
-      chat_model: "gpt-4"
+      chat_model: "gpt-5.4"
       #
       # --- Advanced Customization (Optional) ---
       #
       # The model used to summarize chat history when the context window is full.
-      # summarize_model: "gpt-3.5-turbo"
+      summarize_model: "gpt-5.4-mini"
       #
       # Number of recent messages to keep in memory before summarizing.
       # context_window: 5
@@ -252,12 +252,12 @@ services:
     id: "default-openai"
     options:
       # The model for the initial audio-to-text transcription.
-      transcription_model: "whisper-1"
+      transcription_model: "gpt-4o-transcribe"
       #
       # --- Advanced Customization (Optional) ---
       #
       # The model for the final summarization of the transcript.
-      # summarize_model: "gpt-3.5-turbo-16k"
+      summarize_model: "gpt-5.4-mini"
 ```
 
 ### A More Intelligent and Open Future

@@ -150,7 +150,7 @@ services:
     id: "default-openai"
     options:
       # Este modelo se utilizará para la traducción en tiempo real de la transcripción y del chat.
-      model: "gpt-4-turbo"
+      model: "gpt-5.4-mini"
       max_selected_trans_langs: 5
 ```
 
@@ -197,7 +197,7 @@ services:
     id: "default-openai"
     options:
       # El modelo a utilizar para traducir texto (del chat o de las transcripciones).
-      model: "gpt-4-turbo"
+      model: "gpt-5.4-mini"
       #
       # --- Configuración avanzada (Opcional) ---
       #
@@ -210,7 +210,7 @@ services:
     id: "default-openai"
     options:
       # El modelo de síntesis de voz a emplear (por ejemplo, "tts-1" o "tts-1-hd").
-      model: "tts-1"
+      model: "gpt-4o-mini-tts"
       #
       # --- Configuración avanzada (Opcional) ---
       #
@@ -233,12 +233,12 @@ services:
     id: "default-openai"
     options:
       # Este modelo se utiliza para el asistente de IA en la reunión.
-      chat_model: "gpt-4"
+      chat_model: "gpt-5.4"
       #
       # --- Configuración avanzada (Opcional) ---
       #
       # Modelo utilizado para compactar y resumir el historial del chat cuando se completa el contexto de memoria.
-      # summarize_model: "gpt-3.5-turbo"
+      summarize_model: "gpt-5.4-mini"
       #
       # Cantidad de mensajes de chat recientes que se mantendrán activos en la memoria de contexto.
       # context_window: 5
@@ -250,12 +250,12 @@ services:
     id: "default-openai"
     options:
       # El modelo empleado para la transcripción inicial del archivo de audio.
-      transcription_model: "whisper-1"
+      transcription_model: "gpt-4o-transcribe"
       #
       # --- Configuración avanzada (Opcional) ---
       #
       # El modelo empleado para generar el resumen final a partir del texto transcrito.
-      # summarize_model: "gpt-3.5-turbo-16k"
+      summarize_model: "gpt-5.4-mini"
 ```
 
 ### Un horizonte abierto a la innovación y al software libre
