@@ -2,7 +2,7 @@
 title: "plugNmeet OpenAI Integration: Self-Hosted AI for Video Conferencing" 
 description: "Configure OpenAI-compatible APIs in plugNmeet to enable live transcription, real-time translation, spoken translations, AI chat, and post-meeting summaries on your self-hosted video conferencing server." 
 authors: [jibon] 
-tags: [plugnmeet, open-source, WebRTC, openai, transcription, translation, summarization, tts, compatible-api, self-hosted-llm, websocket, video-conferencing, ai-meetings] 
+tags: [plugnmeet, open-source, WebRTC, openai, transcription, translation, summarization, tts, compatible-api, self-hosted-llm, websocket, video-conferencing, ai-meetings, ai] 
 keywords: ["plugNmeet OpenAI integration", "self-hosted video conferencing AI", "OpenAI compatible API video conferencing", "WebRTC live transcription", "meeting translation AI", "self-hosted meeting summarization", "open-source video conferencing", "Ollama OpenAI compatible API", "LocalAI plugNmeet", "AI meeting assistant"]
 ---
 
