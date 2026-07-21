@@ -1,16 +1,16 @@
 ---
 title: API para Obtener Salas Anteriores | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener una lista de salas de videoconferencia pasadas (inactivas) dentro de un rango de fechas especificado.
-keywords: [api, obtener salas anteriores, historial de salas, historial de reuniones, api de sala, punto final]
+description: Documentación del endpoint de la API para obtener una lista de salas de videoconferencia pasadas (inactivas) dentro de un rango de fechas especificado.
+keywords: [api, obtener salas anteriores, historial de salas, historial de reuniones, api de sala, endpoint]
 sidebar_position: 8
 sidebar_label: Obtener Salas Anteriores
 ---
 
 # Obtener Información de Salas Anteriores
 
-Punto final: `/room/fetchPastRooms`
+Endpoint: `/room/fetchPastRooms`
 
-Este punto final le permite recuperar información histórica sobre las sesiones de sala que ya han concluido. Después de que finaliza una sesión, ya sea cuando el último participante se va o cuando se termina a través de la API `end`, sus metadatos se almacenan y se pueden acceder mediante esta API.
+Este endpoint le permite recuperar información histórica sobre las sesiones de sala que ya han concluido. Después de que finaliza una sesión, ya sea cuando el último participante se va o cuando se termina a través de la API `end`, sus metadatos se almacenan y se pueden acceder mediante esta API.
 
 Esto es particularmente útil para crear funciones que requieren un historial de reuniones pasadas, como mostrar una lista de sesiones anteriores en la interfaz de usuario de su aplicación. Puede consultar uno o más `room_id` para obtener detalles como cuándo se creó la sesión, cuándo terminó y cuántos participantes se unieron.
 
