@@ -1,16 +1,16 @@
 ---
 title: API para Obtener Información de una Sala | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para obtener información detallada sobre una sala de videoconferencia específica que se encuentre activa.
-keywords: [api, obtener información de sala, detalles de sala, sala activa, api de sala, punto final]
+description: Documentación del endpoint de la API para obtener información sobre todas las salas de videoconferencia activas actualmente en el servidor.
+keywords: [api, obtener información de sala, detalles de sala, sala activa, api de sala, endpoint]
 sidebar_position: 4
 sidebar_label: Información de la Sala
 ---
 
 # Obtener Información de una Sala Activa
 
-Punto final: `/room/getActiveRoomInfo`
+Endpoint: `/room/getActiveRoomInfo`
 
-Este punto final recupera información detallada y en tiempo real sobre una sala activa específica. Mientras que `isRoomActive` simplemente le indica si una sala está en funcionamiento, esta API proporciona una instantánea completa de la sesión, incluido su estado actual, una lista de todos los participantes y sus detalles individuales.
+Este endpoint recupera información detallada y en tiempo real sobre una sala activa específica. Mientras que `isRoomActive` simplemente le indica si una sala está en funcionamiento, esta API proporciona una vista completa de la sesión, incluido su estado actual, una lista de todos los participantes y sus detalles individuales.
 
 Esto es útil para crear paneles de administración o herramientas de moderación donde necesite monitorear reuniones en vivo. Puede ver quién está en la sala, cuándo se unieron y otros metadatos asociados tanto con la sala como con los participantes.
 

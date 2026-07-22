@@ -1,16 +1,16 @@
 ---
 title: API para Finalizar una Sala | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para finalizar de forma forzada una sala de videoconferencia activa y desconectar a todos los participantes.
-keywords: [api, finalizar sala, cerrar sala, terminar reunión, api de sala, punto final]
+description: Documentación del endpoint de la API para forzar la finalización de una sala de videoconferencia activa y desconectar a todos los participantes.
+keywords: [api, finalizar sala, cerrar sala, terminar reunión, api de sala, endpoint]
 sidebar_position: 9
 sidebar_label: Finalizar
 ---
 
 # Finalizar una Sala
 
-Punto final: `/room/endRoom`
+Endpoint: `/room/endRoom`
 
-Este punto final le permite terminar de forma forzada una sesión de sala en vivo. Cuando llama a esta API con un `room_id`, la sesión se cierra inmediatamente y todos los participantes son desconectados.
+Este endpoint le permite forzar la finalización de una sesión de sala en vivo. Cuando llama a esta API con un `room_id`, la sesión se cierra inmediatamente y todos los participantes son desconectados.
 
 Esta es una acción administrativa del lado del servidor, típicamente utilizada para moderar sesiones o para asegurar que una reunión ha concluido definitivamente. Por ejemplo, podría integrar esto en un botón "Finalizar Reunión para Todos" en el panel de administración de su aplicación. Una vez que se finaliza una sala, sus datos se borran y se puede volver a crear para una nueva sesión.
 

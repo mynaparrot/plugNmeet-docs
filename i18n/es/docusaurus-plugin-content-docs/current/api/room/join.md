@@ -1,16 +1,16 @@
 ---
 title: API para Unirse a una Sala | Referencia de la API de plugNmeet
-description: Documentación del punto final de la API para generar un token para unirse a una sala de videoconferencia. Aprenda a agregar participantes y establecer roles de moderador o asistente.
-keywords: [api, unirse a sala, obtener token, token de acceso, unirse a reunión, api de sala, punto final]
+description: Documentación del endpoint de la API para generar un token para unirse a una sala de videoconferencia. Aprenda a agregar participantes y establecer roles de moderador o asistente.
+keywords: [api, unirse a sala, obtener token, token de acceso, unirse a reunión, api de sala, endpoint]
 sidebar_position: 2
 sidebar_label: Unirse
 ---
 
 # Unirse a una Sala
 
-Punto final: `/room/getJoinToken`
+Endpoint: `/room/getJoinToken`
 
-Este punto final genera un token temporal que otorga a un usuario acceso a una sala específica. Antes de profundizar en los parámetros, es importante tener en cuenta algunos conceptos clave:
+Este endpoint genera un token temporal que otorga a un usuario acceso a una sala específica. Antes de profundizar en los parámetros, es importante tener en cuenta algunos conceptos clave:
 
 *   **Ciclo de Vida del Token**: El token generado es de corta duración (su período de validez se establece en la configuración de su servidor) y está diseñado para un **único uso**. Debe utilizarlo de inmediato, redirigiendo al usuario a la URL de la reunión. **No almacene este token para uso futuro.**
 
