@@ -15,6 +15,14 @@ Cree una **aplicación de videoconferencia personalizada** para iOS, Android, Fl
 
 En este modelo, su aplicación nativa se encarga de la publicación de medios, como el micrófono, la cámara y el uso compartido de pantalla. El cliente web de plugNmeet se ejecuta dentro de una WebView y proporciona la interfaz de la reunión, incluyendo listas de participantes, chat, pizarra, controles de moderación y suscripción a medios.
 
+## Véalo en Acción: Aplicaciones de Demostración
+
+Antes de sumergirse en los detalles técnicos, puede ver esta integración híbrida en acción. Proporcionamos aplicaciones de demostración de código abierto que muestran el patrón completo descrito en esta guía. Explorarlas es una excelente manera de comprender el resultado final.
+
+Este patrón —alojar el cliente web en una WebView y publicar medios (micrófono, cámara web y uso compartido de pantalla) de forma nativa— es necesario porque la mayoría de los navegadores móviles no admiten el uso compartido de pantalla directamente. Al utilizar un puente nativo, se obtiene un control total sobre el hardware del dispositivo.
+
+Consulte las aplicaciones de demostración en nuestro [repositorio de aplicaciones móviles de plugNmeet](https://github.com/mynaparrot/plugnmeet-mobile-app) para comprender el patrón.
+
 ## ¿Para Quién es Esta Guía?
 
 Esta guía es para desarrolladores y equipos que desean:
@@ -306,16 +314,6 @@ Utilice esta lista de verificación al construir el contenedor de su aplicación
 - Interfaz de usuario de selección de dispositivos personalizada.
 - Manejo del modo en segundo plano.
 - Controles de enrutamiento de audio específicos de la plataforma.
-
-## Aplicaciones de Demostración
-
-plugNmeet no requiere un SDK móvil. El enfoque híbrido utiliza el cliente web en una WebView con un puente de medios nativo. Proporcionamos aplicaciones de demostración que muestran este patrón de integración híbrida, que es la forma recomendada de construir una aplicación móvil con plugNmeet.
-
-Este patrón —alojar el cliente web en una WebView y publicar medios (micrófono, cámara web y uso compartido de pantalla) de forma nativa— es necesario porque la mayoría de los navegadores móviles no admiten el uso compartido de pantalla directamente. Al utilizar un puente nativo, se obtiene un control total sobre el hardware del dispositivo.
-
-Consulte las aplicaciones de demostración en nuestro [repositorio de aplicaciones móviles de plugNmeet](https://github.com/mynaparrot/plugnmeet-mobile-app) para comprender el patrón.
-
-> Nota solo para la demostración: una demostración interna puede usar la clave y el secreto de la API dentro de la aplicación por conveniencia, pero las aplicaciones de producción nunca deben hacer esto. Las aplicaciones de producción deben recibir solo `serverUrl` y un JWT de plugNmeet desde un backend de confianza.
 
 ## Resumen
 

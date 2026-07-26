@@ -15,6 +15,14 @@ Create a **custom video conferencing app** for iOS, Android, Flutter, React Nati
 
 In this model, your native application handles media publishing, such as microphone, camera, and screen sharing. The plugNmeet web client runs inside a WebView and provides the meeting interface, including participant lists, chat, whiteboard, moderation controls, and media subscription.
 
+## See it in Action: Demo Applications
+
+Before diving into the technical details, you can see this hybrid integration in action. We provide open-source demo applications that showcase the complete pattern described in this guide. Exploring them is a great way to understand the final result.
+
+This pattern—hosting the web client in a WebView and publishing media (mic, webcam, and screen share) natively—is necessary because most mobile browsers do not support screen sharing directly. By using a native bridge, you gain full control over device hardware.
+
+Check the demo apps in our [plugNmeet mobile app repository](https://github.com/mynaparrot/plugnmeet-mobile-app) to understand the pattern.
+
 ## Who This Guide Is For
 
 This guide is for developers and teams who want to:
@@ -306,16 +314,6 @@ Use this checklist when building your native app shell.
 - Custom device picker UI.
 - Background mode handling.
 - Platform-specific audio routing controls.
-
-## Demo Applications
-
-plugNmeet does not require a mobile SDK. The hybrid approach uses the web client in a WebView with a native media bridge. We provide demo apps that showcase this hybrid integration pattern, which is the recommended way to build a mobile app with plugNmeet.
-
-This pattern—hosting the web client in a WebView and publishing media (mic, webcam, and screen share) natively—is necessary because most mobile browsers do not support screen sharing directly. By using a native bridge, you gain full control over device hardware.
-
-Check the demo apps in our [plugNmeet mobile app repository](https://github.com/mynaparrot/plugnmeet-mobile-app) to understand the pattern.
-
-> Demo-only note: an internal demo may use API key and secret inside the app for convenience, but production apps must never do this. Production apps should receive only `serverUrl` and a plugNmeet JWT from a trusted backend.
 
 ## Summary
 
