@@ -268,7 +268,7 @@ Ejemplo:
   "nativeUserId": "<userID>-native",
   "e2ee": {
     "enabled": true,
-    "key": "<clave_codificada_en_base64>"
+    "key": "plain key text"
   }
 }
 ```
