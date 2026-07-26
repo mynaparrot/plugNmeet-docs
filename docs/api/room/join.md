@@ -36,6 +36,7 @@ This endpoint generates a temporary token that grants a user access to a specifi
 | user_id                         | string  | Yes      | A unique identifier for the user. **Note:** If the room was created with `auto_gen_user_id: true`, this value will be stored as `ex_user_id` and a random ID will be assigned to the user for the session. |
 | is_admin                        | boolean | Yes      | If `true`, the user will join as a moderator with elevated privileges. If `false`, they will join as a standard participant. |
 | is_hidden                       | boolean | No       | If `true`, the user will join as a spectator. They will not appear in the participant list and cannot interact. |
+| client_type                     | string  | No       | Specifies the client type. Use `"HYBRID_WEB"` for the [hybrid mobile integration](/docs/developer-guide/mobile-app-integration). Defaults to `"WEB"`. |
 | [user_metadata](#user-metadata) | object  | Yes      | Additional metadata about the user.                          |
 
 ### User Metadata
@@ -59,6 +60,7 @@ This endpoint generates a temporary token that grants a user access to a specifi
     "user_id": "Your-Unique-User-Id",
     "is_admin": true,
     "is_hidden": false,
+    "client_type": "WEB",
     "user_metadata": {
       "profile_pic": "https://profile.pic/im.jpg",
       "lock_settings": {
@@ -113,5 +115,5 @@ For a full list of supported parameters and their descriptions, please refer to 
 **Example:**
 
 ```
-https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design=%7B%22primary_color%22%3A%22%23004D90%22%2C%22secondary_color%22%3A%22%2324AEF7%22%7D
+https://Your-Domain.com/conference/?access_token=<TOKEN HERE>&custom_design=%7B%22primary_color%22%3A%22%23004D90%22%2C%22secondary_color%22%3A%22%24AEF7%22%7D
 ```

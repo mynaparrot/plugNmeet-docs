@@ -36,6 +36,7 @@ Este endpoint genera un token temporal que otorga a un usuario acceso a una sala
 | user_id                         | string  | Sí      | Un identificador único para el usuario. **Nota:** Si la sala se creó con `auto_gen_user_id: true`, este valor se almacenará como `ex_user_id` y se asignará un ID aleatorio al usuario para la sesión. |
 | is_admin                        | boolean | Sí      | Si es `true`, el usuario se unirá como moderador con privilegios elevados. Si es `false`, se unirá como un participante estándar. |
 | is_hidden                       | boolean | No       | Si es `true`, el usuario se unirá como espectador. No aparecerá en la lista de participantes y no podrá interactuar. |
+| client_type                     | string  | No       | Especifica el tipo de cliente. Use `"HYBRID_WEB"` para la [integración móvil híbrida](/docs/developer-guide/mobile-app-integration). El valor predeterminado es `"WEB"`. |
 | [user_metadata](#metadatos-del-usuario) | object  | Sí      | Metadatos adicionales sobre el usuario.                          |
 
 ### Metadatos del Usuario
@@ -59,6 +60,7 @@ Este endpoint genera un token temporal que otorga a un usuario acceso a una sala
     "user_id": "Su-ID-de-Usuario-Unico",
     "is_admin": true,
     "is_hidden": false,
+    "client_type": "WEB",
     "user_metadata": {
       "profile_pic": "https://profile.pic/im.jpg",
       "lock_settings": {

@@ -71,8 +71,6 @@ Your native app is responsible for:
 
 - Hosting the plugNmeet web client inside a WebView.
 - Receiving `serverUrl` and a plugNmeet JWT from your backend.
-- Calling `POST /api/getClientFiles` with the JWT to fetch client assets.
-- Building and loading the web-client HTML shell.
 - Listening for bridge commands from the web client.
 - Capturing microphone, webcam, and screen-share media using native APIs.
 - Connecting to LiveKit with the native publish-only token.
@@ -122,68 +120,60 @@ This lets the web UI reuse the existing subscriber infrastructure while still sh
 
 ## Production End-to-End Workflow
 
-### Step 1: Authentication and Initialization
+### Step 1: Authentication and Web Client Loading
 
 Native mobile apps should never contain the plugNmeet API key or secret. The production boot flow uses a plugNmeet JWT, also called the `access_token`.
 
-1. Your backend calls `POST /auth/room/getJoinToken` using the plugNmeet API key.
-2. Your backend sets `userInfo.client_type = HYBRID_WEB` in the join-token request.
-3. The plugNmeet server returns a JWT.
-4. Your backend sends `serverUrl` and the JWT to your native app.
-5. The native app calls `POST /api/getClientFiles` using the JWT.
-6. The native app builds an HTML shell in memory from the returned client asset files.
-7. The native app loads the HTML into the WebView and supplies the JWT, for example through `?access_token=<jwt>` or by injecting it before boot.
-8. The web client calls `POST /api/verifyToken`.
-9. If the verify response contains `client_type = HYBRID_WEB`, the web client enters hybrid mode.
+1.  Your backend calls `POST /auth/room/getJoinToken` using the plugNmeet API key.
+2.  Your backend sets `userInfo.client_type = HYBRID_WEB` in the join-token request.
+3.  The plugNmeet server returns a JWT.
+4.  Your backend sends `serverUrl` and the JWT to your native app.
 
-### Step 2: LiveKit Token Hand-Off
+At this point, you have two main options for loading the web client in your WebView:
 
-After joining the room services, the web client requests media server connection data.
+#### Option A: Load the Hosted Web Client Directly (Simple)
 
-For a normal web user, the server returns one LiveKit token with normal publish and subscribe permissions.
+This is the easiest approach. Simply construct the URL and load it in your WebView.
 
-For a `HYBRID_WEB` user, the server returns:
+```kotlin
+// Example for Android
+val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}"
+webView.loadUrl(url)
+```
+
+With this method, the web client will use the default design configuration (logo, colors, etc.) from your plugNmeet server. You can still apply client-side customizations by injecting a `window.plugNmeetConfig` object. See our [Design Customisation Guide](./design-customisation) for details.
+
+#### Option B: Build a Custom HTML Shell (Advanced)
+
+This approach gives you maximum control over the HTML shell.
+
+1.  The native app calls `POST /api/getClientFiles` using the JWT.
+2.  The native app builds an HTML shell in memory from the returned client asset files.
+3.  The native app loads the HTML into the WebView and supplies the JWT, for example through `?access_token=<jwt>` or by injecting it before boot.
+
+### Step 2: Entering Hybrid Mode
+
+The web client calls `POST /api/verifyToken` to validate the session. It then enters hybrid mode based on one of two conditions:
+
+-   **Primary Method (Token-Based)**: The response from `verifyToken` contains `client_type = HYBRID_WEB`. This is the recommended production approach.
+-   **Override Method (Configuration-Based)**: Your native app injects `force_hybrid_web: true` into the `window.plugNmeetConfig` object. If this flag is present and true, the web client will enter hybrid mode regardless of the token's `client_type`. This is useful for simplifying configuration, for testing, or for custom URL schemes where the `client_type` may not be set.
+
+### Step 3: LiveKit Token Hand-Off
+
+After joining the room services, the web client requests media server connection data. For a `HYBRID_WEB` user, the server returns:
 
 - A **subscribe-only LiveKit token** for the web identity `[userID]`.
 - A **publish-only LiveKit token** for the native identity `[userID]-native`.
 
 The web client connects to LiveKit using the subscribe-only token. Then it sends the native publish-only token to the native host using the bridge action `INITIALIZE_NATIVE_PUBLISHER`.
 
-Example wrapped `NativeBridgeMsg` payload (in standard proto3 JSON camelCase format):
+### Step 4: Native Media Publishing
 
-```json
-{
-  "action": "INITIALIZE_NATIVE_PUBLISHER",
-  "initializeNativePublisher": {
-    "livekitUrl": "wss://livekit.plugnmeet.cloud",
-    "token": "<native_publish_only_livekit_token>",
-    "nativeUserId": "<userID>-native",
-    "e2ee": {
-      "enabled": false
-    }
-  }
-}
-```
+When the user interacts with media controls in the web UI, the web client sends bridge commands like `PUBLISH_NATIVE_MEDIA`. The native app then handles the entire media capture and publishing process using native APIs.
 
-### Step 3: Native Media Publishing
+### Step 5: Display and Synchronization
 
-When the user starts microphone, webcam, or screen sharing from the web UI, the web client does not request browser media permissions. Instead, it sends a bridge command such as `PUBLISH_NATIVE_MEDIA`.
-
-The native app then:
-
-1. Requests platform permission if needed.
-2. Captures the requested media source using native APIs.
-3. Connects to LiveKit using the publish-only native token, if it is not already connected.
-4. Publishes the track as `[userID]-native`.
-5. Sends a status or track-state message back to the web client.
-
-### Step 4: Display and Synchronization
-
-The web client receives the native-published track through LiveKit subscription and maps `[userID]-native` back to `[userID]`.
-
-For local native audio, the web client must avoid playing the subscribed audio back to the same user to prevent echo. The track can still be used for active speaker detection and UI state.
-
-For video and screen-share tracks, the web UI displays the track under the primary participant identity.
+The web client receives the native-published track through LiveKit subscription and displays it in the correct participant tile, creating a seamless experience.
 
 ## Communication Bridge API
 
@@ -268,7 +258,7 @@ Example:
   "nativeUserId": "<userID>-native",
   "e2ee": {
     "enabled": true,
-    "key": "plain key text"
+    "key": "your-e2ee-plain-text-key"
   }
 }
 ```
@@ -287,9 +277,7 @@ Use this checklist when building your native app shell.
 ### Required
 
 - Receive `serverUrl` and plugNmeet JWT from your backend.
-- Call `POST /api/getClientFiles` with the JWT.
-- Build and load the web-client HTML shell in the WebView.
-- Pass the JWT to the web client.
+- Load the plugNmeet web client in a WebView using one of the methods described above.
 - Implement bridge receive/send logic.
 - Handle `INITIALIZE_NATIVE_PUBLISHER`.
 - Connect to LiveKit using the native publish-only token.
