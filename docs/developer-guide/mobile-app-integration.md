@@ -54,7 +54,7 @@ Once the native app has the `access_token`, it must load the plugNmeet web clien
 
 #### Option A: Load the Hosted Web Client Directly (Simple)
 
-This is the easiest approach. Construct the URL with the access token and load it. The client will use the default design configuration from your plugNmeet server.
+This is the easiest approach. Construct the URL with the access token and load it.
 
 ```kotlin
 // Example for Android
@@ -62,11 +62,25 @@ val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}"
 webView.loadUrl(url)
 ```
 
-Even with this method, client-side customizations can be applied by injecting a `window.plugNmeetConfig` object. See our [Design Customisation Guide](./design-customisation) for details.
+To apply a custom look and feel, you can add a `custom_design` query parameter to the URL. The value should be a URL-encoded JSON string. This is often used to change the logo and colors.
+
+For a full list of supported parameters, please refer to our [Design Customisation Guide](./design-customisation) for details.
+
+```kotlin
+// Example for Android with custom design
+// The custom_design value is a URL-encoded JSON string like:
+// {"logo":"https://your-domain.com/logo.png","primary_color":"#004D90"}
+val customDesign = "%7B%22logo%22%3A%22https%3A%2F%2Fyour-domain.com%2Flogo.png%22%2C%22primary_color%22%3A%22%23004D90%22%7D"
+
+val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}&custom_design=${customDesign}"
+webView.loadUrl(url)
+```
 
 #### Option B: Build a Custom HTML Shell (Advanced)
 
 This gives you maximum control. The native app calls `POST /api/getClientFiles` using the JWT for authentication (e.g., `Authorization: <access_token>`). This endpoint is designed for native apps and provides the same assets as the server-side `/auth/getClientFiles` endpoint, which uses API Key/Secret authentication. See the [Get Client Files API](/docs/api/get-client-files) for response details. The app then builds an HTML shell in memory from the returned assets and loads it into the WebView.
+
+Even with this method, client-side customizations can be applied by injecting a `window.plugNmeetConfig` object. See our [Design Customisation Guide](./design-customisation) for details.
 
 ### Step 3: Enter Hybrid Mode
 

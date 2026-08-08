@@ -54,7 +54,7 @@ Una vez que la aplicación nativa tiene el `access_token`, debe cargar el client
 
 #### Opción A: Cargar el Cliente Web Alojado Directamente (Simple)
 
-Este es el enfoque más fácil. Construya la URL con el token de acceso y cárguela. El cliente utilizará la configuración de diseño predeterminada de su servidor plugNmeet.
+Este es el enfoque más fácil. Construya la URL con el token de acceso y cárguela.
 
 ```kotlin
 // Ejemplo para Android
@@ -62,11 +62,25 @@ val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}"
 webView.loadUrl(url)
 ```
 
-Incluso con este método, se pueden aplicar personalizaciones del lado del cliente inyectando un objeto `window.plugNmeetConfig`. Consulte nuestra [Guía de Personalización de Diseño](./design-customisation) para más detalles.
+Para aplicar una apariencia personalizada, puede agregar un parámetro de consulta `custom_design` a la URL. El valor debe ser una cadena JSON codificada para URL. Esto se usa a menudo para cambiar el logotipo y los colores.
+
+Para obtener una lista completa de los parámetros admitidos, consulte nuestra [Guía de Personalización de Diseño](./design-customisation) para más detalles.
+
+```kotlin
+// Ejemplo para Android con diseño personalizado
+// El valor de custom_design es una cadena JSON codificada para URL como:
+// {"logo":"https://your-domain.com/logo.png","primary_color":"#004D90"}
+val customDesign = "%7B%22logo%22%3A%22https%3A%2F%2Fyour-domain.com%2Flogo.png%22%2C%22primary_color%22%3A%22%23004D90%22%7D"
+
+val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}&custom_design=${customDesign}"
+webView.loadUrl(url)
+```
 
 #### Opción B: Construir un Contenedor HTML Personalizado (Avanzado)
 
 Esto le da el máximo control. La aplicación nativa llama a `POST /api/getClientFiles` usando el JWT para la autenticación (p. ej., `Authorization: <access_token>`). Este endpoint está diseñado para aplicaciones nativas y proporciona los mismos activos que el endpoint del lado del servidor `/auth/getClientFiles`, que utiliza autenticación con Clave/Secreto de API. Consulte la [API de Obtención de Archivos de Cliente](/docs/api/get-client-files) para detalles de la respuesta. Luego, la aplicación construye un contenedor HTML en memoria a partir de los activos devueltos y lo carga en la WebView.
+
+Incluso con este método, se pueden aplicar personalizaciones del lado del cliente inyectando un objeto `window.plugNmeetConfig`. Consulte nuestra [Guía de Personalización de Diseño](./design-customisation) para más detalles.
 
 ### Paso 3: Entrar en Modo Híbrido
 
