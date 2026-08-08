@@ -2,7 +2,7 @@
 title: "How to Build Your Own Video Conferencing App in Under an Hour"
 slug: build-video-conferencing-app-in-under-an-hour
 authors: [jibon]
-tags: [webrtc, api, sdk, developer, tutorial, programming,video-conferencing]
+tags: [webrtc, api, sdk, developer, tutorial, programming,video-conferencing, mobile-app]
 ---
 
 Building a video conferencing application sounds like a monumental task. You have to wrestle with the complexities of WebRTC, set up signaling servers, manage STUN/TURN for NAT traversal, and handle the resource-intensive job of routing media streams. The backend infrastructure alone can take months to build and stabilize.
@@ -126,9 +126,24 @@ Now for the final piece: the user interface. Do you need to build one from scrat
 plugNmeet provides a complete, feature-rich, and customizable web client. You simply need to direct your user to the join URL generated in the previous step.
 
 The join URL looks something like this:
-`https://your-plug-n-meet.com/conference/?access_token=YOUR_GENERATED_TOKEN`
+`https://your-plug-n-meet.com/?access_token=YOUR_GENERATED_TOKEN`
 
 When a user visits this link, the plugNmeet client application loads, authenticates them with the token, and places them directly into the video meeting.
+
+---
+
+### What About Mobile Apps? The Hybrid Approach
+
+The same principle of reusing the web client applies to mobile development. Instead of building a native mobile UI from scratch, you can use our **hybrid integration model**.
+
+The concept is simple:
+1.  **Host the plugNmeet web client** inside a `WebView` in your native iOS or Android app.
+2.  **Handle media natively.** Your native app captures the camera, microphone, and screen share, then publishes them to the meeting.
+3.  **A communication bridge** connects the web UI (for buttons and controls) to your native media logic.
+
+This gives you the best of both worlds: the performance of native media and the speed of a pre-built, feature-rich web UI. It's a faster way to build a custom mobile video conferencing app for iOS, Android, or React Native.
+
+**[Learn more in our Custom Video App Guide](/docs/developer-guide/mobile-app-integration)**
 
 ---
 
@@ -150,7 +165,7 @@ In the time it took to read this article, you've learned the entire workflow:
 
 1.  **Install a powerful backend** with a single command.
 2.  **Use a simple API call** to control rooms and users.
-3.  **Integrate the pre-built client** for an instant user interface.
+3.  **Integrate a pre-built client** for an instant user interface on the web or mobile.
 
 You've skipped the mountain of WebRTC complexity and gone straight to building your application. From here, your next step is to make it truly your own. Learn **[how to deeply integrate and white-label the client](/blog/deep-integration-white-label-guide)** to create a seamless user experience that perfectly matches your brand.
 
@@ -161,3 +176,4 @@ The power of a complete WebRTC platform is now at your fingertips. What will you
 
 *   **Follow the [Installation Guide](/docs/installation)**
 *   **Explore the [API Documentation](/docs/api/intro)**
+*   **[Build a Custom Mobile App](/docs/developer-guide/mobile-app-integration)**
