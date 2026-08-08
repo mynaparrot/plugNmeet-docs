@@ -185,7 +185,7 @@ The web client receives the native-published track through LiveKit subscription 
 
 ## Communication Bridge API
 
-The bridge contract is defined in `plugnmeet_native_bridge.proto`. The wire format is **proto3 JSON text** over the WebView messaging channel, not binary protobuf. Enum values appear as string names in JSON, which makes debugging easier in WebView environments.
+The bridge contract is defined in [plugnmeet_native_bridge.proto](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_native_bridge.proto). The wire format is **proto3 JSON text** over the WebView messaging channel, not binary protobuf. Enum values appear as string names in JSON, which makes debugging easier in WebView environments.
 
 The action names below are shown as the proto enum names used by the bridge contract.
 

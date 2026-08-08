@@ -185,7 +185,7 @@ El cliente web recibe la pista publicada de forma nativa a través de la suscrip
 
 ## API del Puente de Comunicación
 
-El contrato del puente se define en `plugnmeet_native_bridge.proto`. El formato en la transmisión es **texto JSON proto3** sobre el canal de mensajería de la WebView, no protobuf binario. Los valores de enumeración aparecen como nombres de cadena en JSON, lo que facilita la depuración en entornos de WebView.
+El contrato del puente se define en [plugnmeet_native_bridge.proto](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_native_bridge.proto). El formato en la transmisión es **texto JSON proto3** sobre el canal de mensajería de la WebView, no protobuf binario. Los valores de enumeración aparecen como nombres de cadena en JSON, lo que facilita la depuración en entornos de WebView.
 
 Los nombres de las acciones a continuación se muestran como los nombres de enumeración de proto utilizados por el contrato del puente.
 
