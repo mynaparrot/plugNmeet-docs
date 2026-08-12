@@ -7,10 +7,6 @@ sidebar_label: Guía de Aplicación de Video Personalizada
 
 # Cree una Aplicación de Videoconferencia Personalizada con la Integración Híbrida de plugNmeet
 
-:::info[Próxima Característica]
-Esta integración híbrida es una característica próxima en **v2.4.0**. Un servidor de demostración ya está disponible para pruebas y desarrollo.
-:::
-
 El modelo de integración híbrida de plugNmeet proporciona un camino rápido y flexible para construir aplicaciones de videoconferencia personalizadas para plataformas nativas como iOS, Android, Flutter, React Native o escritorio.
 
 Esta arquitectura combina una capa de medios nativa con el cliente web completo de plugNmeet, que se ejecuta dentro de una WebView. La aplicación nativa se encarga de toda la publicación de medios (micrófono, cámara y pantalla compartida), mientras que el cliente web proporciona la interfaz de reunión rica en funciones. Este enfoque permite a los desarrolladores aprovechar el rendimiento nativo para el manejo de medios, evitando al mismo tiempo la necesidad de construir una compleja interfaz de usuario de conferencias desde cero. Es especialmente útil para habilitar funciones como el uso compartido de pantalla en dispositivos móviles, que no está bien soportado en los navegadores móviles.

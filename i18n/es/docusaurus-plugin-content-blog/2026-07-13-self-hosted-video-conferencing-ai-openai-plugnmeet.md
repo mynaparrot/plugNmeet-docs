@@ -12,14 +12,6 @@ Con esta integración, podrá incorporar potentes funciones de inteligencia arti
 
 Lo mejor de todo es que este proveedor se ha diseñado respetando el formato estándar de la API de OpenAI, lo que significa que podrá utilizar directamente los servicios de OpenAI o conectar plugNmeet a cualquier **API compatible con OpenAI**, incluyendo proveedores alternativos de IA y plataformas de modelos de lenguaje (LLM) autoalojados.
 
-:::info[Adelanto y acceso anticipado]
-Esta función se encuentra actualmente en las fases finales de revisión y está previsto que se incluya en el próximo lanzamiento.
-
-Los desarrolladores que deseen probarla con antelación o revisar los detalles de la implementación pueden seguir el Pull Request en GitHub:
-
-https://github.com/mynaparrot/plugNmeet-server/pull/883
-:::
-
 <!--truncate-->
 
 ## Por qué es importante para las videoconferencias autoalojadas

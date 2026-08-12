@@ -12,14 +12,6 @@ With this integration, you can bring powerful AI features to your self-hosted vi
 
 Even better, the provider is designed around the standard OpenAI API format, which means you can use OpenAI directly or connect plugNmeet to any **OpenAI-compatible API**, including alternative AI providers and self-hosted LLM platforms.
 
-:::info[Sneak Peek & Early Access]
-This feature is currently in the final stages of review and is planned for an upcoming release.
-
-Developers who want to test it early or review the implementation can follow the GitHub Pull Request:
-
-https://github.com/mynaparrot/plugNmeet-server/pull/883
-:::
-
 <!--truncate-->
 
 ## Why This Matters for Self-Hosted Video Conferencing

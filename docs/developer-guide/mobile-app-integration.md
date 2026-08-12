@@ -7,10 +7,6 @@ sidebar_label: Custom Video App Guide
 
 # Build a Custom Video Conference App with plugNmeet Hybrid Integration
 
-:::info[Upcoming Feature]
-This hybrid integration is an upcoming feature in **v2.4.0**. A demo server is available now for testing and development.
-:::
-
 plugNmeet's hybrid integration model provides a fast and flexible path for building custom video conferencing apps for native platforms like iOS, Android, Flutter, React Native, or desktop.
 
 This architecture combines a native media layer with the complete plugNmeet web client, which runs inside a WebView. The native application handles all media publishing (microphone, camera, and screen share), while the web client provides the feature-rich meeting interface. This approach allows developers to leverage native performance for media handling while avoiding the need to build a complex conferencing UI from scratch. It is especially useful for enabling features like screen sharing on mobile, which is not well-supported in mobile browsers.

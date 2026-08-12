@@ -10,10 +10,6 @@ Crear una aplicación de videoconferencia personalizada para móviles o escritor
 
 Hoy, te damos un adelanto de la solución. Presentamos la **Integración Híbrida de plugNmeet**, una nueva y potente forma de construir una **aplicación de videoconferencia personalizada y autoalojada** para iOS, Android, Flutter, React Native o escritorio. Combina la potencia bruta del manejo de medios nativos con el cliente web completo y rico en funciones de plugNmeet, dándote un camino acelerado para lanzar tu propia **aplicación de video de marca blanca**.
 
-:::info[Próxima Funcionalidad]
-Esta integración híbrida es una funcionalidad próxima, planeada para la **v2.4.0**. Un servidor de demostración y aplicaciones de ejemplo de código abierto ya están disponibles para pruebas y desarrollo.
-:::
-
 <!--truncate-->
 
 **Una nota rápida sobre nuestra filosofía**: el enfoque principal de plugNmeet siempre ha sido ofrecer una experiencia de videoconferencia potente y centrada en el navegador. No estamos cambiando para convertirnos en una empresa centrada en las aplicaciones. En cambio, esta integración híbrida es nuestra respuesta a los muchos desarrolladores de nuestra comunidad que necesitan crear aplicaciones nativas para móviles o escritorio.

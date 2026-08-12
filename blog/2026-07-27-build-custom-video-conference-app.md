@@ -10,10 +10,6 @@ Building a custom video conferencing app for mobile or desktop is a massive unde
 
 Today, we're giving you a sneak peek at the solution. Introducing **plugNmeet's Hybrid Integration**, a powerful new way to build a **custom, self-hosted video conferencing app** for iOS, Android, Flutter, React Native, or desktop. It combines the raw power of native media handling with the complete, feature-rich plugNmeet web client, giving you an accelerated path to launching your own **white-label video app**.
 
-:::info[Upcoming Feature]
-This hybrid integration is an upcoming feature planned for **v2.4.0**. A demo server and open-source example applications are available now for testing and development.
-:::
-
 <!--truncate-->
 
 **A quick note on our philosophy**: plugNmeet's core focus has always been on delivering a powerful, browser-first video conferencing experience. We are not shifting to become an app-first company. Instead, this hybrid integration is our answer to the many developers in our community who need to build native mobile or desktop applications.
