@@ -179,14 +179,22 @@ During an active meeting, the server needs to manage the real-time state of the 
 -   **Purpose:** Fast, real-time coordination of an active session.
 -   **Lifecycle:** This data is volatile and is tied to the life of the session. It is automatically cleared when the session ends.
 
-#### 8.2. Persistent Database (MariaDB)
+#### 8.2. Temporary Session Cache for Data Sync
+
+To improve session reliability, the server temporarily caches certain real-time collaboration data, such as whiteboard/notepad snapshots.
+
+-   **Purpose:** This cache acts as a fallback to ensure a smooth user experience. For example, if a user joins late or switches between whiteboard pages, they can quickly fetch the latest content from the server instead of depending on other participants to be online and send it to them.
+-   **E2EE Compliance:** This feature is designed to be fully compatible with End-to-End Encryption. When E2EE is active in a room, the data stored in this cache is the **encrypted ciphertext**. The server only holds an unreadable blob of data and has no ability to decrypt it, preserving the zero-knowledge privacy model.
+-   **Lifecycle:** This data is highly volatile. It is stored in the same in-memory store as the real-time session state and is **automatically and permanently deleted** the moment the session ends. It is never written to a persistent database or the filesystem.
+
+#### 8.3. Persistent Database (MariaDB)
 
 For historical reference and administrative purposes, a small subset of non-sensitive information is stored in a persistent relational database (MariaDB).
 
 -   **Purpose:** Long-term record-keeping of meeting occurrences.
 -   **Data Stored:** This typically includes basic room information such as `roomId`, `title`, creation/end time etc.
 
-#### 8.3. Optional Analytics Data
+#### 8.4. Optional Analytics Data
 
 PlugNmeet provides the option to persist detailed analytics for a session to help administrators understand usage patterns. This feature is governed by a setting that provides administrators with control over data retention.
 
@@ -201,7 +209,7 @@ PlugNmeet provides the option to persist detailed analytics for a session to hel
     -   If `true`, the aggregated metadata is written to a JSON file, and its reference is saved to the database.
     -   If `false`, the in-memory data is immediately discarded and is not persisted in any form.
 
-#### 8.4. Cloud Recordings
+#### 8.5. Cloud Recordings
 
 When cloud recording is enabled for a session, the resulting media file (MP4) is stored on the server.
 
@@ -210,7 +218,7 @@ When cloud recording is enabled for a session, the resulting media file (MP4) is
 -   **User Control & Lifecycle:** The management of these recordings is entirely controlled by the administrator via the API. Recordings are retained on the server indefinitely until they are explicitly deleted using the `/recording/delete` API call. This gives the administrator full control over the data retention lifecycle.
 -   **E2EE Incompatibility:** Server-side recording is **fundamentally incompatible** with zero-trust End-to-End Encryption. Therefore, cloud recording is automatically disabled and cannot be initiated if the room is configured with `enabled_self_insert_encryption_key: true`. This is because the server has no access to the unencrypted media streams required to create the recording, which is the core guarantee of the E2EE model.
 
-#### 8.5. AI Service Artifacts
+#### 8.6. AI Service Artifacts
 
 When AI features like transcription or summarization are used, they generate valuable data artifacts. Similar to cloud recordings and analytics, Plug-N-Meet gives the administrator full control over this data.
 
