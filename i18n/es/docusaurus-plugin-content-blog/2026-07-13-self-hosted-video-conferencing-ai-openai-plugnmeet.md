@@ -1,6 +1,6 @@
 ---
 title: "Integración de plugNmeet con OpenAI: IA autoalojada para videoconferencias" 
-description: "Configure las API compatibles con OpenAI en plugNmeet para habilitar la transcripción en vivo, traducción en tiempo real, traducciones de voz, chat de IA y resúmenes posteriores a las reuniones en su propio servidor de videoconferencias." 
+description: "Configure APIs compatibles con OpenAI en plugNmeet para habilitar la transcripción en vivo, traducción en tiempo real, traducciones de voz, chat de IA y resúmenes posteriores a las reuniones en su propio servidor de videoconferencias." 
 authors: [jibon] 
 tags: [plugnmeet, codigo-abierto, WebRTC, openai, transcripcion, traduccion, resumen-ia, tts, api-compatible, llm-autoalojado, videoconferencia, reuniones-ia, ia] 
 keywords: ["integracion plugNmeet OpenAI", "videoconferencia IA autoalojada", "API compatible con OpenAI videoconferencia", "transcripcion en vivo WebRTC", "traduccion de reuniones con IA", "resumen de reuniones autoalojado", "videoconferencia de codigo abierto", "Ollama API compatible OpenAI", "LocalAI plugNmeet espanol", "asistente de reuniones con IA"]
@@ -52,7 +52,7 @@ plugNmeet puede traducir el texto definitivo de la transcripción durante el tra
 
 ### Traducciones de voz mediante texto a voz (TTS)
 
-Esta integración también admite traducciones de voz gracias a la síntesis de texto a voz. Un bot traductor puede unirse a la sala e interpretar el contenido en voz alta utilizando voces generadas de forma artificial.
+La integración también admite traducciones habladas mediante texto a voz. Un bot traductor puede unirse a la sala e interpretar el contenido en voz alta utilizando voces generadas de forma artificial.
 
 Esta función resulta especialmente idónea para:
 
@@ -84,7 +84,7 @@ El proveedor de OpenAI también puede dar vida a un asistente virtual de chat en
 
 ### Cómo configurar OpenAI en plugNmeet
 
-La configuración de esta integración en su servidor autoalojado es muy sencilla. Solo requiere una clave de API activa y una rápida modificación en el archivo `config.yaml`.
+La configuración de esta integración en su servidor autoalojado es muy sencilla. Solo requiere una clave de API activa y una modificación rápida en el archivo `config.yaml`.
 
 #### 1. Defina la cuenta de su proveedor
 
@@ -105,7 +105,7 @@ insights:
 
 #### Más allá de OpenAI: Compatibilidad universal de la API
 
-La opción de configuración `endpoint` es el puente de acceso a un ecosistema diverso de proveedores. Al estar diseñada de acuerdo con la especificación estándar de la API de OpenAI, la integración permite conectar **cualquier servicio que use este formato compatible**.
+La opción `endpoint` es su puerta de entrada a un universo de proveedores de IA. Como nuestra integración está basada en la especificación estándar de la API de OpenAI, puede utilizar **cualquier servicio que ofrezca una API compatible con OpenAI.**
 
 De esta forma, evitará depender de un único proveedor de servicios en la nube. Puede redirigir plugNmeet hacia:
 
@@ -125,9 +125,9 @@ Nuestro proveedor intentará convertir de forma automática el protocolo del end
 
 Una de las funciones más valiosas del sistema es la capacidad de traducir las transcripciones en vivo en tiempo real, pero cuenta con una dependencia técnica que debe considerar:
 
-**Es obligatorio que tenga configurados y habilitados de forma conjunta los servicios de `transcription` y `translation`.**
+**Debe tener configurados y habilitados tanto el servicio de `transcription` como el de `translation`.**
 
-El proceso de traducción recupera el texto consolidado del servicio de transcripción y lo procesa a través del modelo lingüístico definido para el módulo `translation`. Sin esta última configuración, el sistema no podrá determinar qué modelo debe emplear para la traducción y la función fallará sin emitir alertas en la interfaz de usuario.
+El proceso de traducción funciona tomando el texto final generado por el servicio de transcripción y enviándolo al modelo de lenguaje configurado en el servicio de `translation`. Sin la configuración de `translation`, el sistema no sabrá qué modelo utilizar para realizar la traducción y el proceso fallará silenciosamente.
 
 Una configuración mínima necesaria para contar con transcripción y traducción simultáneas se estructuraría del siguiente modo:
 
