@@ -29,7 +29,7 @@ Antes de mostrarle la forma fácil, es importante apreciar los problemas que plu
 
 Esta es una tarea masiva.
 
-## La Forma plugNmeet: Un Framework Basado en API
+## El Enfoque de plugNmeet: Un Framework Basado en API
 
 plugNmeet agrupa toda esta complejidad en un único servidor de código abierto que puede instalar con un script automatizado. Le proporciona un conjunto de APIs simples y potentes que actúan como sus bloques de construcción.
 
