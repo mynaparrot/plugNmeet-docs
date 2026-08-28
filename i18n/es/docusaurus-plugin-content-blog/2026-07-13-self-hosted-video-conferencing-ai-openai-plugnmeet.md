@@ -2,8 +2,8 @@
 title: "Integración de plugNmeet con OpenAI: IA autoalojada para videoconferencias" 
 description: "Configure APIs compatibles con OpenAI en plugNmeet para habilitar la transcripción en vivo, traducción en tiempo real, traducciones de voz, chat de IA y resúmenes posteriores a las reuniones en su propio servidor de videoconferencias." 
 authors: [jibon] 
-tags: [plugnmeet, codigo-abierto, WebRTC, openai, transcripcion, traduccion, resumen-ia, tts, api-compatible, llm-autoalojado, videoconferencia, reuniones-ia, ia] 
-keywords: ["integracion plugNmeet OpenAI", "videoconferencia IA autoalojada", "API compatible con OpenAI videoconferencia", "transcripcion en vivo WebRTC", "traduccion de reuniones con IA", "resumen de reuniones autoalojado", "videoconferencia de codigo abierto", "Ollama API compatible OpenAI", "LocalAI plugNmeet espanol", "asistente de reuniones con IA"]
+tags: [plugnmeet, código-abierto, WebRTC, openai, transcripción, traducción, resumen-ia, tts, api-compatible, llm-autoalojado, videoconferencia, reuniones-ia, ia]
+keywords: ["integración plugNmeet OpenAI", "videoconferencia IA autoalojada", "API compatible con OpenAI videoconferencia", "transcripción en vivo WebRTC", "traducción de reuniones con IA", "resumen de reuniones autoalojado", "videoconferencia de código abierto", "Ollama API compatible OpenAI", "LocalAI plugNmeet español", "asistente de reuniones con IA"]
 ---
 
 En **plugNmeet**, nuestra plataforma de videoconferencias de código abierto basada en WebRTC se ha desarrollado en torno a la flexibilidad, la privacidad y el control de los datos. Aunque plugNmeet ya es compatible con los servicios cognitivos especializados de **Azure** y **Google**, nos complace presentar una actualización de gran relevancia para el entorno de **Insights**: el **proveedor oficial de OpenAI para plugNmeet**.
