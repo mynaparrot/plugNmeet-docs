@@ -65,19 +65,19 @@ La API `room/broadcastToRoom` abre un mundo de posibilidades más allá de las p
 
 Describamos cómo puede configurar esto para un sistema de preguntas y respuestas:
 
-**Paso 1: Configure su sala de webinar de Plug-N-Meet**
+**Paso 1: Configure su sala de webinar de Plug-N-Meet.**
 Cree su sala de Plug-N-Meet a través de la [API de Creación de Sala](/docs/api/room/create), asegurándose de que RTMP esté habilitado. Esta será su "estudio de transmisión" privado donde se reunirán sus presentadores y el equipo de producción.
 
-**Paso 2: Configure la transmisión RTMP**
+**Paso 2: Configure la transmisión RTMP.**
 Para transmitir su webinar a una audiencia pública, el moderador puede iniciar la transmisión en vivo desde dentro de la sala de Plug-N-Meet.
 1.  Abra el menú **Más Opciones** (...) en la barra de control inferior y seleccione **Iniciar Transmisión en Vivo**.
 2.  Ingrese la **Clave de Transmisión** y la **URL de Transmisión** proporcionadas por su plataforma de streaming (por ejemplo, YouTube, Facebook).
 3.  Haga clic en **Iniciar Transmisión** para comenzar a transmitir la sesión.
 
-**Paso 3: Desarrolle su frontend de preguntas y respuestas personalizado (orientado a la audiencia)**
+**Paso 3: Desarrolle su frontend de preguntas y respuestas personalizado (orientado a la audiencia).**
 Cree un formulario web simple en su sitio web donde su audiencia pueda escribir y enviar sus preguntas. Este formulario enviará las preguntas a *su* servidor de backend personalizado.
 
-**Paso 4: Implemente su backend de preguntas y respuestas (moderación y llamada a la API)**
+**Paso 4: Implemente su backend de preguntas y respuestas (moderación y llamada a la API).**
 Este es el núcleo de su sistema personalizado:
 1.  **Recibir preguntas:** Su backend recibe preguntas del formulario orientado a la audiencia.
 2.  **Panel de moderación:** Construya un panel simple para su moderador de preguntas y respuestas. Aquí, pueden ver las preguntas entrantes, aprobarlas/rechazarlas y quizás reordenarlas.
@@ -86,7 +86,7 @@ Este es el núcleo de su sistema personalizado:
 **Ejemplo de carga útil JSON para la llamada a la API de su backend a Plug-N-Meet:**
 ```json
 {
-  "room_id": "your-webinar-studio-room-id",
+  "room_id": "su-id-de-sala-de-webinar",
   "only_to_admins": true,
   "chat_msg": {
     "message": "Pregunta de la audiencia: [Texto de la pregunta aprobada aquí]"
@@ -107,7 +107,7 @@ Esto entregará la pregunta aprobada directamente al panel de chat de su estudio
 
 ### Conclusión: Su webinar, sus reglas
 
-La arquitectura API-first de Plug-N-Meet le permite ir más allá de las soluciones listas para usar y diseñar experiencias de webinar verdaderamente personalizadas. Al combinar la transmisión RTMP profesional con un sistema de preguntas y respuestas personalizado impulsado por la API `room/broadcastToRoom`, puede ofrecer webinars altamente atractivos, moderados y de marca que se destacan.
+La arquitectura API-first de Plug-N-Meet le permite ir más allá de las soluciones prediseñadas y crear experiencias de webinar realmente personalizadas. Al combinar la transmisión RTMP profesional con un sistema de preguntas y respuestas personalizado impulsado por la API `room/broadcastToRoom`, puede ofrecer webinars altamente atractivos, moderados y de marca que se destacan.
 
 Deje de permitir que las herramientas genéricas dicten la interacción con su audiencia. Comience a construir una experiencia de webinar que sea únicamente suya.
 
