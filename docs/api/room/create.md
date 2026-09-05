@@ -166,10 +166,20 @@ Once a session is over, the room is finalized, and all associated data (like cha
 <details>
 <summary>View Details</summary>
 
-| Field                | Type    | Required | Description                                                           |
-| -------------------- | ------- | -------- | --------------------------------------------------------------------- |
-| is_allow             | boolean | Yes      | Enable or disable breakout rooms.                                     |
-| allowed_number_rooms | number  | No       | Maximum number of breakout rooms that can be created simultaneously. Default: 6 |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| is_allow | boolean | Yes | Enable or disable breakout rooms. |
+| allowed_number_rooms | number | No | Maximum number of breakout rooms that can be created simultaneously. Default: 6. |
+| allow_return_to_main_room | boolean | No | Allow participants to return to the main room from a breakout room. Default: `true`. |
+| allow_self_select | boolean | No | Allow participants to self-select which breakout room to join. Default: `false`. |
+| preassigned_rooms | array | No | Pre-assign participants to specific breakout rooms. |
+
+#### Preassigned Breakout Room
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| title | string | Yes | The title of the pre-assigned breakout room. |
+| user_ids | array(string) | No | A list of user IDs to be automatically assigned to this breakout room. |
 
 </details>
 
@@ -284,12 +294,13 @@ Please refer to the server configuration guide and the [livekit/sip GitHub repos
 <details>
 <summary>View Details</summary>
 
-| Field                               | Type    | Required | Description                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| is_enabled                          | boolean | Yes      | Enable or disable E2EE. Supported browsers: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Note:** Users cannot join if their browser does not support E2EE.                                                                                                                                      |
-| enabled_self_insert_encryption_key  | boolean | No       | If `true`, users will be prompted to enter a secret key upon joining. This enables a zero-trust model where the key is **never sent to the server**. If `false`, the server generates and distributes the key. Default: `false`. <br/><br/> **Important:** When this is `true`, all audio-based AI features (like transcription and summarization) are automatically disabled. This is because the server does not have the key and therefore cannot provide it to the AI agent to access the audio stream. |
-| included_chat_messages              | boolean | No       | Enable or disable E2EE for chat messages.                                                                                                                                                                                                                                                        |
-| included_whiteboard                 | boolean | No       | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary.                                                                                                                                                                                                |
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| is_enabled | boolean | Yes | Enable or disable E2EE. Supported browsers: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Note:** Users cannot join if their browser does not support E2EE. |
+| included_chat_messages | boolean | No | Enable or disable E2EE for chat messages. |
+| included_whiteboard | boolean | No | Enable or disable E2EE for whiteboard messages (SCENE_UPDATE, POINTER_UPDATE). May increase CPU usage; enable only if necessary. |
+| encryption_key | string | No | Optional. If you provide a key, it will be used as the E2EE key. If not provided, a key will be generated automatically. The key must be a string of any length. |
+| enabled_self_insert_encryption_key | boolean | No | If `true`, users will be prompted to enter a secret key upon joining. This enables a zero-trust model where the key is **never sent to the server**. If `false`, the server generates and distributes the key. Default: `false`. <br/><br/> **Important:** When this is `true`, all audio-based AI features (like transcription and summarization) are automatically disabled. This is because the server does not have the key and therefore cannot provide it to the AI agent to access the audio stream. |
 
 </details>
 
@@ -389,7 +400,15 @@ This feature is available only if the server configuration `client > copyright_c
       },
       "breakout_room_features": {
         "is_allow": true,
-        "allowed_number_rooms": 2
+        "allowed_number_rooms": 2,
+        "allow_return_to_main_room": true,
+        "allow_self_select": false,
+        "preassigned_rooms": [
+          {
+            "title": "Team A",
+            "user_ids": ["user1", "user2"]
+          }
+        ]
       },
       "display_external_link_features": {
         "is_allow": true

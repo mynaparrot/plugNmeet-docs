@@ -166,10 +166,20 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 <details>
 <summary>Ver Detalles</summary>
 
-| Campo                | Tipo    | Requerido | Descripción                                                           |
-| -------------------- | ------- | -------- | --------------------------------------------------------------------- |
-| is_allow             | boolean | Sí       | Habilitar o deshabilitar las salas para grupos.                                     |
-| allowed_number_rooms | number  | No       | Número máximo de salas para grupos que se pueden crear simultáneamente. Predeterminado: 6. |
+| Campo | Tipo | Requerido | Descripción |
+| --- | --- | --- | --- |
+| is_allow | boolean | Sí | Habilitar o deshabilitar las salas para grupos. |
+| allowed_number_rooms | number | No | Número máximo de salas para grupos que se pueden crear simultáneamente. Predeterminado: 6. |
+| allow_return_to_main_room | boolean | No | Permitir que los participantes regresen a la sala principal desde una sala de grupos. Predeterminado: `true`. |
+| allow_self_select | boolean | No | Permitir que los participantes elijan por sí mismos a qué sala de grupos unirse. Predeterminado: `false`. |
+| preassigned_rooms | array | No | Preasignar participantes a salas de grupos específicas. |
+
+#### Sala de Grupos Preasignada
+
+| Campo | Tipo | Requerido | Descripción |
+| --- | --- | --- | --- |
+| title | string | Sí | El título de la sala de grupos preasignada. |
+| user_ids | array(string) | No | Una lista de IDs de usuario que se asignarán automáticamente a esta sala de grupos. |
 
 </details>
 
@@ -284,12 +294,13 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 <details>
 <summary>Ver Detalles</summary>
 
-| Campo                               | Tipo    | Requerido | Descripción                                                                                                                                                                                                                                                                                                                                                                                                                    |
-| ----------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| is_enabled                          | boolean | Sí       | Habilitar o deshabilitar E2EE. Navegadores compatibles: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Nota:** Los usuarios no podrán unirse si su navegador no es compatible con E2EE.                                                                                                                                      |
-| enabled_self_insert_encryption_key  | boolean | No       | Si es `true`, se pedirá a los usuarios que introduzcan una clave secreta al unirse. Esto habilita un modelo de confianza cero donde la clave **nunca se envía al servidor**. Si es `false`, el servidor genera y distribuye la clave. Predeterminado: `false`. <br/><br/> **Importante:** Cuando esta opción es `true`, todas las características de IA basadas en audio (como la transcripción y el resumen) se deshabilitan automáticamente. Esto se debe a que el servidor no tiene la clave y, por lo tanto, no puede proporcionarla al agente de IA para acceder al flujo de audio. |
-| included_chat_messages              | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de chat.                                                                                                                            |
-| included_whiteboard                 | boolean | No       | Habilitar o deshabilitar el cifrado E2EE para los mensajes de la pizarra (SCENE_UPDATE, POINTER_UPDATE). Puede aumentar el uso de la CPU; habilítelo solo si es necesario.                                                                                                                                                                                                |
+| Campo | Tipo | Requerido | Descripción |
+| --- | --- | --- | --- |
+| is_enabled | boolean | Sí | Habilitar o deshabilitar E2EE. Navegadores compatibles: Chromium 83+, Google Chrome, Microsoft Edge, Safari, Firefox 117+. **Nota:** Los usuarios no podrán unirse si su navegador no es compatible con E2EE. |
+| included_chat_messages | boolean | No | Habilitar o deshabilitar el cifrado E2EE para los mensajes de chat. |
+| included_whiteboard | boolean | No | Habilitar o deshabilitar el cifrado E2EE para los mensajes de la pizarra (SCENE_UPDATE, POINTER_UPDATE). Puede aumentar el uso de la CPU; habilítelo solo si es necesario. |
+| encryption_key | string | No | Opcional. Si proporciona una clave, se utilizará como clave E2EE. Si no se proporciona, se generará una clave automáticamente. La clave debe ser una cadena de cualquier longitud. |
+| enabled_self_insert_encryption_key | boolean | No | Si es `true`, se pedirá a los usuarios que introduzcan una clave secreta al unirse. Esto habilita un modelo de confianza cero donde la clave **nunca se envía al servidor**. Si es `false`, el servidor genera y distribuye la clave. Predeterminado: `false`. <br/><br/> **Importante:** Cuando esta opción es `true`, todas las características de IA basadas en audio (como la transcripción y el resumen) se deshabilitan automáticamente. Esto se debe a que el servidor no tiene la clave y, por lo tanto, no puede proporcionarla al agente de IA para acceder al flujo de audio. |
 
 </details>
 
@@ -389,7 +400,15 @@ Esta característica solo está disponible si la configuración del servidor `cl
       },
       "breakout_room_features": {
         "is_allow": true,
-        "allowed_number_rooms": 2
+        "allowed_number_rooms": 2,
+        "allow_return_to_main_room": true,
+        "allow_self_select": false,
+        "preassigned_rooms": [
+          {
+            "title": "Equipo A",
+            "user_ids": ["usuario1", "usuario2"]
+          }
+        ]
       },
       "display_external_link_features": {
         "is_allow": true
