@@ -19,7 +19,7 @@ Puede que esté familiarizado con la opción `preload_file` en nuestra [API de C
 
 El nuevo endpoint `uploadWhiteboardFile` es fundamentalmente diferente. Está diseñado para inyectar contenido en una **sesión en vivo y en curso**. Esta capacidad en tiempo real cambia las reglas del juego para las aplicaciones dinámicas. Cuando su backend llama a esta API, el archivo aparece instantáneamente en la lista de archivos del presentador dentro de la reunión en vivo, listo para ser mostrado.
 
-Exploremos lo que puede construir con esto.
+Veamos lo que puede crear con esto.
 
 ### Caso de Uso 1: Integración Fluida con Almacenamiento en la Nube (Google Drive, Dropbox, etc.)
 

@@ -1,5 +1,5 @@
 ---
-title: "Optimice sus Repeticiones de Sesión: Presentamos la Nueva API de Fusión de Grabaciones"
+title: "Optimice sus Repeticiones de Sesión: Presentamos la Nueva API para Fusionar Grabaciones"
 slug: merge-recordings-api
 authors: [jibon, simon]
 tags: [API, desarrollador, grabación, integración, automatización, edición de video, Moodle, caso de uso, plugin videoconferencia Moodle, servidor de videollamadas, servidor de videoconferencia]
@@ -17,7 +17,7 @@ Hoy, nos complace resolver este problema con la introducción de la API `/record
 
 Imagine que está organizando un taller de tres horas en su **servidor de videollamadas**. Pausa la grabación durante un descanso de 15 minutos y luego la reanuda. O quizás tenga que reiniciar una grabación debido a un problema técnico. Al final de la sesión, tiene dos o más archivos de video separados.
 
-Esto crea una experiencia inconexa para cualquiera que vea la repetición. También genera trabajo adicional para los administradores que tienen que descargar, editar y volver a cargar manualmente los archivos para crear un video único y coherente.
+Esto genera una experiencia poco fluida para quienes ven la repetición. También genera trabajo adicional para los administradores que tienen que descargar, editar y volver a cargar manualmente los archivos para crear un video único y coherente.
 
 ### La Solución: La API `mergeRecordings`
 
@@ -42,7 +42,7 @@ Esta no es solo una característica teórica, ya está mejorando nuestro [Plugin
 
 **El Resultado:** Un flujo de trabajo increíblemente simple e intuitivo para los educadores. Pueden crear una repetición de sesión pulida y única sin salir de su panel de Moodle, demostrando el poder de esta API para crear funciones fáciles de usar en cualquier **servidor de videoconferencias**.
 
-### Cómo Funciona: Dos Potentes Estrategias de Fusión
+### Cómo Funciona: Dos Potentes Estrategias Para Fusionar Grabaciones
 
 La API ofrece dos formas flexibles de combinar sus grabaciones:
 
