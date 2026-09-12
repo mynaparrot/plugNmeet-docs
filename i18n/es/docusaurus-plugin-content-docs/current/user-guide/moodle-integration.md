@@ -78,6 +78,9 @@ Este formulario le otorga un control granular sobre cada aspecto de la sesión.
     -   **El moderador debe unirse primero**: Evita que los estudiantes inicien la sesión sin un profesor presente.
     -   **Silenciar al inicio**: Una excelente herramienta de gestión del aula para asegurar un comienzo tranquilo de la sesión.
     -   **Permitir Compartir Pantalla / Cámaras Web**: Habilite o deshabilite estas funciones principales. Incluso puede configurarlo como "Solo cámaras web del administrador" para un seminario web estilo presentación.
+    -   **Permitir salas de grupos / Máx. de salas de grupos**: Permite a la persona moderadora dividir la sesión en grupos pequeños. Defina el número máximo de salas que pueda necesitar.
+    -   **Preasignar salas desde los grupos del curso**: Al activarla, cada grupo del curso de Moodle se convierte automáticamente en una sala de grupo: el título es el nombre del grupo y sus miembros quedan preasignados. Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+. Surte efecto desde el siguiente inicio de sesión; la persona moderadora aún puede reorganizar las salas en directo.
+    -   **Permitir encuestas**: Habilita encuestas y cuestionarios en directo en la sesión. Es necesario si desea enviar encuestas desde preguntas del cuestionario de Moodle durante la clase en vivo (ver más abajo).
 
 -   **Funciones de Grabación**:
     -   **Permitir Grabación**: Interruptor maestro para habilitar/deshabilitar todos los tipos de grabación.
@@ -100,8 +103,8 @@ plugNmeet está repleto de herramientas para fomentar la interacción y la colab
 
 -   **Pizarra Interactiva**: Una potente herramienta para la colaboración en tiempo real. Puede dibujar, escribir texto, subir y anotar PDFs/presentaciones, y trabajar junto con los estudiantes.
 -   **Compartir Pantalla**: Comparta su pantalla completa, una sola ventana de aplicación o una pestaña del navegador con resolución de alta calidad.
--   **Salas de Grupos Pequeños**: Divida su sesión principal en grupos más pequeños y privados para discusiones enfocadas o trabajo en proyectos. Los moderadores pueden moverse entre salas y transmitir mensajes a todos.
--   **Encuestas**: Cree encuestas sobre la marcha para involucrar a los estudiantes, verificar la comprensión o votar sobre temas. Los resultados se pueden publicar en vivo.
+-   **Salas de Grupos Pequeños**: Divida su sesión principal en grupos más pequeños y privados para discusiones enfocadas o trabajo en proyectos. Los moderadores pueden moverse entre salas y transmitir mensajes a todos. Con los grupos del curso de Moodle, las salas pueden preasignarse automáticamente (ver más abajo).
+-   **Encuestas**: Cree encuestas sobre la marcha para involucrar a los estudiantes, verificar la comprensión o votar sobre temas. Los resultados se pueden publicar en vivo. El profesorado también puede enviar una encuesta directamente desde una pregunta del cuestionario o del banco de preguntas a la sala en vivo (ver más abajo).
 -   **Bloc de Notas Compartido**: Un editor de texto colaborativo simple y en tiempo real para tomar notas compartidas.
 -   **Funciones Impulsadas por IA**: Si están habilitadas en el servidor, puede acceder a:
     -   **Transcripción y Traducción en Vivo**: Obtenga una transcripción en tiempo real de la conversación, que los usuarios pueden traducir a su idioma preferido.
@@ -164,6 +167,29 @@ Mientras una sesión está en curso, los administradores y profesores pueden sub
 4.  Una vez seleccionado, el archivo se añade automáticamente a la lista de archivos de la pizarra dentro de la sesión en vivo, listo para que lo presente a la clase.
 
 ![Captura de pantalla del selector de archivos de Moodle que se utiliza para subir un archivo a la pizarra.](/img/moodle/moodle_11.png)
+
+### Añadir Encuesta desde el Cuestionario o Banco de Preguntas (en vivo)
+
+Mientras una sesión está en curso, el profesorado puede enviar una encuesta a la sala en directo directamente desde una pregunta del cuestionario o del banco de preguntas de Moodle, gracias a la [API de creación de encuestas](/docs/api/room/create-poll). Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+.
+
+1.  Desde el panel en vivo en la página de la actividad de Moodle, pulse **«Añadir encuesta desde el cuestionario»** (visible solo mientras la sala está activa).
+2.  Elija la fuente: un **cuestionario** del curso o una categoría del **banco de preguntas**.
+3.  Seleccione una pregunta compatible (opción múltiple de respuesta única o verdadero/falso).
+4.  Elija el modo: **Cuestionario** (la respuesta correcta se muestra al finalizar) o **Votación** (solo recoge respuestas), además de **voto anónimo** y **cierre automático** (minutos, máx. 60).
+5.  Confirme: la encuesta aparece de inmediato en la sala en vivo y el alumnado puede votar al instante. La persona moderadora la gestiona como cualquier otra encuesta (cerrar, publicar resultados, reabrir).
+
+La votación también cuenta para la finalización en Moodle: active **Votó en la encuesta** en los ajustes de finalización de la actividad para exigir la participación.
+
+### Salas de Grupos Preasignadas desde los Grupos del Curso
+
+En lugar de repartir al alumnado a mano, deje que los grupos de Moodle hagan el trabajo. Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+.
+
+1.  En los ajustes de la actividad, bajo **Funciones de la sala**, active **Preasignar salas desde los grupos del curso**.
+2.  Asegúrese de que el curso tenga grupos con miembros (por ejemplo, en `Participantes > Grupos` del curso).
+3.  Desde el siguiente inicio de sesión, cada grupo se convierte en una sala de grupo: el título es el nombre del grupo y sus miembros quedan asignados automáticamente. Quienes no pertenezcan a ningún grupo quedan sin asignar para que la persona moderadora los coloque en directo.
+4.  La persona moderadora aún puede reorganizar, eliminar, enviar mensajes, ampliar o finalizar salas desde el panel de gestión dentro de la reunión.
+
+Nota: los detalles de la sala se fijan al iniciarse la sesión, de modo que los cambios en los grupos se aplican a la siguiente sesión, no a la que está en curso.
 
 ### Informe de Sesiones Activas en Todo el Sitio (Extracción de Datos del Administrador)
 

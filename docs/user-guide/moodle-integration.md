@@ -78,6 +78,9 @@ This form gives you granular control over every aspect of the session.
     -   **Moderator must join first**: Prevents students from starting the session without a teacher present.
     -   **Mute on start**: A great classroom management tool to ensure a quiet start to the session.
     -   **Allow Screen Share / Webcams**: Enable or disable these core features. You can even set it to "Admin only webcams" for a presentation-style webinar.
+    -   **Allow Breakout Rooms / Max Breakout Rooms**: Lets moderators split the session into smaller groups. Set the maximum number of rooms you may need.
+    -   **Pre-assign breakout rooms from course groups**: When enabled, each Moodle course group becomes a breakout room automatically — the room title is the group name and members are pre-assigned. Requires plugNmeet server v2.5.0+ and Moodle plugin v3.0.13+. Takes effect from the next session start; the moderator can still rearrange rooms live.
+    -   **Allow Polls**: Enables live polls and quizzes in the session. Required if you want to push polls from Moodle quiz questions during a live class (see below).
 
 -   **Recording Features**:
     -   **Allow Recording**: Master switch to enable/disable all recording types.
@@ -100,8 +103,8 @@ plugNmeet is packed with tools to foster interaction and collaboration.
 
 -   **Interactive Whiteboard**: A powerful tool for real-time collaboration. You can draw, write text, upload and annotate PDFs/presentations, and work together with students.
 -   **Screen Sharing**: Share your entire screen, a single application window, or a browser tab with high-quality resolution.
--   **Breakout Rooms**: Split your main session into smaller, private groups for focused discussions or project work. Moderators can move between rooms and broadcast messages to all.
--   **Polls**: Create polls on the fly to engage students, check for understanding, or vote on topics. Results can be published live.
+-   **Breakout Rooms**: Split your main session into smaller, private groups for focused discussions or project work. Moderators can move between rooms and broadcast messages to all. With Moodle course groups, rooms can be pre-assigned automatically (see below).
+-   **Polls**: Create polls on the fly to engage students, check for understanding, or vote on topics. Results can be published live. Teachers can also push a poll straight from a Moodle quiz or question bank question into the live room (see below).
 -   **Shared Notepad**: A simple, real-time collaborative text editor for taking shared notes.
 -   **AI-Powered Features**: If enabled on the server, you can access:
     -   **Live Transcription & Translation**: Get a real-time transcript of the conversation, which can be translated by users into their preferred language.
@@ -164,6 +167,29 @@ While a session is running, administrators and teachers can upload files directl
 4.  Once selected, the file is automatically added to the whiteboard's file list inside the live session, ready for you to present to the class.
 
 ![Screenshot of the Moodle file picker being used to upload a file to the whiteboard.](/img/moodle/moodle_11.png)
+
+### Add Poll from Quiz / Question Bank (Live)
+
+While a session is running, teachers can push a poll into the live room straight from a Moodle quiz or question bank question — powered by the [Create Poll API](/docs/api/room/create-poll). Requires plugNmeet server v2.5.0+ and Moodle plugin v3.0.13+.
+
+1.  From the live dashboard on the Moodle activity page, click **"Add Poll from Quiz"** (visible only while the room is active).
+2.  Choose the source: a course **Quiz** or the **Question Bank** category.
+3.  Pick a supported question (single-answer multiple choice or true/false).
+4.  Choose the mode: **Quiz** (correct answer revealed after the poll ends) or **Vote** (responses only), plus **Anonymous voting** and **Auto-close after** (minutes, max 60).
+5.  Submit — the poll appears in the live room immediately and participants can vote right away. The moderator manages it like any other poll (close, publish results, reopen).
+
+Poll voting also feeds Moodle completion: enable **Voted in Poll** in the activity completion settings to require participation.
+
+### Pre-Assigned Breakout Rooms from Course Groups
+
+Instead of sorting students manually, let Moodle groups do the work. Requires plugNmeet server v2.5.0+ and Moodle plugin v3.0.13+.
+
+1.  In the activity settings, under **Room Features**, enable **Pre-assign breakout rooms from course groups**.
+2.  Make sure the course has groups with members (e.g. `Site administration` or course `Participants > Groups`).
+3.  From the next session start, each group becomes a breakout room: the room title is the group name and members are automatically assigned. Users with no group stay unassigned for the moderator to place live.
+4.  The moderator can still rearrange, remove, broadcast, extend, or end rooms from the in-meeting breakout management panel.
+
+Note: room details are fixed at session start, so group changes apply to the next session, not the running one.
 
 ### Site-Wide Active Session Report (Admin Data Pull)
 
