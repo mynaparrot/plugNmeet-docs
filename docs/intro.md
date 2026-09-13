@@ -1,16 +1,16 @@
 ---
-title: What is plugNmeet? | Open-Source Video Conferencing Platform
-description: plugNmeet is the open-source, self-hosted video conferencing platform you embed in your own website or app. Learn what it is, who it's for, how it works, and how to start.
+title: plugNmeet – Self-Hosted Open-Source Video Conferencing Platform
+description: plugNmeet is the open-source, self-hosted video conferencing platform for your website or app. Learn what it is, who it's for, how it works, and how to start.
 keywords: [open source, webrtc, video conferencing, self-hosted, on-premise, video chat, webinar, virtual classroom, zoom alternative, video api, ai]
 sidebar_position: 1
 sidebar_label: Intro
 ---
 
-# Plug-N-Meet: Your Open-Source WebRTC Conferencing Solution
+# plugNmeet: Self-Hosted Open-Source Video Conferencing for Your Website
 
-Welcome to Plug-N-Meet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality, and **AI-powered** meetings directly from your website, with your own branding, and complete ownership of the user experience.
+Welcome to plugNmeet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality, and **AI-powered** meetings directly from your website, with your own branding, and complete ownership of the user experience.
 
-What truly sets Plug-N-Meet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience — from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
+What truly sets plugNmeet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience — from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
 
 :::tip In 30 seconds
 - **What:** Complete meeting room — audio/video, screen share, whiteboard, chat, polls, breakout rooms, recording, live streaming, and AI summaries/translations.

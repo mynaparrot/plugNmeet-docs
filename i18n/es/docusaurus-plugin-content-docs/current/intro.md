@@ -1,21 +1,21 @@
 ---
-title: ¿Qué es plugNMeet? | Plataforma de videoconferencia de código abierto
-description: plugNMeet es la plataforma de videoconferencia autoalojada y de código abierto que se integra en su propio sitio web o aplicación. Descubra qué es, para quién es, cómo funciona y cómo empezar.
+title: plugNmeet – Plataforma de videoconferencia autoalojada de código abierto
+description: plugNmeet es la plataforma de videoconferencia autoalojada y de código abierto para su sitio web o aplicación. Descubra qué es, para quién es, cómo funciona y cómo empezar.
 keywords: [código abierto, webrtc, videoconferencia, autoalojado, on-premise, videochat, seminario web, aula virtual, alternativa a zoom, api de video, ia]
 sidebar_position: 1
 sidebar_label: Introducción
 ---
 
-# Plug-N-Meet: su solución de conferencias WebRTC de código abierto
+# plugNmeet: videoconferencia autoalojada de código abierto para su sitio web
 
-Bienvenido a Plug-N-Meet, la plataforma de videoconferencia pensada para ofrecerle el máximo control, flexibilidad y una **escalabilidad rentable**. Organice reuniones seguras, de alta calidad e **impulsadas por IA** directamente desde su sitio web, con su propia marca y con pleno dominio sobre la experiencia del usuario.
+Bienvenido a plugNmeet, la plataforma de videoconferencia pensada para ofrecerle el máximo control, flexibilidad y una **escalabilidad rentable**. Organice reuniones seguras, de alta calidad e **impulsadas por IA** directamente desde su sitio web, con su propia marca y con pleno dominio sobre la experiencia del usuario.
 
-Lo que realmente distingue a Plug-N-Meet es su **capacidad de personalización sin igual**. La interfaz se controla por completo, lo que le permite adaptar cada detalle: desde la imagen de marca con su logotipo y sus colores, hasta la activación de funciones concretas para crear desde un videochat minimalista hasta un **aula virtual** completa, o incluso un gran evento en directo con **cientos de participantes**.
+Lo que realmente distingue a plugNmeet es su **capacidad de personalización sin igual**. La interfaz se controla por completo, lo que le permite adaptar cada detalle: desde la imagen de marca con su logotipo y sus colores, hasta la activación de funciones concretas para crear desde un videochat minimalista hasta un **aula virtual** completa, o incluso un gran evento en directo con **cientos de participantes**.
 
 :::tip En 30 segundos
 - **Qué es:** Una sala de reuniones completa: audio y video, pantalla compartida, pizarra, chat, encuestas, salas de grupos, grabación, transmisión en directo e IA para resúmenes y transcripciones.
-- **Cómo se controla:** Instale el servidor gratuito en su propio servidor u olvide la infraestructura con [plugNMeet Cloud](https://www.plugnmeet.cloud). En ambos casos la reunión funciona bajo su marca.
-- **Cómo se utiliza:** Plugins sin código para WordPress, Moodle, Joomla y cualquier LMS mediante LTI, o bien la API de plugNMeet + SDK para aplicaciones a medida.
+- **Cómo se controla:** Instale el servidor gratuito en su propio servidor u olvide la infraestructura con [plugNmeet Cloud](https://www.plugnmeet.cloud). En ambos casos la reunión funciona bajo su marca.
+- **Cómo se utiliza:** Plugins sin código para WordPress, Moodle, Joomla y cualquier LMS mediante LTI, o bien la API de plugNmeet + SDK para aplicaciones a medida.
 - **Por qué lo eligen los equipos:** Privacidad desde el diseño con cifrado de extremo a extremo opcional, marca blanca real mediante configuración (sin modificar el código) y una arquitectura ligera y escalable.
 :::
 
@@ -25,22 +25,22 @@ Lo que realmente distingue a Plug-N-Meet es su **capacidad de personalización s
 |---|---|---|
 | **Creador, docente o empresa** — quiere video en su sitio sin programar | Instale un plugin, introduzca la URL del servidor + la clave y cree reuniones desde su panel | [Resumen de la guía de usuario](/docs/user-guide/overview) |
 | **Administrador o responsable de infraestructura** — le importan la privacidad, el coste y el control | Un servidor Go en un único binario + script de instalación automática; sus datos y sus grabaciones le pertenecen | [Guía rápida de instalación](/docs/installation) |
-| **Desarrollador** — quiere integrar, automatizar o publicar aplicaciones móviles | API de plugNMeet, SDK para PHP/JS, webhooks, aplicaciones móviles a medida y personalización total de la interfaz sin quedar atrapado en un iframe | [Guía de desarrollo](/docs/developer-guide/intro) · [Introducción a la API](/docs/api/intro) |
+| **Desarrollador** — quiere integrar, automatizar o publicar aplicaciones móviles | API de plugNmeet, SDK para PHP/JS, webhooks, aplicaciones móviles a medida y personalización total de la interfaz sin quedar atrapado en un iframe | [Guía de desarrollo](/docs/developer-guide/intro) · [Introducción a la API](/docs/api/intro) |
 
 Los caminos se pueden combinar: muchos equipos autoalojan el servidor una vez, mientras el profesorado utiliza el plugin de Moodle y los desarrolladores automatizan las salas mediante la API.
 
-## ¿Qué puede crear con plugNMeet?
+## ¿Qué puede crear con plugNmeet?
 
 El mismo motor da lugar a productos muy distintos; basta con activar lo que necesite:
 
 - **Aula virtual y formación:** Pizarra + bloc de notas compartido + encuestas + salas de grupos + asistencia mediante [analíticas](/docs/others/analytics). Funciona desde Moodle, WordPress o cualquier LMS vía [LTI](/docs/user-guide/lti).
 - **Seminario web y evento en directo:** Sala de espera, controles de moderación, [transmisión en directo por RTMP](/blog/custom-qna-webinar-rtmp-broadcast-api) hacia YouTube/Facebook, [entrada profesional desde OBS](/blog/obs-rtmp-whip-ingress) por RTMP/WHIP y reproducción sincronizada de video para todos.
 - **Telemedicina y consultoría privada:** Acceso solo con navegador, sala bloqueable, permisos por usuario y [cifrado de extremo a extremo](/docs/security-overview) opcional, donde ni siquiera el servidor puede leer el audio ni el chat.
-- **Llamadas para comunidades o marketplaces:** Videochat minimalista integrado en su producto, con su logotipo, sus colores y su dominio. Sin mención alguna a plugNMeet.
+- **Llamadas para comunidades o marketplaces:** Videochat minimalista integrado en su producto, con su logotipo, sus colores y su dominio. Sin mención alguna a plugNmeet.
 - **Reuniones internas e integración con ERP:** Salas creadas por API, inicio de sesión con sus usuarios actuales y grabaciones en MP4 estándar en su propio almacenamiento.
-- **Aplicaciones móviles y de escritorio a medida:** Publique su propia aplicación con marca para iOS, Android, Flutter, React Native o escritorio gracias a la [integración híbrida](/docs/developer-guide/mobile-app-integration): rendimiento multimedia nativo más la interfaz web completa de plugNMeet en un WebView, sin depender de un SDK móvil propietario.
+- **Aplicaciones móviles y de escritorio a medida:** Publique su propia aplicación con marca para iOS, Android, Flutter, React Native o escritorio gracias a la [integración híbrida](/docs/developer-guide/mobile-app-integration): rendimiento multimedia nativo más la interfaz web completa de plugNmeet en un WebView, sin depender de un SDK móvil propietario.
 
-Si viene de BigBlueButton, consulte [Migrar desde BigBlueButton](/docs/tutorials/migration-from-bbb): plugNMeet entiende la API de BBB, de modo que sus aplicaciones actuales siguen funcionando.
+Si viene de BigBlueButton, consulte [Migrar desde BigBlueButton](/docs/tutorials/migration-from-bbb): plugNmeet entiende la API de BBB, de modo que sus aplicaciones actuales siguen funcionando.
 
 ## Capacidades principales de un vistazo
 
@@ -77,18 +77,18 @@ No necesita aprenderlo todo el primer día. Esta es la caja de herramientas comp
 
 Olvide los diagramas complejos. Solo hay tres piezas:
 
-1. **Servidor plugNMeet: el motor.** Ejecuta sus conferencias y gestiona salas, usuarios, grabaciones e integraciones de IA. Puede autoalojarlo o utilizar Cloud.
+1. **Servidor plugNmeet: el motor.** Ejecuta sus conferencias y gestiona salas, usuarios, grabaciones e integraciones de IA. Puede autoalojarlo o utilizar Cloud.
 2. **Interfaz de reunión: la sala.** El cliente web moderno que ven sus usuarios. Marca blanca total mediante configuración: logotipo, colores, funciones activadas o no, sin modificar el código.
 3. **Conexión: el puente.** Enlaza su sitio web con el servidor:
    - **Sin código:** Plugin de WordPress / Joomla / Moodle, o cualquier LMS mediante LTI y compatibilidad con BBB.
-   - **Con código:** La API de plugNMeet + SDK crean salas y generan enlaces de acceso desde su sistema. Para iOS, Android, Flutter, React Native o escritorio, utilice la [integración móvil híbrida](/docs/developer-guide/mobile-app-integration) con los SDK nativos de LiveKit + interfaz WebView.
+   - **Con código:** La API de plugNmeet + SDK crean salas y generan enlaces de acceso desde su sistema. Para iOS, Android, Flutter, React Native o escritorio, utilice la [integración móvil híbrida](/docs/developer-guide/mobile-app-integration) con los SDK nativos de LiveKit + interfaz WebView.
 
 ```
 Usuarios (navegador, 1 clic, sin instalar nada)
   |
 Su sitio/app (WordPress, Moodle, Joomla o código a medida)
   |  crea la sala + el enlace mediante la API
-Servidor plugNMeet (su propio servidor o Cloud)
+Servidor plugNmeet (su propio servidor o Cloud)
   |  aloja audio, video, chat y grabaciones cifrados
 Sala de reunión (su marca, su dominio)
 ```
@@ -106,9 +106,9 @@ Si evalúa la arquitectura, esto es lo esencial:
 - **Redis/NATS-KV (efímero) + MariaDB (historial)**: el estado en directo desaparece al terminar la sesión; solo se conserva lo que usted decide (grabaciones, JSON de analíticas, artefactos de IA).
 - **API-first + compatible con BBB:** `POST /auth/*` con `API-KEY` + `HMAC-SHA256`, SDK para [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php) y [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js), [webhooks](/docs/others/webhooks) y [hooks](/docs/others/hooks) para flujos de trabajo, compatibilidad `/bigbluebutton/` para una migración directa y [aplicaciones móviles híbridas](/docs/developer-guide/mobile-app-integration) con SDK nativos de LiveKit + WebView (sin SDK móvil propietario).
 
-Lecturas a fondo: [Arquitectura interna con LiveKit y NATS](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Despliegue escalable](/docs/developer-guide/scalable-setup), [Por qué creamos plugNMeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
+Lecturas a fondo: [Arquitectura interna con LiveKit y NATS](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Despliegue escalable](/docs/developer-guide/scalable-setup), [Por qué creamos plugNmeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
 
-## Por qué los equipos eligen plugNMeet frente al SaaS o a plataformas pesadas
+## Por qué los equipos eligen plugNmeet frente al SaaS o a plataformas pesadas
 
 - **Sus datos y su marca son suyos:** Su dominio, su logotipo, su almacenamiento. Sin dependencia de terceros ni coste por usuario para reuniones básicas.
 - **Marca blanca sin modificar el código:** Cambie aspecto y funciones por API/configuración y CSS propio. Las actualizaciones no rompen su diseño.
@@ -133,7 +133,7 @@ Guarde al final la URL del servidor, la clave API y el secreto. Lista completa e
 
 **Opción B: Cloud (gestionado, lo más rápido)**
 
-Sin trabajo de servidor. Cree una cuenta en **[plugNMeet Cloud](https://www.plugnmeet.cloud)**, obtenga sus credenciales y empiece con el [plan gratuito](https://www.plugnmeet.cloud/pricing). Mismo modelo de privacidad, más enrutamiento geográfico para audiencias globales.
+Sin trabajo de servidor. Cree una cuenta en **[plugNmeet Cloud](https://www.plugnmeet.cloud)**, obtenga sus credenciales y empiece con el [plan gratuito](https://www.plugnmeet.cloud/pricing). Mismo modelo de privacidad, más enrutamiento geográfico para audiencias globales.
 
 ### Paso 2: conéctelo a su sitio
 
