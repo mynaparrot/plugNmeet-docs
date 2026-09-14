@@ -9,8 +9,8 @@ const TrustItems = [
 ];
 
 const Stats = [
-  { value: '100%', label: 'Código abierto y autoalojable' },
-  { value: 'HD', label: 'Grabación en MP4 portable' },
+  { value: '100%', label: 'Código abierto · Licencia MIT, gratis para siempre' },
+  { value: 'HD', label: 'Videollamadas con grabación MP4' },
   { value: 'IA', label: 'Resúmenes, subtítulos y traducción' },
   { value: '1 binario', label: 'Stack Go + LiveKit + NATS' },
 ];
@@ -34,16 +34,25 @@ const HeroBanner = () => {
             Videoconferencia de código abierto <span className="pnm-gradient-text">para su sitio web — segura, escalable y autoalojada.</span>
           </h1>
           <p className="pnm-lead">
-            Añada videorreuniones WebRTC autoalojadas a su sitio web en minutos.
-            Audio y video HD, pantalla compartida, pizarra, salas de grupos,
-            encuestas, grabación, transmisión en directo RTMP e IA con subtítulos,
-            traducción y resúmenes — 100&nbsp;% marca blanca, sin instalaciones,
-            en sus servidores y con su marca.
+            plugNmeet es un proyecto WebRTC gratuito y de código abierto que
+            usted mismo aloja. Lea la documentación, ejecute un script de
+            instalación y añada reuniones HD, pizarra, salas de grupos,
+            encuestas, grabación, transmisión RTMP e IA opcional a su sitio —
+            sin cuentas, sin instalaciones para los invitados y sin dependencia
+            de proveedores.
           </p>
           <div className="pnm-cta-row">
             <Link className="pnm-btn pnm-btn--light" to="/docs/intro">
-              Comience en minutos →
+              Leer la documentación →
             </Link>
+            <a
+              className="pnm-btn pnm-btn--ghost"
+              href="https://github.com/mynaparrot/plugNmeet-server"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
             <a
               className="pnm-btn pnm-btn--ghost"
               href="https://demo.plugnmeet.com/landing.html"
@@ -86,8 +95,8 @@ const HeroBanner = () => {
           </div>
 
           <div className="pnm-float pnm-float--ai">
-            <strong>✨ Resumen IA listo</strong>
-            <span>Tareas y transcripción en 12 s</span>
+            <strong>✨ IA opcional</strong>
+            <span>Subtítulos y resúmenes</span>
           </div>
           <div className="pnm-float pnm-float--lock">
             <strong>🔒 E2EE activado</strong>

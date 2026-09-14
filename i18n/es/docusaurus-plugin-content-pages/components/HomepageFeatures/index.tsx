@@ -78,7 +78,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🚀',
     title: 'Instalación sencilla y autoalojamiento',
-    text: 'Videoconferencia completa en sus aplicaciones en minutos. Servidor Go de un solo binario: sus datos permanecen en su infraestructura.',
+    text: 'Un script de instalación configura la pila completa en sus servidores con Docker, LiveKit y NATS. Sus datos permanecen en su infraestructura.',
     link: '/docs/installation',
     linkLabel: 'Guía de instalación',
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
@@ -101,7 +101,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '📈',
     title: 'Diseñado para escalar',
-    text: 'Escalado horizontal con Go + LiveKit + NATS. Más usuarios con menos recursos, desplegado como un único binario.',
+    text: 'Escalado horizontal con LiveKit + NATS. Más usuarios con menos recursos, instalado con un solo script.',
     link: '/docs/developer-guide/scalable-setup',
     linkLabel: 'Guía de escalado',
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
@@ -300,9 +300,9 @@ export default function HomepageFeatures(): JSX.Element {
         <div className="container pnm-showcase-grid">
           <div>
             <SectionHead
-              eyebrow="Demostración"
+              eyebrow="Capturas"
               title="Capturas de videoconferencia — véalo en acción"
-              sub="Capturas reales de salas reales — pizarra, chat con IA, subtítulos en vivo, encuestas, chat y cuadrículas de video HD. Pulse cualquier miniatura."
+              sub="Pantallas del cliente en vivo — pizarra, chat con IA, subtítulos en vivo, encuestas, chat y cuadrículas de video HD. Pulse cualquier miniatura."
             />
             <ul className="pnm-checklist">
               <li>✓ Anote PDF y archivos de Office en vivo</li>
@@ -384,7 +384,9 @@ export default function HomepageFeatures(): JSX.Element {
               <p>
                 Reuniones WebRTC autoalojadas y marca blanca con grabación,
                 transmisión e IA que respeta su privacidad. Despliegue en sus
-                servidores o pruebe la nube en segundos.
+                servidores o pruebe la nube en segundos. Si le gusta el
+                proyecto, márquelo en GitHub — nos ayuda a que otros lo
+                encuentren.
               </p>
             </div>
             <div className="pnm-cta-row">

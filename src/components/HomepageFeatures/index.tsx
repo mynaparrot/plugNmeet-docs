@@ -78,7 +78,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🚀',
     title: 'Easy install & self-hosting',
-    text: 'Full video conferencing in your apps in minutes. Single-binary Go server, your data stays on your infrastructure.',
+    text: 'One install script sets up the full stack on your servers with Docker, LiveKit and NATS. Your data stays on your infrastructure.',
     link: '/docs/installation',
     linkLabel: 'Install guide',
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
@@ -101,7 +101,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '📈',
     title: 'Built to scale',
-    text: 'Horizontal scaling with Go + LiveKit + NATS. More users on fewer resources, deployed as one binary.',
+    text: 'Horizontal scaling with LiveKit + NATS. More users on fewer resources, installed with one script.',
     link: '/docs/developer-guide/scalable-setup',
     linkLabel: 'Scaling guide',
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
@@ -303,9 +303,9 @@ export default function HomepageFeatures(): JSX.Element {
         <div className="container pnm-showcase-grid">
           <div>
             <SectionHead
-              eyebrow="Product tour"
+              eyebrow="Screenshots"
               title="Video conferencing screenshots — see it in action"
-              sub="Real screenshots from real rooms — whiteboard, AI chat, live captions, polls, chat and HD video grids. Click any thumbnail."
+              sub="Screens from the live client — whiteboard, AI chat, live captions, polls, chat and HD video grids. Click any thumbnail."
             />
             <ul className="pnm-checklist">
               <li>✓ Annotate PDFs & Office files live</li>
@@ -390,7 +390,8 @@ export default function HomepageFeatures(): JSX.Element {
               <p>
                 Self-hosted, white-label WebRTC meetings with recording,
                 streaming and privacy-respecting AI. Deploy on your servers or
-                test the cloud in seconds.
+                test the cloud in seconds. If you like the project, star us on
+                GitHub — it helps others find it.
               </p>
             </div>
             <div className="pnm-cta-row">

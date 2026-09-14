@@ -9,8 +9,8 @@ const TrustItems = [
 ];
 
 const Stats = [
-  { value: '100%', label: 'Open source & self-hostable' },
-  { value: 'HD', label: 'Recording as portable MP4' },
+  { value: '100%', label: 'Open source · MIT licensed, free forever' },
+  { value: 'HD', label: 'Video calls with MP4 recording' },
   { value: 'AI', label: 'Summaries, captions & translation' },
   { value: '1-binary', label: 'Go + LiveKit + NATS stack' },
 ];
@@ -34,16 +34,24 @@ const HeroBanner = () => {
             Open Source Video Conferencing <span className="pnm-gradient-text">for Your Website — Secure, Scalable &amp; Self-Hosted.</span>
           </h1>
           <p className="pnm-lead">
-            Add self-hosted WebRTC video meetings to your website in minutes. HD
-            audio/video, screen sharing, whiteboard, breakout rooms, polls,
-            recording, RTMP live streaming and AI captions, translation &amp;
-            summaries — 100% white-label, no installs, on your servers, under
-            your brand.
+            plugNmeet is a free, open-source WebRTC project you host yourself.
+            Read the docs, run one install script, and add HD meetings,
+            whiteboard, breakout rooms, polls, recording, RTMP streaming and
+            optional AI to your site — no accounts, no installs for guests, no
+            vendor lock-in.
           </p>
           <div className="pnm-cta-row">
             <Link className="pnm-btn pnm-btn--light" to="/docs/intro">
-              Get started in minutes →
+              Read the docs →
             </Link>
+            <a
+              className="pnm-btn pnm-btn--ghost"
+              href="https://github.com/mynaparrot/plugNmeet-server"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub
+            </a>
             <a
               className="pnm-btn pnm-btn--ghost"
               href="https://demo.plugnmeet.com/landing.html"
@@ -86,8 +94,8 @@ const HeroBanner = () => {
           </div>
 
           <div className="pnm-float pnm-float--ai">
-            <strong>✨ AI summary ready</strong>
-            <span>Action items + transcript in 12s</span>
+            <strong>✨ Optional AI</strong>
+            <span>Captions & summaries</span>
           </div>
           <div className="pnm-float pnm-float--lock">
             <strong>🔒 E2EE on</strong>
