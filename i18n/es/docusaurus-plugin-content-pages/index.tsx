@@ -24,7 +24,7 @@ const jsonLd = {
 export default function Home() {
   return (
     <Layout
-    title="plugNmeet: Software de Videoconferencia de Código Abierto para Su Sitio Web"
+    title="plugNmeet: Sistema de Videoconferencia Open Source"
     description="Videoconferencia WebRTC autoalojada y marca blanca: reuniones HD con pizarra, salas de grupos, grabación, transmisión RTMP, subtítulos y traducción con IA. Sin instalaciones.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
