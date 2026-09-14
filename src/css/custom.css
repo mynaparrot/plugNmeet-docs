@@ -12,6 +12,7 @@
   --pnm-ink: #0b1b2b;
   --pnm-muted: #5b6b7c;
   --pnm-bg: #f4f8fc;
+  --pnm-bg-2: #e9f3fc;
   --pnm-card: #ffffff;
   --pnm-border: #e2ecf4;
   --pnm-radius: 18px;
@@ -39,6 +40,7 @@
   --pnm-card: #0f2233;
   --pnm-border: #1d3a52;
   --pnm-bg: #081521;
+  --pnm-bg-2: #0c1f31;
   --pnm-ink: #eaf3fa;
   --pnm-muted: #9db2c4;
 }
@@ -174,8 +176,7 @@
 .pnm-stat dd { margin: 2px 0 0; font-size: 13.5px; color: rgba(255,255,255,0.82); }
 
 /* ============ STRIP / SECTIONS ============ */
-.pnm-strip { background: #fff; border-bottom: 1px solid var(--pnm-border); padding: 18px 0; }
-[data-theme='dark'] .pnm-strip { background: #0a1a29; }
+.pnm-strip { background: var(--pnm-bg); border-bottom: 1px solid var(--pnm-border); padding: 18px 0; }
 .pnm-strip-inner { display: flex; align-items: center; gap: 20px; }
 .pnm-strip-label { font-size: 12px; font-weight: 800; letter-spacing: 0.08em; color: var(--pnm-muted); white-space: nowrap; }
 .pnm-pills { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 2px; flex: 1; scrollbar-width: thin; }
@@ -189,12 +190,13 @@
 .pnm-pill strong { color: var(--pnm-ink); font-size: 14px; }
 .pnm-pill span { color: var(--pnm-muted); font-size: 12.5px; }
 
-.pnm-section { padding: 72px 0; background: var(--pnm-bg); }
+.pnm-section { padding: 72px 0; background: var(--pnm-bg); position: relative; }
 .pnm-section .container { background: transparent; }
-main .pnm-section:nth-of-type(odd) { background: #fff; }
-[data-theme='dark'] main .pnm-section:nth-of-type(odd) { background: #0a1a29; }
-.pnm-section--alt { background: #fff !important; border-top: 1px solid var(--pnm-border); border-bottom: 1px solid var(--pnm-border); }
-[data-theme='dark'] .pnm-section--alt { background: #0a1a29 !important; }
+main .pnm-section:nth-of-type(odd) { background: var(--pnm-bg); }
+.pnm-section--alt {
+  background: var(--pnm-bg) !important;
+  border-top: 1px solid var(--pnm-border); border-bottom: 1px solid var(--pnm-border);
+}
 .pnm-section--navy { background: linear-gradient(135deg, #002845, #004d90 60%, #0b86d6) !important; color: #fff; }
 .pnm-section--navy h2, .pnm-section--navy h3 { color: #fff !important; }
 .pnm-section--navy .pnm-eyebrow { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.3); color: #fff; }
@@ -324,6 +326,128 @@ section.features-section.slider-section { display: none; }
 /* footer */
 .footer--dark { --ifm-footer-background-color: #0a1725; --ifm-footer-color: #a2a2a2; --ifm-footer-link-color: #a2a2a2; --ifm-footer-title-color: var(--ifm-color-white); }
 .footer__link-item:hover { color: #ffffff; }
+
+/* ============ UNIFIED DOCS / BLOG TONE (same navy→sky brand as homepage) ============ */
+.navbar { border-bottom: 1px solid var(--pnm-border); box-shadow: 0 6px 24px -14px rgba(0, 77, 144, 0.25); }
+.navbar__link { font-weight: 600; }
+.navbar__link:hover { color: var(--pnm-sky); }
+.navbar__link--active { color: var(--pnm-navy); }
+[data-theme='dark'] .navbar__link--active { color: var(--pnm-sky); }
+
+
+.markdown h1, .markdown h2, .markdown h3 { color: var(--pnm-ink); letter-spacing: -0.01em; }
+.markdown h1:first-child {
+  padding-bottom: 0.45rem; border-bottom: 3px solid transparent;
+  border-image: linear-gradient(90deg, var(--pnm-navy), var(--pnm-sky)) 1;
+}
+.markdown h2 { margin-top: 2.2rem; }
+.markdown a {
+  color: var(--pnm-navy); font-weight: 500;
+  text-decoration: underline; text-decoration-color: rgba(36, 174, 247, 0.55);
+  text-underline-offset: 2px;
+}
+[data-theme='dark'] .markdown a { color: var(--pnm-sky); }
+.markdown a:hover { text-decoration-color: currentColor; }
+.markdown :not(pre) > code {
+  background: var(--pnm-sky-soft); border: 1px solid #cdeafa;
+  color: var(--pnm-navy-dark); border-radius: 6px; padding: 1px 6px;
+}
+[data-theme='dark'] .markdown :not(pre) > code {
+  background: rgba(36, 174, 247, 0.12); border-color: rgba(36, 174, 247, 0.35);
+  color: #b8e4fc;
+}
+.markdown table thead tr { background: linear-gradient(135deg, #002845, #004d90 60%, #0b86d6); }
+.markdown table thead th { background: transparent; color: #fff; border-color: transparent; }
+.markdown table tr:nth-child(2n) { background-color: rgba(36, 174, 247, 0.07); }
+.markdown table tr:hover td { background-color: rgba(36, 174, 247, 0.1); }
+
+.alert { border-radius: 14px; border: 1px solid var(--pnm-border); box-shadow: var(--pnm-shadow-sm); }
+.alert.alert--info, .alert.alert--secondary { border-left: 5px solid var(--pnm-sky); }
+.alert.alert--warning { border-left: 5px solid #f5a623; }
+.alert.alert--danger { border-left: 5px solid #ff2d55; }
+/* Brand tip callout (e.g. "In 30 seconds" on docs/intro): navy→sky identity
+   instead of default green, in both themes. */
+.alert.alert--success {
+  background: linear-gradient(135deg, #fff, var(--pnm-sky-soft));
+  border: 1px solid #bfe4fa;
+  border-left: 5px solid var(--pnm-sky);
+}
+.alert.alert--success [class*="admonitionHeading"] { color: var(--pnm-navy); }
+.alert.alert--success [class*="admonitionIcon"] svg { fill: var(--pnm-navy); }
+[data-theme='dark'] .alert.alert--success {
+  background: linear-gradient(135deg, #0f2233, #12365a);
+  border-color: #1d4a70;
+  border-left-color: var(--pnm-sky);
+}
+[data-theme='dark'] .alert.alert--success [class*="admonitionHeading"] { color: #fff; }
+[data-theme='dark'] .alert.alert--success [class*="admonitionIcon"] svg { fill: var(--pnm-sky); }
+
+div[class*="codeBlockContainer"] {
+  border: 1px solid var(--pnm-border); border-radius: 14px;
+  box-shadow: var(--pnm-shadow-sm); overflow: hidden;
+}
+
+/* Docs sidebar collapse/expand (hideable) in brand tone */
+button[class*="collapseSidebarButton"] {
+  border-color: var(--pnm-border);
+  color: var(--pnm-navy);
+}
+button[class*="collapseSidebarButton"]:hover {
+  border-color: var(--pnm-sky);
+  background: var(--pnm-sky-soft);
+  color: var(--pnm-navy-dark);
+}
+[data-theme='dark'] button[class*="collapseSidebarButton"] { color: var(--pnm-sky); }
+[data-theme='dark'] button[class*="collapseSidebarButton"]:hover {
+  background: rgba(36, 174, 247, 0.12);
+  color: #fff;
+}
+button[class*="expandSidebarButton"] {
+  background: var(--pnm-card);
+  border: 1px solid var(--pnm-border);
+  color: var(--pnm-navy);
+}
+button[class*="expandSidebarButton"]:hover {
+  border-color: var(--pnm-sky);
+  background: var(--pnm-sky-soft);
+}
+
+.menu__link { border-radius: 8px; }
+.menu__link:hover { background: rgba(36, 174, 247, 0.1); }
+.menu__link--active {
+  background: var(--pnm-sky-soft); color: var(--pnm-navy) !important;
+  font-weight: 700; border-left: 3px solid var(--pnm-sky); border-radius: 0 8px 8px 0;
+}
+[data-theme='dark'] .menu__link--active {
+  background: rgba(36, 174, 247, 0.12); color: #fff !important;
+}
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--pnm-navy); font-weight: 700;
+  background: var(--pnm-sky-soft); border-radius: 8px;
+}
+[data-theme='dark'] .breadcrumbs__item--active .breadcrumbs__link { color: #fff; background: rgba(36, 174, 247, 0.12); }
+
+.pagination-nav__link {
+  border: 1px solid var(--pnm-border); border-radius: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.pagination-nav__link:hover { border-color: var(--pnm-sky); box-shadow: var(--pnm-shadow-sm); transform: translateY(-2px); }
+.pagination-nav__sublabel { color: var(--pnm-sky); font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; font-size: 11px; }
+
+.table-of-contents__link--active { color: var(--pnm-navy); font-weight: 700; }
+[data-theme='dark'] .table-of-contents__link--active { color: var(--pnm-sky); }
+.table-of-contents__link:hover { color: var(--pnm-sky); }
+
+.card { border: 1px solid var(--pnm-border); border-radius: var(--pnm-radius); overflow: hidden; }
+a.card:hover { border-color: var(--pnm-sky); box-shadow: var(--pnm-shadow); }
+.tag { border-radius: 999px; font-weight: 600; }
+
+/* ============ BLOG: Recent posts hidden by default, toggle above content ============ */
+/* Let the default BlogSidebar keep its own column width/typography — only
+   style the toggle button. The extra wrapper + card styling was squeezing
+   the aside into a narrow distorted column. */
+.pnm-blog-sidebar-toggle { border-color: var(--pnm-border); font-weight: 700; margin-bottom: 18px; }
+.pnm-blog-sidebar-toggle:hover { border-color: var(--pnm-sky); }
 
 /* responsive */
 @media screen and (max-width: 1023px) {
