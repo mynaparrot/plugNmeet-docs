@@ -5,39 +5,54 @@ authors: [jibon]
 tags: [tutorial, how-to, ai-meeting-assistant, ai-text-chat, ai-meeting-notes, meeting-summary-ai, ai-meeting-summarizer, meeting-assistant-ai, developer]
 ---
 
-In today's competitive landscape, a basic video call is no longer enough. Users expect intelligent, accessible, and productive experiences. What if you could offer an **AI meeting assistant** that provides live translation, generates **AI meeting notes**, and can even answer questions directly in the chat?
+In today's competitive landscape, a basic video call is no longer enough. Users expect intelligent, accessible, and productive experiences. What if you could offer an **AI meeting assistant** that provides live captions and translation, generates **AI meeting notes**, and can even answer questions directly in the chat?
 
-With Plug-N-Meet, you can. This isn't a complex, multi-month integration project. It's a 15-minute configuration change.
+With Plug-N-Meet, you can. This isn't a complex, multi-month integration project. It's a 15-minute configuration change — and you are never locked into a single AI vendor.
 
-This guide will show you how to add world-class **AI meeting assistant features**—powered by **Microsoft Azure** for translation and **Google Gemini** for your **meeting summary AI** and live chat assistant—to your Plug-N-Meet integration.
+This guide walks you through the full picture: which **AI meeting assistant features** plugNmeet offers, which providers can power each one (Azure, Google Gemini, OpenAI, or any OpenAI-compatible API including self-hosted LLMs), and the exact room setup that is identical no matter which provider you pick.
 
 <!--truncate-->
 
 ---
 
-## The Goal
+## What you get: the AI feature set
 
-By the end of this guide, your **meeting assistant AI** will be able to:
-1.  Provide live, real-time captions and translation.
-2.  Answer questions and provide help through a dedicated, private chat channel.
-3.  Generate a full **meeting summary AI** with key decisions and action items after the session ends.
+One configuration unlocks three capabilities in every room:
+
+1.  **Live captions & translation** — real-time speech-to-text with per-user translated captions, plus translated chat messages.
+2.  **Interactive AI chat assistant** — a private "AI Assistant" tab where each user can ask questions about the meeting without cluttering the main chat.
+3.  **Automated meeting notes** — a post-meeting **meeting summary AI** with key decisions and action items, retrievable via the [Artifacts API](/docs/api/artifact/fetch).
+
+All three are controlled per room through the same `insights_features` metadata (Step 2 below), regardless of provider.
+
+## Which AI provider should you use?
+
+plugNmeet's `insights` framework is provider-agnostic. You define provider accounts once in `config.yaml`, then assign them to services. Mix and match freely — for example, Azure for transcription with OpenAI for chat and summaries.
+
+| Provider | Good for | Supports |
+|---|---|---|
+| **Microsoft Azure** | Proven real-time transcription & translation | Transcription, translation |
+| **Google Gemini** | Strong chat answers & cost-effective summaries | AI text chat, meeting summarization |
+| **OpenAI** | One vendor for everything, highest model quality | Transcription, translation, TTS/spoken translation, chat, summarization |
+| **OpenAI-compatible APIs** (Groq, Together AI, Anyscale, Azure OpenAI) | Cost, latency, or compliance tuning without changing your setup | Same services as OpenAI |
+| **Self-hosted LLMs** (Ollama, LocalAI) | Maximum privacy — AI runs on your own infrastructure | Same services as OpenAI |
+
+This guide uses **Azure + Google Gemini** as the concrete example because it pairs the most mature real-time transcription with cheap, high-quality summaries. If you'd rather go all-in on OpenAI or a self-hosted LLM, follow the provider setup in [plugNmeet OpenAI Integration: Self-Hosted AI for Video Conferencing](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet), then return here — **Steps 2 and 3 below are identical for every provider**.
 
 ## Prerequisites
 
 *   A running Plug-N-Meet server. If you don't have one, follow our [Installation Guide](/docs/installation).
-*   API keys from your chosen AI providers:
-    *   **For Live Translation:** An API Key and Region from [Microsoft Azure's Cognitive Services](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text).
-    *   **For AI Chat & Summaries:** An API Key from [Google AI Studio](https://aistudio.google.com/app/apikey) for the Gemini API.
+*   API keys for the providers you choose:
+    *   **This guide (Azure + Gemini):** an API key and region from [Microsoft Azure Cognitive Services](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text), plus an API key from [Google AI Studio](https://aistudio.google.com/app/apikey).
+    *   **OpenAI route instead:** an OpenAI (or compatible) API key and endpoint — see the [OpenAI integration guide](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet) for the provider block, including self-hosted Ollama/LocalAI.
 
 ---
 
 ### Step 1: Configure the AI Providers
 
-The first step is to tell your Plug-N-Meet server how to connect to the AI services. Open your `config.yaml` file on your server and find the `insights` section.
+Open `config.yaml` on your server and find the `insights` section. First you define your `providers` (your accounts), then you assign those providers to specific `services`.
 
-The new configuration is highly flexible. First, you define your `providers` (your accounts), and then you assign those providers to specific `services`.
-
-Here is a minimal configuration to enable all three features:
+Here is the Azure + Gemini setup used in this guide:
 
 ```yaml
 insights:
@@ -83,11 +98,15 @@ Save the file and **restart your PlugNmeet server** for the changes to take effe
 sudo systemctl restart plugnmeet
 ```
 
+:::tip Using OpenAI or a self-hosted LLM instead?
+Keep the same structure — just add an `openai` provider with your `api_key` and `endpoint` (OpenAI, Groq, Together AI, Azure OpenAI, or `http://localhost:11434/v1` for Ollama), then point any service at `provider: "openai"`. OpenAI additionally unlocks **spoken translations via TTS** and live transcription over WebSocket. Full service-by-service examples are in the [OpenAI integration guide](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet).
+:::
+
 ---
 
 ### Step 2: Enable AI Features in Your Room
 
-Now that the server is configured, you can enable these features on a per-room basis. When you make your `createRoom` API call, add the `insights_features` block to your metadata.
+Now that the server is configured, you can enable these features on a per-room basis. When you make your `createRoom` API call, add the `insights_features` block to your metadata. This block is **the same for every provider**:
 
 ```json
 {
@@ -132,6 +151,6 @@ When a user joins a room created with these settings, the AI features are availa
 
 ## Conclusion
 
-In just a few minutes, you've transformed a standard video call into an intelligent, interactive, and globally inclusive meeting experience. By leveraging Plug-N-Meet's provider-agnostic AI layer, you can easily add a powerful **meeting assistant AI** that gives you a significant edge, all while maintaining full control over your self-hosted platform.
+In just a few minutes, you've transformed a standard video call into an intelligent, interactive, and globally inclusive meeting experience. You now know the full AI feature set, which providers can power each part — Azure, Google Gemini, OpenAI, OpenAI-compatible clouds, or fully self-hosted LLMs — and the one room configuration that works with all of them.
 
 The real power of this platform is that your data isn't trapped. After the meeting ends, you can use the **[Artifacts API](/docs/api/artifact/fetch)** to programmatically retrieve the summary and transcription, allowing you to build powerful integrations with your new **AI meeting notes**.
