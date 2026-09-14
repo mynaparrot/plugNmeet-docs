@@ -1,131 +1,116 @@
 import React from 'react';
 import Link from '@docusaurus/Link';
-import { Carousel } from 'react-responsive-carousel';
-
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import Banner2 from '../../static/img/slider/banner.webp';
-import DesktopBack from '../../static/img/slider/DesktopMonitorWithoutScreen.png';
-import Whiteboard1 from '../../static/img/slider/01-whiteboard-1.jpg';
-import Whiteboard2 from '../../static/img/slider/02-whiteboard2.png';
-import SharedNotepad from '../../static/img/slider/03-SharedNotepad2.jpg';
-import AiChatbot from '../../static/img/slider/04-AiChatbot2.jpg';
 import CamGrid from '../../static/img/slider/05-24CamGrid.jpg';
-import CamModal from '../../static/img/slider/06-cam-overlay.png';
-import Notifications from '../../static/img/slider/07-notifications2.jpg';
-import ScreenSharing from '../../static/img/slider/08-ScreenSharing.jpg';
-import Participants from '../../static/img/slider/09-Participants.jpg';
-import ChatRoom from '../../static/img/slider/10-ChatRoom.jpg';
-import TranscriptionTranslation from '../../static/img/slider/11-TranscriptionTranslation2.jpg';
-import Poll from '../../static/img/slider/12-Poll2.jpg';
 
-const SlideItems = [
-  {
-    imgSrc: Whiteboard1,
-    altText: 'plugNmeet interactive whiteboard feature',
-  },
-  {
-    imgSrc: Whiteboard2,
-    altText: 'plugNmeet interactive whiteboard feature with files upload',
-  },
-  {
-    imgSrc: SharedNotepad,
-    altText: 'plugNmeet shared notepad for collaborative notes',
-  },
-  {
-    imgSrc: AiChatbot,
-    altText: 'plugNmeet AI Chatbot integration in video conference',
-  },
-  {
-    imgSrc: CamGrid,
-    altText: 'plugNmeet 24 camera grid view in video conference',
-  },
-  {
-    imgSrc: CamModal,
-    altText: 'plugNmeet Choose Camera Background',
-  },
-  {
-    imgSrc: Notifications,
-    altText: 'plugNmeet Notifications Panel',
-  },
-  {
-    imgSrc: ScreenSharing,
-    altText: 'plugNmeet video conference with Screen Sharing feature',
-  },
-  {
-    imgSrc: Participants,
-    altText: 'plugNmeet video conference with multiple participants',
-  },
-  {
-    imgSrc: ChatRoom,
-    altText: 'plugNmeet video conference with Chat Room feature',
-  },
-  {
-    imgSrc: TranscriptionTranslation,
-    altText:
-      'plugNmeet video conference with Transcription and Translation feature',
-  },
-  {
-    imgSrc: Poll,
-    altText: 'plugNmeet video conference with Poll feature',
-  },
+const TrustItems = [
+  'Self-hosted — your data stays yours',
+  'True white-label, no code forks',
+  'Optional end-to-end encryption',
+];
+
+const Stats = [
+  { value: '100%', label: 'Open source & self-hostable' },
+  { value: 'HD', label: 'Recording as portable MP4' },
+  { value: 'AI', label: 'Summaries, captions & translation' },
+  { value: '1-binary', label: 'Go + LiveKit + NATS stack' },
 ];
 
 const HeroBanner = () => {
   return (
-    <>
-      <div className="landing-banner">
-        <div className="text-wrap">
-          <div className="container">
-            <div className="content">
-              <h1>
-                Open Source WebRTC Conferencing: Secure, Scalable, Customizable, and Self-Hosted.
-              </h1>
-              <h2>
-                Integrate a powerful, AI-enhanced video meeting solution into
-                your website with ease.
-              </h2>
-              <Link
-                className="button button--secondary button--lg"
-                to="/docs/intro"
-              >
-                Get Started
-              </Link>
+    <header className="pnm-hero">
+      <div className="pnm-hero-bg" aria-hidden="true">
+        <span className="pnm-orb pnm-orb--sky" />
+        <span className="pnm-orb pnm-orb--navy" />
+        <span className="pnm-grid" />
+      </div>
+
+      <div className="container pnm-hero-grid">
+        <div className="pnm-hero-copy">
+          <div className="pnm-badge">
+            <span className="pnm-badge-dot" />
+            Open source · Self-hosted · AI-powered
+          </div>
+          <h1>
+            Open Source Video Conferencing <span className="pnm-gradient-text">for Your Website — Secure, Scalable &amp; Self-Hosted.</span>
+          </h1>
+          <p className="pnm-lead">
+            Add self-hosted WebRTC video meetings to your website in minutes. HD
+            audio/video, screen sharing, whiteboard, breakout rooms, polls,
+            recording, RTMP live streaming and AI captions, translation &amp;
+            summaries — 100% white-label, no installs, on your servers, under
+            your brand.
+          </p>
+          <div className="pnm-cta-row">
+            <Link className="pnm-btn pnm-btn--light" to="/docs/intro">
+              Get started in minutes →
+            </Link>
+            <a
+              className="pnm-btn pnm-btn--ghost"
+              href="https://demo.plugnmeet.com/landing.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ▶ Live demo
+            </a>
+          </div>
+          <ul className="pnm-trust">
+            {TrustItems.map((t) => (
+              <li key={t}>
+                <span className="pnm-check">✓</span> {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="pnm-hero-visual">
+          <div className="pnm-browser">
+            <div className="pnm-browser-bar">
+              <span className="pnm-dots">
+                <i />
+                <i />
+                <i />
+              </span>
+              <span className="pnm-url">your-domain.com/meeting</span>
+              <span className="pnm-live">
+                <span className="pnm-live-dot" /> LIVE
+              </span>
+            </div>
+            <img src={CamGrid} alt="Self-hosted open-source video conferencing — HD meeting grid in plugNmeet" fetchPriority="high" />
+            <div className="pnm-browser-footer">
+              <span>🎙</span>
+              <span>🎥</span>
+              <span>🖥</span>
+              <span>💬</span>
+              <span className="pnm-end">End</span>
             </div>
           </div>
-        </div>
-        <div className="banner">
-          <img
-            src={Banner2}
-            alt="plugNmeet video conferencing platform banner"
-          />
-        </div>
-      </div>
-      <section className="features-section slider-section">
-        <div className="container">
-          <h2 className="headline">Explore Key Features</h2>
-          <div className="slider-wrapper">
-            <img
-              className="desktop-back"
-              src={DesktopBack}
-              alt="Desktop monitor frame"
-            />
-            <Carousel
-              autoPlay
-              infiniteLoop
-              showStatus={false}
-              showIndicators={false}
-              showThumbs={false}
-            >
-              {SlideItems.map((props, idx) => (
-                <div className="desktop" key={idx}>
-                  <img src={props.imgSrc} alt={props.altText} />
-                </div>
-              ))}
-            </Carousel>
+
+          <div className="pnm-float pnm-float--ai">
+            <strong>✨ AI summary ready</strong>
+            <span>Action items + transcript in 12s</span>
+          </div>
+          <div className="pnm-float pnm-float--lock">
+            <strong>🔒 E2EE on</strong>
+            <span>Even the server can&apos;t listen</span>
+          </div>
+          <div className="pnm-float pnm-float--rec">
+            <span className="pnm-rec-dot" /> <strong>REC 1080p</strong>
+            <span>MP4 saved to your storage</span>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+
+      <div className="container">
+        <dl className="pnm-stats">
+          {Stats.map((s) => (
+            <div key={s.label} className="pnm-stat">
+              <dt>{s.value}</dt>
+              <dd>{s.label}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </header>
   );
 };
 
