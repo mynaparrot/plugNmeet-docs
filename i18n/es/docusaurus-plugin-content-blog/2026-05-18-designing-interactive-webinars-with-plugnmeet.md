@@ -2,12 +2,12 @@
 title: "Más allá de la Presentación: Diseñando Webinars Interactivos con Plug-N-Meet"
 slug: designing-interactive-webinars-with-plugnmeet
 authors: [bob, simon]
-tags: [webinar, interactive-webinar, engagement, polling, breakout-rooms, whiteboard, q&a, moderator, features, open-source]
+tags: [webinario, webinario interactivo, participación, encuestas, salas de grupos, pizarra, q&a, moderador, funciones, código abierto]
 ---
 
 Todos hemos estado en un webinar que se siente menos como un evento en vivo y más como una presentación de diapositivas glorificada. El presentador habla *a* la audiencia, el chat pasa desapercibido y el compromiso disminuye. En el mundo digital actual, simplemente transmitir información no es suficiente. Su audiencia espera participar, contribuir y sentirse parte activa de la experiencia.
 
-En Plug-N-Meet, creemos que los webinars deben ser dinámicos, atractivos y verdaderamente interactivos. No se trata de reemplazar su presentación, sino de mejorarla con herramientas que fomenten la colaboración y la retroalimentación en tiempo real. Esta guía le mostrará cómo aprovechar las potentes funciones de Plug-N-Meet para diseñar webinars que cautiven a su audiencia y ofrezcan resultados medibles.
+En Plug-N-Meet, creemos que los webinars deben ser dinámicos, atractivos y verdaderamente interactivos. No se trata de reemplazar su presentación, sino de mejorarla con herramientas que fomenten la colaboración y los comentarios en tiempo real. Esta guía le mostrará cómo aprovechar las potentes funciones de Plug-N-Meet para diseñar webinars que cautiven a su audiencia y ofrezcan resultados medibles.
 
 <!--truncate-->
 
@@ -28,9 +28,9 @@ Plug-N-Meet le permite liberarse de este molde y crear webinars memorables e imp
 
 Nuestra plataforma está repleta de funciones diseñadas para convertir a su audiencia en participantes activos. Así es como puede utilizarlas:
 
-#### 1. Encuestas en Vivo: Retroalimentación Instantánea y Toma de Decisiones
+#### 1. Encuestas en Vivo: Comentarios Instantáneos y Toma de Decisiones
 
-Olvídese de intentar contar respuestas en un chat caótico. Las Encuestas en Vivo le permiten hacer preguntas estructuradas y obtener retroalimentación inmediata y cuantificable de toda su audiencia.
+Olvídese de intentar contar respuestas en un chat caótico. Las Encuestas en Vivo le permiten hacer preguntas estructuradas y obtener comentarios inmediatos y cuantificables de toda su audiencia.
 
 *   **Cómo usarlo:** Lance cuestionarios rápidos para verificar la comprensión, evaluar opiniones sobre una nueva característica de producto o incluso tomar decisiones grupales. Puede ver los resultados en tiempo real y publicarlos para su discusión. Para más ideas, lea nuestra publicación sobre [Cómo Involucrar a la Audiencia con Encuestas en Vivo](/blog/engaging-audience-with-live-polls).
 *   **Impacto:** Aumenta el compromiso, proporciona datos valiosos y mantiene a la audiencia involucrada en el contenido.
@@ -79,11 +79,11 @@ Así es como podría estructurar un webinar interactivo de 60 minutos utilizando
 *   **20-40 Minutos: Actividad Colaborativa (Salas de Grupo con Pizarra/Bloc de Notas)**
     *   Introduzca un problema o tema de discusión. Divida a su audiencia en pequeños grupos utilizando las Salas de Grupo. Indíqueles que utilicen sus pizarras privadas para la lluvia de ideas o los blocs de notas compartidos para esbozar soluciones. Transmita un mensaje de "¡Quedan 5 minutos!" antes de traerlos de vuelta.
 
-*   **40-50 Minutos: Resumen y Preguntas y Respuestas (Encuestas en Vivo y Levantar la Mano)**
+*   **40-50 Minutos: Resumen, Preguntas y Respuestas (Encuestas en Vivo y Levantar la Mano)**
     *   Una vez de vuelta en la sala principal, lance otra encuesta: "¿Qué solución encontró su grupo más prometedora?" Publique los resultados. Luego, abra el turno de preguntas utilizando la función "Levantar la Mano", reactivando el micrófono de los participantes uno por uno.
 
-*   **50-60 Minutos: Contenido Dinámico y Llamada a la Acción (Incrustar Contenido Web)**
-    *   En lugar de simplemente decir a la gente adónde ir, utilice "Compartir Enlace Externo" para mostrar su sitio web, un formulario de registro o un recurso relevante directamente en la reunión. Concluya con una encuesta final para obtener retroalimentación general.
+*   **50-60 Minutos: Contenido Dinámico y Llamada a la Acción (Embeber Contenido Web)**
+    *   En lugar de simplemente decir a la gente adónde ir, utilice "Compartir Enlace Externo" para mostrar su sitio web, un formulario de registro o un recurso relevante directamente en la reunión. Concluya con una encuesta final para obtener la opinión general.
 
 ---
 
@@ -91,7 +91,7 @@ Así es como podría estructurar un webinar interactivo de 60 minutos utilizando
 
 Ir más allá de la presentación pasiva transforma sus webinars de transmisiones olvidables en eventos memorables y de alto impacto. Con Plug-N-Meet, usted tiene un completo kit de herramientas de código abierto para diseñar experiencias verdaderamente interactivas que involucren a su audiencia, fomenten la colaboración y ofrezcan un valor real.
 
-Deje de hablar *a* su audiencia. Empiece a trabajar *con* ella.
+En lugar de solo hablar a su audiencia, trabaje junto a ella.
 
 ---
 **¿Listo para diseñar su próximo webinar interactivo?**
