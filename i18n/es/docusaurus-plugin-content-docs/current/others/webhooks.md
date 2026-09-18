@@ -14,7 +14,7 @@ Plug-N-Meet puede notificar a su aplicación sobre diversos eventos enviando sol
 
 Las solicitudes de webhook se envían como solicitudes HTTP POST a las URLs que haya configurado, ya sea en el archivo `config.yml` del servidor o durante la creación de la sala. Cada evento de webhook se codifica como JSON y se incluye en el cuerpo de la solicitud.
 
-La solicitud tendrá la cabecera `Content-Type` establecida en `application/webhook+json`. Asegúrese de que su servidor web esté configurado para aceptar cargas útiles con este tipo de contenido.
+La solicitud tendrá la cabecera `Content-Type` establecida en `application/json`. Asegúrese de que su servidor web esté configurado para aceptar cargas útiles con este tipo de contenido.
 
 Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de plugNmeet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
