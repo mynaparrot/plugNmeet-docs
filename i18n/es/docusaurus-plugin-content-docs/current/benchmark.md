@@ -8,6 +8,8 @@ sidebar_position: 4
 
 # ¿Cuántas personas puede gestionar plugNmeet? Lo hemos medido.
 
+> Probado en septiembre de 2026 · servidor plugNmeet v2.5.1 · cliente v2.5.2 · [loadtester `09b2db0`](https://github.com/mynaparrot/plugnmeet-loadtester/commit/09b2db0238924d828b56d70b4dc2004b757388fa)
+
 Solemos decir que plugNmeet es ligero y escalable. Afirmarlo es fácil, demostrarlo es más difícil — por eso lo hemos medido.
 
 Llenamos salas reales con participantes simulados que se comportan como usuarios de navegador: entran, chatean, dibujan en la pizarra, levantan la mano, reaccionan y envían latidos (heartbeats). Después observamos qué ocurrió en tres escenarios que realmente le interesan:
