@@ -27,7 +27,7 @@ Para un rendimiento óptimo, especialmente si se graba con frecuencia, recomenda
 
 #### Fase 2: Escalar Verticalmente su Servidor Principal
 
-Si no realiza grabaciones de forma intensiva pero sigue experimentando problemas de rendimiento, el siguiente paso es **escalar verticalmente** su servidor único. Esto simplemente significa añadir más núcleos de CPU y RAM. Un único servidor bien aprovisionado puede gestionar cómodamente a **cientos de usuarios concurrentes**.
+Si no realiza grabaciones de forma intensiva pero sigue experimentando problemas de rendimiento, el siguiente paso es **escalar verticalmente** su servidor único. Esto simplemente significa añadir más núcleos de CPU y RAM. Un único servidor bien aprovisionado puede gestionar cómodamente a **cientos de usuarios concurrentes** — véanse nuestros [Benchmarks](/docs/benchmark) medidos (300–500 en una sala sin fallos con 4 vCore / 16 GB, límite ~900).
 
 #### Fase 3: Configuraciones Distribuidas Avanzadas
 
@@ -206,4 +206,4 @@ livekit_info:
   # ... otras configuraciones de livekit
 ```
 
-Siguiendo esta guía conceptual y aprovechando la documentación oficial de cada componente, podrá construir una implementación de plugNmeet robusta y escalable, capaz de soportar una base de usuarios masiva.
+Siguiendo esta guía conceptual y aprovechando la documentación oficial de cada componente, podrá construir una implementación de plugNmeet robusta y escalable, capaz de soportar una base de usuarios masiva. Para la capacidad medida en cada etapa —portátil, servidor único, clúster— véase [Benchmarks](/docs/benchmark).

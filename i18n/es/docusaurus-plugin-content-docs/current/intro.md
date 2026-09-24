@@ -106,13 +106,13 @@ Si evalúa la arquitectura, esto es lo esencial:
 - **Redis/NATS-KV (efímero) + MariaDB (historial)**: el estado en directo desaparece al terminar la sesión; solo se conserva lo que usted decide (grabaciones, JSON de analíticas, artefactos de IA).
 - **API-first + compatible con BBB:** `POST /auth/*` con `API-KEY` + `HMAC-SHA256`, SDK para [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php) y [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js), [webhooks](/docs/others/webhooks) y [hooks](/docs/others/hooks) para flujos de trabajo, compatibilidad `/bigbluebutton/` para una migración directa y [aplicaciones móviles híbridas](/docs/developer-guide/mobile-app-integration) con SDK nativos de LiveKit + WebView (sin SDK móvil propietario).
 
-Lecturas a fondo: [Arquitectura interna con LiveKit y NATS](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Despliegue escalable](/docs/developer-guide/scalable-setup), [Por qué creamos plugNmeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
+Lecturas a fondo: [Benchmarks: cuántos usuarios soporta una sala](/docs/benchmark), [Arquitectura interna con LiveKit y NATS](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Despliegue escalable](/docs/developer-guide/scalable-setup), [Por qué creamos plugNmeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
 
 ## Por qué los equipos eligen plugNmeet frente al SaaS o a plataformas pesadas
 
 - **Sus datos y su marca son suyos:** Su dominio, su logotipo, su almacenamiento. Sin dependencia de terceros ni coste por usuario para reuniones básicas.
 - **Marca blanca sin modificar el código:** Cambie aspecto y funciones por API/configuración y CSS propio. Las actualizaciones no rompen su diseño.
-- **Ligero de operar:** Un binario + LiveKit + NATS en lugar de arquitecturas enormes en varios lenguajes. Un servidor pequeño basta para probar; el escalado vertical + grabador aislado cubre cientos de usuarios concurrentes antes de necesitar un clúster.
+- **Ligero de operar:** Un binario + LiveKit + NATS en lugar de arquitecturas enormes en varios lenguajes. Un servidor pequeño basta para probar; el escalado vertical + grabador aislado cubre cientos de usuarios concurrentes antes de necesitar un clúster. Véanse las cifras medidas en [Benchmarks](/docs/benchmark).
 - **Grabaciones portables:** Archivos MP4 estándar que puede descargar, combinar o mover, sin procesos propietarios complicados.
 - **Pensado para quienes construyen:** Desde plugins CMS en un clic hasta incrustación headless con `getClientFiles`, [aplicaciones móviles a medida](/docs/developer-guide/mobile-app-integration) y automatización total; nunca queda atado a la interfaz de otro.
 

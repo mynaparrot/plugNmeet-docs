@@ -29,6 +29,8 @@ Antes de comenzar, asegúrese de contar con lo siguiente:
     *   **Ancho de Banda:** Este es el factor más crítico. Se recomienda un **mínimo de 100 Mbits/s**, pero cuanto más tenga, mejor será la experiencia de usuario.
     *   **CPU:** Al menos 4 núcleos (se recomiendan 8 o más si se utiliza el grabador).
     *   **RAM:** Al menos 4 GB (se recomiendan 8 GB o más si se utiliza el grabador).
+
+    ¿Se pregunta qué soporta esto? Un solo servidor de 4 vCore / 16 GB gestionó 300–500 usuarios en una sala sin fallos en nuestros [Benchmarks](/docs/benchmark).
 *   **Dos subdominios** que apunten a la IP pública de su servidor (p. ej., `plugnmeet.ejemplo.com` y `turn.ejemplo.com`).
 *   Una **dirección de correo electrónico válida** para generar un certificado SSL de Let's Encrypt.
 

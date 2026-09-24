@@ -106,13 +106,13 @@ If you evaluate architecture, this is what matters:
 - **Redis/NATS-KV (ephemeral) + MariaDB (history)** — live state disappears when the session ends; only what you opt to keep (recordings, analytics JSON, AI artifacts) is persisted.
 - **API-first + BBB-compatible:** `POST /auth/*` with `API-KEY` + `HMAC-SHA256`, SDKs for [PHP](https://github.com/mynaparrot/plugNmeet-sdk-php) and [JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js), [webhooks](/docs/others/webhooks) and [hooks](/docs/others/hooks) for workflows, `/bigbluebutton/` compatibility for drop-in migration, and [hybrid mobile apps](/docs/developer-guide/mobile-app-integration) via LiveKit native SDKs + WebView (no proprietary mobile SDK required).
 
-Deeper reads: [Backend Architecture Deep Dive](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Scalable Deployment](/docs/developer-guide/scalable-setup), [Why we built plugNmeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
+Deeper reads: [Benchmarks: how many users can a room hold](/docs/benchmark), [Backend Architecture Deep Dive](https://www.plugnmeet.org/blog/backend-architecture-deep-dive), [Scalable Deployment](/docs/developer-guide/scalable-setup), [Why we built plugNmeet](https://www.plugnmeet.org/blog/why-we-built-plugnmeet).
 
 ## Why teams choose plugNmeet over SaaS or heavy stacks
 
 - **Own your data and brand:** Your domain, your logo, your storage. No user lock-in, no per-user SaaS tax for basic meetings.
 - **White-label without forking:** Change look and features via API/config and custom CSS. Updates do not break your theme.
-- **Lightweight to run:** One binary + LiveKit + NATS replaces sprawling multi-language stacks. A small server handles testing; vertical scaling + isolated recorder covers hundreds of concurrent users before you ever need a cluster.
+- **Lightweight to run:** One binary + LiveKit + NATS replaces sprawling multi-language stacks. A small server handles testing; vertical scaling + isolated recorder covers hundreds of concurrent users before you ever need a cluster. See measured numbers in [Benchmarks](/docs/benchmark).
 - **Portable recordings:** Plain MP4 files you can download, merge, or move — no proprietary post-processing maze.
 - **Built for builders:** From one-click CMS plugins to headless `getClientFiles` embedding, [custom mobile apps](/docs/developer-guide/mobile-app-integration), and full automation, you are not forced into someone else's UX.
 

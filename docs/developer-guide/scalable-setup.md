@@ -27,7 +27,7 @@ For optimal performance, especially when recording frequently, we strongly recom
 
 #### Phase 2: Vertically Scale Your Main Server
 
-If you are not recording heavily but are still seeing performance issues, the next step is to **vertically scale** your single server. This simply means adding more CPU cores and RAM. A single, well-provisioned server can comfortably handle **hundreds of concurrent users**.
+If you are not recording heavily but are still seeing performance issues, the next step is to **vertically scale** your single server. This simply means adding more CPU cores and RAM. A single, well-provisioned server can comfortably handle **hundreds of concurrent users** — see our measured [Benchmarks](/docs/benchmark) (300–500 in one room clean on 4 vCore / 16 GB, ~900 limit).
 
 #### Phase 3: Advanced Distributed Setups
 
@@ -206,4 +206,4 @@ livekit_info:
   # ... other livekit settings
 ```
 
-By following this conceptual guide and leveraging the official documentation for each component, you can build a robust, scalable plugNmeet deployment capable of supporting a massive user base.
+By following this conceptual guide and leveraging the official documentation for each component, you can build a robust, scalable plugNmeet deployment capable of supporting a massive user base. For measured capacity at each stage — laptop, single server, cluster — see [Benchmarks](/docs/benchmark).

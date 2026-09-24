@@ -29,6 +29,8 @@ Before you begin, make sure you have the following:
     *   **Bandwidth:** This is the most critical factor. A **minimum of 100 Mbits/sec** is recommended, but more is always better for a quality user experience.
     *   **CPU:** At least 4 cores (8+ recommended if using the recorder).
     *   **RAM:** At least 4GB (8GB+ recommended if using the recorder).
+
+    Wondering what that handles? A single 4-vCore / 16 GB server ran 300–500 users in one room cleanly in our [Benchmarks](/docs/benchmark).
 *   **Two subdomains** pointing to your server's public IP (e.g., `plugnmeet.example.com` and `turn.example.com`).
 *   A **valid email address** for generating a Let's Encrypt SSL certificate.
 
