@@ -14,7 +14,7 @@ We filled real rooms with simulated participants that behave like browser users:
 
 1. **One laptop doing everything** — the worst case.
 2. **One normal server installed with our [single install script](/docs/installation)** — what most self-hosters run.
-3. **A small production cluster** — what you grow into.
+3. **A production cluster** — what you grow into.
 
 If you are not technical, the next section gives you the whole story in 60 seconds. If you are, keep scrolling for tables, latencies, and how to reproduce it.
 
@@ -62,9 +62,9 @@ This is the missing piece people asked for: a plain server set up exactly the wa
 
 No special tuning. Firewall as per [Firewall guide](/docs/firewall). Fresh room ID per run.
 
-### 3. Small production cluster
+### 3. Production cluster
 
-Our own cloud edge cluster: modest nodes across two zones, public entry points only. Same application code as open source, but media routing uses a **custom multi-LiveKit setup** that spreads one room across multiple media servers. The open-source install runs one room on a single LiveKit node — that distinction matters for the 1,000-user headline below.
+Our own cloud edge cluster across two zones, public entry points only. Same application code as open source, but media routing uses a **custom multi-LiveKit setup** that spreads one room across multiple media servers. The open-source install runs one room on a single LiveKit node — that distinction matters for the 1,000-user headline below. Resource usage stayed low throughout — the point of the cluster is headroom and distribution, not struggling hardware.
 
 ## Results: laptop
 
@@ -189,5 +189,20 @@ If you need one of these gaps filled with numbers before you commit, tell us —
 ## Test it yourself
 
 You do not need our hardware. Install with the [Installation Quick Start](/docs/installation), open [Firewall ports](/docs/firewall), then run the commands above starting at `--users 50` and doubling. Stop when missed heartbeats rise above 0 or fan-out drops below ~100% — that is your server’s honest limit for that shape.
+
+### Numbers alone are not enough — join with real browsers
+
+The load tester tells you the server stayed up. Only a human can tell you it *felt* good. So do what we did: mix bots with at least **2 real users in normal browsers** in the same room while the run is going.
+
+- Bots provide the stress (hundreds of joins, chat, whiteboard flood).
+- Real users check what bots cannot: whiteboard sync with your own eyes, video smoothness, audio clarity, and whether clicks feel instant.
+
+Just open the room URL twice (two laptops, or one laptop + one phone) and use it normally while the bots run. If the whiteboard stays in sync and audio/video stays smooth, the numbers and the experience agree.
+
+### Test from a different zone if you can
+
+Run the tester and join the real browsers from a different city or network than the server — that adds real internet latency, like your actual audience. Our single-server runs did exactly this (server in France, tester in Poland, ~25–30 ms baseline).
+
+One honest caveat: our managed cluster adds **GEO routing** (users connect to the nearest media region), which is not part of the open-source single-server install. So expect higher video latency at distance on a single server — that is geography, not a bug. Place media servers close to participants when it matters.
 
 Related reading: [Scalable Deployment](/docs/developer-guide/scalable-setup) · [Installation](/docs/installation) · [Backend Architecture Deep Dive](/blog/backend-architecture-deep-dive) · [Scaling Architecture Saves Money](/blog/scaling-architecture-saves-money) · [Hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way)

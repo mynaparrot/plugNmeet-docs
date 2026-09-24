@@ -14,7 +14,7 @@ Llenamos salas reales con participantes simulados que se comportan como usuarios
 
 1. **Un portátil haciendo todo** — el peor caso.
 2. **Un servidor normal instalado con nuestro [script de instalación única](/docs/installation)** — lo que ejecuta la mayoría de quienes autoalojan.
-3. **Un pequeño clúster de producción** — hacia donde se crece.
+3. **Un clúster de producción** — hacia donde se crece.
 
 Si usted no tiene perfil técnico, la siguiente sección le cuenta lo esencial en 60 segundos. Si sí lo tiene, siga leyendo: encontrará tablas, latencias y cómo reproducirlo.
 
@@ -62,9 +62,9 @@ Esta es la pieza que faltaba y que muchos pedían: un servidor normal configurad
 
 Sin ajustes especiales. Cortafuegos según la [guía de Firewall](/docs/firewall). ID de sala nuevo en cada ejecución.
 
-### 3. Pequeño clúster de producción
+### 3. Clúster de producción
 
-Nuestro propio clúster en la nube: nodos modestos en dos zonas, solo puntos de entrada públicos. Mismo código de aplicación que el open source, pero el enrutamiento multimedia utiliza una **configuración multi-LiveKit a medida** que reparte una sala entre varios servidores multimedia. La instalación open source ejecuta una sala en un solo nodo LiveKit — esa diferencia es clave para el titular de 1.000 usuarios.
+Nuestro propio clúster en la nube en dos zonas, solo puntos de entrada públicos. Mismo código de aplicación que el open source, pero el enrutamiento multimedia utiliza una **configuración multi-LiveKit a medida** que reparte una sala entre varios servidores multimedia. La instalación open source ejecuta una sala en un solo nodo LiveKit — esa diferencia es clave para el titular de 1.000 usuarios. El uso de recursos se mantuvo bajo en todo momento — el sentido del clúster es el margen y el reparto, no un hardware al límite.
 
 ## Resultados: portátil
 
@@ -189,5 +189,20 @@ Si necesita cifras de alguno de estos huecos antes de decidir, díganoslo — a�
 ## Pruébelo usted mismo
 
 No necesita nuestro hardware. Instale con la [Guía rápida de instalación](/docs/installation), abra los [puertos del Firewall](/docs/firewall) y ejecute los comandos anteriores empezando en `--users 50` y duplicando. Deténgase cuando los latidos perdidos superen 0 o el fan-out baje de ~100% — ese es el límite honesto de su servidor para ese formato.
+
+### Los números solos no bastan — entre con navegadores reales
+
+El generador de carga le dice si el servidor aguantó. Solo una persona puede decirle si *se sintió* bien. Haga lo que hicimos nosotros: mezcle bots con al menos **2 usuarios reales en navegadores normales** en la misma sala mientras se ejecuta la prueba.
+
+- Los bots aportan la carga (cientos de entradas, chat, avalancha de pizarra).
+- Los usuarios reales comprueban lo que los bots no pueden: sincronización de la pizarra con sus propios ojos, fluidez del video, claridad del audio y si los clics se sienten instantáneos.
+
+Basta con abrir la URL de la sala dos veces (dos portátiles, o un portátil + un teléfono) y usarla con normalidad mientras corren los bots. Si la pizarra sigue sincronizada y el audio/video se mantiene fluido, los números y la experiencia coinciden.
+
+### Si puede, pruebe desde otra zona
+
+Ejecute el generador y entre con los navegadores reales desde otra ciudad o red distinta a la del servidor — eso añade latencia real de internet, como su audiencia real. Nuestras ejecuciones en un solo servidor hicieron exactamente esto (servidor en Francia, generador en Polonia, base ~25–30 ms).
+
+Una advertencia honesta: nuestro clúster gestionado añade **enrutamiento GEO** (cada usuario se conecta a la región multimedia más cercana), que no forma parte de la instalación open source en un solo servidor. Espere mayor latencia de video en la distancia con un solo servidor — eso es geografía, no un error. Coloque los servidores multimedia cerca de los participantes cuando importe.
 
 Lecturas relacionadas: [Despliegue escalable](/docs/developer-guide/scalable-setup) · [Instalación](/docs/installation) · [Backend Architecture Deep Dive](/blog/backend-architecture-deep-dive) · [Scaling Architecture Saves Money](/blog/scaling-architecture-saves-money) · [Hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way)
