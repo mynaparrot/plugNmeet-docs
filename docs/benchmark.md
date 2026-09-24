@@ -8,7 +8,7 @@ sidebar_position: 4
 
 # How many people can plugNmeet handle? We tested it.
 
-> Tested September 2026 · plugNmeet server v2.5.1 · client v2.5.2 · [loadtester `09b2db0`](https://github.com/mynaparrot/plugnmeet-loadtester/commit/09b2db0238924d828b56d70b4dc2004b757388fa)
+> Tested September 2026 · plugNmeet [server](https://github.com/mynaparrot/plugNmeet-server) v2.5.1 · [client](https://github.com/mynaparrot/plugNmeet-client) v2.5.2 · [loadtester](https://github.com/mynaparrot/plugNmeet-loadtester) v1.0.1
 
 We often say plugNmeet is lightweight and scalable. That is easy to claim, harder to prove — so we measured it.
 
