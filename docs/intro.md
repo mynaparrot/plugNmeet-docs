@@ -10,7 +10,7 @@ sidebar_label: Intro
 
 Welcome to plugNmeet, the video conferencing platform designed for ultimate control, flexibility, and **cost-effective scale**. Host secure, high-quality, and **AI-powered** meetings directly from your website, with your own branding, and complete ownership of the user experience.
 
-What truly sets plugNmeet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience — from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with **hundreds of participants**.
+What truly sets plugNmeet apart is its **unmatched customization**. The interface is fully controllable, allowing you to tailor the entire experience — from simple branding with your own logo and colors, to enabling specific features to create anything from a minimalist video chat, to a full-featured **virtual classroom**, or even a massive live event with [**hundreds of participants**](/docs/benchmark).
 
 :::tip In 30 seconds
 - **What:** Complete meeting room — audio/video, screen share, whiteboard, chat, polls, breakout rooms, recording, live streaming, and AI summaries/translations.

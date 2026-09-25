@@ -10,7 +10,7 @@ sidebar_label: Introducción
 
 Bienvenido a plugNmeet, la plataforma de videoconferencia pensada para ofrecerle el máximo control, flexibilidad y una **escalabilidad rentable**. Organice reuniones seguras, de alta calidad e **impulsadas por IA** directamente desde su sitio web, con su propia marca y con pleno dominio sobre la experiencia del usuario.
 
-Lo que realmente distingue a plugNmeet es su **capacidad de personalización sin igual**. La interfaz se controla por completo, lo que le permite adaptar cada detalle: desde la imagen de marca con su logotipo y sus colores, hasta la activación de funciones concretas para crear desde un videochat minimalista hasta un **aula virtual** completa, o incluso un gran evento en directo con **cientos de participantes**.
+Lo que realmente distingue a plugNmeet es su **capacidad de personalización sin igual**. La interfaz se controla por completo, lo que le permite adaptar cada detalle: desde la imagen de marca con su logotipo y sus colores, hasta la activación de funciones concretas para crear desde un videochat minimalista hasta un **aula virtual** completa, o incluso un gran evento en directo con [**cientos de participantes**](/docs/benchmark).
 
 :::tip En 30 segundos
 - **Qué es:** Una sala de reuniones completa: audio y video, pantalla compartida, pizarra, chat, encuestas, salas de grupos, grabación, transmisión en directo e IA para resúmenes y transcripciones.
