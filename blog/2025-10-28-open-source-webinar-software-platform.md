@@ -77,6 +77,8 @@ Choose a platform.
 
 plugNmeet provides the flexible, powerful, and open-source foundation you need to build a professional, branded, and automated webinar experience that is truly your own.
 
+And it is proven to scale: in our [load-test benchmarks](/docs/benchmark), a single 4-vCore server held 300–500 users in one interactive webinar room with zero dropped connections, and many small rooms ran even smoother.
+
 And if you're running your community on a platform like **WordPress or Joomla**, the journey is even easier. We have ready-to-use, official plugins that integrate all of this power directly into your existing website in minutes, no coding required.
 
 Whether you're a developer building a custom application from scratch or a site administrator looking for a simple, powerful integration, plugNmeet provides the tools to help you create the perfect webinar experience.

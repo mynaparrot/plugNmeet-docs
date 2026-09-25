@@ -77,6 +77,8 @@ Elige una plataforma.
 
 plugNmeet proporciona la base flexible, potente y de código abierto que necesitas para construir una experiencia de webinar profesional, personalizada y automatizada que sea verdaderamente tuya.
 
+Y está demostrado que escala: en nuestros [benchmarks de carga](/docs/benchmark), un solo servidor de 4 vCore sostuvo 300–500 usuarios en una sala de webinar interactiva sin conexiones perdidas, y muchas salas pequeñas funcionaron aún mejor.
+
 Y si estás gestionando tu comunidad en una plataforma como **WordPress o Joomla**, el camino es aún más fácil. Tenemos plugins oficiales listos para usar que integran todo este poder directamente en tu sitio web existente en minutos, sin necesidad de codificación.
 
 Ya seas un desarrollador que construye una aplicación personalizada desde cero o un administrador de sitio que busca una integración simple y potente, plugNmeet proporciona las herramientas para ayudarte a crear la experiencia de webinar perfecta.
