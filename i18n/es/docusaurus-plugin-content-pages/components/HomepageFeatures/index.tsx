@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🌐',
     title: 'Sin instalación — únase desde el navegador',
-    text: 'Con un enlace basta: sin descargas ni complementos. Acceso inmediato desde cualquier navegador moderno, en escritorio o móvil.',
+    text: 'Con un enlace basta: sin descargas ni plugins. Únase sin complicaciones desde cualquier navegador moderno, ya sea en escritorio o móvil.',
     link: '/docs/user-guide/attendee',
     linkLabel: 'Guía del participante',
     Svg: require('@site/static/img/features/devices-svgrepo-com.svg').default,
@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🗳️',
     title: 'Salas de grupos, encuestas y moderación',
-    text: 'Divida en grupos pequeños, realice encuestas con modo cuestionario, gestione mano levantada, sala de espera y permisos por participante. Ideal para clases, talleres y webinars.',
+    text: 'Divida en salas de grupo, realice encuestas tipo cuestionario, permita levantar la mano, use la sala de espera y configure permisos individuales: ideal para clases, talleres y webinars.',
     link: '/docs/user-guide/moderator',
     linkLabel: 'Guía de moderación',
     Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg').default,
@@ -38,7 +38,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '⏺',
     title: 'Grabación y transmisión',
-    text: 'Grabaciones nítidas en HD como MP4 portátil, además de transmisión en directo RTMP/WHIP a YouTube, Facebook o entrada de estudio OBS.',
+    text: 'Grabaciones MP4 en HD nítidas, además de transmisión en directo mediante RTMP/WHIP a YouTube, Facebook o la entrada de OBS Studio.',
     link: '/docs/user-guide/moderator',
     linkLabel: 'Ver cómo funciona',
     Svg: require('@site/static/img/features/video-call-svgrepo-com.svg').default,
@@ -46,7 +46,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '✨',
     title: 'Agente de reuniones con IA',
-    text: 'Subtítulos en vivo, traducción hablada, transcripciones, resúmenes y asistente de chat — con el proveedor de IA de su elección.',
+    text: 'Subtítulos en vivo, traducción hablada, transcripciones, resúmenes y asistente de chat — con su propio proveedor de IA.',
     link: '/blog/how-to-add-ai-meeting-assistant-features',
     linkLabel: 'Añadir IA en 15 minutos',
     Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg').default,
@@ -54,9 +54,9 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '📞',
     title: 'Acceso telefónico (SIP) para todos',
-    text: '¿Sin internet? Sin problema. Sus invitados pueden unirse solo por audio desde cualquier teléfono mediante marcación SIP — perfecto para zonas con poco ancho de banda.',
+    text: '¿Sin internet? No hay problema. Sus invitados pueden unirse solo con audio desde cualquier teléfono mediante acceso SIP — perfecto para zonas con poco ancho de banda.',
     link: '/blog/sip-dial-in-for-video-conferencing',
-    linkLabel: 'Marcación SIP',
+    linkLabel: 'Acceso telefónico SIP',
     Svg: require('@site/static/img/features/webcam-svgrepo-com.svg').default,
   },
   {
@@ -78,15 +78,15 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🚀',
     title: 'Instalación sencilla y autoalojamiento',
-    text: 'Un script de instalación configura la pila completa en sus servidores con Docker, LiveKit y NATS. Sus datos permanecen en su infraestructura.',
+    text: 'Un script de instalación configura todo el stack en sus servidores con Docker, LiveKit y NATS. Sus datos permanecen en su infraestructura.',
     link: '/docs/installation',
     linkLabel: 'Guía de instalación',
     Svg: require('@site/static/img/features/install-svgrepo-com.svg').default,
   },
   {
     icon: '🎨',
-    title: 'Personalizable y marca blanca',
-    text: 'URL, logotipos, colores y funciones — personalice todo con marca blanca mediante configuración. Sin bifurcar código ni marca de plugNmeet.',
+    title: 'Personalizable y de marca blanca',
+    text: 'URL, logotipos, colores y funciones — personalice todo con su propia marca desde la configuración. Sin bifurcar código ni usar la marca de plugNmeet.',
     link: '/docs/developer-guide/design-customisation',
     linkLabel: 'Personalizar la interfaz',
     Svg: require('@site/static/img/features/component-customization-svgrepo-com.svg').default,
@@ -126,8 +126,8 @@ import PollShot from '@site/static/img/slider/12-Poll2.jpg';
 const ShowcaseSlides = [
   { src: Whiteboard1, title: 'Pizarra interactiva para la enseñanza en línea', tag: 'Colaborar' },
   { src: Whiteboard2, title: 'Pizarra con anotación de PDF y Office', tag: 'Colaborar' },
-  { src: SharedNotepad, title: 'Bloc de notas compartido para actas en vivo', tag: 'Colaborar' },
-  { src: AiChatbot, title: 'Asistente de IA en la videorreunión', tag: 'IA' },
+  { src: SharedNotepad, title: 'Bloc compartido para notas de reuniones en vivo', tag: 'Colaborar' },
+  { src: AiChatbot, title: 'Asistente de IA en la videollamada', tag: 'IA' },
   { src: CamGridShot, title: 'Cuadrícula HD para reuniones grandes', tag: 'Reunirse' },
   { src: CamOverlay, title: 'Fondos virtuales de cámara', tag: 'Reunirse' },
   { src: NotificationsShot, title: 'Mano levantada y notificaciones', tag: 'Participar' },
@@ -135,7 +135,7 @@ const ShowcaseSlides = [
   { src: ParticipantsShot, title: 'Controles de participantes y moderación', tag: 'Moderar' },
   { src: ChatRoom, title: 'Chat público y privado con archivos', tag: 'Participar' },
   { src: TranscriptionShot, title: 'Transcripción y traducción en vivo', tag: 'IA' },
-  { src: PollShot, title: 'Encuestas en vivo con modo cuestionario', tag: 'Participar' },
+  { src: PollShot, title: 'Encuestas en vivo tipo cuestionario', tag: 'Participar' },
 ];
 
 const UseCases = [
@@ -163,7 +163,7 @@ const UseCases = [
   {
     icon: '🛠️',
     title: 'Integrado en su producto',
-    text: 'Integre el cliente completo de forma nativa en su página con getClientFiles — sin iframe. O utilice API + SDK, SSO y webhooks.',
+    text: 'Integre el cliente completo de forma nativa en su página con getClientFiles — sin iframe. O use una arquitectura headless con API + SDK, SSO y webhooks.',
     link: '/docs/api/get-client-files',
     linkLabel: 'Integración nativa →',
   },
@@ -351,7 +351,7 @@ export default function HomepageFeatures(): JSX.Element {
         <div className="container">
           <SectionHead
             eyebrow="Cómo funciona"
-            title="Lance videorreuniones autoalojadas en 3 pasos"
+            title="Lance videollamadas autoalojadas en 3 pasos"
           />
           <div className="pnm-steps">
             <div className="pnm-step">
