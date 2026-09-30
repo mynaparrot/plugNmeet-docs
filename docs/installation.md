@@ -47,17 +47,57 @@ Connect to your server via SSH. The recommended and most transparent method is t
 ```bash
 # 1. Download the script
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh
+```
 
+Then choose one of the two modes below.
+
+### Option A: Interactive install (easiest)
+
+Just run the script with no arguments. It will prompt you for everything it needs, such as your domain names, email address, and whether to install the recorder and firewall.
+
+```bash
 # 2. Run the script as root
 sudo bash install.sh
 ```
+
+### Option B: Non-interactive install (with options)
+
+Pass everything as arguments and the script will run without prompting. This is ideal for automation or as a cloud post-install script (e.g. cloud-init user-data), so a fresh server can come up with plugNmeet fully ready.
+
+```bash
+sudo bash install.sh --domain plugnmeet.example.com --turn-domain turn.example.com --email admin@example.com --recorder yes --ufw yes
+```
+
+| Option | Description |
+|---|---|
+| `-d, --domain <domain>` | plugNmeet server domain (e.g. `plugnmeet.example.com`) |
+| `-t, --turn-domain <domain>` | TURN server domain (e.g. `turn.example.com`) |
+| `-e, --email <email>` | Email address for the Let's Encrypt SSL certificate |
+| `-r, --recorder <yes\|no>` | Install the recorder (`yes` or `no`; if omitted, you will be prompted) |
+| `-f, --ufw <yes\|no>` | Configure the UFW firewall (`yes` or `no`; if omitted, you will be prompted) |
+| `-h, --help` | Show all options and exit |
+
+A few things to know:
+
+* Both `--option value` and `--option=value` forms work (e.g. `--domain=plugnmeet.example.com`).
+* Omit any option and the script will simply prompt you for it.
+* Run `sudo bash install.sh --help` at any time to see all options.
+* If there is no terminal to prompt you (for example in a cloud post-install script) and a value is missing, the script stops with a clear error telling you which option to pass.
 
 **Alternatively**, you can download and execute it in a single command:
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh)" root
 ```
 
-The script is interactive and will prompt you for the necessary information, such as your domain names and email address.
+:::tip[Cloud post-install example]
+Most cloud providers let you run a script automatically after the OS is installed (e.g. cloud-init user-data). Use the non-interactive form so the server comes up fully ready with no manual steps:
+
+```bash
+#!/bin/bash
+wget -q https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh -O /root/install.sh
+bash /root/install.sh --domain plugnmeet.example.com --turn-domain turn.example.com --email admin@example.com --recorder yes --ufw yes
+```
+:::
 
 At the end of the process, the script will display your **Server URL**, **API Key**, and **API Secret**.
 

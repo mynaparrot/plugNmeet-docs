@@ -47,17 +47,57 @@ Conéctese a su servidor a través de SSH. El método recomendado y más transpa
 ```bash
 # 1. Descargar el script
 wget https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh
+```
 
+Luego elija uno de los dos modos siguientes.
+
+### Opción A: Instalación interactiva (la más sencilla)
+
+Simplemente ejecute el script sin argumentos. Le solicitará todo lo que necesita, como sus nombres de dominio, su dirección de correo electrónico y si desea instalar el grabador y el firewall.
+
+```bash
 # 2. Ejecutar el script como superusuario
 sudo bash install.sh
 ```
+
+### Opción B: Instalación no interactiva (con opciones)
+
+Pase todo como argumentos y el script se ejecutará sin solicitar nada. Esto es ideal para la automatización o como script posterior a la instalación en la nube (p. ej., user-data de cloud-init), de modo que un servidor nuevo quede listo con plugNmeet completamente funcional.
+
+```bash
+sudo bash install.sh --domain plugnmeet.ejemplo.com --turn-domain turn.ejemplo.com --email admin@ejemplo.com --recorder yes --ufw yes
+```
+
+| Opción | Descripción |
+|---|---|
+| `-d, --domain <domain>` | Dominio del servidor plugNmeet (p. ej., `plugnmeet.ejemplo.com`) |
+| `-t, --turn-domain <domain>` | Dominio del servidor TURN (p. ej., `turn.ejemplo.com`) |
+| `-e, --email <email>` | Dirección de correo electrónico para el certificado SSL de Let's Encrypt |
+| `-r, --recorder <yes\|no>` | Instalar el grabador (`yes` o `no`; si se omite, se le preguntará) |
+| `-f, --ufw <yes\|no>` | Configurar el firewall UFW (`yes` o `no`; si se omite, se le preguntará) |
+| `-h, --help` | Mostrar todas las opciones y salir |
+
+Algunas cosas a tener en cuenta:
+
+* Tanto la forma `--opción valor` como `--opción=valor` funcionan (p. ej., `--domain=plugnmeet.ejemplo.com`).
+* Si omite alguna opción, el script simplemente se la solicitará.
+* Ejecute `sudo bash install.sh --help` en cualquier momento para ver todas las opciones.
+* Si no hay terminal disponible para solicitarle datos (por ejemplo, en un script posterior a la instalación en la nube) y falta algún valor, el script se detendrá con un error claro que le indicará qué opción debe pasar.
 
 **Alternativamente**, puede descargarlo y ejecutarlo en un solo comando:
 ```bash
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh)" root
 ```
 
-El script es interactivo y le solicitará la información necesaria, como sus nombres de dominio y su dirección de correo electrónico.
+:::tip[Ejemplo de script posterior a la instalación en la nube]
+La mayoría de los proveedores en la nube permiten ejecutar un script automáticamente después de instalar el sistema operativo (p. ej., user-data de cloud-init). Utilice la forma no interactiva para que el servidor quede completamente listo sin pasos manuales:
+
+```bash
+#!/bin/bash
+wget -q https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install.sh -O /root/install.sh
+bash /root/install.sh --domain plugnmeet.ejemplo.com --turn-domain turn.ejemplo.com --email admin@ejemplo.com --recorder yes --ufw yes
+```
+:::
 
 Al final del proceso, el script mostrará su **URL del Servidor**, **Clave de API** y **Secreto de API**.
 
