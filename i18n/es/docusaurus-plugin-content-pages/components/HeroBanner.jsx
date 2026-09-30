@@ -12,7 +12,7 @@ const Stats = [
   { value: '100%', label: 'Código abierto · Licencia MIT, gratis para siempre' },
   { value: 'HD', label: 'Videollamadas con grabación MP4' },
   { value: 'IA', label: 'Resúmenes, subtítulos y traducción' },
-  { value: '1 binario', label: 'Stack Go + LiveKit + NATS' },
+  { value: '1 binario', label: 'Stack de Go + LiveKit + NATS' },
 ];
 
 const HeroBanner = () => {

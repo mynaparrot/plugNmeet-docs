@@ -9,7 +9,7 @@ sidebar_label: Guía de Aplicación de Video Personalizada
 
 El modelo de integración híbrida de plugNmeet proporciona un camino rápido y flexible para construir aplicaciones de videoconferencia personalizadas para plataformas nativas como iOS, Android, Flutter, React Native o escritorio.
 
-Esta arquitectura combina una capa de medios nativa con el cliente web completo de plugNmeet, que se ejecuta dentro de una WebView. La aplicación nativa se encarga de toda la publicación de medios (micrófono, cámara y pantalla compartida), mientras que el cliente web proporciona la interfaz de reunión rica en funciones. Este enfoque permite a los desarrolladores aprovechar el rendimiento nativo para el manejo de medios, evitando al mismo tiempo la necesidad de construir una compleja interfaz de usuario de conferencias desde cero. Es especialmente útil para habilitar funciones como el uso compartido de pantalla en dispositivos móviles, que no está bien soportado en los navegadores móviles.
+Esta arquitectura combina una capa de medios nativa con el cliente web completo de plugNmeet, que se ejecuta dentro de una WebView. La aplicación nativa se encarga de toda la publicación de contenido multimedia (micrófono, cámara y pantalla compartida), mientras que el cliente web proporciona una interfaz de reuniones con muchas funciones. Este enfoque permite a los desarrolladores aprovechar un procesamiento multimedia nativo sin tener que crear ellos mismos desde cero una interfaz de videoconferencias compleja. Es especialmente útil para habilitar funciones como compartir la pantalla desde el teléfono, que no está bien soportado en los navegadores móviles.
 
 ## Véalo en Acción: Aplicaciones de Demostración
 
@@ -17,7 +17,7 @@ Antes de sumergirse en los detalles técnicos, puede ver esta integración híbr
 
 Notará que plugNmeet no proporciona su propio SDK móvil. Esta es una elección de diseño deliberada. Dado que plugNmeet utiliza LiveKit para su capa de medios, puede usar directamente los excelentes SDKs nativos de LiveKit (para iOS, Android, React Native, etc.) para manejar todas las tareas relacionadas con los medios.
 
-En lugar de un SDK restrictivo, proporcionamos un **patrón** flexible: ejecute el cliente web de plugNmeet, rico en funciones, en una WebView para la interfaz de usuario, y use los SDKs nativos de LiveKit para la capa de medios. Nuestras aplicaciones de demostración muestran lo simple que es implementar esto, brindándole rendimiento nativo y control total sin tener que construir una interfaz de usuario desde cero.
+En lugar de un SDK restrictivo, proporcionamos un **patrón** flexible: ejecute el cliente web de plugNmeet, que ofrece muchas funciones, en una WebView para la interfaz de usuario, y use los SDKs nativos de LiveKit para la capa de medios. Nuestras aplicaciones de demostración muestran lo simple que es implementar esto, brindándole rendimiento nativo y control total sin tener que construir una interfaz de usuario desde cero.
 
 Consulte las aplicaciones de demostración en nuestro [repositorio de aplicaciones móviles de plugNmeet](https://github.com/mynaparrot/plugnmeet-mobile-app) para comprender el patrón.
 
@@ -30,7 +30,7 @@ El núcleo del modelo híbrido es representar a un único usuario lógico con do
 | `[userID]` | Cliente web en WebView | Solo suscripción |
 | `[userID]-native` | Aplicación nativa | Solo publicación |
 
-El cliente web renderiza la interfaz de usuario y se suscribe a todos los flujos de medios, mientras que la aplicación nativa se conecta por separado para publicar sus propios medios. El cliente web reconoce que las pistas de una identidad `*-native` que coinciden con su propio `userID` deben tratarse como medios locales, mostrándolos en el mosaico de la interfaz de usuario correcto sin eco. Esto permite que la interfaz de usuario web existente funcione con cambios mínimos.
+El cliente web renderiza la interfaz de usuario y se suscribe a todos los flujos multimedia, mientras que la aplicación nativa se conecta por separado para publicar su propio contenido multimedia. El cliente web reconoce que las pistas de una identidad `*-native` que coinciden con su propio `userID` deben tratarse como medios locales, mostrándolos en el mosaico de la interfaz de usuario correcto sin eco. Esto permite que la interfaz de usuario web actual funcione con cambios mínimos.
 
 ![Arquitectura de Integración Híbrida](/img/hybrid-architecture.png)
 
@@ -72,9 +72,9 @@ val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}&custom_design=${custom
 webView.loadUrl(url)
 ```
 
-#### Opción B: Construir un Contenedor HTML Personalizado (Avanzado)
+#### Opción B: Construir una Estructura HTML Personalizada (Avanzado)
 
-Esto le da el máximo control. La aplicación nativa llama a `POST /api/getClientFiles` usando el JWT para la autenticación (p. ej., `Authorization: <access_token>`). Este endpoint está diseñado para aplicaciones nativas y proporciona los mismos activos que el endpoint del lado del servidor `/auth/getClientFiles`, que utiliza autenticación con Clave/Secreto de API. Consulte la [API de Obtención de Archivos de Cliente](/docs/api/get-client-files) para detalles de la respuesta. Luego, la aplicación construye un contenedor HTML en memoria a partir de los activos devueltos y lo carga en la WebView.
+Esto le da el máximo control. La aplicación nativa llama a `POST /api/getClientFiles` usando el JWT para la autenticación (p. ej., `Authorization: <access_token>`). Este endpoint está diseñado para aplicaciones nativas y proporciona los mismos activos que el endpoint del lado del servidor `/auth/getClientFiles`, que utiliza autenticación con Clave/Secreto de API. Consulte la [API de Obtención de Archivos de Cliente](/docs/api/get-client-files) para detalles de la respuesta. Luego, la aplicación crea en memoria una estructura HTML a partir de los recursos obtenidos y la carga en el WebView.
 
 Incluso con este método, se pueden aplicar personalizaciones del lado del cliente inyectando un objeto `window.plugNmeetConfig`. Consulte nuestra [Guía de Personalización de Diseño](./design-customisation) para más detalles.
 
@@ -97,7 +97,7 @@ La comunicación entre la WebView y el anfitrión nativo se maneja mediante un p
 
 ### Del Cliente Web al Anfitrión Nativo
 
-| Acción | Carga Útil (Payload) | Descripción |
+| Acción | Parámetros | Descripción |
 | --- | --- | --- |
 | `INITIALIZE_NATIVE_PUBLISHER` | `{ livekitUrl, token, nativeUserId, e2ee? }` | Proporciona al anfitrión nativo la URL de LiveKit y el token de solo publicación. |
 | `PUBLISH_NATIVE_MEDIA` | `{ source }` | Solicita la publicación nativa para `MIC`, `WEBCAM` o `SCREENSHARE`. |
@@ -109,7 +109,7 @@ La comunicación entre la WebView y el anfitrión nativo se maneja mediante un p
 
 ### Del Anfitrión Nativo al Cliente Web
 
-| Acción | Carga Útil (Payload) | Descripción |
+| Acción | Parámetros | Descripción |
 | --- | --- | --- |
 | `NATIVE_MEDIA_STATUS` | `{ source?, deviceId?, error? }` | Confirma una acción nativa o informa de un error. |
 | `NATIVE_TRACK_PUBLISHED` | `{ userId, kind, source }` | Notifica al cliente web que se ha publicado una pista nativa. |
@@ -120,7 +120,7 @@ La comunicación entre la WebView y el anfitrión nativo se maneja mediante un p
 
 ## Transferencia de E2EE
 
-Si el cifrado de extremo a extremo está habilitado, la clave de cifrado en texto plano se entrega a la aplicación nativa como parte de la carga útil de `INITIALIZE_NATIVE_PUBLISHER`.
+Si el cifrado de extremo a extremo está habilitado, la clave de cifrado en texto plano se entrega a la aplicación nativa como parte del cuerpo de `INITIALIZE_NATIVE_PUBLISHER`.
 
 ```json
 {
@@ -137,7 +137,7 @@ Si el cifrado de extremo a extremo está habilitado, la clave de cifrado en text
 }
 ```
 
-## Lista de Verificación de Implementación de la Aplicación Nativa
+## Lista de Verificación para la Implementación de la Aplicación Nativa
 
 ### Requerido
 
@@ -156,12 +156,12 @@ Si el cifrado de extremo a extremo está habilitado, la clave de cifrado en text
 
 -   Implementar `PUBLISH_NATIVE_MEDIA` para compartir pantalla.
 -   Tratar las llamadas repetidas a `INITIALIZE_NATIVE_PUBLISHER` como una reinicialización completa.
--   Proporcionar avisos de permisos nativos claros y manejo de errores.
--   Evitar incrustar claves o secretos de API en aplicaciones de producción.
+-   Proporcionar solicitudes claras de permisos nativos y manejo de errores.
+-   Evitar colocar claves o secretos de API en aplicaciones de producción.
 
 ### Opcional
 
 -   Soporte para E2EE.
 -   Fondo virtual nativo o efectos de cámara.
--   Una interfaz de usuario de selección de dispositivos personalizada.
+-   Una interfaz personalizada para seleccionar dispositivos.
 -   Controles de modo de fondo y enrutamiento de audio.
