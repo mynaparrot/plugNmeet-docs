@@ -16,9 +16,9 @@ Llenamos salas reales con participantes simulados que se comportan como usuarios
 
 1. **Un portátil haciendo todo** — el peor caso.
 2. **Un servidor normal instalado con nuestro [script de instalación única](/docs/installation)** — lo que ejecuta la mayoría de quienes autoalojan.
-3. **Un clúster de producción** — hacia donde se crece.
+3. **Un clúster de producción** — conforme crece.
 
-Si usted no tiene perfil técnico, la siguiente sección le cuenta lo esencial en 60 segundos. Si sí lo tiene, siga leyendo: encontrará tablas, latencias y cómo reproducirlo.
+Si usted no tiene perfil técnico, la siguiente sección le cuenta lo esencial en 60 segundos. Si sí lo tiene, siga leyendo para ver las tablas, latencias y cómo reproducirlo.
 
 ## Si solo tiene 60 segundos
 
@@ -41,7 +41,7 @@ En resumen: **empiece con un servidor y crezca solo cuando lo necesite.** La may
 
 Tres términos aparecen en todas partes:
 
-- **p50 / p95:** ordene todos los tiempos de respuesta de más rápido a más lento. **p50** es el del medio — la mitad fue más rápida. **p95** es el que superó a 95 de cada 100 — muestra a los pocos con peor suerte. Por debajo de ~100 ms se percibe como instantáneo.
+- **p50 / p95:** ordene todos los tiempos de respuesta de más rápido a más lento. **p50** es el del medio — la mitad fue más rápida. **p95** es el tiempo que el 95 % no sobrepasa — muestra a los pocos con peor suerte. Por debajo de ~100 ms se percibe como instantáneo.
 - **Latidos perdidos (missed heartbeats):** cada usuario pregunta «¿sigues ahí?» cada 10 segundos. Perdidos = 0 significa que nadie perdió la conexión. Cualquier valor superior indica problemas.
 - **Fan-out:** cuando una persona chatea o dibuja, el servidor debe entregarlo a todos los demás. 100% significa que nadie se perdió nada.
 
@@ -147,7 +147,7 @@ No lo compare directamente con la fila de 1.000 usuarios en un solo servidor. La
 - **Más de 500 en total entre salas:** el mismo servidor único sigue valiendo (5 × 100 fue limpio). Escale en vertical antes de montar un clúster.
 - **Más de ~900 en una sala interactiva:** planifique un clúster, o utilice el patrón emisión: estudio privado + RTMP hacia YouTube/Facebook, con invitados que suben al escenario desde la sala de espera. Véase [Hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way).
 - **Regla práctica de video:** los espectadores añaden poco; cada cámara/micro extra añade trabajo multimedia real. Coloque los servidores multimedia cerca de los participantes — la geografía importa más que la CPU para la calidad del video.
-- **El ancho de banda importa más que la RAM.** Nuestros documentos de instalación recomiendan un mínimo de 100 Mbits/seg; más siempre es mejor para video.
+- **El ancho de banda importa más que la RAM.** Nuestros documentos de instalación recomiendan un mínimo de 100 Mbits/seg; para el video, cuanto más, mejor.
 
 ## Límites honestos: lo que no probamos
 
@@ -205,6 +205,6 @@ Basta con abrir la URL de la sala dos veces (dos portátiles, o un portátil + u
 
 Ejecute el generador y entre con los navegadores reales desde otra ciudad o red distinta a la del servidor — eso añade latencia real de internet, como su audiencia real. Nuestras ejecuciones en un solo servidor hicieron exactamente esto (servidor en Francia, generador en Polonia, base ~25–30 ms).
 
-Una advertencia honesta: nuestro clúster gestionado añade **enrutamiento GEO** (cada usuario se conecta a la región multimedia más cercana), que no forma parte de la instalación open source en un solo servidor. Espere mayor latencia de video en la distancia con un solo servidor — eso es geografía, no un error. Coloque los servidores multimedia cerca de los participantes cuando importe.
+Una advertencia honesta: nuestro clúster gestionado añade **enrutamiento GEO** (cada usuario se conecta a la región multimedia más cercana), que no forma parte de la instalación open source en un solo servidor. Espere mayor latencia de video en la distancia con un solo servidor — eso es geografía, no un error. Coloque los servidores multimedia cerca de los participantes cuando sea importante.
 
 Lecturas relacionadas: [Despliegue escalable](/docs/developer-guide/scalable-setup) · [Instalación](/docs/installation) · [Backend Architecture Deep Dive](/blog/backend-architecture-deep-dive) · [Scaling Architecture Saves Money](/blog/scaling-architecture-saves-money) · [Hosting large-scale events](/blog/hosting-large-scale-events-the-smart-way)
