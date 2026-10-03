@@ -84,13 +84,6 @@ const HeroBanner = () => {
               </span>
             </div>
             <img src={CamGrid} alt="Self-hosted open-source video conferencing — HD meeting grid in plugNmeet" fetchPriority="high" />
-            <div className="pnm-browser-footer">
-              <span>🎙</span>
-              <span>🎥</span>
-              <span>🖥</span>
-              <span>💬</span>
-              <span className="pnm-end">End</span>
-            </div>
           </div>
 
           <div className="pnm-float pnm-float--ai">
