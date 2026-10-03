@@ -453,6 +453,13 @@ a.card:hover { border-color: var(--pnm-sky); box-shadow: var(--pnm-shadow); }
    the aside into a narrow distorted column. */
 .pnm-blog-sidebar-toggle { border-color: var(--pnm-border); font-weight: 700; margin-bottom: 18px; }
 .pnm-blog-sidebar-toggle:hover { border-color: var(--pnm-sky); }
+/* Mobile uses the navbar-drawer recent posts (BlogSidebarMobile), so the
+   desktop inline sidebar + toggle would be a dead button. Hide both
+   below Docusaurus' 997px breakpoint and let the post grid go full width. */
+@media screen and (max-width: 996px) {
+  .pnm-blog-sidebar-toggle { display: none; }
+  .pnm-blog-row > aside { display: none; }
+}
 
 /* responsive */
 @media screen and (max-width: 1023px) {
