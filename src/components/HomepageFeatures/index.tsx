@@ -28,11 +28,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/whiteboard-svgrepo-com.svg').default,
   },
   {
-    icon: '🗳️',
-    title: 'Breakout rooms, polls & moderation',
-    text: 'Split into small groups, run quiz-mode polls, raise hands, waiting room and per-user locks — built for classes, workshops and webinars.',
-    link: '/blog/mastering-breakout-rooms',
-    linkLabel: 'Breakout guide',
+    icon: '🎓',
+    title: 'Virtual classroom software',
+    text: 'Complete online classroom with multi-user whiteboard, breakout rooms, quiz-mode polls, raise hand, waiting room, shared notes and per-user locks — built for online teaching, workshops and webinars.',
+    link: '/blog/open-source-virtual-classroom-software',
+    linkLabel: 'Classroom guide',
     Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg').default,
   },
   {
@@ -141,8 +141,8 @@ const ShowcaseSlides = [
 const UseCases = [
   {
     icon: '🎓',
-    title: 'Virtual classroom',
-    text: 'Whiteboard, breakout rooms, polls and attendance analytics — right inside Moodle with the plugNmeet plugin, or any LMS via LTI.',
+    title: 'Virtual classroom for Moodle & LMS',
+    text: 'Complete virtual classroom software with whiteboard, breakout rooms, polls and attendance analytics — right inside Moodle with the plugNmeet plugin, or any LMS via LTI.',
     link: '/docs/user-guide/moodle-integration',
     linkLabel: 'Moodle plugin →',
   },

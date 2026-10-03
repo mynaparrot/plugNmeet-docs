@@ -28,11 +28,11 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/features/whiteboard-svgrepo-com.svg').default,
   },
   {
-    icon: '🗳️',
-    title: 'Salas de grupos, encuestas y moderación',
-    text: 'Divida en salas de grupo, realice encuestas tipo cuestionario, permita levantar la mano, use la sala de espera y configure permisos individuales: ideal para clases, talleres y webinars.',
-    link: '/docs/user-guide/moderator',
-    linkLabel: 'Guía de moderación',
+    icon: '🎓',
+    title: 'Software de aula virtual',
+    text: 'Aula virtual completa con pizarra multiusuario, salas de grupos, encuestas tipo cuestionario, mano levantada, sala de espera, notas compartidas y permisos individuales — ideal para enseñanza en línea, talleres y webinars.',
+    link: '/blog/open-source-virtual-classroom-software',
+    linkLabel: 'Guía del aula',
     Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg').default,
   },
   {
@@ -141,8 +141,8 @@ const ShowcaseSlides = [
 const UseCases = [
   {
     icon: '🎓',
-    title: 'Aula virtual',
-    text: 'Pizarra, salas de grupos, encuestas y analíticas de asistencia — dentro de Moodle con el plugin de plugNmeet, o en cualquier LMS vía LTI.',
+    title: 'Aula virtual para Moodle y LMS',
+    text: 'Software completo de aula virtual con pizarra, salas de grupos, encuestas y analíticas de asistencia — dentro de Moodle con el plugin de plugNmeet, o en cualquier LMS vía LTI.',
     link: '/docs/user-guide/moodle-integration',
     linkLabel: 'Plugin Moodle →',
   },
