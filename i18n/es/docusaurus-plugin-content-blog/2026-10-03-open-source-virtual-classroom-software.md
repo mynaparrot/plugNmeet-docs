@@ -87,7 +87,7 @@ Para privacidad e instalación vea el [Resumen de seguridad](/docs/security-over
 
 ## Conclusión: deje de reunirse y empiece a enseñar
 
-Si está buscando un **software para aulas virtuales**, no se conforme con videollamadas y un enlace a pizarra. Elija una opción de código abierto que lo tenga todo en un mismo lugar: una pizarra para enseñar, salas de grupos, pruebas rápidas, notas compartidas, una sala de espera, controles sencillos, compatibilidad con Moodle, estadísticas de participación y alojamiento privado.
+Si está buscando un **software para aulas virtuales**, no se conforme con videollamadas y un enlace a pizarra. Elija una opción de código abierto que lo tenga todo en un mismo lugar: una pizarra para enseñar, salas de grupos, pruebas rápidas, notas compartidas, una sala de espera, controles sencillos, integración con Moodle, estadísticas de participación y alojamiento privado.
 
 plugNmeet es gratuito, de código abierto y usado en clases, talleres y webinars. La misma sala sencilla también impulsa [webinars de código abierto](/blog/open-source-webinar-software-platform).
 
