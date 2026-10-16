@@ -27,13 +27,13 @@ Una reunión conecta personas. Un aula les ayuda a aprender. Eso exige otras her
 6.  **Quédese en su curso:** abra la clase desde Moodle o su plataforma educativa — con asistencia y calificaciones.
 7.  **Proteja los datos del alumnado:** sus clases y grabaciones MP4 (un archivo por lección) quedan en su propio sistema, no en la nube de otra empresa.
 
-Así lo resuelve plugNmeet — sin conocimientos técnicos. Los ayudantes opcionales solo ahorran tiempo: texto a esquema en la pizarra y ayuda rápida de escritura en las notas.
+Así lo resuelve plugNmeet — sin conocimientos técnicos. Los asistentes de IA opcionales solo ahorran tiempo: texto a esquema en la pizarra y ayuda rápida de escritura en las notas.
 
 ## 1. Pizarra interactiva que toda la clase puede usar a la vez
 
 La pizarra es el corazón del aula en línea. La nuestra es una pizarra interactiva multiusuario dentro de la clase — sin ventanas extra ni retardos.
 
-Puede escribir, dibujar formas, flechas y texto, y abrir sus archivos de clase (PDF, presentaciones, documentos de Word) directamente en la pizarra. Muestre una guía y resuelva con el grupo, destaque puntos clave de una diapositiva o deje que el alumnado dibuje y escriba con usted al mismo tiempo. ¿Necesita un esquema con prisa? Escriba lo que quiere mostrar — por ejemplo un diagrama para su lección — y el ayudante integrado crea un dibujo inicial editable que pueden explicar y cambiar juntos. ¿Necesita silencio mientras explica? Bloquee la pizarra en solo lectura con un clic. Y funciona igual en las salas de grupos pequeños.
+Puede escribir, dibujar formas, flechas y texto, y abrir sus archivos de clase (PDF, presentaciones, documentos de Word) directamente en la pizarra. Muestre una guía y resuelva con el grupo, destaque puntos clave de una diapositiva o deje que el alumnado dibuje y escriba con usted al mismo tiempo. ¿Necesita un esquema con prisa? Escriba lo que quiere mostrar — por ejemplo un diagrama para su lección — y el asistente de IA crea un dibujo inicial editable que pueden explicar y cambiar juntos. ¿Necesita silencio mientras explica? Con un clic, configure la pizarra para solo lectura. Y funciona igual en las salas de grupos pequeños.
 
 Lea más en [la experiencia de pizarra integrada](/blog/integrated-whiteboard-experience).
 
@@ -57,7 +57,7 @@ Detalles: [cómo implicar con encuestas en vivo](/blog/engaging-audience-with-li
 
 Tome notas donde ocurre la clase. Las notas compartidas están dentro de la sala, así docente y estudiantes escriben juntos resúmenes, puntos clave, tareas y enlaces — con títulos y formato limpio, sin pasar otro documento.
 
-¿Poco tiempo? El ayudante de escritura puede continuar su borrador, corregir, simplificar o convertir notas largas en un resumen corto para compartir después. Cada grupo también tiene su propia página de notas en salas de grupos.
+¿Poco tiempo? El asistente de IA puede continuar su borrador, corregir, simplificar o convertir notas largas en un resumen corto para compartir después. Cada grupo también tiene su propia página de notas en salas de grupos.
 
 ## 5. Controles sencillos: sala de espera y reglas de sonido y cámara
 
@@ -71,9 +71,9 @@ Empiece con la [guía de bloqueos para moderadores](/blog/moderator-guide-room-l
 
 ## 6. Dentro de Moodle y su plataforma educativa — con asistencia
 
-La mejor aula virtual vive donde ya está su curso. plugNmeet se abre directamente dentro de Moodle como una actividad de clase — mismo aspecto, mismo calendario, misma asistencia y calificaciones — y también funciona con otras plataformas educativas y sitios de cursos en WordPress y Joomla.
+La mejor aula virtual vive donde ya está su curso. plugNmeet se abre directamente dentro de Moodle como una actividad de clase — con el mismo aspecto, calendario, asistencia y calificaciones — y también funciona con otras plataformas educativas y sitios de cursos en WordPress y Joomla.
 
-Además puede ver datos sencillos de participación: quién asistió, quién participó en encuestas y pizarra, quién habló y si una conexión débil afectó a alguien. Es opcional, privado de su centro y apagado salvo que usted decida activarlo.
+Además puede ver datos sencillos de participación: quién asistió, quién participó en encuestas y pizarra, quién habló y si una conexión débil afectó a alguien. Es opcional, privado de su centro educativo y desactivado salvo que usted decida activarlo.
 
 Empiece aquí: [guía de videoconferencia con Moodle](/blog/moodle-video-conferencing-guide), [videoconferencia sin código en Moodle](/blog/no-code-video-conferencing-moodle), [analítica del aula para docentes](/blog/classroom-analytics-for-educators) y la documentación de [integración con Moodle](/docs/user-guide/moodle-integration). ¿Cambia de herramienta? Vea nuestra [comparativa con BigBlueButton](/blog/bigbluebutton-vs-plugnmeet-alternative) y el [tutorial de migración](/docs/tutorials/migration-from-bbb).
 
@@ -87,12 +87,12 @@ Para privacidad e instalación vea el [Resumen de seguridad](/docs/security-over
 
 ## Conclusión: deje de reunirse y empiece a enseñar
 
-Si compara **software de aula virtual**, no se conforme con video y un enlace a pizarra. Elija un aula abierta con pizarra para enseñar, salas completas para grupos, pruebas rápidas, notas compartidas, sala de espera y controles sencillos, integración con Moodle, datos de participación y alojamiento privado — en una sola sala.
+Si está buscando un **software para aulas virtuales**, no se conforme con videollamadas y un enlace a pizarra. Elija una opción de código abierto que lo tenga todo en un mismo lugar: una pizarra para enseñar, salas de grupos, pruebas rápidas, notas compartidas, una sala de espera, controles sencillos, integración con Moodle, estadísticas de participación y alojamiento privado.
 
 plugNmeet es gratuito, de código abierto y usado en clases, talleres y webinars. La misma sala sencilla también impulsa [webinars de código abierto](/blog/open-source-webinar-software-platform).
 
 ---
-**¿Lista su aula en línea?**
+**¿Listo para poner en marcha su aula en línea?**
 
 *   **Pruebe la [demo en vivo](https://demo.plugnmeet.com/landing.html): abra la pizarra, prepare una prueba, pruebe salas de grupos**
 *   **Añádalo a Moodle en minutos: [documentación de Moodle](/docs/user-guide/moodle-integration)**
