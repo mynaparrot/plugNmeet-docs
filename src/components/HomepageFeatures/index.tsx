@@ -106,6 +106,27 @@ const FeatureList: FeatureItem[] = [
     linkLabel: 'Scaling guide',
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
   },
+  {
+    icon: '📊',
+    title: 'Deep meeting analytics & reports',
+    text: 'Attendance, talk time, polls, chats, whiteboard and connection quality — per-session reports with Excel export via PHP SDK, Moodle, WordPress and Joomla.',
+    link: '/docs/others/analytics',
+    linkLabel: 'Analytics guide',
+  },
+  {
+    icon: '🎥',
+    title: 'Webinar & live event software',
+    text: 'Host interactive Q&A webinars with waiting room, moderation, RTMP streaming to YouTube/Facebook and studio input from OBS.',
+    link: '/blog/custom-qna-webinar-rtmp-broadcast-api',
+    linkLabel: 'Webinar guide',
+  },
+  {
+    icon: '🛠️',
+    title: 'Video API, SDKs & webhooks',
+    text: 'Create rooms, mint join tokens and automate meetings with PHP/JS SDKs, webhooks and BBB-compatible API on your own domain.',
+    link: '/docs/api/intro',
+    linkLabel: 'API docs',
+  },
 ];
 
 // All 12 original product screenshots, bundled via webpack so a missing

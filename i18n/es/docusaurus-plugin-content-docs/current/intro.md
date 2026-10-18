@@ -69,6 +69,10 @@ No necesita aprenderlo todo el primer día. Esta es la caja de herramientas comp
 - Subtítulos en directo, traducción hablada, transcripciones, resúmenes y asistente de chat, con su propio proveedor de IA (compatible con OpenAI).
 - Usted decide cuándo actúa la IA y adónde van los datos. Las salas con E2EE desactivan de forma automática la IA del servidor que necesitaría escuchar el audio. Detalles en [Resumen de seguridad](/docs/security-overview).
 
+### Medir con analíticas
+- **Analíticas profundas e informes de reuniones:** Asistencia, tiempo de uso de la palabra, participación, encuestas, pizarra y calidad de conexión por sesión. Empiece por la [guía de Analíticas de reuniones e informes](/docs/others/analytics).
+- Exportación a Excel vía SDK para PHP y plugins de Moodle, WordPress y Joomla.
+
 ### Seguridad y control
 - Datos autoalojados, API firmada con HMAC + sesiones JWT, TLS en todo momento y **cifrado de extremo a extremo (E2EE)** opcional para audio, video y chat.
 - Analíticas por sala con metadatos (conteos, no contenido) y auditoría completa por API. Empiece por [Seguridad y privacidad](/docs/security-overview).

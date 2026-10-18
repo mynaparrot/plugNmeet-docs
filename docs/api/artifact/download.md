@@ -41,3 +41,7 @@ This endpoint is only for artifact types that represent a physical file, such as
 
 After receiving the token, you can provide the following download URL to your user:
 `https://Your-Plug-N-Meet-Server.com/download/artifact/THE_TOKEN_HERE`
+
+:::tip[Downloading meeting analytics?]
+For the full workflow — list `MEETING_ANALYTICS` artifacts, download the JSON, and format it into attendance and engagement reports with the PHP SDK — see the [Meeting Analytics & Reports guide](/docs/others/analytics).
+:::

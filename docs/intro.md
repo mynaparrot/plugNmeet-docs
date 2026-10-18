@@ -69,6 +69,10 @@ You do not need to learn all of this on day one. This is the full toolbox your r
 - Live captions, spoken translation, transcriptions, summaries, and chat assistant — powered by your own AI provider (OpenAI-compatible).
 - You control when AI runs and where data goes. E2EE rooms automatically disable server-side AI that would need to hear audio. Details in [Security Overview](/docs/security-overview).
 
+### Measure with analytics
+- **Deep meeting analytics & reports:** Attendance, talk time, engagement, polls, whiteboard and connection quality per session. Start with the [Meeting Analytics & Reports guide](/docs/others/analytics).
+- Excel export via the PHP SDK, Moodle, WordPress and Joomla plugins.
+
 ### Security and control
 - Self-hosted data, HMAC-signed API + JWT sessions, TLS everywhere, optional **end-to-end encryption (E2EE)** for media and chat.
 - Per-room analytics metadata (counts, not content) and full audit via API. Start with [Security & Privacy](/docs/security-overview).

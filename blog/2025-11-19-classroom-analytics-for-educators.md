@@ -22,7 +22,7 @@ Before we dive into the "what," let's talk about the "how." In education, data p
 1.  **It is Always Opt-In:** Analytics are **disabled by default**. The feature must be actively enabled by an administrator on a per-room basis using the `enable_analytics` flag. If you do nothing, no data is ever saved.
 2.  **Data is Discarded by Default:** If analytics are disabled for a session, all the in-memory data collected during the meeting is **immediately and permanently discarded** the moment the session ends. It is never written to a file or a database.
 
-When you *do* choose to enable analytics, the data is saved as a simple JSON file on your own server, and you can access it via our Analytics API. You remain in full control.
+When you *do* choose to enable analytics, the data is saved as a simple JSON file on your own server, and you can access it via our [meeting analytics reports](/docs/others/analytics). You remain in full control.
 
 ## Turning Data into Educational Insights
 
@@ -67,5 +67,5 @@ By combining these powerful insights with a privacy-first, opt-in architecture, 
 ---
 **Ready to learn more?**
 
-*   **Explore the [Analytics API Documentation](/docs/api/analytics/fetch)**
+*   **Explore the [Meeting Analytics & Reports guide](/docs/others/analytics)**
 *   **Read our complete [Security Overview](/docs/security-overview)**

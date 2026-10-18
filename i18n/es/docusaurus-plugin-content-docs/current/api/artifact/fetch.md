@@ -64,3 +64,7 @@ Algunos ejemplos comunes incluyen:
 *   `MEETING_SUMMARY_USAGE`
 
 Para obtener una lista completa y actualizada de todos los tipos de artefactos disponibles, consulte el archivo oficial [**`plugnmeet_room_artifacts.proto`**](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto).
+
+:::tip[¿Trabaja con analíticas de reuniones?]
+Para listar y descargar archivos `MEETING_ANALYTICS` y convertir el JSON original en informes de asistencia, participación y desempeño en el aula virtual, consulte la [guía de Analíticas de reuniones e informes](/docs/others/analytics).
+:::

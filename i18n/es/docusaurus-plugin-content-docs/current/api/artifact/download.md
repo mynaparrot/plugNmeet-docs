@@ -41,3 +41,7 @@ Este punto final es solo para tipos de artefactos que representan un archivo fí
 
 Después de recibir el token, puede proporcionar la siguiente URL de descarga a su usuario:
 `https://Su-Servidor-Plug-N-Meet.com/download/artifact/EL_TOKEN_AQUÍ`
+
+:::tip[¿Descarga analíticas de reuniones?]
+Para el flujo completo — listar artefactos `MEETING_ANALYTICS`, descargar el JSON y darle formato de informes de asistencia y participación con el SDK para PHP — consulte la [guía de Analíticas de reuniones e informes](/docs/others/analytics).
+:::

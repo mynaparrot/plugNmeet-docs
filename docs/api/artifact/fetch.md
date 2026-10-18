@@ -64,3 +64,7 @@ A few common examples include:
 *   `MEETING_SUMMARY_USAGE`
 
 For a complete and up-to-date list of all available artifact types, please refer to the official [**`plugnmeet_room_artifacts.proto`**](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto) file.
+
+:::tip[Working with meeting analytics?]
+To list and download `MEETING_ANALYTICS` files and turn the raw JSON into attendance, engagement, and classroom performance reports, see the [Meeting Analytics & Reports guide](/docs/others/analytics).
+:::

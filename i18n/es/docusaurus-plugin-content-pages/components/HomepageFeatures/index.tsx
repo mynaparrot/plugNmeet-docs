@@ -106,6 +106,27 @@ const FeatureList: FeatureItem[] = [
     linkLabel: 'Guía de escalado',
     Svg: require('@site/static/img/features/go-svgrepo-com.svg').default,
   },
+  {
+    icon: '📊',
+    title: 'Analíticas profundas e informes',
+    text: 'Asistencia, tiempo de uso de la palabra, encuestas, chats, pizarra y calidad de conexión — informes por sesión con exportación a Excel vía SDK para PHP, Moodle, WordPress y Joomla.',
+    link: '/docs/others/analytics',
+    linkLabel: 'Guía de analíticas',
+  },
+  {
+    icon: '🎥',
+    title: 'Software para webinars y eventos',
+    text: 'Organice webinars interactivos con preguntas y respuestas, sala de espera, moderación, transmisión RTMP a YouTube/Facebook y entrada profesional desde OBS.',
+    link: '/blog/custom-qna-webinar-rtmp-broadcast-api',
+    linkLabel: 'Guía de webinars',
+  },
+  {
+    icon: '🛠️',
+    title: 'API de video, SDK y webhooks',
+    text: 'Cree salas, genere enlaces de acceso y automatice reuniones con los SDK para PHP/JS, webhooks y la API compatible con BBB en su propio dominio.',
+    link: '/docs/api/intro',
+    linkLabel: 'Documentación de la API',
+  },
 ];
 
 // Las 12 capturas originales, empaquetadas vía webpack para que un
