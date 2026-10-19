@@ -5,7 +5,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: " ",
   tagline: 'The free and open-source video conferencing software for full control and privacy. Host secure, scalable, and customizable AI-powered meetings on your own servers.',
-  favicon: 'img/favicon.png',
+  favicon: 'img/favicon/favicon-32x32.png',
   titleDelimiter: " ",
 
   // Set the production url of your site here

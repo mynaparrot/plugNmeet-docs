@@ -28,6 +28,10 @@ export default function Home() {
     description="Self-hosted, white-label WebRTC video conferencing: HD meetings with whiteboard, breakout rooms, recording, RTMP streaming, AI captions & translation. No installs.">
       <Head>
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/img/favicon/apple-touch-icon.png" />
       </Head>
       <HeroBanner />
       <main>
