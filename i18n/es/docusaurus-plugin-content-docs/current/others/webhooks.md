@@ -1,6 +1,6 @@
 ---
 title: Guía de Webhooks | Documentación para Desarrolladores de plugNmeet
-description: Una guía para usar los webhooks de plugNmeet para recibir notificaciones en tiempo real sobre eventos en sus salas de videoconferencia, como 'session-started' o 'user-joined'.
+description: Una guía para usar los webhooks de plugNmeet para recibir notificaciones en tiempo real sobre eventos de salas y sesiones, como 'room_created', 'room_started' o 'session_ended'.
 keywords: [webhook, webhooks, eventos, tiempo real, notificaciones, api, desarrollador]
 sidebar_position: 2
 sidebar_label: Webhooks
@@ -18,6 +18,24 @@ La solicitud tendrá la cabecera `Content-Type` establecida en `application/json
 
 Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de plugNmeet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
+Cada evento contiene `event`, `room`, `id` y `createdAt`. `room` es un `NotifyEventRoom` con al menos `room_id` y `sid`. Asocie siempre las sesiones mediante `room.room_id`. Si LiveKit no incluye la información de la sala en su callback, plugNmeet lo descarta y nunca lo reenvía.
+
+## Ciclo de vida de la sesión: en qué evento confiar
+
+Una sesión de plugNmeet no es lo mismo que una sala multimedia de LiveKit. `room_created` y `session_ended` los envía el propio plugNmeet y siempre se emiten. `room_started` y `room_finished` se retransmiten desde LiveKit y solo se emiten si al menos un participante se unió y LiveKit nos lo notificó.
+
+- Use `room_created` + `session_ended` para el seguimiento fiable, limpieza y facturación.
+- Use `room_started` + `room_finished` solo para el estado multimedia (por ejemplo, alguien se unió realmente, la sala multimedia se cerró).
+
+| Evento | Enviado por | Cuándo se emite |
+|---|---|---|
+| `room_created` | plugNmeet | Justo después de que la API `CreateRoom` tenga éxito. Siempre se emite. |
+| `room_started` | LiveKit, retransmitido por plugNmeet | Cuando la sala de LiveKit se activa, es decir, el primer participante se unió. Solo se emite si alguien se unió y LiveKit nos lo notificó. |
+| `room_finished` | LiveKit, retransmitido por plugNmeet | Cuando la sala de LiveKit se cierra. Solo se emite si la sala había iniciado y LiveKit nos lo notificó. No llega si nadie se unió nunca. |
+| `session_ended` | plugNmeet | Durante el flujo `EndRoom`, ya sea por llamada API `EndRoom` o por janitor (tiempo de vacío agotado, duración excedida). Siempre se emite, incluso si nadie se unió nunca. Se envía antes de desmontar la sala de LiveKit. |
+
+Si finaliza una sesión por API o janitor cierra una sesión vacía, siempre recibirá `session_ended`. Solo recibirá `room_finished` después si la sala de LiveKit realmente había iniciado.
+
 ## Eventos
 
 Puede revisar [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common.proto#L10) las definiciones de los eventos.
@@ -25,8 +43,11 @@ Puede revisar [aquí](https://github.com/mynaparrot/plugnmeet-protocol/blob/main
 Todos los eventos de webhook incluyen los siguientes campos:
 - `id`: Un UUID que identifica el evento
 - `createdAt`: Marca de tiempo UNIX en segundos
+- `room`: Contiene al menos `room_id`, `sid`, `creation_time` y `metadata`
 
 ### Sala Creada
+
+Enviado por plugNmeet al crear la sesión. Úselo para crear su registro local de sesión.
 
 ```js
 interface CommonNotifyEvent {
@@ -37,6 +58,8 @@ interface CommonNotifyEvent {
 
 ### Sala Iniciada
 
+Retransmitido desde LiveKit cuando la sala multimedia inicia. Solo se emite si al menos un usuario se unió. plugNmeet lo enriquece con `sid` y `metadata` antes de reenviarlo.
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_started'
@@ -46,6 +69,8 @@ interface CommonNotifyEvent {
 
 ### Sala Finalizada
 
+Retransmitido desde LiveKit cuando la sala multimedia se cierra. Solo se emite si la sala había iniciado. Si la sala se terminó vía API de plugNmeet, puede llegar después de `session_ended`.
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_finished'
@@ -53,7 +78,20 @@ interface CommonNotifyEvent {
 }
 ```
 
+### Sesión Finalizada
+
+Evento especial solo de plugNmeet. Enviado desde `onAfterRoomEnded` (`pkg/models/room_end.go`) antes de desmontar LiveKit, siempre que una sesión se elimina por llamada API o por janitor. Siempre se emite. Úselo como señal autoritativa de fin de sesión para limpieza y facturación. Carga mínima: `room_id`, `sid`, `metadata`, `creation_time`.
+
+```js
+interface CommonNotifyEvent {
+  event: 'session_ended'
+  room: Room
+}
+```
+
 ### Participante Unido
+
+Retransmitido desde LiveKit cuando un participante se une. plugNmeet sobrescribe `sid` y `metadata` desde su propio almacén antes de reenviarlo.
 
 ```js
 interface CommonNotifyEvent {
@@ -65,6 +103,8 @@ interface CommonNotifyEvent {
 
 ### Participante Abandonó la Sala
 
+Retransmitido desde LiveKit cuando un participante sale. También se envía para usuarios internos (SIP, ingress, agentes TTS).
+
 ```js
 interface CommonNotifyEvent {
   event: 'participant_left'
@@ -75,7 +115,7 @@ interface CommonNotifyEvent {
 
 ### Pista Publicada
 
-Solo se incluyen `sid`, `identity` y `name` en los objetos Room y Participant.
+Retransmitido desde LiveKit cuando se publica una pista de micrófono, cámara o pantalla compartida.
 
 ```js
 interface CommonNotifyEvent {
@@ -88,7 +128,7 @@ interface CommonNotifyEvent {
 
 ### Pista No Publicada
 
-Solo se incluyen `sid`, `identity` y `name` en los objetos Room y Participant.
+Retransmitido desde LiveKit cuando se deja de publicar una pista.
 
 ```js
 interface CommonNotifyEvent {
@@ -101,6 +141,8 @@ interface CommonNotifyEvent {
 
 ### Grabación Iniciada
 
+Enviado por el servicio de grabación al iniciar la grabación. Contiene `recording_info` con los ID de grabación y grabador.
+
 ```js
 interface CommonNotifyEvent {
   event: 'start_recording'
@@ -110,6 +152,8 @@ interface CommonNotifyEvent {
 ```
 
 ### Grabación Finalizada
+
+Enviado por el servicio de grabación al detener la grabación. El archivo puede no estar listo aún; espere `recording_proceeded` para el archivo descargable.
 
 ```js
 interface CommonNotifyEvent {
@@ -121,6 +165,8 @@ interface CommonNotifyEvent {
 
 ### Grabación Procesada
 
+Se envía cuando el archivo de grabación está procesado y listo. Puede llegar después de la limpieza de la sesión.
+
 ```js
 interface CommonNotifyEvent {
   event: 'recording_proceeded'
@@ -131,6 +177,8 @@ interface CommonNotifyEvent {
 
 ### RTMP Iniciado
 
+Enviado por el servicio de grabación cuando inicia la transmisión RTMP.
+
 ```js
 interface CommonNotifyEvent {
   event: 'start_rtmp'
@@ -140,6 +188,8 @@ interface CommonNotifyEvent {
 ```
 
 ### RTMP Finalizado
+
+Enviado por el servicio de grabación cuando termina la transmisión RTMP.
 
 ```js
 interface CommonNotifyEvent {
@@ -164,6 +214,8 @@ interface CommonNotifyEvent {
 ```
 
 ### Analíticas procesadas
+
+Se envía cuando la exportación de analíticas de una sesión está lista. Contiene `analytics.file_id` para descarga.
 
 ```js
 interface CommonNotifyEvent {
@@ -191,15 +243,22 @@ const ArtifactType = {
 
 function handleWebhook(payload) {
   console.log(`Evento recibido: ${payload.event}`);
-  const sala = payload.room;
+  // Asocie siempre por room_id. Los eventos sin room.room_id nunca se envían.
+  const roomId = payload.room?.room_id;
 
   switch (payload.event) {
+    case 'room_created':
+      // Inicio fiable de sesión.
+      console.log(`Sesión '${roomId}' creada.`);
+      break;
+
     case 'room_started':
-      console.log(`La sala '${sala.name}' ha comenzado.`);
+      // Sala multimedia iniciada (alguien se unió).
+      console.log(`La sala '${roomId}' ha comenzado.`);
       break;
 
     case 'participant_joined':
-      console.log(`El usuario '${payload.participant.name}' se unió a la sala '${sala.name}'.`);
+      console.log(`El usuario '${payload.participant.name}' se unió a la sala '${roomId}'.`);
       break;
 
     case 'artifact_created':
@@ -207,7 +266,12 @@ function handleWebhook(payload) {
       break;
       
     case 'room_finished':
-      console.log(`La sala '${sala.name}' ha finalizado.`);
+      console.log(`La sala '${roomId}' ha finalizado.`);
+      break;
+
+    case 'session_ended':
+      // Fin de sesión autoritativo. Siempre se emite por API o janitor.
+      console.log(`La sesión '${roomId}' ha terminado.`);
       break;
 
     default:
@@ -254,8 +318,7 @@ const samplePayload = {
   "createdAt": 1761815000,
   "room": {
     "sid": "RM_zG9e4bY2pD-1761814595173",
-    "room_id": "room01",
-    "name": "Test Room"
+    "room_id": "room01"
   },
   "room_artifact": {
     "type": 2, // Corresponde a MEETING_SUMMARY

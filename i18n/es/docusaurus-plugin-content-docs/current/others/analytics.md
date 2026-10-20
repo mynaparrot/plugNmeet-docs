@@ -10,7 +10,7 @@ sidebar_label: Analíticas
 
 Las **analíticas de reuniones** de plugNmeet convierten cada sesión en un **informe de analíticas** detallado: quién se unió y durante cuánto tiempo, quién habló, quién chateó, votó, levantó la mano, compartió pantalla o tuvo problemas de conexión. Los equipos las utilizan para sus **informes de reunión** y el control de asistencia; los docentes las utilizan como **informe de aula virtual** para medir la equidad en la participación, las tendencias de implicación y las barreras tecnológicas.
 
-Si `enable_analytics` se activó en los `room_features` de la sala ([API de creación de salas](/docs/api/room/create)), plugNMeet agrega los eventos de analíticas en memoria durante la sesión y escribe un único archivo JSON al finalizar. El archivo se almacena como un artefacto de tipo `MEETING_ANALYTICS`.
+Si `enable_analytics` se activó en los `room_features` de la sala ([API de creación de salas](/docs/api/room/create)), plugNmeet agrega los eventos de analíticas en memoria durante la sesión y escribe un único archivo JSON al finalizar. El archivo se almacena como un artefacto de tipo `MEETING_ANALYTICS`.
 
 Para comprender el porqué de estas métricas — preguntas sobre participación, equidad y diseño con privacidad por defecto — consulte [De la caja negra al plano: usar analíticas para comprender su aula en línea](/blog/classroom-analytics-for-educators).
 
@@ -109,7 +109,7 @@ Las nuevas funciones de plugNmeet pueden añadir o ampliar en cualquier momento 
 
 ## Dar formato con el SDK para PHP
 
-El paquete [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) incluye `Mynaparrot\Plugnmeet\AnalyticsFormatter`, que convierte el JSON original en un informe de reunión listo para la asistencia. Los plugins de Moodle, WordPress y Joomla usan la misma clase para generar sus exportaciones a Excel.
+El paquete [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNmeet-sdk-php) incluye `Mynaparrot\Plugnmeet\AnalyticsFormatter`, que convierte el JSON original en un informe de reunión listo para la asistencia. Los plugins de Moodle, WordPress y Joomla usan la misma clase para generar sus exportaciones a Excel.
 
 ```bash
 composer require mynaparrot/plugnmeet-sdk

@@ -109,7 +109,7 @@ New plugNmeet features can add or extend room fields, user fields, and event nam
 
 ## Format with the PHP SDK
 
-The [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) package ships `Mynaparrot\Plugnmeet\AnalyticsFormatter`, which converts the raw JSON into an attendance-ready meeting report. The Moodle, WordPress, and Joomla plugins use the same class to generate their Excel exports.
+The [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNmeet-sdk-php) package ships `Mynaparrot\Plugnmeet\AnalyticsFormatter`, which converts the raw JSON into an attendance-ready meeting report. The Moodle, WordPress, and Joomla plugins use the same class to generate their Excel exports.
 
 ```bash
 composer require mynaparrot/plugnmeet-sdk
