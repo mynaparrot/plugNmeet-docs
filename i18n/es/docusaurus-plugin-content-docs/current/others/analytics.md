@@ -1,6 +1,6 @@
 ---
-title: Analíticas de Reuniones e Informes | plugNMeet
-description: Genere informes de analíticas de reuniones con plugNMeet — analíticas profundas de asistencia, tiempo de uso de la palabra, participación, encuestas y desempeño en el aula virtual. Referencia del JSON + guía del SDK para PHP.
+title: Analíticas de Reuniones e Informes | plugNmeet
+description: Genere informes de analíticas de reuniones con plugNmeet — analíticas profundas de asistencia, tiempo de uso de la palabra, participación, encuestas y desempeño en el aula virtual. Referencia del JSON + guía del SDK para PHP.
 keywords: [analíticas de reuniones, analíticas profundas, informe de reunión, informe de asistencia, informe de participación, informe de aula virtual, seguimiento de asistencia, participación de los participantes, tiempo de uso de la palabra, analíticas de participación, aula virtual, sdk php, AnalyticsFormatter]
 sidebar_position: 1
 sidebar_label: Analíticas
@@ -8,7 +8,7 @@ sidebar_label: Analíticas
 
 # Analíticas de Reuniones e Informes Detallados de Sesión
 
-Las **analíticas de reuniones** de plugNMeet convierten cada sesión en un **informe de analíticas** detallado: quién se unió y durante cuánto tiempo, quién habló, quién chateó, votó, levantó la mano, compartió pantalla o tuvo problemas de conexión. Los equipos las utilizan para sus **informes de reunión** y el control de asistencia; los docentes las utilizan como **informe de aula virtual** para medir la equidad en la participación, las tendencias de implicación y las barreras tecnológicas.
+Las **analíticas de reuniones** de plugNmeet convierten cada sesión en un **informe de analíticas** detallado: quién se unió y durante cuánto tiempo, quién habló, quién chateó, votó, levantó la mano, compartió pantalla o tuvo problemas de conexión. Los equipos las utilizan para sus **informes de reunión** y el control de asistencia; los docentes las utilizan como **informe de aula virtual** para medir la equidad en la participación, las tendencias de implicación y las barreras tecnológicas.
 
 Si `enable_analytics` se activó en los `room_features` de la sala ([API de creación de salas](/docs/api/room/create)), plugNMeet agrega los eventos de analíticas en memoria durante la sesión y escribe un único archivo JSON al finalizar. El archivo se almacena como un artefacto de tipo `MEETING_ANALYTICS`.
 
@@ -104,12 +104,12 @@ Usuario: `joined`, `left`, `mic_status`, `talked`, `talked_duration` (ms), `webc
 Los valores de estado dentro de `mic_status` / `webcam_status` / eventos de estado de sala usan prefijos como `ANALYTICS_STATUS_STARTED`, `ANALYTICS_STATUS_ENDED`, `ANALYTICS_STATUS_MUTED`, o `excellent` / `good` / `poor` para la calidad de conexión.
 
 :::caution[Los campos evolucionan con las nuevas funciones]
-Las nuevas funciones de plugNMeet pueden añadir o ampliar en cualquier momento los campos de sala, los campos de usuario y los nombres de eventos, por lo que las listas anteriores son una foto fija, no un esquema cerrado. Antes de analizar de forma estricta o validar con nombres de campos fijos, revise siempre las notas de la versión y el archivo oficial [`plugnmeet_analytics.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_analytics.proto). Si utiliza el SDK para PHP, prefiera `getRoomFields()` / `getUserFields()` en lugar de listas fijas, para que su código adopte los campos nuevos de forma automática.
+Las nuevas funciones de plugNmeet pueden añadir o ampliar en cualquier momento los campos de sala, los campos de usuario y los nombres de eventos, por lo que las listas anteriores son una foto fija, no un esquema cerrado. Antes de analizar de forma estricta o validar con nombres de campos fijos, revise siempre las notas de la versión y el archivo oficial [`plugnmeet_analytics.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_analytics.proto). Si utiliza el SDK para PHP, prefiera `getRoomFields()` / `getUserFields()` en lugar de listas fijas, para que su código adopte los campos nuevos de forma automática.
 :::
 
 ## Dar formato con el SDK para PHP
 
-El paquete [`plugNMeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) incluye `Mynaparrot\Plugnmeet\AnalyticsFormatter`, que convierte el JSON original en un informe de reunión listo para la asistencia. Los plugins de Moodle, WordPress y Joomla usan la misma clase para generar sus exportaciones a Excel.
+El paquete [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) incluye `Mynaparrot\Plugnmeet\AnalyticsFormatter`, que convierte el JSON original en un informe de reunión listo para la asistencia. Los plugins de Moodle, WordPress y Joomla usan la misma clase para generar sus exportaciones a Excel.
 
 ```bash
 composer require mynaparrot/plugnmeet-sdk

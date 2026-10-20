@@ -1,6 +1,6 @@
 ---
-title: Meeting Analytics & Reports | Deep Session Insights | plugNMeet
-description: Generate meeting analytics reports with plugNMeet — deep analytics on attendance, talk time, engagement, polls, and classroom performance. Raw JSON reference + PHP SDK formatter guide.
+title: Meeting Analytics & Reports | Deep Session Insights | plugNmeet
+description: Generate meeting analytics reports with plugNmeet — deep analytics on attendance, talk time, engagement, polls, and classroom performance. Raw JSON reference + PHP SDK formatter guide.
 keywords: [meeting analytics, deep analytics, analytics report, meeting report, classroom performance report, attendance tracking, participant engagement, talk time report, engagement analytics, virtual classroom analytics, php sdk, AnalyticsFormatter]
 sidebar_position: 1
 sidebar_label: Analytics
@@ -8,9 +8,9 @@ sidebar_label: Analytics
 
 # Meeting Analytics & Deep Session Reports
 
-plugNMeet's **meeting analytics** turns every session into a **detailed analytics report**: who joined and for how long, who spoke, who chatted, voted, raised a hand, shared a screen, or struggled with connection quality. Teams use it for **meeting reports** and attendance tracking; educators use it as a **classroom performance report** to measure participation equity, engagement trends, and technology barriers.
+plugNmeet's **meeting analytics** turns every session into a **detailed analytics report**: who joined and for how long, who spoke, who chatted, voted, raised a hand, shared a screen, or struggled with connection quality. Teams use it for **meeting reports** and attendance tracking; educators use it as a **classroom performance report** to measure participation equity, engagement trends, and technology barriers.
 
-If `enable_analytics` was set in the room's `room_features` ([room create API](/docs/api/room/create)), plugNMeet aggregates analytics events in memory during the session and writes a single JSON file when the session ends. The file is stored as an artifact of type `MEETING_ANALYTICS`.
+If `enable_analytics` was set in the room's `room_features` ([room create API](/docs/api/room/create)), plugNmeet aggregates analytics events in memory during the session and writes a single JSON file when the session ends. The file is stored as an artifact of type `MEETING_ANALYTICS`.
 
 For the why behind these metrics — engagement questions, equitable participation, and privacy-by-default design — see [From Black Box to Blueprint: Using Analytics to Understand Your Online Classroom](/blog/classroom-analytics-for-educators).
 
@@ -104,12 +104,12 @@ User: `joined`, `left`, `mic_status`, `talked`, `talked_duration` (ms), `webcam_
 Status values inside `mic_status` / `webcam_status` / room status events use prefixes like `ANALYTICS_STATUS_STARTED`, `ANALYTICS_STATUS_ENDED`, `ANALYTICS_STATUS_MUTED`, or `excellent` / `good` / `poor` for connection quality.
 
 :::caution[Fields evolve with new features]
-New plugNMeet features can add or extend room fields, user fields, and event names at any time, so the lists above are a snapshot, not a fixed schema. Before parsing strictly or validating against hardcoded field names, always check the release notes and the authoritative [`plugnmeet_analytics.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_analytics.proto) file. When using the PHP SDK, prefer `getRoomFields()` / `getUserFields()` over hardcoded lists so your code picks up new fields automatically.
+New plugNmeet features can add or extend room fields, user fields, and event names at any time, so the lists above are a snapshot, not a fixed schema. Before parsing strictly or validating against hardcoded field names, always check the release notes and the authoritative [`plugnmeet_analytics.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_analytics.proto) file. When using the PHP SDK, prefer `getRoomFields()` / `getUserFields()` over hardcoded lists so your code picks up new fields automatically.
 :::
 
 ## Format with the PHP SDK
 
-The [`plugNMeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) package ships `Mynaparrot\Plugnmeet\AnalyticsFormatter`, which converts the raw JSON into an attendance-ready meeting report. The Moodle, WordPress, and Joomla plugins use the same class to generate their Excel exports.
+The [`plugNmeet-sdk-php`](https://github.com/mynaparrot/plugNMeet-sdk-php) package ships `Mynaparrot\Plugnmeet\AnalyticsFormatter`, which converts the raw JSON into an attendance-ready meeting report. The Moodle, WordPress, and Joomla plugins use the same class to generate their Excel exports.
 
 ```bash
 composer require mynaparrot/plugnmeet-sdk
