@@ -8,7 +8,7 @@ sidebar_label: Integración con Joomla
 
 # Cómo Añadir Videoconferencias a Joomla con la Extensión Plug-N-Meet
 
-Esta guía cubre el componente plugNmeet para Joomla (v3.2.1 en adelante). Ofrece las mismas funciones completas que los plugins de WordPress y Moodle: control total de salas, grabaciones con fusión, artefactos con exportación de analíticas y acceso basado en permisos de Joomla, todo dentro de su sitio.
+Esta guía cubre el componente plugNmeet para Joomla. Ofrece las mismas funciones completas que los plugins de WordPress y Moodle: control total de salas, grabaciones con fusión, artefactos con exportación de analíticas y acceso basado en permisos de Joomla, todo dentro de su sitio.
 
 ---
 
@@ -46,12 +46,14 @@ Este es el paso más importante. Debe conectar la extensión a un servidor plugN
 
 ![Joomla-plugin-config.png](/img/Joomla/Joomla-plugin-config.png)
 
-- Verá tres campos: **URL del Servidor**, **Clave de API** y **Secreto de API**.
+- Verá: **URL del Servidor**, **Clave de API**, **Secreto de API** y **Carga del cliente** (`Remoto` o `Redirección`).
 - Tras la instalación vienen rellenados con credenciales de demostración. **Sustitúyalos por los datos de su propio servidor autoalojado o de plugNmeet Cloud.** El servidor demo solo sirve para pruebas temporales y tiene limitaciones.
+- **Carga del cliente:** `Remoto` (predeterminado) mantiene la reunión integrada en su sitio Joomla. `Redirección` lleva al usuario a la interfaz de su servidor plugNmeet (`url-servidor/?access_token=...`), fuera del diseño de su sitio. Joomla no ofrece cliente Local como WordPress.
 
 ![Joomla-plugnmeet-config.png](/img/Joomla/Joomla-plugnmeet-config.png)
 
 - Tras introducir sus credenciales, pulse **Guardar**.
+- Aquí también están los valores globales: **Copyright** (marca del pie), **Diseño** (logotipo, colores, fondo, CSS personalizado) y **Avanzado** (simulcast, dynacast, resoluciones, preajuste de audio, códec). Las salas los heredan salvo que los cambie por sala.
 
 ---
 
@@ -81,7 +83,7 @@ El formulario de sala incluye estas pestañas:
 - **Máximo de participantes:** `0` para ilimitado.
 
 **Funciones de Sala**
-Opciones principales: cámaras web, silenciar al entrar, compartir pantalla, ver otras cámaras o la lista de usuarios, solo cámaras de administradores, analíticas, fondo virtual, levantar la mano, reacciones, generar ID de usuario y duración de la sala (minutos, `0` = sin límite).
+Opciones principales: cámaras web, silenciar al entrar, compartir pantalla, ver otras cámaras o la lista de usuarios, solo cámaras de administradores, analíticas, fondo virtual, levantar la mano, reacciones, generar ID de usuario y duración de la sala (minutos, `0` = sin límite). **El moderador entra primero:** si se activa, los asistentes ven «la reunión aún no ha comenzado» hasta que entra un moderador; es distinto de la Sala de Espera, donde sí pueden esperar dentro.
 
 **Funciones de Grabación**
 Interruptor general más grabación en la nube, inicio automático de la grabación en la nube y grabación local.
@@ -108,13 +110,13 @@ Active encuestas. El acceso SIP añade opciones para activar al crear y ocultar 
 Interruptor general más transcripción (con traducción y síntesis de voz), traducción de chat, chat de texto con IA y resumen de reunión con IA. Requieren Insights/IA activados en su servidor plugNmeet.
 
 **Ajustes de Bloqueo Predeterminados**
-Estado inicial de micrófono, cámara, compartir pantalla, pizarra, notas compartidas, chat, chat privado, envío de mensajes y envío de archivos. Los moderadores pueden desbloquear en vivo.
+Estado inicial de micrófono, cámara, compartir pantalla, pizarra, notas compartidas, chat, chat privado, envío de mensajes, envío de archivos y reacciones. Los moderadores pueden desbloquear en vivo.
 
 **Personalización del Diseño**
-Logotipo, imagen de fondo, colores primario, secundario, fondo, cabecera, pie y panel lateral, además de URL de CSS personalizado (HTTPS). Vacío = se usan los ajustes globales.
+Logotipo, imagen de fondo, colores primario, secundario, fondo, cabecera, pie y panel lateral, además de URL de CSS personalizado (HTTPS) por sala. Vacío = hereda los valores globales de **Diseño** en la Configuración Global.
 
 **Ajustes Avanzados**
-Simulcast, dynacast, detener pista de micrófono al silenciar, resolución de cámara (`h90`–`h2160`), resolución de pantalla compartida, preajuste de audio (`telephone`–`musicHighQualityStereo`) y códec de video (`vp8`, `h264`, `vp9`, `av1`).
+Anulación por sala de los valores globales de **Avanzado**: simulcast, dynacast, detener pista de micrófono al silenciar, resolución de cámara (`h90`–`h2160`), resolución de pantalla compartida, preajuste de audio (`telephone`–`musicHighQualityStereo`) y códec de video (`vp8`, `h264`, `vp9`, `av1`). Deje un campo vacío para mantener el valor global.
 
 Pulse **Guardar** al terminar.
 

@@ -8,7 +8,7 @@ sidebar_label: Joomla Integration
 
 # How to Add Video Conferencing to Joomla with the Plug-N-Meet Extension
 
-This guide covers the plugNmeet component for Joomla (v3.2.1+). It brings the same full feature set as the WordPress and Moodle plugins to Joomla: full room control, recordings with merge, artifacts with analytics export, and Joomla permission-based access — all inside your Joomla site.
+This guide covers the plugNmeet component for Joomla. It brings the same full feature set as the WordPress and Moodle plugins to Joomla: full room control, recordings with merge, artifacts with analytics export, and Joomla permission-based access — all inside your Joomla site.
 
 ---
 
@@ -46,12 +46,14 @@ This is the most important step. You must connect the extension to a working plu
 
 ![Joomla-plugin-config.png](/img/Joomla/Joomla-plugin-config.png)
 
-- You will see three fields: **Server URL**, **API Key**, and **API Secret**.
+- You will see: **Server URL**, **API Key**, **API Secret**, and **Client load** (`Remote` or `Redirect`).
 - After installation, these fields are pre-filled with demo credentials. **You must replace these with the API details from your own self-hosted or plugNmeet Cloud server.** The demo server is for temporary testing only and has limitations.
+- **Client load:** `Remote` (default) keeps the meeting embedded inside your Joomla site. `Redirect` sends users straight to your plugNmeet server interface (`server-url/?access_token=...`) and takes them off your site layout. Joomla does not offer a Local client option like WordPress.
 
 ![Joomla-plugnmeet-config.png](/img/Joomla/Joomla-plugnmeet-config.png)
 
 - After entering your own credentials, click **Save**.
+- Global defaults also live here: **Copyright** (footer branding), **Design** (logo, colors, background, custom CSS), and **Advanced** (simulcast, dynacast, resolutions, audio preset, codec). Rooms inherit these unless overridden per room.
 
 ---
 
@@ -81,7 +83,7 @@ The room form has the following tabs:
 - **Max Participants:** `0` for unlimited.
 
 **Room Features**
-Core in-room options: webcams, mute on start, screen share, view other webcams/users list, admin-only webcams, analytics, virtual background, raise hand, reactions, auto-generate user ID, and room duration (minutes, `0` = no limit).
+Core in-room options: webcams, mute on start, screen share, view other webcams/users list, admin-only webcams, analytics, virtual background, raise hand, reactions, auto-generate user ID, and room duration (minutes, `0` = no limit). **Moderator join first:** when enabled, attendees see "meeting has not started yet" until a moderator joins — different from Waiting Room, where users can already wait inside.
 
 **Recording Features**
 Master switch plus cloud recording, auto-start cloud recording, and local recording.
@@ -108,13 +110,13 @@ Enable polls. SIP dial-in adds options to enable on create and hide phone number
 Master switch plus transcription (with translation and speech synthesis), chat translation, AI text chat, and AI meeting summarization. These require Insights/AI enabled on your plugNmeet server.
 
 **Default Lock Settings**
-Initial locked state for microphone, webcam, screen sharing, whiteboard, shared notepad, chat, private chat, chat send message, and chat file share. Moderators can unlock live.
+Initial locked state for microphone, webcam, screen sharing, whiteboard, shared notepad, chat, private chat, chat send message, chat file share, and reactions. Moderators can unlock live.
 
 **Design Customisation**
-Per-room logo, background image, primary/secondary/background/header/footer/side-panel colors, and custom CSS URL (HTTPS). Empty = use global settings.
+Per-room logo, background image, primary/secondary/background/header/footer/side-panel colors, and custom CSS URL (HTTPS). Empty = inherit the global **Design** values from Global Configuration.
 
 **Advanced Settings**
-Simulcast, dynacast, stop mic track on mute, default webcam resolution (`h90`–`h2160`), screen share resolution, audio preset (`telephone`–`musicHighQualityStereo`), and video codec (`vp8`, `h264`, `vp9`, `av1`).
+Per-room override of the global **Advanced** defaults: simulcast, dynacast, stop mic track on mute, default webcam resolution (`h90`–`h2160`), screen share resolution, audio preset (`telephone`–`musicHighQualityStereo`), and video codec (`vp8`, `h264`, `vp9`, `av1`). Leave a field empty to keep the global value.
 
 Click **Save** when done.
 
@@ -157,8 +159,9 @@ You have two menu item types under **Plug N Meet**:
 
 When a user clicks the menu item, they see the room title, description, and a join form.
 
-- They enter their name and the room password, then click **Join**. The meeting opens in a new tab; closing it returns via `?returned=true`.
+- They enter their name and the room password, then click **Join**. With **Client load = Remote**, the meeting opens in a new tab; closing it returns via `?returned=true`. With **Client load = Redirect**, they leave Joomla and join directly on your plugNmeet server URL.
 - Groups with **Join passwordless** permission see no password field.
+- If **Moderator join first** is enabled and no moderator has started the room, attendees see "The meeting has not started yet" and cannot enter.
 - If the user has **Recording view** permission, a recordings table appears below the join form with **Play / Download / Delete** buttons according to their permissions.
 
 ![Joomla-28.png](/img/Joomla/Joomla-28.png)
@@ -187,14 +190,25 @@ Go to **Components > Plug N Meet > Artifacts**:
 
 ### Design Customization
 
-- **Global:** **System > Global Configuration > plugNmeet > Design Customization** — applies to all rooms that leave per-room fields empty.
-- **Per-Room:** Room edit form **Design Customisation** tab — overrides global for that room.
+- **Global:** **System > Global Configuration > plugNmeet > Design** (logo, colors, background, custom CSS) plus **Copyright** (footer branding). These are the defaults for every room.
+- **Per-Room:** Room edit form **Design Customisation** tab — any value set here overrides global for that room only; empty fields inherit global.
 
 ![Joomla-globalcust.png](/img/Joomla/Joomla-globalcust.png)
 
 ### Media Quality Defaults
 
-Set sensible defaults in the **Advanced Settings** tab per room: `h720` webcam, `h1080fps15` screen share, `music` audio preset, and `vp8` codec suit most sites. Raise only if your server and clients have bandwidth.
+Set global defaults under **System > Global Configuration > plugNmeet > Advanced**: `h720` webcam, `h1080fps15` screen share, `music` audio preset, and `vp8` codec suit most sites. Override per room in its **Advanced Settings** tab when needed. Raise only if your server and clients have bandwidth.
+
+### Client Load
+
+Under **System > Global Configuration > plugNmeet**, **Client load** controls where the conference renders:
+
+- **Remote (default):** embedded in Joomla (`view=room&layout=conference`). Branding comes from global + per-room Design. Use this unless you have a reason not to.
+- **Redirect:** users are sent to `your-plugnmeet-server/?access_token=...`. The Joomla layout, global/room Design, and `?returned=true` handling no longer apply — branding is the server default.
+
+### Copyright Footer
+
+Under **System > Global Configuration > plugNmeet > Copyright**, enable **Display copyright text** and set **Copyright text** (HTML allowed) to brand the client footer globally. This applies to every room created while enabled.
 
 ---
 
@@ -214,6 +228,9 @@ You are still using the default demo credentials. Replace them under **System > 
 
 **Join fails with "same password" error on save?**
 Moderator and attendee passwords must differ. Change one and save again.
+
+**"Meeting has not started yet" for attendees?**
+The room has **Moderator join first** enabled. A moderator must join first with the moderator password.
 
 **How do I find the global settings after installation?**
 As an administrator, go to **System > Global Configuration > plugNmeet**.
