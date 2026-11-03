@@ -8,7 +8,7 @@ keywords: ["plugnmeet v2.5.0", "alternativa a Zoom de código abierto", "videoco
 date: 2026-09-12
 ---
 
-Imagine esta situación. Su clase lleva veinte minutos dibujando en la pizarra. Un estudiante se incorpora tarde… y ve un lienzo en blanco. O dedica una hora a redactar las notas de la reunión en el bloc compartido y, al exportarlas, pierde todo el formato. ¿Le resulta familiar?
+Imagine que su clase lleva 20 minutos dibujando en la pizarra. Alguien se conecta tarde, pero lo único que ve es una pizarra en blanco. O pasa una hora tomando notas en un documento compartido y, al exportarlo, pierde todo el formato. ¿Le resulta familiar?
 
 A nosotros también nos ha pasado. Precisamente por eso hemos creado **plugNmeet v2.5.0**.
 
@@ -46,7 +46,7 @@ Veamos cada punto con detalle.
 
 ### Una pizarra que por fin sincroniza: CRDT + Yjs
 
-Nuestra pizarra anterior funcionaba bien… hasta que dejaba de hacerlo. Reconexiones, incorporaciones tardías, redes inestables. Faltaban trazos o, peor aún, cada participante veía una pizarra distinta.
+Nuestra pizarra anterior funcionaba bien… hasta que dejaba de hacerlo. Reconexiones, incorporación tardía de usuarios y redes inestables podían provocar la pérdida de trazos o la desincronización de las pizarras.
 
 En la v2.5.0, la pizarra funciona con **CRDT de Yjs**, el mismo modelo que empleamos para el bloc de notas. Cada página es un `Y.Doc`, la presencia de los cursores viaja por `y-protocols/awareness` y la sincronización es **prioritaria en el servidor**:
 
@@ -61,9 +61,9 @@ También hemos cuidado los detalles: se recupera la última página al cambiar d
 
 ### Adiós a Etherpad. Hola al bloc compartido con IA.
 
-Cuesta un poco despedirse: Etherpad nos prestó un gran servicio durante años. Pero había que jubilarlo. No permitía edición por bloques moderna e integrarle IA no tenía sentido.
+Cuesta un poco despedirse: Etherpad nos prestó un gran servicio durante años. Pero había que jubilarlo. No permitía la edición moderna por bloques, e integrarle IA no tenía sentido.
 
-El nuevo **bloc de notas compartido** está construido sobre **BlockNote**, con colaboración en tiempo real todavía basada en Yjs. Obtiene bloques familiares, importación y exportación en Markdown y cursores en directo, además de un menú de IA justo donde escribe.
+El nuevo **bloc de notas compartido** está construido sobre **BlockNote**, con colaboración en tiempo real todavía basada en Yjs. Obtiene bloques familiares, importación y exportación en Markdown y cursores en vivo, además de un menú de IA justo donde escribe.
 
 Seleccione cualquier texto (o simplemente coloque el cursor) y pida a la IA que:
 
@@ -74,7 +74,7 @@ Seleccione cualquier texto (o simplemente coloque el cursor) y pida a la IA que:
 
 Los resultados aparecen directamente en el documento, bloque a bloque. Sin copiar ni pegar.
 
-Una nota honesta: ahora hay un único bloc por sesión y, si había personalizado Etherpad en profundidad, considere este cambio como incompatible. Para el resto, simplemente es más rápido y mucho más útil. Si ya utiliza la IA en plugNmeet, la configuración le resultará familiar: el mismo motor de Insights que [nuestro asistente de reuniones con IA](/blog/how-to-add-ai-meeting-assistant-features).
+Una nota honesta: cada sesión ahora tiene un solo bloc de notas. Si personalizó Etherpad en gran medida, considere este cambio como incompatible. Para el resto, simplemente es más rápido y mucho más útil. Si ya utiliza la IA en plugNmeet, la configuración le resultará familiar: el mismo motor de Insights que [nuestro asistente de reuniones con IA](/blog/how-to-add-ai-meeting-assistant-features).
 
 ### Texto a diagrama con IA: de la frase al diagrama de flujo
 
@@ -84,13 +84,13 @@ Esta es nuestra demostración favorita. Abra la pizarra, pulse el botón de IA y
 
 Unos segundos después dispone de un diagrama de flujo editable sobre el lienzo. No es una imagen. Son formas reales que puede mover, recolorear y anotar.
 
-En segundo plano enviamos su indicación a través de `insights/ai/textChat/execute` con la etiqueta de pizarra, recibimos sintaxis **Mermaid** en bruto (flujo, secuencia, clases, estados o entidad-relación) y la representamos con mermaid-to-excalidraw. Las indicaciones de seguimiento conservan el contexto, de modo que «añada ahora una decisión para usuarios SSO» funciona sin más.
+En segundo plano enviamos su indicación a través de `insights/ai/textChat/execute` con la etiqueta de pizarra, recibimos sintaxis **Mermaid** en bruto (flujo, secuencia, clases, estados o entidad-relación) y la representamos con mermaid-to-excalidraw. Las indicaciones de seguimiento conservan el contexto, de modo que «añada ahora una decisión para usuarios SSO» simplemente funciona.
 
-El profesorado lo emplea para esquemas de clase. Los equipos técnicos diseñan arquitecturas sin salir de la llamada. Sinceramente, una vez que lo prueba, volver a dibujar rectángulos a mano se hace cuesta arriba.
+Los docentes lo emplean para esquemas de clase. Los equipos técnicos diseñan arquitecturas sin salir de la llamada. Sinceramente, una vez que lo prueba, volver a dibujar rectángulos a mano se siente lento.
 
 ### Encuestas rediseñadas, ahora con IA y una API real
 
-Las encuestas recibieron un tratamiento completo en la v2.5.0. Si aún no ha leído [nuestra guía de encuestas](/blog/engaging-audience-with-live-polls), los conceptos básicos siguen vigentes, pero la creación es completamente distinta.
+Las encuestas recibieron una actualización completa en la v2.5.0. Si aún no ha leído [nuestra guía de encuestas](/blog/engaging-audience-with-live-polls), los conceptos básicos siguen vigentes, pero la creación es completamente distinta.
 
 Al pulsar «crear» encontrará dos caminos:
 
@@ -101,18 +101,18 @@ Las encuestas ahora admiten **modo cuestionario** (respuestas correctas ocultas 
 
 Y para el personal técnico: existe una nueva **[API de creación de encuestas](/docs/api/room/create-poll)**. Con `POST /room/createPoll`, indicando `room_id`, `question` y `options`, puede inyectar una encuesta en una sala activa desde su sistema. Ideal para votaciones programadas o sondeos automatizados. La persona moderadora aún puede cerrarla, publicar resultados o reabrirla como cualquier otra encuesta.
 
-Y no es solo teoría: ya lo estamos utilizando. Nuestro **plugin de Moodle v3.0.13** incorpora un botón **Añadir encuesta desde el cuestionario** directamente en la página de la actividad. Elija un cuestionario de Moodle o una categoría del banco de preguntas, seleccione una pregunta de opción múltiple o de verdadero/falso, defina el modo cuestionario o votación, el voto anónimo y la duración de cierre automático, y el plugin la convierte en una encuesta en directo mediante `createPoll` mientras la sala está activa. Sin reescribir preguntas ni cambiar de contexto. Si imparte clases en Moodle, consulte la [guía de integración con Moodle](/docs/user-guide/moodle-integration).
+Y no es solo teoría: ya lo estamos utilizando. Nuestro **plugin de Moodle v3.0.13** incorpora un botón **Añadir encuesta desde el cuestionario** directamente en la página de la actividad. Elija un cuestionario de Moodle o una categoría del banco de preguntas, seleccione una pregunta de opción múltiple o de verdadero/falso, defina el modo cuestionario o votación, el voto anónimo y la duración de cierre automático, y el plugin la convierte en una encuesta en vivo mediante `createPoll` mientras la sala está activa. Sin reescribir preguntas ni cambiar de contexto. Si imparte clases en Moodle, consulte la [guía de integración con Moodle](/docs/user-guide/moodle-integration).
 
 ### Salas de grupos reconstruidas para un uso real
 
-La implementación anterior servía para divisiones sencillas. En cuanto necesitaba algo más —llevarse el contenido, gestionar salas activas— resultaba limitada.
+La implementación anterior servía para divisiones sencillas, pero cuando necesitábamos mover contenido entre salas o gestionar salas en vivo, se volvía complicada.
 
-La v2.5.0 incorpora una **arquitectura de salas de grupos completamente rediseñada** en cliente y servidor. El formulario de creación ahora permite:
+La v2.5.0 incorpora una **arquitectura de salas de grupos completamente rediseñada**, tanto en el cliente como en el servidor. El formulario de creación ahora permite:
 
 *   Arrastrar, repartir al azar o preasignar participantes (incluida la preasignación por API, que [nuestro plugin de Moodle ya utiliza](/docs/user-guide/moodle-integration): active «Preasignar salas desde los grupos del curso» y cada grupo de Moodle se convierte en una sala, con el nombre del grupo como título y sus miembros asignados, desde el siguiente inicio de sesión)
 *   Definir títulos personalizados, duraciones y mensajes de bienvenida
 *   Permitir el regreso a la sala principal y la libre elección de sala
-*   **Compartir páginas concretas de la pizarra** en las salas
+*   **Compartir páginas concretas de la pizarra** con las salas
 *   **Compartir el bloc** y **las encuestas seleccionadas** para que los grupos no empiecen vacíos
 
 La parte más interesante: tras crear las salas, el cliente del administrador siembra en Redis el contenido de la sala principal —mismo formato, mismas claves derivadas por sala con E2EE—. Los grupos abren su sala y el material ya está allí.
@@ -138,11 +138,11 @@ Antes de actualizar tenga en cuenta lo siguiente:
 *   Las funciones de IA (pizarra, bloc, encuestas) utilizan el motor actual de chat de texto de Insights. Contrólelas por sala con `aiTextChatFeatures` (`isWhiteboardAiDisabled`, `isPollAiDisabled`, `allowedUserIds`). Funciona cualquier proveedor compatible con OpenAI; consulte [nuestra guía de integración con OpenAI](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet).
 *   El vencimiento de encuestas y la hidratación de pizarra y bloc siguen nuevas rutas en el servidor. Revise la [guía de instalación](/docs/installation) y la [documentación de la API](/docs/api/intro) si emplea integraciones personalizadas.
 
-Todavía no es perfecta: los menús de IA en móvil y los historiales de pizarra muy extensos presentan asperezas que estamos puliendo. Pero para la mayoría de las salas, la actualización es directa.
+Todavía no es perfecta. Seguimos mejorando los menús de IA en móvil y solucionando problemas con historiales de pizarra muy extensos. Pero para la mayoría de las salas, la actualización es directa.
 
 ### Pruébelo hoy mismo
 
-La v2.5.0 es la versión en la que plugNmeet deja de ser «vídeo más extras» para convertirse en un espacio de trabajo único. Pizarra, notas, encuestas y grupos comparten por fin el mismo motor de sincronización, y la IA reside dentro de los tres en lugar de en una barra lateral que nadie abre.
+La v2.5.0 es la versión en la que plugNmeet deja de ser «video más extras» para convertirse en un espacio de trabajo único. Pizarra, notas, encuestas y grupos comparten por fin el mismo motor de sincronización, y la IA reside dentro de los tres en lugar de en una barra lateral que nadie abre.
 
 Póngala en marcha con nuestro [sencillo script de instalación](/docs/installation), consulte la [guía de moderación](/docs/user-guide/moderator) para familiarizar a sus anfitriones con los nuevos flujos o explore la [API de creación de encuestas](/docs/api/room/create-poll) si integra desde un LMS.
 
