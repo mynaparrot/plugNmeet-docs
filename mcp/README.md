@@ -21,6 +21,14 @@ stale copy keeps being served.
 
 ## Local development
 
+`mcp/` is its own pnpm workspace root (own `pnpm-workspace.yaml` and lockfile), so install its
+dependencies separately:
+
+```sh
+cd mcp
+pnpm install
+```
+
 The server needs a built index. From the repository root:
 
 ```sh
@@ -108,3 +116,5 @@ Clients that only speak stdio can bridge to the remote endpoint:
   `createMcpHandler`; the tools themselves are transport-agnostic and can be moved later.
 - `@modelcontextprotocol/server` is installed explicitly because `agents/mcp` imports it while
   listing it only as an optional peer dependency.
+- Being a separate workspace keeps `wrangler`/`workerd` out of the docs site install, so the
+  Cloudflare Pages build only fetches the Docusaurus dependencies.
