@@ -30,6 +30,10 @@ const config: Config = {
     locales: ['en', 'es'],
   },
 
+  // Explicit index.ts: Docusaurus resolves local plugin paths with require.resolve,
+  // which does not map a directory to a TypeScript entry file.
+  plugins: ['./plugins/docs-index-plugin/index.ts'],
+
   presets: [
     [
       'classic',

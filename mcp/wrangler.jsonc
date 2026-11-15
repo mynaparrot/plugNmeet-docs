@@ -1,0 +1,31 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "plugnmeet-docs-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "routes": [
+    { "pattern": "docs-mcp.plugnmeet.org", "custom_domain": true }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MCP_OBJECT",
+        "class_name": "PlugNmeetDocsMcp"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_sqlite_classes": ["PlugNmeetDocsMcp"]
+    }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "DOCS_INDEX_URL": "https://www.plugnmeet.org/docs-index.json"
+  }
+}
