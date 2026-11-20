@@ -5,8 +5,8 @@ MCP server for the plugNmeet documentation. It reads `docs-index.json`, generate
 docs/blog content to MCP clients.
 
 - Streamable HTTP endpoint: `/mcp`
-- Legacy SSE endpoint: `/sse` (plus `/sse/message`)
-- Health check: `/` → `{ "ok": true, "service": "plugnmeet-docs-mcp" }`
+- Health check: `/` and `/health` → `{ "ok": true, "service": "plugnmeet-docs-mcp" }`
+- Stateless: no Durable Object, legacy `/sse` is not served
 
 ## Tools
 
@@ -78,6 +78,31 @@ If a Cloudflare challenge/interstitial page comes back instead, add a WAF skip r
 That file only exists once the docs site is deployed with the index plugin; until then the tools
 return the "index not available" message.
 
+## CI/CD (GitHub Actions)
+
+`.github/workflows/test-deploy.yml` runs on pushes to `main`, on pull requests targeting `main`,
+and manually via `workflow_dispatch` (input `target`: `all`, `docs` or `mcp`).
+
+A `changes` job path-filters the diff:
+
+- changes under `mcp/**` → typecheck, test and deploy the `plugnmeet-docs-mcp` worker
+- changes anywhere else (`docs/`, `src/`, `static/`, `plugins/`, config, lockfiles, ...) → build
+  the Docusaurus site and deploy `plugnmeet-docs`
+
+Pull requests only validate: the site is built and the worker is checked with
+`wrangler deploy --dry-run`. Nothing is deployed from a PR.
+
+Two repository secrets are required (Settings → Secrets and variables → Actions):
+
+- `CLOUDFLARE_DOC_API_TOKEN` — Cloudflare API token. Either the "Edit Cloudflare Workers"
+  template, or a custom token with `Account → Workers Scripts: Edit`,
+  `Account → Account Settings: Read` and, for the custom domain, `Zone → Workers Routes: Edit`
+  plus `Zone → DNS: Edit`.
+- `CLOUDFLARE_DOC_ACCOUNT` — the Cloudflare Account ID.
+
+If Actions owns the deployments, disable the Cloudflare dashboard's built-in Git integration for
+these Workers, otherwise every commit triggers a duplicate build and deploy.
+
 ## Client setup
 
 Claude (custom connector): add `https://docs-mcp.plugnmeet.org/mcp` as a remote MCP server URL
@@ -111,10 +136,10 @@ Clients that only speak stdio can bridge to the remote endpoint:
 
 ## Notes
 
-- Built on `McpAgent` from `agents/mcp`, which requires the `MCP_OBJECT` Durable Object binding
-  and the `v1` migration. Upstream marks `McpAgent` as feature-frozen in favour of the stateless
-  `createMcpHandler`; the tools themselves are transport-agnostic and can be moved later.
-- `@modelcontextprotocol/server` is installed explicitly because `agents/mcp` imports it while
+- Built on the stateless `createMcpHandler` from `agents/mcp/server`, creating a fresh `McpServer` per
+  request, so no Durable Object binding is needed. `wrangler.jsonc` keeps the `v1` migration
+  (already deployed) plus a `v2` migration that deletes the old `PlugNmeetDocsMcp` class.
+- `@modelcontextprotocol/server` is installed explicitly because `agents/mcp/server` imports it while
   listing it only as an optional peer dependency.
 - Being a separate workspace keeps `wrangler`/`workerd` out of the docs site install, so the
   Cloudflare Pages build only fetches the Docusaurus dependencies.

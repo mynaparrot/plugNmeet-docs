@@ -8,18 +8,14 @@
   "routes": [
     { "pattern": "docs-mcp.plugnmeet.org", "custom_domain": true }
   ],
-  "durable_objects": {
-    "bindings": [
-      {
-        "name": "MCP_OBJECT",
-        "class_name": "PlugNmeetDocsMcp"
-      }
-    ]
-  },
   "migrations": [
     {
       "tag": "v1",
       "new_sqlite_classes": ["PlugNmeetDocsMcp"]
+    },
+    {
+      "tag": "v2",
+      "deleted_classes": ["PlugNmeetDocsMcp"]
     }
   ],
   "observability": {

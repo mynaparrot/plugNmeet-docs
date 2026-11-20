@@ -25,7 +25,23 @@ export function tokenize(query: string): string[] {
   return [...new Set(terms)];
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Terms of 1-2 characters must sit on word boundaries so "ai" does not match "main".
+function boundaryPattern(term: string, global = false): RegExp {
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRegExp(term)}(?=$|[^\\p{L}\\p{N}])`, global ? 'gu' : 'u');
+}
+
+function matchesTerm(text: string, term: string): boolean {
+  return term.length <= 2 ? boundaryPattern(term).test(text) : text.includes(term);
+}
+
 function countOccurrences(haystack: string, needle: string): number {
+  if (needle.length <= 2) {
+    return haystack.match(boundaryPattern(needle, true))?.length ?? 0;
+  }
   let count = 0;
   let index = haystack.indexOf(needle);
   while (index !== -1) {
@@ -35,21 +51,33 @@ function countOccurrences(haystack: string, needle: string): number {
   return count;
 }
 
+function pathWithoutSection(path: string): string {
+  return path.toLowerCase().replace(/^\/(?:[a-z]{2}\/)?(?:docs|blog)\/?/, '');
+}
+
 export function scorePage(page: DocsPage, terms: string[], phrase: string): number {
   const title = page.title.toLowerCase();
+  const sidebarLabel = (page.sidebarLabel ?? '').toLowerCase();
+  const path = pathWithoutSection(page.path);
   const keywords = page.keywords.join(' ').toLowerCase();
   const description = page.description.toLowerCase();
   const content = page.content.toLowerCase();
 
   let score = phrase && title.includes(phrase) ? 25 : 0;
   for (const term of terms) {
-    if (title.includes(term)) {
+    if (matchesTerm(title, term)) {
       score += 10;
     }
-    if (keywords.includes(term)) {
+    if (sidebarLabel && matchesTerm(sidebarLabel, term)) {
+      score += 8;
+    }
+    if (path && matchesTerm(path, term)) {
       score += 6;
     }
-    if (description.includes(term)) {
+    if (matchesTerm(keywords, term)) {
+      score += 6;
+    }
+    if (matchesTerm(description, term)) {
       score += 3;
     }
     score += Math.min(countOccurrences(content, term), 5);

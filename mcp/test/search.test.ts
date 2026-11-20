@@ -27,11 +27,33 @@ describe('scorePage', () => {
     expect(uploadScore).toBeGreaterThan(introScore);
     expect(showcaseScore).toBeGreaterThan(introScore);
     // exact phrase in title adds 25 on top of the term matches
-    expect(showcaseScore).toBe(25 + 10 + 6 + 3 + 5);
+    expect(showcaseScore).toBe(25 + 10 + 6 + 6 + 3 + 5);
   });
 
   it('caps body occurrences at 5', () => {
-    expect(scorePage(pages[2], tokenize('whiteboard'), '')).toBeLessThanOrEqual(10 + 6 + 3 + 5);
+    // title + path + keywords + description + capped body occurrences
+    expect(scorePage(pages[2]!, tokenize('whiteboard'), '')).toBe(10 + 6 + 6 + 3 + 5);
+  });
+
+  it('scores sidebar labels and url paths', () => {
+    const endpoint = {...pages[0]!, title: 'Endpoint reference', description: '', keywords: [], content: 'Nothing here.', path: '/docs/api/room/create'};
+    expect(scorePage(endpoint, tokenize('room'), '')).toBe(6);
+
+    const labeled = {...pages[0]!, title: 'Getting started', sidebarLabel: 'Installation guide', description: '', keywords: [], content: 'Nothing here.'};
+    expect(scorePage(labeled, tokenize('installation'), '')).toBe(8);
+
+    // title + sidebar label + path + one body occurrence
+    expect(scorePage(pages[0]!, tokenize('intro'), '')).toBe(10 + 8 + 6 + 1);
+  });
+
+  it('matches short terms only on word boundaries', () => {
+    const page = {...pages[0]!, title: 'Domain settings', sidebarLabel: 'Main config', description: 'Test your script.', keywords: [], content: 'The main test script.', path: '/docs/domain'};
+    expect(scorePage(page, tokenize('ai'), '')).toBe(0);
+    expect(scorePage(page, tokenize('es'), '')).toBe(0);
+    expect(scorePage(page, tokenize('ip'), '')).toBe(0);
+
+    const positive = {...page, content: 'The main test script uses AI and an IP address.'};
+    expect(scorePage(positive, tokenize('ip'), '')).toBe(1);
   });
 });
 

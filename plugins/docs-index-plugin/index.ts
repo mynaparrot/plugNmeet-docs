@@ -55,17 +55,29 @@ function normalizePath(value: string): string {
   return value.replace(/\/{2,}/g, '/').replace(/\/+$/, '') || '/';
 }
 
-function docsPath(relPath: string, slug?: string): string {
-  const id = relPath.replace(MD_EXT, '');
+// Docusaurus drops ordering prefixes from folder and file names: 02-guides/01-setup -> guides/setup
+function stripNumericPrefixes(value: string): string {
+  return value
+    .split('/')
+    .filter(Boolean)
+    .map((segment) => segment.replace(/^\d+[-_]/, ''))
+    .join('/');
+}
+
+function docsPath(relPath: string, slug?: string, frontmatterId?: string): string {
+  const fileId = relPath.replace(MD_EXT, '');
+  const dir = fileId.includes('/') ? fileId.slice(0, fileId.lastIndexOf('/')) : '';
   if (slug) {
     const clean = slug.replace(/^\/+|\/+$/g, '');
     if (slug.startsWith('/')) {
       return normalizePath(`/docs/${clean}`);
     }
-    const dir = id.includes('/') ? id.slice(0, id.lastIndexOf('/')) : '';
-    return normalizePath(`/docs/${dir ? `${dir}/` : ''}${clean}`);
+    return normalizePath(`/docs/${stripNumericPrefixes(`${dir ? `${dir}/` : ''}${clean}`)}`);
   }
-  return normalizePath(`/docs/${id.replace(/\/index$/, '')}`);
+  const withoutIndex = fileId.replace(/\/index$/, '');
+  const idDir = withoutIndex.includes('/') ? withoutIndex.slice(0, withoutIndex.lastIndexOf('/')) : '';
+  const name = frontmatterId ?? (idDir ? withoutIndex.slice(idDir.length + 1) : withoutIndex);
+  return normalizePath(`/docs/${stripNumericPrefixes(`${idDir ? `${idDir}/` : ''}${name}`)}`);
 }
 
 function blogPath(relPath: string, slug?: string): string {
@@ -115,10 +127,11 @@ function buildPage(file: string, source: ContentSource, siteDir: string, siteUrl
   }
 
   const relPath = toPosix(path.relative(source.dir, file));
+  const slug = typeof data.slug === 'string' ? data.slug : undefined;
   const routePath =
     source.section === 'docs'
-      ? docsPath(relPath, typeof data.slug === 'string' ? data.slug : undefined)
-      : blogPath(relPath, typeof data.slug === 'string' ? data.slug : undefined);
+      ? docsPath(relPath, slug, typeof data.id === 'string' ? data.id : undefined)
+      : blogPath(relPath, slug);
   const pagePath = source.locale === 'en' ? routePath : `/${source.locale}${routePath}`;
   const fallbackTitle = path.basename(relPath).replace(MD_EXT, '');
 
@@ -203,11 +216,15 @@ async function crossCheckPaths(pages: DocsIndexPage[], outDir: string, locale: s
 }
 
 export default function docsIndexPlugin(context: LoadContext): Plugin {
+  // Locales build sequentially, so collect the sources once and reuse them.
+  let collected: DocsIndexPage[] | null = null;
+
   return {
     name: 'docs-index-plugin',
     async postBuild({siteDir, outDir, siteConfig, routesPaths}) {
       const locale = context.i18n.currentLocale;
-      const pages = collectPages(siteDir, siteConfig.url);
+      collected ??= collectPages(siteDir, siteConfig.url);
+      const pages = collected;
 
       await crossCheckPaths(pages, outDir, locale, routesPaths);
 
@@ -218,7 +235,7 @@ export default function docsIndexPlugin(context: LoadContext): Plugin {
       const indexPath = path.join(outDir, 'docs-index.json');
       fs.writeFileSync(
         indexPath,
-        JSON.stringify({generatedAt: new Date().toISOString(), siteUrl: siteConfig.url, pages}, null, 2),
+        JSON.stringify({generatedAt: new Date().toISOString(), siteUrl: siteConfig.url, pages}),
       );
       console.log(`[docs-index-plugin] wrote ${pages.length} pages to ${path.basename(indexPath)}`);
     },

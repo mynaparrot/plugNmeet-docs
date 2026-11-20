@@ -1,0 +1,127 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Target to deploy (all, docs, mcp)'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - docs
+          - mcp
+
+# Keep main runs queued (no duplicate deploys), cancel superseded PR runs.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  changes:
+    name: Detect changes
+    runs-on: ubuntu-latest
+    outputs:
+      docs: ${{ steps.targets.outputs.docs }}
+      mcp: ${{ steps.targets.outputs.mcp }}
+    steps:
+      - uses: actions/checkout@v7
+      # Pull requests and pushes diff against their base; workflow_dispatch has
+      # no meaningful diff, so the target input decides instead.
+      - uses: dorny/paths-filter@v3
+        id: filter
+        if: github.event_name != 'workflow_dispatch'
+        with:
+          filters: |
+            mcp:
+              - 'mcp/**'
+            docs:
+              - '**'
+              - '!mcp/**'
+      - name: Resolve targets
+        id: targets
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_TARGET: ${{ inputs.target }}
+          FILTER_DOCS: ${{ steps.filter.outputs.docs }}
+          FILTER_MCP: ${{ steps.filter.outputs.mcp }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            docs=false
+            mcp=false
+            case "${INPUT_TARGET:-all}" in
+              all) docs=true; mcp=true ;;
+              docs) docs=true ;;
+              mcp) mcp=true ;;
+            esac
+          else
+            docs="${FILTER_DOCS:-false}"
+            mcp="${FILTER_MCP:-false}"
+          fi
+          echo "docs=$docs" >> "$GITHUB_OUTPUT"
+          echo "mcp=$mcp" >> "$GITHUB_OUTPUT"
+
+  docs:
+    name: Docs site
+    needs: changes
+    if: needs.changes.outputs.docs == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm
+        with:
+          version: 11
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build website
+        run: pnpm run build
+      - name: Deploy website to Cloudflare
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_DOC_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_DOC_ACCOUNT }}
+        run: npx --yes wrangler@4 deploy --name plugnmeet-docs --assets=./build --compatibility-date=2026-11-01
+
+  mcp:
+    name: MCP worker
+    needs: changes
+    if: needs.changes.outputs.mcp == 'true'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mcp
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24.x
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm
+        with:
+          version: 11
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Typecheck
+        run: pnpm run typecheck
+      - name: Test
+        run: pnpm run test
+      - name: Validate bundle
+        if: github.event_name == 'pull_request'
+        run: pnpm exec wrangler deploy --dry-run
+      - name: Deploy MCP worker to Cloudflare
+        if: github.event_name != 'pull_request'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_DOC_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_DOC_ACCOUNT }}
+        run: pnpm run deploy
