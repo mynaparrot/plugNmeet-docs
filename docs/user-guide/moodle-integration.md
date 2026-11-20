@@ -12,6 +12,10 @@ Welcome to the definitive guide for integrating **plugNmeet**, a powerful, open-
 
 ---
 
+:::info AI Agent Availability
+The plugNmeet AI Agent (a 1-on-1 voice and whiteboard tutor) is available today through the plugNmeet API. Upcoming Moodle plugin updates will add direct UI controls to configure it from your activity settings. See the [AI Agent overview](/docs/ai-agent/overview) and the [Education guide](/docs/ai-agent/educator-guide).
+:::
+
 ## 1. Introduction: Why plugNmeet is the Best Choice for Moodle
 
 plugNmeet is not just another video meeting tool; it's a complete **virtual classroom** solution built for deep integration with Moodle.

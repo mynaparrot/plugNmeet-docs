@@ -3,6 +3,10 @@
     "message": "Próximo",
     "description": "The label for version current"
   },
+  "sidebar.tutorialSidebar.category.AI Agent": {
+    "message": "Agente de IA",
+    "description": "The label for category 'AI Agent' in sidebar 'tutorialSidebar'"
+  },
   "sidebar.tutorialSidebar.category.User Guide": {
     "message": "Guía de Usuario",
     "description": "The label for category 'User Guide' in sidebar 'tutorialSidebar'"

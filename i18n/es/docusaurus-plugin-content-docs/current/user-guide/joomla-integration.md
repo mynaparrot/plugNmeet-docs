@@ -10,6 +10,10 @@ sidebar_label: Integración con Joomla
 
 Esta guía cubre el componente plugNmeet para Joomla. Ofrece las mismas funciones completas que los plugins de WordPress y Moodle: control total de salas, grabaciones con fusión, artefactos con exportación de analíticas y acceso basado en permisos de Joomla, todo dentro de su sitio.
 
+:::info Disponibilidad del Agente de IA
+El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disponible a través de la API de plugNmeet. Las próximas actualizaciones de la extensión de Joomla añadirán controles directos para él. Consulte la [descripción general del Agente de IA](/docs/ai-agent/overview) y la [guía para desarrolladores y de la API](/docs/ai-agent/developer-guide).
+:::
+
 ---
 
 ## 1. Funciones Principales de la Integración con Joomla

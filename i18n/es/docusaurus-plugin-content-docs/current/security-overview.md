@@ -132,6 +132,18 @@ Su privacidad y seguridad son nuestra máxima prioridad. La interacción entre l
 
 **Aviso legal para operadores:** Usted es el responsable del tratamiento de los datos. Es su responsabilidad informar a sus usuarios que cuando las funciones de IA están habilitadas, sus datos de audio y/o texto serán procesados por proveedores de IA de terceros. Debe asegurarse de que sus términos de servicio y política de privacidad reflejen de manera transparente este flujo de datos.
 
+#### 5.4. Agente de IA (asistente de voz y pizarra)
+
+El Agente de IA es un asistente de voz que puede unirse a una sesión 1 a 1. Su tratamiento de datos sigue los mismos principios que las demás funciones de IA, con restricciones adicionales:
+
+*   **Visión solo de la pizarra.** El agente solo ve la pizarra y el bloc de notas compartido. **No** captura ni analiza cámaras web ni pantallas compartidas. En los modos automáticos por usuario, las cámaras web y la compartición de pantalla se desactivan en toda la sala.
+*   **Aislamiento de contenido no confiable.** El contenido de la pizarra, del bloc de notas, las páginas web consultadas y los mensajes de chat de IA de los participantes se encapsulan en marcadores explícitos de «datos no confiables». Se indica al agente que no siga instrucciones que aparezcan dentro de ese contenido. Los datos de la pizarra incluyen indicadores de inyección de instrucciones a nivel de elemento.
+*   **Herramientas externas de solo lectura con protección SSRF.** Los servidores MCP externos deben usar HTTPS en el puerto 443. Se rechazan las conexiones a direcciones privadas, de bucle local y otras direcciones no globales. Solo se ofrecen al agente las herramientas que usted autorice explícitamente, y el servidor aplica una política de solo lectura. Las páginas web consultadas deben usar HTTPS y coincidir con una lista de prefijos de URL permitidos.
+*   **Aislamiento de BYOK.** Si una sala proporciona su propia clave de API de proveedor, la clave se elimina de los metadatos de la sala antes de difundirse. Se almacena solo en Redis, bajo una clave gestionada por el servidor con TTL, y se excluye de los artefactos de facturación de la plataforma.
+*   **E2EE.** Las salas que usan una clave E2EE por dispositivo introducida por el propio usuario no pueden activar el Agente de IA, porque el servidor no puede leer el audio. Las salas con E2EE gestionado por el servidor sí pueden usarlo.
+
+Para más detalles de configuración, consulte [Configuración del servidor y del proveedor del Agente de IA](/docs/ai-agent/configuration) y [Capacidades, visión y salvaguardas](/docs/ai-agent/tools-and-capabilities).
+
 ### 6. Flujo de Sesión Segura
 
 El proceso de conexión de extremo a extremo está diseñado con seguridad en cada paso. El flujo exacto puede variar según la configuración de la sala (p. ej., si el E2EE está habilitado).

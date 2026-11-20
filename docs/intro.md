@@ -66,6 +66,7 @@ You do not need to learn all of this on day one. This is the full toolbox your r
 - **Telephone dial-in (SIP)** for audio-only join without internet.
 
 ### Turn meetings into knowledge with AI
+- **Autonomous AI Agent** for education, product demos, and interactive collaboration: a voice-first assistant that joins a 1-on-1 breakout room, draws and explains on the shared whiteboard, writes into the shared notepad, and runs quizzes. See the [AI Agent overview](/docs/ai-agent/overview).
 - Live captions, spoken translation, transcriptions, summaries, and chat assistant — powered by your own AI provider (OpenAI-compatible).
 - You control when AI runs and where data goes. E2EE rooms automatically disable server-side AI that would need to hear audio. Details in [Security Overview](/docs/security-overview).
 

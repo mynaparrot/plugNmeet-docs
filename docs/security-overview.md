@@ -132,6 +132,18 @@ Your privacy and security are paramount. The interaction between AI features and
 
 **Disclaimer for Operators:** You are the data controller. It is your responsibility to inform your users that when AI features are enabled, their audio and/or text data will be processed by third-party AI providers. You must ensure your terms of service and privacy policy are updated to reflect this data flow.
 
+#### 5.4. AI Agent (Voice & Whiteboard Assistant)
+
+The AI Agent is a voice assistant that can join a 1-on-1 session. Its data handling follows the same principles as the other AI features, with additional restrictions:
+
+*   **Whiteboard-only vision.** The agent sees the whiteboard and the shared notepad only. It does **not** capture or analyse webcams or screen shares. In automatic per-user modes, webcams and screen sharing are disabled room-wide.
+*   **Untrusted content fencing.** Whiteboard content, notepad content, fetched web pages, and participant AI chat messages are wrapped in explicit "untrusted data" markers. The agent is instructed not to follow instructions found inside this content. Element-level prompt-injection flags are attached to whiteboard data.
+*   **Read-only external tools with SSRF protection.** External MCP servers must use HTTPS on port 443. Connections to private, loopback, and other non-global addresses are refused. Only the tools you explicitly allow are offered to the agent, and the server enforces a read-only tool policy. Fetched web pages must use HTTPS and match an allow-list of URL prefixes.
+*   **BYOK isolation.** If a room supplies its own provider API key, the key is removed from room metadata before it is broadcast. It is stored only in Redis under a server-managed key with a TTL, and it is excluded from platform billing artifacts.
+*   **E2EE.** Rooms that use a self-inserted per-device E2EE key cannot enable the AI Agent, because the server cannot read the audio. Rooms with server-managed E2EE can use it.
+
+For configuration details, see [AI Agent Server & Provider Setup](/docs/ai-agent/configuration) and [Capabilities, Vision & Guardrails](/docs/ai-agent/tools-and-capabilities).
+
 ### 6. Secure Session Flow
 
 The end-to-end connection process is designed with security at each step. The exact flow can vary based on the room's configuration (e.g., whether E2EE is enabled).

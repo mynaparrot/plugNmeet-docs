@@ -12,6 +12,10 @@ This guide covers the plugNmeet component for Joomla. It brings the same full fe
 
 ---
 
+:::info AI Agent Availability
+The plugNmeet AI Agent (a 1-on-1 voice and whiteboard assistant) is available today through the plugNmeet API. Upcoming Joomla extension updates will add direct UI controls for it. See the [AI Agent overview](/docs/ai-agent/overview) and the [Developer & API Guide](/docs/ai-agent/developer-guide).
+:::
+
 ## 1. Key Features of the Joomla Integration
 
 - **Full Room Control:** Create rooms with all plugNmeet features — waiting room, breakout rooms, polls, whiteboard, E2EE, SIP dial-in, and Insights AI (transcription, chat translation, AI summary).

@@ -75,6 +75,22 @@ These features allow you to interact with the moderator and other participants.
 
 ![attendee-ai-tools.webp](/img/moderator/attendee-ai-tools.webp)
 
+#### 1-on-1 Voice & Whiteboard AI Agent
+
+Some rooms offer a one-on-one AI agent for learning or product exploration. You talk with it, and it can draw on the whiteboard, write notes in the shared notepad, and ask you short quiz questions.
+
+- **Your private session:** You may be placed in your own breakout room, named `<Your Name> (AI Session)`, when the room is set up for it. The main room acts as a lobby until your session starts.
+- **Talk naturally:** You can interrupt the agent mid-sentence. It will stop and listen.
+- **Status bar:** The AI status bar shows what the agent is doing, such as **Listening**, **Speaking**, **Drawing**, or **Paused**.
+- **Answer quizzes:** When the agent runs a quiz, submit your answer in the poll. It responds with feedback right away.
+- **Webcams and screen sharing:** The agent does not watch your webcam or screen. It only sees the whiteboard and the shared notepad.
+
+For more about how AI sessions work, see [Education & Virtual Teacher](/docs/ai-agent/educator-guide) and [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
+
+:::info Under Active Development
+The AI Agent is under active development, and one-click controls in the Moodle, WordPress, and Joomla plugins are planned for a future release.
+:::
+
 ---
 
 ## Section 3: Viewing Content

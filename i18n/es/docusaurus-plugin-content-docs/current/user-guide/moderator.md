@@ -160,6 +160,22 @@ El cargador de "Archivos" no admite imágenes. Está destinado exclusivamente a 
 
 ![ai-meeting-summerization.webp](/img/moderator/ai-meeting-summerization.webp)
 
+#### Agente de IA de voz y pizarra 1 a 1
+
+Si el Agente de IA está habilitado en su sala, puede mantener sesiones de voz individuales con los participantes. Cada sesión se realiza en una sala de grupo privada. El agente habla, dibuja en la pizarra, escribe en el bloc de notas compartido y realiza cuestionarios, siempre dentro del tema que usted haya definido.
+
+- **Iniciar sesiones:** En una sala normal, abra el panel **Breakout Rooms** y cree salas de grupo con el Agente de IA habilitado. Cada participante de esas salas recibirá una sesión de IA.
+- **Supervisar sesiones:** Abra el panel **Sesiones de IA** para ver en qué salas de grupo hay un agente conectado.
+- **Barra de estado:** La barra de estado de IA muestra el estado actual del agente, como **Escuchando**, **Pensando**, **Hablando**, **Dibujando**, **En pausa** o **Detenido**.
+- **Pausar y reanudar:** Utilice los controles de IA para pausar al agente mientras usted habla y reanudarlo después.
+- **Sesiones automáticas:** En algunas salas, los participantes se dirigen automáticamente a su propia sesión de IA, y las cámaras web y la compartición de pantalla se desactivan.
+
+El Agente de IA se configura mediante la API. Para flujos de trabajo educativos y empresariales, consulte [Educación y profesor virtual](/docs/ai-agent/educator-guide) y [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business-and-use-cases).
+
+:::info En Desarrollo Activo
+El Agente de IA está en desarrollo activo, y los controles con un solo clic en los plugins de Moodle, WordPress y Joomla están previstos para una versión futura.
+:::
+
 ### Transcripción y Traducción
 - **Activación:** Acceda al menú **Más Opciones** (...) y seleccione **Transcripción y Traducción**.
 - **Configuración:** En la ventana emergente correspondiente, podrá activar o desactivar este servicio.

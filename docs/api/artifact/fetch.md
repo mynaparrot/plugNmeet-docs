@@ -63,6 +63,13 @@ A few common examples include:
 *   `MEETING_ANALYTICS`
 *   `MEETING_SUMMARY_USAGE`
 
+AI Agent artifacts (created when an AI Agent session ends, attributed to the parent room):
+
+*   `AI_AGENT_SESSION_SUMMARY` (value `11`): a structured JSON summary of the session, including evaluation, quiz results, and continuation context.
+*   `AI_AGENT_USAGE` (value `10`): token and audio usage by role and modality, with estimated costs. Omitted costs indicate a BYOK session.
+
+See [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing) for the full schema.
+
 For a complete and up-to-date list of all available artifact types, please refer to the official [**`plugnmeet_room_artifacts.proto`**](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto) file.
 
 :::tip[Working with meeting analytics?]

@@ -75,6 +75,22 @@ Estas funciones le permiten interactuar con el moderador y los demás participan
 
 ![attendee-ai-tools.webp](/img/moderator/attendee-ai-tools.webp)
 
+#### Agente de IA de voz y pizarra 1 a 1
+
+Algunas salas ofrecen un agente de IA individual para el aprendizaje o para explorar productos. Usted conversa con él, y puede dibujar en la pizarra, escribir notas en el bloc de notas compartido y hacerle breves preguntas de cuestionario.
+
+- **Su sesión privada:** Es posible que se le asigne una sala de grupo propia, con el nombre `<Su Nombre> (Sesión de IA)`, cuando la sala esté configurada para ello. La sala principal funciona como sala de espera hasta que comience su sesión.
+- **Hable con naturalidad:** Puede interrumpir al agente mientras habla. Se detendrá y le escuchará.
+- **Barra de estado:** La barra de estado de IA muestra lo que hace el agente, como **Escuchando**, **Hablando**, **Dibujando** o **En pausa**.
+- **Responder cuestionarios:** Cuando el agente realice un cuestionario, envíe su respuesta en la encuesta. Recibirá comentarios de inmediato.
+- **Cámara web y compartición de pantalla:** El agente no observa su cámara web ni su pantalla. Solo ve la pizarra y el bloc de notas compartido.
+
+Para saber más sobre el funcionamiento de las sesiones de IA, consulte [Educación y profesor virtual](/docs/ai-agent/educator-guide) y [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business-and-use-cases).
+
+:::info En Desarrollo Activo
+El Agente de IA está en desarrollo activo, y los controles con un solo clic en los plugins de Moodle, WordPress y Joomla están previstos para una versión futura.
+:::
+
 ---
 
 ## Sección 3: Visualización de Contenido

@@ -46,9 +46,9 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '✨',
     title: 'AI meeting agent',
-    text: 'Live captions, spoken translation, transcripts, summaries and chat assistant — powered by your own AI provider.',
-    link: '/blog/how-to-add-ai-meeting-assistant-features',
-    linkLabel: 'Add AI in 15 min',
+    text: 'A voice AI agent that teaches, demos and onboards 1-on-1 on a shared whiteboard, plus live captions, summaries and chat — powered by your own AI provider.',
+    link: '/docs/ai-agent/overview',
+    linkLabel: 'Explore the AI Agent',
     Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg').default,
   },
   {
@@ -330,6 +330,7 @@ export default function HomepageFeatures(): JSX.Element {
             />
             <ul className="pnm-checklist">
               <li>✓ Annotate PDFs & Office files live</li>
+              <li>✓ 1-on-1 AI agent that speaks and draws on the whiteboard</li>
               <li>✓ AI summaries the moment you end</li>
               <li>✓ Stream to YouTube or bring in OBS</li>
             </ul>

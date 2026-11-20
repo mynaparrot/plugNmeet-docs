@@ -10,6 +10,10 @@ sidebar_label: Integración con WordPress
 
 Bienvenido a la guía definitiva para integrar **plugNmeet**, la potente solución de videoconferencia de código abierto, en su sitio web de WordPress. Este documento proporciona un recorrido completo, desde la instalación hasta el aprovechamiento de las funciones avanzadas, permitiéndole alojar reuniones de video seguras y ricas en funciones directamente desde su propio dominio. Con plugNmeet, puede crear una experiencia de reunión virtual fluida que se siente como una parte nativa de su sitio.
 
+:::info Disponibilidad del Agente de IA
+El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disponible a través de la API de plugNmeet. Las próximas actualizaciones del plugin de WordPress añadirán controles directos para él. Consulte la [descripción general del Agente de IA](/docs/ai-agent/overview) y la [guía para desarrolladores y de la API](/docs/ai-agent/developer-guide).
+:::
+
 ---
 
 ## 1. Características Clave de la Integración con WordPress

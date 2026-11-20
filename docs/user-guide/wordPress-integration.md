@@ -12,6 +12,10 @@ Welcome to the definitive guide for integrating **plugNmeet**, the powerful, ope
 
 ---
 
+:::info AI Agent Availability
+The plugNmeet AI Agent (a 1-on-1 voice and whiteboard assistant) is available today through the plugNmeet API. Upcoming WordPress plugin updates will add direct UI controls for it. See the [AI Agent overview](/docs/ai-agent/overview) and the [Developer & API Guide](/docs/ai-agent/developer-guide).
+:::
+
 ## 1. Key Features of the WordPress Integration
 
 The plugNmeet plugin is more than just a way to embed a video call; it's a deep integration that brings powerful management tools directly into your WordPress dashboard.

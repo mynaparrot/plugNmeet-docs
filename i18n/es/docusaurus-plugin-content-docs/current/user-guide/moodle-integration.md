@@ -10,6 +10,10 @@ sidebar_label: Integración con Moodle
 
 Bienvenido a la guía definitiva para integrar **plugNmeet**, una potente plataforma de **videoconferencia Moodle** de código abierto, en sus cursos Moodle. Este documento proporciona un recorrido exhaustivo, desde la configuración inicial hasta el aprovechamiento de funciones avanzadas, asegurando que pueda construir una experiencia de **aula virtual** fluida y atractiva. Con este **software de videoconferencia gratuito**, puede organizar **clases en línea en vivo**, seminarios web y reuniones sin salir de su sitio Moodle.
 
+:::info Disponibilidad del Agente de IA
+El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disponible a través de la API de plugNmeet. Las próximas actualizaciones del plugin de Moodle añadirán controles directos para configurarlo desde los ajustes de su actividad. Consulte la [descripción general del Agente de IA](/docs/ai-agent/overview) y la [guía para educadores](/docs/ai-agent/educator-guide).
+:::
+
 ---
 
 ## 1. Introducción: Por qué plugNmeet es la Mejor Opción para Moodle

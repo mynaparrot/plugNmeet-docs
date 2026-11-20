@@ -11,7 +11,7 @@ const TrustItems = [
 const Stats = [
   { value: '100%', label: 'Open source · MIT licensed, free forever' },
   { value: 'HD', label: 'Video calls with MP4 recording' },
-  { value: 'AI', label: 'Summaries, captions & translation' },
+  { value: 'AI', label: 'Agentic tutor, captions & summaries' },
   { value: '1-binary', label: 'Go + LiveKit + NATS stack' },
 ];
 
@@ -36,9 +36,10 @@ const HeroBanner = () => {
           <p className="pnm-lead">
             plugNmeet is a free, open-source WebRTC project you host yourself.
             Read the docs, run one install script, and add HD meetings,
-            whiteboard, breakout rooms, polls, recording, RTMP streaming and
-            optional AI to your site — no accounts, no installs for guests, no
-            vendor lock-in.
+            whiteboard, breakout rooms, polls, recording, RTMP streaming and an
+            optional AI agent that teaches, demos and onboards 1-on-1 on your
+            live whiteboard — no accounts, no installs for guests, no vendor
+            lock-in.
           </p>
           <div className="pnm-cta-row">
             <Link className="pnm-btn pnm-btn--light" to="/docs/intro">
@@ -87,8 +88,8 @@ const HeroBanner = () => {
           </div>
 
           <div className="pnm-float pnm-float--ai">
-            <strong>✨ Optional AI</strong>
-            <span>Captions & summaries</span>
+            <strong>✨ Agentic AI</strong>
+            <span>Speaks, draws & explains</span>
           </div>
           <div className="pnm-float pnm-float--lock">
             <strong>🔒 E2EE on</strong>

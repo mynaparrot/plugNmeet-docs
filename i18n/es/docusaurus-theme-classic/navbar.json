@@ -11,6 +11,10 @@
     "message": "Guía del usuario",
     "description": "Navbar item with label User Guide"
   },
+  "item.label.AI Agent": {
+    "message": "Agente de IA",
+    "description": "Navbar item with label AI Agent"
+  },
   "item.label.API": {
     "message": "API",
     "description": "Navbar item with label API"

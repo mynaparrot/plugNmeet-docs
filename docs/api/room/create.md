@@ -235,6 +235,7 @@ This object controls all AI-powered features provided by the Insights Platform.
 | [transcription_features](#transcription-features) | object | No       | Settings for speech-to-text and spoken translation.   |
 | [chat_translation_features](#chat-translation-features) | object | No       | Settings for chat translation.                        |
 | [ai_features](#ai-features)                 | object | No       | Settings for generative AI features.                  |
+| [ai_agent_features](#ai-agent-features)     | object | No       | Autonomous 1-on-1 voice and whiteboard AI agent (education, demos, onboarding). Includes `mcp_servers`. |
 
 #### Transcription Features
 
@@ -269,6 +270,24 @@ This object controls all AI-powered features provided by the Insights Platform.
 | Field    | Type    | Required | Description                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Yes      | Enable or disable the generation of meeting summaries. |
+
+#### AI Agent Features
+
+The AI Agent is a 1-on-1 voice assistant with a shared whiteboard and notepad. It supports three session modes: `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (moderator-started breakouts), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (up to 32 pre-authorized participants), and `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (self-service, capped at 16 concurrent sessions). The table lists the key fields. For the full field reference, request examples, and BYOK rules, see the [AI Agent Developer & API Guide](/docs/ai-agent/developer-guide).
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| is_allow | boolean | Yes | Master switch for the AI agent in this room. |
+| session_mode | enum | Yes | `NORMAL_ROOM`, `CONTROLLED_USERS`, or `OPEN_PER_USER`. |
+| auto_session_config | object | Depends on mode | `allowed_participant_ids` (up to 32) and `max_concurrent_sessions` (server cap 16). |
+| system_prompt | string | Yes, when `is_allow` | Host instructions for the agent. |
+| topic | string | Yes, when `is_allow` | The topic the agent stays within. |
+| previous_session_context | string | No | Context from a previous session, usually the summary's continuation prompt. |
+| allow_web_fetch | boolean | No | Allow fetching approved HTTPS pages. Default `false`. |
+| allowed_knowledge_urls | string[] | No | Up to 32 HTTPS URL prefixes the agent may fetch. |
+| [mcp_servers](/docs/ai-agent/developer-guide#external-mcp-servers-mcp_servers) | map | No | Up to 2 external MCP servers. Each has `url` (HTTPS), `headers`, `allowed_tools` (up to 8, read-only), and an optional `scope`. |
+| max_session_seconds | integer | No | Session cap, `60` to `7200`. Default `1800`. |
+| custom_provider | object | No | Per-room BYOK: `provider`, `api_key`, `endpoint`, `auth_header`, and model overrides. Never broadcast; stored only in Redis. |
 
 </details>
 

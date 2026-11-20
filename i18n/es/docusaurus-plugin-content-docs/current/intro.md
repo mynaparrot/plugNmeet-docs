@@ -66,6 +66,7 @@ No necesita aprenderlo todo el primer día. Esta es la caja de herramientas comp
 - **Acceso telefónico (SIP)** para unirse solo por audio, sin internet.
 
 ### Convertir las reuniones en conocimiento con IA
+- **Agente de IA autónomo** para educación, demostraciones de producto y colaboración interactiva: un asistente de voz que se une a una sala de grupo 1 a 1, dibuja y explica en la pizarra compartida, escribe en el bloc de notas compartido y realiza cuestionarios. Consulte la [descripción general del Agente de IA](/docs/ai-agent/overview).
 - Subtítulos en directo, traducción hablada, transcripciones, resúmenes y asistente de chat, con su propio proveedor de IA (compatible con OpenAI).
 - Usted decide cuándo actúa la IA y adónde van los datos. Las salas con E2EE desactivan de forma automática la IA del servidor que necesitaría escuchar el audio. Detalles en [Resumen de seguridad](/docs/security-overview).
 

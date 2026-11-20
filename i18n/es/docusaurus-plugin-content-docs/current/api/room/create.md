@@ -80,7 +80,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [ingress_features](#características-de-ingesta)                                | object  | No       | Configuraciones de ingesta RTMP.                                                                                 |
 | [polls_features](#características-de-encuestas)                                    | object  | No       | Configuraciones de encuestas.                                                                                        |
 | [insights_features](#características-de-insights)                              | object  | No       | Configuraciones de análisis, transcripción y traducción impulsadas por IA.                                          |
-| [sip_dial_in_features](#características-de-marcado-de-entrada-sip)                        | object  | No       | Configuración de llamadas SIP.                                                                                  |
+| [sip_dial_in_features](#características-de-acceso-telefónico-sip)                        | object  | No       | Configuración de llamadas SIP.                                                                                  |
 | [end_to_end_encryption_features](#características-de-cifrado-de-extremo-a-extremo-e2ee) | object  | No       | Configuraciones de Cifrado de Extremo a Extremo (E2EE).                                                                 |
 
 ### Características de Grabación
@@ -235,6 +235,7 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | [transcription_features](#características-de-transcripción) | object | No       | Configuraciones para la conversión de voz a texto y la traducción hablada.   |
 | [chat_translation_features](#características-de-traducción-de-chat) | object | No       | Configuraciones para la traducción del chat.                        |
 | [ai_features](#características-de-ia)                 | object | No       | Configuraciones para las características de IA generativa.                  |
+| [ai_agent_features](#características-del-agente-de-ia)     | object | No       | Agente autónomo de voz 1 a 1 con pizarra (educación, demostraciones e incorporación). Incluye `mcp_servers`. |
 
 #### Características de Transcripción
 
@@ -269,6 +270,28 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | Campo    | Tipo    | Requerido | Descripción                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la generación de resúmenes de reuniones. |
+
+</details>
+
+#### Características del Agente de IA
+<details>
+<summary>Ver Detalles</summary>
+
+El Agente de IA es un asistente de voz 1 a 1 con una pizarra y un bloc de notas compartidos. Admite tres modos de sesión: `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (salas de grupo iniciadas por el moderador), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (hasta 32 participantes preautorizados) y `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (autoservicio, limitado a 16 sesiones simultáneas). La tabla muestra los campos principales. Para la referencia completa de campos, ejemplos de solicitudes y reglas de BYOK, consulte la [Guía para desarrolladores y de la API del Agente de IA](/docs/ai-agent/developer-guide).
+
+| Campo                      | Tipo      | Requerido         | Descripción |
+| -------------------------- | --------- | ----------------- | ----------- |
+| is_allow                   | boolean   | Sí                | Interruptor general del Agente de IA en esta sala. |
+| session_mode               | enum      | Sí                | `NORMAL_ROOM`, `CONTROLLED_USERS` u `OPEN_PER_USER`. |
+| auto_session_config        | object    | Depende del modo  | `allowed_participant_ids` (hasta 32) y `max_concurrent_sessions` (límite del servidor: 16). |
+| system_prompt              | string    | Sí, si `is_allow` | Instrucciones del anfitrión para el agente. |
+| topic                      | string    | Sí, si `is_allow` | Tema dentro del cual debe mantenerse el agente. |
+| previous_session_context   | string    | No                | Contexto de una sesión anterior, normalmente el prompt de continuación del resumen. |
+| allow_web_fetch            | boolean   | No                | Permite consultar páginas HTTPS aprobadas. Predeterminado `false`. |
+| allowed_knowledge_urls     | string[]  | No                | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
+| [mcp_servers](/docs/ai-agent/developer-guide#servidores-mcp-externos-mcp_servers) | map | No | Hasta 2 servidores MCP externos. Cada uno tiene `url` (HTTPS), `headers`, `allowed_tools` (hasta 8, solo lectura) y un `scope` opcional. |
+| max_session_seconds        | integer   | No                | Límite de duración de la sesión, de `60` a `7200`. Predeterminado `1800`. |
+| custom_provider            | object    | No                | BYOK por sala: `provider`, `api_key`, `endpoint`, `auth_header` y sobrescrituras de modelo. Nunca se difunde; se almacena solo en Redis. |
 
 </details>
 

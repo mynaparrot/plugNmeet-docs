@@ -160,6 +160,22 @@ You cannot upload images using the "Files" uploader. It is specifically for offi
 
 ![ai-meeting-summerization.webp](/img/moderator/ai-meeting-summerization.webp)
 
+#### 1-on-1 Voice & Whiteboard AI Agent
+
+If the AI Agent is enabled for your room, it can hold one-on-one voice sessions with participants. Each session runs in a private breakout room. The agent speaks, draws on the whiteboard, writes into the shared notepad, and runs quizzes, all within the topic you set.
+
+- **Start sessions:** In a normal room, open the **Breakout Rooms** panel and create breakout rooms with the AI agent enabled. Each participant in those rooms gets an AI session.
+- **Monitor sessions:** Open the **AI Sessions** panel to see which breakout rooms have an agent joined.
+- **Status bar:** The AI status bar shows the agent's current state, such as **Listening**, **Thinking**, **Speaking**, **Drawing**, **Paused**, or **Stopped**.
+- **Pause and resume:** Use the AI controls to pause the agent while you speak, then resume it.
+- **Automatic sessions:** In some rooms, participants are routed to their own AI session automatically, and webcams and screen sharing are turned off.
+
+The AI Agent is configured through the API. For classroom and business workflows, see [Education & Virtual Teacher](/docs/ai-agent/educator-guide) and [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
+
+:::info Under Active Development
+The AI Agent is under active development, and one-click controls in the Moodle, WordPress, and Joomla plugins are planned for a future release.
+:::
+
 ### Transcription & Translation
 - **Activation:** Open the **More Options** menu (...) in the main footer control bar and select **Transcription & Translation**.
 - **Settings:** The Transcription and Translation Settings popup will appear. Here you can enable or disable Transcription & Translation.

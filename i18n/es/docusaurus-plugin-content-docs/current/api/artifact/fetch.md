@@ -63,6 +63,13 @@ Algunos ejemplos comunes incluyen:
 *   `MEETING_ANALYTICS`
 *   `MEETING_SUMMARY_USAGE`
 
+Artefactos de sesiones del Agente de IA (se crean al finalizar una sesión del Agente de IA y se asignan a la sala principal):
+
+*   `AI_AGENT_SESSION_SUMMARY` (valor `11`): resumen estructurado en JSON de la sesión, que incluye evaluación, resultados de cuestionarios y contexto para continuarla.
+*   `AI_AGENT_USAGE` (valor `10`): uso de tokens y audio por rol y modalidad, con costos estimados. Si los costos no aparecen, la sesión es BYOK.
+
+Consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing) para ver el esquema completo.
+
 Para obtener una lista completa y actualizada de todos los tipos de artefactos disponibles, consulte el archivo oficial [**`plugnmeet_room_artifacts.proto`**](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto).
 
 :::tip[¿Trabaja con analíticas de reuniones?]

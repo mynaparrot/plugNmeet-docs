@@ -49,6 +49,13 @@ Todos los eventos de webhook incluyen los siguientes campos:
 
 Enviado por plugNmeet al crear la sesión. Úselo para crear su registro local de sesión.
 
+Los Agentes de IA emiten dos tipos de artefactos a través de este evento, ambos asignados a la sala principal:
+
+*   `AI_AGENT_SESSION_SUMMARY` (`11`): el JSON con el resumen de la sesión. Obténgalo con `/auth/artifact/fetch` para alimentar CRM, informes de LMS o el `previous_session_context` de la siguiente sesión.
+*   `AI_AGENT_USAGE` (`10`): uso de tokens y audio con costos estimados. Su `breakdown` contiene una marca `custom_provider_<provider>` para las sesiones BYOK, que se excluyen de la facturación de la plataforma.
+
+Consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing) para conocer el esquema y las reglas de facturación.
+
 ```js
 interface CommonNotifyEvent {
   event: 'room_created'

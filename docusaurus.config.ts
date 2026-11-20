@@ -102,6 +102,12 @@ const config: Config = {
         },
         {
           type: 'doc',
+          docId: 'ai-agent/overview',
+          position: 'right',
+          label: 'AI Agent',
+        },
+        {
+          type: 'doc',
           docId: 'api/intro',
           position: 'right',
           label: 'API',
