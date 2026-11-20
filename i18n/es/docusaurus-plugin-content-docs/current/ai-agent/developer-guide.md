@@ -35,40 +35,44 @@ Antes de que una sala pueda utilizar el agente, su servidor debe incluir una ent
 
 La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create_room_insights.proto`, además de los mensajes anidados `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig` e `InsightsAIAgentCustomProvider`.
 
-| # | Campo | Tipo | Obligatorio | Descripción |
-| --- | --- | --- | --- | --- |
-| 1 | `is_allow` | bool | Sí | Interruptor general del Agente de IA en esta sala. |
-| 2 | `session_mode` | enum | Sí | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1) o `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
-| 3 | `auto_session_config` | object | Según el modo | Ajustes de enrutamiento para las sesiones 1 a 1 automáticas. Consulte [`auto_session_config`](#auto_session_config). |
-| 4 | `agent_display_name` | string | No | Nombre con el que se muestra el agente. Predeterminado: `AI Assistant`. |
-| 5 | `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del anfitrión sobre la personalidad y el comportamiento del agente. |
-| 6 | `previous_session_context` | string | No | Contexto de una sesión anterior, normalmente el JSON del resumen o su valor `previous_session_context_prompt`. |
-| 7 | `topic` | string | Sí, cuando `is_allow` está activo | La lección, demostración o formación sobre la que debe mantenerse el agente. |
-| 8 | `allowed_subtopics` | string[] | No | Hasta 64 subtemas que quedan dentro del alcance. |
-| 9 | `forbidden_topics` | string[] | No | Hasta 32 temas que el agente debe rechazar. |
-| 10 | `strict_topic_enforcement` | bool | No | Rechazar las solicitudes fuera del tema. Predeterminado: `true`. |
-| 11 | `topic_anchor_interval_turns` | uint32 | No | Vuelve a insertar el anclaje del tema cada N turnos. Predeterminado `6`, rango de `3` a `12`. |
-| 12 | `spoken_lang` | string (BCP-47) | No | Idioma del alumno o del visitante, por ejemplo `en-US`. |
-| 13 | `target_lang` | string (BCP-47) | No | Idioma que se está aprendiendo. Déjelo vacío para temas que no sean de idiomas. |
-| 14 | `instruction_lang` | string (BCP-47) | No | Idioma en el que el agente explica. Si está vacío, se usa `spoken_lang`. |
-| 15 | `voice` | string | No | Identificador de voz del proveedor. Debe figurar en la lista de voces permitidas del servidor. |
-| 16 | `speaking_rate` | float | No | Velocidad del habla, de `0.5` a `2.0`. Predeterminado `1.0`. |
-| 17 | `allow_whiteboard_write` | bool | No | Permite que el agente dibuje en la pizarra. Predeterminado `true`. |
-| 18 | `allow_vision_capture` | bool | No | Permite que el agente reciba instantáneas de la pizarra y del bloc de notas. Predeterminado `true`. |
-| 19 | `vision_debounce_ms` | uint32 | No | Tiempo de espera entre instantáneas. Predeterminado `1200`, máximo `5000`. |
-| 20 | `vision_max_edge_px` | uint32 | No | Arista más larga de la instantánea. Predeterminado `1024`, rango de `512` a `1600`. |
-| 21 | `allow_polls` | bool | No | Permite cuestionarios y encuestas. Predeterminado `true`. |
-| 22 | `allow_chat_message` | bool | No | Permite que el agente publique en el chat de IA. Predeterminado `true`. |
-| 23 | `allow_notepad_write` | bool | No | Permite que el agente escriba en el bloc de notas compartido. Predeterminado `true`. |
-| 24 | `allow_web_fetch` | bool | No | Permite que el agente consulte páginas HTTPS aprobadas. Predeterminado `false`. |
-| 25 | `allowed_knowledge_urls` | string[] | Recomendado cuando `allow_web_fetch` es `true` | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
-| 26 | `knowledge_cache_ttl_seconds` | uint32 | No | Tiempo de caché de las páginas consultadas. Predeterminado `3600`, rango de `60` a `86400`. |
-| 27 | `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Hasta 2 servidores MCP externos. Consulte [Servidores MCP externos](#servidores-mcp-externos-mcp_servers). |
-| 28 | `max_session_seconds` | uint32 | No | Límite de duración de la sesión, de `60` a `7200`. Si no se indica, el valor predeterminado es `1800`. |
-| 29 | `max_audio_minutes` | uint32 | No | Presupuesto de audio por sesión, hasta `240`. Con `0` se usa el valor predeterminado del servidor, `120`. |
-| 30 | `is_enabled` | bool | Debe ser `false` | Indicador interno de ejecución. El anfitrión no puede establecerlo. |
-| 31 | `active_session_id` | string | Debe estar vacío | Campo interno de ejecución. El anfitrión no puede establecerlo. |
-| 32 | `custom_provider` | object | No | Proveedor BYOK propio de la sala. Consulte [`custom_provider` (BYOK)](#custom_provider-byok). |
+<div className="pnm-fit-table pnm-fit-table--fields">
+
+| Campo | Tipo | Obligatorio | Descripción |
+| --- | --- | --- | --- |
+| `is_allow` | bool | Sí | Interruptor general del Agente de IA en esta sala. |
+| `session_mode` | enum | Sí | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1) o `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
+| `auto_session_config` | object | Según el modo | Ajustes de enrutamiento para las sesiones 1 a 1 automáticas. Consulte [`auto_session_config`](#auto_session_config). |
+| `agent_display_name` | string | No | Nombre con el que se muestra el agente. Predeterminado: `AI Assistant`. |
+| `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del anfitrión sobre la personalidad y el comportamiento del agente. |
+| `previous_session_context` | string | No | Contexto de una sesión anterior, normalmente el JSON del resumen o su valor `previous_session_context_prompt`. |
+| `topic` | string | Sí, cuando `is_allow` está activo | La lección, demostración o formación sobre la que debe mantenerse el agente. |
+| `allowed_subtopics` | string[] | No | Hasta 64 subtemas que quedan dentro del alcance. |
+| `forbidden_topics` | string[] | No | Hasta 32 temas que el agente debe rechazar. |
+| `strict_topic_enforcement` | bool | No | Rechazar las solicitudes fuera del tema. Predeterminado: `true`. |
+| `topic_anchor_interval_turns` | uint32 | No | Vuelve a insertar el anclaje del tema cada N turnos. Predeterminado `6`, rango de `3` a `12`. |
+| `spoken_lang` | string (BCP-47) | No | Idioma del alumno o del visitante, por ejemplo `en-US`. |
+| `target_lang` | string (BCP-47) | No | Idioma que se está aprendiendo. Déjelo vacío para temas que no sean de idiomas. |
+| `instruction_lang` | string (BCP-47) | No | Idioma en el que el agente explica. Si está vacío, se usa `spoken_lang`. |
+| `voice` | string | No | Identificador de voz del proveedor. Debe figurar en la lista de voces permitidas del servidor. |
+| `speaking_rate` | float | No | Velocidad del habla, de `0.5` a `2.0`. Predeterminado `1.0`. |
+| `allow_whiteboard_write` | bool | No | Permite que el agente dibuje en la pizarra. Predeterminado `true`. |
+| `allow_vision_capture` | bool | No | Permite que el agente reciba instantáneas de la pizarra y del bloc de notas. Predeterminado `true`. |
+| `vision_debounce_ms` | uint32 | No | Tiempo de espera entre instantáneas. Predeterminado `1200`, máximo `5000`. |
+| `vision_max_edge_px` | uint32 | No | Arista más larga de la instantánea. Predeterminado `1024`, rango de `512` a `1600`. |
+| `allow_polls` | bool | No | Permite cuestionarios y encuestas. Predeterminado `true`. |
+| `allow_chat_message` | bool | No | Permite que el agente publique en el chat de IA. Predeterminado `true`. |
+| `allow_notepad_write` | bool | No | Permite que el agente escriba en el bloc de notas compartido. Predeterminado `true`. |
+| `allow_web_fetch` | bool | No | Permite que el agente consulte páginas HTTPS aprobadas. Predeterminado `false`. |
+| `allowed_knowledge_urls` | string[] | Recomendado cuando `allow_web_fetch` es `true` | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
+| `knowledge_cache_ttl_seconds` | uint32 | No | Tiempo de caché de las páginas consultadas. Predeterminado `3600`, rango de `60` a `86400`. |
+| `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Hasta 2 servidores MCP externos. Consulte [Servidores MCP externos](#servidores-mcp-externos-mcp_servers). |
+| `max_session_seconds` | uint32 | No | Límite de duración de la sesión, de `60` a `7200`. Si no se indica, el valor predeterminado es `1800`. |
+| `max_audio_minutes` | uint32 | No | Presupuesto de audio por sesión, hasta `240`. Con `0` se usa el valor predeterminado del servidor, `120`. |
+| `is_enabled` | bool | Debe ser `false` | Indicador interno de ejecución. El anfitrión no puede establecerlo. |
+| `active_session_id` | string | Debe estar vacío | Campo interno de ejecución. El anfitrión no puede establecerlo. |
+| `custom_provider` | object | No | Proveedor BYOK propio de la sala. Consulte [`custom_provider` (BYOK)](#custom_provider-byok). |
+
+</div>
 
 ### `auto_session_config`
 
@@ -391,6 +395,8 @@ La continuidad por usuario funciona mejor con `OPEN_PER_USER` y `CONTROLLED_USER
 
 El cliente de navegador controla el agente a través de estos endpoints. La autenticación se realiza con el JWT de sala del participante, no con la clave de API del servidor. Las solicitudes y las respuestas usan **protobuf** (`application/x-protobuf`), no JSON.
 
+<div className="pnm-fit-table pnm-fit-table--endpoints">
+
 | Endpoint | Método | Mensaje de solicitud | Quién puede llamarlo | Finalidad |
 | --- | --- | --- | --- | --- |
 | `/api/aiAgent/start` | POST | `AIAgentStartReq` | Solo el administrador de la sala | Inicia el agente. Opcionalmente sustituye `system_prompt` y `previous_session_context`. |
@@ -400,6 +406,8 @@ El cliente de navegador controla el agente a través de estos endpoints. La aute
 | `/api/aiAgent/resume` | POST | `AIAgentResumeReq` | Administrador, delegado o participante preautorizado | Reanuda un agente en pausa. |
 | `/api/aiAgent/sendContext` | POST | `AIAgentSendContextReq` | Administrador, delegado o participante preautorizado | Inyecta contexto externo, como un evento de temporizador o datos del LMS. `source` puede ser `lms` o `timer`. |
 | `/api/aiAgent/redelegate` | POST | `AIAgentRedelegateReq` | Administrador, delegado o participante preautorizado | Traslada el control a otro participante. Si `target_user_id` está vacío, el servidor elige. |
+
+</div>
 
 Las respuestas de inicio, parada, estado y del resto de endpoints de control utilizan el mensaje protobuf `AIAgentStatusRes`, que contiene `status`, `msg` y un `state` opcional.
 

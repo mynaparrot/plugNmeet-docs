@@ -366,6 +366,30 @@ section.features-section.slider-section { display: none; }
 .markdown table tr:nth-child(2n) { background-color: rgba(36, 174, 247, 0.07); }
 .markdown table tr:hover td { background-color: rgba(36, 174, 247, 0.1); }
 
+/* Wide reference tables (e.g. ai-agent developer guide): auto layout lets the
+   identifier column stay on one line while description columns absorb wrapping,
+   so the table fits the content area instead of scrolling sideways. */
+.markdown .pnm-fit-table table {
+  display: table;
+  width: 100%;
+  table-layout: auto;
+}
+.markdown .pnm-fit-table th,
+.markdown .pnm-fit-table td {
+  padding: 0.6rem 0.55rem;
+  overflow-wrap: anywhere;
+}
+.pnm-fit-table--fields td:nth-child(1),
+.pnm-fit-table--fields td:nth-child(1) code,
+.pnm-fit-table--endpoints td:nth-child(1),
+.pnm-fit-table--endpoints td:nth-child(1) code { white-space: nowrap; }
+.pnm-fit-table--fields td:nth-child(1) code { font-size: 0.85em; }
+
+/* On small screens allow horizontal scrolling instead of unreadable columns. */
+@media screen and (max-width: 768px) {
+  .markdown .pnm-fit-table table { display: block; overflow-x: auto; }
+}
+
 .alert { border-radius: 14px; border: 1px solid var(--pnm-border); box-shadow: var(--pnm-shadow-sm); }
 .alert.alert--info, .alert.alert--secondary { border-left: 5px solid var(--pnm-sky); }
 .alert.alert--warning { border-left: 5px solid #f5a623; }

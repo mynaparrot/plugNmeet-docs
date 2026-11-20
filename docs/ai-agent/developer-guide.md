@@ -35,40 +35,44 @@ Before any room can use the agent, your server must have an `insights.services.a
 
 The table lists all 32 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_room_insights.proto`, plus the nested `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig`, and `InsightsAIAgentCustomProvider` messages.
 
-| # | Field | Type | Required | Description |
-| --- | --- | --- | --- | --- |
-| 1 | `is_allow` | bool | Yes | Master switch for the AI Agent in this room. |
-| 2 | `session_mode` | enum | Yes | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1), or `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
-| 3 | `auto_session_config` | object | Depends on mode | Routing settings for automatic 1-on-1 sessions. See [`auto_session_config`](#auto_session_config). |
-| 4 | `agent_display_name` | string | No | Name shown for the agent. Default: `AI Assistant`. |
-| 5 | `system_prompt` | string | Yes, when `is_allow` | Host instructions for the agent's persona and behavior. |
-| 6 | `previous_session_context` | string | No | Context from a previous session, usually the summary JSON or its `previous_session_context_prompt`. |
-| 7 | `topic` | string | Yes, when `is_allow` | The lesson, demo, or training topic the agent stays within. |
-| 8 | `allowed_subtopics` | string[] | No | Up to 64 subtopics that are in scope. |
-| 9 | `forbidden_topics` | string[] | No | Up to 32 topics the agent must decline. |
-| 10 | `strict_topic_enforcement` | bool | No | Decline out-of-topic requests. Default: `true`. |
-| 11 | `topic_anchor_interval_turns` | uint32 | No | Re-inject the topic anchor every N turns. Default `6`, range `3` to `12`. |
-| 12 | `spoken_lang` | string (BCP-47) | No | The learner's or visitor's language, for example `en-US`. |
-| 13 | `target_lang` | string (BCP-47) | No | Language being learned. Leave empty for non-language topics. |
-| 14 | `instruction_lang` | string (BCP-47) | No | Language the agent explains in. If empty, `spoken_lang` is used. |
-| 15 | `voice` | string | No | Provider voice ID. Must be on the server's allow-list. |
-| 16 | `speaking_rate` | float | No | Speech speed, `0.5` to `2.0`. Default `1.0`. |
-| 17 | `allow_whiteboard_write` | bool | No | Allow the agent to draw on the whiteboard. Default `true`. |
-| 18 | `allow_vision_capture` | bool | No | Allow the agent to receive whiteboard and notepad snapshots. Default `true`. |
-| 19 | `vision_debounce_ms` | uint32 | No | Snapshot debounce. Default `1200`, maximum `5000`. |
-| 20 | `vision_max_edge_px` | uint32 | No | Longest snapshot edge. Default `1024`, range `512` to `1600`. |
-| 21 | `allow_polls` | bool | No | Allow quizzes and polls. Default `true`. |
-| 22 | `allow_chat_message` | bool | No | Allow the agent to post in the AI chat. Default `true`. |
-| 23 | `allow_notepad_write` | bool | No | Allow the agent to write to the shared notepad. Default `true`. |
-| 24 | `allow_web_fetch` | bool | No | Allow the agent to fetch approved HTTPS pages. Default `false`. |
-| 25 | `allowed_knowledge_urls` | string[] | Recommended when `allow_web_fetch` is `true` | Up to 32 HTTPS URL prefixes the agent may fetch. |
-| 26 | `knowledge_cache_ttl_seconds` | uint32 | No | Cache time for fetched pages. Default `3600`, range `60` to `86400`. |
-| 27 | `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Up to 2 external MCP servers. See [External MCP Servers](#external-mcp-servers-mcp_servers). |
-| 28 | `max_session_seconds` | uint32 | No | Session length cap, `60` to `7200`. Default `1800` when unset. |
-| 29 | `max_audio_minutes` | uint32 | No | Audio budget per session, up to `240`. `0` uses the server default of `120`. |
-| 30 | `is_enabled` | bool | Must be `false` | Internal runtime flag. The host cannot set it. |
-| 31 | `active_session_id` | string | Must be empty | Internal runtime field. The host cannot set it. |
-| 32 | `custom_provider` | object | No | Per-room BYOK provider. See [`custom_provider`](#custom_provider-byok). |
+<div className="pnm-fit-table pnm-fit-table--fields">
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `is_allow` | bool | Yes | Master switch for the AI Agent in this room. |
+| `session_mode` | enum | Yes | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1), or `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
+| `auto_session_config` | object | Depends on mode | Routing settings for automatic 1-on-1 sessions. See [`auto_session_config`](#auto_session_config). |
+| `agent_display_name` | string | No | Name shown for the agent. Default: `AI Assistant`. |
+| `system_prompt` | string | Yes, when `is_allow` | Host instructions for the agent's persona and behavior. |
+| `previous_session_context` | string | No | Context from a previous session, usually the summary JSON or its `previous_session_context_prompt`. |
+| `topic` | string | Yes, when `is_allow` | The lesson, demo, or training topic the agent stays within. |
+| `allowed_subtopics` | string[] | No | Up to 64 subtopics that are in scope. |
+| `forbidden_topics` | string[] | No | Up to 32 topics the agent must decline. |
+| `strict_topic_enforcement` | bool | No | Decline out-of-topic requests. Default: `true`. |
+| `topic_anchor_interval_turns` | uint32 | No | Re-inject the topic anchor every N turns. Default `6`, range `3` to `12`. |
+| `spoken_lang` | string (BCP-47) | No | The learner's or visitor's language, for example `en-US`. |
+| `target_lang` | string (BCP-47) | No | Language being learned. Leave empty for non-language topics. |
+| `instruction_lang` | string (BCP-47) | No | Language the agent explains in. If empty, `spoken_lang` is used. |
+| `voice` | string | No | Provider voice ID. Must be on the server's allow-list. |
+| `speaking_rate` | float | No | Speech speed, `0.5` to `2.0`. Default `1.0`. |
+| `allow_whiteboard_write` | bool | No | Allow the agent to draw on the whiteboard. Default `true`. |
+| `allow_vision_capture` | bool | No | Allow the agent to receive whiteboard and notepad snapshots. Default `true`. |
+| `vision_debounce_ms` | uint32 | No | Snapshot debounce. Default `1200`, maximum `5000`. |
+| `vision_max_edge_px` | uint32 | No | Longest snapshot edge. Default `1024`, range `512` to `1600`. |
+| `allow_polls` | bool | No | Allow quizzes and polls. Default `true`. |
+| `allow_chat_message` | bool | No | Allow the agent to post in the AI chat. Default `true`. |
+| `allow_notepad_write` | bool | No | Allow the agent to write to the shared notepad. Default `true`. |
+| `allow_web_fetch` | bool | No | Allow the agent to fetch approved HTTPS pages. Default `false`. |
+| `allowed_knowledge_urls` | string[] | Recommended when `allow_web_fetch` is `true` | Up to 32 HTTPS URL prefixes the agent may fetch. |
+| `knowledge_cache_ttl_seconds` | uint32 | No | Cache time for fetched pages. Default `3600`, range `60` to `86400`. |
+| `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Up to 2 external MCP servers. See [External MCP Servers](#external-mcp-servers-mcp_servers). |
+| `max_session_seconds` | uint32 | No | Session length cap, `60` to `7200`. Default `1800` when unset. |
+| `max_audio_minutes` | uint32 | No | Audio budget per session, up to `240`. `0` uses the server default of `120`. |
+| `is_enabled` | bool | Must be `false` | Internal runtime flag. The host cannot set it. |
+| `active_session_id` | string | Must be empty | Internal runtime field. The host cannot set it. |
+| `custom_provider` | object | No | Per-room BYOK provider. See [`custom_provider`](#custom_provider-byok). |
+
+</div>
 
 ### `auto_session_config`
 
@@ -391,6 +395,8 @@ Per-user continuity works best with `OPEN_PER_USER` and `CONTROLLED_USERS`, wher
 
 The browser client controls the agent through these endpoints. They are authenticated with the participant's room JWT, not with the server API key. Requests and responses use **protobuf** (`application/x-protobuf`), not JSON.
 
+<div className="pnm-fit-table pnm-fit-table--endpoints">
+
 | Endpoint | Method | Request message | Who may call it | Purpose |
 | --- | --- | --- | --- | --- |
 | `/api/aiAgent/start` | POST | `AIAgentStartReq` | Room admin only | Starts the agent. Optionally overrides `system_prompt` and `previous_session_context`. |
@@ -400,6 +406,8 @@ The browser client controls the agent through these endpoints. They are authenti
 | `/api/aiAgent/resume` | POST | `AIAgentResumeReq` | Admin, delegate, or pre-authorized participant | Resumes a paused agent. |
 | `/api/aiAgent/sendContext` | POST | `AIAgentSendContextReq` | Admin, delegate, or pre-authorized participant | Injects external context, such as a timer event or LMS data. `source` can be `lms` or `timer`. |
 | `/api/aiAgent/redelegate` | POST | `AIAgentRedelegateReq` | Admin, delegate, or pre-authorized participant | Moves control to another participant. An empty `target_user_id` lets the server choose. |
+
+</div>
 
 Responses for start, stop, status, and the other control endpoints use the protobuf `AIAgentStatusRes` message, which has `status`, `msg`, and an optional `state`.
 
