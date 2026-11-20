@@ -8,16 +8,6 @@
   "routes": [
     { "pattern": "docs-mcp.plugnmeet.org", "custom_domain": true }
   ],
-  "migrations": [
-    {
-      "tag": "v1",
-      "new_sqlite_classes": ["PlugNmeetDocsMcp"]
-    },
-    {
-      "tag": "v2",
-      "deleted_classes": ["PlugNmeetDocsMcp"]
-    }
-  ],
   "observability": {
     "enabled": true
   },

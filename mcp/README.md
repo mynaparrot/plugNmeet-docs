@@ -78,31 +78,6 @@ If a Cloudflare challenge/interstitial page comes back instead, add a WAF skip r
 That file only exists once the docs site is deployed with the index plugin; until then the tools
 return the "index not available" message.
 
-## CI/CD (GitHub Actions)
-
-`.github/workflows/test-deploy.yml` runs on pushes to `main`, on pull requests targeting `main`,
-and manually via `workflow_dispatch` (input `target`: `all`, `docs` or `mcp`).
-
-A `changes` job path-filters the diff:
-
-- changes under `mcp/**` → typecheck, test and deploy the `plugnmeet-docs-mcp` worker
-- changes anywhere else (`docs/`, `src/`, `static/`, `plugins/`, config, lockfiles, ...) → build
-  the Docusaurus site and deploy `plugnmeet-docs`
-
-Pull requests only validate: the site is built and the worker is checked with
-`wrangler deploy --dry-run`. Nothing is deployed from a PR.
-
-Two repository secrets are required (Settings → Secrets and variables → Actions):
-
-- `CLOUDFLARE_DOC_API_TOKEN` — Cloudflare API token. Either the "Edit Cloudflare Workers"
-  template, or a custom token with `Account → Workers Scripts: Edit`,
-  `Account → Account Settings: Read` and, for the custom domain, `Zone → Workers Routes: Edit`
-  plus `Zone → DNS: Edit`.
-- `CLOUDFLARE_DOC_ACCOUNT` — the Cloudflare Account ID.
-
-If Actions owns the deployments, disable the Cloudflare dashboard's built-in Git integration for
-these Workers, otherwise every commit triggers a duplicate build and deploy.
-
 ## Client setup
 
 Claude (custom connector): add `https://docs-mcp.plugnmeet.org/mcp` as a remote MCP server URL

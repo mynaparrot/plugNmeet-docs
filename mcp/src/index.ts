@@ -45,12 +45,12 @@ export function createServer(env: Env): McpServer {
       title: 'Search plugNmeet docs',
       description:
         'Search the plugNmeet documentation and blog by keywords. Returns ranked pages with title, URL, section/locale, description and a short snippet. Start here, then read the matching page with get_docs_content.',
-      inputSchema: {
+      inputSchema: z.object({
         query: z.string().min(1).describe('Search keywords, e.g. "whiteboard upload api"'),
         limit: z.number().int().min(1).max(20).optional().describe('Maximum number of results (default 5, max 20)'),
         section: z.enum(['docs', 'blog']).optional().describe('Restrict results to documentation or blog posts'),
         locale: z.enum(['en', 'es']).optional().describe('Restrict results to the English or Spanish content'),
-      },
+      }),
       annotations: readOnlyAnnotations,
     },
     async ({query, limit, section, locale}) =>
@@ -63,10 +63,10 @@ export function createServer(env: Env): McpServer {
       title: 'List plugNmeet docs pages',
       description:
         'List available pages grouped by category, with their site paths. Use it to browse what exists before searching, or to see every page in a section or locale.',
-      inputSchema: {
+      inputSchema: z.object({
         section: z.enum(['docs', 'blog']).optional().describe('Restrict the listing to documentation or blog posts'),
         locale: z.enum(['en', 'es']).optional().describe('Restrict the listing to the English or Spanish content'),
-      },
+      }),
       annotations: readOnlyAnnotations,
     },
     async ({section, locale}) =>
@@ -81,10 +81,10 @@ export function createServer(env: Env): McpServer {
       title: 'Read a plugNmeet docs page',
       description:
         'Return the full markdown content of one page, plus its URL and GitHub source link. Accepts a site-relative path (/docs/intro) or a full URL. If the path is unknown, returns the closest matches.',
-      inputSchema: {
+      inputSchema: z.object({
         path: z.string().min(1).describe('Page path such as /docs/intro, or a full https://www.plugnmeet.org/... URL'),
         locale: z.enum(['en', 'es']).optional().describe('Prefer a page in the given locale'),
-      },
+      }),
       annotations: readOnlyAnnotations,
     },
     async ({path, locale}) =>
