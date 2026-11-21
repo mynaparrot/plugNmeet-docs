@@ -6,19 +6,19 @@ sidebar_position: 2
 sidebar_label: Información
 ---
 
-# Obtener Información de Artefacto
+# Obtener información de artefacto
 
 Endpoint: `/artifact/info`
 
 Este endpoint le permite recuperar información sobre un único artefacto utilizando su `artifact_id` único.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo       | Tipo   | Requerido | Descripción                            |
 | ----------- | ------ | --------- | -------------------------------------- |
 | artifact_id | string | Sí        | El identificador único del artefacto. |
 
-### Ejemplo de Solicitud
+### Ejemplo de solicitud
 
 ```json
 {

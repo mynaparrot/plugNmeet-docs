@@ -6,33 +6,33 @@ sidebar_position: 2
 sidebar_label: Migrando de BigBlueButton
 ---
 
-# Migrando de BigBlueButton: Una Alternativa Moderna
+# Migrando de BigBlueButton: Una alternativa moderna
 
-¿Está buscando una alternativa más moderna, ligera y escalable a BigBlueButton? Plug-N-Meet ofrece una arquitectura de última generación con un enfoque en el rendimiento y la simplicidad, y hemos hecho que el proceso de migración sea increíblemente sencillo.
+¿Está buscando una alternativa más moderna, ligera y escalable a BigBlueButton? plugNmeet ofrece una arquitectura de última generación con un enfoque en el rendimiento y la simplicidad, y hemos hecho que el proceso de migración sea increíblemente sencillo.
 
 Esta guía le mostrará los beneficios de cambiar y cómo puede migrar su aplicación existente, integrada con BBB, en solo unos minutos, sin necesidad de modificar su código de front-end.
 
 ---
 
-## ¿Por Qué Considerar Plug-N-Meet?
+## ¿Por qué considerar plugNmeet?
 
-BigBlueButton es un proyecto de código abierto fundamental que ha servido a la comunidad durante años. Plug-N-Meet nació de un profundo respeto por el ecosistema de BBB y fue diseñado para abordar algunos de sus desafíos arquitectónicos inherentes, ofreciendo un enfoque diferente para quienes necesitan mayor flexibilidad y escalabilidad.
+BigBlueButton es un proyecto de código abierto fundamental que ha servido a la comunidad durante años. plugNmeet nació de un profundo respeto por el ecosistema de BBB y fue diseñado para abordar algunos de sus desafíos arquitectónicos inherentes, ofreciendo un enfoque diferente para quienes necesitan mayor flexibilidad y escalabilidad.
 
 Para una comparación detallada y directa de ambas plataformas, le recomendamos leer nuestro análisis completo:
-**[BigBlueButton vs. Plug-N-Meet: Una Alternativa Moderna](/blog/bigbluebutton-vs-plugnmeet-alternative)**
+**[BigBlueButton vs. plugNmeet: Una Alternativa Moderna](/blog/bigbluebutton-vs-plugnmeet-alternative)**
 
-A continuación, las ventajas clave de la arquitectura de Plug-N-Meet:
+A continuación, las ventajas clave de la arquitectura de plugNmeet:
 
--   **Construido sobre una Base de Clase Mundial:** Plug-N-Meet está impulsado por **LiveKit** como su servidor de medios y **NATS** para la mensajería en tiempo real (chat, sincronización de pizarra, etc.). Estos son componentes extremadamente rápidos, escalables y modernos que permiten a Plug-N-Meet manejar una gran cantidad de usuarios con menos recursos de servidor. Véanse las cifras medidas en nuestros [Benchmarks](/docs/benchmark): 300–500 usuarios en una sala funcionaron sin fallos en un solo servidor de 4 vCore.
--   **Stack Tecnológico Simplificado y Ligero:** Al aprovechar estos componentes, Plug-N-Meet evita la compleja red de dependencias que se encuentra en BigBlueButton (como FreeSWITCH y Kurento). Esto se traduce en una instalación mucho más ligera, más sencilla y con un mantenimiento más fácil.
+-   **Construido sobre una Base de Clase Mundial:** plugNmeet está impulsado por **LiveKit** como su servidor de medios y **NATS** para la mensajería en tiempo real (chat, sincronización de pizarra, etc.). Estos son componentes extremadamente rápidos, escalables y modernos que permiten a plugNmeet manejar una gran cantidad de usuarios con menos recursos de servidor. Véanse las cifras medidas en nuestros [Benchmarks](/docs/benchmark): 300–500 usuarios en una sala funcionaron sin fallos en un solo servidor de 4 vCore.
+-   **Stack Tecnológico Simplificado y Ligero:** Al aprovechar estos componentes, plugNmeet evita la compleja red de dependencias que se encuentra en BigBlueButton (como FreeSWITCH y Kurento). Esto se traduce en una instalación mucho más ligera, más sencilla y con un mantenimiento más fácil.
 -   **Grabaciones Simplificadas en un Solo Archivo:** A diferencia del complejo flujo de trabajo de post-procesamiento de BigBlueButton, plugNmeet genera un único archivo MP4 estándar para cada grabación. Esto hace que sus grabaciones sean instantáneamente portátiles, más fáciles de gestionar y más rápidas de acceder.
--   **Diseñado para el Escalado Distribuido:** Plug-N-Meet no está construido como una única aplicación monolítica. Cada componente central (LiveKit para medios, NATS para mensajería, el grabador y el servidor de plugNmeet) está diseñado para escalar de forma independiente. Esto le permite agregar recursos precisamente donde los necesita, por ejemplo, escalando su infraestructura de grabación sin afectar el rendimiento de las reuniones en vivo.
+-   **Diseñado para el Escalado Distribuido:** plugNmeet no está construido como una única aplicación monolítica. Cada componente central (LiveKit para medios, NATS para mensajería, el grabador y el servidor de plugNmeet) está diseñado para escalar de forma independiente. Esto le permite agregar recursos precisamente donde los necesita, por ejemplo, escalando su infraestructura de grabación sin afectar el rendimiento de las reuniones en vivo.
 -   **Personalización sin Esfuerzo:** La plataforma está diseñada para una personalización profunda y sencilla. El cliente de front-end es una aplicación moderna y autónoma, y el back-end es un único binario. Esta clara separación permite a los desarrolladores modificar rápidamente la interfaz de usuario, agregar funciones o integrar flujos de trabajo personalizados sin tener que navegar por el complejo entorno de múltiples servicios de BigBlueButton.
--   **Compatibilidad de API Transparente:** Este es nuestro compromiso con el ecosistema. Plug-N-Meet incluye una capa de API compatible con BBB. Esto significa que su aplicación existente, ya sea Greenlight, un plugin de Moodle o una solución personalizada, funcionará con Plug-N-Meet sin requerir ningún cambio en el código de front-end.
+-   **Compatibilidad de API Transparente:** Este es nuestro compromiso con el ecosistema. plugNmeet incluye una capa de API compatible con BBB. Esto significa que su aplicación existente, ya sea Greenlight, un plugin de Moodle o una solución personalizada, funcionará con plugNmeet sin requerir ningún cambio en el código de front-end.
 
 ---
 
-## El Proceso de Migración de 2 Minutos
+## El proceso de migración de 2 minutos
 
 Gracias a nuestra API compatible con BBB, migrar su aplicación existente es tan simple como cambiar el endpoint de la API y las credenciales en su configuración.
 
@@ -43,7 +43,7 @@ En la configuración de su aplicación, localice los ajustes de la API de BigBlu
 
 Eso es todo. Su `API Key` de PlugNmeet se pasará como el `user` en la URL.
 
-### Ejemplo de Configuración
+### Ejemplo de configuración
 
 ```
 URL: https://[SU_HOST_PLUGNMEET]/[SU_API_KEY_PLUGNMEET]/bigbluebutton/
@@ -59,11 +59,11 @@ Secret: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ---
 
-## Después de la Migración: Acceda a Todas las Funciones Disponibles
+## Después de la migración: Acceda a todas las funciones disponibles
 
-Para proporcionar esta migración transparente, Plug-N-Meet utiliza una potente capa de API compatible con BBB. Esto asegura que todas las funciones principales de BigBlueButton en las que se basa su aplicación existente funcionarán de inmediato.
+Para proporcionar esta migración transparente, plugNmeet utiliza una potente capa de API compatible con BBB. Esto asegura que todas las funciones principales de BigBlueButton en las que se basa su aplicación existente funcionarán de inmediato.
 
-Sin embargo, esta capa de compatibilidad está diseñada como un puente. Para aprovechar todo el potencial de Plug-N-Meet, incluidas nuestras funciones más avanzadas, un rendimiento superior y opciones de personalización sin esfuerzo, **recomendamos encarecidamente cambiar a nuestros plugins o SDKs dedicados** cuando esté listo.
+Sin embargo, esta capa de compatibilidad está diseñada como un puente. Para aprovechar todo el potencial de plugNmeet, incluidas nuestras funciones más avanzadas, un rendimiento superior y opciones de personalización sin esfuerzo, **recomendamos encarecidamente cambiar a nuestros plugins o SDKs dedicados** cuando esté listo.
 
 El uso de las integraciones nativas proporcionará la experiencia más estable, rica en funciones y preparada para el futuro para sus usuarios.
 

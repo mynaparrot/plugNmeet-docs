@@ -1,16 +1,16 @@
 ---
 title: "Guía de desarrollo y API del Agente de IA: referencia de ai_agent_features y ejemplos"
-description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas de grupos, continuidad entre sesiones y endpoints protobuf dentro de la sala."
-keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas de grupos, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, aiAgent start stop status]
+description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas de grupo, continuidad entre sesiones y endpoints protobuf dentro de la sala."
+keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas de grupo, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, aiAgent start stop status]
 sidebar_label: Guía de desarrollo y API
 sidebar_position: 6
 ---
 
-# Guía de desarrollo y API del Agente de IA
+# Guía de desarrollo y API del agente de IA
 
 Esta guía es la referencia técnica para integrar el Agente de IA de plugNmeet. Abarca la API de creación de salas para la comunicación entre servidores, los endpoints protobuf a los que accede el cliente de navegador dentro de la sala y el flujo de webhooks que permite mantener la continuidad entre sesiones.
 
-:::info En Desarrollo Activo
+:::info En desarrollo activo
 El motor del Agente de IA y sus API están en desarrollo activo. Los nombres de los campos, las reglas de validación y el comportamiento de los endpoints pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que la función se finalice y se publique. Mientras tanto, realice la integración mediante la API que se describe a continuación.
 :::
 
@@ -43,7 +43,7 @@ La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `session_mode` | enum | Sí | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1) o `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
 | `auto_session_config` | object | Según el modo | Ajustes de enrutamiento para las sesiones 1 a 1 automáticas. Consulte [`auto_session_config`](#auto_session_config). |
 | `agent_display_name` | string | No | Nombre con el que se muestra el agente. Predeterminado: `AI Assistant`. |
-| `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del anfitrión sobre la personalidad y el comportamiento del agente. |
+| `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del moderador sobre la personalidad y el comportamiento del agente. |
 | `previous_session_context` | string | No | Contexto de una sesión anterior, normalmente el JSON del resumen o su valor `previous_session_context_prompt`. |
 | `topic` | string | Sí, cuando `is_allow` está activo | La lección, demostración o formación sobre la que debe mantenerse el agente. |
 | `allowed_subtopics` | string[] | No | Hasta 64 subtemas que quedan dentro del alcance. |
@@ -68,8 +68,8 @@ La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Hasta 2 servidores MCP externos. Consulte [Servidores MCP externos](#servidores-mcp-externos-mcp_servers). |
 | `max_session_seconds` | uint32 | No | Límite de duración de la sesión, de `60` a `7200`. Si no se indica, el valor predeterminado es `1800`. |
 | `max_audio_minutes` | uint32 | No | Presupuesto de audio por sesión, hasta `240`. Con `0` se usa el valor predeterminado del servidor, `120`. |
-| `is_enabled` | bool | Debe ser `false` | Indicador interno de ejecución. El anfitrión no puede establecerlo. |
-| `active_session_id` | string | Debe estar vacío | Campo interno de ejecución. El anfitrión no puede establecerlo. |
+| `is_enabled` | bool | Debe ser `false` | Indicador interno de ejecución. El moderador no puede establecerlo. |
+| `active_session_id` | string | Debe estar vacío | Campo interno de ejecución. El moderador no puede establecerlo. |
 | `custom_provider` | object | No | Proveedor BYOK propio de la sala. Consulte [`custom_provider` (BYOK)](#custom_provider-byok). |
 
 </div>
@@ -107,8 +107,8 @@ La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 
 | Modo | Quién inicia la sesión | Enrutamiento | Cámaras web y compartición de pantalla | Uso habitual |
 | --- | --- | --- | --- | --- |
-| `NORMAL_ROOM` | Un moderador, desde el panel de salas de grupos | Salas de grupos 1 a 1 manuales | Sin cambios | Práctica dirigida por el docente, demostraciones guiadas por ventas |
-| `CONTROLLED_USERS` | Automático, para los participantes indicados | Cada participante autorizado recibe `<Name> (AI Session)` | Desactivadas en toda la sala | Listas de alumnos asignados, grupos de incorporación |
+| `NORMAL_ROOM` | Un moderador, desde el panel de salas de grupo | Salas de grupo 1 a 1 manuales | Sin cambios | Práctica dirigida por el docente, demostraciones guiadas por ventas |
+| `CONTROLLED_USERS` | Automático, para los participantes indicados | Cada participante autorizado recibe `<Name> (AI Session)` | Desactivadas en toda la sala | Listas de alumnos asignados, grupos de onboarding |
 | `OPEN_PER_USER` | Automático, para cualquier visitante | Cada visitante recibe una sesión aislada, hasta `max_concurrent_sessions` | Desactivadas en toda la sala | Salas de estudio 24/7, enlaces de demostración de producto |
 
 En los modos automáticos, la sala principal funciona como sala de espera. Los participantes que no están autorizados permanecen en ella.
@@ -238,7 +238,7 @@ Aunque envíe un número mayor, el servidor limita `max_concurrent_sessions` a *
 
 ### 4. Con BYOK (`custom_provider`)
 
-Este ejemplo utiliza la puerta de enlace compatible con OpenAI del propio anfitrión para una sola sala. La clave se elimina de los metadatos de la sala antes de difundirlos y se almacena únicamente en Redis.
+Este ejemplo utiliza la puerta de enlace compatible con OpenAI del propio moderador para una sola sala. La clave se elimina de los metadatos de la sala antes de difundirlos y se almacena únicamente en Redis.
 
 ```json
 {
@@ -308,16 +308,16 @@ Si se establece `custom_provider`, el servidor no necesita una entrada de servic
 }
 ```
 
-## Sesiones de IA en salas de grupos
+## Sesiones de IA en salas de grupo
 
-Un moderador puede iniciar una sesión de IA 1 a 1 dentro de una sala de grupos. Utilice `/api/breakoutRoom/create` con estos campos de `CreateBreakoutRoomsReq`:
+Un moderador puede iniciar una sesión de IA 1 a 1 dentro de una sala de grupo. Utilice `/api/breakoutRoom/create` con estos campos de `CreateBreakoutRoomsReq`:
 
 | Campo | Tipo | Descripción |
 | --- | --- | --- |
-| `enable_ai_agent` | bool | Crea las salas de grupos con una sesión del Agente de IA asociada. |
+| `enable_ai_agent` | bool | Crea las salas de grupo con una sesión del Agente de IA asociada. |
 | `ai_agent_context` | string | Contexto opcional a nivel de sala para el agente, de hasta 2000 caracteres. |
 
-Cada sala de grupos también contiene sus propios indicadores `enable_ai_agent`, `ai_agent_context` (hasta 2000 caracteres) y `ai_agent_joined`. El indicador `ai_agent_joined` informa al panel de Sesiones de IA del moderador de si un agente se ha unido a esa sala.
+Cada sala de grupo también contiene sus propios indicadores `enable_ai_agent`, `ai_agent_context` (hasta 2000 caracteres) y `ai_agent_joined`. El indicador `ai_agent_joined` informa al panel de Sesiones de IA del moderador de si un agente se ha unido a esa sala.
 
 ```json
 {
@@ -334,7 +334,7 @@ Cada sala de grupos también contiene sus propios indicadores `enable_ai_agent`,
 }
 ```
 
-Las salas de grupos heredan la configuración del proveedor BYOK de la sala principal, de modo que la misma clave y los mismos modelos se aplican a todas las sesiones.
+Las salas de grupo heredan la configuración del proveedor BYOK de la sala principal, de modo que la misma clave y los mismos modelos se aplican a todas las sesiones.
 
 ## Seguridad del conocimiento externo y de los servidores MCP externos
 
@@ -354,8 +354,8 @@ El acceso externo es la parte de mayor riesgo en la configuración del agente. E
 - **Máximo 8 herramientas permitidas por servidor.** Las herramientas que no figuran en `allowed_tools` nunca se ofrecen al agente.
 - **Política de solo lectura.** El servidor aplica una política de herramientas estrictamente de solo lectura. Las herramientas que escriben, eliminan o envían datos no se exponen, aunque se indiquen en la lista. Diseñe su servidor MCP de forma que sus herramientas de lectura sean las únicas que exponga.
 - **Solo HTTPS en el puerto 443.** Se rechazan otros esquemas y puertos.
-- **Protección SSRF.** Las conexiones se comprueban en el momento de establecerlas. Solo se permiten direcciones enrutables globalmente, por lo que se rechazan las conexiones a direcciones privadas, de bucle local, de enlace local o que no sean globales.
-- **Los encabezados son secretos.** Incluya los tokens de API en `headers`. Se almacenan en el servidor y no se difunden a los participantes.
+- **Protección SSRF.** Las conexiones se comprueban en el momento de establecerlas. Solo se permiten direcciones públicas de Internet, por lo que se rechazan las conexiones a direcciones privadas, de bucle local, de enlace local o de otro tipo no público.
+- **Los encabezados son secretos.** Incluya los tokens de API en `headers`. Se almacenan en el servidor y nunca se envían a los participantes.
 
 :::caution No apunte los servidores MCP a servicios internos
 Aunque exista protección SSRF, conecte los servidores MCP únicamente a servicios que tenga previsto exponer al Agente de IA y a sus visitantes. Utilice un endpoint MCP dedicado de solo lectura, no su API interna de administración.

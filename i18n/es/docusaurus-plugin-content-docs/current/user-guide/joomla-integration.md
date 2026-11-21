@@ -6,7 +6,7 @@ sidebar_position: 6
 sidebar_label: Integración con Joomla
 ---
 
-# Cómo Añadir Videoconferencias a Joomla con la Extensión Plug-N-Meet
+# Cómo añadir videoconferencias a Joomla con la extensión plugNmeet
 
 Esta guía cubre el componente plugNmeet para Joomla. Ofrece las mismas funciones completas que los plugins de WordPress y Moodle: control total de salas, grabaciones con fusión, artefactos con exportación de analíticas y acceso basado en permisos de Joomla, todo dentro de su sitio.
 
@@ -16,22 +16,22 @@ El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disp
 
 ---
 
-## 1. Funciones Principales de la Integración con Joomla
+## 1. Funciones principales de la integración con Joomla
 
-- **Control total de salas:** Cree salas con todas las funciones de plugNmeet: sala de espera, salas de grupos, encuestas, pizarra, cifrado de extremo a extremo, acceso telefónico SIP e Insights con IA (transcripción, traducción de chat y resumen automático).
+- **Control total de salas:** Cree salas con todas las funciones de plugNmeet: sala de espera, salas de grupo, encuestas, pizarra, cifrado de extremo a extremo, acceso telefónico SIP e Insights con IA (transcripción, traducción de chat y resumen automático).
 - **Gestión interna:** Administre salas, grabaciones y artefactos desde **Componentes > Plug N Meet**, sin salir de Joomla.
 - **Grabaciones con fusión:** Liste, reproduzca, descargue, elimine y **fusione varios segmentos** en un solo MP4 desde la pantalla de Grabaciones.
 - **Artefactos y analíticas:** Consulte informes de analíticas, transcripciones y resúmenes con IA por sala. Descargue las analíticas en Excel.
 - **Publicación nativa de Joomla:** Las salas son elementos como artículos, con categorías y dos tipos de menú: **Sala única** y **Lista de salas**.
 - **Acceso por permisos:** Controle quién puede entrar sin contraseña, quién entra como moderador y quién puede ver, reproducir, descargar o eliminar grabaciones en cada sala mediante la ACL de Joomla.
 
-## 2. Instalación y Configuración Inicial
+## 2. Instalación y configuración inicial
 
-### Paso 2.1: Instalar la Extensión
+### Paso 2.1: Instalar la extensión
 
 - Desde el panel de administración de Joomla, vaya a **Sistema > Instalar > Extensiones**.
 - Seleccione la pestaña **Instalar desde la Web** y busque **plugnmeet**.
-- Encuentre la extensión oficial de Plug-N-Meet y haga clic en **Instalar**.
+- Encuentre la extensión oficial de plugNmeet y haga clic en **Instalar**.
 
 ![Joomla-install.png](/img/Joomla/Joomla-install.png)
 
@@ -41,7 +41,7 @@ El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disp
 
 Como alternativa, descargue el paquete desde [versiones de plugNMeet-Joomla en GitHub](https://github.com/mynaparrot/plugNMeet-Joomla) e instálelo con **Subir Archivo de Paquete**.
 
-### Paso 2.2: Conectar con su Servidor (Ajustes de API)
+### Paso 2.2: Conectar con su servidor (ajustes de API)
 
 Este es el paso más importante. Debe conectar la extensión a un servidor plugNmeet operativo.
 
@@ -61,9 +61,9 @@ Este es el paso más importante. Debe conectar la extensión a un servidor plugN
 
 ---
 
-## 3. Creación y Publicación de su Primera Reunión
+## 3. Creación y publicación de su primera reunión
 
-### Paso 3.1: Organizar con Categorías (Opcional)
+### Paso 3.1: Organizar con categorías (opcional)
 
 Las salas pueden agruparse con las categorías de Joomla:
 
@@ -71,7 +71,7 @@ Las salas pueden agruparse con las categorías de Joomla:
 - Asigne la categoría en el campo **Categoría** al crear la sala.
 - El tipo de menú **Lista de salas** puede filtrar por una categoría.
 
-### Paso 3.2: Crear una Sala de Reuniones
+### Paso 3.2: Crear una sala de reuniones
 
 - Desde el panel de administración vaya a **Componentes > Plug N Meet > Administrar Salas**.
 - Pulse **+ Nuevo** para crear una sala.
@@ -98,7 +98,7 @@ Activa cada herramienta. La pizarra admite una **URL de archivo precargado** (PD
 **Sala de Espera**
 Permite filtrar participantes antes de entrar, con mensaje personalizado.
 
-**Salas de Grupos**
+**Salas de grupo**
 Actívelas y defina el máximo (hasta 10).
 
 **Ingress / Difusión Externa**
@@ -136,7 +136,7 @@ En la pestaña **Permisos** al editar una sala controle el acceso por grupo de J
 
 Use **Componentes > Plug N Meet > Opciones > Permisos** para los valores generales del sitio.
 
-### Paso 3.4: Mostrar la Sala en su Sitio
+### Paso 3.4: Mostrar la sala en su sitio
 
 Dispone de dos tipos de menú en **Plug N Meet**:
 
@@ -159,7 +159,7 @@ Dispone de dos tipos de menú en **Plug N Meet**:
 
 ---
 
-## 4. La Experiencia del Asistente
+## 4. La experiencia del asistente
 
 Al pulsar el elemento de menú, el usuario ve título, descripción y formulario de acceso.
 
@@ -169,11 +169,11 @@ Al pulsar el elemento de menú, el usuario ve título, descripción y formulario
 
 ![Joomla-28.png](/img/Joomla/Joomla-28.png)
 
-## 5. Gestión Posterior a la Sesión (Administración)
+## 5. Gestión posterior a la sesión (administración)
 
 Todos los recursos se gestionan desde **Componentes > Plug N Meet**, sin salir de Joomla.
 
-### Gestión de Grabaciones
+### Gestión de grabaciones
 
 Vaya a **Componentes > Plug N Meet > Grabaciones**:
 
@@ -181,7 +181,7 @@ Vaya a **Componentes > Plug N Meet > Grabaciones**:
 2. Marque segmentos con las casillas y pulse **Fusionar** para unirlos en un solo MP4 (la confirmación muestra el orden elegido).
 3. Use las acciones **Reproducir / Descargar / Eliminar** por fila.
 
-### Acceso a Artefactos
+### Acceso a artefactos
 
 Vaya a **Componentes > Plug N Meet > Artefactos**:
 
@@ -189,22 +189,22 @@ Vaya a **Componentes > Plug N Meet > Artefactos**:
 2. Pulse un ID de artefacto para ver su detalle: tabla de analíticas de la sala, tabla por usuario (entradas, salidas, tiempo de palabra, calidad de conexión) y resumen de la reunión si existe.
 3. Use **Descargar** para archivos, **Descargar Excel** para informes de analíticas y **Eliminar** para borrar.
 
-## 6. Configuración Avanzada
+## 6. Configuración avanzada
 
-### Personalización del Diseño
+### Personalización del diseño
 
 - **Global:** **Sistema > Configuración Global > plugNmeet > Personalización del Diseño** — se aplica a las salas que dejan los campos vacíos.
 - **Por sala:** pestaña **Personalización del Diseño** al editar la sala — prevalece sobre lo global.
 
 ![Joomla-globalcust.png](/img/Joomla/Joomla-globalcust.png)
 
-### Calidad de Medios por Defecto
+### Calidad de medios predeterminada
 
 Ajuste valores razonables en **Ajustes Avanzados** por sala: cámara `h720`, pantalla `h1080fps15`, audio `music` y códec `vp8` sirven para la mayoría de sitios. Súbalos solo si su servidor y los clientes tienen ancho suficiente.
 
 ---
 
-## 7. Seguridad y Privacidad
+## 7. Seguridad y privacidad
 
 - **Control de datos:** usted controla el servidor (autoalojado o nube privada), así que controla sus datos.
 - **Alojamiento local:** el servidor open-source de plugNmeet puede correr en su propio hardware para cargas sensibles (RGPD/HIPAA).
@@ -213,7 +213,7 @@ Ajuste valores razonables en **Ajustes Avanzados** por sala: cámara `h720`, pan
 
 ---
 
-## Preguntas Comunes y Solución de Problemas
+## Preguntas comunes y solución de problemas
 
 **¿Por qué veo un error de «API no válida» en mi página de reunión?**
 Sigue usando las credenciales demo. Sustitúyalas en **Sistema > Configuración Global > plugNmeet** por los datos de su servidor.

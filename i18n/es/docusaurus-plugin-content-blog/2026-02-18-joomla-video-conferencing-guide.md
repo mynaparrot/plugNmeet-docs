@@ -9,7 +9,7 @@ Joomla es una potencia para construir sitios web robustos y flexibles, desde por
 
 ¿Qué pasaría si pudieras integrar una solución de videoconferencia segura, completamente personalizada y potente directamente en tu sitio Joomla, convirtiéndola en una parte nativa del viaje de tu usuario?
 
-Con el **componente oficial de Plug-N-Meet para Joomla**, puedes hacerlo. Esta guía te mostrará cómo transformar tu sitio web Joomla en una plataforma de comunicación dinámica, perfecta para reuniones comunitarias, webinars, capacitación en línea e incluso servicios monetizados.
+Con el **componente oficial de plugNmeet para Joomla**, puedes hacerlo. Esta guía te mostrará cómo transformar tu sitio web Joomla en una plataforma de comunicación dinámica, perfecta para reuniones comunitarias, webinars, capacitación en línea e incluso servicios monetizados.
 
 <!--truncate-->
 
@@ -17,7 +17,7 @@ Con el **componente oficial de Plug-N-Meet para Joomla**, puedes hacerlo. Esta g
 
 ### Por qué una integración nativa de Joomla supera a las herramientas externas
 
-Antes de entrar en la configuración, seamos claros sobre las ventajas estratégicas de usar una solución autoalojada e integrada como Plug-N-Meet en lugar de una herramienta SaaS externa.
+Antes de entrar en la configuración, seamos claros sobre las ventajas estratégicas de usar una solución autoalojada e integrada como plugNmeet en lugar de una herramienta SaaS externa.
 
 1.  **Una experiencia de marca profesional y sin interrupciones:** Tus usuarios se unen a las reuniones en tu propio dominio, con tu logotipo y colores de marca. Esto refuerza el profesionalismo y la confianza, manteniendo la experiencia del usuario consistente con el resto de tu sitio.
 2.  **Control total sobre los datos del usuario:** Todos los datos del usuario y las grabaciones de las reuniones se almacenan en tu propio servidor, no en una nube de terceros. Esto es fundamental para mantener la soberanía de los datos y cumplir con las regulaciones de privacidad como el GDPR.
@@ -31,11 +31,11 @@ Puedes tener una sala de reuniones de video en vivo en tu sitio Joomla en menos 
 
 Primero, necesitas el servidor que impulsará tus videollamadas. Puedes autoalojar la versión de código abierto con nuestro **[sencillo script de instalación](/docs/installation)** u obtener un servidor instantáneo y gestionado de **[plugnmeet Cloud](https://www.plugnmeet.cloud)**. Ambos te proporcionarán una **Clave API** y un **Secreto API**.
 
-#### Paso 2: Instala el componente gratuito de Plug-N-Meet
+#### Paso 2: Instala el componente gratuito de plugNmeet
 
 From your Joomla administrator panel:
 1.  Go to **System > Install > Extensions**.
-2.  Install the Plug-N-Meet component, which you can download from the official [Joomla Extensions Directory](https://extensions.joomla.org/extension/plugnmeet/).
+2.  Install the plugNmeet component, which you can download from the official [Joomla Extensions Directory](https://extensions.joomla.org/extension/plugnmeet/).
 3.  After installation, navigate to **System > Global Configuration** and select **plugNmeet** from the components list.
 4.  Enter your **API Key** and **API Secret** and save the configuration.
 
@@ -55,7 +55,7 @@ That's it. A new link will appear on your site's main menu, leading directly to 
 
 ### Sube de nivel: 3 formas potentes de usar el video en tu sitio Joomla
 
-With the basics in place, you can now leverage Plug-N-Meet to build sophisticated video-based services.
+With the basics in place, you can now leverage plugNmeet to build sophisticated video-based services.
 
 #### Caso de uso 1: El portal privado para clientes
 
@@ -71,11 +71,11 @@ Host live webinars and events directly on your site to engage your community.
 
 #### Caso de uso 3: El servicio de membresía monetizado
 
-This is where you can turn your Joomla site into a revenue-generating business. By combining Plug-N-Meet with a Joomla membership or e-commerce extension, you can sell access to premium video content. For a detailed walkthrough, see our guide on **[How to Launch Your Own No-Code Video Conferencing Service with Joomla](/blog/no-code-video-conferencing-service-with-joomla)**.
+This is where you can turn your Joomla site into a revenue-generating business. By combining plugNmeet with a Joomla membership or e-commerce extension, you can sell access to premium video content. For a detailed walkthrough, see our guide on **[How to Launch Your Own No-Code Video Conferencing Service with Joomla](/blog/no-code-video-conferencing-service-with-joomla)**.
 
 *   **Cómo hacerlo:**
     1.  Use your membership extension to create a "Premium Members" user group that paying subscribers are automatically added to.
-    2.  Create a new menu item that links to your premium Plug-N-Meet room.
+    2.  Create a new menu item that links to your premium plugNmeet room.
     3.  Set the **Access** level for this menu item to "Premium Members."
 
 Now, only paying subscribers will be able to see the link and join your exclusive video sessions, creating an automated paywall.
@@ -84,7 +84,7 @@ Now, only paying subscribers will be able to see the link and join your exclusiv
 
 ### Conclusión: La solución de video profesional para Joomla
 
-Don't let external tools dictate your user experience. With the Plug-N-Meet component, you can seamlessly integrate a secure, scalable, and fully-branded video conferencing platform into the Joomla ecosystem.
+Don't let external tools dictate your user experience. With the plugNmeet component, you can seamlessly integrate a secure, scalable, and fully-branded video conferencing platform into the Joomla ecosystem.
 
 It's a solution that's simple enough to get started in minutes but powerful enough to build a business on.
 

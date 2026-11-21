@@ -8,11 +8,11 @@ sidebar_label: Introducción
 
 # Introducción
 
-Plug-N-Meet proporciona una API segura para interactuar con su servidor. Todas las solicitudes de API autenticadas comparten una ruta base común.
+plugNmeet proporciona una API segura para interactuar con su servidor. Todas las solicitudes de API autenticadas comparten una ruta base común.
 
-## Demostración en Vivo
+## Demostración en vivo
 
-Explore las características de Plug-N-Meet y pruebe su API con nuestra demostración en vivo.
+Explore las características de plugNmeet y pruebe su API con nuestra demostración en vivo.
 
 **Explore las características:** [https://demo.plugnmeet.com/landing.html](https://demo.plugnmeet.com/landing.html)
 
@@ -43,7 +43,7 @@ Todas las llamadas a la API deben ser solicitudes `POST` con un cuerpo JSON.
 
 Todas las solicitudes a estos puntos finales deben incluir los siguientes encabezados para la autenticación:
 
-- **`API-KEY`**: Su clave de API del servidor Plug-N-Meet
+- **`API-KEY`**: Su clave de API del servidor plugNmeet
 - **`HASH-SIGNATURE`**: Una firma HMAC SHA256 (en formato hexadecimal) del cuerpo de la solicitud JSON sin procesar, generada utilizando su secreto de API como clave.
 - **`Content-Type`**: `application/json`
 
@@ -65,7 +65,7 @@ Siguiendo estos pasos, puede generar una firma válida en cualquier lenguaje, as
 
 ## Categorías de la API
 
-La API de Plug-N-Meet se organiza en varias categorías según su funcionalidad.
+La API de plugNmeet se organiza en varias categorías según su funcionalidad.
 
 *   **Gestión de salas:** Endpoints para crear, gestionar y consultar el estado de las salas de reuniones en vivo.
 *   **Autenticación:** Endpoints para generar tokens de acceso para los participantes.

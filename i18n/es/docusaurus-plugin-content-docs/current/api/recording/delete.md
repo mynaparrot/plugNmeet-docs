@@ -6,7 +6,7 @@ sidebar_position: 4
 sidebar_label: Eliminar
 ---
 
-# Eliminar una Grabación
+# Eliminar una grabación
 
 Endpoint: `/recording/delete`
 

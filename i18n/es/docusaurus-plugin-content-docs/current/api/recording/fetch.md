@@ -6,7 +6,7 @@ sidebar_position: 1
 sidebar_label: Obtener Grabaciones
 ---
 
-# Obtener Grabaciones
+# Obtener grabaciones
 
 Endpoint: `/recording/fetch`
 
@@ -14,7 +14,7 @@ Este endpoint le permite recuperar una lista paginada de las grabaciones disponi
 
 Esta API es esencial para crear una biblioteca de grabaciones orientada al usuario donde los usuarios pueden navegar, ver y administrar sus grabaciones pasadas. Puede filtrar las grabaciones por `room_id` o un `sid` de sala específico para acotar los resultados, lo que facilita la visualización de contenido relevante para sus usuarios.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                                                    |
 | -------- | ------ | -------- |--------------------------------------------------------------------------------|
@@ -54,7 +54,7 @@ Esta API es esencial para crear una biblioteca de grabaciones orientada al usuar
 | order_by           | string                                    | Orden de clasificación utilizado para los registros.            |
 | recordings_list    | Array\<[Información de la Grabación](#información-de-la-grabación)> | Lista de los registros de grabaciones.                  |
 
-### Información de la Grabación
+### Información de la grabación
 
 | Campo              | Tipo   | Descripción                                 |
 | ------------------ | ------ | ------------------------------------------- |
@@ -67,7 +67,7 @@ Esta API es esencial para crear una biblioteca de grabaciones orientada al usuar
 | room_creation_time | number | Fecha y hora de creación de la sala (marca de tiempo Unix).        |
 | metadata           | [Objeto de Metadatos de Grabación](#objeto-de-metadatos-de-grabación) | Metadatos asociados a la grabación.     |
 
-### Objeto de Metadatos de Grabación
+### Objeto de metadatos de grabación
 
 | Campo       | Tipo                                               | Descripción                                                                |
 | ----------- |----------------------------------------------------|----------------------------------------------------------------------------|
@@ -76,7 +76,7 @@ Esta API es esencial para crear una biblioteca de grabaciones orientada al usuar
 | subtitles   | map [Objeto de Subtítulo de Grabación](#objeto-de-subtítulo-de-grabación) | Un mapa de códigos de idioma a objetos de subtítulos. Por ejemplo: `{"en": {"url": "..."}}` |
 | extra_data  | map                               | Un mapa de datos adicionales almacenados con la grabación. Por ejemplo: `{"key": "value"}`     |
 
-#### Objeto de Subtítulo de Grabación
+#### Objeto de subtítulo de grabación
 
 | Campo | Tipo   | Descripción                  |
 | ----- | ------ | ---------------------------- |

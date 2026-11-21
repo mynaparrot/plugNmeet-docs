@@ -6,18 +6,18 @@ sidebar_position: 6
 sidebar_label: Transmitir a la Sala
 ---
 
-# Transmitir a la Sala
+# Transmitir a la sala
 
 Endpoint: `/room/broadcastToRoom`
 
-Esta potente API permite a su servidor backend inyectar mensajes o notificaciones directamente en una sesión activa de Plug-N-Meet en tiempo real. Puede usarla para enviar anuncios a todo el sistema, entregar mensajes privados a usuarios específicos o activar notificaciones personalizadas desde la lógica de su aplicación.
+Esta potente API permite a su servidor backend inyectar mensajes o notificaciones directamente en una sesión activa de plugNmeet en tiempo real. Puede usarla para enviar anuncios a todo el sistema, entregar mensajes privados a usuarios específicos o activar notificaciones personalizadas desde la lógica de su aplicación.
 
 Este endpoint es ideal para construir integraciones que requieren comunicación de servidor a cliente, tales como:
 *   Enviar alertas basadas en eventos externos.
 *   Entregar mensajes o instrucciones automatizadas a los participantes.
 *   Crear sistemas de notificación privados y personalizados dentro de su aplicación.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 La solicitud debe contener un objeto `chat_msg` o `notification_msg`.
 
@@ -29,7 +29,7 @@ La solicitud debe contener un objeto `chat_msg` o `notification_msg`.
 | chat_msg         | object  | No        | Un objeto de [mensaje de chat](#chatmessage) para ser enviado.                                          |
 | notification_msg | object  | No        | Un objeto de [mensaje de notificación](#notificationmsg) para ser mostrado.                             |
 
-### Lógica de Destinatarios
+### Lógica de destinatarios
 
 La entrega del mensaje está determinada por los campos `only_to_admins` y `to_user_id`:
 -   Si **ninguno** de los campos está configurado, el mensaje se envía a **todos** en la sala.
@@ -57,7 +57,7 @@ Este objeto representa una notificación a nivel de sistema que aparecerá en la
 
 ## Ejemplo
 
-### Ejemplo 1: Enviar un Mensaje de Chat Público a Todos
+### Ejemplo 1: Enviar un mensaje de chat público a todos
 
 ```json
 {
@@ -68,7 +68,7 @@ Este objeto representa una notificación a nivel de sistema que aparecerá en la
 }
 ```
 
-### Ejemplo 2: Enviar una Notificación Privada a un Usuario Específico
+### Ejemplo 2: Enviar una notificación privada a un usuario específico
 
 ```json
 {
@@ -81,7 +81,7 @@ Este objeto representa una notificación a nivel de sistema que aparecerá en la
 }
 ```
 
-### Ejemplo 3: Enviar una Notificación a Todos los Administradores y a un Usuario Específico
+### Ejemplo 3: Enviar una notificación a todos los administradores y a un usuario específico
 
 ```json
 {

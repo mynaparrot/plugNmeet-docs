@@ -20,32 +20,32 @@ Con el poder de Joomla y el componente **plugNmeet**, puede hacerlo. Esta guía 
 Para construir su servicio, solo necesita tres elementos:
 
 1.  **Un sitio web de Joomla:** Su centro de comando y escaparate.
-2.  **El componente Plug-N-Meet para Joomla:** La herramienta gratuita que integra la videoconferencia directamente en su sitio.
-3.  **Un servidor Plug-N-Meet:** El motor que impulsa sus videollamadas.
+2.  **El componente plugNmeet para Joomla:** La herramienta gratuita que integra la videoconferencia directamente en su sitio.
+3.  **Un servidor plugNmeet:** El motor que impulsa sus videollamadas.
 
 Eso es todo. Empecemos.
 
-### Paso 1: Obtenga su motor de videoconferencia (El poder de la propiedad)
+### Paso 1: Obtenga su motor de videoconferencia (el poder de la propiedad)
 
-El "motor" es el servidor que maneja todo el complejo procesamiento de video y audio. Para un control, privacidad y rentabilidad máximos, el mejor camino es **autoalojar el servidor Plug-N-Meet de código abierto**. Esto le otorga la propiedad completa de su plataforma y sus datos. Gracias a nuestro script de instalación automatizado, puede tener un servidor listo para producción funcionando en una nueva instancia de Ubuntu con solo unos pocos comandos.
+El "motor" es el servidor que maneja todo el complejo procesamiento de video y audio. Para un control, privacidad y rentabilidad máximos, el mejor camino es **autoalojar el servidor plugNmeet de código abierto**. Esto le otorga la propiedad completa de su plataforma y sus datos. Gracias a nuestro script de instalación automatizado, puede tener un servidor listo para producción funcionando en una nueva instancia de Ubuntu con solo unos pocos comandos.
 
 Sin embargo, si su objetivo es comenzar instantáneamente sin tocar una línea de comandos, el servicio oficial **[plugNmeet Cloud](https://www.plugnmeet.cloud)** es la alternativa "sin código" perfecta. Puede registrarse para obtener una cuenta gratuita para probar su servicio y obtener sus credenciales de inmediato.
 
 Ya sea que elija autoalojar o usar la nube, obtendrá una **clave API** y un **secreto API**. Piense en estas credenciales como las claves de su motor de video. ¡Guárdelas bien!
 
-### Paso 2: Integrar en Joomla (La configuración de 5 minutos)
+### Paso 2: Integrar en Joomla (la configuración de 5 minutos)
 
 Ahora, conectemos su motor a su sitio de Joomla.
 
 1.  Desde su panel de administrador de Joomla, navegue a **Sistema > Instalar > Extensiones**.
 2.  Seleccione la pestaña **Instalar desde la Web** y busque **"plugnmeet"**.
-3.  Busque el componente oficial de Plug-N-Meet y haga clic en **Instalar**.
+3.  Busque el componente oficial de plugNmeet y haga clic en **Instalar**.
 4.  Después de la instalación, navegue a **Sistema > Configuración global** y seleccione **plugNmeet** de la lista de componentes.
 5.  Copie cuidadosamente su **clave API** y **secreto API** de su servidor y péguelos en los campos correspondientes.
 
 Haga clic en **Guardar**. Felicidades, ahora tiene una plataforma de videoconferencia totalmente funcional funcionando directamente en su sitio de Joomla.
 
-### Paso 3: Cree su "Producto" - Las salas de reuniones
+### Paso 3: Cree su "producto" - las salas de reuniones
 
 Su "producto" son los diferentes tipos de salas de reuniones que ofrecerá.
 
@@ -56,7 +56,7 @@ Su "producto" son los diferentes tipos de salas de reuniones que ofrecerá.
 
 Al habilitar o deshabilitar funciones, puede crear fácilmente diferentes niveles de valor. Una vez que haya configurado una sala, haga clic en **Guardar**.
 
-### Paso 4: Monetícelo - Poniéndole precio a sus salas
+### Paso 4: Monetícelo - poniéndole precio a sus salas
 
 Aquí es donde su negocio cobra vida. Los niveles de control de acceso (ACL) integrados de Joomla y los permisos del componente plugNmeet funcionan perfectamente juntos en este caso.
 

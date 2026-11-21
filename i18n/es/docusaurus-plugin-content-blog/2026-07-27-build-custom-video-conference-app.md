@@ -16,7 +16,7 @@ Hoy, le damos un adelanto de la solución. Presentamos la **Integración Híbrid
 
 Quizás te preguntes por qué no creamos nuestro propio SDK móvil dedicado. La respuesta es simple: ¡no lo necesitamos! plugNmeet está construido sobre LiveKit, que ya proporciona robustos SDKs nativos para cada plataforma principal, incluyendo [Android](https://github.com/livekit/client-sdk-android), [React Native](https://github.com/livekit/client-sdk-react-native) y [Flutter](https://github.com/livekit/client-sdk-flutter). Nuestro enfoque híbrido combina estos SDK de LiveKit, ampliamente probados en producción, para la publicación nativa de contenido multimedia con nuestro cliente web, que ofrece numerosas funcionalidades y se ejecuta dentro de un WebView. Esto significa que obtiene lo mejor de ambos mundos: capacidades de medios nativos listas para usar y la interfaz de usuario completa de plugNmeet, todo sin que tengamos que duplicar esfuerzos. Estamos proporcionando un camino robusto y flexible para que *usted* construya *su* propia aplicación, a su manera, sin comprometer los principios de código abierto y autoalojamiento que definen a plugNmeet.
 
-### Lo Mejor de Ambos Mundos: Potencia Nativa, Simplicidad Web
+### Lo mejor de ambos mundos: Potencia nativa, simplicidad web
 
 El modelo híbrido es un punto de inflexión para los desarrolladores que necesitan algo más que un simple enlace de reunión genérico de un proveedor externo. Te da la flexibilidad del desarrollo nativo y la velocidad de usar la interfaz de usuario de reunión existente de plugNmeet.
 
@@ -27,7 +27,7 @@ He aquí por qué esto es tan importante:
 *   **Personalización de Marca Blanca Real:** Usted controla toda la experiencia del usuario, desde el icono de la aplicación y la pantalla de inicio de sesión hasta la marca dentro de la reunión. La reunión se siente como una parte central de su aplicación, no como un servicio de terceros añadido.
 *   **Autoalojado y Seguro:** Como siempre con plugNmeet, usted es dueño de su infraestructura y sus datos. Todas las comunicaciones se enrutan a través de su servidor local, garantizando la máxima privacidad, cumplimiento y control.
 
-### Cómo Funciona: Una Arquitectura Elegante
+### Cómo funciona: Una arquitectura elegante
 
 La idea central es simple pero potente: un usuario lógico está representado por dos participantes conectados a su instancia autoalojada de LiveKit.
 
@@ -38,7 +38,7 @@ La idea central es simple pero potente: un usuario lógico está representado po
 
 Un "puente" de comunicación ligero permite que la interfaz de usuario web y el código nativo se comuniquen sin problemas. Cuando un usuario toca el botón "Silenciar" en la interfaz web, se envía un mensaje a través del puente, indicando a su código nativo que silencie el micrófono. Esta arquitectura proporciona una experiencia de usuario fluida mientras te da los beneficios de rendimiento del código nativo.
 
-### Adelántese en el Desarrollo de su Aplicación de Video Personalizada
+### Adelántese en el desarrollo de su aplicación de video personalizada
 
 Aunque el lanzamiento oficial está a la vuelta de la esquina, puede empezar a construir hoy mismo. Creemos en construir de forma abierta y nos entusiasma ver lo que nuestra comunidad crea.
 

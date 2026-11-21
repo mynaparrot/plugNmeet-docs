@@ -6,11 +6,11 @@ sidebar_position: 1
 sidebar_label: Crear
 ---
 
-# Crear una Sala
+# Crear una sala
 
 Endpoint: `/room/create`
 
-Antes de crear su primera sala, es útil comprender cómo funcionan en Plug-N-Meet. Piense en una sala no como un espacio permanente, sino como una **sesión en vivo de carácter temporal**.
+Antes de crear su primera sala, es útil comprender cómo funcionan en plugNmeet. Piense en una sala no como un espacio permanente, sino como una **sesión en vivo de carácter temporal**.
 
 Este es el ciclo de vida típico:
 1.  Usted crea una sala utilizando este endpoint de la API.
@@ -29,9 +29,9 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 > 2.  Si no existe ninguna sesión, llamar a este endpoint `create` para iniciar una nueva.
 > 3.  Finalmente, generar un token de acceso para permitir que el usuario se una.
 >
-> Este enfoque le brinda la flexibilidad de tener salas que parecen persistentes, mientras aprovecha el modelo de sesiones temporales de Plug-N-Meet.
+> Este enfoque le brinda la flexibilidad de tener salas que parecen persistentes, mientras aprovecha el modelo de sesiones temporales de plugNmeet.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo                 | Tipo   | Requerido | Descripción                                                                            |
 | --------------------- | ------ | -------- |----------------------------------------------------------------------------------------|
@@ -46,14 +46,14 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | ----------------------------------------------- |---------------------| -------- | ------------------------------------------------------------------------------------------------ |
 | room_title                                      | string              | Sí       | El título de la sala o reunión.                                                                |
 | welcome_message                                 | string              | No       | Un mensaje que se muestra a los participantes cuando se unen.                                              |
-| webhook_url                                     | string              | No       | La URL para recibir eventos de webhook desde Plug-N-Meet.                                                  |
+| webhook_url                                     | string              | No       | La URL para recibir eventos de webhook desde plugNmeet.                                                  |
 | logout_url                                      | string              | No       | La URL a la que se redirigirá a los usuarios después de que termine la reunión o sesión.                                         |
 | [room_features](#características-de-la-sala)                 | object              | Sí       | Configuraciones para habilitar o deshabilitar diversas características de la sala.                                             |
 | [default_lock_settings](#configuraciones-de-bloqueo-predeterminadas) | object              | No       | Configuraciones predeterminadas para bloquear funcionalidades específicas para los usuarios.                                            |
 | [copyright_conf](#configuración-de-copyright)             | object              | No       | Configuración de los derechos de autor.                                                                         |
 | extra_data                                      | map | No       | Un mapa de pares clave-valor personalizados. Tanto las claves como los valores deben ser cadenas de texto. Por ejemplo: `{"key": "value"}`|.                                                           |
 
-### Características de la Sala
+### Características de la sala
 
 | Campo                                                                | Tipo    | Requerido | Descripción                                                                                            |
 | -------------------------------------------------------------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------ |
@@ -83,7 +83,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [sip_dial_in_features](#características-de-acceso-telefónico-sip)                        | object  | No       | Configuración de llamadas SIP.                                                                                  |
 | [end_to_end_encryption_features](#características-de-cifrado-de-extremo-a-extremo-e2ee) | object  | No       | Configuraciones de Cifrado de Extremo a Extremo (E2EE).                                                                 |
 
-### Características de Grabación
+### Características de grabación
 <details>
 <summary>Ver Detalles</summary>
 
@@ -98,7 +98,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características del Chat
+### Características del chat
 <details>
 <summary>Ver Detalles</summary>
 
@@ -109,7 +109,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características del Bloc de Notas Compartido
+### Características del bloc de notas compartido
 <details>
 <summary>Ver Detalles</summary>
 
@@ -119,7 +119,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de la Pizarra
+### Características de la pizarra
 <details>
 <summary>Ver Detalles</summary>
 
@@ -130,7 +130,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características del Reproductor Multimedia Externo
+### Características del reproductor multimedia externo
 <details>
 <summary>Ver Detalles</summary>
 
@@ -140,7 +140,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de Transmisión Externa
+### Características de transmisión externa
 <details>
 <summary>Ver Detalles</summary>
 
@@ -152,7 +152,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de la Sala de Espera
+### Características de la sala de espera
 <details>
 <summary>Ver Detalles</summary>
 
@@ -162,7 +162,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de las Salas para Grupos
+### Características de las salas para grupos
 <details>
 <summary>Ver Detalles</summary>
 
@@ -170,20 +170,20 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | --- | --- | --- | --- |
 | is_allow | boolean | Sí | Habilitar o deshabilitar las salas para grupos. |
 | allowed_number_rooms | number | No | Número máximo de salas para grupos que se pueden crear simultáneamente. Predeterminado: 6. |
-| allow_return_to_main_room | boolean | No | Permitir que los participantes regresen a la sala principal desde una sala de grupos. Predeterminado: `true`. |
-| allow_self_select | boolean | No | Permitir que los participantes elijan por sí mismos a qué sala de grupos unirse. Predeterminado: `false`. |
-| preassigned_rooms | array | No | Preasignar participantes a salas de grupos específicas. |
+| allow_return_to_main_room | boolean | No | Permitir que los participantes regresen a la sala principal desde una sala de grupo. Predeterminado: `true`. |
+| allow_self_select | boolean | No | Permitir que los participantes elijan por sí mismos a qué sala de grupo unirse. Predeterminado: `false`. |
+| preassigned_rooms | array | No | Preasignar participantes a salas de grupo específicas. |
 
-#### Sala de Grupos Preasignada
+#### Sala de grupo preasignada
 
 | Campo | Tipo | Requerido | Descripción |
 | --- | --- | --- | --- |
-| title | string | Sí | El título de la sala de grupos preasignada. |
-| user_ids | array(string) | No | Una lista de IDs de usuario que se asignarán automáticamente a esta sala de grupos. |
+| title | string | Sí | El título de la sala de grupo preasignada. |
+| user_ids | array(string) | No | Una lista de IDs de usuario que se asignarán automáticamente a esta sala de grupo. |
 
 </details>
 
-### Características de Visualización de Enlaces Externos
+### Características de visualización de enlaces externos
 <details>
 <summary>Ver Detalles</summary>
 
@@ -193,17 +193,17 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de Ingesta
+### Características de ingesta
 <details>
 <summary>Ver Detalles</summary>
 
 | Campo    | Tipo    | Requerido | Descripción                                                                                                   |
 | -------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------- |
-| is_allow | boolean | Sí       | Habilitar la ingesta de medios para transmitir contenido directamente a la sesión. Esto es útil para transmisiones profesionales con software como OBS Studio. Plug-N-Meet admite tanto RTMP como WHIP (Protocolo de Ingesta HTTP de WebRTC) para una transmisión de baja latencia. |
+| is_allow | boolean | Sí       | Habilitar la ingesta de medios para transmitir contenido directamente a la sesión. Esto es útil para transmisiones profesionales con software como OBS Studio. plugNmeet admite tanto RTMP como WHIP (Protocolo de Ingesta HTTP de WebRTC) para una transmisión de baja latencia. |
 
 </details>
 
-### Características de Encuestas
+### Características de encuestas
 <details>
 <summary>Ver Detalles</summary>
 
@@ -235,9 +235,9 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | [transcription_features](#características-de-transcripción) | object | No       | Configuraciones para la conversión de voz a texto y la traducción hablada.   |
 | [chat_translation_features](#características-de-traducción-de-chat) | object | No       | Configuraciones para la traducción del chat.                        |
 | [ai_features](#características-de-ia)                 | object | No       | Configuraciones para las características de IA generativa.                  |
-| [ai_agent_features](#características-del-agente-de-ia)     | object | No       | Agente autónomo de voz 1 a 1 con pizarra (educación, demostraciones e incorporación). Incluye `mcp_servers`. |
+| [ai_agent_features](#características-del-agente-de-ia)     | object | No       | Agente autónomo de voz 1 a 1 con pizarra (educación, demostraciones y onboarding). Incluye `mcp_servers`. |
 
-#### Características de Transcripción
+#### Características de transcripción
 
 | Campo                       | Tipo    | Requerido | Descripción                                                 |
 | --------------------------- | ------- | -------- | ----------------------------------------------------------- |
@@ -245,7 +245,7 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | is_allow_translation        | boolean | No       | Habilitar o deshabilitar la traducción de la transcripción.         |
 | is_allow_speech_synthesis   | boolean | No       | Habilitar o deshabilitar las traducciones habladas (texto a voz).     |
 
-#### Características de Traducción de Chat
+#### Características de traducción de chat
 
 | Campo    | Tipo    | Requerido | Descripción                                           |
 | -------- | ------- | -------- | ----------------------------------------------------- |
@@ -259,13 +259,13 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | [ai_text_chat_features](#características-del-chat-de-texto-con-ia)    | object | No       | Configuraciones para el Asistente de Chat con IA.        |
 | [meeting_summarization_features](#características-de-resumen-de-reunión) | object | No       | Configuraciones para los resúmenes de reuniones impulsados por IA. |
 
-#### Características del Chat de Texto con IA
+#### Características del chat de texto con IA
 
 | Campo    | Tipo    | Requerido | Descripción                          |
 | -------- | ------- | -------- | ------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar el Asistente de Chat con IA. |
 
-#### Características de Resumen de Reunión
+#### Características de resumen de reunión
 
 | Campo    | Tipo    | Requerido | Descripción                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
@@ -273,7 +273,7 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 
 </details>
 
-#### Características del Agente de IA
+#### Características del agente de IA
 <details>
 <summary>Ver Detalles</summary>
 
@@ -284,7 +284,7 @@ El Agente de IA es un asistente de voz 1 a 1 con una pizarra y un bloc de notas 
 | is_allow                   | boolean   | Sí                | Interruptor general del Agente de IA en esta sala. |
 | session_mode               | enum      | Sí                | `NORMAL_ROOM`, `CONTROLLED_USERS` u `OPEN_PER_USER`. |
 | auto_session_config        | object    | Depende del modo  | `allowed_participant_ids` (hasta 32) y `max_concurrent_sessions` (límite del servidor: 16). |
-| system_prompt              | string    | Sí, si `is_allow` | Instrucciones del anfitrión para el agente. |
+| system_prompt              | string    | Sí, si `is_allow` | Instrucciones del moderador para el agente. |
 | topic                      | string    | Sí, si `is_allow` | Tema dentro del cual debe mantenerse el agente. |
 | previous_session_context   | string    | No                | Contexto de una sesión anterior, normalmente el prompt de continuación del resumen. |
 | allow_web_fetch            | boolean   | No                | Permite consultar páginas HTTPS aprobadas. Predeterminado `false`. |
@@ -313,7 +313,7 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 
 </details>
 
-### Características de Cifrado de Extremo a Extremo (E2EE)
+### Características de cifrado de extremo a extremo (E2EE)
 <details>
 <summary>Ver Detalles</summary>
 
@@ -327,7 +327,7 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 
 </details>
 
-### Opciones del Bot Grabador
+### Opciones del bot grabador
 <details>
 <summary>Ver Detalles</summary>
 
@@ -338,7 +338,7 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 
 </details>
 
-### Configuraciones de Bloqueo Predeterminadas
+### Configuraciones de bloqueo predeterminadas
 <details>
 <summary>Ver Detalles</summary>
 
@@ -354,7 +354,7 @@ Consulte la guía de configuración del servidor y el [repositorio de GitHub de 
 
 </details>
 
-### Configuración de Copyright
+### Configuración de copyright
 <details>
 <summary>Ver Detalles</summary>
 

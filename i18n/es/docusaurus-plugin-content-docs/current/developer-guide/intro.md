@@ -6,13 +6,13 @@ sidebar_position: 1
 sidebar_label: Introducción
 ---
 
-# Introducción a la Guía para Desarrolladores
+# Introducción a la guía para desarrolladores
 
 Bienvenido a la guía del desarrollador de plugNmeet. Esta sección está dirigida a desarrolladores e integradores de sistemas que desean ir más allá de los plugins estándar e integrar plugNmeet de forma profunda en sus propias aplicaciones.
 
 Ya sea que su objetivo sea crear una solución de videoconferencia totalmente personalizable y de marca blanca, implementar una lógica de negocio compleja o contribuir al proyecto de código abierto, esta guía es el punto de partida para comenzar.
 
-## Lo que Puede Lograr
+## Lo que puede lograr
 
 plugNmeet es más que una simple herramienta de videoconferencia; es una plataforma WebRTC flexible, basada en una arquitectura moderna y orientada a APIs. Con ella, usted puede:
 
@@ -21,7 +21,7 @@ plugNmeet es más que una simple herramienta de videoconferencia; es una platafo
 *   **Ampliar la Funcionalidad con Webhooks:** Escuche eventos en tiempo real dentro de una reunión (como la entrada/salida de un usuario, el inicio/detención de la grabación, etc.) para activar flujos de trabajo personalizados en su aplicación.
 *   **Escalar para Audiencias Masivas:** Aprenda los conceptos de arquitectura necesarios para construir una implementación distribuida y de alta disponibilidad, capaz de soportar una base de usuarios masiva.
 
-## Cómo Empezar
+## Cómo empezar
 
 1.  **Explore la Introducción a la API:** Este es el mejor lugar para comenzar. Proporciona una referencia completa de todos los puntos finales del servidor disponibles y sus parámetros.
 2.  **Revise la Guía de Personalización del Diseño:** Aprenda a usar un simple objeto de JavaScript para cambiar por completo la apariencia del cliente front-end.

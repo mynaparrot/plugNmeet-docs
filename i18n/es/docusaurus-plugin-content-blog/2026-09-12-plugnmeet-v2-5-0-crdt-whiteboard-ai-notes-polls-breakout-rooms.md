@@ -1,10 +1,10 @@
 ---
-title: "plugNmeet v2.5.0: pizarra CRDT, notas con IA, encuestas y salas de grupos"
+title: "plugNmeet v2.5.0: pizarra CRDT, notas con IA, encuestas y salas de grupo"
 slug: plugnmeet-v2-5-0-crdt-whiteboard-ai-notes-polls-breakout-rooms
 authors: [jibon]
 tags: [plugnmeet, notas-lanzamiento, pizarra, bloc-notas, encuestas, salas-grupos, ia, funciones-ia, autoalojado, codigo-abierto, videoconferencia]
-description: "Ya está aquí plugNmeet v2.5.0: pizarra con sincronización CRDT y Yjs, bloc de notas compartido en BlockNote con IA, texto a diagrama con IA, generación de encuestas con IA, salas de grupos rediseñadas y emisión WHIP."
-keywords: ["plugnmeet v2.5.0", "alternativa a Zoom de código abierto", "videoconferencia autoalojada", "pizarra colaborativa CRDT", "bloc de notas BlockNote con IA", "texto a diagrama con IA", "encuestas con IA para reuniones", "salas de grupos autoalojadas", "emisión en directo WHIP"]
+description: "Ya está aquí plugNmeet v2.5.0: pizarra con sincronización CRDT y Yjs, bloc de notas compartido en BlockNote con IA, texto a diagrama con IA, generación de encuestas con IA, salas de grupo rediseñadas y emisión WHIP."
+keywords: ["plugnmeet v2.5.0", "alternativa a Zoom de código abierto", "videoconferencia autoalojada", "pizarra colaborativa CRDT", "bloc de notas BlockNote con IA", "texto a diagrama con IA", "encuestas con IA para reuniones", "salas de grupo autoalojadas", "emisión en directo WHIP"]
 date: 2026-09-12
 ---
 
@@ -12,7 +12,7 @@ Imagine que su clase lleva 20 minutos dibujando en la pizarra. Alguien se conect
 
 A nosotros también nos ha pasado. Precisamente por eso hemos creado **plugNmeet v2.5.0**.
 
-No se trata de una actualización menor. Hemos sustituido tres motores de colaboración y los hemos reconstruido desde cero: la pizarra ahora funciona con **sincronización CRDT**, el antiguo bloc basado en Etherpad desaparece en favor de **BlockNote + IA** y las **salas de grupos** estrenan una arquitectura totalmente nueva. Además, la **IA ya trabaja en tres lugares** —pizarra, notas y encuestas— y ahora puede enviar encuestas a una sala en directo directamente desde su propio sistema.
+No se trata de una actualización menor. Hemos sustituido tres motores de colaboración y los hemos reconstruido desde cero: la pizarra ahora funciona con **sincronización CRDT**, el antiguo bloc basado en Etherpad desaparece en favor de **BlockNote + IA** y las **salas de grupo** estrenan una arquitectura totalmente nueva. Además, la **IA ya trabaja en tres lugares** —pizarra, notas y encuestas— y ahora puede enviar encuestas a una sala en directo directamente desde su propio sistema.
 
 Si busca una plataforma de **videoconferencia autoalojada y gratuita** que esté a la altura de sus reuniones, esta es la versión que conviene probar.
 
@@ -27,7 +27,7 @@ La mayoría de las **alternativas a Zoom de código abierto** resuelven bien el 
 *   **Pizarras** que se desincronizan en cuanto alguien se reconecta.
 *   **Notas compartidas** ancladas en editores de hace una década, sin ayuda de IA.
 *   **Encuestas** que tardan cinco minutos en crearse para una votación de treinta segundos.
-*   **Salas de grupos** que no conservan el contenido, de modo que cada grupo empieza desde cero.
+*   **Salas de grupo** que no conservan el contenido, de modo que cada grupo empieza desde cero.
 
 Docentes, organizadores de eventos y equipos que usan plugNmeet a gran escala nos transmitieron estas cuatro quejas. Así que las hemos resuelto juntas, en una sola versión.
 
@@ -39,7 +39,7 @@ En resumen:
 *   **Bloc de notas compartido reconstruido sobre BlockNote** con IA integrada: continuar textos, resumir, corregir, simplificar, instrucciones personalizadas.
 *   **Texto a diagrama con IA** en la pizarra: escriba una frase y obtenga un diagrama de flujo o un modelo entidad-relación sobre el lienzo.
 *   **Encuestas rediseñadas + generación con IA**: describa lo que necesita y reciba un borrador listo, además de modo cuestionario, votos anónimos y la nueva [API de creación de encuestas](/docs/api/room/create-poll).
-*   **Salas de grupos rediseñadas**: comparta páginas de pizarra, contenido del bloc y encuestas en las salas secundarias.
+*   **Salas de grupo rediseñadas**: comparta páginas de pizarra, contenido del bloc y encuestas en las salas secundarias.
 *   **Compatibilidad con WHIP** para emisión en directo, además de puntos de control gzip y diferencias incrementales que reducen notablemente el ancho de banda.
 
 Veamos cada punto con detalle.
@@ -103,11 +103,11 @@ Y para el personal técnico: existe una nueva **[API de creación de encuestas](
 
 Y no es solo teoría: ya lo estamos utilizando. Nuestro **plugin de Moodle v3.0.13** incorpora un botón **Añadir encuesta desde el cuestionario** directamente en la página de la actividad. Elija un cuestionario de Moodle o una categoría del banco de preguntas, seleccione una pregunta de opción múltiple o de verdadero/falso, defina el modo cuestionario o votación, el voto anónimo y la duración de cierre automático, y el plugin la convierte en una encuesta en vivo mediante `createPoll` mientras la sala está activa. Sin reescribir preguntas ni cambiar de contexto. Si imparte clases en Moodle, consulte la [guía de integración con Moodle](/docs/user-guide/moodle-integration).
 
-### Salas de grupos reconstruidas para un uso real
+### Salas de grupo reconstruidas para un uso real
 
 La implementación anterior servía para divisiones sencillas, pero cuando necesitábamos mover contenido entre salas o gestionar salas en vivo, se volvía complicada.
 
-La v2.5.0 incorpora una **arquitectura de salas de grupos completamente rediseñada**, tanto en el cliente como en el servidor. El formulario de creación ahora permite:
+La v2.5.0 incorpora una **arquitectura de salas de grupo completamente rediseñada**, tanto en el cliente como en el servidor. El formulario de creación ahora permite:
 
 *   Arrastrar, repartir al azar o preasignar participantes (incluida la preasignación por API, que [nuestro plugin de Moodle ya utiliza](/docs/user-guide/moodle-integration): active «Preasignar salas desde los grupos del curso» y cada grupo de Moodle se convierte en una sala, con el nombre del grupo como título y sus miembros asignados, desde el siguiente inicio de sesión)
 *   Definir títulos personalizados, duraciones y mensajes de bienvenida
@@ -117,7 +117,7 @@ La v2.5.0 incorpora una **arquitectura de salas de grupos completamente rediseñ
 
 La parte más interesante: tras crear las salas, el cliente del administrador siembra en Redis el contenido de la sala principal —mismo formato, mismas claves derivadas por sala con E2EE—. Los grupos abren su sala y el material ya está allí.
 
-Mientras las salas están activas, la vista de gestión permite enviar un mensaje a todas, ampliar la duración, entrar en cualquiera o finalizarlas todas. Si antes las salas le daban problemas, vuelva a leer [el dominio de las salas de grupos](/blog/mastering-breakout-rooms): la mayoría de aquellos trucos ya vienen integrados.
+Mientras las salas están activas, la vista de gestión permite enviar un mensaje a todas, ampliar la duración, entrar en cualquiera o finalizarlas todas. Si antes las salas le daban problemas, vuelva a leer [el dominio de las salas de grupo](/blog/mastering-breakout-rooms): la mayoría de aquellos trucos ya vienen integrados.
 
 ### Sincronización más rápida y emisión en directo por WHIP
 
@@ -144,6 +144,6 @@ Todavía no es perfecta. Seguimos mejorando los menús de IA en móvil y solucio
 
 La v2.5.0 es la versión en la que plugNmeet deja de ser «video más extras» para convertirse en un espacio de trabajo único. Pizarra, notas, encuestas y grupos comparten por fin el mismo motor de sincronización, y la IA reside dentro de los tres en lugar de en una barra lateral que nadie abre.
 
-Póngala en marcha con nuestro [sencillo script de instalación](/docs/installation), consulte la [guía de moderación](/docs/user-guide/moderator) para familiarizar a sus anfitriones con los nuevos flujos o explore la [API de creación de encuestas](/docs/api/room/create-poll) si integra desde un LMS.
+Póngala en marcha con nuestro [sencillo script de instalación](/docs/installation), consulte la [guía de moderación](/docs/user-guide/moderator) para familiarizar a sus moderadores con los nuevos flujos o explore la [API de creación de encuestas](/docs/api/room/create-poll) si integra desde un LMS.
 
 Y si le gusta hacia dónde avanzamos, regálenos una estrella en [GitHub](https://github.com/mynaparrot/plugNmeet): ayuda de verdad a que el proyecto siga creciendo.

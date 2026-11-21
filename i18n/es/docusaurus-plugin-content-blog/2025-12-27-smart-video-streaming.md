@@ -15,17 +15,17 @@ En plugNmeet, creemos que una plataforma de videoconferencia debe funcionar de m
 
 ---
 
-## El Problema: La Transmisión de Video "Talla Única"
+## El problema: La transmisión de video "talla única"
 
 La mayoría de las aplicaciones de video funcionan como una manguera de bomberos. Intentan enviar un único flujo de datos de video de alta calidad a todos, todo el tiempo. Si su conexión a Internet es una tubería ancha y abierta, esto funciona muy bien.
 
 Pero, ¿y si su conexión es más como una pajita estrecha? Intentar forzar una manguera de datos a través de una pajita pequeña conduce a un resultado predecible: un atasco. En términos de video, este "atasco" es lo que experimenta como retraso, video congelado y llamadas caídas.
 
-## La Solución de plugNmeet: Transmisión Inteligente y Adaptativa
+## La solución de plugNmeet: Transmisión inteligente y adaptativa
 
 En lugar de una única manguera de bomberos, utilizamos varias técnicas inteligentes para adaptar el flujo de video a la realidad de la conexión de cada persona y a lo que realmente están viendo en su pantalla.
 
-### Técnica 1: Ofrecer Múltiples Calidades (Como lo Hace Netflix)
+### Técnica 1: Ofrecer múltiples calidades (como lo hace Netflix)
 
 Piense en ver una película en Netflix. Si su Internet se ralentiza, la imagen puede volverse un poco menos nítida por un momento, pero la película sigue reproduciéndose. Netflix hace esto al tener disponibles múltiples versiones de calidad de la película.
 
@@ -33,7 +33,7 @@ Hacemos lo mismo para el video en vivo. Esto se llama **Simulcast**.
 
 Para cada persona que habla, nuestro servidor prepara inteligentemente múltiples versiones de su flujo de video: una de alta calidad, una mediana y una de baja calidad. Su dispositivo se "sintoniza" automáticamente con la mejor calidad que puede manejar en un momento dado sin congelarse. El resultado es una conversación continua e ininterrumpida, incluso si la calidad del video tiene que ajustarse temporalmente.
 
-### Técnica 2: Pausar lo que no se Puede Ver
+### Técnica 2: Pausar lo que no se puede ver
 
 Imagine una reunión con 20 personas. En su pantalla, probablemente solo pueda ver a 9 de ellas a la vez. Entonces, ¿por qué su computadora debería desperdiciar datos preciosos descargando los flujos de video de las 11 personas que están fuera de la pantalla?
 
@@ -41,13 +41,13 @@ No debería. Esto se llama **Dynacast**.
 
 plugNmeet es lo suficientemente inteligente como para pausar automáticamente los flujos de video de los participantes que no están visibles actualmente en su pantalla. En el momento en que se desplaza o cambia de página para ponerlos a la vista, su video se reanuda instantáneamente. Esta única técnica puede reducir drásticamente la cantidad de datos que su computadora necesita descargar, lo que hace que la llamada sea más estable para usted y para todos los demás.
 
-### Técnica 3: Enviar el Tamaño "Justo"
+### Técnica 3: Enviar el tamaño "justo"
 
 En su pantalla, la persona que habla puede estar en una ventana principal grande, mientras que otros participantes están en pequeños cuadrados de miniaturas. No tiene sentido descargar un flujo de video completo de alta definición solo para mostrarlo en una caja pequeña.
 
 Nuestra plataforma también es inteligente en esto. Envía automáticamente un video de resolución mucho más pequeña y baja para las miniaturas, mientras reserva el video de alta calidad para el orador principal. Esto reduce aún más el uso de datos y libera su conexión para centrarse en lo que es más importante.
 
-### Técnica 4: Priorizar la Voz por Encima de Todo
+### Técnica 4: Priorizar la voz por encima de todo
 
 ¿Cuál es la parte más importante de cualquier conversación? **Escuchar lo que dice la otra persona.**
 
@@ -57,7 +57,7 @@ Por lo tanto, toma una decisión inteligente: **pausará temporalmente el flujo 
 
 ---
 
-## Conclusión: Una Experiencia Más Accesible y Confiable para Todos
+## Conclusión: Una experiencia más accesible y confiable para todos
 
 Al combinar estas técnicas de transmisión inteligente, plugNmeet crea una experiencia de video que es:
 

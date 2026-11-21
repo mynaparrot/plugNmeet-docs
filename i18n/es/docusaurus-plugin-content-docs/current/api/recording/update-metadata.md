@@ -6,7 +6,7 @@ sidebar_position: 6
 sidebar_label: Actualizar Metadatos
 ---
 
-# Actualizar Metadatos de Grabación
+# Actualizar metadatos de grabación
 
 Endpoint: `/recording/updateMetadata`
 

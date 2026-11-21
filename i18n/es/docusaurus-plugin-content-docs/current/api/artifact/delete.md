@@ -6,7 +6,7 @@ sidebar_position: 4
 sidebar_label: Eliminar
 ---
 
-# Eliminar Artefacto
+# Eliminar artefacto
 
 Endpoint: `/artifact/delete`
 
@@ -20,13 +20,13 @@ Este punto final es solo para eliminar los archivos físicos asociados con ciert
 Esta acción elimina el **archivo** del artefacto (p. ej., el archivo de texto VTT o de resumen) para ahorrar espacio de almacenamiento. Los **metadatos** asociados sobre el artefacto (p. ej., su ID, tipo y estadísticas de uso) se conservan en la base de datos para fines históricos y de auditoría.
 :::
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo       | Tipo   | Requerido | Descripción                            |
 | ----------- | ------ | --------- | -------------------------------------- |
 | artifact_id | string | Sí        | El identificador único del artefacto. |
 
-### Ejemplo de Solicitud
+### Ejemplo de solicitud
 
 ```json
 {

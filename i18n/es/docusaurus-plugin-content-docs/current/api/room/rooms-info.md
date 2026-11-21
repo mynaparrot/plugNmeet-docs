@@ -6,7 +6,7 @@ sidebar_position: 5
 sidebar_label: Información de Salas Activas
 ---
 
-# Obtener Información de Todas las Salas Activas
+# Obtener información de todas las salas activas
 
 Punto final: `/room/getActiveRoomsInfo`
 

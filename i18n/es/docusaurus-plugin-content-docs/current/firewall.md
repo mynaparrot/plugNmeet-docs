@@ -1,20 +1,20 @@
 ---
-title: Guía de Configuración de Firewall para Plug-N-Meet
-description: Aprenda a configurar su firewall y NAT para un servidor Plug-N-Meet autoalojado, incluyendo los puertos TCP/UDP necesarios para WebRTC, TURN y HTTPS.
+title: Guía de Configuración de Firewall para plugNmeet
+description: Aprenda a configurar su firewall y NAT para un servidor plugNmeet autoalojado, incluyendo los puertos TCP/UDP necesarios para WebRTC, TURN y HTTPS.
 keywords: [firewall, puertos, redes, nat, turn, stun, udp, tcp, puertos webrtc, sip, voip]
 sidebar_position: 2
 sidebar_label: Firewall y Puertos
 ---
 
-# Configuración de Firewall y Puertos
+# Configuración de firewall y puertos
 
-Una configuración correcta del firewall es el paso más crítico para una instalación exitosa de Plug-N-Meet. Si su servidor se encuentra detrás de un firewall o un sistema NAT (como ocurre con casi todos los proveedores de nube como AWS, Google Cloud, Azure, etc.), es indispensable asegurarse de que los puertos adecuados estén abiertos para permitir que el tráfico llegue al servidor.
+Una configuración correcta del firewall es el paso más crítico para una instalación exitosa de plugNmeet. Si su servidor se encuentra detrás de un firewall o un sistema NAT (como ocurre con casi todos los proveedores de nube como AWS, Google Cloud, Azure, etc.), es indispensable asegurarse de que los puertos adecuados estén abiertos para permitir que el tráfico llegue al servidor.
 
 Esta guía le mostrará qué puertos debe abrir y cómo verificar su configuración.
 
 ---
 
-## Puertos Requeridos
+## Puertos requeridos
 
 Debe permitir el tráfico entrante en los siguientes puertos:
 
@@ -47,7 +47,7 @@ Para una comprensión más profunda de los requisitos de red de la pasarela SIP 
 
 ---
 
-## Guías de Proveedores de Nube
+## Guías de proveedores de nube
 
 La mayoría de los proveedores de nube tienen una sección de "Grupo de Seguridad" o "Firewall" donde puede crear estas reglas. Aquí tiene enlaces a la documentación oficial de los proveedores más populares:
 
@@ -58,11 +58,11 @@ La mayoría de los proveedores de nube tienen una sección de "Grupo de Segurida
 
 ---
 
-## Probando su Configuración (Opcional pero Recomendado)
+## Probando su configuración (opcional pero recomendado)
 
 Antes de ejecutar el script de instalación principal, es una buena idea verificar que sus puertos estén abiertos. La herramienta `ncat` (una versión mejorada de `netcat`) es perfecta para esto.
 
-### 1. En su servidor Plug-N-Meet
+### 1. En su servidor plugNmeet
 
 Primero, instale `ncat` y comience a escuchar en un puerto. Usaremos el puerto 443 como ejemplo.
 

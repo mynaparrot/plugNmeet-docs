@@ -17,7 +17,7 @@ Esta guía le mostrará los tres pasos principales para construir su propia apli
 
 ---
 
-## La Forma Antigua: La Montaña de Complejidad
+## La forma antigua: La montaña de complejidad
 
 Antes de mostrarle la forma fácil, es importante apreciar los problemas que plugNmeet resuelve. Construir una aplicación WebRTC desde cero requiere que se convierta en un experto en:
 
@@ -29,13 +29,13 @@ Antes de mostrarle la forma fácil, es importante apreciar los problemas que plu
 
 Esta es una tarea masiva.
 
-## El Enfoque de plugNmeet: Un Framework Basado en API
+## El enfoque de plugNmeet: Un framework basado en API
 
 plugNmeet agrupa toda esta complejidad en un único servidor de código abierto que puede instalar con un script automatizado. Le proporciona un conjunto de APIs simples y potentes que actúan como sus bloques de construcción.
 
 Así es como construye su aplicación en tres pasos.
 
-### Paso 1: Configure el Backend (15 Minutos)
+### Paso 1: Configure el backend (15 minutos)
 
 Primero, necesita el servidor plugNmeet, que incluye LiveKit para los medios y NATS para la mensajería. Puede instalar todo en un servidor Ubuntu nuevo utilizando nuestro script de instalación automatizado.
 
@@ -47,9 +47,9 @@ chmod +x install.sh
 
 Eso es todo. Ahora tiene un servidor de medios y un endpoint de API listos para producción. El script le proporcionará su `API_KEY` y `API_SECRET`, que necesitará para el siguiente paso.
 
-### Paso 2: Controle el Backend con una Llamada a la API (10 Minutos)
+### Paso 2: Controle el backend con una llamada a la API (10 minutos)
 
-A continuación, el backend de su aplicación necesita comunicarse con el servidor de Plug-N-Meet para crear una sala y generar un token de acceso para un usuario. Esto se hace con una simple llamada a la API del lado del servidor.
+A continuación, el backend de su aplicación necesita comunicarse con el servidor de plugNmeet para crear una sala y generar un token de acceso para un usuario. Esto se hace con una simple llamada a la API del lado del servidor.
 
 Puede usar nuestro [SDK de PHP](https://github.com/mynaparrot/plugNmeet-sdk-php) o [SDK de JavaScript](https://github.com/mynaparrot/plugNmeet-sdk-js) oficial, o llamar a la API directamente. Aquí hay un ejemplo robusto en PHP que comprueba si una sala está activa antes de crearla:
 
@@ -119,7 +119,7 @@ if ($isRoomActive) {
 
 Este script crea una sala y le da una URL única con un token que otorga acceso a "John Doe" a esa sala. Puede encontrar un ejemplo completo de PHP en [Inicio Rápido con PHP](/docs/tutorials/quick_php).
 
-### Paso 3: Muestre el Frontend (2 Minutos)
+### Paso 3: Muestre el frontend (2 minutos)
 
 Ahora la pieza final: la interfaz de usuario. ¿Necesita construir una desde cero? No.
 
@@ -132,7 +132,7 @@ Cuando un usuario visita este enlace, la aplicación cliente de plugNmeet se car
 
 ---
 
-### ¿Y las Aplicaciones Móviles? El Enfoque Híbrido
+### ¿Y las aplicaciones móviles? El enfoque híbrido
 
 El mismo principio de reutilizar el cliente web se aplica al desarrollo móvil. En lugar de construir una interfaz de usuario móvil nativa desde cero, puede usar nuestro **modelo de integración híbrida**.
 
@@ -147,7 +147,7 @@ Esto le da lo mejor de ambos mundos: el rendimiento de los medios nativos y la v
 
 ---
 
-### La Alternativa Sin Código: Plugins Oficiales
+### La alternativa sin código: Plugins oficiales
 
 El enfoque basado en API le da la máxima flexibilidad para construir una aplicación personalizada. Pero, ¿y si está usando una plataforma popular como WordPress, Moodle o Joomla y quiere empezar sin escribir nada de código?
 
@@ -159,7 +159,7 @@ Para estas plataformas, hemos hecho todo el trabajo de integración por usted. N
 
 ---
 
-## Conclusión: Ahora es un Desarrollador de Aplicaciones de Video
+## Conclusión: Ahora es un desarrollador de aplicaciones de video
 
 En el tiempo que le tomó leer este artículo, ha aprendido todo el flujo de trabajo:
 

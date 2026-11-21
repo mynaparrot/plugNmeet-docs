@@ -8,17 +8,17 @@ sidebar_label: Integración LTI
 
 # Integración con cualquier LMS usando LTI
 
-Learning Tools Interoperability (LTI) es un protocolo estándar que le permite conectar de forma segura Plug-N-Meet a prácticamente cualquier Sistema de Gestión del Aprendizaje (LMS) como Canvas, Moodle, Chamilo y otros.
+Learning Tools Interoperability (LTI) es un protocolo estándar que le permite conectar de forma segura plugNmeet a prácticamente cualquier Sistema de Gestión del Aprendizaje (LMS) como Canvas, Moodle, Chamilo y otros.
 
 Este método es ideal si no existe un plugin dedicado para su plataforma o si su institución restringe la instalación de plugins personalizados. Permite a los instructores y estudiantes unirse a las reuniones y ver las grabaciones directamente desde la página de su curso.
 
 ---
 
-## Parte 1: Detalles Generales de Configuración de LTI
+## Parte 1: Detalles generales de configuración de LTI
 
 Esta sección contiene la información necesaria para **cualquier** integración LTI.
 
-### Credenciales Requeridas
+### Credenciales requeridas
 
 Para conectar cualquier plataforma compatible con LTI, necesitará las siguientes tres piezas de información. La **Clave de Consumidor** y el **Secreto Compartido** deben obtenerse de la configuración de la API de su propio servidor PlugNmeet.
 
@@ -38,7 +38,7 @@ Secreto compartido: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 **Nota:** Se recomienda encarecidamente permitir que la herramienta LTI envíe el `nombre del lanzador`; de lo contrario, el usuario aparecerá en la reunión con un nombre vacío.
 
-### Descripción General de la Interfaz de Usuario
+### Descripción general de la interfaz de usuario
 
 - **Vista del Instructor/Moderador:** Cuando un usuario con rol de instructor inicia la herramienta LTI, verá una vista administrativa que le permitirá gestionar las sesiones y ver las grabaciones.
 
@@ -48,7 +48,7 @@ Secreto compartido: zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6
 
 ![lti3.png](/img/lti/lti3.png)
 
-### Parámetros Personalizados Opcionales
+### Parámetros personalizados opcionales
 
 Puede pasar estos parámetros opcionales durante la configuración de LTI en su LMS para personalizar la experiencia de la sala de reuniones.
 
@@ -68,13 +68,13 @@ Puede pasar estos parámetros opcionales durante la configuración de LTI en su 
 
 ---
 
-## Parte 2: Ejemplos de Integración con LMS
+## Parte 2: Ejemplos de integración con LMS
 
 Esta sección proporciona ejemplos paso a paso para Sistemas de Gestión del Aprendizaje populares.
 
 ### Ejemplo con Canvas LMS
 
-Este ejemplo demuestra cómo agregar Plug-N-Meet como una aplicación LTI externa en Canvas.
+Este ejemplo demuestra cómo agregar plugNmeet como una aplicación LTI externa en Canvas.
 
 1.  Como administrador, navegue a **Configuración > Aplicaciones** en su curso de Canvas.
 2.  Haga clic en **Ver Configuraciones de la Aplicación** y luego en **+Aplicación**.
@@ -113,7 +113,7 @@ Este método LTI es una excelente alternativa si su proveedor de alojamiento de 
 ![lti-moodle-13.png](/img/lti/lti-moodle-13.png)
 ---
 
-## Preguntas Comunes y Solución de Problemas
+## Preguntas comunes y solución de problemas
 
 **¿Cuál es la diferencia entre usar LTI y el plugin dedicado de Moodle?**
 El complemento dedicado de Moodle ofrece una integración más profunda con las funciones de Moodle, como las calificaciones y los permisos. Sin embargo, el método LTI es una solución universal que funciona para casi cualquier LMS y es una excelente alternativa si no puede instalar plugins personalizados.

@@ -9,39 +9,39 @@ Como educador o administrador en Moodle, su objetivo es crear un entorno de apre
 
 ¿Y si su aula virtual fuera solo otra actividad nativa de Moodle, tan fácil de agregar como un cuestionario o un foro? ¿Y si fuera un espacio potente e interactivo diseñado específicamente para la enseñanza, no solo una sala de reuniones genérica?
 
-Con el plugin oficial de **Plug-N-Meet para Moodle**, esto no solo es posible; es simple. Esta guía le mostrará cómo transformar su sitio de Moodle en una plataforma de e-learning interactiva de clase mundial.
+Con el plugin oficial de **plugNmeet para Moodle**, esto no solo es posible; es simple. Esta guía le mostrará cómo transformar su sitio de Moodle en una plataforma de e-learning interactiva de clase mundial.
 
 <!--truncate-->
 
 ---
 
-### Por qué una Integración Nativa de Moodle es un Cambio de Juego
+### Por qué una integración nativa de Moodle es un cambio de juego
 
-Antes de llegar al "cómo", centrémonos en el "porqué". Elegir una solución autoalojada y profundamente integrada como Plug-N-Meet en lugar de una herramienta SaaS genérica proporciona tres ventajas críticas para cualquier institución educativa.
+Antes de llegar al "cómo", centrémonos en el "porqué". Elegir una solución autoalojada y profundamente integrada como plugNmeet en lugar de una herramienta SaaS genérica proporciona tres ventajas críticas para cualquier institución educativa.
 
 1.  **Una Experiencia Estudiantil Fluida:** Los estudiantes nunca abandonan su sitio de Moodle. Se unen a la clase en vivo directamente desde la página de su curso, con la misma marca e interfaz que ya conocen. Esto reduce la confusión y los mantiene enfocados en el aprendizaje, no en la tecnología.
 2.  **Control Absoluto sobre los Datos de los Estudiantes:** En la educación, la privacidad es primordial. Con una plataforma autoalojada, todos los datos de los estudiantes y las grabaciones de las clases se almacenan en sus propios servidores, no en una nube de terceros. Esto le da un control total para garantizar el cumplimiento de las regulaciones de privacidad como GDPR y FERPA.
-3.  **Costos Predecibles y Escalables:** En lugar de pagar una costosa suscripción por anfitrión y por mes que lo penaliza por agregar más maestros, tiene un costo fijo y predecible para su infraestructura de servidor. Este es un modelo mucho más sostenible y rentable para escuelas y universidades.
+3.  **Costos Predecibles y Escalables:** En lugar de pagar una costosa suscripción por moderador y por mes que lo penaliza por agregar más maestros, tiene un costo fijo y predecible para su infraestructura de servidor. Este es un modelo mucho más sostenible y rentable para escuelas y universidades.
 
-### La Guía de 3 Pasos para su Primera Aula Virtual en Moodle
+### La guía de 3 pasos para su primera aula virtual en Moodle
 
 Comenzar es increíblemente rápido. Puede tener su primera sala de reuniones en vivo en menos de 15 minutos. Para un recorrido más detallado, también puede leer nuestra popular guía sobre **[How to Add No-Code Video Conferencing to Your Moodle Courses](/blog/no-code-video-conferencing-moodle)**.
 
-#### Paso 1: Obtenga su Motor de Videoconferencia
+#### Paso 1: Obtenga su motor de videoconferencia
 
 Primero, necesita el servidor que impulsará sus videollamadas. Puede autoalojar la versión de código abierto con nuestro **[simple installation script](/docs/installation)** u obtener un servidor administrado instantáneo de **[plugnmeet Cloud](https://www.plugnmeet.cloud)**. Ambos le proporcionarán una **Clave de API** y un **Secreto de API**.
 
-#### Paso 2: Instale el Plugin Gratuito de Plug-N-Meet
+#### Paso 2: Instale el plugin gratuito de plugNmeet
 
 Desde su panel de Administración del sitio de Moodle:
 1.  Vaya a **Administración del sitio > Plugins > Instalar plugins**.
-2.  Instale el plugin de Plug-N-Meet, que puede descargar desde el [directorio de plugins oficial de Moodle](https://moodle.org/plugins/mod_plugnmeet).
+2.  Instale el plugin de plugNmeet, que puede descargar desde el [directorio de plugins oficial de Moodle](https://moodle.org/plugins/mod_plugnmeet).
 3.  Después de la instalación, navegue a la página de configuración del plugin (**Administración del sitio > Plugins > Módulos de actividad > PlugNmeet**).
 4.  Ingrese su **Clave de API** y **Secreto de API** y guarde los cambios.
 
 Su sitio de Moodle ahora está completamente integrado con su motor de videoconferencia.
 
-#### Paso 3: Agregue la Actividad "PlugNmeet" a su Curso
+#### Paso 3: Agregue la actividad "PlugNmeet" a su curso
 
 1.  Navegue al curso de Moodle donde desea agregar la clase en vivo.
 2.  Active el **Modo de edición**.
@@ -52,23 +52,23 @@ Eso es todo. Sus estudiantes ahora pueden unirse a un aula virtual potente e int
 
 ---
 
-### Suba de Nivel: 3 Formas Poderosas de Usar el Video en Moodle
+### Suba de nivel: 3 formas poderosas de usar el video en Moodle
 
-Plug-N-Meet es más que una simple herramienta de conferencias. Es un conjunto de características diseñadas para la pedagogía moderna.
+plugNmeet es más que una simple herramienta de conferencias. Es un conjunto de características diseñadas para la pedagogía moderna.
 
-#### Caso de Uso 1: El Aula Virtual Interactiva
+#### Caso de uso 1: El aula virtual interactiva
 
 Transforme una conferencia pasiva en una experiencia atractiva y bidireccional.
 
 *   **Cómo hacerlo:** Use la **[Interactive Whiteboard](/blog/integrated-whiteboard-experience)** para cargar sus diapositivas de presentación y anotarlas en tiempo real. Use la función de **Live Polling** para verificar rápidamente la comprensión de los estudiantes o realizar un cuestionario rápido. Todas las sesiones de clase se pueden grabar en la nube y poner a disposición automáticamente en el curso de Moodle para los estudiantes que se perdieron la sesión en vivo.
 
-#### Caso de Uso 2: El Taller Colaborativo con Salas de Grupos
+#### Caso de uso 2: El taller colaborativo con salas de grupo
 
 Para el aprendizaje basado en proyectos y el trabajo en grupo, la función de **[Breakout Rooms](/blog/mastering-breakout-rooms)** es esencial.
 
-*   **Cómo hacerlo:** Desde la sesión en vivo, el maestro puede dividir a los estudiantes en grupos más pequeños. Cada sala de grupos obtiene su propia pizarra privada y completamente funcional y un bloc de notas compartido, lo que permite una verdadera colaboración en grupos pequeños. El maestro puede transmitir mensajes a todas las salas o visitar un grupo específico para verificar su progreso.
+*   **Cómo hacerlo:** Desde la sesión en vivo, el maestro puede dividir a los estudiantes en grupos más pequeños. Cada sala de grupo obtiene su propia pizarra privada y completamente funcional y un bloc de notas compartido, lo que permite una verdadera colaboración en grupos pequeños. El maestro puede transmitir mensajes a todas las salas o visitar un grupo específico para verificar su progreso.
 
-#### Caso de Uso 3: La Conferencia Segura Uno a Uno o entre Padres y Maestros
+#### Caso de uso 3: La conferencia segura uno a uno o entre padres y maestros
 
 Para conversaciones privadas, necesita un mayor nivel de seguridad.
 
@@ -76,9 +76,9 @@ Para conversaciones privadas, necesita un mayor nivel de seguridad.
 
 ---
 
-### Conclusión: El Aula Virtual que Moodle Merece
+### Conclusión: El aula virtual que Moodle merece
 
-Deje de hacer concesiones con herramientas externas que interrumpen la experiencia de aprendizaje. Al integrar Plug-N-Meet, puede ofrecer a sus maestros y estudiantes un aula virtual potente, segura y perfectamente integrada que vive justo donde pertenece: dentro de Moodle.
+Deje de hacer concesiones con herramientas externas que interrumpen la experiencia de aprendizaje. Al integrar plugNmeet, puede ofrecer a sus maestros y estudiantes un aula virtual potente, segura y perfectamente integrada que vive justo donde pertenece: dentro de Moodle.
 
 Es una solución lo suficientemente simple para que cualquier maestro la use, pero lo suficientemente potente como para soportar los métodos de enseñanza en línea más innovadores.
 

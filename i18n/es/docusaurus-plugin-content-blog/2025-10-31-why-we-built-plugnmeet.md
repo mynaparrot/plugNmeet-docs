@@ -1,5 +1,5 @@
 ---
-title: "Por Qué Creamos Plug-N-Meet: La Historia de su Fundador"
+title: "Por Qué Creamos plugNmeet: La Historia de su Fundador"
 slug: why-we-built-plugnmeet
 authors: [jibon]
 tags: [open-source, arquitectura, filosofía, bigbluebutton, escalabilidad, desarrollador]
@@ -11,13 +11,13 @@ Pero después de años en la primera línea, dando soporte a sesiones en vivo, c
 
 Nos dimos cuenta de que teníamos una elección: seguir creando soluciones temporales o tomar todo lo que habíamos aprendido y construir la solución que sabíamos que nuestros usuarios necesitaban.
 
-Elegimos construir. Esta es la historia de por qué existe Plug-N-Meet.
+Elegimos construir. Esta es la historia de por qué existe plugNmeet.
 
 <!--truncate-->
 
 ---
 
-### Lecciones desde la Experiencia: Los Desafíos que Debíamos Resolver
+### Lecciones desde la experiencia: Los desafíos que debíamos resolver
 
 Nuestra decisión no nació de un rechazo a BigBlueButton, sino de una profunda comprensión de sus debilidades a escala. Nos enfrentábamos constantemente a una serie de desafíos recurrentes:
 
@@ -31,21 +31,21 @@ Nuestra decisión no nació de un rechazo a BigBlueButton, sino de una profunda 
 
 *   **La Carga de una Arquitectura Monolítica:** La falta de modularidad era el mayor obstáculo. No se podía escalar una parte del sistema sin escalar todo el conjunto. Si la grabación consumía toda la CPU, afectaba directamente a las reuniones en vivo. No había una separación clara de responsabilidades.
 
-### Una Nueva Filosofía: Basada en la Simplicidad, la Modularidad y el Control
+### Una nueva filosofía: Basada en la simplicidad, la modularidad y el control
 
-Con Plug-N-Meet, empezamos desde cero, guiados por unos pocos principios básicos nacidos directamente de nuestras frustraciones.
+Con plugNmeet, empezamos desde cero, guiados por unos pocos principios básicos nacidos directamente de nuestras frustraciones.
 
 1.  **Simplicidad Radical en la Pila Tecnológica.**
     En lugar de una docena de lenguajes, elegimos dos: **Go** para todo el backend y **TypeScript (con React)** para el front-end. Nada más. Esta decisión se extendió a nuestras dependencias principales. Elegimos **LiveKit** como nuestro servidor de medios y **NATS** para la mensajería, no solo porque son los mejores en su clase, sino porque también están escritos en Go. Esto crea un ecosistema unificado, consistente y de alto rendimiento que es un placer para nuestros desarrolladores y fácil de contribuir para la comunidad.
 
 2.  **Modularidad desde el Diseño.**
-    Plug-N-Meet no es un monolito. Es un sistema desacoplado de componentes que trabajan juntos. El grabador, el servidor de medios y la lógica de la aplicación son servicios separados. Esto significa que usted puede escalar, actualizar o incluso reemplazar una parte sin romper todo lo demás. Los "Modos Operativos" de nuestro nuevo grabador son un ejemplo perfecto de esto, un resultado directo de nuestra **filosofía de grabación**. Esto le permite ejecutar la transcodificación, que consume mucha CPU, en máquinas completamente diferentes a las de sus servidores de grabación en vivo.
+    plugNmeet no es un monolito. Es un sistema desacoplado de componentes que trabajan juntos. El grabador, el servidor de medios y la lógica de la aplicación son servicios separados. Esto significa que usted puede escalar, actualizar o incluso reemplazar una parte sin romper todo lo demás. Los "Modos Operativos" de nuestro nuevo grabador son un ejemplo perfecto de esto, un resultado directo de nuestra **filosofía de grabación**. Esto le permite ejecutar la transcodificación, que consume mucha CPU, en máquinas completamente diferentes a las de sus servidores de grabación en vivo.
 
 3.  **Personalización sin Complicaciones.**
-    La personalización de marca no debería ser un proyecto de desarrollo. Con Plug-N-Meet, la personalización profunda se gestiona a través de una API simple y objetos de configuración. Puede cambiar colores, logotipos e incluso todo el diseño sin tocar nunca nuestro código principal, asegurando que su plataforma siempre se sienta como *su* plataforma.
+    La personalización de marca no debería ser un proyecto de desarrollo. Con plugNmeet, la personalización profunda se gestiona a través de una API simple y objetos de configuración. Puede cambiar colores, logotipos e incluso todo el diseño sin tocar nunca nuestro código principal, asegurando que su plataforma siempre se sienta como *su* plataforma.
 
 4.  **Accesibilidad para Todos a Través de la Integración.**
-    Aunque proporcionamos herramientas potentes para desarrolladores, nuestra filosofía siempre ha sido hacer que Plug-N-Meet sea accesible para todos. Una plataforma potente no debería requerir un equipo de ingenieros para ser utilizada. Por eso hemos invertido considerablemente en crear plugins simples y robustos para los CMS y LMS más populares del mundo.
+    Aunque proporcionamos herramientas potentes para desarrolladores, nuestra filosofía siempre ha sido hacer que plugNmeet sea accesible para todos. Una plataforma potente no debería requerir un equipo de ingenieros para ser utilizada. Por eso hemos invertido considerablemente en crear plugins simples y robustos para los CMS y LMS más populares del mundo.
 
     Con nuestros plugins oficiales para **WordPress**, **Moodle** y **Joomla**, cualquiera puede añadir un servicio de videoconferencia de marca y con todas las funciones a su sitio web en minutos. Estas integraciones no son un añadido de última hora; son una parte central de nuestra misión de empoderar a los creadores. Como hemos detallado en nuestras guías, usted puede incluso **lanzar su propio servicio de video con WordPress**, **construir una plataforma de e-learning escalable con Moodle** o **iniciar un negocio sin código con Joomla**, sin necesidad de programar.
 
@@ -53,15 +53,15 @@ Con Plug-N-Meet, empezamos desde cero, guiados por unos pocos principios básico
     No somos una solución basada en dominios que lo encierra en una estructura rígida. Somos una plataforma API-first diseñada para ser un bloque de construcción. Ya sea que utilice nuestros sencillos plugins para WordPress y Moodle o nuestra **API `getClientFiles`** para una integración "headless", nuestro objetivo es darle el poder de construir la experiencia exacta que desea, no forzarlo a la nuestra.
 
 6.  **La Seguridad como Pilar Fundamental, no como un Extra.**
-    En el mundo actual, la privacidad no es negociable. Construimos Plug-N-Meet con una mentalidad de seguridad desde el principio, ofreciendo un robusto **Cifrado de Extremo a Extremo (E2EE)** como una característica central, con múltiples modelos de gestión de claves para adaptarse a cualquier postura de seguridad. Esto asegura que las conversaciones sean privadas y que ni siquiera el servidor pueda acceder a las transmisiones de medios. Este compromiso con la privacidad está entretejido en toda nuestra arquitectura.
+    En el mundo actual, la privacidad no es negociable. Construimos plugNmeet con una mentalidad de seguridad desde el principio, ofreciendo un robusto **Cifrado de Extremo a Extremo (E2EE)** como una característica central, con múltiples modelos de gestión de claves para adaptarse a cualquier postura de seguridad. Esto asegura que las conversaciones sean privadas y que ni siquiera el servidor pueda acceder a las transmisiones de medios. Este compromiso con la privacidad está entretejido en toda nuestra arquitectura.
 
 ---
 
-### Conclusión: Construyendo las Bases para el Futuro
+### Conclusión: Construyendo las bases para el futuro
 
 Siempre estaremos agradecidos por el camino que BigBlueButton abrió. Le mostró al mundo lo que era posible con la comunicación de código abierto. Pero la web ha evolucionado, y las demandas de escalabilidad, flexibilidad y experiencia del desarrollador han crecido exponencialmente.
 
-Construimos Plug-N-Meet para responder a esa llamada. Es la plataforma que deseábamos tener durante todos esos años gestionando implementaciones complejas: una base más simple, más potente y más flexible para el futuro de la comunicación en tiempo real.
+Construimos plugNmeet para responder a esa llamada. Es la plataforma que deseábamos tener durante todos esos años gestionando implementaciones complejas: una base más simple, más potente y más flexible para el futuro de la comunicación en tiempo real.
 
 No estamos creando una herramienta para todos. Estamos creando una **plataforma para quienes construyen.**
 

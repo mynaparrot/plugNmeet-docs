@@ -6,7 +6,7 @@ sidebar_position: 4
 sidebar_label: Integración con WordPress
 ---
 
-# Cómo Añadir Videoconferencias a WordPress con el Plugin de Plug-N-Meet
+# Cómo añadir videoconferencias a WordPress con el plugin de plugNmeet
 
 Bienvenido a la guía definitiva para integrar **plugNmeet**, la potente solución de videoconferencia de código abierto, en su sitio web de WordPress. Este documento proporciona un recorrido completo, desde la instalación hasta el aprovechamiento de las funciones avanzadas, permitiéndole alojar reuniones de video seguras y ricas en funciones directamente desde su propio dominio. Con plugNmeet, puede crear una experiencia de reunión virtual fluida que se siente como una parte nativa de su sitio.
 
@@ -16,7 +16,7 @@ El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disp
 
 ---
 
-## 1. Características Clave de la Integración con WordPress
+## 1. Características clave de la integración con WordPress
 
 El plugin de plugNmeet es más que una simple forma de incrustar una videollamada; es una integración profunda que trae potentes herramientas de gestión directamente a su panel de WordPress.
 
@@ -29,27 +29,27 @@ El plugin de plugNmeet es más que una simple forma de incrustar una videollamad
 
 ---
 
-## 2. Instalación y Configuración Inicial
+## 2. Instalación y configuración inicial
 
 Esta sección cubre la instalación del plugin y su conexión a su servidor de PlugNmeet.
 
-### Paso 2.1: Instalar y Activar el Plugin
+### Paso 2.1: Instalar y activar el plugin
 
 1.  Desde su panel de WordPress, vaya a **Plugins > Añadir nuevo**.
 2.  En la barra de búsqueda, escriba **plugnmeet**.
-3.  Encuentre el plugin oficial de Plug-N-Meet y haga clic en **Instalar ahora**, y luego en **Activar**.
+3.  Encuentre el plugin oficial de plugNmeet y haga clic en **Instalar ahora**, y luego en **Activar**.
 
-### Paso 2.2: Conectar a Su Servidor (Ajustes de API)
+### Paso 2.2: Conectar a su servidor (ajustes de API)
 
 Este es el paso más importante. El plugin requiere una conexión a un servidor de PlugNmeet que esté funcionando.
 
-1.  Desde su panel de WordPress, vaya al nuevo elemento del menú **Plug-N-Meet** y seleccione **Ajustes**.
+1.  Desde su panel de WordPress, vaya al nuevo elemento del menú **plugNmeet** y seleccione **Ajustes**.
 2.  Rellene los tres campos: **URL del Servidor**, **Clave de API** y **Secreto de API** con las credenciales de su servidor autoalojado o de PlugNmeet Cloud.
 3.  **Debe reemplazar las credenciales de demostración predeterminadas para que el plugin funcione.**
 
 **Nota:** El plugin incluye credenciales de demostración preconfiguradas para ayudarle a probar sus funciones de inmediato. Este servidor de demostración es un recurso compartido y **no está destinado para uso en producción**, ya que puede ser poco fiable. Para cualquier reunión importante, recomendamos encarecidamente usar su propio servidor para garantizar una experiencia estable y profesional para usted y sus usuarios.
 
-#### Método de Carga del Cliente
+#### Método de carga del cliente
 
 En los ajustes, también encontrará la opción **Carga del Cliente**. Esta importante configuración cambia *cómo* se muestra la reunión de video a sus usuarios y cómo puede personalizar su apariencia.
 
@@ -69,20 +69,20 @@ Después de guardar sus ajustes por primera vez, **debe** actualizar sus enlaces
 1.  Vaya a **Ajustes > Enlaces permanentes** en su panel de WordPress.
 2.  No necesita cambiar ningún ajuste. Simplemente haga clic en el botón **"Guardar cambios"**.
 
-Debe repetir este paso cada vez que cambie la **Ruta del Slug de la Sala** en los ajustes de Plug-N-Meet.
+Debe repetir este paso cada vez que cambie la **Ruta del Slug de la Sala** en los ajustes de plugNmeet.
 :::
 
 ---
 
-## 3. Creando y Publicando Su Primera Reunión
+## 3. Creando y publicando su primera reunión
 
-### Paso 3.1: Navegar a la Página de Creación de Sala
+### Paso 3.1: Navegar a la página de creación de sala
 
-Para crear una nueva sala de reuniones, vaya a **Plug-N-Meet > Salas** desde su panel de WordPress y haga clic en el botón **"Añadir nueva"**. Esto le llevará a la página de configuración detallada de la sala, que está organizada en varias pestañas.
+Para crear una nueva sala de reuniones, vaya a **plugNmeet > Salas** desde su panel de WordPress y haga clic en el botón **"Añadir nueva"**. Esto le llevará a la página de configuración detallada de la sala, que está organizada en varias pestañas.
 
 ![Navegando a la página 'Añadir nueva' sala en el plugin de conferencias de PlugNmeet para WordPress.](/img/wordpress/2.png)
 
-### Paso 3.2: Configuración Detallada de la Sala
+### Paso 3.2: Configuración detallada de la sala
 
 Este formulario le da un control granular sobre cada aspecto de la sesión.
 
@@ -95,17 +95,17 @@ Esta pestaña cubre la información esencial para su sala.
 - **Mensaje de Bienvenida:** Personalice el mensaje inicial que aparece en el chat cuando los usuarios se unen.
 - **Máximo de Participantes:** Establezca un límite en el número de usuarios que pueden unirse (use `0` para ilimitado).
 
-#### Funciones de la Sala
+#### Funciones de la sala
 Esta sección le permite habilitar o deshabilitar las funciones interactivas principales de la sala de reuniones, como webcams, compartir pantalla y chat.
 
-#### Otras Funciones
+#### Otras funciones
 Esta pestaña ofrece una amplia gama de ajustes para controlar funcionalidades específicas dentro de la sala:
 - **Grabación:** Habilite o deshabilite la grabación en la nube.
 - **Transmisión Externa:** Configure opciones para transmitir su reunión a plataformas externas.
 - **Chat, Bloc de Notas Compartido, Pizarra:** Active o desactive estas herramientas colaborativas.
 - **Reproductor de Medios Externo:** Permita a los moderadores reproducir medios de fuentes externas.
 - **Sala de Espera:** Habilite una sala de espera para filtrar a los participantes antes de que se unan.
-- **Salas de Grupos Pequeños (Breakout Rooms):** Permita a los moderadores dividir a los participantes en grupos más pequeños.
+- **Salas de grupo (Breakout Rooms):** Permita a los moderadores dividir a los participantes en grupos más pequeños.
 - **Mostrar Enlace Externo:** Configure un enlace personalizado para mostrar a los participantes.
 - **Ingress (Entrada de Flujo):** Configure opciones para traer flujos de medios externos a la reunión.
 - **Encuestas:** Habilite la función de encuestas para obtener retroalimentación interactiva.
@@ -115,10 +115,10 @@ Esta pestaña ofrece una amplia gama de ajustes para controlar funcionalidades e
 #### IA de Insights
 En esta pestaña, puede habilitar o deshabilitar funciones impulsadas por IA para la reunión, como la transcripción automática y los resúmenes de reuniones.
 
-#### Ajustes de Bloqueo Predeterminados
+#### Ajustes de bloqueo predeterminados
 Configure el estado inicial de "bloqueo" para varias funciones cuando un participante se une. Por ejemplo, puede iniciar la reunión con los micrófonos, webcams o la pizarra bloqueados para mantener el orden. Los moderadores pueden desbloquear estas funciones durante la reunión.
 
-#### Personalización del Diseño
+#### Personalización del diseño
 Esta pestaña le permite anular los ajustes de diseño globales para esta sala específica. Puede cambiar el logo, el fondo y la paleta de colores para que coincidan con su marca o el tema de la reunión.
 
 #### Permisos
@@ -126,46 +126,46 @@ Esta potente pestaña le permite definir exactamente cómo los diferentes roles 
 
 ![La tabla de permisos de roles de usuario en el plugin de videoconferencia de PlugNmeet para WordPress, permitiendo un control granular sobre el acceso a la reunión.](/img/wordpress/4.png)
 
-**Valores Predeterminados Inteligentes:** El plugin comienza con valores predeterminados sensatos. Los roles con capacidades administrativas (como `edit_users` o `edit_posts`, que típicamente se aplican a Administradores y Editores) se configuran automáticamente para unirse como **moderadores** con acceso completo a las grabaciones. Todos los demás roles, incluidos los **Invitados** no autenticados, se unen por defecto como **asistentes** con permisos más restringidos.
+**Valores Predeterminados Inteligentes:** El plugin comienza con valores predeterminados sensatos. Los roles con capacidades administrativas (como `edit_users` o `edit_posts`, que típicamente se aplican a Administradores y Editores) se configuran automáticamente para unirse como **moderadores** con acceso completo a las grabaciones. Todos los demás roles, incluidos los **Invitados** no autenticados, se unen de forma predeterminada como **asistentes** con permisos más restringidos.
 
 **Personalización:** Estos valores predeterminados son solo un punto de partida. Puede anularlos para cada rol usando las siguientes opciones:
 - **Unirse como Moderador/Asistente:** Determina los privilegios del usuario dentro de la sala.
 - **Requerir Contraseña:** Si se marca, los usuarios con este rol deben introducir la contraseña de asistente para unirse, incluso si han iniciado sesión.
 - **Permitir Ver/Reproducir/Descargar/Eliminar Grabaciones:** Proporciona un control granular sobre cómo cada rol puede interactuar con las grabaciones de la sala. Al rol "Invitado/Público" no se le puede conceder permiso para eliminar grabaciones.
 
-### Paso 3.3: Publicar la Sala
+### Paso 3.3: Publicar la sala
 
 Tiene dos métodos principales para hacer que una sala esté disponible para sus usuarios.
 
-#### Opción A: Incrustar en una Página con un Shortcode
+#### Opción A: Incrustar en una página con un shortcode
 
 Este método es ideal para integrar una sala de reuniones en una página o entrada existente junto con otro contenido.
 
-1.  Vaya a **Plug-N-Meet > Salas** y encuentre la sala que acaba de crear.
+1.  Vaya a **plugNmeet > Salas** y encuentre la sala que acaba de crear.
 2.  En la columna **Shortcode**, copie el shortcode único para esa sala.
 3.  Pegue el shortcode en el área de contenido de cualquier página o entrada de WordPress.
 4.  Publique la página. Cuando un usuario la visite, verá un formulario personalizable para unirse a la reunión.
 
 ![Copiando un shortcode de sala para incrustar una videoconferencia autoalojada en una página de WordPress con el plugin PlugNmeet.](/img/wordpress/5.png)
 
-#### Opción B: Usar un Enlace Directo Limpio y Compartible
+#### Opción B: Usar un enlace directo limpio y compartible
 
 Cada sala que crea tiene automáticamente un enlace directo y compartible. Esto es perfecto para enviar por correo electrónico o para un aspecto limpio y profesional. La estructura de la URL consiste en un slug base y el ID único de la sala: `susitio.com/[slug]/[id-de-sala]`.
 
 Tiene control total sobre esta estructura:
 
 1.  **Personalizar el Slug de la URL (Opcional):**
-    -   Vaya a **Plug-N-Meet > Ajustes > Opciones**.
-    -   Encuentre el campo **Ruta del Slug de la Sala**. Por defecto, es `plugnmeet/room`.
+    -   Vaya a **plugNmeet > Ajustes > Opciones**.
+    -   Encuentre el campo **Ruta del Slug de la Sala**. De forma predeterminada, es `plugnmeet/room`.
     -   Puede cambiarlo a algo más único, como `reuniones`. Su nueva estructura de URL será `susitio.com/reuniones/su-id-de-sala/`.
 
-2.  **Asegurar un Diseño Limpio con una Página Anfitriona:**
-    -   Por defecto, al visitar el enlace directo se puede mostrar la reunión dentro del diseño de entrada estándar de su tema (con barras laterales, etc.). Para asegurar una vista limpia y sin distracciones, debe asignar una página en blanco como plantilla.
-    -   **Cree una Página en Blanco:** Vaya a **Páginas > Añadir nueva** y cree una nueva página vacía. Nómbrela "Anfitrión de Reunión" o algo similar.
-    -   **Asigne la Página Anfitriona:** Vuelva a **Plug-N-Meet > Ajustes > Opciones** y seleccione la página que acaba de crear en el menú desplegable **Página Anfitriona de la Sala**.
+2.  **Asegurar un Diseño Limpio con una Página Moderadora:**
+    -   De forma predeterminada, al visitar el enlace directo se puede mostrar la reunión dentro del diseño de entrada estándar de su tema (con barras laterales, etc.). Para asegurar una vista limpia y sin distracciones, debe asignar una página en blanco como plantilla.
+    -   **Cree una Página en Blanco:** Vaya a **Páginas > Añadir nueva** y cree una nueva página vacía. Nómbrela "Moderador de Reunión" o algo similar.
+    -   **Asigne la Página Moderadora:** Vuelva a **plugNmeet > Ajustes > Opciones** y seleccione la página que acaba de crear en el menú desplegable **Página Moderadora de la Sala**.
 
 3.  **Actualizar los Enlaces Permanentes:**
-    -   Después de personalizar el slug o establecer la página anfitriona, **debe** actualizar sus enlaces permanentes.
+    -   Después de personalizar el slug o establecer la página moderadora, **debe** actualizar sus enlaces permanentes.
     -   Vaya a **Ajustes > Enlaces permanentes** y simplemente haga clic en **"Guardar Cambios."**
 
 Ahora, todos sus enlaces directos a las salas se abrirán en un diseño limpio y profesional usando su estructura de URL personalizada.
@@ -174,9 +174,9 @@ Ahora, todos sus enlaces directos a las salas se abrirán en un diseño limpio y
 
 ## 4. Gestión Post-Sesión
 
-Después de que una reunión concluye, todos los activos generados se organizan de forma ordenada y son accesibles desde la página **Plug-N-Meet > Salas** en su área de administración de WordPress. Desde la lista de salas, puede acceder a las **Grabaciones** y **Artefactos** de cada sesión.
+Después de que una reunión concluye, todos los activos generados se organizan de forma ordenada y son accesibles desde la página **plugNmeet > Salas** en su área de administración de WordPress. Desde la lista de salas, puede acceder a las **Grabaciones** y **Artefactos** de cada sesión.
 
-### Gestión de Grabaciones
+### Gestión de grabaciones
 
 ![La página de gestión de grabaciones en el plugin de PlugNmeet para WordPress, mostrando opciones para descargar y fusionar archivos de video.](/img/wordpress/7.png)
 
@@ -184,7 +184,7 @@ La página de **Grabaciones** para cada sala le permite:
 - Descargar y eliminar grabaciones.
 - **Fusionar múltiples segmentos de grabación** en un único archivo MP4 continuo para una fácil distribución.
 
-### Acceso a Artefactos
+### Acceso a artefactos
 
 ![La página de gestión de artefactos en el plugin de PlugNmeet para WordPress, mostrando informes de análisis descargables y resúmenes de IA.](/img/wordpress/6.png)
 
@@ -197,9 +197,9 @@ La página de **Artefactos** contiene todos los demás archivos y datos generado
 
 ---
 
-## 5. Configuración Avanzada
+## 5. Configuración avanzada
 
-### Anulación de Plantillas del Plugin para Desarrolladores de Temas
+### Anulación de plantillas del plugin para desarrolladores de temas
 
 Para una máxima flexibilidad, el plugin de plugNmeet permite a los desarrolladores de temas anular cualquiera de sus archivos de plantilla del front-end creando copias en el directorio de su propio tema. El plugin sigue la jerarquía de plantillas estándar de WordPress, buscando archivos en este orden:
 
@@ -227,7 +227,7 @@ a
 `[su-tema]/plugnmeet/plugnmeet-public-display.php`
 Esto le permite añadir divs contenedores personalizados, cambiar el orden de las partes de la plantilla o incluso cargar condicionalmente diferentes partes basándose en su propia lógica.
 
-### Hooks para Desarrolladores
+### Hooks para desarrolladores
 
 El plugin dispara un hook de acción `plugnmeet_webhook_data`, permitiéndole procesar datos de eventos en tiempo real de sus reuniones. Puede conectarse a este hook en el archivo `functions.php` de su tema o en un plugin personalizado.
 
@@ -242,9 +242,9 @@ function mi_manejador_webhook_plugnmeet( $data ) {
 
 ---
 
-## 6. Seguridad y Privacidad
+## 6. Seguridad y privacidad
 
 La seguridad es una fortaleza central de la plataforma plugNmeet.
 *   **Control de Datos:** Como usted controla el servidor (ya sea autoalojado o a través de nuestro servicio en la nube privado), usted controla sus datos.
 *   **Alojamiento On-Premises:** Para una máxima privacidad, el servidor de código abierto de plugNmeet puede instalarse en su propio hardware local, asegurando que los datos sensibles nunca salgan de su red. Esto es ideal para organizaciones con estrictas necesidades de cumplimiento de datos (p. ej., GDPR, HIPAA).
-*   **Cifrado:** Toda la comunicación está cifrada por defecto usando estándares WebRTC. Para una máxima seguridad, puede habilitar el **Cifrado de Extremo a Extremo (E2EE)** para sus reuniones.
+*   **Cifrado:** Toda la comunicación está cifrada de forma predeterminada usando estándares WebRTC. Para una máxima seguridad, puede habilitar el **Cifrado de Extremo a Extremo (E2EE)** para sus reuniones.

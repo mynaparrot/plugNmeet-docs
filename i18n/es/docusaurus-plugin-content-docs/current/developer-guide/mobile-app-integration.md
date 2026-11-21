@@ -5,13 +5,13 @@ sidebar_position: 5
 sidebar_label: Guía de Aplicación de Video Personalizada
 ---
 
-# Cree una Aplicación de Videoconferencia Personalizada con la Integración Híbrida de plugNmeet
+# Cree una aplicación de videoconferencia personalizada con la integración híbrida de plugNmeet
 
 El modelo de integración híbrida de plugNmeet proporciona un camino rápido y flexible para construir aplicaciones de videoconferencia personalizadas para plataformas nativas como iOS, Android, Flutter, React Native o escritorio.
 
 Esta arquitectura combina una capa de medios nativa con el cliente web completo de plugNmeet, que se ejecuta dentro de una WebView. La aplicación nativa se encarga de toda la publicación de contenido multimedia (micrófono, cámara y pantalla compartida), mientras que el cliente web proporciona una interfaz de reuniones con muchas funciones. Este enfoque permite a los desarrolladores aprovechar un procesamiento multimedia nativo sin tener que crear ellos mismos desde cero una interfaz de videoconferencias compleja. Es especialmente útil para habilitar funciones como compartir la pantalla desde el teléfono, que no está bien soportado en los navegadores móviles.
 
-## Véalo en Acción: Aplicaciones de Demostración
+## Véalo en acción: Aplicaciones de demostración
 
 Antes de sumergirse en los detalles técnicos, puede ver esta integración híbrida en acción explorando nuestras aplicaciones de demostración de código abierto.
 
@@ -21,7 +21,7 @@ En lugar de un SDK restrictivo, proporcionamos un **patrón** flexible: ejecute 
 
 Consulte las aplicaciones de demostración en nuestro [repositorio de aplicaciones móviles de plugNmeet](https://github.com/mynaparrot/plugnmeet-mobile-app) para comprender el patrón.
 
-## Arquitectura e Identidad
+## Arquitectura e identidad
 
 El núcleo del modelo híbrido es representar a un único usuario lógico con dos participantes en la sala de LiveKit:
 
@@ -34,9 +34,9 @@ El cliente web renderiza la interfaz de usuario y se suscribe a todos los flujos
 
 ![Arquitectura de Integración Híbrida](/img/hybrid-architecture.png)
 
-## Flujo de Trabajo de Extremo a Extremo
+## Flujo de trabajo de extremo a extremo
 
-### Paso 1: Obtener un Token de Acceso
+### Paso 1: Obtener un token de acceso
 
 El flujo de trabajo comienza en su backend. Para autorizar a un usuario, su servidor llama a la API de plugNmeet para generar un token de acceso. Para una aplicación híbrida, es crucial establecer el `client_type` en esta solicitud.
 
@@ -44,11 +44,11 @@ El flujo de trabajo comienza en su backend. Para autorizar a un usuario, su serv
 2.  **En el cuerpo de la solicitud:** Establezca `user_info.client_type = "HYBRID_WEB"`.
 3.  **Backend:** Reciba el JWT (`access_token`) del servidor de plugNmeet y páselo de forma segura a su aplicación nativa, junto con su `serverUrl`.
 
-### Paso 2: Cargar el Cliente Web en una WebView
+### Paso 2: Cargar el cliente web en una WebView
 
 Una vez que la aplicación nativa tiene el `access_token`, debe cargar el cliente web de plugNmeet en una WebView. Hay dos métodos principales para esto:
 
-#### Opción A: Cargar el Cliente Web Alojado Directamente (Simple)
+#### Opción A: Cargar el cliente web alojado directamente (simple)
 
 Este es el enfoque más fácil. Construya la URL con el token de acceso y cárguela.
 
@@ -72,34 +72,34 @@ val url = "${serverUrl.trimEnd('/')}/?access_token=${jwt}&custom_design=${custom
 webView.loadUrl(url)
 ```
 
-#### Opción B: Construir una Estructura HTML Personalizada (Avanzado)
+#### Opción B: Construir una estructura HTML personalizada (avanzado)
 
 Esto le da el máximo control. La aplicación nativa llama a `POST /api/getClientFiles` usando el JWT para la autenticación (p. ej., `Authorization: <access_token>`). Este endpoint está diseñado para aplicaciones nativas y proporciona los mismos activos que el endpoint del lado del servidor `/auth/getClientFiles`, que utiliza autenticación con Clave/Secreto de API. Consulte la [API de Obtención de Archivos de Cliente](/docs/api/get-client-files) para detalles de la respuesta. Luego, la aplicación crea en memoria una estructura HTML a partir de los recursos obtenidos y la carga en el WebView.
 
 Incluso con este método, se pueden aplicar personalizaciones del lado del cliente inyectando un objeto `window.plugNmeetConfig`. Consulte nuestra [Guía de Personalización de Diseño](./design-customisation) para más detalles.
 
-### Paso 3: Entrar en Modo Híbrido
+### Paso 3: Entrar en modo híbrido
 
 El cliente web valida la sesión llamando a `POST /api/verifyToken`. Luego, entra en modo híbrido basándose en una de dos condiciones:
 
 -   **Basado en Token (Recomendado):** La respuesta de `verifyToken` contiene `client_type = HYBRID_WEB`.
 -   **Anulación por Configuración:** La aplicación nativa inyecta `force_hybrid_web: true` en el objeto `window.plugNmeetConfig`. Esto fuerza el modo híbrido independientemente del `client_type` del token y es útil para pruebas o esquemas de URL personalizados.
 
-### Paso 4: Transferencia al Publicador Nativo
+### Paso 4: Transferencia al publicador nativo
 
 En modo híbrido, el servidor de plugNmeet proporciona dos tokens de LiveKit al cliente web: un token de solo suscripción para sí mismo y un token de solo publicación para el gemelo nativo.
 
 El cliente web se conecta a LiveKit y luego pasa el token de solo publicación a la aplicación nativa a través del puente de comunicación usando la acción `INITIALIZE_NATIVE_PUBLISHER`. Su aplicación nativa ahora tiene todo lo que necesita para conectarse a LiveKit y comenzar a publicar medios.
 
-## API del Puente de Comunicación
+## API del puente de comunicación
 
-La comunicación entre la WebView y el anfitrión nativo se maneja mediante un puente de mensajes definido en [`plugnmeet_native_bridge.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_native_bridge.proto). El formato en la transmisión es **texto JSON proto3**.
+La comunicación entre la WebView y el moderador nativo se maneja mediante un puente de mensajes definido en [`plugnmeet_native_bridge.proto`](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_native_bridge.proto). El formato en la transmisión es **texto JSON proto3**.
 
-### Del Cliente Web al Anfitrión Nativo
+### Del cliente web al moderador nativo
 
 | Acción | Parámetros | Descripción |
 | --- | --- | --- |
-| `INITIALIZE_NATIVE_PUBLISHER` | `{ livekitUrl, token, nativeUserId, e2ee? }` | Proporciona al anfitrión nativo la URL de LiveKit y el token de solo publicación. |
+| `INITIALIZE_NATIVE_PUBLISHER` | `{ livekitUrl, token, nativeUserId, e2ee? }` | Proporciona al moderador nativo la URL de LiveKit y el token de solo publicación. |
 | `PUBLISH_NATIVE_MEDIA` | `{ source }` | Solicita la publicación nativa para `MIC`, `WEBCAM` o `SCREENSHARE`. |
 | `UNPUBLISH_NATIVE_MEDIA` | `{ source }` | Solicita que la aplicación nativa deje de publicar la fuente de medios seleccionada. |
 | `MUTE_NATIVE_MEDIA` | `{ source }` | Silencia una pista nativa ya publicada sin dejar de publicarla. |
@@ -107,7 +107,7 @@ La comunicación entre la WebView y el anfitrión nativo se maneja mediante un p
 | `NATIVE_HEARTBEAT_PING` | `{ ts }` | Mensaje de mantenimiento de conexión (keepalive) de la web al nativo. |
 | `TEARDOWN_NATIVE_PUBLISHER` | `{}` | Solicita que la aplicación nativa se desconecte de LiveKit y libere los recursos de medios. |
 
-### Del Anfitrión Nativo al Cliente Web
+### Del moderador nativo al cliente web
 
 | Acción | Parámetros | Descripción |
 | --- | --- | --- |
@@ -116,7 +116,7 @@ La comunicación entre la WebView y el anfitrión nativo se maneja mediante un p
 | `NATIVE_TRACK_UNPUBLISHED` | `{ userId, kind, source }` | Notifica al cliente web que se ha dejado de publicar una pista nativa. |
 | `NATIVE_MEDIA_MUTED` | `{ source, muted }` | Confirma el estado de silencio nativo. |
 | `NATIVE_HEARTBEAT_PONG` | `{ ts }` | Respuesta nativa al ping de latido (heartbeat). |
-| `NATIVE_ERROR` | `{ msg, context? }` | Informa de un error genérico desde el anfitrión nativo. |
+| `NATIVE_ERROR` | `{ msg, context? }` | Informa de un error genérico desde el moderador nativo. |
 
 ## Transferencia de E2EE
 
@@ -137,7 +137,7 @@ Si el cifrado de extremo a extremo está habilitado, la clave de cifrado en text
 }
 ```
 
-## Lista de Verificación para la Implementación de la Aplicación Nativa
+## Lista de verificación para la implementación de la aplicación nativa
 
 ### Requerido
 

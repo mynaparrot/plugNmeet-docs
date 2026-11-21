@@ -1,16 +1,16 @@
 ---
-title: Resumen de Seguridad y Privacidad de Plug-N-Meet | Su Solución de Videoconferencia Autoalojada
-description: Una descripción detallada de la arquitectura de seguridad, los mecanismos de autenticación, autorización y cifrado de extremo a extremo (E2EE) dentro de la plataforma Plug-N-Meet.
+title: Resumen de Seguridad y Privacidad de plugNmeet | Su Solución de Videoconferencia Autoalojada
+description: Una descripción detallada de la arquitectura de seguridad, los mecanismos de autenticación, autorización y cifrado de extremo a extremo (E2EE) dentro de la plataforma plugNmeet.
 keywords: [seguridad, privacidad, manejo de datos, e2ee, cifrado de extremo a extremo, autenticación, autorización, hmac, jwt, nats, livekit, seguridad webrtc]
 sidebar_position: 3
 sidebar_label: Seguridad y Privacidad
 ---
 
-# Resumen de Seguridad y Privacidad de Plug-N-Meet
+# Resumen de seguridad y privacidad de plugNmeet
 
-Este documento ofrece un panorama completo de la arquitectura de seguridad y los principios de privacidad que rigen la plataforma Plug-N-Meet. No solo detalla las medidas técnicas que implementamos para proteger sus reuniones contra accesos no autorizados, sino que también ofrece una explicación transparente sobre cómo se manejan, almacenan y gestionan sus datos durante todo su ciclo de vida. El sistema está diseñado desde cero para ser seguro por defecto y brindarle a usted, como operador, el control total sobre sus datos.
+Este documento ofrece un panorama completo de la arquitectura de seguridad y los principios de privacidad que rigen la plataforma plugNmeet. No solo detalla las medidas técnicas que implementamos para proteger sus reuniones contra accesos no autorizados, sino que también ofrece una explicación transparente sobre cómo se manejan, almacenan y gestionan sus datos durante todo su ciclo de vida. El sistema está diseñado desde cero para ser seguro de forma predeterminada y brindarle a usted, como operador, el control total sobre sus datos.
 
-## Tabla de Contenidos
+## Tabla de contenidos
 
 1.  [Autenticación de la API](#1-autenticación-de-la-api)
 2.  [Autenticación y Autorización de Usuarios](#2-autenticación-y-autorización-de-usuarios)
@@ -39,7 +39,7 @@ El servidor valida la clave de API y recalcula el hash de forma independiente. L
 
 *Referencia: `server/pkg/controllers/auth.go` (`HandleAuthHeaderCheck`)*
 
-### 2. Autenticación y Autorización de Usuarios
+### 2. Autenticación y autorización de usuarios
 
 Antes de que un usuario pueda conectarse a la infraestructura en tiempo real de una sala (NATS y LiveKit), su token de acceso debe ser verificado.
 
@@ -53,11 +53,11 @@ Para mantener una sesión segura e ininterrumpida, la aplicación cliente es res
 
 *Referencias: `server/pkg/controllers/auth.go` (`HandleVerifyToken`), `client/src/helpers/api/plugNmeetAPI.ts`*
 
-### 3. Cifrado de Extremo a Extremo (E2EE)
+### 3. Cifrado de extremo a extremo (E2EE)
 
-Plug-N-Meet proporciona un sólido cifrado de extremo a extremo (E2EE) para todos los datos entre pares, incluyendo flujos de medios (audio, video, pantalla compartida), mensajes de chat, datos de la pizarra y todas las notificaciones. Esto garantiza que el servidor nunca pueda acceder al contenido sin cifrar.
+plugNmeet proporciona un sólido cifrado de extremo a extremo (E2EE) para todos los datos entre pares, incluyendo flujos de medios (audio, video, pantalla compartida), mensajes de chat, datos de la pizarra y todas las notificaciones. Esto garantiza que el servidor nunca pueda acceder al contenido sin cifrar.
 
-#### 3.1. Claves Generadas por el Servidor
+#### 3.1. Claves generadas por el servidor
 
 Cuando se crea una sala con E2EE habilitado pero `enabled_self_insert_encryption_key` es `false`, el servidor backend genera de forma segura una cadena aleatoria de 32 bytes para que sirva como secreto base. Este secreto se almacena como parte de los metadatos de la sala y se distribuye a los participantes autenticados cuando se unen.
 
@@ -67,7 +67,7 @@ Cuando se crea una sala con E2EE habilitado pero `enabled_self_insert_encryption
 
 *Referencias: `protocol/utils/create_room.go` (`SetCreateRoomDefaultValues`), `protocol/proto_files/plugnmeet_create_room.proto`*
 
-#### 3.2. Claves Proporcionadas por el Usuario
+#### 3.2. Claves proporcionadas por el usuario
 
 Para la máxima seguridad y un modelo de confianza cero (zero-trust), las salas pueden configurarse con `enabled_self_insert_encryption_key` establecido en `true`.
 
@@ -77,7 +77,7 @@ Para la máxima seguridad y un modelo de confianza cero (zero-trust), las salas 
 
 *Referencias: `client/src/components/extra-pages/InsertE2EEKey.tsx`, `client/src/helpers/libs/cryptoMessages.ts` (`importSecretKeyFromPlainText`), `client/src/helpers/nats/ConnectNats.ts` (`createMediaServerConn`)*
 
-### 4. Seguridad del Transporte y de los Datos en Tránsito
+### 4. Seguridad del transporte y de los datos en tránsito
 
 #### 4.1. Comunicación NATS
 
@@ -88,7 +88,7 @@ La comunicación para la señalización, el chat y otros mensajes de datos se ma
 
 *Referencias: `server/pkg/controllers/nats_auth_controller.go`, `client/src/helpers/nats/ConnectNats.ts`*
 
-#### 4.2. Servidor de Medios (LiveKit)
+#### 4.2. Servidor de medios (LiveKit)
 
 Los flujos de medios son gestionados por LiveKit, que tiene soporte integrado para E2EE.
 
@@ -97,7 +97,7 @@ Los flujos de medios son gestionados por LiveKit, que tiene soporte integrado pa
 
 *Referencia: `client/src/helpers/livekit/ConnectLivekit.ts`*
 
-#### 4.3. Puerta de enlace SIP (SIP Gateway)
+#### 4.3. Puerta de enlace SIP (SIP gateway)
 
 La función de acceso telefónico está impulsada por el proyecto **[livekit/sip](https://github.com/livekit/sip)**. Esta es una función avanzada que requiere que el administrador del servidor la configure con un proveedor externo de troncales SIP para enlazar llamadas entre la red telefónica (PSTN) y la sesión WebRTC.
 
@@ -105,27 +105,27 @@ La función de acceso telefónico está impulsada por el proyecto **[livekit/sip
 -   **Cifrado de transporte (SRTP):** El servicio `livekit/sip` admite `SIPMediaEncryption` (SRTP), que cifra el flujo de audio entre la puerta de enlace SIP y su proveedor. Es su responsabilidad habilitar esto y asegurarse de que su proveedor lo admita.
 -   **Incompatibilidad con E2EE:** La puerta de enlace SIP debe procesar audio sin cifrar para conectar la llamada entre las redes PSTN y WebRTC. Debido a esto, es, **por su naturaleza, incompatible** con el cifrado de extremo a extremo. La función de acceso telefónico SIP se desactiva automáticamente en cualquier sala donde esté activo el E2EE.
 
-### 5. Servicios de IA y Privacidad de Datos (Plataforma de Análisis)
+### 5. Servicios de IA y privacidad de datos (plataforma de análisis)
 
-La plataforma de análisis de Plug-N-Meet se integra con proveedores de IA de terceros (como Microsoft Azure y Google) para ofrecer funciones avanzadas. Como operador de la plataforma, es su responsabilidad comprender cómo se manejan estos datos y actualizar su propia política de privacidad para reflejarlo.
+La plataforma de análisis de plugNmeet se integra con proveedores de IA de terceros (como Microsoft Azure y Google) para ofrecer funciones avanzadas. Como operador de la plataforma, es su responsabilidad comprender cómo se manejan estos datos y actualizar su propia política de privacidad para reflejarlo.
 
-#### 5.1. Funciones de IA Basadas en Audio
+#### 5.1. Funciones de IA basadas en audio
 
 Las funciones que requieren comprender las palabras habladas, como la **Conversión de Voz a Texto (Speech-to-Text)**, las **Traducciones Habladas** y los **Resúmenes de Reuniones con IA**, funcionan procesando el audio de la reunión.
 
 *   **Cómo funciona:** Cuando se habilitan estas funciones, un agente de IA se une a la sesión. Este agente captura el flujo de audio mezclado de la reunión y lo envía directamente al proveedor de IA configurado para su procesamiento.
-*   **Flujo de datos:** Los datos de audio se transmiten desde su servidor Plug-N-Meet hacia los servidores del proveedor de IA de terceros.
+*   **Flujo de datos:** Los datos de audio se transmiten desde su servidor plugNmeet hacia los servidores del proveedor de IA de terceros.
 
-#### 5.2. Funciones de IA Basadas en Texto
+#### 5.2. Funciones de IA basadas en texto
 
 Las funciones basadas en texto tienen diferentes modelos de flujo de datos según su propósito.
 
-*   **Traducción de chat:** Esta es una función de **difusión (broadcast)**. Cuando un usuario envía un mensaje de chat, el texto se envía al proveedor de IA para su traducción. El texto traducido es recibido por el servidor Plug-N-Meet y se transmite a los participantes pertinentes.
+*   **Traducción de chat:** Esta es una función de **difusión (broadcast)**. Cuando un usuario envía un mensaje de chat, el texto se envía al proveedor de IA para su traducción. El texto traducido es recibido por el servidor plugNmeet y se transmite a los participantes pertinentes.
 *   **Asistente de chat con IA:** Esta es una función **privada e individual**. Cuando un usuario envía un mensaje al asistente de IA, ese mensaje se envía al proveedor de IA. La respuesta se devuelve **exclusivamente a ese usuario específico** y no se transmite a nadie más en la reunión.
 
-#### 5.3. El Impacto del Cifrado de Extremo a Extremo (E2EE)
+#### 5.3. El impacto del cifrado de extremo a extremo (E2EE)
 
-Su privacidad y seguridad son nuestra máxima prioridad. La interacción entre las funciones de IA y el E2EE está diseñada para ser segura por defecto.
+Su privacidad y seguridad son nuestra máxima prioridad. La interacción entre las funciones de IA y el E2EE está diseñada para ser segura de forma predeterminada.
 
 *   **Cuando el E2EE está habilitado con una clave proporcionada por el usuario (`enabled_self_insert_encryption_key: true`), todas las funciones de IA basadas en audio se desactivan automáticamente.** Esta es una medida de seguridad deliberada. El agente de IA no puede descifrar el flujo de audio y, por lo tanto, no puede funcionar.
 *   **Las funciones basadas en texto, como la traducción de chat y el asistente de chat con IA, seguirán funcionando.** Esto se debe a que el texto se envía al proveedor de IA *antes* de ser cifrado para su transporte a través de NATS.
@@ -144,7 +144,7 @@ El Agente de IA es un asistente de voz que puede unirse a una sesión 1 a 1. Su 
 
 Para más detalles de configuración, consulte [Configuración del servidor y del proveedor del Agente de IA](/docs/ai-agent/configuration) y [Capacidades, visión y salvaguardas](/docs/ai-agent/tools-and-capabilities).
 
-### 6. Flujo de Sesión Segura
+### 6. Flujo de sesión segura
 
 El proceso de conexión de extremo a extremo está diseñado con seguridad en cada paso. El flujo exacto puede variar según la configuración de la sala (p. ej., si el E2EE está habilitado).
 
@@ -155,7 +155,7 @@ El proceso de conexión de extremo a extremo está diseñado con seguridad en ca
 5.  **Conexión de medios**: El cliente se conecta al servidor de medios LiveKit. Si el E2EE está activo, habilita el cifrado con la clave importada.
 6.  **Comunicación segura**: Todos los datos y medios subsiguientes se manejan ahora de acuerdo con la configuración de seguridad de la sala, con el E2EE aplicado si fue habilitado.
 
-### 7. Almacenamiento en el Navegador (IndexedDB)
+### 7. Almacenamiento en el navegador (IndexedDB)
 
 Para mejorar la experiencia del usuario y garantizar la continuidad de la sesión, la aplicación utiliza el almacenamiento IndexedDB integrado del navegador. Esto se utiliza con fines estrictamente funcionales, como restaurar la sesión de un usuario si actualiza accidentalmente su página.
 
@@ -165,7 +165,7 @@ Para lograr esto, la aplicación almacena temporalmente datos de sesión efímer
 *   **Contenido e historial de la sesión:** Para restaurar mensajes de chat, transcripciones de voz a texto y el estado de la pizarra.
 *   **Cachés de rendimiento:** Como imágenes en caché para mejorar los tiempos de carga.
 
-#### Ciclo de Vida de los Datos y Cifrado
+#### Ciclo de vida de los datos y cifrado
 
 Los datos almacenados en IndexedDB están diseñados para ser efímeros y se manejan de la siguiente manera:
 
@@ -180,25 +180,25 @@ Los datos almacenados en IndexedDB están diseñados para ser efímeros y se man
 
 **Aviso legal para operadores:** Como la persona u organización que despliega este software, usted es responsable de crear y mantener su propia Política de Privacidad. Debe utilizar esta información para asegurarse de que su política sea transparente y cumpla con cualquier regulación de protección de datos aplicable (p. ej., GDPR).
 
-### 8. Manejo y Persistencia de Datos en el Servidor
+### 8. Manejo y persistencia de datos en el servidor
 
 Para proporcionar una imagen completa del ciclo de vida de los datos, esta sección describe cómo se manejan y almacenan los datos en el lado del servidor. La arquitectura está diseñada para separar los datos volátiles en tiempo real de los datos persistentes a largo plazo, con un fuerte énfasis en la retención de datos controlada por el usuario.
 
-#### 8.1. Estado de la Sesión en Tiempo Real (Redis o NATS KV)
+#### 8.1. Estado de la sesión en tiempo real (Redis o NATS KV)
 
 Durante una reunión activa, el servidor necesita gestionar el estado en tiempo real de la sala, como la lista de participantes, su estado de silencio y otros metadatos inmediatos. Esto se gestiona mediante un almacén en memoria de clave-valor de alto rendimiento (ya sea Redis o NATS KV).
 
 -   **Propósito:** Coordinación rápida y en tiempo real de una sesión activa.
 -   **Ciclo de vida:** Estos datos son volátiles y están vinculados a la vida de la sesión. Se borran automáticamente cuando finaliza la sesión.
 
-#### 8.2. Base de Datos Persistente (MariaDB)
+#### 8.2. Base de datos persistente (MariaDB)
 
 Para fines de referencia histórica y administrativos, se almacena un pequeño subconjunto de información no sensible en una base de datos relacional persistente (MariaDB).
 
 -   **Propósito:** Mantenimiento de registros a largo plazo de las reuniones ocurridas.
 -   **Datos almacenados:** Esto típicamente incluye información básica de la sala como `roomId`, `title`, hora de creación/finalización, etc.
 
-#### 8.3. Datos de Análisis Opcionales
+#### 8.3. Datos de análisis opcionales
 
 PlugNmeet ofrece la opción de guardar análisis detallados de una sesión para ayudar a los administradores a comprender los patrones de uso. Esta función se rige por una configuración que proporciona a los administradores el control sobre la retención de datos.
 
@@ -213,7 +213,7 @@ PlugNmeet ofrece la opción de guardar análisis detallados de una sesión para 
     -   Si es `true`, los metadatos agregados se escriben en un archivo JSON y su referencia se guarda en la base de datos.
     -   Si es `false`, los datos en memoria se descartan inmediatamente y no se almacenan de ninguna forma.
 
-#### 8.4. Grabaciones en la Nube
+#### 8.4. Grabaciones en la nube
 
 Cuando se habilita la grabación en la nube para una sesión, el archivo de medios resultante (MP4) se almacena en el servidor.
 
@@ -222,9 +222,9 @@ Cuando se habilita la grabación en la nube para una sesión, el archivo de medi
 -   **Control del usuario y ciclo de vida:** La gestión de estas grabaciones está totalmente controlada por el administrador a través de la API. Las grabaciones se retienen en el servidor indefinidamente hasta que se eliminan explícitamente mediante la llamada a la API `/recording/delete`. Esto le da al administrador el control total sobre el ciclo de vida de retención de datos.
 -   **Incompatibilidad con E2EE:** La grabación del lado del servidor es **fundamentalmente incompatible** con el cifrado de extremo a extremo de confianza cero. Por lo tanto, la grabación en la nube se desactiva automáticamente y no se puede iniciar si la sala está configurada con `enabled_self_insert_encryption_key: true`. Esto se debe a que el servidor no tiene acceso a los flujos de medios no cifrados necesarios para crear la grabación, que es la garantía principal del modelo E2EE.
 
-#### 8.5. Artefactos del Servicio de IA
+#### 8.5. Artefactos del servicio de IA
 
-Cuando se utilizan funciones de IA como la transcripción o el resumen, estas generan artefactos de datos valiosos. Al igual que con las grabaciones en la nube y los análisis, Plug-N-Meet le da al administrador el control total sobre estos datos.
+Cuando se utilizan funciones de IA como la transcripción o el resumen, estas generan artefactos de datos valiosos. Al igual que con las grabaciones en la nube y los análisis, plugNmeet le da al administrador el control total sobre estos datos.
 
 -   **Propósito:** Proporcionar un registro persistente y recuperable de la inteligencia de la reunión generada por IA.
 -   **Almacenamiento:** Los archivos generados (ej., archivos de transcripción VTT, resúmenes de texto) se almacenan en un directorio configurable en el sistema de archivos del servidor. Para permitir una fácil gestión y recuperación, se almacenan los **metadatos** sobre estos artefactos (como el `roomId` asociado, `file_path`, uso de tokens de IA y duración del habla) en la tabla `pnm_room_artifacts` de la base de datos persistente.
@@ -235,4 +235,4 @@ Cuando se utilizan funciones de IA como la transcripción o el resumen, estas ge
 
 ---
 
-Este enfoque de seguridad y gestión de datos en múltiples capas hace más que proteger contra amenazas comunes; proporciona un marco transparente y flexible que lo pone a usted, el operador, al mando. Al combinar medidas de seguridad sólidas con una filosofía de "**_privacidad por diseño_**", Plug-N-Meet le brinda las herramientas y la transparencia necesarias para cumplir con sus propias obligaciones de privacidad y cumplimiento con confianza.
+Este enfoque de seguridad y gestión de datos en múltiples capas hace más que proteger contra amenazas comunes; proporciona un marco transparente y flexible que lo pone a usted, el operador, al mando. Al combinar medidas de seguridad sólidas con una filosofía de "**_privacidad por diseño_**", plugNmeet le brinda las herramientas y la transparencia necesarias para cumplir con sus propias obligaciones de privacidad y cumplimiento con confianza.

@@ -6,11 +6,11 @@ sidebar_position: 3
 sidebar_label: Personalización del Diseño
 ---
 
-# Personalización del Diseño
+# Personalización del diseño
 
 Esta guía explica cómo personalizar la apariencia de la interfaz de usuario de plugNmeet. Puede lograr una experiencia de marca blanca integral mediante una combinación de parámetros de configuración sencillos y su propio CSS personalizado.
 
-## Método 1: Uso de `config.js` para Personalización Básica
+## Método 1: Uso de `config.js` para personalización básica
 
 Para una personalización de marca rápida y sencilla, puede editar el archivo `config.js` ubicado en el directorio `dist/assets/` del paquete `plugNmeet-client`.
 
@@ -18,7 +18,7 @@ En la última versión, toda la configuración se gestiona a través del objeto 
 
 > **Nota:** Para mantener la compatibilidad con versiones anteriores, la variable heredada `window.DESIGN_CUSTOMIZATION` aún es compatible, pero recomendamos utilizar la nueva estructura `window.plugNmeetConfig` para todas las nuevas implementaciones.
 
-### Ejemplo de Configuración
+### Ejemplo de configuración
 
 A continuación se muestra cómo configurar su `config.js` con personalizaciones de diseño:
 
@@ -51,7 +51,7 @@ window.plugNmeetConfig = {
 También puede enviar este mismo objeto JSON como un parámetro de URL llamado `custom_design` al unirse a una sala. Esto le permite aplicar diferentes diseños para distintos usuarios o reuniones de forma dinámica.
 :::
 
-### Parámetros de Diseño
+### Parámetros de diseño
 
 > **Importante:** Todos los recursos externos (`background_image`, `custom_css_url`, `custom_logo`, etc.) deben servirse a través de **HTTPS**. El uso de URLs no HTTPS (`http://`) provocará errores de contenido mixto en el navegador e impedirá que los recursos se carguen.
 
@@ -81,13 +81,13 @@ Sin embargo, los recursos globales como `custom_logo`, `background_image` y `bac
 
 ---
 
-## Método 2: Personalización Avanzada a través de CSS
+## Método 2: Personalización avanzada a través de CSS
 
 Para un control total sobre cada elemento de la interfaz —incluyendo fuentes, espaciado, ocultación de elementos o el ajuste fino del Modo Oscuro— puede utilizar la opción `custom_css_url` en su configuración.
 
 Este archivo CSS se carga después de todas las hojas de estilo predeterminadas, lo que otorga prioridad a sus reglas.
 
-### Cómo Identificar Clases
+### Cómo identificar clases
 
 Dado que la aplicación está en desarrollo activo, los nombres y las estructuras de las clases pueden cambiar con el tiempo. Recomendamos usar las herramientas de desarrollador de su navegador para identificar los selectores correctos para los elementos que desea modificar.
 

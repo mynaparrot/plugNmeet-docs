@@ -8,20 +8,20 @@ sidebar_position: 2
 
 # Profesor virtual con IA: guía para docentes
 
-Cada alumno aprende a un ritmo distinto. El Agente de IA de plugNmeet ofrece a cada estudiante un tutor individual, paciente y privado dentro de su aula virtual. El agente conversa con el alumno, resuelve problemas en la pizarra, hace preguntas y comprueba la comprensión con cuestionarios. Usted mantiene el control del tema, del tono y del horario.
+Cada alumno aprende a su propio ritmo. El Agente de IA de plugNmeet ofrece a cada estudiante un tutor individual, paciente y privado dentro de su aula virtual. El agente conversa con el alumno, resuelve problemas en la pizarra, hace preguntas y comprueba la comprensión con cuestionarios. Usted mantiene el control del tema, del tono y del horario.
 
-:::info En Desarrollo Activo
-El motor del Agente de IA y sus API están en desarrollo activo. Las funciones descritas aquí pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que la función se finalice y se publique. Mientras tanto, su equipo técnico puede configurar la función mediante la API de plugNmeet.
+:::info En desarrollo activo
+El motor del Agente de IA y sus API están en desarrollo activo. Las funciones descritas aquí pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista para cuando la función esté terminada y publicada. Mientras tanto, su equipo técnico puede configurar la función mediante la API de plugNmeet.
 :::
 
 ## Qué hace el agente en su clase
 
-- **Explica** un concepto en lenguaje sencillo, en el idioma que usted elija y a la velocidad de habla que establezca.
+- **Explica** un concepto con un lenguaje sencillo, en el idioma que usted elija y a la velocidad de habla que establezca.
 - **Dibuja** diagramas, ecuaciones y ejemplos resueltos en la pizarra mientras habla.
 - **Escribe** notas estructuradas en el bloc de notas compartido, como una solución paso a paso o una lista de vocabulario.
-- **Verifica la comprensión** con cuestionarios y encuestas, y explica de inmediato cada respuesta.
+- **Comprueba la comprensión** con cuestionarios y encuestas, y explica de inmediato cada respuesta.
 - **Se mantiene en el tema.** Sigue el tema de la lección que usted define y reconduce con suavidad a los alumnos cuando se desvían.
-- **Informa.** Después de cada sesión, usted recibe un resumen de lo que el alumno dominó, de las dificultades que tuvo y de lo que debe repasar a continuación.
+- **Informa.** Al terminar cada sesión, usted recibe un resumen de lo que el alumno dominó, de las dificultades que tuvo y de lo que debe repasar a continuación.
 
 **No** observa a los alumnos a través de sus cámaras web ni de las pantallas compartidas. El agente solo ve la pizarra y el bloc de notas compartido.
 
@@ -31,7 +31,7 @@ plugNmeet permite utilizar el agente de tres maneras en una clase. Elija la que 
 
 ### 1. Sesiones de grupo dirigidas por el docente (`NORMAL_ROOM`)
 
-Usted dirige la clase. Durante la lección, abra el panel **Breakout Rooms** y cree sesiones de IA 1 a 1 para los alumnos que elija. Cada sesión es una sala de grupo privada con el agente. El panel **Sesiones de IA** muestra qué alumnos están en una sesión, para que pueda supervisar su progreso e intervenir cuando sea necesario.
+Usted dirige la clase. Durante la lección, abra el panel **Breakout Rooms** y cree sesiones de IA 1 a 1 para los alumnos que elija. Cada sesión es una sala de grupo privada con el agente. El panel **Sesiones de IA** muestra qué alumnos están en una sesión, para que pueda supervisar su progreso e intervenir cuando haga falta.
 
 Ideal para: práctica guiada durante una lección en directo, o refuerzo para algunos alumnos mientras el resto de la clase trabaja en otras tareas.
 
@@ -41,14 +41,14 @@ Usted indica los alumnos que pueden usar el agente, hasta **32 identificadores d
 
 Ideal para: apoyo en las tareas, un curso de aula invertida o un grupo de tutoría con una lista fija.
 
-### 3. Sala de estudio de autoservicio disponible las 24 horas (`OPEN_PER_USER`)
+### 3. Sala de estudio de acceso libre disponible las 24 horas (`OPEN_PER_USER`)
 
 Cualquier alumno que abra el enlace de la sala de estudio recibe automáticamente una sesión 1 a 1 con el agente. Su administrador establece `max_concurrent_sessions` para controlar cuántos alumnos pueden estar en una sesión al mismo tiempo. El servidor limita este valor a **16 sesiones simultáneas**. En este modo, las cámaras web y la compartición de pantalla están desactivadas, de modo que la sala se mantiene centrada en la lección y en la pizarra.
 
 Ideal para: preparación de exámenes, práctica de idiomas fuera del horario escolar y repaso antes de una prueba.
 
 :::tip Cómo elegir un modo
-Use las **Sesiones de grupo dirigidas por el docente** cuando quiera estar presente. Use la **Lista de alumnos asignados** para un grupo conocido que necesita práctica periódica. Use el **Autoservicio disponible las 24 horas** cuando los alumnos necesitan ayuda fuera del horario de clase.
+Use las **Sesiones de grupo dirigidas por el docente** cuando quiera estar presente. Use la **Lista de alumnos asignados** para un grupo conocido que necesita práctica periódica. Use la **Sala de acceso libre** cuando los alumnos necesiten ayuda fuera del horario de clase.
 :::
 
 ## Plantillas de prompts listas para usar
@@ -100,20 +100,20 @@ Ajustes de sala sugeridos: `topic: "Causas de la Primera Guerra Mundial"`, `forb
 
 La barra de estado de IA muestra lo que el agente está haciendo en ese momento. Los estados son:
 
-| Estado | Significado |
-| --- | --- |
-| **Conectando** | El agente se está uniendo a la sesión. |
-| **Escuchando** | El agente espera a que el alumno hable. |
-| **Pensando** | El agente está preparando una respuesta. |
-| **Hablando** | El agente está hablando. |
-| **Dibujando** | El agente está trabajando en la pizarra. |
-| **En pausa** | La sesión está en pausa y el agente no responde. |
-| **Reconectando** | Se perdió la conexión y el agente intenta volver a unirse. |
-| **Detenido** | La sesión ha terminado. |
+|| Estado | Significado |
+|| --- | --- |
+|| **Conectando** | El agente se está uniendo a la sesión. |
+|| **Escuchando** | El agente espera a que el alumno hable. |
+|| **Pensando** | El agente está preparando una respuesta. |
+|| **Hablando** | El agente está hablando. |
+|| **Dibujando** | El agente está trabajando en la pizarra. |
+|| **En pausa** | La sesión está en pausa y el agente no responde. |
+|| **Reconectando** | Se perdió la conexión y el agente intenta volver a unirse. |
+|| **Detenido** | La sesión ha terminado. |
 
 ### Hablar con el agente
 
-Los alumnos pueden hablar con naturalidad. Pueden **interrumpir al agente a mitad de una frase** (interrupción o *barge-in*), y el agente se detiene y escucha. Esto es importante para la práctica de idiomas y para los alumnos que quieren hacer una pregunta rápida.
+Los alumnos pueden hablar con naturalidad. Pueden **interrumpir al agente a mitad de una frase** (*barge-in*), y el agente se detiene y escucha. Esto es útil en la práctica de idiomas y para los alumnos que quieren hacer una pregunta rápida.
 
 ### Dibujar en la pizarra
 
@@ -150,7 +150,7 @@ Los informes están redactados para docentes. Utilícelos para planificar su pr�
 1. **Empiece con una sola clase.** Pruebe las **Sesiones de grupo dirigidas por el docente** durante dos lecciones y, después, decida si desea ampliar su uso.
 2. **Defina un tema acotado.** Un tema específico y una lista corta de subtemas mantienen al agente centrado.
 3. **Revise los resúmenes cada semana.** Los patrones entre alumnos aportan más información que cualquier sesión aislada.
-4. **Explique a los alumnos qué es el agente.** Es un tutor de IA, no un docente humano. Explíqueles que no los observa a través de la cámara.
+4. **Explique a los alumnos qué es el agente.** Es un tutor de IA, no un docente humano, y no lo observa a través de la cámara.
 5. **Revise su política de datos.** El audio y el texto se envían al proveedor de IA que haya configurado. Consulte el [Resumen de seguridad](/docs/security-overview) para ver el flujo de datos completo.
 
 ## Próximos pasos

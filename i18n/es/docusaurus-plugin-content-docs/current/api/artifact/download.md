@@ -6,7 +6,7 @@ sidebar_position: 3
 sidebar_label: Descargar
 ---
 
-# Obtener Token de Descarga
+# Obtener token de descarga
 
 Endpoint: `/artifact/getDownloadToken`
 
@@ -16,13 +16,13 @@ Este endpoint genera un token seguro de un solo uso que se puede utilizar para d
 Este punto final es solo para tipos de artefactos que representan un archivo físico, como `MEETING_SUMMARY` o `SPEECH_TRANSCRIPTION`. No funcionará para artefactos que solo contienen metadatos, como `MEETING_SUMMARY_USAGE`.
 :::
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo       | Tipo   | Requerido | Descripción                            |
 | ----------- | ------ | --------- | -------------------------------------- |
 | artifact_id | string | Sí        | El identificador único del artefacto. |
 
-### Ejemplo de Solicitud
+### Ejemplo de solicitud
 
 ```json
 {
@@ -40,7 +40,7 @@ Este punto final es solo para tipos de artefactos que representan un archivo fí
 | token       | string  | El token de descarga de un solo uso. |
 
 Después de recibir el token, puede proporcionar la siguiente URL de descarga a su usuario:
-`https://Su-Servidor-Plug-N-Meet.com/download/artifact/EL_TOKEN_AQUÍ`
+`https://Su-Servidor-plugNmeet.com/download/artifact/EL_TOKEN_AQUÍ`
 
 :::tip[¿Descarga analíticas de reuniones?]
 Para el flujo completo — listar artefactos `MEETING_ANALYTICS`, descargar el JSON y darle formato de informes de asistencia y participación con el SDK para PHP — consulte la [guía de Analíticas de reuniones e informes](/docs/others/analytics).

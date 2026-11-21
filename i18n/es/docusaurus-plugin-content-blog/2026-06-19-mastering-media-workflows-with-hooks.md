@@ -12,7 +12,7 @@ Hoy nos complace anunciar una nueva función que lo cambia todo: los **Hooks de 
 
 <!--truncate-->
 
-### Por Qué los Hooks: El Poder de una Arquitectura Desacoplada
+### Por qué los hooks: El poder de una arquitectura desacoplada
 
 ¿Por qué supone esto un cambio tan importante? Los hooks le permiten **desacoplar** su lógica de negocio de la lógica de la aplicación. En lugar de quedar limitado al almacenamiento en disco local, ahora puede integrarse con prácticamente cualquier servicio externo.
 
@@ -23,7 +23,7 @@ Esto es lo que puede lograr con los hooks:
 *   **Habilite implementaciones complejas y escalables:** en un clúster multiservidor, los hooks son esenciales. Un nodo de grabación puede subir automáticamente una grabación sin procesar a un bucket central de S3, y se puede activar un nodo de transcodificación independiente para descargarla, procesarla y volver a subir el MP4 final.
 *   **Prepare su instalación para el futuro:** su estrategia de almacenamiento puede evolucionar sin quedar atada al ciclo de versiones de plugNmeet.
 
-### Cómo Funciona: Conceptos Fundamentales
+### Cómo funciona: Conceptos fundamentales
 
 El nuevo sistema se divide en dos mecanismos distintos pero relacionados: los **Hooks del Grabador** y los **Hooks de Almacenamiento del Servidor**. Antes de entrar en detalles, veamos los conceptos fundamentales que se aplican a todos los hooks.
 
@@ -31,7 +31,7 @@ El nuevo sistema se divide en dos mecanismos distintos pero relacionados: los **
 
 Para ofrecer la máxima flexibilidad, puede ejecutar sus hooks de dos maneras:
 
-*   **Procesos de larga duración (recomendado)**: su script se inicia una sola vez y se ejecuta de forma continua, escuchando solicitudes en `stdin`. Es altamente eficiente, ya que evita el coste de iniciar un proceso por cada evento.
+*   **Procesos de larga duración (recomendado)**: su script se inicia una sola vez y se ejecuta de forma continua, escuchando solicitudes en `stdin`. Es altamente eficiente, ya que evita el costo de iniciar un proceso por cada evento.
 *   **Comandos de única ejecución**: para tareas más sencillas, puede ejecutar un comando por cada evento. Es ideal para `curl`, `wget` o la utilidad integrada.
 
 Y hablando de utilidades, hemos incluido un práctico comando de única ejecución para simplificar las llamadas a API externas:
@@ -77,7 +77,7 @@ Si su script encuentra un error, debe rellenar el campo `error` en su respuesta 
 
 Si la respuesta no es un JSON válido, plugNmeet registra una **advertencia** y descarta la salida. Los datos JSON *originales* (el `stdin` de su script) se pasan al siguiente script de la tubería. De este modo se evita que un único script defectuoso interrumpa toda la cadena.
 
-### Hooks del Servidor: Gestión de Artefactos y Descargas
+### Hooks del servidor: Gestión de artefactos y descargas
 
 Estos hooks están diseñados para controlar cómo el servidor principal de plugNmeet gestiona los archivos, principalmente los diversos **artefactos de sala** y las descargas de cara al usuario.
 
@@ -89,11 +89,11 @@ Estos hooks están diseñados para controlar cómo el servidor principal de plug
 
 El enfoque recomendado para las descargas es devolver una URL temporal prefirmada (`action: "redirect"`). De este modo, el usuario descarga el archivo directamente desde su proveedor de almacenamiento (por ejemplo, S3), y el tráfico ni siquiera pasa por su servidor de plugNmeet, lo que le permite ahorrar ancho de banda y recursos.
 
-### Hooks del Grabador: Automatización de la Tubería de Grabación
+### Hooks del grabador: Automatización de la tubería de grabación
 
 Estos hooks le otorgan el control sobre la tubería de grabación y transcodificación. Aunque existen hooks para cada etapa (`post_recording`, `pre_transcoding`, `post_transcoding`), el caso de uso más habitual es la gestión del archivo final ya procesado.
 
-### Ejemplo 1: Integración Completa con S3 para los Hooks del Servidor
+### Ejemplo 1: Integración completa con S3 para los hooks del servidor
 
 Veamos un ejemplo real de integración con S3 para toda la gestión de archivos del lado del servidor utilizando Node.js. Con estos tres scripts dispondrá de una solución de almacenamiento completa, sólida y escalable para su servidor plugNmeet.
 
@@ -266,7 +266,7 @@ rl.on("line", async (line) => {
 });
 ```
 
-### Ejemplo 2: Cómo Completar el Flujo de Trabajo con un Hook del Grabador
+### Ejemplo 2: Cómo completar el flujo de trabajo con un hook del grabador
 
 Ahora creemos el script más importante del flujo de grabación: el hook `post_transcoding`. En muchas configuraciones, basta con actuar cuando el MP4 final está listo. Este hook se ejecuta en el nodo de grabación/transcodificación y es ideal para subir el archivo final a su ubicación de almacenamiento permanente.
 
@@ -346,7 +346,7 @@ El `output_path` final de este hook `post_transcoding` (por ejemplo, `recordings
 Cuando un usuario solicita descargar esta grabación, el **servidor** utilizará su propio `download_hook` con esta ruta como `input_path`. Debe asegurarse de que el `download_hook` de su `server` (como el que se muestra en el primer ejemplo) sea capaz de comprender y procesar el formato de `output_path` generado por este script.
 :::
 
-### Empiece Hoy Mismo
+### Empiece hoy mismo
 
 Este nuevo sistema de hooks abre un mundo de posibilidades para la automatización y las arquitecturas avanzadas nativas de la nube. Está diseñado para desarrolladores y administradores de sistemas que desean construir una plataforma de videoconferencia verdaderamente personalizada, escalable y sólida.
 

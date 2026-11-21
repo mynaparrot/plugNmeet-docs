@@ -6,7 +6,7 @@ sidebar_position: 20
 sidebar_label: Finalizar
 ---
 
-# Finalizar una Sala
+# Finalizar una sala
 
 Endpoint: `/room/endRoom`
 

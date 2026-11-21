@@ -8,15 +8,15 @@ sidebar_label: Webhooks
 
 # Webhooks
 
-Plug-N-Meet puede notificar a su aplicación sobre diversos eventos enviando solicitudes de webhook a una URL especificada. Puede configurar esta URL en los ajustes del servidor o proporcionarla al crear una sala.
+plugNmeet puede notificar a su aplicación sobre diversos eventos enviando solicitudes de webhook a una URL especificada. Puede configurar esta URL en los ajustes del servidor o proporcionarla al crear una sala.
 
-## Recepción de Webhooks
+## Recepción de webhooks
 
 Las solicitudes de webhook se envían como solicitudes HTTP POST a las URLs que haya configurado, ya sea en el archivo `config.yml` del servidor o durante la creación de la sala. Cada evento de webhook se codifica como JSON y se incluye en el cuerpo de la solicitud.
 
 La solicitud tendrá la cabecera `Content-Type` establecida en `application/json`. Asegúrese de que su servidor web esté configurado para aceptar cargas útiles con este tipo de contenido.
 
-Plug-N-Meet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de plugNmeet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
+plugNmeet utiliza el mismo patrón de seguridad que LiveKit. Para verificar que las solicitudes de webhook provienen de plugNmeet, cada solicitud incluye las cabeceras `Authorization` y `Hash-Token` que contienen un token JWT firmado. El token incluye un hash SHA256 de la carga útil. Para un ejemplo en PHP, consulte [webhook.php](https://github.com/mynaparrot/plugNmeet-sdk-php/blob/main/examples/webhook.php).
 
 Cada evento contiene `event`, `room`, `id` y `createdAt`. `room` es un `NotifyEventRoom` con al menos `room_id` y `sid`. Asocie siempre las sesiones mediante `room.room_id`. Si LiveKit no incluye la información de la sala en su callback, plugNmeet lo descarta y nunca lo reenvía.
 
@@ -45,7 +45,7 @@ Todos los eventos de webhook incluyen los siguientes campos:
 - `createdAt`: Marca de tiempo UNIX en segundos
 - `room`: Contiene al menos `room_id`, `sid`, `creation_time` y `metadata`
 
-### Sala Creada
+### Sala creada
 
 Enviado por plugNmeet al crear la sesión. Úselo para crear su registro local de sesión.
 
@@ -63,7 +63,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Sala Iniciada
+### Sala iniciada
 
 Retransmitido desde LiveKit cuando la sala multimedia inicia. Solo se emite si al menos un usuario se unió. plugNmeet lo enriquece con `sid` y `metadata` antes de reenviarlo.
 
@@ -74,7 +74,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Sala Finalizada
+### Sala finalizada
 
 Retransmitido desde LiveKit cuando la sala multimedia se cierra. Solo se emite si la sala había iniciado. Si la sala se terminó vía API de plugNmeet, puede llegar después de `session_ended`.
 
@@ -85,7 +85,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Sesión Finalizada
+### Sesión finalizada
 
 Evento especial solo de plugNmeet. Enviado desde `onAfterRoomEnded` (`pkg/models/room_end.go`) antes de desmontar LiveKit, siempre que una sesión se elimina por llamada API o por janitor. Siempre se emite. Úselo como señal autoritativa de fin de sesión para limpieza y facturación. Carga mínima: `room_id`, `sid`, `metadata`, `creation_time`.
 
@@ -96,7 +96,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Participante Unido
+### Participante unido
 
 Retransmitido desde LiveKit cuando un participante se une. plugNmeet sobrescribe `sid` y `metadata` desde su propio almacén antes de reenviarlo.
 
@@ -108,7 +108,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Participante Abandonó la Sala
+### Participante abandonó la sala
 
 Retransmitido desde LiveKit cuando un participante sale. También se envía para usuarios internos (SIP, ingress, agentes TTS).
 
@@ -120,7 +120,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Pista Publicada
+### Pista publicada
 
 Retransmitido desde LiveKit cuando se publica una pista de micrófono, cámara o pantalla compartida.
 
@@ -133,7 +133,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Pista No Publicada
+### Pista no publicada
 
 Retransmitido desde LiveKit cuando se deja de publicar una pista.
 
@@ -146,7 +146,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Grabación Iniciada
+### Grabación iniciada
 
 Enviado por el servicio de grabación al iniciar la grabación. Contiene `recording_info` con los ID de grabación y grabador.
 
@@ -158,7 +158,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Grabación Finalizada
+### Grabación finalizada
 
 Enviado por el servicio de grabación al detener la grabación. El archivo puede no estar listo aún; espere `recording_proceeded` para el archivo descargable.
 
@@ -170,7 +170,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Grabación Procesada
+### Grabación procesada
 
 Se envía cuando el archivo de grabación está procesado y listo. Puede llegar después de la limpieza de la sesión.
 
@@ -182,7 +182,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### RTMP Iniciado
+### RTMP iniciado
 
 Enviado por el servicio de grabación cuando inicia la transmisión RTMP.
 
@@ -194,7 +194,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### RTMP Finalizado
+### RTMP finalizado
 
 Enviado por el servicio de grabación cuando termina la transmisión RTMP.
 
@@ -206,7 +206,7 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Artefacto Creado
+### Artefacto creado
 
 Este evento único y unificado se activa cada vez que el sistema genera un nuevo artefacto, como una transcripción o un resumen de la reunión. Sustituye a múltiples webhooks individuales y más antiguos por un modelo más flexible y escalable.
 
@@ -234,7 +234,7 @@ interface CommonNotifyEvent {
 
 ---
 
-## Ejemplo de Gestor de Webhook
+## Ejemplo de gestor de webhook
 
 El siguiente pseudocódigo demuestra cómo gestionar los webhooks entrantes. Su aplicación debe inspeccionar la propiedad `event` para determinar la acción a realizar. El evento `artifact_created` es especial, ya que requiere verificar un campo anidado `type` para comprender la carga útil.
 

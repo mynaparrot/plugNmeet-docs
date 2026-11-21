@@ -13,7 +13,7 @@ Esto no es solo una demostración tecnológica; es una poderosa herramienta de p
 
 <!--truncate-->
 
-## Su Escriba de Reuniones Impulsado por IA
+## Su escriba de reuniones impulsado por IA
 
 Cuando habilita el Asistente de IA para una sesión, se pone a trabajar en silencio. Al crear una grabación de solo audio y ligera de la reunión, la Plataforma de Insights puede generar dos activos potentes para usted:
 
@@ -31,7 +31,7 @@ Como resultado, las siguientes funciones se **deshabilitarán automáticamente**
 Este es un diseño de seguridad deliberado. Asegura que cuando elige la máxima privacidad con E2EE, ningún servicio, ni siquiera nuestro asistente de IA, puede acceder al contenido de su conversación.
 :::
 
-### Desbloquee los Datos de su Reunión con la API de Artefactos
+### Desbloquee los datos de su reunión con la API de artefactos
 
 El verdadero poder de la Plataforma de Insights es lo que sucede a continuación. Todos estos datos generados están disponibles para usted a través de la nueva **API de Artefactos**. En lugar de quedar atrapada, la inteligencia de su reunión se convierte en un activo programable.
 
@@ -43,14 +43,14 @@ Con una simple llamada a la API, puede recuperar:
 
 Esto le permite construir integraciones potentes, como enviar automáticamente resúmenes de reuniones a su herramienta de gestión de proyectos o usar el archivo VTT para agregar subtítulos a sus grabaciones de video.
 
-## La Plataforma de Insights: Una Potencia de IA de Múltiples Proveedores
+## La plataforma de Insights: Una potencia de IA de múltiples proveedores
 
 La **Plataforma de Insights** está diseñada para usar la mejor herramienta para cada trabajo. En lugar de encerrarlo en un solo proveedor, nuestra nueva arquitectura agnóstica de proveedores nos permite integrar los mejores servicios de IA del mundo para cada tarea específica.
 
 *   **Resumen y Chat con IA:** Impulsado por **Google Gemini**, que proporciona capacidades de IA generativa de clase mundial. Tiene la flexibilidad de elegir entre el potente `Gemini Pro` de Google para resúmenes de la más alta calidad, o el modelo `Gemini Flash` más rápido y rentable para tareas menos críticas.
 *   **Traducción en Tiempo Real:** Impulsado por **Microsoft Azure**, que ofrece servicios de voz a texto y traducción robustos y asequibles.
 
-## Una Plataforma Abierta para Desarrolladores
+## Una plataforma abierta para desarrolladores
 
 El poder de la Plataforma de Insights proviene de su arquitectura abierta y flexible. Todo el sistema está construido sobre un conjunto de interfaces de proveedores.
 
@@ -79,11 +79,11 @@ Esta modularidad le da la libertad de elegir el mejor proveedor *y* el mejor mod
 Esta nueva y flexible Plataforma de Insights oficialmente deja en desuso la antigua función de voz a texto codificada de forma rígida, que estaba vinculada exclusivamente a Azure.
 :::
 
-## ¿Qué Sigue?
+## ¿Qué sigue?
 
 El lanzamiento del Asistente de Reuniones con IA es un gran salto adelante. Con el motor de resumen principal y la API de Artefactos ahora en su lugar, nuestro próximo paso es construir las interfaces orientadas al usuario para ver, editar y compartir estas notas de reunión automatizadas.
 
-Estamos increíblemente emocionados por el futuro de la comunicación inteligente y productiva en Plug-N-Meet.
+Estamos increíblemente emocionados por el futuro de la comunicación inteligente y productiva en plugNmeet.
 
 ---
 

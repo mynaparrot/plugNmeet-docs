@@ -30,7 +30,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '🎓',
     title: 'Software de aula virtual',
-    text: 'Aula virtual completa con pizarra multiusuario, salas de grupos, encuestas tipo cuestionario, mano levantada, sala de espera, notas compartidas y permisos individuales — ideal para enseñanza en línea, talleres y webinars.',
+    text: 'Aula virtual completa con pizarra multiusuario, salas de grupo, encuestas tipo cuestionario, mano levantada, sala de espera, notas compartidas y permisos individuales — ideal para enseñanza en línea, talleres y webinars.',
     link: '/blog/open-source-virtual-classroom-software',
     linkLabel: 'Guía del aula',
     Svg: require('@site/static/img/features/video-call-tv-svgrepo-com.svg').default,
@@ -46,9 +46,9 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '✨',
     title: 'Agente de reuniones con IA',
-    text: 'Subtítulos en vivo, traducción hablada, transcripciones, resúmenes y asistente de chat — con su propio proveedor de IA.',
-    link: '/blog/how-to-add-ai-meeting-assistant-features',
-    linkLabel: 'Añadir IA en 15 minutos',
+    text: 'Un agente de voz con IA que enseña, hace demostraciones y acompaña el onboarding 1 a 1 en una pizarra compartida, además de subtítulos en vivo, resúmenes y chat — con su propio proveedor de IA.',
+    link: '/docs/ai-agent/overview',
+    linkLabel: 'Explorar el Agente de IA',
     Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg').default,
   },
   {
@@ -163,7 +163,7 @@ const UseCases = [
   {
     icon: '🎓',
     title: 'Aula virtual para Moodle y LMS',
-    text: 'Software completo de aula virtual con pizarra, salas de grupos, encuestas y analíticas de asistencia — dentro de Moodle con el plugin de plugNmeet, o en cualquier LMS vía LTI.',
+    text: 'Software completo de aula virtual con pizarra, salas de grupo, encuestas y analíticas de asistencia — dentro de Moodle con el plugin de plugNmeet, o en cualquier LMS vía LTI.',
     link: '/docs/user-guide/moodle-integration',
     linkLabel: 'Plugin Moodle →',
   },

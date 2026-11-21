@@ -6,7 +6,7 @@ sidebar_position: 4
 sidebar_label: Hooks
 ---
 
-# Hooks de Scripting y Almacenamiento
+# Hooks de scripting y almacenamiento
 
 plugNmeet cuenta con un potente sistema de "hooks" (ganchos) que le permite ejecutar scripts o comandos personalizados en puntos clave del ciclo de vida de la gestión de archivos y medios. Esto posibilita una personalización profunda, permitiéndole integrarse con cualquier proveedor de almacenamiento externo (por ejemplo, S3, Google Cloud), llamar a APIs personalizadas u orquestar complejas canalizaciones (pipelines) multiservidor.
 
@@ -22,18 +22,18 @@ Las estructuras de datos JSON para los hooks pueden cambiar con el tiempo. Esta 
 [https://github.com/mynaparrot/plugnmeet-protocol/tree/main/hooks](https://github.com/mynaparrot/plugnmeet-protocol/tree/main/hooks)
 :::
 
-## Conceptos Fundamentales
+## Conceptos fundamentales
 
 Todos los hooks, independientemente de dónde se ejecuten, comparten el mismo diseño fundamental. Comprender estos conceptos es esencial antes de implementar sus propios scripts personalizados.
 
-### Modelos de Ejecución
+### Modelos de ejecución
 
 Para obtener el máximo rendimiento y flexibilidad, los scripts de los hooks pueden configurarse como **procesos de larga duración** o como **comandos de única ejecución**.
 
 *   **Procesos de Larga Duración**: Cuando un componente de plugNmeet (como `server` o `recorder`) se inicia, lanza su script **una sola vez**. El script se ejecuta de forma continua, escuchando solicitudes. Este modelo es altamente eficiente ya que evita la sobrecarga de iniciar un nuevo proceso para cada evento. **Este es el enfoque recomendado para la mayoría de los casos de uso.**
 *   **Comandos de Única Ejecución**: Son comandos simples (como `curl`, `wget`, o la utilidad integrada `http-request`) que se ejecutan para cada evento de hook. Son adecuados para tareas sencillas y autocontenidas.
 
-### Protocolo de Comunicación
+### Protocolo de comunicación
 
 La comunicación con su script de hook se realiza a través de las tuberías de E/S estándar utilizando **JSON delimitado por saltos de línea**.
 
@@ -45,25 +45,25 @@ La comunicación con su script de hook se realiza a través de las tuberías de 
 La llamada a un script de hook es **síncrona y bloqueante**. Su script **DEBE** escribir una respuesta en `stdout` por cada solicitud que reciba. Si un script no devuelve una respuesta, el servicio de plugNmeet se quedará colgado indefinidamente.
 :::
 
-### El Modelo de Tubería (Pipeline)
+### El modelo de tubería (pipeline)
 
 Si define múltiples scripts para un solo hook, estos forman una tubería. La respuesta `stdout` del primer script se convierte en la solicitud `stdin` para el segundo, y así sucesivamente.
 
 Si un script en la cadena no necesita modificar los datos (por ejemplo, solo registra el evento), **debe** aun así pasar el objeto JSON original y sin modificar a `stdout`.
 
-### Manejo de Errores y Datos
+### Manejo de errores y datos
 
 *   **Respuesta JSON Válida**: Si su script devuelve un JSON válido, este se pasa al siguiente script o se utiliza como el resultado final.
 *   **Respuesta JSON Inválida**: Si la respuesta no es un JSON válido, plugNmeet registra una **advertencia** y descarta la salida. Los datos JSON *originales* (el `stdin` de su script) se pasarán al siguiente script en la tubería. Esto evita que un solo script defectuoso rompa toda la cadena.
 *   **Reporte de Errores**: Si su script encuentra un error, debe poblar el campo `error` en su respuesta JSON. Es crucial **devolver siempre el objeto JSON de entrada completo, con el campo `error` poblado**, para asegurar que los scripts posteriores en una tubería reciban la estructura de datos esperada. La aplicación principal registrará este error.
 
-### Cómo Crear un Hook
+### Cómo crear un hook
 
 1.  **Cree un Script o Comando**: Escriba su lógica en cualquier lenguaje (Shell, NodeJS, Go, etc.).
 2.  **Hágalo Ejecutable**: Asegúrese de que su script tenga permisos de ejecución (p. ej., `chmod +x su_script.js`).
 3.  **Configure en `config.yaml`**: Añada la ruta absoluta de su ejecutable (o el comando) en la sección `hooks` apropiada de su `config.yaml`.
 
-### Utilidad Integrada `http-request`
+### Utilidad integrada `http-request`
 
 plugNmeet proporciona un comando de única ejecución conveniente, `http-request`, para enviar la carga útil (payload) JSON del hook a un punto final HTTP/HTTPS.
 
@@ -79,9 +79,9 @@ scripts:
 
 ---
 
-## Responsabilidades Clave
+## Responsabilidades clave
 
-### Responsabilidad de la Limpieza de Archivos
+### Responsabilidad de la limpieza de archivos
 
 :::danger Importante
 Cuando habilita un hook que recibe una ruta de archivo (como `upload_hook` o `post_transcoding`), plugNmeet **desactiva su propia limpieza automática de archivos** para esa etapa.
@@ -95,7 +95,7 @@ Por lo tanto, la responsabilidad de la gestión de archivos se le transfiere a u
 
 *   **Si su script solo OBSERVA el archivo** (p. ej., para registro, análisis o envío de una notificación) y no lo mueve, **NO DEBE** eliminar el archivo. El archivo todavía es necesario para el almacenamiento interno de plugNmeet o para hooks posteriores en una tubería.
 
-### Responsabilidad de la Consistencia de las Rutas
+### Responsabilidad de la consistencia de las rutas
 
 :::warning La Consistencia de las Rutas es Su Responsabilidad
 **plugNmeet no valida la `output_path` que usted devuelve desde un hook. Se almacena como una cadena de texto y se utiliza como `input_path` para las llamadas posteriores a `download_hook` y `delete_hook`.**
@@ -109,15 +109,15 @@ No proporcionar scripts `download_hook` y `delete_hook` compatibles después de 
 
 ---
 
-## Hooks de Almacenamiento del Servidor (`server`)
+## Hooks de almacenamiento del servidor (`server`)
 
-Los hooks del servidor le permiten anular el almacenamiento de archivos local por defecto para artefactos de sala, archivos de chat y grabaciones, permitiendo la integración con cualquier proveedor de almacenamiento externo.
+Los hooks del servidor le permiten anular el almacenamiento de archivos local de forma predeterminada para artefactos de sala, archivos de chat y grabaciones, permitiendo la integración con cualquier proveedor de almacenamiento externo.
 
 **Configuración en `server/config.yaml`:**
 ```yaml
 hooks:
-  # 'pool_size' controla la ejecución en paralelo. Por defecto: 1.
-  # 'hook_timeout' establece un tiempo de espera. Por defecto: 5m.
+  # 'pool_size' controla la ejecución en paralelo. Predeterminado: 1.
+  # 'hook_timeout' establece un tiempo de espera. Predeterminado: 5m.
   upload_hook:
     pool_size: 2
     scripts:
@@ -131,7 +131,7 @@ hooks:
   # ... otros hooks ...
 ```
 
-### Tipos de Hooks
+### Tipos de hooks
 
 #### `upload_hook`
 *   **Propósito**: Subir un archivo o directorio (p. ej., analíticas de sala, imágenes de pizarra) a un almacenamiento externo.
@@ -189,15 +189,15 @@ hooks:
 
 ---
 
-## Hooks del Grabador (`recorder`)
+## Hooks del grabador (`recorder`)
 
 Los hooks del grabador se utilizan para gestionar el archivo de grabación a medida que avanza por la tubería de transcodificación. Esto es esencial para despliegues multiservidor donde la grabación y la transcodificación pueden ocurrir en máquinas diferentes.
 
 **Configuración en `recorder/config.yaml`:**
 ```yaml
 hooks:
-  # 'pool_size' controla cuántas tuberías de hooks pueden ejecutarse en paralelo. Por defecto: 1.
-  # 'hook_timeout' establece un tiempo de espera para toda la cadena de hooks. Por defecto: 1h.
+  # 'pool_size' controla cuántas tuberías de hooks pueden ejecutarse en paralelo. Predeterminado: 1.
+  # 'hook_timeout' establece un tiempo de espera para toda la cadena de hooks. Predeterminado: 1h.
   post_recording:
     pool_size: 2
     hook_timeout: 2h
@@ -216,7 +216,7 @@ hooks:
         is_one_shot: false
 ```
 
-### Carga de Datos (Payload): `RecordingHookData`
+### Carga de datos (payload): `RecordingHookData`
 
 Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON con esta estructura.
 
@@ -239,7 +239,7 @@ Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON co
 }
 ```
 
-### Etapas del Hook
+### Etapas del hook
 
 #### 1. `post_recording`
 *   **Cuándo**: Se ejecuta en el nodo **GRABADOR** después de que se guarda el archivo de grabación en bruto.
@@ -261,7 +261,7 @@ Todos los hooks del grabador reciben y se espera que devuelvan un objeto JSON co
 
 ---
 
-## Ejemplo: Script de Larga Duración en Node.js
+## Ejemplo: Script de larga duración en Node.js
 
 Este ejemplo muestra la estructura básica de un script de larga duración que analiza JSON de forma segura, realiza una acción y devuelve una respuesta.
 

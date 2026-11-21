@@ -11,7 +11,7 @@ const TrustItems = [
 const Stats = [
   { value: '100%', label: 'Código abierto · Licencia MIT, gratis para siempre' },
   { value: 'HD', label: 'Videollamadas con grabación MP4' },
-  { value: 'IA', label: 'Resúmenes, subtítulos y traducción' },
+  { value: 'IA', label: 'Tutor agéntico, subtítulos y resúmenes' },
   { value: '1 binario', label: 'Stack de Go + LiveKit + NATS' },
 ];
 
@@ -37,9 +37,10 @@ const HeroBanner = () => {
             plugNmeet es un proyecto WebRTC gratuito y de código abierto que
             usted mismo aloja. Lea la documentación, ejecute un script de
             instalación y añada reuniones HD, pizarra, salas de grupos,
-            encuestas, grabación, transmisión RTMP e IA opcional a su sitio —
-            sin cuentas, sin instalaciones para los invitados y sin dependencia
-            de proveedores.
+            encuestas, grabación, transmisión RTMP y un agente de IA opcional que
+            enseña, hace demostraciones y acompaña el onboarding 1 a 1 en su
+            pizarra en vivo — sin cuentas, sin instalaciones para los invitados
+            y sin dependencia de proveedores.
           </p>
           <div className="pnm-cta-row">
             <Link className="pnm-btn pnm-btn--light" to="/docs/intro">
@@ -95,8 +96,8 @@ const HeroBanner = () => {
           </div>
 
           <div className="pnm-float pnm-float--ai">
-            <strong>✨ IA opcional</strong>
-            <span>Subtítulos y resúmenes</span>
+            <strong>✨ IA agéntica</strong>
+            <span>Habla, dibuja y explica</span>
           </div>
           <div className="pnm-float pnm-float--lock">
             <strong>🔒 E2EE activado</strong>

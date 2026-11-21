@@ -6,7 +6,7 @@ sidebar_position: 3
 sidebar_label: Descargar
 ---
 
-# Descargar una Grabación (Token)
+# Descargar una grabación (token)
 
 Endpoint: `/recording/getDownloadToken`
 
@@ -42,5 +42,5 @@ El token caducará después de un corto período, lo que garantiza que el enlace
 
 Una vez que reciba el token, puede construir la URL de descarga utilizando el siguiente formato:
 ```
-https://Su-Servidor-Plug-N-Meet.com/download/recording/<TOKEN_AQUÍ>
+https://Su-Servidor-plugNmeet.com/download/recording/<TOKEN_AQUÍ>
 ```

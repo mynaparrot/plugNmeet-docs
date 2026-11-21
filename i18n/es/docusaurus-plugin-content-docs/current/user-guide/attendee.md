@@ -6,13 +6,13 @@ sidebar_position: 3
 sidebar_label: Guía del Asistente
 ---
 
-# Guía del Asistente: Cómo Unirse y Participar en una Reunión
+# Guía del asistente: Cómo unirse y participar en una reunión
 
-¡Le damos la bienvenida a la Guía del Asistente! Este documento le guiará a través de todo lo que necesita saber para unirse y participar con éxito en una videoconferencia de Plug-N-Meet.
+¡Le damos la bienvenida a la Guía del Asistente! Este documento le guiará a través de todo lo que necesita saber para unirse y participar con éxito en una videoconferencia de plugNmeet.
 
 ---
 
-## Primeros Pasos: Unirse a una Reunión
+## Primeros pasos: Unirse a una reunión
 
 Cuando acceda por primera vez a una sala de PlugNmeet, se le solicitará que elija cómo desea unirse a la sesión de audio. Este es el paso inicial más importante.
 
@@ -25,7 +25,7 @@ Cuando acceda por primera vez a una sala de PlugNmeet, se le solicitará que eli
 
 ---
 
-## Sección 1: La Barra de Control del Asistente
+## Sección 1: La barra de control del asistente
 
 Estos son los controles básicos que utilizará durante la reunión, ubicados en la parte inferior de la pantalla.
 
@@ -37,28 +37,28 @@ Estos son los controles básicos que utilizará durante la reunión, ubicados en
 
 ---
 
-## Sección 2: Participar en la Reunión
+## Sección 2: Participar en la reunión
 
 Estas funciones le permiten interactuar con el moderador y los demás participantes.
 
-### Uso del Chat
+### Uso del chat
 
 -   **Chat Público:** Haga clic en el icono de **Chat** para abrir el panel de chat principal, donde podrá enviar mensajes a todos los asistentes.
 -   **Chat Privado:** Para enviar un mensaje privado, abra la lista de **Participantes**, haga clic en el menú de tres puntos junto al nombre de un usuario y seleccione **Enviar mensaje privado**.
 
 ![attendee-Chat.webp](/img/moderator/attendee-Chat.webp)
 
-### Ver la Lista de Participantes
+### Ver la lista de participantes
 
 -   Haga clic en el icono de **Participantes** para ver una lista de todas las personas que se encuentran actualmente en la reunión.
 
-### Responder a las Encuestas
+### Responder a las encuestas
 
 -   Si el moderador inicia una encuesta, recibirá una notificación. Puede abrir la pestaña de **Encuestas** en el panel de participantes para emitir su voto.
 
 ![attendee-polls.webp](/img/moderator/attendee-polls.webp)
 
-### Transcripción y Traducción
+### Transcripción y traducción
 - **Iniciar Transcripción y Traducción:** Haga clic en el icono de **Transcripción y Traducción** en la barra de control principal inferior para iniciar el servicio (si el moderador lo ha habilitado para usted).
 
 ![attendee-transcriptions.webp](/img/moderator/attendee-transcriptions.webp)
@@ -69,7 +69,7 @@ Estas funciones le permiten interactuar con el moderador y los demás participan
 
 **Importante:** Es necesario **Habilitar el Micrófono** para utilizar la **Transcripción y Traducción**.
 
-### Uso del Asistente de IA
+### Uso del asistente de IA
 
 - **Habilitar/Deshabilitar:** Haga clic en el icono del **Asistente de IA** en la barra de control principal inferior para iniciar el Asistente de IA (si el moderador lo ha habilitado para usted).
 
@@ -93,7 +93,7 @@ El Agente de IA está en desarrollo activo, y los controles con un solo clic en 
 
 ---
 
-## Sección 3: Visualización de Contenido
+## Sección 3: Visualización de contenido
 
 El moderador puede compartir diversos tipos de contenido durante la reunión.
 
@@ -103,7 +103,7 @@ El moderador puede compartir diversos tipos de contenido durante la reunión.
 
 ---
 
-## Sección 4: Salas de Grupos Pequeños (Breakout Rooms)
+## Sección 4: Salas de grupo (Breakout Rooms)
 
 El moderador puede dividir la sesión principal en salas más pequeñas para realizar actividades grupales.
 
@@ -115,7 +115,7 @@ El moderador puede dividir la sesión principal en salas más pequeñas para rea
 ---
 
 
-## Sección 5: Salir de la Reunión
+## Sección 5: Salir de la reunión
 
 - **Salir de la Reunión:** Si selecciona **Salir de la Reunión** en el menú superior derecho o en el botón inferior derecho, abandonará la sesión, pero esta permanecerá activa para los demás participantes.
 

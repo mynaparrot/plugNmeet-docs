@@ -6,7 +6,7 @@ sidebar_position: 2
 sidebar_label: Unirse
 ---
 
-# Unirse a una Sala
+# Unirse a una sala
 
 Endpoint: `/room/getJoinToken`
 
@@ -15,20 +15,20 @@ Este endpoint genera un token temporal que otorga a un usuario acceso a una sala
 *   **Ciclo de Vida del Token**: El token generado es de corta duración (su período de validez se establece en la configuración de su servidor) y está diseñado para un **único uso**. Debe utilizarlo de inmediato, redirigiendo al usuario a la URL de la reunión. **No almacene este token para uso futuro.**
 
 *   **Unicidad del ID de Usuario**:
-    *   Plug-N-Meet requiere que cada participante en una sesión tenga un `user_id` único.
+    *   plugNmeet requiere que cada participante en una sesión tenga un `user_id` único.
     *   Si usted creó la sala con `auto_gen_user_id: false` (el valor predeterminado), es su responsabilidad proporcionar un `user_id` único para cada usuario.
     *   Si un nuevo usuario se une con un `user_id` que ya está activo en la sala, el participante existente con ese ID será desconectado automáticamente. Esto es útil para permitir que los usuarios cambien de dispositivo sin interrupciones.
 
 *   **Existencia de la Sala**: Solo puede generar un token de acceso para una sala que ya ha sido creada y que se encuentra activa.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo                   | Tipo   | Requerido | Descripción                                 |
 | ----------------------- | ------ | -------- | ------------------------------------------- |
 | room_id                 | string | Sí      | El ID de la sala a la que desea unirse.        |
 | [user_info](#información-del-usuario) | object | Sí      | Información sobre el usuario que se unirá a la sala.|
 
-### Información del Usuario
+### Información del usuario
 
 | Campo                           | Tipo    | Requerido | Descripción                                                  |
 | --------------------------------| ------- | -------- | ------------------------------------------------------------ |
@@ -39,12 +39,12 @@ Este endpoint genera un token temporal que otorga a un usuario acceso a una sala
 | client_type                     | string  | No       | Especifica el tipo de cliente. Use `"HYBRID_WEB"` para la [integración móvil híbrida](/docs/developer-guide/mobile-app-integration). El valor predeterminado es `"WEB"`. |
 | [user_metadata](#metadatos-del-usuario) | object  | Sí      | Metadatos adicionales sobre el usuario.                          |
 
-### Metadatos del Usuario
+### Metadatos del usuario
 
 | Campo                                                           | Tipo    | Requerido | Descripción                                                                                                    |
 | --------------------------------------------------------------- | ------- | -------- | -------------------------------------------------------------------------------------------------------------- |
 | profile_pic                                                     | string  | No       | URL de la imagen de perfil del usuario.                                                                             |
-| preferred_lang                                                  | string  | No       | Idioma preferido para el cliente de Plug-N-Meet. Consulte los valores admitidos [aquí](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Ejemplo: es-ES, bn-BD, de-DE, etc. |
+| preferred_lang                                                  | string  | No       | Idioma preferido para el cliente de plugNmeet. Consulte los valores admitidos [aquí](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Ejemplo: es-ES, bn-BD, de-DE, etc. |
 | record_webcam                                                   | boolean | No       | Controla si la cámara web de este usuario se incluye en las grabaciones del lado del servidor. El valor predeterminado es `true`. Establézcalo en `false` para excluirla. |
 | ex_user_id                                                      | string  | No       | Si está vacío, se utilizará el valor de `user_id`.                                                                 |
 | extra_data                                                      |  map  | No       | Un mapa de pares clave-valor personalizados. Tanto las claves como los valores deben ser cadenas de texto. Por ejemplo: `{"key": "value"}`|.                                                                         |
@@ -85,9 +85,9 @@ Este endpoint genera un token temporal que otorga a un usuario acceso a una sala
 | status_code | string | raíz     | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 | token  | string  | raíz     | El token de acceso.           |
 
-### Uso del Token de Acceso
+### Uso del token de acceso
 
-Una vez que reciba el `token`, puede otorgar al usuario acceso a la sala de reuniones. Hay dos formas de pasar el token al cliente de Plug-N-Meet:
+Una vez que reciba el `token`, puede otorgar al usuario acceso a la sala de reuniones. Hay dos formas de pasar el token al cliente de plugNmeet:
 
 1.  **Como un parámetro de URL (recomendado)**: Pase el token en la cadena de consulta como `access_token`.
 2.  **Como una cookie**: Establezca una cookie llamada `pnm_access_token` con el token como su valor.
@@ -95,7 +95,7 @@ Una vez que reciba el `token`, puede otorgar al usuario acceso a la sala de reun
 El método del parámetro de URL es el más sencillo. A continuación, un ejemplo:
 
 ```
-https://Su-Servidor-Plug-N-Meet.com/?access_token=<TOKEN_AQUÍ>
+https://Su-Servidor-plugNmeet.com/?access_token=<TOKEN_AQUÍ>
 ```
 
 Si usted está alojando los archivos estáticos de [plugNmeet-client](https://github.com/mynaparrot/plugNmeet-client) en otro lugar, también debe pasar el token de la misma manera. Por ejemplo, si sus archivos estáticos están en un directorio `conference`:
@@ -104,9 +104,9 @@ Si usted está alojando los archivos estáticos de [plugNmeet-client](https://gi
 https://Su-Dominio.com/conference/?access_token=<TOKEN_AQUÍ>
 ```
 
-**Nota:** También puede usar la API [getClientFiles](../get-client-files) para recuperar todos los archivos CSS y JS necesarios para mostrar la interfaz manualmente. Esto le permite incrustar el cliente de Plug-N-Meet en cualquier lugar sin preocuparse por los archivos de compilación estáticos.
+**Nota:** También puede usar la API [getClientFiles](../get-client-files) para recuperar todos los archivos CSS y JS necesarios para mostrar la interfaz manualmente. Esto le permite incrustar el cliente de plugNmeet en cualquier lugar sin preocuparse por los archivos de compilación estáticos.
 
-## Diseño Personalizado
+## Diseño personalizado
 
 Puede agregar un parámetro de consulta adicional llamado `custom_design` al enlace de acceso para aplicar un diseño único para cada usuario. El valor de `custom_design` debe ser una cadena JSON codificada para URL.
 

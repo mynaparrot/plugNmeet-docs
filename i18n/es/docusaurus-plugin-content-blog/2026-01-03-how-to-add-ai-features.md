@@ -7,7 +7,7 @@ tags: [tutorial, cómo-hacer, asistente-de-reuniones-con-ia, chat-de-texto-con-i
 
 En el competitivo panorama actual, una simple videollamada ya no es suficiente. Los usuarios esperan experiencias inteligentes, accesibles y productivas. ¿Qué pasaría si pudieras ofrecer un **asistente de reuniones con IA** que proporcione subtítulos y traducción en vivo, genere **notas de reunión con IA** e incluso pueda responder preguntas directamente en el chat?
 
-Con Plug-N-Meet, puedes hacerlo. No se trata de un complejo proyecto de integración de varios meses. Es un cambio de configuración de 15 minutos —y nunca quedas atado a un único proveedor de IA.
+Con plugNmeet, puedes hacerlo. No se trata de un complejo proyecto de integración de varios meses. Es un cambio de configuración de 15 minutos —y nunca quedas atado a un único proveedor de IA.
 
 Esta guía te ofrece la visión completa: qué funciones de **asistente de reuniones con IA** ofrece plugNmeet, qué proveedores pueden potenciar cada una (Azure, Google Gemini, OpenAI o cualquier API compatible con OpenAI, incluidos LLM autoalojados) y la configuración exacta a nivel de sala, que es idéntica sin importar el proveedor que elijas.
 
@@ -34,21 +34,21 @@ El marco `insights` de plugNmeet es agnóstico de proveedores. Defines las cuent
 | **Microsoft Azure** | Transcripción y traducción probadas en tiempo real | Transcripción, traducción |
 | **Google Gemini** | Respuestas de chat sólidas y resúmenes económicos | Chat de texto con IA, resumen de reuniones |
 | **OpenAI** | Un solo proveedor para todo, con máxima calidad de modelos | Transcripción, traducción, TTS/traducción hablada, chat, resúmenes |
-| **APIs compatibles con OpenAI** (Groq, Together AI, Anyscale, Azure OpenAI) | Optimizar coste, latencia o cumplimiento sin cambiar tu configuración | Los mismos servicios que OpenAI |
+| **APIs compatibles con OpenAI** (Groq, Together AI, Anyscale, Azure OpenAI) | Optimizar costo, latencia o cumplimiento sin cambiar tu configuración | Los mismos servicios que OpenAI |
 | **LLM autoalojados** (Ollama, LocalAI) | Máxima privacidad —la IA se ejecuta en tu propia infraestructura | Los mismos servicios que OpenAI |
 
 Esta guía utiliza **Azure + Google Gemini** como ejemplo concreto, porque combina la transcripción en tiempo real más madura con resúmenes económicos y de alta calidad. Si prefieres apostar por OpenAI o un LLM autoalojado, sigue la configuración de proveedor en [Integración de plugNmeet con OpenAI: IA autoalojada para videoconferencias](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet) y regresa aquí —**los Pasos 2 y 3 son idénticos para todos los proveedores**.
 
-## Requisitos Previos
+## Requisitos previos
 
-*   Un servidor de Plug-N-Meet en funcionamiento. Si no tienes uno, sigue nuestra [Guía de Instalación](/docs/installation).
+*   Un servidor de plugNmeet en funcionamiento. Si no tienes uno, sigue nuestra [Guía de Instalación](/docs/installation).
 *   Claves de API de los proveedores que elijas:
     *   **Esta guía (Azure + Gemini):** una clave de API y una región de los [Servicios Cognitivos de Microsoft Azure](https://azure.microsoft.com/en-us/products/ai-services/speech-to-text), más una clave de API de [Google AI Studio](https://aistudio.google.com/app/apikey).
     *   **Ruta OpenAI en su lugar:** una clave y un endpoint de API de OpenAI (o compatible) —consulta la [guía de integración con OpenAI](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet) para el bloque de proveedor, incluidos Ollama/LocalAI autoalojados.
 
 ---
 
-### Paso 1: Configura los Proveedores de IA
+### Paso 1: Configura los proveedores de IA
 
 Abre el archivo `config.yaml` de tu servidor y busca la sección `insights`. Primero defines tus `providers` (tus cuentas) y luego asignas esos proveedores a `services` específicos.
 
@@ -104,7 +104,7 @@ Mantén la misma estructura —solo tienes que añadir un proveedor `openai` con
 
 ---
 
-### Paso 2: Habilita las Funciones de IA en tu Sala
+### Paso 2: Habilita las funciones de IA en tu sala
 
 Ahora que el servidor está configurado, puedes habilitar estas funciones por sala. Cuando realices tu llamada a la API `createRoom`, añade el bloque `insights_features` a tus metadatos. Este bloque es **el mismo para todos los proveedores**:
 
@@ -139,7 +139,7 @@ Ahora que el servidor está configurado, puedes habilitar estas funciones por sa
 
 ---
 
-### Paso 3: Vívelo en Directo
+### Paso 3: Vívelo en directo
 
 Cuando un usuario se une a una sala creada con esta configuración, las funciones de IA están disponibles para ser activadas.
 

@@ -15,13 +15,13 @@ Esto no es solo una conveniencia; es una elección de diseño deliberada que con
 
 ---
 
-## El Poder del Navegador Web Moderno
+## El poder del navegador web moderno
 
 Tu navegador web —ya sea Chrome, Firefox, Edge o Safari— es una pieza de software increíblemente poderosa. Piénsalo como una "navaja suiza" segura para internet, equipada con herramientas avanzadas para la comunicación, la seguridad y el almacenamiento.
 
 En lugar de pedirte que descargues una aplicación independiente y separada, decidimos aprovechar las potentes herramientas que ya están **integradas en tu navegador.** Este enfoque tiene tres enormes beneficios.
 
-### 1. Simplicidad y Accesibilidad Inigualables
+### 1. Simplicidad y accesibilidad inigualables
 
 Este es el beneficio más obvio. Con plugNmeet, te unes a una reunión haciendo clic en un enlace. Eso es todo.
 
@@ -29,7 +29,7 @@ Este es el beneficio más obvio. Con plugNmeet, te unes a una reunión haciendo 
 *   **Siempre Actualizado:** Siempre estás usando la versión más reciente y segura del software sin tener que hacer clic en un botón de "actualizar".
 *   **Simplemente Funciona, en Todas Partes:** Si tienes un navegador web moderno, puedes usar plugNmeet. Funciona en casi cualquier ordenador sin preocuparse por problemas de compatibilidad.
 
-### 2. Seguridad de Estándar de Oro, Integrada
+### 2. Seguridad de estándar de oro, integrada
 
 Podrías pensar que una aplicación independiente es más segura, pero a menudo es todo lo contrario. Los navegadores modernos cuentan con equipos de seguridad de clase mundial y vienen con potentes herramientas de cifrado integradas.
 
@@ -39,7 +39,7 @@ En términos simples, el E2EE codifica tu video y audio en el momento en que sal
 
 Al utilizar las capacidades de cifrado nativas del navegador, podemos proporcionar esta seguridad de "estándar de oro" sin requerir que instales ningún software de seguridad adicional. La protección ya está ahí, y simplemente la activamos.
 
-### 3. Una Experiencia Más Inteligente y Privada
+### 3. Una experiencia más inteligente y privada
 
 Tu navegador también tiene un pequeño espacio de almacenamiento privado que solo te pertenece a ti. Usamos esto para recordar temporalmente tu actividad dentro de la reunión.
 
@@ -49,7 +49,7 @@ Estos datos viven **solo en tu ordenador** y se eliminan cuando abandonas la reu
 
 ---
 
-## Conclusión: La Mejor Tecnología es Invisible
+## Conclusión: La mejor tecnología es invisible
 
 Nuestra filosofía de "cero instalaciones" es más que una simple conveniencia. Se trata de respetar tu tiempo, tu seguridad y tu privacidad.
 

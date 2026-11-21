@@ -6,7 +6,7 @@ sidebar_position: 3
 sidebar_label: Guía de Instalación
 ---
 
-# Guía de Instalación Rápida
+# Guía de instalación rápida
 
 Esta guía le mostrará la forma más rápida y sencilla de poner en marcha su propia plataforma de videoconferencias autoalojada.
 
@@ -16,12 +16,12 @@ Comencemos a configurar su servidor.
 
 ---
 
-## Paso 1: Requisitos del Servidor
+## Paso 1: Requisitos del servidor
 
 Antes de comenzar, asegúrese de contar con lo siguiente:
 
 *   Un **servidor limpio con Ubuntu o Debian** y una **dirección IP pública**. Recomendamos cualquier versión LTS de Ubuntu. Es fundamental que el servidor **no** tenga otros servidores web como Apache o Nginx en ejecución, ya que esto provocará conflictos.
-*   **Hardware y Ancho de Banda:** El servidor Plug-N-Meet en sí es una aplicación muy ligera. El hardware que necesita depende de la carga de trabajo prevista, específicamente del número de usuarios concurrentes y de la frecuencia con la que grabe sesiones.
+*   **Hardware y Ancho de Banda:** El servidor plugNmeet en sí es una aplicación muy ligera. El hardware que necesita depende de la carga de trabajo prevista, específicamente del número de usuarios concurrentes y de la frecuencia con la que grabe sesiones.
 
     Para un grupo pequeño o para realizar pruebas, un servidor simple (p. ej., 2 núcleos de CPU, 2-4 GB de RAM) es suficiente.
 
@@ -40,7 +40,7 @@ Si su servidor está detrás de un firewall, por favor, revise nuestra **[Guía 
 
 ---
 
-## Paso 2: Ejecutar la Instalación Automatizada
+## Paso 2: Ejecutar la instalación automatizada
 
 Conéctese a su servidor a través de SSH. El método recomendado y más transparente es descargar primero el script y luego ejecutarlo. Esto le permite inspeccionar el contenido del script antes de ejecutarlo como superusuario (root).
 
@@ -107,7 +107,7 @@ Recomendamos guardar estas credenciales ahora para tenerlas a mano. Si cierra la
 
 ---
 
-## Paso 3: Verificar su Instalación
+## Paso 3: Verificar su instalación
 
 Una vez completada la instalación, puede verificar que todo funcione correctamente.
 
@@ -129,22 +129,22 @@ Una vez completada la instalación, puede verificar que todo funcione correctame
 
 ---
 
-## ¿Qué Sigue?
+## ¿Qué sigue?
 
 ¡Felicidades! Ahora tiene una plataforma de videoconferencias autoalojada y completamente funcional. Aquí hay algunas cosas que puede hacer a continuación:
 
-*   **Comenzar a usar Plug-N-Meet:** Ahora que su servidor está en funcionamiento, visite nuestro **[Resumen de la Guía del Usuario](/docs/user-guide/overview)** para conocer las diferentes formas en que puede integrar y usar su nueva plataforma, desde plugins sin código hasta nuestra potente API.
+*   **Comenzar a usar plugNmeet:** Ahora que su servidor está en funcionamiento, visite nuestro **[Resumen de la Guía del Usuario](/docs/user-guide/overview)** para conocer las diferentes formas en que puede integrar y usar su nueva plataforma, desde plugins sin código hasta nuestra potente API.
 *   **Explorar la API:** Para desarrolladores listos para empezar, nuestra **[Documentación de la API](/docs/api/intro)** proporciona todos los detalles que necesita para comenzar a construir.
 *   **Administrar su servidor:** Conozca los comandos comunes para **[administrar sus servicios](#administrando-servicios)**, incluyendo iniciar, detener y ver registros.
 *   **Personalización Avanzada**: Explore nuestros **[Hooks de Scripting y Almacenamiento](/docs/others/hooks)** para automatizar flujos de trabajo e integrarse con proveedores de almacenamiento externos.
 
 ---
 
-## Temas Avanzados
+## Temas avanzados
 
-### Administrando Servicios
+### Administrando servicios
 
-Todos los componentes de Plug-N-Meet se ejecutan como servicios de `systemd`.
+Todos los componentes de plugNmeet se ejecutan como servicios de `systemd`.
 
 ```bash
 # Para iniciar, reiniciar o detener los servicios:
@@ -158,14 +158,14 @@ tail -n 200 -f /opt/plugNmeet/log/plugNmeet.log
 tail -n 200 -f /opt/plugNmeet/recorder/logs/recorder.log
 ```
 
-### Actualización de su Servidor
+### Actualización de su servidor
 
-Para actualizar su instalación de Plug-N-Meet a la última versión, simplemente ejecute el script `update.sh`:
+Para actualizar su instalación de plugNmeet a la última versión, simplemente ejecute el script `update.sh`:
 
 ```sh
 sudo su -c "bash <(wget -qO- https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/update.sh)" root
 ```
 
-### Despliegues Escalables
+### Despliegues escalables
 
-Para necesidades a gran escala, Plug-N-Meet puede desplegarse en un clúster distribuido de múltiples servidores. Para obtener más información, lea nuestra **[Guía de Despliegue Escalable](/docs/developer-guide/scalable-setup)**.
+Para necesidades a gran escala, plugNmeet puede desplegarse en un clúster distribuido de múltiples servidores. Para obtener más información, lea nuestra **[Guía de Despliegue Escalable](/docs/developer-guide/scalable-setup)**.

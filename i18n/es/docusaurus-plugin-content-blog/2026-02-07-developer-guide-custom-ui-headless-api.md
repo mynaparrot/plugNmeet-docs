@@ -1,15 +1,15 @@
 ---
-title: "Guía para desarrolladores: cómo crear una interfaz de videochat personalizada con la API headless de Plug-N-Meet"
+title: "Guía para desarrolladores: cómo crear una interfaz de videochat personalizada con la API headless de plugNmeet"
 slug: developer-guide-custom-video-chat-ui-headless-api
 authors: [jibon]
 tags: [desarrollador, tutorial, guía, api, headless, getClientFiles, marca-blanca, personalización, javascript]
 ---
 
-Ya ha logrado integrar Plug-N-Meet en su aplicación. Puede crear salas, generar tokens de acceso e incrustar el cliente en un `<iframe>`. Es rápido y funciona. Pero ahora quiere ir más allá. Quiere romper los límites del `<iframe>` y crear una experiencia de usuario realmente fluida, donde el cliente de video se sienta como una parte nativa de la interfaz de su aplicación.
+Ya ha logrado integrar plugNmeet en su aplicación. Puede crear salas, generar tokens de acceso e incrustar el cliente en un `<iframe>`. Es rápido y funciona. Pero ahora quiere ir más allá. Quiere romper los límites del `<iframe>` y crear una experiencia de usuario realmente fluida, donde el cliente de video se sienta como una parte nativa de la interfaz de su aplicación.
 
-Aquí es donde entra en juego el modo de integración «headless» de Plug-N-Meet.
+Aquí es donde entra en juego el modo de integración «headless» de plugNmeet.
 
-Esta guía está dirigida a desarrolladores que desean superar la incrustación básica. Le mostraremos cómo utilizar la potente API `getClientFiles` para renderizar el cliente de Plug-N-Meet directamente en el DOM de su propia página, obteniendo así el control total sobre el diseño, la imagen de marca y la experiencia de usuario.
+Esta guía está dirigida a desarrolladores que desean superar la incrustación básica. Le mostraremos cómo utilizar la potente API `getClientFiles` para renderizar el cliente de plugNmeet directamente en el DOM de su propia página, obteniendo así el control total sobre el diseño, la imagen de marca y la experiencia de usuario.
 
 <!--truncate-->
 
@@ -27,14 +27,14 @@ Un `<iframe>` es una forma sencilla de incrustar contenido, pero en esencia es u
 
 La API `getClientFiles` es la clave para lograr una integración de video verdaderamente «headless». En lugar de proporcionarle una URL para incrustar, le entrega la lista exacta de los recursos CSS y JavaScript que necesita para renderizar el cliente usted mismo.
 
-Con este enfoque, Plug-N-Meet deja de ser una aplicación independiente y se convierte en una biblioteca de componentes de interfaz que usted controla.
+Con este enfoque, plugNmeet deja de ser una aplicación independiente y se convierte en una biblioteca de componentes de interfaz que usted controla.
 
 #### El flujo de trabajo en tres pasos
 
 La lógica es sencilla y puede implementarse en cualquier lenguaje de backend (PHP, Node.js, Python, etc.).
 
 1.  **Su backend obtiene la lista de recursos:** Su servidor realiza una llamada segura de servidor a servidor al endpoint `/auth/getClientFiles`.
-2.  **Plug-N-Meet responde con un objeto JSON:** Este objeto contiene dos arreglos, `css` y `js`, con los nombres de todos los recursos necesarios.
+2.  **plugNmeet responde con un objeto JSON:** Este objeto contiene dos arreglos, `css` y `js`, con los nombres de todos los recursos necesarios.
 3.  **Su plantilla genera las etiquetas `<link>` y `<script>`:** Su motor de plantillas del lado del servidor recorre estos arreglos e inyecta dinámicamente las etiquetas requeridas en la página HTML que recibirá el navegador del usuario.
 
 ---
@@ -54,7 +54,7 @@ import { PlugNmeet } from 'plugnmeet-sdk-js';
 const app = express();
 app.set('view engine', 'ejs');
 
-// Your Plug-N-Meet credentials (use environment variables in production)
+// Your plugNmeet credentials (use environment variables in production)
 const API_KEY = 'plugnmeet';
 const API_SECRET = 'zumyyYWqv7KR2kUqvYdq4z4sXg7XTBD2ljT6';
 const PLUGNMEET_URL = 'https://demo.plugnmeet.com';
@@ -152,7 +152,7 @@ Este archivo EJS tomará los datos del backend y construirá la página HTML.
   </header>
 
   <div style="display: flex;">
-    <!-- The Plug-N-Meet client will mount itself in this div -->
+    <!-- The plugNmeet client will mount itself in this div -->
     <div id="plugNmeet-app" style="flex-grow: 1; height: 90vh;"></div>
 
     <!-- Your Custom Application Sidebar -->
@@ -185,7 +185,7 @@ Este archivo EJS tomará los datos del backend y construirá la página HTML.
 
 ### El resultado: una experiencia verdaderamente integrada
 
-Cuando un usuario visite `/meeting`, verá el encabezado y la barra lateral personalizados de su aplicación, con el cliente de video de Plug-N-Meet renderizado de forma fluida en el centro. El cliente se mostrará con los colores de marca dinámicos que usted definió desde el backend.
+Cuando un usuario visite `/meeting`, verá el encabezado y la barra lateral personalizados de su aplicación, con el cliente de video de plugNmeet renderizado de forma fluida en el centro. El cliente se mostrará con los colores de marca dinámicos que usted definió desde el backend.
 
 Habrá logrado así salir de la «caja» del `<iframe>`.
 

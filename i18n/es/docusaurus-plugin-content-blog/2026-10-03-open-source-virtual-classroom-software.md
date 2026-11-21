@@ -1,5 +1,5 @@
 ---
-title: "Software de aula virtual de código abierto: pizarra, salas de grupos, encuestas y más"
+title: "Software de aula virtual de código abierto: pizarra, salas de grupo, encuestas y más"
 slug: open-source-virtual-classroom-software
 authors: [bob, simon]
 tags: [aula-virtual, código-abierto, clase-en-línea, educación, tecnología-educativa, pizarra, salas-de-grupos, encuestas, moodle, lms]
@@ -9,7 +9,7 @@ Cuando busca **software de aula virtual**, usted no necesita otra videollamada g
 
 Una reunión genérica le da video y chat. Un aula virtual de verdad le ayuda a enseñar como en persona: mostrar, dialogar en grupos, comprobar comprensión, tomar notas juntos y mantener la clase concentrada — todo en una sala privada que usted controla.
 
-Eso es plugNmeet: **software de aula virtual de código abierto** con pizarra compartida, salas de grupos, encuestas tipo prueba, notas compartidas, sala de espera, controles sencillos e integración con Moodle. Gratuito, privado por diseño, con su propio logo y colores.
+Eso es plugNmeet: **software de aula virtual de código abierto** con pizarra compartida, salas de grupo, encuestas tipo prueba, notas compartidas, sala de espera, controles sencillos e integración con Moodle. Gratuito, privado por diseño, con su propio logo y colores.
 
 <!--truncate-->
 
@@ -20,7 +20,7 @@ Eso es plugNmeet: **software de aula virtual de código abierto** con pizarra co
 Una reunión conecta personas. Un aula les ayuda a aprender. Eso exige otras herramientas:
 
 1.  **Enseñe visualmente:** una pizarra interactiva multiusuario donde puede escribir y marcar sus archivos de clase, no solo compartir pantalla.
-2.  **Trabaje en grupos pequeños:** salas de grupos donde cada equipo conserva lo mismo — pizarra, notas, audio y video.
+2.  **Trabaje en grupos pequeños:** salas de grupo donde cada equipo conserva lo mismo — pizarra, notas, audio y video.
 3.  **Compruebe comprensión en vivo:** pruebas cortas y encuestas con resultados al instante, no respuestas perdidas en el chat.
 4.  **Tome notas juntos:** notas de clase que todos pueden seguir y repasar después.
 5.  **Mantenga la concentración:** sala de espera, mano levantada y controles sencillos de sonido, cámara, chat y pantalla.
@@ -33,17 +33,17 @@ Así lo resuelve plugNmeet — sin conocimientos técnicos. Los asistentes de IA
 
 La pizarra es el corazón del aula en línea. La nuestra es una pizarra interactiva multiusuario dentro de la clase — sin ventanas extra ni retardos.
 
-Puede escribir, dibujar formas, flechas y texto, y abrir sus archivos de clase (PDF, presentaciones, documentos de Word) directamente en la pizarra. Muestre una guía y resuelva con el grupo, destaque puntos clave de una diapositiva o deje que el alumnado dibuje y escriba con usted al mismo tiempo. ¿Necesita un esquema con prisa? Escriba lo que quiere mostrar — por ejemplo un diagrama para su lección — y el asistente de IA crea un dibujo inicial editable que pueden explicar y cambiar juntos. ¿Necesita silencio mientras explica? Con un clic, configure la pizarra para solo lectura. Y funciona igual en las salas de grupos pequeños.
+Puede escribir, dibujar formas, flechas y texto, y abrir sus archivos de clase (PDF, presentaciones, documentos de Word) directamente en la pizarra. Muestre una guía y resuelva con el grupo, destaque puntos clave de una diapositiva o deje que el alumnado dibuje y escriba con usted al mismo tiempo. ¿Necesita un esquema con prisa? Escriba lo que quiere mostrar — por ejemplo un diagrama para su lección — y el asistente de IA crea un dibujo inicial editable que pueden explicar y cambiar juntos. ¿Necesita silencio mientras explica? Con un clic, configure la pizarra para solo lectura. Y funciona igual en las salas de grupo pequeños.
 
 Lea más en [la experiencia de pizarra integrada](/blog/integrated-whiteboard-experience).
 
-## 2. Salas de grupos donde se puede trabajar de verdad
+## 2. Salas de grupo donde se puede trabajar de verdad
 
 Dividir una clase grande en grupos pequeños convierte oyentes callados en participantes activos: diálogo por parejas, proyectos en grupo, revisión entre compañeros, resolución de problemas.
 
 Cree salas en un clic, reparta al azar o coloque usted a cada estudiante, ponga temporizador, envíe avisos a todas las salas («¡quedan 5 minutos!»), entre a ayudar y traiga a todos de vuelta automáticamente. Y cada grupo recibe una **mini-aula completa**: su propia pizarra, notas compartidas, encuestas, audio, video y pantalla compartida.
 
-Incluso puede enviar sus páginas de pizarra, notas y encuestas a las salas para que nadie empiece desde una página en blanco. Vea [cómo dominar las salas de grupos](/blog/mastering-breakout-rooms) y [la anatomía del taller en línea perfecto](/blog/anatomy-of-a-perfect-online-workshop).
+Incluso puede enviar sus páginas de pizarra, notas y encuestas a las salas para que nadie empiece desde una página en blanco. Vea [cómo dominar las salas de grupo](/blog/mastering-breakout-rooms) y [la anatomía del taller en línea perfecto](/blog/anatomy-of-a-perfect-online-workshop).
 
 ## 3. Pruebas rápidas y mano levantada
 
@@ -57,7 +57,7 @@ Detalles: [cómo implicar con encuestas en vivo](/blog/engaging-audience-with-li
 
 Tome notas donde ocurre la clase. Las notas compartidas están dentro de la sala, así docente y estudiantes escriben juntos resúmenes, puntos clave, tareas y enlaces — con títulos y formato limpio, sin pasar otro documento.
 
-¿Poco tiempo? El asistente de IA puede continuar su borrador, corregir, simplificar o convertir notas largas en un resumen corto para compartir después. Cada grupo también tiene su propia página de notas en salas de grupos.
+¿Poco tiempo? El asistente de IA puede continuar su borrador, corregir, simplificar o convertir notas largas en un resumen corto para compartir después. Cada grupo también tiene su propia página de notas en salas de grupo.
 
 ## 5. Controles sencillos: sala de espera y reglas de sonido y cámara
 
@@ -87,13 +87,13 @@ Para privacidad e instalación vea el [Resumen de seguridad](/docs/security-over
 
 ## Conclusión: deje de reunirse y empiece a enseñar
 
-Si está buscando un **software para aulas virtuales**, no se conforme con videollamadas y un enlace a pizarra. Elija una opción de código abierto que lo tenga todo en un mismo lugar: una pizarra para enseñar, salas de grupos, pruebas rápidas, notas compartidas, una sala de espera, controles sencillos, integración con Moodle, estadísticas de participación y alojamiento privado.
+Si está buscando un **software para aulas virtuales**, no se conforme con videollamadas y un enlace a pizarra. Elija una opción de código abierto que lo tenga todo en un mismo lugar: una pizarra para enseñar, salas de grupo, pruebas rápidas, notas compartidas, una sala de espera, controles sencillos, integración con Moodle, estadísticas de participación y alojamiento privado.
 
 plugNmeet es gratuito, de código abierto y usado en clases, talleres y webinars. La misma sala sencilla también impulsa [webinars de código abierto](/blog/open-source-webinar-software-platform).
 
 ---
 **¿Listo para poner en marcha su aula en línea?**
 
-*   **Pruebe la [demo en vivo](https://demo.plugnmeet.com/landing.html): abra la pizarra, prepare una prueba, pruebe salas de grupos**
+*   **Pruebe la [demo en vivo](https://demo.plugnmeet.com/landing.html): abra la pizarra, prepare una prueba, pruebe salas de grupo**
 *   **Añádalo a Moodle en minutos: [documentación de Moodle](/docs/user-guide/moodle-integration)**
 *   **Apoye el [proyecto en GitHub](https://github.com/mynaparrot/plugNmeet-server)**

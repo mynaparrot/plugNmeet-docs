@@ -6,7 +6,7 @@ sidebar_position: 1
 sidebar_label: Analíticas
 ---
 
-# Analíticas de Reuniones e Informes Detallados de Sesión
+# Analíticas de reuniones e informes detallados de sesión
 
 Las **analíticas de reuniones** de plugNmeet convierten cada sesión en un **informe de analíticas** detallado: quién se unió y durante cuánto tiempo, quién habló, quién chateó, votó, levantó la mano, compartió pantalla o tuvo problemas de conexión. Los equipos las utilizan para sus **informes de reunión** y el control de asistencia; los docentes las utilizan como **informe de aula virtual** para medir la equidad en la participación, las tendencias de implicación y las barreras tecnológicas.
 
@@ -22,7 +22,7 @@ Para comprender el porqué de estas métricas — preguntas sobre participación
 - **Informe de calidad de conexión:** `connection_quality` (`excellent` / `good` / `poor`) correlacionado con eventos `left` tempranos para distinguir la falta de implicación de los problemas de red.
 - **Exportaciones a Excel / LMS:** los plugins de Moodle, WordPress y Joomla presentan los mismos datos en hojas por sala y por usuario. Consulte [Artefactos en WordPress](/docs/user-guide/wordPress-integration) como ejemplo.
 
-Las analíticas son **opcionales y respetuosas con la privacidad**: desactivadas por defecto, solo en memoria y descartadas de forma permanente si `enable_analytics` es `false`. Solo se guardan metadatos y contadores — nunca el texto del chat ni el audio o el video. Consulte el [Resumen de seguridad](/docs/security-overview).
+Las analíticas son **opcionales y respetuosas con la privacidad**: desactivadas de forma predeterminada, solo en memoria y descartadas de forma permanente si `enable_analytics` es `false`. Solo se guardan metadatos y contadores — nunca el texto del chat ni el audio o el video. Consulte el [Resumen de seguridad](/docs/security-overview).
 
 ## Cómo obtener el archivo de analíticas
 

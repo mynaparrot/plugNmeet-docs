@@ -6,7 +6,7 @@ sidebar_position: 1
 sidebar_label: Inicio Rápido con PHP
 ---
 
-# Inicio Rápido con PHP: Crear y Unirse a una Reunión
+# Inicio rápido con PHP: Crear y unirse a una reunión
 
 Este tutorial proporciona un ejemplo completo y paso a paso de cómo utilizar la biblioteca `plugNmeet-sdk-php` para crear una nueva sala de reuniones y generar un token de acceso seguro para un usuario.
 
@@ -16,7 +16,7 @@ La lógica sigue un flujo de trabajo común: verificar si una sala ya existe, cr
 
 ---
 
-## Requisitos Previos
+## Requisitos previos
 
 Antes de comenzar, asegúrese de tener lo siguiente:
 
@@ -25,7 +25,7 @@ Antes de comenzar, asegúrese de tener lo siguiente:
 
 ---
 
-## Paso 1: Configuración Inicial
+## Paso 1: Configuración inicial
 
 Primero, cree un archivo PHP (por ejemplo, `quickJoin.php`) e incluya la clase `plugNmeetConnect.php` del SDK. Luego, cree un objeto de configuración con los datos de su servidor.
 
@@ -44,7 +44,7 @@ $connect = new plugNmeetConnect($config);
 
 ---
 
-## Paso 2: Definir Parámetros de la Sala y del Usuario
+## Paso 2: Definir parámetros de la sala y del usuario
 
 A continuación, defina los parámetros básicos para la sala que desea crear y el usuario que se unirá. El array `$roomMetadata` le permite personalizar cada aspecto de las funciones de la sala, desde habilitar cámaras web hasta establecer permisos de bloqueo predeterminados.
 
@@ -159,11 +159,11 @@ $roomMetadata = array(
 
 ---
 
-## Paso 3: El Flujo Lógico - Verificar, Crear, Unirse
+## Paso 3: El flujo lógico - verificar, crear, unirse
 
 Los siguientes bloques de código implementan la lógica central.
 
-### 3.1 Verificar si la Sala está Activa
+### 3.1 verificar si la sala está activa
 
 Primero, consultamos la API para determinar si una sala con el `$roomId` especificado ya existe y está activa.
 
@@ -186,7 +186,7 @@ try {
 }
 ```
 
-### 3.2 Si no, Crear la Sala
+### 3.2 si no, crear la sala
 
 Si la sala no está activa, procedemos a crearla utilizando los parámetros que definimos anteriormente.
 
@@ -204,7 +204,7 @@ if (!$isRoomActive && $output->status) {
 }
 ```
 
-### 3.3 Generar el Token de Acceso
+### 3.3 generar el token de acceso
 
 Una vez que hemos confirmado que la sala está activa (ya sea porque existía o porque la acabamos de crear), podemos generar un token de acceso seguro y de un solo uso para nuestro usuario.
 
@@ -228,7 +228,7 @@ if ($isRoomActive && $output->status) {
 
 ---
 
-## Paso 4: Redirigir al Usuario
+## Paso 4: Redirigir al usuario
 
 Después de generar con éxito el token de acceso, la URL completa de la reunión estará en la variable `$output->url`. Ahora puede redirigir a su usuario a esta URL para que se una a la reunión.
 
@@ -243,7 +243,7 @@ if ($output->status) {
 
 ---
 
-## Próximos Pasos
+## Próximos pasos
 
 Esta guía de inicio rápido utiliza el método más simple para que un usuario entre en una sala. Para una experiencia más integrada, puede construir una interfaz de cliente personalizada utilizando el método de la API [getClientFiles()](/docs/api/get-client-files). Esto le permite alojar el cliente en su propia página sin necesidad de usar un iframe.
 

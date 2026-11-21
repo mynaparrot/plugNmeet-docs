@@ -6,7 +6,7 @@ sidebar_position: 7
 sidebar_label: Unir Grabaciones
 ---
 
-# Unir Grabaciones
+# Unir grabaciones
 
 Endpoint: `/recording/mergeRecordings`
 
@@ -14,18 +14,18 @@ En sesiones de larga duración, es común que los administradores o presentadore
 
 Utilizando la función de anexado de FFmpeg, este endpoint une todos los archivos de grabación en una nueva grabación con un `record_id` único. Los archivos de grabación originales no se eliminan, lo que le brinda la flexibilidad de administrarlos o descartarlos según sea necesario. Esto es ideal para crear una versión final y pulida de una sesión que fue grabada en partes.
 
-## Operación Asíncrona y Notificación por Webhook
+## Operación asíncrona y notificación por webhook
 
 Esta operación de la API es asíncrona. Cuando llama a este endpoint, la solicitud se asigna inmediatamente a una instancia de `plugnmeet-recorder` para ser procesada en segundo plano. Esto requiere que tenga al menos una instancia de grabador activa ejecutándose en modo `both` o `transcoderOnly`. La API devolverá instantáneamente una confirmación de que el trabajo ha sido programado.
 
 Debido a que la unión ocurre en segundo plano, el resultado final se entrega a través de un webhook. Una vez que el nuevo archivo de grabación esté listo, su servidor recibirá un evento `recording_proceeded` que contendrá el `record_id` y otros metadatos del archivo recién unido, al igual que una grabación estándar.
 
-## Casos de Uso
+## Casos de uso
 *   **Crear un único archivo para seminarios web largos:** Si pausa una grabación durante un descanso, puede unir las partes para una reproducción sin interrupciones.
 *   **Combinar módulos de sesiones de capacitación:** Unir módulos grabados por separado en un video de capacitación completo.
 *   **Simplificación de la postproducción:** Proporcionar un único archivo para facilitar la edición y distribución.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 El cuerpo de la solicitud debe contener uno de los siguientes ámbitos: `by_session` o `by_ids`.
 
@@ -47,9 +47,9 @@ Une una lista específica de grabaciones. El video final se generará anexando l
 | room_id       | string         | Sí        | El `room_id` al que pertenecen todos los `recording_ids`.                                                                                                             |
 | recording_ids | array (string) | Sí        | Una lista de `record_id`s para unir. Todas las grabaciones deben pertenecer al `room_id` especificado, pero pueden ser de diferentes sesiones. La lista debe contener al menos dos `record_id`s. |
 
-## Ejemplos de Solicitud
+## Ejemplos de solicitud
 
-### Ejemplo 1: Unir por Sesión
+### Ejemplo 1: Unir por sesión
 
 Este ejemplo une todas las grabaciones de la sesión `c5b79ab5...` excepto una grabación excluida.
 

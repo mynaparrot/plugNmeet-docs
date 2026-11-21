@@ -6,7 +6,7 @@ sidebar_position: 3
 sidebar_label: Estado de la Sala
 ---
 
-# Estado de la Sala (Activa/Inactiva)
+# Estado de la sala (Activa/Inactiva)
 
 Endpoint: `/room/isRoomActive`
 

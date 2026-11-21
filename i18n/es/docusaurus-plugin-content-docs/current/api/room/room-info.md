@@ -6,7 +6,7 @@ sidebar_position: 4
 sidebar_label: Información de la Sala
 ---
 
-# Obtener Información de una Sala Activa
+# Obtener información de una sala activa
 
 Endpoint: `/room/getActiveRoomInfo`
 
@@ -14,7 +14,7 @@ Este endpoint recupera información detallada y en tiempo real sobre una sala ac
 
 Esto es útil para crear paneles de administración o herramientas de moderación donde necesite monitorear reuniones en vivo. Puede ver quién está en la sala, cuándo se unieron y otros metadatos asociados tanto con la sala como con los participantes.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo   | Tipo   | Posición | Requerido | Descripción           |
 | ------- | ------ | -------- | :------- | --------------------- |
@@ -44,7 +44,7 @@ Esto es útil para crear paneles de administración o herramientas de moderació
 | room_info            | object\<[Información de la Sala](#información-de-la-sala)>             | Detalles sobre la sala.           |
 | participants_info    | array\<[Información del Participante](#información-del-participante)>| Lista de los participantes actuales.     |
 
-### Información de la Sala
+### Información de la sala
 
 | Campo               | Tipo    | Descripción                                 |
 | ------------------- | ------- | ------------------------------------------- |
@@ -59,7 +59,7 @@ Esto es útil para crear paneles de administración o herramientas de moderació
 | metadata            | string  | Metadatos de la sala.                              |
 | webhook_url         | string  | URL del webhook asociada a la sala.       |
 
-### Información del Participante
+### Información del participante
 
 | Campo      | Tipo    | Descripción                                 |
 | ---------- | ------- | ------------------------------------------- |

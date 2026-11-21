@@ -6,17 +6,17 @@ sidebar_position: 4
 sidebar_label: Implementación Escalable
 ---
 
-# Escalado de su Implementación de PlugNmeet
+# Escalado de su implementación de PlugNmeet
 
 Esta guía ofrece una visión general y estrategias recomendadas para escalar una implementación autoalojada de PlugNmeet, permitiéndole soportar un gran número de usuarios concurrentes a través de múltiples servidores.
 
-### Antes de Empezar: Un Enfoque por Fases para el Escalado
+### Antes de empezar: Un enfoque por fases para el escalado
 
 Es fundamental comprender que una configuración totalmente distribuida y multiservidor es la más avanzada y compleja. Para muchos usuarios, existen estrategias de escalado más sencillas que pueden proporcionar el aumento de rendimiento necesario sin añadir una complejidad excesiva.
 
 Recomendamos abordar el escalado en las siguientes fases:
 
-#### Fase 1: Aislar el Grabador (El Cuello de Botella Más Común)
+#### Fase 1: Aislar el grabador (el cuello de botella más común)
 
 Para un rendimiento óptimo, especialmente si se graba con frecuencia, recomendamos encarecidamente implementar el **`plugnmeet-recorder` en un servidor dedicado**, separado de su instancia principal de `plugnmeet-server` y LiveKit.
 
@@ -25,11 +25,11 @@ Para un rendimiento óptimo, especialmente si se graba con frecuencia, recomenda
 *   **Requisitos Clave:** Al aislar el grabador, debe configurar un **almacenamiento de red compartido** para sus archivos de grabación y asignar una **ID única** a la instancia del grabador.
 *   **Pasos Siguientes:** Para obtener instrucciones de configuración detalladas, consulte la sección [El Grabador de plugNmeet](#3-el-grabador-de-plugnmeet) más adelante en esta guía.
 
-#### Fase 2: Escalar Verticalmente su Servidor Principal
+#### Fase 2: Escalar verticalmente su servidor principal
 
 Si no realiza grabaciones de forma intensiva pero sigue experimentando problemas de rendimiento, el siguiente paso es **escalar verticalmente** su servidor único. Esto simplemente significa añadir más núcleos de CPU y RAM. Un único servidor bien aprovisionado puede gestionar cómodamente a **cientos de usuarios concurrentes** — véanse nuestros [Benchmarks](/docs/benchmark) medidos (300–500 en una sala sin fallos con 4 vCore / 16 GB, límite ~900).
 
-#### Fase 3: Configuraciones Distribuidas Avanzadas
+#### Fase 3: Configuraciones distribuidas avanzadas
 
 :::note[Para Implementaciones a Gran Escala y Avanzadas]
 
@@ -43,7 +43,7 @@ Cuando alcance esta escala, **recuerde que no es un proceso de todo o nada**. Pu
 
 ---
 
-## Arquitectura Conceptual
+## Arquitectura conceptual
 
 En una configuración distribuida, los componentes principales de plugNmeet se separan en diferentes máquinas. Una arquitectura típica a gran escala se compone de:
 
@@ -62,15 +62,15 @@ En una configuración distribuida, los componentes principales de plugNmeet se s
 
 ---
 
-## Estrategia de Escalado de Componentes
+## Estrategia de escalado de componentes
 
 La clave para una configuración distribuida exitosa es comprender cómo se escala cada componente. Los componentes se dividen en dos categorías principales: servicios sin estado, que pueden ser balanceados fácilmente, y servicios con estado, que requieren sus propias configuraciones de clúster específicas.
 
-### 1. Capas de Aplicación y Medios sin Estado
+### 1. Capas de aplicación y medios sin estado
 
 Estos componentes pueden situarse detrás de un balanceador de carga estándar, cuya función principal es terminar las conexiones SSL y distribuir el tráfico inicial.
 
-#### El Servidor plugNmeet: El Puesto de Mando Ligero
+#### El servidor plugNmeet: El puesto de mando ligero
 
 La aplicación principal `plugnmeet-server` está diseñada para ser un **puesto de mando** u orquestador ligero y sin estado. Delega intencionadamente todo el trabajo pesado: los medios son gestionados por LiveKit y la grabación por el `plugnmeet-recorder`.
 
@@ -79,7 +79,7 @@ Su responsabilidad principal es gestionar las solicitudes de la API, autenticar 
 *   **Acción:** Puede ejecutar múltiples instancias en diferentes máquinas y situarlas detrás de un balanceador de carga L4 o L7 estándar, utilizando un algoritmo simple como round-robin o el de menor número de conexiones.
 *   **Configuración:** Cada instancia debe configurarse para apuntar a la misma infraestructura compartida (NATS, Redis y MariaDB).
 
-#### Servidor de Medios LiveKit
+#### Servidor de medios LiveKit
 
 LiveKit también funciona detrás de un balanceador de carga para las conexiones iniciales.
 *   **Acción:** El balanceador de carga puede terminar las conexiones SSL y redirigir la conexión inicial a cualquier nodo de LiveKit disponible.
@@ -91,18 +91,18 @@ LiveKit también funciona detrás de un balanceador de carga para las conexiones
 
 ---
 
-### 2. Capas de Infraestructura con Estado y en Clúster
+### 2. Capas de infraestructura con estado y en clúster
 
 **Advertencia Crítica:** Los siguientes componentes tienen sus propios mecanismos robustos de clúster y descubrimiento de servicios. Colocarlos detrás de un balanceador de carga TCP/L4 simple y estándar sin una configuración avanzada y específica **probablemente causará inestabilidad en el sistema, corrupción de datos o un fallo completo.** Siga siempre la documentación oficial de clúster para estos servicios.
 
-#### Sistema de Mensajería NATS
+#### Sistema de mensajería NATS
 
 *   **Recomendación:** NATS tiene sus propias capacidades de clúster y enrutamiento de clientes. Sus clientes `plugnmeet-server` y `plugnmeet-recorder` deben configurarse con una lista de todos los nodos de NATS en el clúster. Los clientes gestionarán automáticamente la conmutación por error (failover).
 *   **Acción:** Siga la **documentación oficial de NATS para crear un clúster**.
 
 **(Enlace: [Documentación Oficial de Clústeres de NATS](https://docs.nats.io/running-a-nats-service/configuration/clustering/jetstream_clustering))
 
-#### Base de Datos MariaDB
+#### Base de datos MariaDB
 
 *   **Recomendación:** Para una alta disponibilidad, la base de datos debe estar en un clúster. Todas las instancias de `plugnmeet-server` deben apuntar al mismo clúster de base de datos.
 *   **Acción:** Utilice un servicio de base de datos gestionado y de alta disponibilidad de un proveedor en la nube, o configure su propia solución, como un Clúster Galera de MariaDB. Siga la documentación oficial para la solución que elija.
@@ -118,7 +118,7 @@ LiveKit también funciona detrás de un balanceador de carga para las conexiones
 
 ---
 
-### 3. El Grabador de plugNmeet
+### 3. El grabador de plugNmeet
 
 El `plugnmeet-recorder` es un caso especial. Aunque tiene estado durante un trabajo, su descubrimiento y balanceo de carga se gestionan automáticamente.
 
@@ -147,13 +147,13 @@ Si varios grabadores comparten la misma ID, todos intentarán aceptar el mismo t
 
 ---
 
-### 4. Sistema de Archivos Compartido: Un Requisito Crítico para la Consistencia de los Datos
+### 4. Sistema de archivos compartido: Un requisito crítico para la consistencia de los datos
 
 En un entorno distribuido, es **absolutamente crítico** que todos los servidores sin estado tengan una forma consistente de acceder a los archivos persistentes. Sin esto, sus usuarios experimentarán funciones rotas, como descargas de archivos que no se encuentran o grabaciones inaccesibles.
 
 Existen dos enfoques principales para lograrlo: un sistema de archivos compartido tradicional o el sistema de hooks, más moderno y flexible.
 
-#### Opción 1: Sistema de Archivos Compartido Tradicional
+#### Opción 1: Sistema de archivos compartido tradicional
 
 Puede montar una solución de almacenamiento de red compartida (como **NFS**, **Samba (CIFS)**, **GlusterFS** o un **almacén de objetos compatible con S3** montado como sistema de archivos) en la misma ruta en **todas** sus instancias de `plugnmeet-server` y `plugnmeet-recorder`.
 
@@ -163,7 +163,7 @@ Las siguientes rutas en su `config.yaml` deben apuntar a esta ubicación compart
 *   `artifacts_settings.storage_path`
 *   `upload_file_settings.path`
 
-#### Opción 2: El Sistema de Hooks (Recomendado para Implementaciones Nativas de la Nube)
+#### Opción 2: El sistema de hooks (recomendado para implementaciones nativas de la nube)
 
 :::tip[Alternativa a los Sistemas de Archivos Compartidos]
 Para un enfoque más flexible y nativo de la nube, puede utilizar el sistema de **[Hooks de Scripting y Almacenamiento](/docs/others/hooks)** en lugar de un sistema de archivos compartido. Este es el método recomendado para gestionar grabaciones y artefactos en un entorno escalable.

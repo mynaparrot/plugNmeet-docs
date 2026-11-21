@@ -82,7 +82,7 @@ Traducción: **limpio hasta 500**, y con 1.000 fue el propio portátil el que se
 
 ## Resultados: servidor único, solo actividad de reunión (sin video aún)
 
-Mismo formato de webinar — chat, pizarra, bloc de notas, reacciones, manos, latidos — pero sin cámaras. Así se aísla el coste de «coordinar la reunión».
+Mismo formato de webinar — chat, pizarra, bloc de notas, reacciones, manos, latidos — pero sin cámaras. Así se aísla el costo de «coordinar la reunión».
 
 | Usuarios en una sala | Entraron | Perdidos | Latido p50 / p95 | Entrega chat p50 / p95 | Puntero pizarra p50 / p95 | Fan-out |
 |-------------------|--------|--------|---------------------|-------------------------|------------------------------|---------|
@@ -185,7 +185,7 @@ Si necesita cifras de alguno de estos huecos antes de decidir, díganoslo — a�
     --api-key YOUR_KEY --api-secret YOUR_SECRET \
     --room bench-multi --rooms 5 --users 100 --duration 10m
   ```
-- **Reglas que seguimos:** `--room` nuevo en cada ejecución (las salas usadas bloquean entradas), `--join-rate 1/s` por defecto, dimensione el generador con ~10 MB RAM por usuario simulado, pruebe solo servidores propios.
+- **Reglas que seguimos:** `--room` nuevo en cada ejecución (las salas usadas bloquean entradas), `--join-rate 1/s` de forma predeterminada, dimensione el generador con ~10 MB RAM por usuario simulado, pruebe solo servidores propios.
 - **Qué registramos:** `connect`, trámites de entrada, `ping`, RTT `delivery.*` + fan-out, `mediaJoin`/`mediaRtt` cuando hay video, además de CPU/RSS del generador y carga de la máquina. Referencia completa en el [README de la herramienta](https://github.com/mynaparrot/plugnmeet-loadtester).
 
 ## Pruébelo usted mismo

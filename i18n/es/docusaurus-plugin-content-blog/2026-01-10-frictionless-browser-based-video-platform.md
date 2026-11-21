@@ -9,13 +9,13 @@ Envió un enlace de reunión. Cinco minutos después, su cliente más importante
 
 Este es el tipo de situación que toda empresa, docente y community manager quiere evitar. Hoy en día, cualquier fricción puede hacer que las personas pierdan el interés. ¿La alternativa? Una experiencia fluida en la que hacen clic y entran directamente a la reunión, listos para colaborar.
 
-Esta es la promesa de una plataforma que funciona realmente desde el navegador, y esta guía le muestra cómo ofrecer esa experiencia con Plug-N-Meet sin renunciar a ninguna funcionalidad.
+Esta es la promesa de una plataforma que funciona realmente desde el navegador, y esta guía le muestra cómo ofrecer esa experiencia con plugNmeet sin renunciar a ninguna funcionalidad.
 
 <!--truncate-->
 
 ---
 
-### La Filosofía de "Cero Instalaciones"
+### La filosofía de "cero instalaciones"
 
 Antes de sumergirnos en el "cómo", entendamos el "por qué". Un enfoque centrado en el navegador es una decisión estratégica que prioriza:
 
@@ -23,11 +23,11 @@ Antes de sumergirnos en el "cómo", entendamos el "por qué". Un enfoque centrad
 *   **Seguridad:** No se pide a los usuarios que descarguen ni ejecuten programas desconocidos.
 *   **Velocidad:** El tiempo desde el clic hasta la conversación se mide en segundos, no en minutos.
 
-Aquí le mostramos cómo puede aprovechar la arquitectura nativa del navegador de Plug-N-Meet para crear un servicio de video completo que rivaliza con las aplicaciones de escritorio.
+Aquí le mostramos cómo puede aprovechar la arquitectura nativa del navegador de plugNmeet para crear un servicio de video completo que rivaliza con las aplicaciones de escritorio.
 
 ---
 
-### Paso 1: Ofrece Acceso Instantáneo con un Conjunto Completo de Funciones
+### Paso 1: Ofrece acceso instantáneo con un conjunto completo de funciones
 
 Su primer paso es proporcionar una experiencia central que se sienta completa. Un navegador no significa "básico". Con una simple llamada a la API `createRoom`, puede habilitar un conjunto de funciones avanzadas de nivel escritorio que funcionan directamente en el navegador.
 
@@ -40,7 +40,7 @@ En los metadatos de su `createRoom`, asegúrese de que estas funciones estén co
 
 ---
 
-### Paso 2: Agrega Funciones Inteligentes Impulsadas por la Nube
+### Paso 2: Agrega funciones inteligentes impulsadas por la nube
 
 Las funciones más avanzadas de hoy no están limitadas por el dispositivo de un usuario; están impulsadas por la nube. Esto encaja perfectamente con una plataforma que funciona en el navegador.
 
@@ -54,7 +54,7 @@ Las funciones más avanzadas de hoy no están limitadas por el dispositivo de un
 
 ---
 
-### Paso 3: Aprovecha Experiencias Web Nativas Únicas
+### Paso 3: Aprovecha experiencias web nativas únicas
 
 Algunas funciones no solo son *posibles* en un navegador; son *mejores*. La función de **Contenido Web Integrado** es un ejemplo perfecto.
 
@@ -71,9 +71,9 @@ Esta es una función especialmente potente que una aplicación de escritorio tra
 
 ---
 
-### Paso 4: Asegure la Fiabilidad con Transmisión Adaptativa
+### Paso 4: Asegure la fiabilidad con transmisión adaptativa
 
-Una preocupación común con las aplicaciones web es el rendimiento en redes deficientes. Plug-N-Meet resuelve esto en el navegador utilizando los estándares modernos de WebRTC.
+Una preocupación común con las aplicaciones web es el rendimiento en redes deficientes. plugNmeet resuelve esto en el navegador utilizando los estándares modernos de WebRTC.
 
 **Cómo habilitarlo:**
 ¡Esto está activado por defecto! `Simulcast` y `Dynacast` son características centrales del servidor de medios subyacente.
@@ -89,7 +89,7 @@ Una preocupación común con las aplicaciones web es el rendimiento en redes def
 
 No necesita obligar a sus usuarios a descargar, instalar y actualizar software para proporcionar una experiencia de videoconferencia profesional. Al adoptar una arquitectura que prioriza el navegador, puede ofrecer un servicio que es más rápido, más accesible y que está repleto de funciones potentes y modernas.
 
-Con Plug-N-Meet, puede crear una plataforma que "simplemente funciona", permitiendo a sus usuarios concentrarse en la conversación, no en la barra de instalación.
+Con plugNmeet, puede crear una plataforma que "simplemente funciona", permitiendo a sus usuarios concentrarse en la conversación, no en la barra de instalación.
 
 ---
 **¿Listo para construir su plataforma sin fricciones?**

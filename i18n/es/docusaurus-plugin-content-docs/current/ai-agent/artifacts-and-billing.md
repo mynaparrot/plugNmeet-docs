@@ -6,7 +6,7 @@ sidebar_label: Resúmenes y artefactos de uso
 sidebar_position: 7
 ---
 
-# Resúmenes y artefactos de uso del Agente de IA
+# Resúmenes y artefactos de uso del agente de IA
 
 Cada sesión del Agente de IA genera dos artefactos que se almacenan asociados a la **sala principal**:
 
@@ -17,7 +17,7 @@ Cada sesión del Agente de IA genera dos artefactos que se almacenan asociados a
 
 Esta página describe ambos artefactos, con los nombres de campo exactos que se utilizan en `plugnmeet_room_artifacts.proto`.
 
-:::info En Desarrollo Activo
+:::info En desarrollo activo
 El motor del Agente de IA y sus formatos de artefacto están en desarrollo activo. Los nombres de los campos y los campos que aún no se documentan pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que la función se finalice y se publique.
 :::
 
@@ -33,7 +33,7 @@ No consulte los artefactos de forma periódica. Escuche `artifact_created`, comp
 
 ## `AI_AGENT_SESSION_SUMMARY`
 
-El archivo de resumen es JSON y se genera con los nombres de campo del proto (snake_case). Se incluyen las cadenas vacías, las listas vacías y los valores cero, de modo que todos los campos siempre están presentes. Los campos opcionales se omiten cuando no están definidos.
+El archivo de resumen es JSON y se genera con los nombres de campo del proto (snake_case). Las cadenas vacías, las listas vacías y los valores cero también aparecen, así que todos los campos están siempre presentes. Los campos opcionales se omiten cuando no están definidos.
 
 ### Campos de nivel superior
 
@@ -274,7 +274,7 @@ El ejemplo siguiente es un resumen realista de una sesión de estudio de 20 minu
 }
 ```
 
-Los valores del desglose son cadenas en el JSON porque protobuf codifica `int64` como cadenas. Conviértalos a enteros en su código.
+En el JSON, los valores del desglose son cadenas porque protobuf codifica `int64` de ese modo. Conviértalos a enteros en su código.
 
 :::caution Nombres de campo en el ejemplo
 El ejemplo utiliza los nombres de campo que se enumeran en esta página. Algunos campos, como las claves de `breakdown` dentro de `usage`, pueden variar según el proveedor. Lea los valores que necesite e ignore las claves que no reconozca.
@@ -295,7 +295,7 @@ El artefacto de uso se almacena como `RoomArtifactMetadata` con una carga `token
 | `token_usage.total_tokens_estimated_cost` | Costo total estimado. Opcional. Se omite en las sesiones BYOK. |
 | `reference_artifact_id` | Identificador del artefacto `AI_AGENT_SESSION_SUMMARY` correspondiente. Úselo para vincular ambos. |
 | `user_info` | La misma identidad de alumno que en el resumen. Se incluye cuando el resumen la contiene. |
-| `occurred_in_breakout_room` | `true` cuando la sesión se ejecutó en una sala de grupos. |
+| `occurred_in_breakout_room` | `true` cuando la sesión se ejecutó en una sala de grupo. |
 | `source_room_table_id` | Identificador de la tabla de la base de datos de la sala en la que se ejecutó la sesión. |
 
 ### Claves del desglose
@@ -343,13 +343,13 @@ La estimación es una ayuda contable. No sustituye a la factura de su proveedor.
 
 ### Atribución a la sala principal
 
-Ambos artefactos se almacenan en la **sala principal**, incluso cuando la sesión se ejecutó en una sala de grupos 1 a 1. Utilice estos campos para distinguirlos:
+Ambos artefactos se almacenan en la **sala principal**, incluso cuando la sesión se ejecutó en una sala de grupo 1 a 1. Utilice estos campos para distinguirlos:
 
-- `occurred_in_breakout_room: true` identifica una sesión que se ejecutó en una sala de grupos.
+- `occurred_in_breakout_room: true` identifica una sesión que se ejecutó en una sala de grupo.
 - `source_room_table_id` identifica la sala en la que se prestó la sesión.
 - `reference_artifact_id` vincula el uso con su resumen.
 
-Por ejemplo, un centro educativo puede informar del uso por clase agrupando por el identificador de la sala principal y, aun así, ver qué sesiones fueron salas de grupos por alumno.
+Por ejemplo, un centro educativo puede agrupar el uso por clase con el identificador de la sala principal y, además, ver qué sesiones se ejecutaron en salas de grupo por alumno.
 
 ### Supresión de la facturación con BYOK
 

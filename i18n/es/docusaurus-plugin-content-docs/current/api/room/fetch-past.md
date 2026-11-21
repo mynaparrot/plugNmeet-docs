@@ -6,7 +6,7 @@ sidebar_position: 8
 sidebar_label: Obtener Salas Anteriores
 ---
 
-# Obtener Información de Salas Anteriores
+# Obtener información de salas anteriores
 
 Endpoint: `/room/fetchPastRooms`
 
@@ -14,7 +14,7 @@ Este endpoint le permite recuperar información histórica sobre las sesiones de
 
 Esto es particularmente útil para crear funciones que requieren un historial de reuniones pasadas, como mostrar una lista de sesiones anteriores en la interfaz de usuario de su aplicación. Puede consultar uno o más `room_id` para obtener detalles como cuándo se creó la sesión, cuándo terminó y cuántos participantes se unieron.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo    | Tipo   | Requerido | Descripción                                 |
 | -------- | ------ | -------- | ------------------------------------------- |
@@ -53,7 +53,7 @@ Esto es particularmente útil para crear funciones que requieren un historial de
 | order_by         | string                                    | Orden de clasificación utilizado para los registros.            |
 | rooms_list       | Array\<[Información de Sala Anterior](#información-de-sala-anterior)> | Lista de registros de salas anteriores.                  |
 
-### Información de Sala Anterior
+### Información de sala anterior
 
 | Campo               | Tipo   | Descripción                                                                                   |
 | ------------------- | ------ | --------------------------------------------------------------------------------------------- |

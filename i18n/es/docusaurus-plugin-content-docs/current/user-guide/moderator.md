@@ -1,20 +1,20 @@
 ---
 title: Guía del Moderador | Cómo Organizar y Gestionar una Reunión de plugNmeet
-description: Una guía completa para moderadores sobre cómo gestionar reuniones, participantes, grabaciones y usar funciones avanzadas como salas de grupos, encuestas y uso compartido de pantalla.
-keywords: [moderador, anfitrión, gestionar reunión, salas de grupos, encuestas, grabación, compartir pantalla, gestión de usuarios]
+description: Una guía completa para moderadores sobre cómo gestionar reuniones, participantes, grabaciones y usar funciones avanzadas como salas de grupo, encuestas y uso compartido de pantalla.
+keywords: [moderador, moderador, gestionar reunión, salas de grupo, encuestas, grabación, compartir pantalla, gestión de usuarios]
 sidebar_position: 2
 sidebar_label: Guía del Moderador
 ---
 
-# Guía del Moderador: Cómo Organizar y Gestionar una Reunión
+# Guía del moderador: Cómo organizar y gestionar una reunión
 
-Le damos la bienvenida a la Guía del Moderador. Este documento ofrece una descripción detallada de todas las funciones y controles disponibles para usted como anfitrión o moderador de una reunión.
+Le damos la bienvenida a la Guía del Moderador. Este documento ofrece una descripción detallada de todas las funciones y controles disponibles para usted como moderador o moderador de una reunión.
 
 El moderador tiene el control total de la sesión, lo que incluye la gestión de los participantes, el uso de herramientas de presentación y la configuración de la sala. Esta guía ha sido diseñada para ayudarle a localizar rápidamente la función que necesite.
 
 ---
 
-## Primeros Pasos: Acceso a la Sala y Configuración de Audio
+## Primeros pasos: Acceso a la sala y configuración de audio
 
 Al entrar por primera vez a una sala de PlugNmeet, se le solicitará que elija cómo desea unirse a la sesión de audio. Este es el paso inicial más importante.
 
@@ -27,11 +27,11 @@ Al entrar por primera vez a una sala de PlugNmeet, se le solicitará que elija c
 
 ---
  
-## Sección 1: Controles Principales de Multimedia y Grabación
+## Sección 1: Controles principales de multimedia y grabación
 
 Estos son los controles básicos de audio y video, ubicados en la parte inferior izquierda de la barra de controles.
 
-### Gestión de Micrófono y Audio
+### Gestión de micrófono y audio
 
 - **Silenciar/Activar Sonido:** Si se ha unido con acceso al micrófono y a la cámara, haga clic en el icono de **Micrófono** en la parte inferior izquierda para silenciarse o activar su sonido.
 - **Activar Micrófono:** Si ha accedido en modo "Continuar como oyente", el icono mostrará unos auriculares. Haga clic en él para salir del modo de solo escucha y activar su micrófono.
@@ -39,20 +39,20 @@ Estos son los controles básicos de audio y video, ubicados en la parte inferior
 
 ![microphone-pop.webp](/img/moderator/microphone-pop.webp)
 
-### Gestión de Cámara Web y Fondos Virtuales
+### Gestión de cámara web y fondos virtuales
 
 - **Iniciar/Detener Cámara Web:** Haga clic en el icono de **Cámara Web** para comenzar o detener el uso compartido de su video. También puede alternar la visibilidad de su video en la reunión.
 - **Fondos Virtuales:** Al activar su cámara web, aparecerá una ventana de vista previa. Aquí podrá seleccionar un fondo virtual (desenfoque o imagen) o cargar su propia imagen (usando el icono "+") antes de hacer clic en **Compartir**.
 
 ![share-webcam-pop.webp](/img/moderator/share-webcam-pop.webp)
 
-### Grabación de la Reunión
+### Grabación de la reunión
 
-Plug-N-Meet ofrece dos métodos para grabar la sesión: **Grabación en la Nube** (en el servidor) y **Grabación Local** (en el navegador). Para iniciar cualquiera de ellas, haga clic en el icono **REC** de la barra de control y elija la opción deseada.
+plugNmeet ofrece dos métodos para grabar la sesión: **Grabación en la Nube** (en el servidor) y **Grabación Local** (en el navegador). Para iniciar cualquiera de ellas, haga clic en el icono **REC** de la barra de control y elija la opción deseada.
 
 ![recording.png](/img/moderator/recording.png)
 
-#### Grabación en la Nube (Recomendado)
+#### Grabación en la nube (recomendado)
 
 Es el método más fiable. La grabación se procesa en el servidor, capturando toda la sesión sin depender del rendimiento de su equipo local.
 
@@ -67,7 +67,7 @@ Es el método más fiable. La grabación se procesa en el servidor, capturando t
 
     Estas opciones aseguran que sus grabaciones sean limpias y se centren en el contenido principal, especialmente útil para la transmisión RTMP donde el espacio en pantalla es crucial. Nuestra filosofía de grabación asegura que lo que ve es lo que se graba, por lo que controlar la visibilidad del panel de chat impacta directamente en el video final.
 
-#### Grabación Local (En el Navegador)
+#### Grabación local (en el navegador)
 
 Este método utiliza el navegador para guardar la reunión directamente en su ordenador. **Solo es compatible con Google Chrome**.
 
@@ -89,11 +89,11 @@ Si solo necesita grabar su micrófono junto con el video principal, puede hacerl
 
 ---
 
-## Sección 2: Herramientas de Presentación y Colaboración
+## Sección 2: Herramientas de presentación y colaboración
 
 Estas herramientas le permiten exponer contenido y colaborar con los asistentes.
 
-### Compartir Pantalla
+### Compartir pantalla
 
 - Haga clic en el icono de **Compartir Pantalla** en la barra de control principal.
 - Su navegador le solicitará que elija si desea compartir toda su pantalla, una ventana de aplicación específica o una pestaña del navegador.
@@ -101,20 +101,20 @@ Estas herramientas le permiten exponer contenido y colaborar con los asistentes.
 
 ![share-screen.webp](/img/moderator/share-screen.webp)
 
-### Uso de la Pizarra Interactiva
+### Uso de la pizarra interactiva
 
 La pizarra es una herramienta potente para la colaboración en tiempo real, basada en Excalidraw. Para abrirla, haga clic en el icono de **Pizarra** en la barra de control principal.
 
 ![white-board.webp](/img/moderator/white-board.png)
 
-#### Herramientas de Dibujo y Anotación
+#### Herramientas de dibujo y anotación
 La barra de herramientas ofrece un amplio conjunto de opciones para dibujar y realizar lluvias de ideas:
 - Utilice la **herramienta de lápiz** para realizar trazos a mano alzada.
 - Añada **formas**, **flechas** y **texto** para crear diagramas.
 - Modifique **colores**, **estilos de trazo** y más.
 - Puede **exportar** todo el lienzo de la pizarra como un archivo PNG o SVG en cualquier momento.
 
-#### Añadir Contenido a la Pizarra
+#### Añadir contenido a la pizarra
 Existen dos métodos distintos para añadir contenido a la pizarra: uno para imágenes y otro para documentos de oficina.
 
 **1. Añadir Imágenes**
@@ -137,14 +137,14 @@ Para presentar documentos como PDF, archivos de Word o presentaciones de PowerPo
 El cargador de "Archivos" no admite imágenes. Está destinado exclusivamente a documentos de ofimática y PDF.
 :::
 
-### Uso del Bloc de Notas Compartido
+### Uso del bloc de notas compartido
 
 - **Activar/Ocultar:** Abra el menú **Más Opciones** (...) en la barra de control y seleccione **Habilitar bloc de notas compartido**.
 - El bloc de notas compartido permite que todos los participantes escriban y editen texto de forma conjunta y en tiempo real. Puede aplicar formato al texto e importar o exportar el contenido.
 
 ![shared-notepad.webp](/img/moderator/shared-notepad.webp)
 
-### Uso del Asistente de IA
+### Uso del asistente de IA
 
 - **Activación de la IA:** Abra el menú **Más Opciones** (...) y seleccione **Herramientas de IA**.
 - **Configuración de IA:** En la ventana emergente de **Configuración de IA de Insights**, podrá habilitar o deshabilitar el asistente de IA y decidir si estará disponible para todos los participantes o solo para usuarios específicos.
@@ -176,7 +176,7 @@ El Agente de IA se configura mediante la API. Para flujos de trabajo educativos 
 El Agente de IA está en desarrollo activo, y los controles con un solo clic en los plugins de Moodle, WordPress y Joomla están previstos para una versión futura.
 :::
 
-### Transcripción y Traducción
+### Transcripción y traducción
 - **Activación:** Acceda al menú **Más Opciones** (...) y seleccione **Transcripción y Traducción**.
 - **Configuración:** En la ventana emergente correspondiente, podrá activar o desactivar este servicio.
 
@@ -192,7 +192,7 @@ El Agente de IA está en desarrollo activo, y los controles con un solo clic en 
 
 **Importante:** Es necesario **Habilitar el Micrófono** para utilizar el servicio de **Transcripción y Traducción**.
 
-### Compartir un Video Externo
+### Compartir un video externo
 
 Puede compartir un video mediante una URL (como YouTube) o desde un archivo local.
 
@@ -202,7 +202,7 @@ Puede compartir un video mediante una URL (como YouTube) o desde un archivo loca
 
 ![external-video-player.webp](/img/moderator/external-video-player.webp)
 
-### Mostrar un Sitio Web Externo (iframe)
+### Mostrar un sitio web externo (iframe)
 
 Puede mostrar cualquier sitio web que permita su incrustación mediante un iframe.
 
@@ -213,15 +213,15 @@ Puede mostrar cualquier sitio web que permita su incrustación mediante un ifram
 
 ---
 
-## Sección 3: Gestión de Participantes
+## Sección 3: Gestión de participantes
 
 Estas funciones le permiten supervisar e interactuar con los asistentes.
 
-### Ver la Lista de Participantes
+### Ver la lista de participantes
 
 - Haga clic en el icono de **Participantes** para abrir el panel lateral, donde podrá ver a todas las personas presentes en la reunión.
 
-### Uso de la Sala de Espera
+### Uso de la sala de espera
 
 Si la sala de espera está activa, deberá autorizar a los asistentes antes de que puedan entrar.
 
@@ -231,7 +231,7 @@ Si la sala de espera está activa, deberá autorizar a los asistentes antes de q
 
 ![manage-waiting-room.webp](/img/moderator/manage-waiting-room.webp)
 
-### Envío de Mensajes Privados
+### Envío de mensajes privados
 
 - Abra el panel de **Participantes**.
 - Haga clic en el menú de tres puntos junto al nombre de un usuario y elija **Enviar mensaje privado**.
@@ -239,7 +239,7 @@ Si la sala de espera está activa, deberá autorizar a los asistentes antes de q
 
 ![private-message.webp](/img/moderator/private-message.webp)
 
-### Configuración de Bloqueo de la Sala
+### Configuración de bloqueo de la sala
 
 Esta función le permite restringir las acciones de los asistentes.
 
@@ -249,18 +249,18 @@ Esta función le permite restringir las acciones de los asistentes.
 
 ![lock-settings.webp](/img/moderator/lock-settings.webp)
 
-### Silenciar a Todos los Usuarios
+### Silenciar a todos los usuarios
 
 - Para silenciar a todos los asistentes simultáneamente, acceda al menú **Más Opciones** (...) y elija **Silenciar a todos los usuarios**.
 - Esta acción no afectará a otros moderadores.
 
 ---
 
-## Sección 4: Funciones Avanzadas de Interacción
+## Sección 4: Funciones avanzadas de interacción
 
 Utilice estas herramientas para que su sesión sea más interactiva y dinámica.
 
-### Creación y Gestión de Encuestas
+### Creación y gestión de encuestas
 
 - En el menú **Más Opciones** (...), seleccione **Habilitar Encuestas**. Esto activará la función y aparecerá un icono de **Encuestas** en la barra de control principal.
 - Haga clic en **Crear nueva Encuesta**.
@@ -269,18 +269,18 @@ Utilice estas herramientas para que su sesión sea más interactiva y dinámica.
 
 ![polls.webp](/img/moderator/polls.webp)
 
-### Uso de Salas de Grupos Pequeños (Breakout Rooms)
+### Uso de salas de grupo (Breakout Rooms)
 
 Divida a los participantes en grupos reducidos y temporales para debates específicos.
 
-- En el menú **Más Opciones** (...), elija **Gestionar Salas de Grupos Pequeños**.
+- En el menú **Más Opciones** (...), elija **Gestionar salas de grupo**.
 - Configure el número de salas, la duración y asigne a los participantes (manualmente o de forma aleatoria).
-- Haga clic en **Iniciar salas de grupos pequeños**.
+- Haga clic en **Iniciar salas de grupo**.
 - Mientras las salas estén activas, podrá enviar mensajes a todos los grupos, unirse a salas específicas o finalizar la sesión grupal.
 
 ![breakout-room.webp](/img/moderator/breakout-room.webp)
 
-### Transmisión en Vivo (RTMP)
+### Transmisión en vivo (RTMP)
 
 Puede retransmitir su reunión en directo en plataformas como YouTube o Facebook.
 
@@ -290,24 +290,24 @@ Puede retransmitir su reunión en directo en plataformas como YouTube o Facebook
 
 ![live-streaming.webp](/img/moderator/live-streaming.webp)
 
-### Entrada de Transmisión en Vivo (Ingress)
+### Entrada de transmisión en vivo (Ingress)
 ##### Retransmita como un profesional: Cómo integrar OBS en su sala de plugNmeet
 Configurarlo es sumamente sencillo. Siga estos pasos desde su sala de plugNmeet:
 
 - Haga clic en el menú de tres puntos en la esquina **superior derecha** y seleccione **Configuración**.
 - Localice **Entrada de Transmisión en Vivo**: En el panel de ajustes, diríjase a la pestaña **Entrada de Transmisión en Vivo**.
 - Seleccione el **Tipo de "Canal" (RTMP o WHIP)**: Elija la tecnología de entrada que prefiera. RTMP es el estándar para transmisiones profesionales, mientras que WHIP es ideal para baja latencia.
-- Asigne un **Nombre a su Transmisión**: En el campo **Nombre para Mostrar**, escriba el nombre con el que aparecerá su transmisión en la lista de participantes (por ejemplo, "Cámara Principal"). Si lo deja en blanco, se usará "Emisor" por defecto.
+- Asigne un **Nombre a su Transmisión**: En el campo **Nombre para Mostrar**, escriba el nombre con el que aparecerá su transmisión en la lista de participantes (por ejemplo, "Cámara Principal"). Si lo deja en blanco, se usará "Emisor" de forma predeterminada.
 - Genere **su Enlace Privado**: Haga clic en el botón **Generar enlace**. plugNmeet creará una dirección única y segura. Verá dos campos: una URL y un Secreto (o "Clave de Transmisión").
 
 ![live-stream-input.webp](/img/moderator/live-stream-input.webp)
 ![stream-key-host.webp](/img/moderator/stream-key-host.webp)
 
-#### Configuración de su Software de Retransmisión (ej. OBS)
+#### Configuración de su software de retransmisión (ej. OBS)
 
 Ahora, configure su software (usaremos OBS como ejemplo) para enviar la señal.
 
-#### Para RTMP (Estándar Universal):
+#### Para RTMP (estándar universal):
 
 - En los ajustes de OBS, vaya a **Emisión**.
 - En **Servicio**, seleccione **Personalizado...**
@@ -316,7 +316,7 @@ Ahora, configure su software (usaremos OBS como ejemplo) para enviar la señal.
 
 ![obs-custom.webp](/img/moderator/obs-custom.webp)
 
-#### Para WHIP (Opción Moderna):
+#### Para WHIP (opción moderna):
 
 - En los ajustes de OBS, vaya a **Emisión**.
 - En **Servicio**, seleccione **WHIP**.
@@ -328,7 +328,7 @@ Ahora, configure su software (usaremos OBS como ejemplo) para enviar la señal.
 
 Al pulsar **"Iniciar Transmisión"** en OBS, su señal aparecerá como un nuevo participante en la sala de plugNmeet. Para más detalles, consulte nuestra entrada de blog: [Retransmita como un profesional: Cómo integrar OBS en su sala de plugNmeet](https://www.plugnmeet.org/blog/obs-rtmp-whip-ingress)
 
-### Acceso Telefónico SIP/VoIP
+### Acceso telefónico SIP/VoIP
 
 :::note[Requiere Configuración del Servidor]
 Esta es una función avanzada disponible solo si el administrador del sistema ha configurado la integración SIP en el servidor.
@@ -349,18 +349,18 @@ Esta función permite que los participantes se unan al audio de la reunión marc
 
 ---
 
-## Sección 5: Gestión de la Sesión
+## Sección 5: Gestión de la sesión
 
 Estas acciones controlan la sesión general de la reunión.
 
-### Ajustes de la Aplicación
+### Ajustes de la aplicación
 
 - En el menú de tres puntos (**superior derecha**), seleccione **Configuración**.
 - Aquí podrá cambiar el idioma, gestionar el ahorro de datos, alternar sonidos de notificación y configurar la retransmisión en directo.
 
 ![app-settings.webp](/img/moderator/app-settings.webp)
 
-### Finalizar vs. Salir de la Reunión
+### Finalizar vs. Salir de la reunión
 
 - **Salir de la Reunión:** Si elige esta opción, usted abandonará la sesión, pero esta continuará activa para los demás participantes.
 - **Finalizar Reunión:** Esta opción cerrará la sesión para **todos** los participantes.

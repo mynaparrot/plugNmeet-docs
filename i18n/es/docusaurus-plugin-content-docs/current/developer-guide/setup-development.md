@@ -6,7 +6,7 @@ sidebar_position: 2
 sidebar_label: Configuración de Desarrollo
 ---
 
-# Configuración de su Entorno de Desarrollo
+# Configuración de su entorno de desarrollo
 
 ¡Bienvenido a la guía de desarrollo de plugNmeet! Nos complace que esté interesado en contribuir. Esta guía lo guiará en la configuración de un entorno de desarrollo local completo, permitiéndole ejecutar todo el stack tecnológico de plugNmeet en su propia máquina.
 
@@ -14,7 +14,7 @@ Seguir estos pasos le permitirá probar nuevas funciones, corregir errores y ver
 
 ---
 
-## Requisitos Previos
+## Requisitos previos
 
 Antes de comenzar, asegúrese de tener instalado el siguiente software en su computadora:
 
@@ -25,7 +25,7 @@ Antes de comenzar, asegúrese de tener instalado el siguiente software en su com
 
 ---
 
-## Paso 1: Clonar los Repositorios
+## Paso 1: Clonar los repositorios
 
 Primero, cree un directorio principal para el proyecto y clone los repositorios necesarios de plugNmeet en él. Abra su terminal y ejecute los siguientes comandos:
 
@@ -46,7 +46,7 @@ git clone https://github.com/mynaparrot/plugNmeet-recorder recorder
 
 ---
 
-## Paso 2: Configurar y Ejecutar el Servidor Backend
+## Paso 2: Configurar y ejecutar el servidor backend
 
 El repositorio `plugNmeet-server` contiene un archivo `docker-compose.yaml` que orquesta todos los servicios de backend necesarios.
 
@@ -71,7 +71,7 @@ Deje esta ventana de terminal en ejecución, ya que mostrará los registros de t
 
 ---
 
-## Paso 3: Configurar y Ejecutar el Cliente Front-End
+## Paso 3: Configurar y ejecutar el cliente Front-End
 
 Ahora, pongamos en marcha la interfaz de usuario. Abra una **nueva ventana o pestaña de terminal** para poder ejecutar el cliente simultáneamente con el servidor.
 
@@ -94,7 +94,7 @@ Una vez que el servidor de desarrollo esté en funcionamiento, podrá acceder al
 
 ---
 
-## Paso 4: (Opcional) Ejecutar el Servicio de Grabación
+## Paso 4: (Opcional) ejecutar el servicio de grabación
 
 Si necesita trabajar en las funciones de grabación, puede iniciar el servicio de grabación. Abra una **tercera ventana o pestaña de terminal**.
 
@@ -114,11 +114,11 @@ El grabador ahora estará en funcionamiento y escuchará automáticamente los tr
 
 ---
 
-## Solución de Problemas
+## Solución de problemas
 
 ### "No puedo conectarme a la sala de reuniones."
 
-Este es un problema común en las configuraciones de desarrollo local, a menudo causado por la red de Docker. El servidor LiveKit dentro del contenedor necesita conocer la dirección IP local de su máquina anfitriona para establecer una conexión WebRTC.
+Este es un problema común en las configuraciones de desarrollo local, a menudo causado por la red de Docker. El servidor LiveKit dentro del contenedor necesita conocer la dirección IP local de su máquina moderadora para establecer una conexión WebRTC.
 
 1.  Encuentre la dirección IP local de su computadora (p. ej., `192.168.1.100`).
 2.  Abra el archivo `docker-compose.yaml` dentro del directorio `server`.
@@ -137,7 +137,7 @@ Este es un problema común en las configuraciones de desarrollo local, a menudo 
 
 ---
 
-## ¿Qué Sigue?
+## ¿Qué sigue?
 
 ¡Ahora tiene un entorno de desarrollo de plugNmeet completamente funcional! Puede comenzar a realizar cambios en el código del cliente o del servidor, y sus cambios se reflejarán en tiempo real.
 

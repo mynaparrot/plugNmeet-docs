@@ -6,11 +6,11 @@ sidebar_position: 9
 sidebar_label: Crear Encuesta
 ---
 
-# Crear Encuesta
+# Crear encuesta
 
 Endpoint: `/room/createPoll`
 
-Esta API permite que su servidor backend envíe una encuesta completa a una sesión activa de Plug-N-Meet en tiempo real. Aunque los moderadores pueden crear encuestas desde el cliente, este punto final permite que una aplicación externa inyecte una encuesta directamente en una sesión en curso, lo que lo convierte en un componente fundamental para integraciones automatizadas.
+Esta API permite que su servidor backend envíe una encuesta completa a una sesión activa de plugNmeet en tiempo real. Aunque los moderadores pueden crear encuestas desde el cliente, este punto final permite que una aplicación externa inyecte una encuesta directamente en una sesión en curso, lo que lo convierte en un componente fundamental para integraciones automatizadas.
 
 Este punto final es ideal para crear integraciones como:
 *   Lanzar un cuestionario en vivo en un aula desde una plataforma de aprendizaje externa.
@@ -24,7 +24,7 @@ Una vez que se envía la encuesta, se crea en estado de ejecución de inmediato:
 
 Para que esta llamada a la API tenga éxito, la sesión (`room_id`) debe ser una sala actualmente activa. La solicitud falla si la sala no ha sido creada o ya ha finalizado.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo        | Tipo    | Requerido | Descripción                                                                                                                              |
 | ------------ | ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,7 +37,7 @@ Para que esta llamada a la API tenga éxito, la sesión (`room_id`) debe ser una
 | is_quiz      | boolean | No       | Si es `true`, la encuesta se ejecuta como un cuestionario. Las respuestas correctas se ocultan mientras el cuestionario está en curso y se revelan en los resultados después de cerrarlo. Un cuestionario requiere al menos una opción marcada como correcta. Predeterminado: `false`. |
 | duration     | number  | No       | Duración de cierre automático en segundos. Si es mayor que `0`, la encuesta se cierra automáticamente cuando se acaba el tiempo. Máximo: `3600` (60 minutos). Predeterminado: `0` (sin límite de tiempo). |
 
-### Opción de Encuesta
+### Opción de encuesta
 
 Cada entrada en el array `options` representa una opción seleccionable.
 
@@ -49,7 +49,7 @@ Cada entrada en el array `options` representa una opción seleccionable.
 
 ## Ejemplo
 
-### Ejemplo 1: Una Encuesta Simple
+### Ejemplo 1: Una encuesta simple
 
 ```json
 {
@@ -68,7 +68,7 @@ Cada entrada en el array `options` representa una opción seleccionable.
 }
 ```
 
-### Ejemplo 2: Una Encuesta Anónima de Selección Múltiple
+### Ejemplo 2: Una encuesta anónima de selección múltiple
 
 ```json
 {
@@ -94,7 +94,7 @@ Cada entrada en el array `options` representa una opción seleccionable.
 }
 ```
 
-### Ejemplo 3: Un Cuestionario Cronometrado
+### Ejemplo 3: Un cuestionario cronometrado
 
 ```json
 {
@@ -125,7 +125,7 @@ Cada entrada en el array `options` representa una opción seleccionable.
 | poll_id     | string  | El ID único de la encuesta recién creada. |
 | status_code | string  | [Código de estado](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_common_api.proto#L10) de la respuesta. |
 
-## Respuestas de Error
+## Respuestas de error
 
 En caso de fallo, `status` es `false` y `msg` describe el problema. Los fallos de validación devuelven claves estables y legibles por máquina que la interfaz de usuario del cliente puede traducir directamente:
 

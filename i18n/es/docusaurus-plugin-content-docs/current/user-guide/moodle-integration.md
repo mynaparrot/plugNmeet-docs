@@ -6,7 +6,7 @@ sidebar_position: 5
 sidebar_label: Integración con Moodle
 ---
 
-# Cómo Añadir una Actividad de Videoconferencia a Moodle con Plug-N-Meet
+# Cómo añadir una actividad de videoconferencia a Moodle con plugNmeet
 
 Bienvenido a la guía definitiva para integrar **plugNmeet**, una potente plataforma de **videoconferencia Moodle** de código abierto, en sus cursos Moodle. Este documento proporciona un recorrido exhaustivo, desde la configuración inicial hasta el aprovechamiento de funciones avanzadas, asegurando que pueda construir una experiencia de **aula virtual** fluida y atractiva. Con este **software de videoconferencia gratuito**, puede organizar **clases en línea en vivo**, seminarios web y reuniones sin salir de su sitio Moodle.
 
@@ -16,23 +16,23 @@ El Agente de IA de plugNmeet (un asistente de voz y pizarra 1 a 1) ya está disp
 
 ---
 
-## 1. Introducción: Por qué plugNmeet es la Mejor Opción para Moodle
+## 1. Introducción: Por qué plugNmeet es la mejor opción para Moodle
 
 plugNmeet no es solo otra herramienta de videoconferencia; es una solución completa de **aula virtual** construida para una profunda integración con Moodle.
 
 -   **Experiencia Nativa sin Interrupciones**: El aula se carga directamente dentro de su diseño de Moodle. Para sus estudiantes y profesores, se siente como una parte natural de su sitio, no una herramienta de terceros. Esto impulsa la adopción por parte del usuario y reduce la confusión.
 -   **Código Abierto y Gratuito**: Como una solución líder de **videoconferencia de código abierto**, plugNmeet le otorga la propiedad completa. Usted controla sus datos, su infraestructura y sus costos.
 -   **Profunda Integración con Moodle**: plugNmeet se conecta directamente a los sistemas centrales de Moodle, incluyendo el calendario, la finalización de actividades, la calificación y los permisos de usuario, para una experiencia verdaderamente integrada.
--   **Conjunto de Funciones Enriquecido**: Está repleto de herramientas diseñadas para la educación, incluyendo una pizarra interactiva, salas de grupos pequeños, encuestas en vivo y análisis avanzados.
+-   **Conjunto de Funciones Enriquecido**: Está repleto de herramientas diseñadas para la educación, incluyendo una pizarra interactiva, salas de grupo, encuestas en vivo y análisis avanzados.
 -   **Personalización Inigualable**: Personalice toda el aula virtual —desde logotipos y colores hasta el propio diseño— para que coincida perfectamente con la identidad de su institución.
 
 ---
 
-## 2. Instalación y Configuración
+## 2. Instalación y configuración
 
 Para empezar con plugNmeet, su administrador de Moodle debe instalar el plugin y conectarlo a un servidor plugNmeet. Esta sección cubre la instalación y configuración del plugin de Moodle en sí.
 
-### Paso 2.1: Instalar el Plugin plugNmeet Moodle
+### Paso 2.1: Instalar el plugin plugNmeet Moodle
 
 1.  Descargue la última versión del plugin desde el [Directorio de Plugins de Moodle](https://moodle.org/plugins/mod_plugnmeet) o el [repositorio oficial de GitHub](https://github.com/mynaparrot/moodle-mod_plugnmeet).
 2.  Inicie sesión en su sitio Moodle como administrador.
@@ -40,7 +40,7 @@ Para empezar con plugNmeet, su administrador de Moodle debe instalar el plugin y
 4.  Suba el archivo ZIP del plugin y haga clic en **"Instalar plugin desde el archivo ZIP"**.
 5.  Moodle verificará el plugin y le pedirá que **"Actualice la base de datos de Moodle ahora"**. Proceda con la actualización.
 
-### Paso 2.2: Configurar la Conexión del Plugin
+### Paso 2.2: Configurar la conexión del plugin
 
 Este es el paso más crítico. Necesita indicarle a Moodle cómo conectarse a su servidor plugNmeet. Su administrador de servidor le proporcionará las credenciales necesarias.
 
@@ -58,7 +58,7 @@ Este es el paso más crítico. Necesita indicarle a Moodle cómo conectarse a su
 
 ---
 
-## 3. Creación y Gestión de una Sesión en Vivo
+## 3. Creación y gestión de una sesión en vivo
 
 Añadir una videoconferencia a un curso es sencillo.
 
@@ -69,7 +69,7 @@ Añadir una videoconferencia a un curso es sencillo.
 
 ![añadir actividad plugnmeet](/img/moodle/moodle_2.png)
 
-### Opciones de Configuración Detalladas
+### Opciones de configuración detalladas
 
 Este formulario le otorga un control granular sobre cada aspecto de la sesión.
 
@@ -82,7 +82,7 @@ Este formulario le otorga un control granular sobre cada aspecto de la sesión.
     -   **El moderador debe unirse primero**: Evita que los estudiantes inicien la sesión sin un profesor presente.
     -   **Silenciar al inicio**: Una excelente herramienta de gestión del aula para asegurar un comienzo tranquilo de la sesión.
     -   **Permitir Compartir Pantalla / Cámaras Web**: Habilite o deshabilite estas funciones principales. Incluso puede configurarlo como "Solo cámaras web del administrador" para un seminario web estilo presentación.
-    -   **Permitir salas de grupos / Máx. de salas de grupos**: Permite a la persona moderadora dividir la sesión en grupos pequeños. Defina el número máximo de salas que pueda necesitar.
+    -   **Permitir salas de grupo / Máx. de salas de grupo**: Permite a la persona moderadora dividir la sesión en grupos pequeños. Defina el número máximo de salas que pueda necesitar.
     -   **Preasignar salas desde los grupos del curso**: Al activarla, cada grupo del curso de Moodle se convierte automáticamente en una sala de grupo: el título es el nombre del grupo y sus miembros quedan preasignados. Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+. Surte efecto desde el siguiente inicio de sesión; la persona moderadora aún puede reorganizar las salas en directo.
     -   **Permitir encuestas**: Habilita encuestas y cuestionarios en directo en la sesión. Es necesario si desea enviar encuestas desde preguntas del cuestionario de Moodle durante la clase en vivo (ver más abajo).
 
@@ -93,7 +93,7 @@ Este formulario le otorga un control granular sobre cada aspecto de la sesión.
 
 -   **Configuración de Bloqueo Predeterminada**:
     -   Estas configuraciones establecen el estado *inicial* de los bloqueos de la sala para los participantes (no para los moderadores).
-    -   Para un aula segura por defecto, puede **Bloquear Compartir Pantalla**, **Bloquear Pizarra** y **Bloquear Bloc de Notas Compartido**. Los participantes tendrán que pedir permiso (levantar la mano) para usar estas herramientas.
+    -   Para un aula segura de forma predeterminada, puede **Bloquear Compartir Pantalla**, **Bloquear Pizarra** y **Bloquear Bloc de Notas Compartido**. Los participantes tendrán que pedir permiso (levantar la mano) para usar estas herramientas.
 
 -   **Disponibilidad**:
     -   **Disponible desde**: Establece la hora de inicio de la sesión. Esto crea automáticamente un evento en el Calendario de Moodle, convirtiéndolo en una herramienta crucial para programar su **seminario web o clase de Moodle**.
@@ -101,13 +101,13 @@ Este formulario le otorga un control granular sobre cada aspecto de la sesión.
 
 ---
 
-## 4. Funciones en la Sala para Clases en Línea Atractivas
+## 4. Funciones en la sala para clases en línea atractivas
 
 plugNmeet está repleto de herramientas para fomentar la interacción y la colaboración.
 
 -   **Pizarra Interactiva**: Una potente herramienta para la colaboración en tiempo real. Puede dibujar, escribir texto, subir y anotar PDFs/presentaciones, y trabajar junto con los estudiantes.
 -   **Compartir Pantalla**: Comparta su pantalla completa, una sola ventana de aplicación o una pestaña del navegador con resolución de alta calidad.
--   **Salas de Grupos Pequeños**: Divida su sesión principal en grupos más pequeños y privados para discusiones enfocadas o trabajo en proyectos. Los moderadores pueden moverse entre salas y transmitir mensajes a todos. Con los grupos del curso de Moodle, las salas pueden preasignarse automáticamente (ver más abajo).
+-   **Salas de grupo**: Divida su sesión principal en grupos más pequeños y privados para discusiones enfocadas o trabajo en proyectos. Los moderadores pueden moverse entre salas y transmitir mensajes a todos. Con los grupos del curso de Moodle, las salas pueden preasignarse automáticamente (ver más abajo).
 -   **Encuestas**: Cree encuestas sobre la marcha para involucrar a los estudiantes, verificar la comprensión o votar sobre temas. Los resultados se pueden publicar en vivo. El profesorado también puede enviar una encuesta directamente desde una pregunta del cuestionario o del banco de preguntas a la sala en vivo (ver más abajo).
 -   **Bloc de Notas Compartido**: Un editor de texto colaborativo simple y en tiempo real para tomar notas compartidas.
 -   **Funciones Impulsadas por IA**: Si están habilitadas en el servidor, puede acceder a:
@@ -116,11 +116,11 @@ plugNmeet está repleto de herramientas para fomentar la interacción y la colab
 
 ---
 
-## 5. Análisis Avanzados, Asistencia y Seguimiento de Finalización
+## 5. Análisis avanzados, asistencia y seguimiento de finalización
 
 La integración de plugNmeet con Moodle proporciona información inigualable sobre la participación de los estudiantes.
 
-### Informe de Asistencia Acumulativa
+### Informe de asistencia acumulativa
 
 A diferencia de las herramientas que solo informan sobre una sola sesión, plugNmeet agrega datos de *todas* las sesiones dentro de una única actividad de Moodle.
 
@@ -130,7 +130,7 @@ A diferencia de las herramientas que solo informan sobre una sola sesión, plugN
 ![Captura de pantalla del informe de asistencia del profesor, que muestra una lista de estudiantes con su estado y métricas de participación.](/img/moodle/moodle_3.png)
 ![Captura de pantalla del informe de asistencia del estudiante, que muestra sus métricas de participación.](/img/moodle/moodle_4.png)
 
-### Finalización de Actividad Avanzada
+### Finalización de actividad avanzada
 
 Esta es una de las características más potentes para las **aulas virtuales de Moodle**. Puede establecer reglas de finalización altamente específicas y automatizadas basadas en la participación activa.
 
@@ -147,9 +147,9 @@ Este sistema va más allá de la visualización pasiva y fomenta un compromiso a
 
 ---
 
-## 6. Monitoreo e Interacción de Sesiones en Tiempo Real
+## 6. Monitoreo e interacción de sesiones en tiempo real
 
-### Panel de Control en Vivo en la Actividad
+### Panel de control en vivo en la actividad
 
 Una vez que una sesión está en vivo, los profesores y moderadores obtienen acceso a un panel de control en tiempo real directamente en la página de actividad de Moodle. Esta potente herramienta proporciona una visión general del estado de la sesión y permite la interacción directa. Puede ver instantáneamente:
 
@@ -161,7 +161,7 @@ Estos datos en vivo permiten a los moderadores gestionar el aula de manera efect
 
 ![Captura de pantalla de las sesiones en vivo activas con detalles de los participantes.](/img/moodle/moodle_7.png)
 
-### Subir a la Pizarra desde Moodle
+### Subir a la pizarra desde Moodle
 
 Mientras una sesión está en curso, los administradores y profesores pueden subir archivos directamente a la pizarra desde el repositorio de archivos de Moodle. Esta función agiliza el proceso de compartir materiales del curso sin salir del aula virtual.
 
@@ -172,7 +172,7 @@ Mientras una sesión está en curso, los administradores y profesores pueden sub
 
 ![Captura de pantalla del selector de archivos de Moodle que se utiliza para subir un archivo a la pizarra.](/img/moodle/moodle_11.png)
 
-### Añadir Encuesta desde el Cuestionario o Banco de Preguntas (en vivo)
+### Añadir encuesta desde el cuestionario o banco de preguntas (en vivo)
 
 Mientras una sesión está en curso, el profesorado puede enviar una encuesta a la sala en directo directamente desde una pregunta del cuestionario o del banco de preguntas de Moodle, gracias a la [API de creación de encuestas](/docs/api/room/create-poll). Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+.
 
@@ -184,7 +184,7 @@ Mientras una sesión está en curso, el profesorado puede enviar una encuesta a 
 
 La votación también cuenta para la finalización en Moodle: active **Votó en la encuesta** en los ajustes de finalización de la actividad para exigir la participación.
 
-### Salas de Grupos Preasignadas desde los Grupos del Curso
+### Salas de grupo preasignadas desde los grupos del curso
 
 En lugar de repartir al alumnado a mano, deje que los grupos de Moodle hagan el trabajo. Requiere servidor plugNmeet v2.5.0+ y plugin de Moodle v3.0.13+.
 
@@ -195,7 +195,7 @@ En lugar de repartir al alumnado a mano, deje que los grupos de Moodle hagan el 
 
 Nota: los detalles de la sala se fijan al iniciarse la sesión, de modo que los cambios en los grupos se aplican a la siguiente sesión, no a la que está en curso.
 
-### Informe de Sesiones Activas en Todo el Sitio (Extracción de Datos del Administrador)
+### Informe de sesiones activas en todo el sitio (extracción de datos del administrador)
 
 Para los administradores, plugNmeet ofrece una "extracción de datos en vivo" en tiempo real de todas las sesiones activas en todo el sitio de Moodle. Esta es una herramienta esencial para monitorear la actividad en todo el sitio.
 
@@ -206,11 +206,11 @@ Para los administradores, plugNmeet ofrece una "extracción de datos en vivo" en
 
 ---
 
-## 7. Gestión de Grabaciones y Artefactos Post-Sesión
+## 7. Gestión de grabaciones y artefactos Post-Sesión
 
 Todos los archivos generados durante sus sesiones están perfectamente organizados y accesibles directamente desde la página de actividad de Moodle.
 
-### Pestaña Grabaciones
+### Pestaña grabaciones
 Aquí puede encontrar todas las grabaciones en la nube. Los profesores pueden:
 -   Reproducir la grabación.
 -   Controlar la visibilidad (mostrar/ocultar a los estudiantes).
@@ -219,7 +219,7 @@ Aquí puede encontrar todas las grabaciones en la nube. Los profesores pueden:
 
 ![Captura de pantalla de las Grabaciones Activas.](/img/moodle/moodle_8.png)
 
-### Fusionar Múltiples Grabaciones
+### Fusionar múltiples grabaciones
 
 Si una sesión se grabó en varios segmentos, ahora puede fusionarlos fácilmente en un solo video continuo directamente desde la interfaz de Moodle.
 
@@ -231,7 +231,7 @@ Si una sesión se grabó en varios segmentos, ahora puede fusionarlos fácilment
 
 ![Captura de pantalla de la lista de grabaciones de Moodle con casillas de verificación y un botón de fusión, que muestra la ventana emergente de confirmación de fusión.](/img/moodle/moodle_12.png)
 
-### Pestaña Artefactos
+### Pestaña artefactos
 Esta pestaña contiene todos los demás archivos generados por la sesión, regidos por los permisos de Moodle. Esto incluye:
 -   Resúmenes de reuniones generados por IA.
 -   Archivos de transcripción (por ejemplo, VTT, SRT).
@@ -243,12 +243,12 @@ Esta pestaña contiene todos los demás archivos generados por la sesión, regid
 
 ---
 
-## 8. Seguridad y Privacidad
+## 8. Seguridad y privacidad
 
 plugNmeet está diseñado pensando en la seguridad para instituciones educativas.
 
 -   **Permisos Basados en Roles**: El plugin respeta los roles de Moodle. Por ejemplo, solo los usuarios con la capacidad `mod/plugnmeet:viewrecordings` pueden ver la pestaña de grabaciones. El Informe de Salas Activas también está protegido por una capacidad específica (`mod/plugnmeet:viewactiveroomsreport`).
--   **Seguro por Defecto**: Utilice la **Configuración de Bloqueo Predeterminada** en su actividad para crear un entorno controlado donde los estudiantes deben solicitar permiso para compartir su pantalla o pizarra.
+-   **Seguro de forma predeterminada**: Utilice la **Configuración de Bloqueo Predeterminada** en su actividad para crear un entorno controlado donde los estudiantes deben solicitar permiso para compartir su pantalla o pizarra.
 -   **Cifrado de Extremo a Extremo (E2EE)**: Para máxima seguridad, puede habilitar E2EE para sus sesiones.
 -   **Control de Acceso de Invitados**: El acceso de invitados se puede deshabilitar globalmente desde la configuración de administración, y el enlace de invitado de cada sesión tiene un tiempo de caducidad configurable.
 

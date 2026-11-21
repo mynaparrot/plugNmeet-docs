@@ -18,26 +18,26 @@ Aunque nuestro plugin original te permitía [lanzar tu propio servicio de videoc
 
 Exploremos las características que hacen de este plugin la solución definitiva para videoconferencias autoalojadas en WordPress.
 
-### Integración Fluida y Gestión Potente
+### Integración fluida y gestión potente
 
 Construimos este plugin para que sea increíblemente fácil de usar, al tiempo que ofrece las potentes características que nuestros usuarios adoran.
 
 *   **Incrusta en cualquier lugar con Shortcodes:** Una vez que creas una sala, el plugin te da un simple shortcode (p. ej., `[plugnmeet_room_view id="tu_id_de_sala"]`). Pégalo en cualquier página, entrada o incluso en un widget, y tendrás una sala de reuniones en vivo. Funciona perfectamente con el editor clásico, Gutenberg y los constructores de páginas populares.
-*   **URLs Limpias y Compartibles:** ¿Quieres un enlace limpio y profesional para compartir tus reuniones? El plugin te permite establecer una "Página Anfitriona", dando a cada sala su propia URL dedicada como `tusitio.com/reuniones/tu-id-de-sala/`. Esto es perfecto para compartir directamente en correos electrónicos o redes sociales.
-*   **Control Total desde el Backend:** Gestiona todo desde tu área de administración de WordPress. La página **Plug-N-Meet > Salas** es tu centro de mando para crear, editar y configurar salas, así como para acceder a todos los activos post-sesión.
+*   **URLs Limpias y Compartibles:** ¿Quieres un enlace limpio y profesional para compartir tus reuniones? El plugin te permite establecer una "Página Moderadora", dando a cada sala su propia URL dedicada como `tusitio.com/reuniones/tu-id-de-sala/`. Esto es perfecto para compartir directamente en correos electrónicos o redes sociales.
+*   **Control Total desde el Backend:** Gestiona todo desde tu área de administración de WordPress. La página **plugNmeet > Salas** es tu centro de mando para crear, editar y configurar salas, así como para acceder a todos los activos post-sesión.
 
-### Gestión de Grabaciones sin Esfuerzo con Fusión
+### Gestión de grabaciones sin esfuerzo con fusión
 
 Gestionar las grabaciones de tus sesiones es ahora más potente que nunca. Si una sesión se detuvo y se reinició, ya no tienes que lidiar con múltiples archivos de video. Nuestra **nueva función de Fusión de Grabaciones** te permite seleccionar múltiples segmentos de video y combinarlos en un único archivo MP4 continuo directamente desde el backend de WordPress. Es una forma simple e intuitiva de crear una versión final pulida de tu grabación para su distribución.
 
-### El Nuevo Menú de Artefactos: Análisis e IA a tu Alcance
+### El nuevo menú de artefactos: Análisis e IA a tu alcance
 
 Hemos introducido un **menú de Artefactos** dedicado para cada sala, centralizando todos los datos valiosos que producen tus sesiones. Aquí es donde encontrarás:
 
 *   **Análisis de Aula Accionables:** Ve más allá de los simples recuentos de participantes. Descarga informes completos de Excel que detallan la participación de los asistentes, el tiempo de habla, la calidad de la conexión y más. Utiliza estos datos para entender a tu audiencia y mejorar tus presentaciones, convirtiendo los números brutos en ideas pedagógicas. Para una inmersión más profunda, consulta nuestra guía sobre [Análisis de Aula para Educadores](/blog/classroom-analytics-for-educators).
 *   **Resúmenes y Transcripciones Impulsados por IA:** Accede y descarga resúmenes de reuniones y archivos completos de transcripción de voz a texto generados por nuestro Asistente de Reuniones de IA. Para más información sobre nuestras capacidades de IA, consulta nuestra guía sobre [cómo añadir un asistente de reuniones de IA](/blog/how-to-add-ai-meeting-assistant-features).
 
-### Construido para la Personalización y el Control
+### Construido para la personalización y el control
 
 Creemos en darte el control total sobre tu plataforma.
 

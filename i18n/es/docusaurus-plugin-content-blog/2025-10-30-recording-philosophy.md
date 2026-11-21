@@ -7,7 +7,7 @@ tags: [grabadora, arquitectura, ffmpeg, chrome-headless, filosofia, fiabilidad, 
 
 ¿Qué es una grabación de una reunión? ¿Es solo una colección de flujos de video y audio? ¿O es una réplica fiel de una experiencia interactiva en vivo?
 
-En Plug-N-Meet, creemos que una grabación debe ser un artefacto perfecto y confiable. Cuando la vuelves a ver, las anotaciones en la pizarra deben aparecer en el momento exacto en que el ponente las estaba discutiendo. Los mensajes de chat deben aparecer en perfecta sincronía con la conversación. La presentación compartida debe ser exactamente como la vio la audiencia.
+En plugNmeet, creemos que una grabación debe ser un artefacto perfecto y confiable. Cuando la vuelves a ver, las anotaciones en la pizarra deben aparecer en el momento exacto en que el ponente las estaba discutiendo. Los mensajes de chat deben aparecer en perfecta sincronía con la conversación. La presentación compartida debe ser exactamente como la vio la audiencia.
 
 Para lograr esta fidelidad perfecta, tomamos una decisión arquitectónica deliberada para nuestra grabadora: grabamos el **resultado final renderizado**, no solo las partes individuales. Este artículo explica por qué este enfoque basado en Chrome sin cabeza (headless), aunque intensivo en CPU, es fundamentalmente mejor y más confiable que las alternativas.
 
@@ -32,7 +32,7 @@ Este enfoque está lleno de peligros:
 
 Este método no crea una grabación; crea una reconstrucción compleja y frágil que es tan buena como su eslabón más débil.
 
-### La forma de Plug-N-Meet: Grabando lo que realmente ves
+### La forma de plugNmeet: Grabando lo que realmente ves
 
 Nuestra filosofía es más simple y mucho más robusta. Creemos que la única forma de capturar perfectamente un evento en vivo es grabarlo exactamente como lo experimentaría un participante humano.
 

@@ -13,7 +13,7 @@ Bienvenido a plugNmeet, la plataforma de videoconferencia pensada para ofrecerle
 Lo que realmente distingue a plugNmeet es su **capacidad de personalización sin igual**. La interfaz se controla por completo, lo que le permite adaptar cada detalle: desde la imagen de marca con su logotipo y sus colores, hasta la activación de funciones concretas para crear desde un videochat minimalista hasta un **aula virtual** completa, o incluso un gran evento en directo con [**cientos de participantes**](/docs/benchmark).
 
 :::tip En 30 segundos
-- **Qué es:** Una sala de reuniones completa: audio y video, pantalla compartida, pizarra, chat, encuestas, salas de grupos, grabación, transmisión en directo e IA para resúmenes y transcripciones.
+- **Qué es:** Una sala de reuniones completa: audio y video, pantalla compartida, pizarra, chat, encuestas, salas de grupo, grabación, transmisión en directo e IA para resúmenes y transcripciones.
 - **Cómo se controla:** Instale el servidor gratuito en su propio servidor u olvide la infraestructura con [plugNmeet Cloud](https://www.plugnmeet.cloud). En ambos casos la reunión funciona bajo su marca.
 - **Cómo se utiliza:** Plugins sin código para WordPress, Moodle, Joomla y cualquier LMS mediante LTI, o bien la API de plugNmeet + SDK para aplicaciones a medida.
 - **Por qué lo eligen los equipos:** Privacidad desde el diseño con cifrado de extremo a extremo opcional, marca blanca real mediante configuración (sin modificar el código) y una arquitectura ligera y escalable.
@@ -24,7 +24,7 @@ Lo que realmente distingue a plugNmeet es su **capacidad de personalización sin
 | Si usted es… | Obtiene… | Empiece aquí |
 |---|---|---|
 | **Creador, docente o empresa** — quiere video en su sitio sin programar | Instale un plugin, introduzca la URL del servidor + la clave y cree reuniones desde su panel | [Resumen de la guía de usuario](/docs/user-guide/overview) |
-| **Administrador o responsable de infraestructura** — le importan la privacidad, el coste y el control | Un servidor Go en un único binario + script de instalación automática; sus datos y sus grabaciones le pertenecen | [Guía rápida de instalación](/docs/installation) |
+| **Administrador o responsable de infraestructura** — le importan la privacidad, el costo y el control | Un servidor Go en un único binario + script de instalación automática; sus datos y sus grabaciones le pertenecen | [Guía rápida de instalación](/docs/installation) |
 | **Desarrollador** — quiere integrar, automatizar o publicar aplicaciones móviles | API de plugNmeet, SDK para PHP/JS, webhooks, aplicaciones móviles a medida y personalización total de la interfaz sin quedar atrapado en un iframe | [Guía de desarrollo](/docs/developer-guide/intro) · [Introducción a la API](/docs/api/intro) |
 
 Los caminos se pueden combinar: muchos equipos autoalojan el servidor una vez, mientras el profesorado utiliza el plugin de Moodle y los desarrolladores automatizan las salas mediante la API.
@@ -33,7 +33,7 @@ Los caminos se pueden combinar: muchos equipos autoalojan el servidor una vez, m
 
 El mismo motor da lugar a productos muy distintos; basta con activar lo que necesite:
 
-- **Aula virtual y formación:** Pizarra + bloc de notas compartido + encuestas + salas de grupos + asistencia mediante [analíticas](/docs/others/analytics). Funciona desde Moodle, WordPress o cualquier LMS vía [LTI](/docs/user-guide/lti).
+- **Aula virtual y formación:** Pizarra + bloc de notas compartido + encuestas + salas de grupo + asistencia mediante [analíticas](/docs/others/analytics). Funciona desde Moodle, WordPress o cualquier LMS vía [LTI](/docs/user-guide/lti).
 - **Seminario web y evento en directo:** Sala de espera, controles de moderación, [transmisión en directo por RTMP](/blog/custom-qna-webinar-rtmp-broadcast-api) hacia YouTube/Facebook, [entrada profesional desde OBS](/blog/obs-rtmp-whip-ingress) por RTMP/WHIP y reproducción sincronizada de video para todos.
 - **Telemedicina y consultoría privada:** Acceso solo con navegador, sala bloqueable, permisos por usuario y [cifrado de extremo a extremo](/docs/security-overview) opcional, donde ni siquiera el servidor puede leer el audio ni el chat.
 - **Llamadas para comunidades o marketplaces:** Videochat minimalista integrado en su producto, con su logotipo, sus colores y su dominio. Sin mención alguna a plugNmeet.
@@ -57,7 +57,7 @@ No necesita aprenderlo todo el primer día. Esta es la caja de herramientas comp
 - **Incruste cualquier contenido web** (Google Doc, panel de control) o reproduzca un video de YouTube o un archivo de forma sincronizada para todos.
 
 ### Dinamizar y moderar
-- **Salas de grupos** para trabajo en equipos pequeños, **encuestas con modo cuestionario**, mano levantada, sala de espera.
+- **Salas de grupo** para trabajo en equipos pequeños, **encuestas con modo cuestionario**, mano levantada, sala de espera.
 - **Permisos detallados:** Bloquee micrófono, cámara, chat o pizarra por participante. Véase [Guía del moderador](/docs/user-guide/moderator).
 
 ### Grabar y transmitir
@@ -115,7 +115,7 @@ Lecturas a fondo: [Benchmarks: cuántos usuarios soporta una sala](/docs/benchma
 
 ## Por qué los equipos eligen plugNmeet frente al SaaS o a plataformas pesadas
 
-- **Sus datos y su marca son suyos:** Su dominio, su logotipo, su almacenamiento. Sin dependencia de terceros ni coste por usuario para reuniones básicas.
+- **Sus datos y su marca son suyos:** Su dominio, su logotipo, su almacenamiento. Sin dependencia de terceros ni costo por usuario para reuniones básicas.
 - **Marca blanca sin modificar el código:** Cambie aspecto y funciones por API/configuración y CSS propio. Las actualizaciones no rompen su diseño.
 - **Ligero de operar:** Un binario + LiveKit + NATS en lugar de arquitecturas enormes en varios lenguajes. Un servidor pequeño basta para probar; el escalado vertical + grabador aislado cubre cientos de usuarios concurrentes antes de necesitar un clúster. Véanse las cifras medidas en [Benchmarks](/docs/benchmark).
 - **Grabaciones portables:** Archivos MP4 estándar que puede descargar, combinar o mover, sin procesos propietarios complicados.

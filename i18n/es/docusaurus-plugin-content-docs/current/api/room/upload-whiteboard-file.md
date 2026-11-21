@@ -6,11 +6,11 @@ sidebar_position: 7
 sidebar_label: Subir Archivo a la Pizarra
 ---
 
-# Subir Archivo a la Pizarra
+# Subir archivo a la pizarra
 
 Endpoint: `/room/uploadWhiteboardFile`
 
-Aunque los presentadores pueden subir archivos directamente a través de la interfaz del cliente de Plug-N-Meet, este endpoint de la API proporciona la flexibilidad de inyectar archivos en una sesión en vivo desde un sistema externo. Actúa como un puente entre el backend de su aplicación y la sala de Plug-N-Meet, permitiendo flujos de trabajo potentes y automatizados.
+Aunque los presentadores pueden subir archivos directamente a través de la interfaz del cliente de plugNmeet, este endpoint de la API proporciona la flexibilidad de inyectar archivos en una sesión en vivo desde un sistema externo. Actúa como un puente entre el backend de su aplicación y la sala de plugNmeet, permitiendo flujos de trabajo potentes y automatizados.
 
 Por ejemplo, podría construir una integración que permita a los usuarios seleccionar un archivo de un servicio de almacenamiento en la nube como Google Drive o un bucket de S3. Su aplicación puede descargar el archivo y luego enviarlo al servidor mediante una solicitud `multipart/form-data`, o puede proporcionar una URL de descarga directa usando el parámetro `document_link`. Si utiliza `document_link`, es crucial que proporcione el enlace de descarga final y directo, ya que el servidor no realizará ninguna autenticación. Su aplicación es responsable de gestionar cualquier autenticación necesaria con el servicio de almacenamiento y de generar un enlace de acceso público.
 
@@ -50,19 +50,19 @@ Debe proporcionar `document` (para la subida directa de archivos) o `document_li
 | `document`      | file   | No        | El archivo a subir. Consulte [Restricciones de Archivo](#restricciones-de-archivo). |
 | `document_link` | string | No        | Una URL de acceso público desde la cual el servidor descargará el archivo. **Importante**: El servidor no realizará ninguna autenticación, por lo que su aplicación debe proporcionar un enlace de descarga final y directo. Consulte Restricciones de Archivo. |
 
-### Restricciones de Archivo
+### Restricciones de archivo
 
 -   **Tipos de Archivo Admitidos**: Este punto final está diseñado para documentos de oficina y presentaciones. Los formatos admitidos incluyen **PDF, DOC, DOCX, PPT, PPTX, etc.** Los archivos de imagen (p. ej., JPG, PNG) no son compatibles y serán rechazados.
 -   **Límite de Tamaño de Archivo**: El tamaño del archivo, ya sea subido directamente o descargado a través de `document_link`, no debe exceder el límite `max_size_whiteboard_file` definido en la configuración de su servidor.
 
-## Autenticación para Solicitudes Multipart
+## Autenticación para solicitudes multipart
 
 A diferencia de las solicitudes JSON estándar, las solicitudes `multipart/form-data` requieren un método de autenticación especial. Para este punto final específico, la `HASH-SIGNATURE` **debe generarse a partir del valor de la cabecera `Room-Id`**.
 
 -   **`Content-Type`**: Debe ser `multipart/form-data`. cURL y la mayoría de los clientes HTTP lo establecerán automáticamente cuando utilice campos de formulario.
 -   **`HASH-SIGNATURE`**: Una firma HMAC-SHA256 generada usando su Secreto de API, con el `Room-Id` como cuerpo del mensaje.
 
-## Ejemplos de Solicitudes cURL
+## Ejemplos de solicitudes cURL
 
 Esta sección demuestra cómo generar correctamente la firma y enviar una solicitud de subida de archivo utilizando ambos métodos.
 
@@ -113,7 +113,7 @@ El servidor aplica una estricta política de subida de un solo archivo a la vez 
 
 -   **Subidas Concurrentes**: El servidor rechazará cualquier nueva solicitud de subida para una sala si ya hay otra subida en progreso. Si intenta una subida concurrente, la API responderá con un código de estado HTTP `409` (Conflicto).
 -   **Tiempos de Espera y Procesamiento en Segundo Plano**: El proceso de conversión de archivos puede consumir muchos recursos. Si la solicitud inicial excede el tiempo de espera, el servidor continuará procesando el archivo en segundo plano. Una vez completado, notificará al cliente y se liberará el bloqueo de subida de la sala, permitiendo subir otro archivo.
--   **Duración del Bloqueo de Subida**: Por defecto, el bloqueo de subida para una sala está configurado en 5 minutos. Si el procesamiento del archivo no se completa en este intervalo, la operación excederá el tiempo de espera. Es crucial seleccionar archivos que puedan ser procesados razonablemente dentro de este marco de tiempo.
+-   **Duración del Bloqueo de Subida**: De forma predeterminada, el bloqueo de subida para una sala está configurado en 5 minutos. Si el procesamiento del archivo no se completa en este intervalo, la operación excederá el tiempo de espera. Es crucial seleccionar archivos que puedan ser procesados razonablemente dentro de este marco de tiempo.
 
 Si el archivo se sube y procesa con éxito, el servidor transmitirá la información necesaria a todos los participantes de la sala, haciendo que el nuevo archivo esté disponible en la pizarra.
 

@@ -15,7 +15,7 @@ En plugNmeet, creemos que deberías poder usar las mejores herramientas para cad
 
 ---
 
-## ¿Por Qué Transmitir Directamente a tu Reunión?
+## ¿Por qué transmitir directamente a tu reunión?
 
 Esta función abre un mundo de nuevas posibilidades:
 
@@ -23,7 +23,7 @@ Esta función abre un mundo de nuevas posibilidades:
 *   **Producciones en Vivo Profesionales:** Usa OBS Studio para cambiar entre múltiples cámaras, compartir ventanas de aplicaciones específicas, agregar gráficos profesionales y tercios inferiores, y crear una presentación pulida al estilo de la televisión.
 *   **Demostraciones Mejoradas:** Muestra un flujo de trabajo de software complejo o una sesión de codificación en vivo con toda la potencia y personalización de tu configuración de escritorio.
 
-## Cómo Configurarlo: Una Guía Sencilla Paso a Paso
+## Cómo configurarlo: Una guía sencilla paso a paso
 
 Empezar es increíblemente fácil. A continuación, te explicamos cómo hacerlo desde tu sala de plugNmeet:
 
@@ -40,7 +40,7 @@ Empezar es increíblemente fácil. A continuación, te explicamos cómo hacerlo 
 
 5.  **Genera tu Enlace Privado:** Haz clic en el botón **"Generar enlace"**. plugNmeet creará instantáneamente una dirección única y segura para tu transmisión privada. Verás dos campos: una **URL** y un **Secreto** (o "Clave de Transmisión").
 
-## Conectando tu Software de Transmisión (como OBS)
+## Conectando tu software de transmisión (como OBS)
 
 Ahora, solo necesitas decirle a tu software (usaremos OBS como ejemplo) a dónde enviar la transmisión.
 
@@ -61,7 +61,7 @@ Una vez que presiones "Iniciar Transmisión" en OBS, ¡tu transmisión aparecer�
 
 ---
 
-## Conclusión: Potencia Profesional, Hecha Simple
+## Conclusión: Potencia profesional, hecha simple
 
 La función de Entrada de Transmisión en Vivo es un ejemplo perfecto de nuestra filosofía. Hemos tomado una tecnología potente y de nivel profesional y la hemos hecho accesible para todos con solo unos pocos clics. No necesitas ser un experto técnico para crear una presentación de alta calidad, pulida y atractiva.
 

@@ -26,7 +26,7 @@ Gracias al proveedor de OpenAI, tendrá la libertad de elegir el backend de IA q
 - Emplear **Azure OpenAI** u otro proveedor en la nube con una interfaz compatible con OpenAI.
 - Conectarse a **Groq**, **Together AI**, **Anyscale** o cualquier otro proveedor de API compatible.
 - Utilizar **Ollama**, **LocalAI** u otra plataforma de LLM autoalojada para obtener un control absoluto sobre la privacidad y la infraestructura física.
-- Optimizar su instalación según criterios de coste, rendimiento, latencia, cumplimiento de normativas o propiedad de la información.
+- Optimizar su instalación según criterios de costo, rendimiento, latencia, cumplimiento de normativas o propiedad de la información.
 
 Esto convierte a plugNmeet en una excelente alternativa para aquellas organizaciones que buscan **reuniones virtuales potenciadas por IA sin renunciar al control total de su infraestructura**.
 
@@ -113,7 +113,7 @@ De esta forma, evitará depender de un único proveedor de servicios en la nube.
 *   **Modelos de código abierto autoalojados**: Ejecutar sus propios modelos de lenguaje en su hardware local mediante utilidades como **Ollama** o **LocalAI**.
 *   **Grandes infraestructuras cloud**: Utilizar soluciones corporativas como **Azure OpenAI** que exponen una capa compatible.
 
-Esta versatilidad le permite ajustar su configuración de acuerdo con criterios de privacidad, costes y rendimiento sin necesidad de cambiar el código de plugNmeet.
+Esta versatilidad le permite ajustar su configuración de acuerdo con criterios de privacidad, costos y rendimiento sin necesidad de cambiar el código de plugNmeet.
 
 :::info[Nota técnica sobre endpoints y conexiones WebSocket]
 Para que el servicio de **transcripción en vivo** funcione correctamente, es requisito indispensable que su endpoint sea compatible con **conexiones WebSocket** (`ws://` o `wss://`).

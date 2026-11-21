@@ -6,24 +6,24 @@ sidebar_position: 1
 sidebar_label: Obtener
 ---
 
-# Obtener Artefactos
+# Obtener artefactos
 
 Endpoint: `/artifact/fetch`
 
 Este endpoint le permite recuperar una lista paginada de todos los artefactos de reunión generados. Puede filtrar los resultados por sala, sesión o tipo de artefacto.
 
-## Parámetros de la Solicitud
+## Parámetros de la solicitud
 
 | Campo      | Tipo             | Requerido | Descripción                                                                                                                                                             |
 | ---------- | ---------------- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | room_ids   | array de strings | No        | Un array de uno o más `room_id`s para filtrar los resultados.                                                                                                            |
 | room_sid   | string           | No        | Filtrar artefactos de una sesión de sala específica proporcionando su `sid`.                                                                                            |
 | type       | string o number  | No        | Filtrar por un tipo de artefacto específico. Puede usar el nombre en cadena (p. ej., `MEETING_ANALYTICS`) o su valor entero correspondiente. Vea los Tipos de Artefactos a continuación. |
-| from       | number           | No        | El desplazamiento inicial para la paginación. Por defecto: `0`.                                                                                                         |
-| limit      | number           | No        | El número máximo de artefactos a devolver. Por defecto: `20`, Máximo: `100`.                                                                                            |
-| order_by   | string           | No        | El orden de clasificación para los resultados. Puede ser `ASC` o `DESC`. Por defecto: `DESC`.                                                                           |
+| from       | number           | No        | El desplazamiento inicial para la paginación. Predeterminado: `0`.                                                                                                         |
+| limit      | number           | No        | El número máximo de artefactos a devolver. Predeterminado: `20`, Máximo: `100`.                                                                                            |
+| order_by   | string           | No        | El orden de clasificación para los resultados. Puede ser `ASC` o `DESC`. Predeterminado: `DESC`.                                                                           |
 
-### Ejemplo de Solicitud
+### Ejemplo de solicitud
 
 ```json
 {
@@ -53,7 +53,7 @@ Este endpoint le permite recuperar una lista paginada de todos los artefactos de
 | type            | string                | El tipo de artefacto por el que se filtró.                                                              |
 | artifacts_list  | array de ArtifactInfo | La lista de objetos de artefactos. Consulte la página **[Obtener Información del Artefacto](./artifact-info)** para la estructura detallada del objeto `ArtifactInfo`. |
 
-## Tipos de Artefactos
+## Tipos de artefactos
 
 El campo `type` identifica el tipo de artefacto. Puede usar el nombre en cadena (p. ej., `MEETING_ANALYTICS`) o su valor entero correspondiente al filtrar.
 
