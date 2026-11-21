@@ -16,13 +16,13 @@ El motor del Agente de IA y sus API están en desarrollo activo. Los nombres de 
 
 ## Para quién está pensado
 
-|| Público | Lo que obtiene con el Agente de IA |
-|| --- | --- |
-|| **Docentes, coaches y formadores** | Un tutor individual y paciente para cada alumno, con una pizarra para los ejemplos resueltos y cuestionarios para comprobar la comprensión. |
-|| **Administradores escolares** | Salas de estudio programadas y de acceso libre, e informes de dominio al terminar cada sesión, sin necesidad de añadir horas de personal. |
-|| **Fundadores de SaaS y responsables de marketing de producto** | Una demostración interactiva disponible las 24 horas que guía a los prospectos por diapositivas, diagramas y respuestas sobre el producto en vivo. |
-|| **Equipos de ventas y soporte** | Preguntas de descubrimiento, notas de calificación y un resumen estructurado listo para enviar al CRM. |
-|| **Desarrolladores e integradores** | Una API REST y protobuf documentada, configuración del proveedor por sala, conexiones de herramientas MCP y artefactos generados mediante webhooks. |
+| Público | Lo que obtiene con el Agente de IA |
+| --- | --- |
+| **Docentes, coaches y formadores** | Un tutor individual y paciente para cada alumno, con una pizarra para los ejemplos resueltos y cuestionarios para comprobar la comprensión. |
+| **Administradores escolares** | Salas de estudio programadas y de acceso libre, e informes de dominio al terminar cada sesión, sin necesidad de añadir horas de personal. |
+| **Fundadores de SaaS y responsables de marketing de producto** | Una demostración interactiva disponible las 24 horas que guía a los prospectos por diapositivas, diagramas y respuestas sobre el producto en vivo. |
+| **Equipos de ventas y soporte** | Preguntas de descubrimiento, notas de calificación y un resumen estructurado listo para enviar al CRM. |
+| **Desarrolladores e integradores** | Una API REST y protobuf documentada, configuración del proveedor por sala, conexiones de herramientas MCP y artefactos generados mediante webhooks. |
 
 ## Dónde encajan los casos de uso
 
@@ -46,25 +46,25 @@ Consulte [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business
 
 ## En qué se diferencia de otras herramientas
 
-|| Tipo de herramienta | Qué hace | Lo que aporta el Agente de IA de plugNmeet |
-|| --- | --- | --- |
-|| **Bot de transcripción de reuniones** | Escucha de forma pasiva y genera una transcripción al final de la reunión. | El agente habla, responde y actúa durante la sesión. Es un participante, no un observador. |
-|| **Chatbot de texto** | Responde a preguntas escritas en una ventana de chat. | El agente trabaja por voz y sobre espacios visuales compartidos, y se puede interrumpir (usted puede cortarlo a mitad de una frase). |
-|| **IA de grabación de pantalla o de cámara web** | Analiza rostros, cámaras web o pantallas. | El agente mira **únicamente** la pizarra y el bloc de notas compartido. No observa las cámaras web ni las pantallas compartidas. |
-|| **Asistente de voz genérico** | Funciona a partir de una instrucción de propósito general. | Un límite de tema controlado por el servidor, una instrucción de plataforma bloqueada y los límites de alcance mantienen al agente en la lección o en la demostración. |
+| Tipo de herramienta | Qué hace | Lo que aporta el Agente de IA de plugNmeet |
+| --- | --- | --- |
+| **Bot de transcripción de reuniones** | Escucha de forma pasiva y genera una transcripción al final de la reunión. | El agente habla, responde y actúa durante la sesión. Es un participante, no un observador. |
+| **Chatbot de texto** | Responde a preguntas escritas en una ventana de chat. | El agente trabaja por voz y sobre espacios visuales compartidos, y se puede interrumpir (usted puede cortarlo a mitad de una frase). |
+| **IA de grabación de pantalla o de cámara web** | Analiza rostros, cámaras web o pantallas. | El agente mira **únicamente** la pizarra y el bloc de notas compartido. No observa las cámaras web ni las pantallas compartidas. |
+| **Asistente de voz genérico** | Funciona a partir de una instrucción de propósito general. | Un límite de tema controlado por el servidor, una instrucción de plataforma bloqueada y los límites de alcance mantienen al agente en la lección o en la demostración. |
 
 ## Qué puede y qué no puede hacer el agente de IA
 
-|| Área | Puede hacer | No puede hacer |
-|| --- | --- | --- |
-|| **Conversación** | Mantener una conversación hablada en directo, responder a las interrupciones, hablar en el idioma y a la velocidad configurados, y ceñirse al tema definido por el moderador. | Hablar de temas fuera del límite configurado, ni seguir después de que termine su sesión o se agote su presupuesto. |
-|| **Visión** | Ver la **pizarra** y el **bloc de notas compartido** como imágenes instantáneas y una descripción estructurada de la escena. | Ver cámaras web, pantallas compartidas ni ningún otro video. El agente nunca captura el contenido de la cámara o de la pantalla. |
-|| **Pizarra** | Dibujar formas, añadir texto, trazar SVG a mano alzada, renderizar diagramas Mermaid, usar un puntero láser, cambiar de página o de archivo de Office/PDF, hacer zoom y borrar el contenido. Deshacer sus últimas 20 acciones. | Borrar o modificar el trabajo de los participantes, más allá de las acciones que el propio agente puede deshacer. |
-|| **Bloc de notas compartido** | Leer el bloc de notas y escribir actualizaciones por bloques. Se abre automáticamente cuando el agente escribe en él. | Editar el bloc de notas cuando el moderador ha desactivado la escritura. |
-|| **Evaluación** | Crear cuestionarios y encuestas, cerrar encuestas, leer resultados y reaccionar de inmediato a cada respuesta. | Calificar trabajos que nunca se hayan colocado en la pizarra, en el bloc de notas o en la conversación. |
-|| **Conocimiento** | Consultar páginas HTTPS aprobadas (cuando está habilitado) y llamar a herramientas de solo lectura en hasta dos servidores MCP externos. | Navegar por la web abierta, llamar a herramientas externas con permisos de escritura o acceder a direcciones de red privadas o internas. |
-|| **Memoria entre sesiones** | Trasladar un resumen estructurado y un prompt para la siguiente sesión a una nueva sesión cuando el moderador se los proporciona. | Recordar por sí solo a un alumno o a un prospecto. La continuidad solo se produce a través de los resúmenes que devuelve su sistema. |
-|| **Datos y costo** | Generar un resumen de sesión y artefactos de uso por rol, asignados a la sala principal. | Facturar a su plataforma el uso cuando usted aporta su propia clave de proveedor (BYOK). |
+| Área | Puede hacer | No puede hacer |
+| --- | --- | --- |
+| **Conversación** | Mantener una conversación hablada en directo, responder a las interrupciones, hablar en el idioma y a la velocidad configurados, y ceñirse al tema definido por el moderador. | Hablar de temas fuera del límite configurado, ni seguir después de que termine su sesión o se agote su presupuesto. |
+| **Visión** | Ver la **pizarra** y el **bloc de notas compartido** como imágenes instantáneas y una descripción estructurada de la escena. | Ver cámaras web, pantallas compartidas ni ningún otro video. El agente nunca captura el contenido de la cámara o de la pantalla. |
+| **Pizarra** | Dibujar formas, añadir texto, trazar SVG a mano alzada, renderizar diagramas Mermaid, usar un puntero láser, cambiar de página o de archivo de Office/PDF, hacer zoom y borrar el contenido. Deshacer sus últimas 20 acciones. | Borrar o modificar el trabajo de los participantes, más allá de las acciones que el propio agente puede deshacer. |
+| **Bloc de notas compartido** | Leer el bloc de notas y escribir actualizaciones por bloques. Se abre automáticamente cuando el agente escribe en él. | Editar el bloc de notas cuando el moderador ha desactivado la escritura. |
+| **Evaluación** | Crear cuestionarios y encuestas, cerrar encuestas, leer resultados y reaccionar de inmediato a cada respuesta. | Calificar trabajos que nunca se hayan colocado en la pizarra, en el bloc de notas o en la conversación. |
+| **Conocimiento** | Consultar páginas HTTPS aprobadas (cuando está habilitado) y llamar a herramientas de solo lectura en hasta dos servidores MCP externos. | Navegar por la web abierta, llamar a herramientas externas con permisos de escritura o acceder a direcciones de red privadas o internas. |
+| **Memoria entre sesiones** | Trasladar un resumen estructurado y un prompt para la siguiente sesión a una nueva sesión cuando el moderador se los proporciona. | Recordar por sí solo a un alumno o a un prospecto. La continuidad solo se produce a través de los resúmenes que devuelve su sistema. |
+| **Datos y costo** | Generar un resumen de sesión y artefactos de uso por rol, asignados a la sala principal. | Facturar a su plataforma el uso cuando usted aporta su propia clave de proveedor (BYOK). |
 
 ## Cómo funciona una sesión
 

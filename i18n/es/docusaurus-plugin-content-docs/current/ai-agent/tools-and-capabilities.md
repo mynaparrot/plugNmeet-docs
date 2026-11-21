@@ -51,17 +51,17 @@ Cuando el agente dibuja, usa un motor de disposición que coloca las formas en e
 
 ### Conjunto de herramientas de la pizarra
 
-|| Capacidad | Herramienta | Qué hace |
-|| --- | --- | --- |
-|| Formas | `whiteboard_draw_shapes` | Dibuja rectángulos, elipses, flechas y conectores. |
-|| Texto y contenido | `whiteboard_write_content` | Escribe títulos, etiquetas y párrafos. |
-|| Trazo libre | `whiteboard_draw_freehand_svg` | Dibuja un trazo libre a partir de datos SVG, para bocetos y anotaciones con estilo manuscrito. |
-|| Diagramas | `whiteboard_draw_diagram` | Renderiza un diagrama **Mermaid** (diagramas de flujo, de secuencia) en la pizarra. |
-|| Puntero láser | `whiteboard_laser_point` | Señala un elemento durante unos segundos para dirigir la atención sin modificar el dibujo. |
-|| Cambio de página y de archivo | `whiteboard_manage_board` (`switch_page`, `switch_office_file`) | Cambia entre páginas y entre archivos de Office y PDF cargados en la pizarra. |
-|| Zoom | `whiteboard_manage_board` (`zoom_to_elements`) | Hace zoom sobre un conjunto de elementos para que los participantes vean la zona relevante. |
-|| Acciones de la pizarra | `whiteboard_manage_board` | Incluye `switch_page`, `switch_office_file`, `zoom_to_elements`, `undo_last_agent_action` y `clear_board` (que requiere confirmación explícita). |
-|| Instantánea | `whiteboard_capture_snapshot` | Captura la vista actual cuando se solicita. |
+| Capacidad | Herramienta | Qué hace |
+| --- | --- | --- |
+| Formas | `whiteboard_draw_shapes` | Dibuja rectángulos, elipses, flechas y conectores. |
+| Texto y contenido | `whiteboard_write_content` | Escribe títulos, etiquetas y párrafos. |
+| Trazo libre | `whiteboard_draw_freehand_svg` | Dibuja un trazo libre a partir de datos SVG, para bocetos y anotaciones con estilo manuscrito. |
+| Diagramas | `whiteboard_draw_diagram` | Renderiza un diagrama **Mermaid** (diagramas de flujo, de secuencia) en la pizarra. |
+| Puntero láser | `whiteboard_laser_point` | Señala un elemento durante unos segundos para dirigir la atención sin modificar el dibujo. |
+| Cambio de página y de archivo | `whiteboard_manage_board` (`switch_page`, `switch_office_file`) | Cambia entre páginas y entre archivos de Office y PDF cargados en la pizarra. |
+| Zoom | `whiteboard_manage_board` (`zoom_to_elements`) | Hace zoom sobre un conjunto de elementos para que los participantes vean la zona relevante. |
+| Acciones de la pizarra | `whiteboard_manage_board` | Incluye `switch_page`, `switch_office_file`, `zoom_to_elements`, `undo_last_agent_action` y `clear_board` (que requiere confirmación explícita). |
+| Instantánea | `whiteboard_capture_snapshot` | Captura la vista actual cuando se solicita. |
 
 ### Historial de deshacer exclusivo del agente
 
@@ -69,11 +69,11 @@ El agente mantiene un historial de deshacer de sus **últimas 20 acciones**. Cad
 
 ## 3. Herramientas del bloc de notas compartido
 
-|| Herramienta | Qué hace |
-|| --- | --- |
-|| `notepad_read` | Lee el contenido actual del bloc de notas para que el agente pueda referirse a lo que han escrito los participantes. |
-|| `notepad_write` | Escribe **actualizaciones por bloques**: el agente cambia un bloque a la vez (por ejemplo, un título o un elemento de lista), en lugar de reemplazar todo el documento. Abre automáticamente el bloc de notas cuando escribe en él. |
-|| `notepad_participant_edit` | Permite que el agente responda a las ediciones que hacen los participantes en el bloc de notas. |
+| Herramienta | Qué hace |
+| --- | --- |
+| `notepad_read` | Lee el contenido actual del bloc de notas para que el agente pueda referirse a lo que han escrito los participantes. |
+| `notepad_write` | Escribe **actualizaciones por bloques**: el agente cambia un bloque a la vez (por ejemplo, un título o un elemento de lista), en lugar de reemplazar todo el documento. Abre automáticamente el bloc de notas cuando escribe en él. |
+| `notepad_participant_edit` | Permite que el agente responda a las ediciones que hacen los participantes en el bloc de notas. |
 
 Las escrituras se controlan con `allow_notepad_write` (predeterminado `true`). Establézcalo en `false` para que el agente solo pueda leer.
 
@@ -81,12 +81,12 @@ Las escrituras se controlan con `allow_notepad_write` (predeterminado `true`). E
 
 El agente puede evaluar la comprensión durante una sesión:
 
-|| Herramienta | Qué hace |
-|| --- | --- |
-|| `create_quiz` | Crea un cuestionario con respuestas correctas. Los participantes responden en la interfaz de encuestas. |
-|| `create_poll` | Crea una encuesta de opinión o de descubrimiento sin respuesta correcta. |
-|| `close_poll` | Cierra una encuesta o un cuestionario activo. |
-|| `get_poll_results` | Lee el recuento de votos y la corrección de las respuestas. |
+| Herramienta | Qué hace |
+| --- | --- |
+| `create_quiz` | Crea un cuestionario con respuestas correctas. Los participantes responden en la interfaz de encuestas. |
+| `create_poll` | Crea una encuesta de opinión o de descubrimiento sin respuesta correcta. |
+| `close_poll` | Cierra una encuesta o un cuestionario activo. |
+| `get_poll_results` | Lee el recuento de votos y la corrección de las respuestas. |
 
 Habilítelas con `allow_polls` (predeterminado `true`).
 
@@ -137,15 +137,15 @@ A veces, los participantes intentan que el agente incumpla sus reglas, por ejemp
 
 El Agente de IA tiene dos conjuntos de herramientas distintos. No son intercambiables.
 
-|| Aspecto | Agente de voz 1 a 1 | Chat de texto con IA del moderador |
-|| --- | --- | --- |
-|| **Quién lo usa** | El Agente de IA en una sesión de grupo 1 a 1, hablando con un alumno o un visitante. | El asistente de chat con IA del moderador en la sala principal, escrito en el cuadro de chat. |
-|| **Medio** | Voz en tiempo real, con pizarra y bloc de notas. | Texto escrito. |
-|| **Pizarra y bloc de notas** | Sí: dibujo, diagramas, puntero láser, lectura y escritura en el bloc de notas. | Limitado a las funciones que expone el chat de IA del moderador. |
-|| **Cuestionarios y encuestas** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`. | `draft_quiz` y `publish_quiz` para la revisión del moderador antes de publicar. |
-|| **Control de la sala** | `get_room_info`, más las herramientas de espacio de trabajo. No puede gestionar participantes ni salas de grupo. | `manage_participants`, `create_breakout_rooms`, `configure_speech_to_text`. |
-|| **Conocimiento** | `fetch_external_knowledge` y herramientas MCP de solo lectura, cuando están habilitadas. | Disponible cuando se habilita para el chat de texto con IA. |
-|| **Público al que sirve** | Alumnos, visitantes y estudiantes. | Moderadores y moderadores. |
+| Aspecto | Agente de voz 1 a 1 | Chat de texto con IA del moderador |
+| --- | --- | --- |
+| **Quién lo usa** | El Agente de IA en una sesión de grupo 1 a 1, hablando con un alumno o un visitante. | El asistente de chat con IA del moderador en la sala principal, escrito en el cuadro de chat. |
+| **Medio** | Voz en tiempo real, con pizarra y bloc de notas. | Texto escrito. |
+| **Pizarra y bloc de notas** | Sí: dibujo, diagramas, puntero láser, lectura y escritura en el bloc de notas. | Limitado a las funciones que expone el chat de IA del moderador. |
+| **Cuestionarios y encuestas** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`. | `draft_quiz` y `publish_quiz` para la revisión del moderador antes de publicar. |
+| **Control de la sala** | `get_room_info`, más las herramientas de espacio de trabajo. No puede gestionar participantes ni salas de grupo. | `manage_participants`, `create_breakout_rooms`, `configure_speech_to_text`. |
+| **Conocimiento** | `fetch_external_knowledge` y herramientas MCP de solo lectura, cuando están habilitadas. | Disponible cuando se habilita para el chat de texto con IA. |
+| **Público al que sirve** | Alumnos, visitantes y estudiantes. | Moderadores y moderadores. |
 
 :::caution Mantenga separadas las herramientas del moderador
 Herramientas como `manage_participants` y `create_breakout_rooms` solo están disponibles en el chat de texto del moderador. No están disponibles para el agente de voz. Así se evita que un alumno use comandos de voz para cambiar la estructura de la sala.

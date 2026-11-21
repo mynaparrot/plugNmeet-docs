@@ -146,15 +146,15 @@ Las decisiones de cumplimiento y de certificación deben seguir en manos de sus 
 
 **Campos que se asignan al CRM:**
 
-|| Campo del resumen | Campo sugerido en el CRM |
-|| --- | --- |
-|| `user_info.name`, `user_info.ex_user_id` | Nombre del contacto y su ID externo |
-|| `session.duration_seconds`, `session.turns_count` | Puntuación de participación |
-|| `evaluation.concepts_mastered` / `struggled_with` | Áreas de interés y objeciones |
-|| `quiz_evaluation.accuracy_percent` | Señal de calificación |
-|| `continuation.next_session_focus` | Notas de próximos pasos para el comercial |
-|| `narrative_summary` | Nota breve de la llamada |
-|| `continuation.previous_session_context_prompt` | Contexto listo para la siguiente sesión |
+| Campo del resumen | Campo sugerido en el CRM |
+| --- | --- |
+| `user_info.name`, `user_info.ex_user_id` | Nombre del contacto y su ID externo |
+| `session.duration_seconds`, `session.turns_count` | Puntuación de participación |
+| `evaluation.concepts_mastered` / `struggled_with` | Áreas de interés y objeciones |
+| `quiz_evaluation.accuracy_percent` | Señal de calificación |
+| `continuation.next_session_focus` | Notas de próximos pasos para el comercial |
+| `narrative_summary` | Nota breve de la llamada |
+| `continuation.previous_session_context_prompt` | Contexto listo para la siguiente sesión |
 
 **Plantilla de prompt para la calificación**
 
@@ -168,11 +168,11 @@ Para conocer el esquema completo, consulte [Resúmenes y artefactos de uso](/doc
 
 ## Cómo elegir el modo adecuado
 
-|| Objetivo | Modo recomendado | Motivo |
-|| --- | --- | --- |
-|| Demostración pública de producto en su sitio web | `OPEN_PER_USER` | Cada visitante recibe una sesión automáticamente, las 24 horas. |
-|| Onboarding de un cliente identificado | `NORMAL_ROOM` | Su ingeniero decide cuándo iniciar la sesión. |
-|| Formación de un grupo fijo de personal | `CONTROLLED_USERS` | Solo las personas de la lista pueden iniciar sesiones. |
+| Objetivo | Modo recomendado | Motivo |
+| --- | --- | --- |
+| Demostración pública de producto en su sitio web | `OPEN_PER_USER` | Cada visitante recibe una sesión automáticamente, las 24 horas. |
+| Onboarding de un cliente identificado | `NORMAL_ROOM` | Su ingeniero decide cuándo iniciar la sesión. |
+| Formación de un grupo fijo de personal | `CONTROLLED_USERS` | Solo las personas de la lista pueden iniciar sesiones. |
 
 ## Salvaguardas empresariales que debe configurar
 

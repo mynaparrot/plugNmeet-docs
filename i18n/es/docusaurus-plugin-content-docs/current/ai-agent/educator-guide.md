@@ -100,16 +100,16 @@ Ajustes de sala sugeridos: `topic: "Causas de la Primera Guerra Mundial"`, `forb
 
 La barra de estado de IA muestra lo que el agente está haciendo en ese momento. Los estados son:
 
-|| Estado | Significado |
-|| --- | --- |
-|| **Conectando** | El agente se está uniendo a la sesión. |
-|| **Escuchando** | El agente espera a que el alumno hable. |
-|| **Pensando** | El agente está preparando una respuesta. |
-|| **Hablando** | El agente está hablando. |
-|| **Dibujando** | El agente está trabajando en la pizarra. |
-|| **En pausa** | La sesión está en pausa y el agente no responde. |
-|| **Reconectando** | Se perdió la conexión y el agente intenta volver a unirse. |
-|| **Detenido** | La sesión ha terminado. |
+| Estado | Significado |
+| --- | --- |
+| **Conectando** | El agente se está uniendo a la sesión. |
+| **Escuchando** | El agente espera a que el alumno hable. |
+| **Pensando** | El agente está preparando una respuesta. |
+| **Hablando** | El agente está hablando. |
+| **Dibujando** | El agente está trabajando en la pizarra. |
+| **En pausa** | La sesión está en pausa y el agente no responde. |
+| **Reconectando** | Se perdió la conexión y el agente intenta volver a unirse. |
+| **Detenido** | La sesión ha terminado. |
 
 ### Hablar con el agente
 

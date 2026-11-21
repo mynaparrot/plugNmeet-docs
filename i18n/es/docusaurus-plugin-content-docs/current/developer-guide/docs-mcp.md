@@ -14,11 +14,11 @@ Punto de conexión remoto: `https://docs-mcp.plugnmeet.org/mcp`
 
 ## Herramientas
 
-|| Herramienta | Argumentos | Función |
-|| --- | --- | --- |
-|| `search_docs` | `query`, `limit` (1-20, predeterminado: 5), `section` (`docs`/`blog`), `locale` (`en`/`es`) | Coincidencias ordenadas por relevancia, con título, URL, descripción y un fragmento del contenido. |
-|| `list_docs` | `section`, `locale` | Todas las páginas agrupadas por categoría. |
-|| `get_docs_content` | `path` (ruta del sitio o URL completa), `locale` | Markdown completo de una página junto con el enlace a su código fuente. |
+| Herramienta | Argumentos | Función |
+| --- | --- | --- |
+| `search_docs` | `query`, `limit` (1-20, predeterminado: 5), `section` (`docs`/`blog`), `locale` (`en`/`es`) | Coincidencias ordenadas por relevancia, con título, URL, descripción y un fragmento del contenido. |
+| `list_docs` | `section`, `locale` | Todas las páginas agrupadas por categoría. |
+| `get_docs_content` | `path` (ruta del sitio o URL completa), `locale` | Markdown completo de una página junto con el enlace a su código fuente. |
 
 ## Configuración del cliente
 
