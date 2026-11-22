@@ -206,11 +206,38 @@ interface CommonNotifyEvent {
 }
 ```
 
-### Artefacto creado
+### Artefacto creado {#artifact-created}
 
 Este evento único y unificado se activa cada vez que el sistema genera un nuevo artefacto, como una transcripción o un resumen de la reunión. Sustituye a múltiples webhooks individuales y más antiguos por un modelo más flexible y escalable.
 
-Para obtener detalles sobre la estructura de la carga útil y los posibles tipos de artefactos, consulte la [definición de protobuf](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto#L91).
+Para conocer la estructura de la carga útil, consulte la [definición de protobuf](https://github.com/mynaparrot/plugnmeet-protocol/blob/main/proto_files/plugnmeet_room_artifacts.proto#L91).
+
+`room_artifact.type` indica qué se ha creado. Este es el conjunto completo de valores:
+
+| `type` | Constante | Formato | Contenido |
+| --- | --- | --- | --- |
+| `0` | `UNKNOWN_ARTIFACT` | — | Marcador de posición. Nunca se emite de forma intencionada. |
+| `1` | `MEETING_ANALYTICS` | Archivo | Exportación de analíticas de la sesión. |
+| `2` | `MEETING_SUMMARY` | Archivo (`text/plain`) | Resumen de la reunión generado con IA. |
+| `3` | `MEETING_SUMMARY_USAGE` | Metadatos | Uso de tokens y costo estimado del resumen. |
+| `4` | `SPEECH_TRANSCRIPTION` | Archivo (`text/vtt`) | Transcripción WebVTT de la voz transcrita. |
+| `5` | `SPEECH_TRANSCRIPTION_USAGE` | Metadatos | Duración transcrita y costo estimado. |
+| `6` | `SYNTHESIZED_SPEECH_USAGE` | Metadatos | Caracteres sintetizados para la traducción hablada y costo estimado. |
+| `7` | `CHAT_TRANSLATION_USAGE` | Metadatos | Caracteres traducidos en el chat y costo estimado. |
+| `8` | `AI_TEXT_CHAT_INTERACTION_USAGE` | Metadatos | Uso de tokens de los turnos del chat de texto con IA. |
+| `9` | `AI_TEXT_CHAT_SUMMARIZATION_USAGE` | Metadatos | Uso de tokens del resumen progresivo de la conversación. |
+| `10` | `AI_AGENT_USAGE` | Metadatos | Uso de tokens y de audio de una sesión del Agente de IA, por rol y modalidad. |
+| `11` | `AI_AGENT_SESSION_SUMMARY` | Archivo (JSON) | Resumen estructurado de la sesión del Agente de IA. |
+| `12` | `AI_AGENT_TRANSCRIPT` | Archivo | Transcripción de una sesión del Agente de IA. |
+
+Notas:
+
+*   Los tipos de archivo (`1`, `2`, `4`, `11`, `12`) requieren `/auth/artifact/getDownloadToken` antes de la descarga. Los tipos de metadatos (`3`, `5`–`10`) llevan sus cifras en `room_artifact.metadata` y no tienen nada que descargar.
+*   Los artefactos de uso enlazan con el archivo que facturan mediante `reference_artifact_id`.
+*   El uso procedente de una sala para grupos pequeños se atribuye a la sala principal.
+*   En `AI_AGENT_USAGE`, `metadata.breakdown` contiene una marca `custom_provider_<provider>` para las sesiones con BYOK, que quedan excluidas de la facturación de la plataforma.
+
+Consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing) para ver todos los esquemas y reglas de precios, y las guías de cada función para [subtítulos y traducción](/docs/ai-agent/speech-to-text-and-translation), [resumen de reuniones](/docs/ai-agent/meeting-summarization) y [chat de texto con IA](/docs/ai-agent/ai-text-chat).
 
 ```js
 interface CommonNotifyEvent {
@@ -243,9 +270,18 @@ El siguiente pseudocódigo demuestra cómo gestionar los webhooks entrantes. Su 
 // Consulte la definición de protobuf para obtener la lista completa y actualizada.
 const ArtifactType = {
   0: 'UNKNOWN_ARTIFACT',
+  1: 'MEETING_ANALYTICS',
   2: 'MEETING_SUMMARY',
+  3: 'MEETING_SUMMARY_USAGE',
   4: 'SPEECH_TRANSCRIPTION',
   5: 'SPEECH_TRANSCRIPTION_USAGE',
+  6: 'SYNTHESIZED_SPEECH_USAGE',
+  7: 'CHAT_TRANSLATION_USAGE',
+  8: 'AI_TEXT_CHAT_INTERACTION_USAGE',
+  9: 'AI_TEXT_CHAT_SUMMARIZATION_USAGE',
+  10: 'AI_AGENT_USAGE',
+  11: 'AI_AGENT_SESSION_SUMMARY',
+  12: 'AI_AGENT_TRANSCRIPT',
 };
 
 function handleWebhook(payload) {

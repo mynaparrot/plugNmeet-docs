@@ -3,7 +3,7 @@ title: "AI Agent Session Summary & Usage Artifacts: JSON Schema, Billing & BYOK"
 description: "Full reference for the plugNmeet AI_AGENT_SESSION_SUMMARY and AI_AGENT_USAGE artifacts, including the summary JSON schema, per-role and per-modality token and audio cost accounting, parent-room attribution, and billing suppression for bring-your-own-key sessions."
 keywords: [ai agent summary json, ai session report, ai usage billing, token usage artifact, ai cost tracking, plugnmeet artifacts, session summary schema, ai agent billing, byok billing, learning analytics ai, lms ai report]
 sidebar_label: Summaries & Usage Artifacts
-sidebar_position: 7
+sidebar_position: 11
 ---
 
 # AI Agent Summaries & Usage Artifacts
@@ -18,7 +18,7 @@ Every AI Agent session produces two artifacts, stored against the **parent room*
 This page describes both, with the exact field names used in `plugnmeet_room_artifacts.proto`.
 
 :::info Under Active Development
-The AI Agent engine and its artifact formats are under active development. Field names and fields that are not yet listed may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the feature is finalized and released.
+**Live transcription (STT), translation, speech synthesis (TTS), AI Text Chat, and meeting summarization are stable production features**, and their artifact formats are stable. Only the Voice AI Agent (`ai_agent`) and the newer agentic MCP tool-calling capabilities are under active development: their artifact fields, and fields not yet listed here, may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the agent is finalized and released.
 :::
 
 ## How You Receive Artifacts
@@ -30,6 +30,32 @@ The AI Agent engine and its artifact formats are under active development. Field
 :::tip Use the Webhook as the Trigger
 Do not poll for artifacts. Listen for `artifact_created`, check `room_artifact.type`, and then fetch only the artifact you need.
 :::
+
+## All Insights Artifact Types
+
+`RoomArtifactType` covers every artifact the Insights platform produces. Types `1` through `9` come from the speech, summarization, and text-chat services; types `10` through `12` come from the AI Agent.
+
+| Type | Name | Form | Pricing model | Feature guide |
+| --- | --- | --- | --- | --- |
+| `1` | `MEETING_ANALYTICS` | Downloadable file | None. Platform analytics, not a provider-billed service. | [Analytics](/docs/others/analytics) |
+| `2` | `MEETING_SUMMARY` | Downloadable file (`text/plain`) | None. The billable record is type `3`. | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
+| `3` | `MEETING_SUMMARY_USAGE` | Usage metadata | Token usage with `estimated_cost`. | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
+| `4` | `SPEECH_TRANSCRIPTION` | Downloadable file (`text/vtt`) | None. The billable record is type `5`. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `5` | `SPEECH_TRANSCRIPTION_USAGE` | Usage metadata | Duration (`duration_sec`, priced with `price_per_hour`). | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `6` | `SYNTHESIZED_SPEECH_USAGE` | Usage metadata | Character count, priced with `price_per_million_characters`. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `7` | `CHAT_TRANSLATION_USAGE` | Usage metadata | Character count, priced with `price_per_million_characters`. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `8` | `AI_TEXT_CHAT_INTERACTION_USAGE` | Usage metadata | Token usage for `chat_model`. | [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat) |
+| `9` | `AI_TEXT_CHAT_SUMMARIZATION_USAGE` | Usage metadata | Token usage for `summarize_model`. | [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat) |
+| `10` | `AI_AGENT_USAGE` | Usage metadata | Token and audio usage, per role and modality. | This page |
+| `11` | `AI_AGENT_SESSION_SUMMARY` | Downloadable file (JSON) | None. The billable record is type `10`. | This page |
+| `12` | `AI_AGENT_TRANSCRIPT` | Downloadable file | None. The billable record is type `10`. | [Developer & API Guide](/docs/ai-agent/developer-guide) |
+
+Two rules apply across the table:
+
+- **File artifacts** (`1`, `2`, `4`, `11`, `12`) need a download token from [`/auth/artifact/getDownloadToken`](/docs/api/artifact/download) before your backend can read them.
+- **Usage artifacts** (`3`, `5`–`10`) carry their numbers in `room_artifact.metadata` and have no file to download. Their `reference_artifact_id` points at the file they bill for, when one exists.
+
+Usage that occurs in a breakout room is attributed to the parent room for every type. The list of types also appears in the [webhook reference](/docs/others/webhooks#artifact-created).
 
 ## `AI_AGENT_SESSION_SUMMARY`
 
@@ -392,6 +418,9 @@ See the [Security Overview](/docs/security-overview#86-ai-service-artifacts) for
 
 ## Related Pages
 
+- [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation)
+- [AI Meeting Summarization](/docs/ai-agent/meeting-summarization)
+- [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat)
 - [Developer & API Guide](/docs/ai-agent/developer-guide)
 - [Server & Provider Setup](/docs/ai-agent/configuration)
 - [Webhooks](/docs/others/webhooks)

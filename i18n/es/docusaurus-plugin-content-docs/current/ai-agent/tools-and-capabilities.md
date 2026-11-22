@@ -1,8 +1,8 @@
 ---
-title: "Visión de la pizarra, herramientas y salvaguardas del Agente de IA | plugNmeet"
-description: "Análisis detallado de la visión de la pizarra del Agente de IA de plugNmeet, las herramientas del bloc de notas compartido, los cuestionarios y encuestas, los eventos de temporizador, las salvaguardas de seguridad en tres capas y los conjuntos de herramientas del agente de voz frente al chat de texto del moderador."
-keywords: [ia para pizarra, visión de ia en pizarra, grafo de escena, herramientas del agente de ia, salvaguardas de ia, protección contra inyección de prompts, límite de tema en ia, generador de cuestionarios con ia, encuesta con ia, bloc de notas compartido con ia, diagrama mermaid con ia, llamada a herramientas de llm]
-sidebar_label: Capacidades, visión y salvaguardas
+title: "Visión de la pizarra, herramientas y límites del Agente de IA | plugNmeet"
+description: "Análisis detallado de la visión de la pizarra del Agente de IA de plugNmeet, las herramientas del bloc de notas compartido, los cuestionarios y encuestas, el temporizador de cuenta regresiva, las salvaguardas en tres capas y la diferencia entre las herramientas del agente de voz y las del copiloto de IA para moderadores."
+keywords: [ia para pizarra, visión de ia en pizarra, grafo de escena, herramientas del agente de ia, salvaguardas de ia, protección contra inyección de prompts, límite de tema en ia, generador de cuestionarios con ia, encuestas interactivas con ia, bloc de notas compartido con ia, diagramas mermaid con ia, llamada a herramientas de llm]
+sidebar_label: Capacidades y Límites del Agente
 sidebar_position: 4
 ---
 
@@ -133,22 +133,25 @@ A veces, los participantes intentan que el agente incumpla sus reglas, por ejemp
 - Solo sigue disponible **`get_room_info`**. El agente puede seguir leyendo la información de la sala y continuar la conversación, pero no puede actuar.
 - El bloqueo solo se levanta mediante un restablecimiento explícito, como una intervención del moderador. El recuento acumulado de redirecciones fuera de tema se conserva durante toda la sesión y se informa en el resumen (`off_topic_redirects_count`).
 
-## 6. Comparación de herramientas: agente de voz frente a chat de texto con IA del moderador
+## 6. Comparación de herramientas: agente de voz frente al copiloto de IA para moderadores
 
-El Agente de IA tiene dos conjuntos de herramientas distintos. No son intercambiables.
+Los dos servicios comparten la forma de invocar herramientas, pero no el catálogo. El agente de voz (`ai_agent`) está acotado a la enseñanza, la presentación y la colaboración. El asistente del moderador (`ai_text_chat`, cuando se invoca con `request_from: CHAT`) está conectado al catálogo completo de gestión de la sala y de contenido, porque actúa en nombre de un administrador que ya tiene esos permisos.
 
-| Aspecto | Agente de voz 1 a 1 | Chat de texto con IA del moderador |
+| Aspecto | Agente de voz 1 a 1 (`ai_agent`) | Chat de texto con IA del moderador (`ai_text_chat`) |
 | --- | --- | --- |
-| **Quién lo usa** | El Agente de IA en una sesión de grupo 1 a 1, hablando con un alumno o un visitante. | El asistente de chat con IA del moderador en la sala principal, escrito en el cuadro de chat. |
-| **Medio** | Voz en tiempo real, con pizarra y bloc de notas. | Texto escrito. |
-| **Pizarra y bloc de notas** | Sí: dibujo, diagramas, puntero láser, lectura y escritura en el bloc de notas. | Limitado a las funciones que expone el chat de IA del moderador. |
-| **Cuestionarios y encuestas** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`. | `draft_quiz` y `publish_quiz` para la revisión del moderador antes de publicar. |
-| **Control de la sala** | `get_room_info`, más las herramientas de espacio de trabajo. No puede gestionar participantes ni salas de grupo. | `manage_participants`, `create_breakout_rooms`, `configure_speech_to_text`. |
-| **Conocimiento** | `fetch_external_knowledge` y herramientas MCP de solo lectura, cuando están habilitadas. | Disponible cuando se habilita para el chat de texto con IA. |
-| **Público al que sirve** | Alumnos, visitantes y estudiantes. | Moderadores y moderadores. |
+| **Quién lo usa** | Un alumno, estudiante, interesado o becario en una sesión individual en una sala para grupos pequeños. | Un administrador o moderador en la sala principal, escribiendo en el panel de chat. |
+| **Medio** | Voz en tiempo real, con pizarra interactiva y bloc de notas. | Texto en streaming, con acciones delegadas al navegador del moderador mediante RPC sobre NATS. |
+| **Gestión de participantes** | No disponible. | `manage_participants`: silenciar, reactivar el audio, expulsar y gestionar permisos. |
+| **Operaciones de la sala** | Solo `get_room_info`. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (de 10 s a 2 h), `manage_external_media`, `get_room_info`. |
+| **Salas para grupos pequeños** | No disponible. | `create_breakout_rooms`, `manage_breakout_rooms`. |
+| **Configuración de Insights** | No disponible. | `configure_speech_to_text`, `configure_chat_translation`, `configure_meeting_summarization`. |
+| **Encuestas y cuestionarios** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`, con el evento `OnPollResponseSubmitted`. | `create_poll`, `close_poll`, `get_poll_results`, más `draft_quiz` → `publish_quiz` para la revisión del moderador. |
+| **Pizarra y bloc de notas** | Dibujo, diagramas, trazos SVG a mano alzada, puntero láser, gestión de páginas, lectura y escritura en el bloc de notas. | Conjunto completo de creación conjunta: `whiteboard_write_content`, `whiteboard_draw_shapes`, `whiteboard_draw_freehand_svg`, `whiteboard_draw_diagram`, `whiteboard_laser_point`, `whiteboard_manage_board`, `whiteboard_capture_snapshot`, `notepad_read`, `notepad_write`. |
+| **Conocimiento** | `fetch_external_knowledge` y hasta 2 servidores MCP de solo lectura, cuando están habilitados. | Las mismas herramientas de conocimiento y el mismo cupo de 2 servidores MCP. |
+| **A quién sirve** | Alumnos, visitantes y estudiantes. | Moderadores, anfitriones y docentes. |
 
-:::caution Mantenga separadas las herramientas del moderador
-Herramientas como `manage_participants` y `create_breakout_rooms` solo están disponibles en el chat de texto del moderador. No están disponibles para el agente de voz. Así se evita que un alumno use comandos de voz para cambiar la estructura de la sala.
+:::caution Por qué existe esta separación
+Las herramientas de administración destructivas nunca se exponen al agente de voz. Un alumno que habla con el agente no puede silenciar la clase, iniciar una grabación, bloquear el chat ni reorganizar las salas para grupos pequeños. Esas capacidades solo existen en el chat de texto del moderador, donde quien las pide ya está autorizado a usarlas. La referencia completa del copiloto, con ejemplos de instrucciones, está en [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat).
 :::
 
 ## 7. Herramientas que nunca se exponen
@@ -157,7 +160,8 @@ El agente no puede invocar herramientas que no figuren en la configuración de l
 
 ## Páginas relacionadas
 
-- [Descripción general y conceptos](/docs/ai-agent/overview)
+- [Descripción general e Insights](/docs/ai-agent/overview)
+- [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat): referencia de las herramientas del copiloto para moderadores.
 - [Educación y profesor virtual](/docs/ai-agent/educator-guide)
-- [Configuración del servidor y del proveedor](/docs/ai-agent/configuration)
+- [Configuración del servidor y proveedores](/docs/ai-agent/configuration)
 - [Resumen de seguridad](/docs/security-overview#5-servicios-de-ia-y-privacidad-de-datos-plataforma-de-análisis)

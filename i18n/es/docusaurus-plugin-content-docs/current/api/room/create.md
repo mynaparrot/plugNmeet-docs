@@ -79,7 +79,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 | [display_external_link_features](#características-de-visualización-de-enlaces-externos)    | object  | Sí       | Configuraciones para mostrar enlaces externos.                                                                |
 | [ingress_features](#características-de-ingesta)                                | object  | No       | Configuraciones de ingesta RTMP.                                                                                 |
 | [polls_features](#características-de-encuestas)                                    | object  | No       | Configuraciones de encuestas.                                                                                        |
-| [insights_features](#características-de-insights)                              | object  | No       | Configuraciones de análisis, transcripción y traducción impulsadas por IA.                                          |
+| [insights_features](#insights-features)                              | object  | No       | Configuraciones de análisis, transcripción y traducción impulsadas por IA.                                          |
 | [sip_dial_in_features](#características-de-acceso-telefónico-sip)                        | object  | No       | Configuración de llamadas SIP.                                                                                  |
 | [end_to_end_encryption_features](#características-de-cifrado-de-extremo-a-extremo-e2ee) | object  | No       | Configuraciones de Cifrado de Extremo a Extremo (E2EE).                                                                 |
 
@@ -213,7 +213,7 @@ Una vez que una sesión ha concluido, la sala se da por finalizada y todos los d
 
 </details>
 
-### Características de Insights
+### Características de Insights {#insights-features}
 <details>
 <summary>Ver Detalles</summary>
 
@@ -227,7 +227,7 @@ La configuración tiene una potente estructura de dos partes:
 Este diseño flexible le permite usar diferentes proveedores para distintas tareas (p. ej., Azure para traducción y Google para chat con IA) e incluso seleccionar diferentes modelos para optimizar la relación costo-rendimiento (p. ej., un modelo potente para chat y uno más económico para resúmenes). Consulte la guía de configuración del servidor para obtener instrucciones detalladas.
 :::
 
-Este objeto controla todas las características impulsadas por IA que proporciona la Plataforma Insights.
+Este objeto controla todas las características impulsadas por IA que proporciona la Plataforma Insights. Cada función tiene su propia guía: [subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation), [resumen de reuniones](/docs/ai-agent/meeting-summarization), [chat de texto con IA](/docs/ai-agent/ai-text-chat) y la [descripción general del Agente de IA e Insights](/docs/ai-agent/overview).
 
 | Campo                                       | Tipo   | Requerido | Descripción                                           |
 | ------------------------------------------- | ------ | -------- | ----------------------------------------------------- |
@@ -245,11 +245,15 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | is_allow_translation        | boolean | No       | Habilitar o deshabilitar la traducción de la transcripción.         |
 | is_allow_speech_synthesis   | boolean | No       | Habilitar o deshabilitar las traducciones habladas (texto a voz).     |
 
+Consulte [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) para conocer el ciclo de vida en tiempo de ejecución.
+
 #### Características de traducción de chat
 
 | Campo    | Tipo    | Requerido | Descripción                                           |
 | -------- | ------- | -------- | ----------------------------------------------------- |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la traducción en tiempo real de los mensajes de chat. |
+
+Consulte [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) para los controles del moderador y de los participantes.
 
 #### Características de IA
 
@@ -264,12 +268,14 @@ Este objeto controla todas las características impulsadas por IA que proporcion
 | Campo    | Tipo    | Requerido | Descripción                          |
 | -------- | ------- | -------- | ------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar el Asistente de Chat con IA. |
+| mcp_servers | map | No | Hasta 2 servidores MCP externos de solo lectura. Consulte [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat). |
 
 #### Características de resumen de reunión
 
 | Campo    | Tipo    | Requerido | Descripción                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Sí       | Habilitar o deshabilitar la generación de resúmenes de reuniones. |
+| summarization_prompt | string | No | Instrucción personalizada que define el resultado del resumen. Consulte [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization). |
 
 </details>
 

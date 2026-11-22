@@ -1,8 +1,8 @@
 ---
 title: "Agente de IA para demostraciones de ventas y onboarding: flujos de trabajo para SaaS, ventas y soporte"
-description: "Flujos de trabajo prácticos para usar el Agente de IA de plugNmeet como demostración interactiva de producto disponible las 24 horas, asistente de onboarding técnico, coach de formación de empleados y asistente de calificación de leads con envío de datos al CRM."
-keywords: [demo de ventas con ia, demostración interactiva de producto, ingeniero de ventas con ia, onboarding saas con ia, facilitación de ventas con ia, calificación de leads con ia, webhook de crm, coaching de presentaciones con ia, onboarding de empleados, automatización del onboarding de clientes]
-sidebar_label: Demostraciones de producto, ventas y negocios
+description: "Flujos de trabajo prácticos para usar el Agente de IA de plugNmeet como demostración interactiva de producto disponible las 24 horas, asistente de onboarding técnico, coach de formación y asistente de calificación de leads con envío de datos al CRM, junto con copiloto para el anfitrión, traducción multilingüe de llamadas y notas automáticas de reuniones en llamadas con clientes y webinars."
+keywords: [demo de ventas con ia, demostración interactiva de producto, ingeniero de ventas con ia, onboarding saas con ia, traducción multilingüe de llamadas de ventas, copiloto de ia para anfitriones de reuniones, notas automáticas de reuniones para el crm, calificación de leads con ia, webhook de crm, automatización del onboarding de clientes]
+sidebar_label: Demos de Producto, Ventas y Negocios
 sidebar_position: 3
 ---
 
@@ -166,6 +166,24 @@ Do not promise pricing or contract terms. At the end, summarize the visitor's ne
 
 Para conocer el esquema completo, consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing). Para configurar la continuidad, consulte la [Guía para desarrolladores y de la API](/docs/ai-agent/developer-guide#flujo-de-continuidad-entre-sesiones).
 
+## Llamadas con clientes en vivo, webinars globales y flujos con copiloto para el anfitrión
+
+Los flujos de trabajo anteriores se ejecutan como sesiones privadas 1 a 1. Cuando un comercial, un ingeniero de soporte o un directivo presenta una reunión grupal o un webinar en vivo, el mismo marco de Insights cubre tres flujos de producción adicionales.
+
+### 1. Ventas internacionales y llamadas multilingües con clientes ([Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation))
+
+Realice llamadas de descubrimiento, demostraciones para grandes cuentas o reuniones globales para toda la empresa sin barreras de idioma, con subtítulos STT en tiempo real, traducción hablada simultánea (flujos de audio TTS neuronales por cada idioma de destino) y traducción multilingüe del chat público. El anfitrión habla una sola vez y cada participante sigue la sesión en su propio idioma.
+
+### 2. Copiloto para el anfitrión en webinars y talleres con clientes ([Chat de IA en la reunión](/docs/ai-agent/ai-text-chat))
+
+El anfitrión pide al copiloto de Chat de IA que gestione la sala en tiempo real: lanzar encuestas de calificación del público, dibujar diagramas de arquitectura del sistema en la pizarra, escribir puntos de acción en el bloc de notas compartido, fijar temporizadores para la agenda, gestionar las grabaciones o activar la transcripción y el resumen en vivo cuando lo necesite.
+
+### 3. Notas automáticas de llamadas e informes ejecutivos al CRM ([Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization))
+
+En llamadas de ventas, legales, de consultoría o de soporte dirigidas por personas, active `meeting_summarization_features` con un `summarization_prompt` empresarial, por ejemplo: *«Resuma los puntos de dolor del cliente, los requisitos técnicos, las señales de presupuesto y plazo, las decisiones acordadas y las próximas acciones con su responsable.»*
+
+Cuando termina la llamada, el servidor emite el artefacto `MEETING_SUMMARY` mediante el webhook `artifact_created`. Su backend puede adjuntar el resumen de la llamada directamente a HubSpot, Salesforce o su sistema interno de tickets, junto con la transcripción `SPEECH_TRANSCRIPTION` (`.vtt`).
+
 ## Cómo elegir el modo adecuado
 
 | Objetivo | Modo recomendado | Motivo |
@@ -183,7 +201,10 @@ Para conocer el esquema completo, consulte [Resúmenes y artefactos de uso](/doc
 
 ## Páginas relacionadas
 
-- [Descripción general y conceptos](/docs/ai-agent/overview)
-- [Capacidades, visión y salvaguardas](/docs/ai-agent/tools-and-capabilities)
-- [Configuración del servidor y del proveedor](/docs/ai-agent/configuration)
+- [Descripción general e Insights](/docs/ai-agent/overview)
+- [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities)
+- [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat): copiloto para moderadores con herramientas de gestión de sala.
+- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization): actas automáticas para llamadas de ventas y onboarding.
+- [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation): subtítulos, traducción hablada y transcripciones para llamadas y webinars multilingües.
+- [Configuración del servidor y proveedores](/docs/ai-agent/configuration)
 - [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing)

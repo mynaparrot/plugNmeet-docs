@@ -3,7 +3,7 @@ title: "AI Agent API Developer Guide: ai_agent_features Reference & Examples"
 description: "Developer reference for the plugNmeet AI Agent API, covering every ai_agent_features field, JSON examples for NORMAL_ROOM, CONTROLLED_USERS and OPEN_PER_USER rooms, BYOK and MCP configuration, breakout room creation, multi-session continuity, and in-room protobuf endpoints."
 keywords: [plugnmeet api, ai_agent_features, create room api, ai agent api, breakout room ai, mcp servers config, byok ai provider api, artifact_created webhook, previous_session_context, protobuf api, aiAgent start stop status]
 sidebar_label: Developer & API Guide
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # AI Agent Developer & API Guide
@@ -391,6 +391,20 @@ Continuity lets a returning learner or prospect pick up where they left off. The
 
 Per-user continuity works best with `OPEN_PER_USER` and `CONTROLLED_USERS`, where your backend knows the learner's identity. Use the `user_info.ex_user_id` field from the summary to match the learner to your own records.
 
+## Runtime Insights Endpoints (`/api/insights/*`)
+
+The browser client talks to the Insights services through `/api/insights/*` endpoints. They are authenticated with the participant's room JWT, not with the server API key, and they only work inside a room where a moderator has enabled the corresponding feature.
+
+| Endpoint group | Purpose | Guide |
+| --- | --- | --- |
+| `/api/insights/supportedLangs` | Returns the language catalogue the server exposes, used to populate language pickers for captions, spoken languages, and chat translation. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/transcription/*` | Starts and stops a participant's transcription session, sets the spoken language, toggles storage consent, and configures moderator-level settings such as allowed speakers, allowed languages, translation, subtitles, and speech synthesis. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/translation/chat/*` | Enables or disables public chat translation and translates a single chat message on demand. | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/ai/textChat/*` | Streams AI text chat turns for the `CHAT`, `NOTEPAD`, `WHITEBOARD`, and `POLL` surfaces, and exposes the moderator runtime configuration fields. | [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat) |
+| `/api/insights/ai/meetingSummarization/*` | Starts and stops summarization and sets or overrides the session `summarization_prompt`. | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
+
+Room-level permission for every one of these calls comes from `insights_features` at [`/room/create`](/docs/api/room/create#insights-features). A call for a feature the room did not enable is rejected, regardless of the participant's role.
+
 ## In-Room Endpoints (`/api/aiAgent/*`)
 
 The browser client controls the agent through these endpoints. They are authenticated with the participant's room JWT, not with the server API key. Requests and responses use **protobuf** (`application/x-protobuf`), not JSON.
@@ -430,7 +444,10 @@ Post the encoded bytes to `/api/aiAgent/sendContext` with the participant's room
 
 ## Related Pages
 
-- [Overview & Concepts](/docs/ai-agent/overview)
+- [Overview & Insights Framework](/docs/ai-agent/overview)
+- [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation)
+- [AI Meeting Summarization](/docs/ai-agent/meeting-summarization)
+- [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat)
 - [Server & Provider Setup](/docs/ai-agent/configuration)
 - [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing)
 - [Create Room API](/docs/api/room/create)

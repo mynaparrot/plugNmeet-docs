@@ -227,7 +227,7 @@ The configuration has a powerful two-part structure:
 This flexible design allows you to use different providers for different tasks (e.g., Azure for translation and Google for AI chat) and even select different models for cost-performance optimization (e.g., a powerful model for chat and a cheaper one for summarization). Please refer to the server configuration guide for detailed setup instructions.
 :::
 
-This object controls all AI-powered features provided by the Insights Platform.
+This object controls all AI-powered features provided by the Insights Platform. Each feature has a dedicated guide: [live captions, STT & translation](/docs/ai-agent/speech-to-text-and-translation), [meeting summarization](/docs/ai-agent/meeting-summarization), [AI text chat](/docs/ai-agent/ai-text-chat), and the [AI Agent & Insights overview](/docs/ai-agent/overview).
 
 | Field                                       | Type   | Required | Description                                           |
 | ------------------------------------------- | ------ | -------- | ----------------------------------------------------- |
@@ -245,11 +245,15 @@ This object controls all AI-powered features provided by the Insights Platform.
 | is_allow_translation        | boolean | No       | Enable or disable translation of the transcription.         |
 | is_allow_speech_synthesis   | boolean | No       | Enable or disable spoken translations (text-to-speech).     |
 
+See [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) for the runtime lifecycle.
+
 #### Chat Translation Features
 
 | Field    | Type    | Required | Description                                           |
 | -------- | ------- | -------- | ----------------------------------------------------- |
 | is_allow | boolean | Yes      | Enable or disable real-time translation of chat messages. |
+
+See [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) for the moderator and participant controls.
 
 #### AI Features
 
@@ -264,12 +268,14 @@ This object controls all AI-powered features provided by the Insights Platform.
 | Field    | Type    | Required | Description                          |
 | -------- | ------- | -------- | ------------------------------------ |
 | is_allow | boolean | Yes      | Enable or disable the AI Chat Assistant. |
+| mcp_servers | map | No | Up to 2 external read-only MCP servers. See [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat). |
 
 ##### Meeting Summarization Features
 
 | Field    | Type    | Required | Description                                      |
 | -------- | ------- | -------- | ------------------------------------------------ |
 | is_allow | boolean | Yes      | Enable or disable the generation of meeting summaries. |
+| summarization_prompt | string | No | Custom instruction that shapes the summary output. See [AI Meeting Summarization](/docs/ai-agent/meeting-summarization). |
 
 #### AI Agent Features
 

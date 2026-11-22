@@ -1,9 +1,9 @@
 ---
-title: "Guía de desarrollo y API del Agente de IA: referencia de ai_agent_features y ejemplos"
-description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas de grupo, continuidad entre sesiones y endpoints protobuf dentro de la sala."
-keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas de grupo, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, aiAgent start stop status]
-sidebar_label: Guía de desarrollo y API
-sidebar_position: 6
+title: "Guía para desarrolladores y API del Agente de IA: ai_agent_features, endpoints y ejemplos"
+description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas para grupos pequeños, continuidad entre sesiones, endpoints /api/insights/* en tiempo de ejecución y endpoints protobuf dentro de la sala."
+keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas para grupos pequeños, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, endpoints api insights, aiAgent start stop status]
+sidebar_label: Guía para Desarrolladores y API
+sidebar_position: 5
 ---
 
 # Guía de desarrollo y API del agente de IA
@@ -29,7 +29,7 @@ metadata
             └── custom_provider   (BYOK)
 ```
 
-Antes de que una sala pueda utilizar el agente, su servidor debe incluir una entrada `insights.services.ai_agent` en `config.yaml`, salvo que la sala proporcione su propio `custom_provider`. Consulte [Configuración del servidor y del proveedor](/docs/ai-agent/configuration).
+Antes de que una sala pueda utilizar el agente, su servidor debe incluir una entrada `insights.services.ai_agent` en `config.yaml`, salvo que la sala proporcione su propio `custom_provider`. Consulte [Configuración del servidor y proveedores](/docs/ai-agent/configuration).
 
 ## Referencia de campos de `ai_agent_features`
 
@@ -365,7 +365,7 @@ Aunque exista protección SSRF, conecte los servidores MCP únicamente a servici
 
 La continuidad permite que un alumno o un prospecto que regresa retome la conversación donde la dejó. El flujo consta de cuatro pasos:
 
-1. **La sesión termina.** El servidor escribe un artefacto `AI_AGENT_SESSION_SUMMARY` para la sala principal y envía un webhook `artifact_created`. Consulte [Webhooks](/docs/others/webhooks#artefacto-creado).
+1. **La sesión termina.** El servidor escribe un artefacto `AI_AGENT_SESSION_SUMMARY` para la sala principal y envía un webhook `artifact_created`. Consulte [Webhooks](/docs/others/webhooks#artifact-created).
 2. **Su backend obtiene el artefacto.** Llame a [`/auth/artifact/fetch`](/docs/api/artifact/fetch) con `type: "AI_AGENT_SESSION_SUMMARY"` (o `11`) y el identificador de la sala.
 3. **Su backend prepara el contexto.** Puede pasar el JSON del resumen o utilizar su valor `continuation.previous_session_context_prompt`, que es un prompt breve redactado precisamente para este fin.
 4. **Comienza la siguiente sesión.** Envíe `previous_session_context` en la siguiente solicitud a `/auth/room/create` o en la solicitud a `/api/aiAgent/start`.
@@ -390,6 +390,24 @@ La continuidad permite que un alumno o un prospecto que regresa retome la conver
 ```
 
 La continuidad por usuario funciona mejor con `OPEN_PER_USER` y `CONTROLLED_USERS`, modos en los que su backend conoce la identidad del alumno. Utilice el campo `user_info.ex_user_id` del resumen para asociar al alumno con sus propios registros.
+
+## Endpoints de Insights en tiempo de ejecución (`/api/insights/*`)
+
+El cliente de navegador se comunica con los servicios de Insights mediante los endpoints `/api/insights/*`. La autenticación se realiza con el JWT de sala del participante, no con la clave de API del servidor, y solo funcionan dentro de una sala en la que un moderador haya habilitado la función correspondiente.
+
+<div className="pnm-fit-table pnm-fit-table--endpoints">
+
+| Grupo de endpoints | Finalidad | Guía |
+| --- | --- | --- |
+| `/api/insights/supportedLangs` | Devuelve el catálogo de idiomas que expone el servidor; se usa para llenar los selectores de idioma de subtítulos, idiomas hablados y traducción del chat. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/transcription/*` | Inicia y detiene la sesión de transcripción de un participante, fija el idioma hablado, activa o retira el consentimiento de almacenamiento y configura los ajustes del moderador: oradores permitidos, idiomas permitidos, traducción, subtítulos y síntesis de voz. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/translation/chat/*` | Activa o desactiva la traducción del chat público y traduce un único mensaje de chat a petición. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `/api/insights/ai/textChat/*` | Envía en streaming los turnos del chat de texto con IA para las superficies `CHAT`, `NOTEPAD`, `WHITEBOARD` y `POLL`, y expone los campos de configuración del moderador en tiempo de ejecución. | [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat) |
+| `/api/insights/ai/meetingSummarization/*` | Inicia y detiene el resumen, y define o reemplaza el `summarization_prompt` de la sesión. | [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization) |
+
+</div>
+
+El permiso a nivel de sala de todas estas llamadas proviene de `insights_features` en [`/room/create`](/docs/api/room/create#insights-features). Una llamada a una función que la sala no habilitó se rechaza, sea cual sea el rol del participante.
 
 ## Endpoints dentro de la sala (`/api/aiAgent/*`)
 
@@ -430,8 +448,11 @@ Envíe los bytes codificados a `/api/aiAgent/sendContext` con el JWT de sala del
 
 ## Páginas relacionadas
 
-- [Descripción general y conceptos](/docs/ai-agent/overview)
-- [Configuración del servidor y del proveedor](/docs/ai-agent/configuration)
+- [Descripción general e Insights](/docs/ai-agent/overview)
+- [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation)
+- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization)
+- [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat)
+- [Configuración del servidor y proveedores](/docs/ai-agent/configuration)
 - [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing)
 - [API para crear una sala](/docs/api/room/create)
 - [API para obtener artefactos](/docs/api/artifact/fetch)

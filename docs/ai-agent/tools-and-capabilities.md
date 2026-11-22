@@ -2,7 +2,7 @@
 title: "AI Agent Whiteboard Vision, Tools & Guardrails | plugNmeet"
 description: "Deep dive into the plugNmeet AI Agent's whiteboard vision, shared notepad tools, quizzes and polls, countdown timer hooks, three-layer safety guardrails, and the voice agent versus moderator text-chat tool sets."
 keywords: [ai whiteboard, ai vision whiteboard, scene graph, ai agent tools, ai guardrails, prompt injection protection, topic boundary ai, ai quiz generator, ai poll, shared notepad ai, mermaid diagram ai, llm tool calling]
-sidebar_label: Capabilities, Vision & Guardrails
+sidebar_label: Agent Capabilities & Guardrails
 sidebar_position: 4
 ---
 
@@ -133,22 +133,25 @@ Participants sometimes push the agent to break its rules, for example by asking 
 - Only **`get_room_info`** remains callable. The agent can still read room information and continue the conversation, but it cannot act.
 - The lock is cleared only by an explicit reset, such as a moderator intervention. The cumulative count of off-topic redirects is kept for the whole session and reported in the session summary (`off_topic_redirects_count`).
 
-## 6. Tool Comparison: Voice Agent vs. Moderator AI Text-Chat
+## 6. Tool Comparison: Voice Agent vs. Moderator AI Text Chat
 
-The AI Agent has two distinct tool sets. They are not interchangeable.
+The two services share a model of tool calling but not a tool registry. The voice agent (`ai_agent`) is scoped to teaching, presentation, and collaboration. The moderator's assistant (`ai_text_chat`, called with `request_from: CHAT`) is connected to the full room-management and content registry, because it is operating on behalf of an administrator who already holds those permissions.
 
-| Aspect | 1-on-1 Voice Agent | Moderator AI Text-Chat |
+| Aspect | 1-on-1 Voice Agent (`ai_agent`) | Moderator AI Text Chat (`ai_text_chat`) |
 | --- | --- | --- |
-| **Used by** | The AI Agent in a 1-on-1 breakout session, speaking with a learner or visitor. | The moderator's AI chat assistant in the main room, typed in the chat box. |
-| **Medium** | Real-time voice, with whiteboard and notepad. | Typed text. |
-| **Whiteboard & notepad** | Yes: drawing, diagrams, laser pointer, notepad read and write. | Limited to the features the moderator's AI chat exposes. |
-| **Quizzes & polls** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`. | `draft_quiz` and `publish_quiz` for moderator review before publishing. |
-| **Room control** | `get_room_info`, plus workspace tools. Cannot manage participants or breakout rooms. | `manage_participants`, `create_breakout_rooms`, `configure_speech_to_text`. |
-| **Knowledge** | `fetch_external_knowledge` and read-only MCP tools, when enabled. | Available when enabled for AI text chat. |
-| **Who it serves** | Learners, visitors, and students. | Moderators and hosts. |
+| **Used by** | A learner, student, prospect, or trainee in a 1-on-1 breakout session. | An administrator or moderator in the main room, typing in the chat panel. |
+| **Medium** | Real-time voice, with whiteboard and notepad. | Streaming text, with actions delegated to the moderator's browser over NATS RPC. |
+| **Participant management** | Not available. | `manage_participants`: mute, unmute, remove, and manage permissions. |
+| **Room operations** | `get_room_info` only. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (10s–2h), `manage_external_media`, `get_room_info`. |
+| **Breakout rooms** | Not available. | `create_breakout_rooms`, `manage_breakout_rooms`. |
+| **Insights configuration** | Not available. | `configure_speech_to_text`, `configure_chat_translation`, `configure_meeting_summarization`. |
+| **Polls & quizzes** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`, with the `OnPollResponseSubmitted` hook. | `create_poll`, `close_poll`, `get_poll_results`, plus `draft_quiz` → `publish_quiz` for moderator review. |
+| **Whiteboard & notepad** | Drawing, diagrams, freehand SVG, laser pointer, board management, notepad read and write. | Full co-creation tool set: `whiteboard_write_content`, `whiteboard_draw_shapes`, `whiteboard_draw_freehand_svg`, `whiteboard_draw_diagram`, `whiteboard_laser_point`, `whiteboard_manage_board`, `whiteboard_capture_snapshot`, `notepad_read`, `notepad_write`. |
+| **Knowledge** | `fetch_external_knowledge` and up to 2 read-only MCP servers, when enabled. | Same knowledge tools and the same 2-server MCP budget. |
+| **Who it serves** | Learners, visitors, and students. | Moderators, hosts, and teachers. |
 
-:::caution Keep Moderator Tools Separate
-Tools such as `manage_participants` and `create_breakout_rooms` are only available to the moderator's text chat. They are not available to the voice agent. This prevents a learner from using voice commands to change room structure.
+:::caution Why the Split Exists
+Destructive room-admin tools are never exposed to the voice agent. A learner speaking to the agent cannot mute the class, start a recording, lock the chat, or restructure breakout rooms. Those capabilities exist only in the moderator's text chat, where the caller is already authorized to use them. The full moderator copilot reference, with example prompts, is in [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat).
 :::
 
 ## 7. Tools That Are Never Exposed
@@ -157,7 +160,8 @@ The agent cannot call tools that were not listed in the room's configuration. Ex
 
 ## Related Pages
 
-- [Overview & Concepts](/docs/ai-agent/overview)
+- [Overview & Insights Framework](/docs/ai-agent/overview)
+- [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat): the moderator copilot tool reference.
 - [Education & Virtual Teacher](/docs/ai-agent/educator-guide)
 - [Server & Provider Setup](/docs/ai-agent/configuration)
 - [Security Overview](/docs/security-overview#5-ai-services--data-privacy-the-insights-platform)

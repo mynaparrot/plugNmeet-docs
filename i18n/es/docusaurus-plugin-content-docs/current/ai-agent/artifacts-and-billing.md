@@ -1,9 +1,9 @@
 ---
-title: "Resúmenes de sesión y artefactos de uso del Agente de IA: esquema JSON, facturación y BYOK"
-description: "Referencia completa de los artefactos AI_AGENT_SESSION_SUMMARY y AI_AGENT_USAGE de plugNmeet: esquema JSON del resumen, contabilidad de tokens y audio por rol y modalidad, atribución a la sala principal y supresión de la facturación en sesiones con clave propia."
-keywords: [json de resumen del agente de ia, informe de sesión de ia, facturación de uso de ia, artefacto de uso de tokens, seguimiento de costos de ia, artefactos de plugnmeet, esquema de resumen de sesión, facturación del agente de ia, facturación byok, analíticas de aprendizaje con ia, informe de ia para lms]
-sidebar_label: Resúmenes y artefactos de uso
-sidebar_position: 7
+title: "Resúmenes de sesión y artefactos de uso de Insights: esquema JSON, facturación y BYOK"
+description: "Referencia completa de los 12 tipos de artefactos de Insights de plugNmeet, con el esquema JSON de AI_AGENT_SESSION_SUMMARY y AI_AGENT_USAGE: contabilidad de tokens y audio por rol y modalidad, atribución a la sala principal y supresión de la facturación en sesiones con clave propia (BYOK)."
+keywords: [json de resumen del agente de ia, informe de sesión de ia, tipos de artefactos de insights, facturación de uso de ia, artefacto de uso de tokens, seguimiento de costos de ia, artefactos de plugnmeet, esquema de resumen de sesión, facturación del agente de ia, facturación byok, analíticas de aprendizaje con ia, informe de ia para lms]
+sidebar_label: Resúmenes y Artefactos de Uso
+sidebar_position: 11
 ---
 
 # Resúmenes y artefactos de uso del agente de IA
@@ -18,18 +18,44 @@ Cada sesión del Agente de IA genera dos artefactos que se almacenan asociados a
 Esta página describe ambos artefactos, con los nombres de campo exactos que se utilizan en `plugnmeet_room_artifacts.proto`.
 
 :::info En desarrollo activo
-El motor del Agente de IA y sus formatos de artefacto están en desarrollo activo. Los nombres de los campos y los campos que aún no se documentan pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que la función se finalice y se publique.
+**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables**, y sus formatos de artefacto son estables. Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: los campos de sus artefactos, y los campos que aún no se documentan, pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado.
 :::
 
 ## Cómo recibe los artefactos
 
 1. La sesión finaliza y el servidor escribe ambos artefactos en la sala principal.
-2. Su servidor recibe un webhook [`artifact_created`](/docs/others/webhooks#artefacto-creado) por cada artefacto.
+2. Su servidor recibe un webhook [`artifact_created`](/docs/others/webhooks#artifact-created) por cada artefacto.
 3. Su servidor obtiene el JSON con [`/auth/artifact/fetch`](/docs/api/artifact/fetch), filtrando por `type` (`AI_AGENT_SESSION_SUMMARY` o `AI_AGENT_USAGE`).
 
 :::tip Use el webhook como disparador
 No consulte los artefactos de forma periódica. Escuche `artifact_created`, compruebe `room_artifact.type` y obtenga después únicamente el artefacto que necesite.
 :::
+
+## Todos los tipos de artefactos de Insights
+
+`RoomArtifactType` cubre todos los artefactos que produce la plataforma Insights. Los tipos `1` a `9` provienen de los servicios de voz, resumen y chat de texto; los tipos `10` a `12` provienen del Agente de IA.
+
+| Tipo | Nombre | Formato | Modelo de precios | Guía de la función |
+| --- | --- | --- | --- | --- |
+| `1` | `MEETING_ANALYTICS` | Archivo descargable | Ninguno. Son analíticas de la plataforma, no un servicio facturado por el proveedor. | [Analíticas](/docs/others/analytics) |
+| `2` | `MEETING_SUMMARY` | Archivo descargable (`text/plain`) | Ninguno. El registro facturable es el tipo `3`. | [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization) |
+| `3` | `MEETING_SUMMARY_USAGE` | Metadatos de uso | Uso de tokens con `estimated_cost`. | [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization) |
+| `4` | `SPEECH_TRANSCRIPTION` | Archivo descargable (`text/vtt`) | Ninguno. El registro facturable es el tipo `5`. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `5` | `SPEECH_TRANSCRIPTION_USAGE` | Metadatos de uso | Duración (`duration_sec`, con la tarifa `price_per_hour`). | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `6` | `SYNTHESIZED_SPEECH_USAGE` | Metadatos de uso | Número de caracteres, con la tarifa `price_per_million_characters`. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `7` | `CHAT_TRANSLATION_USAGE` | Metadatos de uso | Número de caracteres, con la tarifa `price_per_million_characters`. | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
+| `8` | `AI_TEXT_CHAT_INTERACTION_USAGE` | Metadatos de uso | Uso de tokens de `chat_model`. | [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat) |
+| `9` | `AI_TEXT_CHAT_SUMMARIZATION_USAGE` | Metadatos de uso | Uso de tokens de `summarize_model`. | [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat) |
+| `10` | `AI_AGENT_USAGE` | Metadatos de uso | Uso de tokens y de audio, por rol y modalidad. | Esta página |
+| `11` | `AI_AGENT_SESSION_SUMMARY` | Archivo descargable (JSON) | Ninguno. El registro facturable es el tipo `10`. | Esta página |
+| `12` | `AI_AGENT_TRANSCRIPT` | Archivo descargable | Ninguno. El registro facturable es el tipo `10`. | [Guía para desarrolladores y API](/docs/ai-agent/developer-guide) |
+
+En toda la tabla se aplican dos reglas:
+
+- **Artefactos de archivo** (`1`, `2`, `4`, `11`, `12`): su backend necesita un token de descarga de [`/auth/artifact/getDownloadToken`](/docs/api/artifact/download) antes de poder leerlos.
+- **Artefactos de uso** (`3`, `5`–`10`): llevan sus cifras en `room_artifact.metadata` y no tienen archivo que descargar. Su `reference_artifact_id` apunta al archivo que facturan, cuando existe.
+
+El uso que se produce en una sala para grupos pequeños se atribuye a la sala principal en todos los tipos. La misma lista de tipos aparece en la [referencia de webhooks](/docs/others/webhooks#artifact-created).
 
 ## `AI_AGENT_SESSION_SUMMARY`
 
@@ -392,7 +418,10 @@ Consulte el [Resumen de seguridad](/docs/security-overview#85-artefactos-del-ser
 
 ## Páginas relacionadas
 
-- [Guía de desarrollo y API](/docs/ai-agent/developer-guide)
-- [Configuración del servidor y del proveedor](/docs/ai-agent/configuration)
+- [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation)
+- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization)
+- [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat)
+- [Guía para desarrolladores y API](/docs/ai-agent/developer-guide)
+- [Configuración del servidor y proveedores](/docs/ai-agent/configuration)
 - [Webhooks](/docs/others/webhooks)
 - [API para obtener artefactos](/docs/api/artifact/fetch)

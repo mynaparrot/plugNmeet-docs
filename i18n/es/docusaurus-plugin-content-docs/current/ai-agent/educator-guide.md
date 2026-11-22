@@ -1,8 +1,8 @@
 ---
 title: "Profesor virtual con IA para clases en línea: guía para docentes y administradores escolares"
-description: "Guía práctica para docentes, coaches y administradores escolares que desean ofrecer tutorías con IA en plugNmeet, con sesiones dirigidas por el docente, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio."
-keywords: [profesor virtual con ia, tutor de ia para estudiantes, software de tutorías en línea, aula virtual con ia, sala de estudio con ia, preparación de exámenes con ia, coach de idiomas con ia, tutor de pizarra, videoconferencia escolar, informe de dominio del estudiante]
-sidebar_label: Educación y profesor virtual
+description: "Guía práctica para docentes y administradores escolares que desean usar el profesor virtual con IA de plugNmeet: tutorías 1 a 1 y clases grupales en vivo con copiloto docente, subtítulos y traducción multilingües, apuntes de clase automáticos, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio."
+keywords: [profesor virtual con ia, tutor de ia para estudiantes, aula virtual multilingüe, subtítulos y traducción de clases en vivo, copiloto docente de ia, resumen automático de clases, software de tutorías en línea, sala de estudio con ia, videoconferencia escolar, informe de dominio del estudiante]
+sidebar_label: Educación y Profesor Virtual
 sidebar_position: 2
 ---
 
@@ -145,6 +145,31 @@ Al terminar cada sesión, la plataforma crea un artefacto `AI_AGENT_SESSION_SUMM
 
 Los informes están redactados para docentes. Utilícelos para planificar su próxima lección, no como una calificación por sí solos. La estructura completa se describe en [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing).
 
+## Clases grupales en vivo: copiloto docente de IA, subtítulos multilingües y apuntes de clase
+
+El tutor 1 a 1 es solo una parte del panorama. Los mismos servicios de Insights también le apoyan en una clase grupal en vivo, dentro de su sala de grupo habitual.
+
+### 1. Gestión de la clase sin menús con el copiloto docente de IA ([Chat de IA en la reunión](/docs/ai-agent/ai-text-chat))
+
+Durante una clase grupal en vivo, escriba órdenes en lenguaje natural al copiloto en lugar de buscar opciones en los menús:
+
+- *«Prepare un cuestionario de 4 preguntas de opción múltiple sobre la fotosíntesis.»* El copiloto ejecuta el flujo `draft_quiz` → revisión del docente → `publish_quiz`, de modo que ningún cuestionario se publica sin su aprobación.
+- *«Cree 4 salas de grupo para 15 minutos.»*
+- *«Dibuje un diagrama etiquetado de una célula vegetal en la pizarra.»*
+- *«Inicie un temporizador de 5 minutos.»*
+
+**Integridad de exámenes y evaluaciones:** durante una prueba en vivo, desactive los asistentes de IA para el alumnado en las superficies que elija con `is_notepad_ai_disabled`, `is_whiteboard_ai_disabled` e `is_poll_ai_disabled`, y mantenga activas las herramientas de moderación para usted.
+
+### 2. Aulas multilingües y accesibilidad ([Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation))
+
+Para clases internacionales, cursos de ESL/EFL y requisitos de accesibilidad auditiva, active los subtítulos de voz a texto en vivo, la traducción simultánea de subtítulos, la traducción hablada sintetizada en pistas de audio TTS y la traducción multilingüe del chat en vivo. Cada estudiante sigue la clase en el idioma que haya elegido.
+
+Al terminar la clase, descargue el archivo de subtítulos WebVTT (`SPEECH_TRANSCRIPTION`). Incluye etiquetas de hablante (`<v Nombre>`), así que puede adjuntarlo a la clase grabada en su LMS: Moodle, WordPress o un portal propio.
+
+### 3. Apuntes de clase y guías de estudio automáticos ([Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization))
+
+El resumen funciona incluso sin activar los subtítulos en vivo. Defina un `summarization_prompt` adaptado a la docencia, por ejemplo: *«Resuma la clase de hoy en definiciones clave, ejemplos resueltos que se trataron, preguntas del alumnado y tareas asignadas.»* El servidor genera entonces un artefacto `MEETING_SUMMARY` estructurado de forma automática al terminar la clase.
+
 ## Consejos para una implantación exitosa
 
 1. **Empiece con una sola clase.** Pruebe las **Sesiones de grupo dirigidas por el docente** durante dos lecciones y, después, decida si desea ampliar su uso.
@@ -155,7 +180,10 @@ Los informes están redactados para docentes. Utilícelos para planificar su pr�
 
 ## Próximos pasos
 
-- [Descripción general y conceptos](/docs/ai-agent/overview): cómo encaja el agente en una sala en vivo.
-- [Capacidades, visión y salvaguardas](/docs/ai-agent/tools-and-capabilities): qué puede ver o hacer el agente y qué no.
-- [Guía para desarrolladores y de la API](/docs/ai-agent/developer-guide): cómo su equipo técnico habilita una sala para sesiones de IA.
+- [Descripción general e Insights](/docs/ai-agent/overview): cómo encaja el agente en una sala en vivo.
+- [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities): qué puede ver o hacer el agente y qué no.
+- [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat): el copiloto que permite al docente gestionar la clase desde el chat.
+- [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation): subtítulos multilingües, traducción hablada y transcripciones descargables.
+- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization): apuntes de clase y guías de estudio automáticos.
+- [Guía para desarrolladores y API](/docs/ai-agent/developer-guide): cómo su equipo técnico habilita una sala para sesiones de IA.
 - [Guía del moderador](/docs/user-guide/moderator#uso-del-asistente-de-ia): controles generales del asistente de IA.

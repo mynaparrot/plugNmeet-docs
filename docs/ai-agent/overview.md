@@ -11,8 +11,26 @@ sidebar_position: 1
 The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
 
 :::info Under Active Development
-The AI Agent engine and its APIs are under active development. Field names, defaults, and behavior may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the feature is finalized and released. Until then, the feature is configured through the plugNmeet API.
+**Live transcription (STT), translation, speech synthesis (TTS), AI Text Chat, and meeting summarization are stable production features.** Only the Voice AI Agent (`ai_agent`) and the newer agentic MCP tool-calling capabilities are under active development: field names, defaults, and behavior may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the agent is finalized and released. Until then, the agent is configured through the plugNmeet API.
 :::
+
+## The Insights & Agentic AI Framework
+
+The AI Agent is one of six services in the server-side **Insights** platform. All six are configured in `config.yaml` under `insights`, enabled per room in `insights_features`, and billed through the same artifact pipeline. The agent is the only one that speaks; the others listen, translate, write, and take notes on what happened.
+
+| Service | Primary use case | Where it runs | Guide |
+| --- | --- | --- | --- |
+| `transcription` | Real-time speech-to-text from allowed speakers, delivered as live caption chunks | Hidden `RoomAgent` subscribing to microphone tracks | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `translation` | Live caption translation into several languages, plus on-demand public chat translation | Stateless per-chunk and per-message calls | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `speech-synthesis` | Spoken translation: translated captions synthesized as audio tracks in the room | One TTS worker per allowed target language | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| `meeting_summarizing` | Post-meeting written summary from a mixed audio capture, with a custom prompt | Batched job after the room ends | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
+| `ai_text_chat` | Moderator copilot with room tools, participant Q&A, and embedded notepad/whiteboard/poll helpers | Streaming text, Redis-backed memory | [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat) |
+| `ai_agent` | Voice-first 1-on-1 tutor, demo presenter, and onboarding guide on a shared whiteboard | Real-time voice session in a breakout room | [Developer & API Guide](/docs/ai-agent/developer-guide) |
+
+Two properties hold across the framework:
+
+- **Per-service provider mapping.** Each service points at its own provider account and models, so Azure can handle speech while Gemini handles summarization. Google Gemini and OpenAI (including OpenAI-compatible and self-hosted servers) implement all six services; native Azure implements the three speech services, with Azure OpenAI covering the rest. See the [provider capability matrix](/docs/ai-agent/configuration#provider-capability-matrix) and the [Google Gemini](/docs/ai-agent/providers/google), [OpenAI & Self-Hosted](/docs/ai-agent/providers/openai), and [Microsoft Azure](/docs/ai-agent/providers/azure) guides.
+- **One artifact model.** Files and usage records are delivered through the same [`artifact_created`](/docs/others/webhooks#artifact-created) webhook, with usage attributed to the parent room.
 
 ## Who It Is For
 
@@ -75,14 +93,21 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 5. **Close.** When the session ends, the server writes an `AI_AGENT_SESSION_SUMMARY` artifact and an `AI_AGENT_USAGE` artifact to the parent room. Your backend receives an `artifact_created` webhook.
 6. **Continue.** Your system fetches the summary and passes it into the next session as `previous_session_context`.
 
-## Explore the Guides
+## Where to Go Next
 
-- [Education & Virtual Teacher](/docs/ai-agent/educator-guide): classroom workflows, prompt templates, and reading mastery reports.
-- [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases): demo, onboarding, coaching, and CRM hand-off workflows.
-- [Capabilities, Vision & Guardrails](/docs/ai-agent/tools-and-capabilities): whiteboard vision, notepad, quizzes, timers, and safety layers.
-- [Server & Provider Setup](/docs/ai-agent/configuration): `config.yaml` reference, provider accounts, pricing, and BYOK.
-- [Developer & API Guide](/docs/ai-agent/developer-guide): every `ai_agent_features` field, request examples, MCP, and continuity.
-- [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing): summary JSON schema, usage fields, and cost accounting.
+| If you want to… | Start here |
+| --- | --- |
+| Understand the six services and how they fit together | [Overview & Concepts](/docs/ai-agent/overview) (this page) |
+| Run 1-on-1 AI tutoring in a class | [Education & Virtual Teacher](/docs/ai-agent/educator-guide) |
+| Build an interactive demo or onboarding flow | [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases) |
+| Know what the agent can see, call, and refuse | [Agent Capabilities & Guardrails](/docs/ai-agent/tools-and-capabilities) |
+| Integrate the API, webhooks, and in-room endpoints | [Developer & API Guide](/docs/ai-agent/developer-guide) |
+| Give moderators a copilot and participants an AI assistant | [AI Text Chat & Room Copilot](/docs/ai-agent/ai-text-chat) |
+| Generate post-meeting notes from audio | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
+| Add live captions, translation, or spoken translation | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
+| Configure providers, models, and pricing | [Server & Provider Setup](/docs/ai-agent/configuration) |
+| Deploy on a specific cloud or local stack | [Google Gemini](/docs/ai-agent/providers/google), [OpenAI & Self-Hosted](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) |
+| Read summary JSON, usage fields, and cost rules | [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing) |
 
 ## Related Reading
 

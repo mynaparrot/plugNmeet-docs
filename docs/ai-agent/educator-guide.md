@@ -1,7 +1,7 @@
 ---
 title: "AI Virtual Teacher for Online Classes: Guide for Educators & School Admins"
-description: "A practical guide for teachers, coaches, and school administrators to run AI tutoring in plugNmeet, including teacher-led breakouts, assigned student rosters, 24/7 study rooms, and mastery reports."
-keywords: [ai virtual teacher, ai tutor for students, online tutoring software, virtual classroom ai, ai study room, ai exam prep, ai language coach, whiteboard tutor, school video conferencing, student mastery report]
+description: "A practical guide for teachers, coaches, and school administrators to run AI tutoring in plugNmeet: 1-on-1 AI virtual teacher sessions plus live classroom Insights, including a teacher copilot, multilingual captions and translation, automated lecture notes, assigned student rosters, and mastery reports."
+keywords: [ai virtual teacher, ai tutor for students, multilingual virtual classroom, live lecture captions and translation, ai teacher copilot, automated lecture summary, virtual classroom ai, ai study room, online tutoring software, school video conferencing, student mastery report]
 sidebar_label: Education & Virtual Teacher
 sidebar_position: 2
 ---
@@ -145,6 +145,31 @@ After each session, the platform creates an `AI_AGENT_SESSION_SUMMARY` artifact 
 
 Reports are written for teachers. Use them to plan your next lesson, not as a grade on their own. The full structure is described in [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing).
 
+## Live Group Classes: AI Teacher Copilot, Multilingual Captions & Lecture Notes
+
+The 1-on-1 tutor is only half of the picture. The same Insights services also support you in a full live class, inside your normal group room.
+
+### 1. Hands-Free Classroom Management with the AI Teacher Copilot ([In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat))
+
+During a live group lecture, type plain-language commands to the copilot instead of clicking through menus:
+
+- *"Draft a 4-question multiple-choice quiz on photosynthesis."* The copilot runs the `draft_quiz` → teacher review → `publish_quiz` workflow, so a quiz never goes live without your approval.
+- *"Create 4 breakout rooms for 15 minutes."*
+- *"Draw a labeled plant cell diagram on the whiteboard."*
+- *"Start a 5-minute countdown timer."*
+
+**Exam and assessment integrity:** during a live test, disable student AI helpers on the surfaces you choose with `is_notepad_ai_disabled`, `is_whiteboard_ai_disabled`, and `is_poll_ai_disabled`, while keeping moderator tools active for yourself.
+
+### 2. Multilingual Classrooms & Accessibility ([Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation))
+
+For international classes, ESL/EFL courses, and hearing-accessibility requirements, enable live speech-to-text captions, simultaneous subtitle translation, synthesized spoken translation as TTS audio tracks, and multilingual translation of the live chat. Each student follows the lecture in the language they selected.
+
+After class, download the WebVTT (`SPEECH_TRANSCRIPTION`) subtitle file. It carries speaker tags (`<v Name>`), so you can attach it to a recorded lecture in your LMS: Moodle, WordPress, or a custom portal.
+
+### 3. Automated Lecture Notes & Study Guides ([AI Meeting Summarization](/docs/ai-agent/meeting-summarization))
+
+Summarization works even when live captions are off. Set an education-tailored `summarization_prompt`, for example: *"Summarize today's lecture into key definitions, worked examples covered, student questions, and homework assignments."* The server then generates a structured `MEETING_SUMMARY` artifact automatically when the class ends.
+
 ## Tips for a Successful Rollout
 
 1. **Start with one class.** Try **Teacher-Led Breakouts** for two lessons, then decide whether to expand.
@@ -157,5 +182,8 @@ Reports are written for teachers. Use them to plan your next lesson, not as a gr
 
 - [Overview & Concepts](/docs/ai-agent/overview): how the agent fits into a live room.
 - [Capabilities, Vision & Guardrails](/docs/ai-agent/tools-and-capabilities): what the agent can and cannot see or do.
+- [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat): the copilot that lets you run the class from the chat box.
+- [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation): multilingual captions, spoken translation, and downloadable transcripts.
+- [AI Meeting Summarization](/docs/ai-agent/meeting-summarization): automatic lecture notes and study guides.
 - [Developer & API Guide](/docs/ai-agent/developer-guide): how your technical team enables a room for AI sessions.
 - [User Guide for Moderators](/docs/user-guide/moderator#using-ai-assistant): general AI assistant controls.

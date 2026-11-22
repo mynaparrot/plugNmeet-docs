@@ -142,7 +142,7 @@ El Agente de IA es un asistente de voz que puede unirse a una sesión 1 a 1. Su 
 *   **Aislamiento de BYOK.** Si una sala proporciona su propia clave de API de proveedor, la clave se elimina de los metadatos de la sala antes de difundirse. Se almacena solo en Redis, bajo una clave gestionada por el servidor con TTL, y se excluye de los artefactos de facturación de la plataforma.
 *   **E2EE.** Las salas que usan una clave E2EE por dispositivo introducida por el propio usuario no pueden activar el Agente de IA, porque el servidor no puede leer el audio. Las salas con E2EE gestionado por el servidor sí pueden usarlo.
 
-Para más detalles de configuración, consulte [Configuración del servidor y del proveedor del Agente de IA](/docs/ai-agent/configuration) y [Capacidades, visión y salvaguardas](/docs/ai-agent/tools-and-capabilities).
+Para más detalles de configuración, consulte [Configuración del servidor y proveedores de Insights](/docs/ai-agent/configuration) y [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities).
 
 ### 6. Flujo de sesión segura
 

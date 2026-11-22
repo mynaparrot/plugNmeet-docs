@@ -1,7 +1,7 @@
 ---
 title: "AI Sales Demo & Onboarding Agent: Workflows for SaaS, Sales & Support"
-description: "Practical workflows for using the plugNmeet AI Agent as a 24/7 interactive product demo, technical onboarding helper, employee training coach, and lead qualification assistant with CRM hand-off."
-keywords: [ai sales demo, interactive product demo, ai sales engineer, saas onboarding ai, sales enablement ai, lead qualification ai, crm webhook, ai pitch coaching, employee onboarding software, customer onboarding automation]
+description: "Practical workflows for using the plugNmeet AI Agent as a 24/7 interactive product demo, technical onboarding helper, training coach, and lead qualification assistant with CRM hand-off, plus live host copilot, multilingual call translation, and automated meeting notes for client calls and webinars."
+keywords: [ai sales demo, interactive product demo, ai sales engineer, saas onboarding ai, multilingual sales call translation, ai meeting host copilot, automated meeting notes crm, lead qualification ai, crm webhook, ai pitch coaching, customer onboarding automation]
 sidebar_label: Product Demos, Sales & Business
 sidebar_position: 3
 ---
@@ -166,6 +166,24 @@ Do not promise pricing or contract terms. At the end, summarise the visitor's ne
 
 For full schema details, see [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing). For continuity setup, see the [Developer & API Guide](/docs/ai-agent/developer-guide#multi-session-continuity-flow).
 
+## Live Client Calls, Global Webinars & Host Copilot Workflows
+
+The workflows above run as private 1-on-1 sessions. When a human sales rep, support engineer, or executive hosts a live group meeting or webinar, the same Insights framework provides three production workflows.
+
+### 1. Cross-Border Sales & Multilingual Client Calls ([Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation))
+
+Run discovery calls, enterprise demos, or global town halls across language barriers with real-time STT subtitles, simultaneous spoken translation (neural TTS audio streams per target language), and live public chat translation. The host speaks once and every participant follows in their own language.
+
+### 2. Host Copilot for Live Webinars & Customer Workshops ([In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat))
+
+The host asks the AI Text Chat copilot to run room operations in real time: launch audience qualification polls, sketch system architecture diagrams on the whiteboard, write live action items into the shared notepad, set agenda countdown timers, manage recordings, or turn on live transcription and summarization on demand.
+
+### 3. Automated Call Notes & Executive Briefs to CRM ([AI Meeting Summarization](/docs/ai-agent/meeting-summarization))
+
+For human-led sales, legal, consulting, or support calls, enable `meeting_summarization_features` with a business `summarization_prompt`, for example: *"Summarize customer pain points, technical requirements, budget/timeline signals, decisions agreed, and next action items by owner."*
+
+When the call ends, the server emits the `MEETING_SUMMARY` artifact through the `artifact_created` webhook. Your backend can attach the call summary directly to HubSpot, Salesforce, or your internal ticketing system, alongside the `SPEECH_TRANSCRIPTION` (`.vtt`) transcript.
+
 ## Choosing the Right Mode
 
 | Goal | Recommended mode | Why |
@@ -185,5 +203,8 @@ For full schema details, see [Summaries & Usage Artifacts](/docs/ai-agent/artifa
 
 - [Overview & Concepts](/docs/ai-agent/overview)
 - [Capabilities, Vision & Guardrails](/docs/ai-agent/tools-and-capabilities)
+- [In-Meeting AI Text Chat](/docs/ai-agent/ai-text-chat)
+- [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation)
+- [AI Meeting Summarization](/docs/ai-agent/meeting-summarization)
 - [Server & Provider Setup](/docs/ai-agent/configuration)
 - [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing)
