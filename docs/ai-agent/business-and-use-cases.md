@@ -142,7 +142,7 @@ Compliance and certification decisions should stay with your trainers. Use the s
 1. The session ends, and the server writes an `AI_AGENT_SESSION_SUMMARY` artifact to the parent room.
 2. Your backend receives the `artifact_created` webhook.
 3. Your backend fetches the artifact with `/auth/artifact/fetch` and maps the fields to your CRM.
-4. For a returning prospect, your backend passes the previous summary JSON, or its `continuation.previous_session_context_prompt` value, into the next session as `previous_session_context`. The agent continues from where the last conversation ended.
+4. For a returning prospect, your backend passes the previous summary JSON, or its `continuation.previous_session_context_prompt` value, into the next session as `user_metadata.previous_session_context`. The agent continues from where the last conversation ended.
 
 **Fields to map to CRM:**
 

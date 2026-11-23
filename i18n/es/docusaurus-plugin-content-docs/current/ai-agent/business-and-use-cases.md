@@ -142,7 +142,7 @@ Las decisiones de cumplimiento y de certificación deben seguir en manos de sus 
 1. La sesión termina y el servidor escribe un artefacto `AI_AGENT_SESSION_SUMMARY` en la sala principal.
 2. Su backend recibe el webhook `artifact_created`.
 3. Su backend obtiene el artefacto con `/auth/artifact/fetch` y asigna los campos a su CRM.
-4. En el caso de un prospecto que vuelve, su backend pasa el JSON del resumen anterior, o su valor `continuation.previous_session_context_prompt`, a la siguiente sesión como `previous_session_context`. El agente continúa desde donde terminó la conversación anterior.
+4. En el caso de un prospecto que vuelve, su backend pasa el JSON del resumen anterior, o su valor `continuation.previous_session_context_prompt`, a la siguiente sesión como `user_metadata.previous_session_context`. El agente continúa desde donde terminó la conversación anterior.
 
 **Campos que se asignan al CRM:**
 

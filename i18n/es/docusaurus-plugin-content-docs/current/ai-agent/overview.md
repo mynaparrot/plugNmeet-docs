@@ -91,7 +91,7 @@ Consulte [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business
 3. **Conversar y trabajar.** El agente habla con el participante y utiliza la pizarra, el bloc de notas, los cuestionarios y las encuestas. La visión se actualiza cuando cambian la pizarra o el bloc de notas.
 4. **Proteger.** Las salvaguardas mantienen al agente dentro del tema. Las peticiones repetidas fuera de tema bloquean las herramientas con efectos secundarios durante la sesión.
 5. **Cerrar.** Al terminar la sesión, el servidor escribe un artefacto `AI_AGENT_SESSION_SUMMARY` y un artefacto `AI_AGENT_USAGE` asociados a la sala principal. Su backend recibe un webhook `artifact_created`.
-6. **Continuar.** Su sistema obtiene el resumen y lo envía a la siguiente sesión como `previous_session_context`.
+6. **Continuar.** Su sistema obtiene el resumen y lo envía a la siguiente sesión como `user_metadata.previous_session_context`.
 
 ## Por dónde seguir
 

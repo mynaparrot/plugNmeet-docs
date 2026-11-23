@@ -33,7 +33,7 @@ Before any room can use the agent, your server must have an `insights.services.a
 
 ## `ai_agent_features` Field Reference
 
-The table lists all 32 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_room_insights.proto`, plus the nested `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig`, and `InsightsAIAgentCustomProvider` messages.
+The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_room_insights.proto`, plus the nested `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig`, and `InsightsAIAgentCustomProvider` messages.
 
 <div className="pnm-fit-table pnm-fit-table--fields">
 
@@ -44,7 +44,6 @@ The table lists all 32 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `auto_session_config` | object | Depends on mode | Routing settings for automatic 1-on-1 sessions. See [`auto_session_config`](#auto_session_config). |
 | `agent_display_name` | string | No | Name shown for the agent. Default: `AI Assistant`. |
 | `system_prompt` | string | Yes, when `is_allow` | Host instructions for the agent's persona and behavior. |
-| `previous_session_context` | string | No | Context from a previous session, usually the summary JSON or its `previous_session_context_prompt`. |
 | `topic` | string | Yes, when `is_allow` | The lesson, demo, or training topic the agent stays within. |
 | `allowed_subtopics` | string[] | No | Up to 64 subtopics that are in scope. |
 | `forbidden_topics` | string[] | No | Up to 32 topics the agent must decline. |
@@ -368,26 +367,22 @@ Continuity lets a returning learner or prospect pick up where they left off. The
 1. **Session ends.** The server writes an `AI_AGENT_SESSION_SUMMARY` artifact for the parent room and sends an `artifact_created` webhook. See [Webhooks](/docs/others/webhooks#artifact-created).
 2. **Your backend fetches the artifact.** Call [`/auth/artifact/fetch`](/docs/api/artifact/fetch) with `type: "AI_AGENT_SESSION_SUMMARY"` (or `11`) and the room ID.
 3. **Your backend prepares context.** Either pass the summary JSON, or use its `continuation.previous_session_context_prompt` value, which is a short prompt written for this purpose.
-4. **Next session starts.** Send `previous_session_context` with the next `/auth/room/create` request, or with the `/api/aiAgent/start` request.
+4. **Next session starts.** Send the context as `user_metadata.previous_session_context` in the next [`/auth/room/join`](/docs/api/room/join#user-metadata) request. The field is defined in `protocol/proto_files/plugnmeet_gen_token.proto` and is capped at 2000 characters.
 
 ```json
 {
   "room_id": "study-room-spanish",
-  "metadata": {
-    "room_features": {
-      "insights_features": {
-        "is_allow": true,
-        "ai_agent_features": {
-          "is_allow": true,
-          "session_mode": "AI_AGENT_SESSION_MODE_OPEN_PER_USER",
-          "previous_session_context": "Last session: the learner practised greetings and ordering food. Struggled with the subjunctive. Next focus: travel vocabulary.",
-          "topic": "Everyday Spanish conversation"
-        }
-      }
+  "user_info": {
+    "name": "Ana",
+    "user_id": "learner-1042",
+    "user_metadata": {
+      "previous_session_context": "Last session: the learner practised greetings and ordering food. Struggled with the subjunctive. Next focus: travel vocabulary."
     }
   }
 }
 ```
+
+Room-level settings such as `session_mode` and `topic` stay in `ai_agent_features` at [`/room/create`](/docs/api/room/create). Only the learner's context travels with the join request.
 
 Per-user continuity works best with `OPEN_PER_USER` and `CONTROLLED_USERS`, where your backend knows the learner's identity. Use the `user_info.ex_user_id` field from the summary to match the learner to your own records.
 
@@ -413,7 +408,7 @@ The browser client controls the agent through these endpoints. They are authenti
 
 | Endpoint | Method | Request message | Who may call it | Purpose |
 | --- | --- | --- | --- | --- |
-| `/api/aiAgent/start` | POST | `AIAgentStartReq` | Room admin only | Starts the agent. Optionally overrides `system_prompt` and `previous_session_context`. |
+| `/api/aiAgent/start` | POST | `AIAgentStartReq` | Room admin only | Starts the agent. Optionally overrides `system_prompt`. |
 | `/api/aiAgent/stop` | POST | `AIAgentStopReq` | Admin, current delegate, or pre-authorized participant | Stops the session. Optional `reason`, for example `host_stopped`. |
 | `/api/aiAgent/status` | GET or POST | `AIAgentStatusReq` | Any participant in the room | Returns `AIAgentStatusRes` with the current `AIAgentStateMsg`. |
 | `/api/aiAgent/pause` | POST | `AIAgentPauseReq` | Admin, delegate, or pre-authorized participant | Pauses the agent. |

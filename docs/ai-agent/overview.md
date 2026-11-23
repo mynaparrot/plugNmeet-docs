@@ -91,7 +91,7 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 3. **Converse and work.** The agent speaks with the participant and uses the whiteboard, notepad, quizzes, and polls. Vision updates are sent when the board or notepad changes.
 4. **Guard.** Guardrails keep the agent on topic. Repeated off-topic requests lock side-effect tools for the session.
 5. **Close.** When the session ends, the server writes an `AI_AGENT_SESSION_SUMMARY` artifact and an `AI_AGENT_USAGE` artifact to the parent room. Your backend receives an `artifact_created` webhook.
-6. **Continue.** Your system fetches the summary and passes it into the next session as `previous_session_context`.
+6. **Continue.** Your system fetches the summary and passes it into the next session as `user_metadata.previous_session_context`.
 
 ## Where to Go Next
 

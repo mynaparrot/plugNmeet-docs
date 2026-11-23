@@ -292,7 +292,6 @@ El Agente de IA es un asistente de voz 1 a 1 con una pizarra y un bloc de notas 
 | auto_session_config        | object    | Depende del modo  | `allowed_participant_ids` (hasta 32) y `max_concurrent_sessions` (límite del servidor: 16). |
 | system_prompt              | string    | Sí, si `is_allow` | Instrucciones del moderador para el agente. |
 | topic                      | string    | Sí, si `is_allow` | Tema dentro del cual debe mantenerse el agente. |
-| previous_session_context   | string    | No                | Contexto de una sesión anterior, normalmente el prompt de continuación del resumen. |
 | allow_web_fetch            | boolean   | No                | Permite consultar páginas HTTPS aprobadas. Predeterminado `false`. |
 | allowed_knowledge_urls     | string[]  | No                | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
 | [mcp_servers](/docs/ai-agent/developer-guide#servidores-mcp-externos-mcp_servers) | map | No | Hasta 2 servidores MCP externos. Cada uno tiene `url` (HTTPS), `headers`, `allowed_tools` (hasta 8, solo lectura) y un `scope` opcional. |

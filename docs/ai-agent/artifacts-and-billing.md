@@ -168,7 +168,7 @@ Each entry describes one concept:
 | `next_session_focus` | string | Recommended focus for the next session. |
 | `recommended_warm_up` | string | A short opening activity for the next session. |
 | `unfinished_subtopics` | string[] | Subtopics not yet covered. |
-| `previous_session_context_prompt` | string | A ready-made context prompt. Pass it to the next session as `previous_session_context`. |
+| `previous_session_context_prompt` | string | A ready-made context prompt. Pass it to the next session as `user_metadata.previous_session_context` at [`/auth/room/join`](/docs/api/room/join#user-metadata). |
 
 ### Usage by Role
 

@@ -288,7 +288,6 @@ The AI Agent is a 1-on-1 voice assistant with a shared whiteboard and notepad. I
 | auto_session_config | object | Depends on mode | `allowed_participant_ids` (up to 32) and `max_concurrent_sessions` (server cap 16). |
 | system_prompt | string | Yes, when `is_allow` | Host instructions for the agent. |
 | topic | string | Yes, when `is_allow` | The topic the agent stays within. |
-| previous_session_context | string | No | Context from a previous session, usually the summary's continuation prompt. |
 | allow_web_fetch | boolean | No | Allow fetching approved HTTPS pages. Default `false`. |
 | allowed_knowledge_urls | string[] | No | Up to 32 HTTPS URL prefixes the agent may fetch. |
 | [mcp_servers](/docs/ai-agent/developer-guide#external-mcp-servers-mcp_servers) | map | No | Up to 2 external MCP servers. Each has `url` (HTTPS), `headers`, `allowed_tools` (up to 8, read-only), and an optional `scope`. |

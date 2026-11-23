@@ -33,7 +33,7 @@ Antes de que una sala pueda utilizar el agente, su servidor debe incluir una ent
 
 ## Referencia de campos de `ai_agent_features`
 
-La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create_room_insights.proto`, además de los mensajes anidados `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig` e `InsightsAIAgentCustomProvider`.
+La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create_room_insights.proto`, además de los mensajes anidados `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig` e `InsightsAIAgentCustomProvider`.
 
 <div className="pnm-fit-table pnm-fit-table--fields">
 
@@ -44,7 +44,6 @@ La tabla enumera los 32 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `auto_session_config` | object | Según el modo | Ajustes de enrutamiento para las sesiones 1 a 1 automáticas. Consulte [`auto_session_config`](#auto_session_config). |
 | `agent_display_name` | string | No | Nombre con el que se muestra el agente. Predeterminado: `AI Assistant`. |
 | `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del moderador sobre la personalidad y el comportamiento del agente. |
-| `previous_session_context` | string | No | Contexto de una sesión anterior, normalmente el JSON del resumen o su valor `previous_session_context_prompt`. |
 | `topic` | string | Sí, cuando `is_allow` está activo | La lección, demostración o formación sobre la que debe mantenerse el agente. |
 | `allowed_subtopics` | string[] | No | Hasta 64 subtemas que quedan dentro del alcance. |
 | `forbidden_topics` | string[] | No | Hasta 32 temas que el agente debe rechazar. |
@@ -368,26 +367,22 @@ La continuidad permite que un alumno o un prospecto que regresa retome la conver
 1. **La sesión termina.** El servidor escribe un artefacto `AI_AGENT_SESSION_SUMMARY` para la sala principal y envía un webhook `artifact_created`. Consulte [Webhooks](/docs/others/webhooks#artifact-created).
 2. **Su backend obtiene el artefacto.** Llame a [`/auth/artifact/fetch`](/docs/api/artifact/fetch) con `type: "AI_AGENT_SESSION_SUMMARY"` (o `11`) y el identificador de la sala.
 3. **Su backend prepara el contexto.** Puede pasar el JSON del resumen o utilizar su valor `continuation.previous_session_context_prompt`, que es un prompt breve redactado precisamente para este fin.
-4. **Comienza la siguiente sesión.** Envíe `previous_session_context` en la siguiente solicitud a `/auth/room/create` o en la solicitud a `/api/aiAgent/start`.
+4. **Comienza la siguiente sesión.** Envíe el contexto como `user_metadata.previous_session_context` en la siguiente solicitud a [`/auth/room/join`](/docs/api/room/join#metadatos-del-usuario). El campo se define en `protocol/proto_files/plugnmeet_gen_token.proto` y admite hasta 2000 caracteres.
 
 ```json
 {
   "room_id": "study-room-spanish",
-  "metadata": {
-    "room_features": {
-      "insights_features": {
-        "is_allow": true,
-        "ai_agent_features": {
-          "is_allow": true,
-          "session_mode": "AI_AGENT_SESSION_MODE_OPEN_PER_USER",
-          "previous_session_context": "Last session: the learner practised greetings and ordering food. Struggled with the subjunctive. Next focus: travel vocabulary.",
-          "topic": "Everyday Spanish conversation"
-        }
-      }
+  "user_info": {
+    "name": "Ana",
+    "user_id": "learner-1042",
+    "user_metadata": {
+      "previous_session_context": "Last session: the learner practised greetings and ordering food. Struggled with the subjunctive. Next focus: travel vocabulary."
     }
   }
 }
 ```
+
+Los ajustes de la sala, como `session_mode` y `topic`, siguen en `ai_agent_features` al llamar a [`/room/create`](/docs/api/room/create). Solo el contexto del alumno viaja con la solicitud de unión a la sala.
 
 La continuidad por usuario funciona mejor con `OPEN_PER_USER` y `CONTROLLED_USERS`, modos en los que su backend conoce la identidad del alumno. Utilice el campo `user_info.ex_user_id` del resumen para asociar al alumno con sus propios registros.
 
@@ -417,7 +412,7 @@ El cliente de navegador controla el agente a través de estos endpoints. La aute
 
 | Endpoint | Método | Mensaje de solicitud | Quién puede llamarlo | Finalidad |
 | --- | --- | --- | --- | --- |
-| `/api/aiAgent/start` | POST | `AIAgentStartReq` | Solo el administrador de la sala | Inicia el agente. Opcionalmente sustituye `system_prompt` y `previous_session_context`. |
+| `/api/aiAgent/start` | POST | `AIAgentStartReq` | Solo el administrador de la sala | Inicia el agente. Opcionalmente sustituye `system_prompt`. |
 | `/api/aiAgent/stop` | POST | `AIAgentStopReq` | Administrador, delegado actual o participante preautorizado | Detiene la sesión. Admite un `reason` opcional, por ejemplo `host_stopped`. |
 | `/api/aiAgent/status` | GET o POST | `AIAgentStatusReq` | Cualquier participante de la sala | Devuelve `AIAgentStatusRes` con el `AIAgentStateMsg` actual. |
 | `/api/aiAgent/pause` | POST | `AIAgentPauseReq` | Administrador, delegado o participante preautorizado | Pausa el agente. |

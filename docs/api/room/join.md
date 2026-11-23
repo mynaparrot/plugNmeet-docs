@@ -47,6 +47,7 @@ This endpoint generates a temporary token that grants a user access to a specifi
 | preferred_lang                                                  | string  | No       | Preferred language for the Plug-N-Meet client. See supported values [here](https://github.com/mynaparrot/plugNmeet-client/blob/main/src/helpers/languages.ts). Example: es-ES, bn-BD, de-DE, etc. |
 | record_webcam                                                   | boolean | No       | Controls whether this user's webcam is included in server-side recordings. Defaults to `true`. Set to `false` to exclude. |
 | ex_user_id                                                      | string  | No       | If empty, the value of `user_id` will be used.                                                                 |
+| previous_session_context                                        | string  | No       | Context from a previous AI Agent session, usually the summary JSON or its `previous_session_context_prompt`. Capped at 2000 characters. See [Multi-Session Continuity](/docs/ai-agent/developer-guide#multi-session-continuity-flow). |
 | extra_data                                                      |  map  | No       | A map of custom key-value pairs. Both keys and values must be strings. e.g. `{"key": "value"}`|.                                                                         |
 | [lock_settings](/docs/api/room/create#default-lock-settings)    | object  | No       | Lock settings for the user.                                                                                    |
 
