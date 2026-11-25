@@ -1,6 +1,6 @@
 ---
 title: "Profesor virtual con IA para clases en línea: guía para docentes y administradores escolares"
-description: "Guía práctica para docentes y administradores escolares que desean usar el profesor virtual con IA de plugNmeet: tutorías 1 a 1 y clases grupales en vivo con copiloto docente, subtítulos y traducción multilingües, apuntes de clase automáticos, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio."
+description: "Guía práctica para docentes y administradores escolares que desean usar el profesor virtual con IA de plugNmeet: tutorías individuales y clases grupales en vivo con un copiloto docente, subtítulos y traducción en varios idiomas, apuntes automáticos de clase, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio del aprendizaje."
 keywords: [profesor virtual con ia, tutor de ia para estudiantes, aula virtual multilingüe, subtítulos y traducción de clases en vivo, copiloto docente de ia, resumen automático de clases, software de tutorías en línea, sala de estudio con ia, videoconferencia escolar, informe de dominio del estudiante]
 sidebar_label: Educación y Profesor Virtual
 sidebar_position: 2
@@ -31,7 +31,7 @@ plugNmeet permite utilizar el agente de tres maneras en una clase. Elija la que 
 
 ### 1. Sesiones de grupo dirigidas por el docente (`NORMAL_ROOM`)
 
-Usted dirige la clase. Durante la lección, abra el panel **Breakout Rooms** y cree sesiones de IA 1 a 1 para los alumnos que elija. Cada sesión es una sala de grupo privada con el agente. El panel **Sesiones de IA** muestra qué alumnos están en una sesión, para que pueda supervisar su progreso e intervenir cuando haga falta.
+Usted dirige la clase. Durante la lección, abra el panel **Salas de grupo** y cree sesiones individuales con IA para los alumnos que elija. Cada sesión es una sala de grupo privada con el agente. El panel **Sesiones de IA** muestra qué alumnos están en una sesión, para que pueda supervisar su progreso e intervenir cuando haga falta.
 
 Ideal para: práctica guiada durante una lección en directo, o refuerzo para algunos alumnos mientras el resto de la clase trabaja en otras tareas.
 
@@ -43,7 +43,7 @@ Ideal para: apoyo en las tareas, un curso de aula invertida o un grupo de tutor�
 
 ### 3. Sala de estudio de acceso libre disponible las 24 horas (`OPEN_PER_USER`)
 
-Cualquier alumno que abra el enlace de la sala de estudio recibe automáticamente una sesión 1 a 1 con el agente. Su administrador establece `max_concurrent_sessions` para controlar cuántos alumnos pueden estar en una sesión al mismo tiempo. El servidor limita este valor a **16 sesiones simultáneas**. En este modo, las cámaras web y la compartición de pantalla están desactivadas, de modo que la sala se mantiene centrada en la lección y en la pizarra.
+Cualquier alumno que abra el enlace de la sala de estudio recibe automáticamente una sesión individual con el agente. Su administrador establece `max_concurrent_sessions` para controlar cuántos alumnos pueden estar en una sesión al mismo tiempo. El servidor limita este valor a **16 sesiones simultáneas**. En este modo, las cámaras web y la compartición de pantalla están desactivadas, de modo que la sala se mantiene centrada en la lección y en la pizarra.
 
 Ideal para: preparación de exámenes, práctica de idiomas fuera del horario escolar y repaso antes de una prueba.
 
@@ -58,13 +58,13 @@ Su equipo técnico introduce el prompt en `system_prompt` de la sala, junto con 
 ### Tutor de matemáticas y pizarra (STEM)
 
 ```text
-You are a patient math tutor for Grade 9 students. Teach linear equations.
-Work through problems step by step on the whiteboard, one step at a time.
-Ask the student to predict the next step before you show it.
-When the student makes a mistake, point to the step on the board, name the error gently,
-and ask a guiding question. Do not give the final answer until the student has tried twice.
-After every two worked examples, create a short quiz with one multiple-choice question.
-Stay within algebra and linear equations. Politely decline other topics.
+Eres un tutor de matemáticas paciente para estudiantes de 9.º grado. Enseña ecuaciones lineales.
+Resuelve los problemas paso a paso en la pizarra, mostrando un solo paso a la vez.
+Pide al estudiante que prediga cuál será el siguiente paso antes de mostrarlo.
+Cuando el estudiante cometa un error, señala el paso en la pizarra, identifica el error con delicadeza 
+y hazle una pregunta orientadora. No le des la respuesta final hasta que lo haya intentado dos veces.
+Después de cada dos ejercicios resueltos, prepara un breve cuestionario con una pregunta de opción múltiple.
+Limítate al álgebra y las ecuaciones lineales. Rechaza amablemente otros temas.
 ```
 
 Ajustes de sala sugeridos: `topic: "Ecuaciones lineales (álgebra de 9.º grado)"`, `allowed_subtopics: ["resolución de ecuaciones de una variable", "problemas verbales", "comprobación de soluciones"]`.
@@ -72,12 +72,12 @@ Ajustes de sala sugeridos: `topic: "Ecuaciones lineales (álgebra de 9.º grado)
 ### Coach de conversación en idiomas
 
 ```text
-You are a friendly Spanish speaking coach for adult beginners. Speak mostly in simple Spanish,
-and explain grammar in English when the student is confused.
-Ask one question at a time. Correct pronunciation or grammar with a short, kind example.
-Use the whiteboard to write new vocabulary with a simple picture or diagram.
-Keep each turn short so the student speaks more than you do.
-Finish each session by writing three key phrases in the shared notepad.
+Eres un profesor de español amable para adultos principiantes. Habla principalmente en español sencillo
+y explica la gramática en inglés cuando el estudiante esté confundido.
+Haz una sola pregunta a la vez. Corrige la pronunciación o la gramática con un ejemplo breve y amable.
+Utiliza la pizarra para escribir vocabulario nuevo acompañado de una imagen o un diagrama sencillo.
+Mantén cada intervención breve para que el estudiante hable más que tú.
+Al finalizar cada sesión, escribe tres frases clave en el bloc de notas compartido.
 ```
 
 Ajustes de sala sugeridos: `target_lang: "es-ES"`, `spoken_lang: "en-US"`, `instruction_lang: "en-US"`, y un `speaking_rate` entre `0.8` y `1.0` para principiantes. El rango de `speaking_rate` va de `0.5` a `2.0`, siendo `1.0` el ritmo normal.
@@ -85,11 +85,11 @@ Ajustes de sala sugeridos: `target_lang: "es-ES"`, `spoken_lang: "en-US"`, `inst
 ### Tutor de preparación de exámenes
 
 ```text
-You are an exam preparation tutor for a high-school history test on the causes of World War I.
-Ask the student to explain one cause in their own words, then ask a follow-up question.
-Every five turns, run a quiz with four questions covering the main causes.
-Do not lecture for more than thirty seconds at a time.
-If the student scores below 60 percent on a quiz, go back to the weakest topic and explain it again with a timeline on the whiteboard.
+Eres un tutor de preparación para un examen de historia de secundaria sobre las causas de la Primera Guerra Mundial.
+Pide al estudiante que explique una causa con sus propias palabras y luego hazle una pregunta de seguimiento.
+Cada cinco turnos, realiza un cuestionario de cuatro preguntas que abarquen las principales causas.
+No des explicaciones durante más de treinta segundos seguidos.
+Si el estudiante obtiene menos del 60 % en un cuestionario, vuelve al tema que menos domina y explícalo de nuevo utilizando una línea de tiempo en la pizarra.
 ```
 
 Ajustes de sala sugeridos: `topic: "Causas de la Primera Guerra Mundial"`, `forbidden_topics: ["otras guerras", "acontecimientos políticos actuales"]`.
@@ -113,7 +113,7 @@ La barra de estado de IA muestra lo que el agente está haciendo en ese momento.
 
 ### Hablar con el agente
 
-Los alumnos pueden hablar con naturalidad. Pueden **interrumpir al agente a mitad de una frase** (*barge-in*), y el agente se detiene y escucha. Esto es útil en la práctica de idiomas y para los alumnos que quieren hacer una pregunta rápida.
+Los alumnos pueden hablar con naturalidad. Pueden **interrumpir al agente a mitad de una frase**, y el agente se detiene y escucha. Esto es útil en la práctica de idiomas y para los alumnos que quieren hacer una pregunta rápida.
 
 ### Dibujar en la pizarra
 
@@ -126,11 +126,11 @@ Los alumnos y los docentes pueden dibujar en la pizarra mientras el agente habla
 
 ### El cuadro de chat de IA
 
-Las preguntas escritas en el cuadro de chat de IA se envían al agente dentro de la misma sesión. Use los mensajes escritos para la ortografía, los enlaces o el código, cuando hablar no resulte práctico.
+Las preguntas escritas en el cuadro de chat de IA se envían al agente dentro de la misma sesión. Use los mensajes escritos para la ortografía, los enlaces o el código, o cuando hablar no resulte práctico.
 
 ### Propiedad del espacio de trabajo
 
-El trabajo en la pizarra y en el bloc de notas compartido se asocia a quien lo creó. Los cambios del agente se registran por separado, y el agente puede deshacer sus últimas 20 acciones. Los alumnos y los docentes conservan sus propios dibujos y notas.
+El trabajo en la pizarra y en el bloc de notas compartido está vinculado a quien lo creó. Los cambios del agente se registran por separado, y el agente puede deshacer sus últimas 20 acciones. Los alumnos y los docentes conservan sus propios dibujos y notas.
 
 ## Cómo leer los informes de dominio al finalizar la sesión
 
@@ -147,14 +147,14 @@ Los informes están redactados para docentes. Utilícelos para planificar su pr�
 
 ## Clases grupales en vivo: copiloto docente de IA, subtítulos multilingües y apuntes de clase
 
-El tutor 1 a 1 es solo una parte del panorama. Los mismos servicios de Insights también le apoyan en una clase grupal en vivo, dentro de su sala de grupo habitual.
+El tutor individual es solo una parte del panorama. Los mismos servicios de Insights también le apoyan en una clase grupal en vivo, dentro de su sala de grupo habitual.
 
 ### 1. Gestión de la clase sin menús con el copiloto docente de IA ([Chat de IA en la reunión](/docs/ai-agent/ai-text-chat))
 
 Durante una clase grupal en vivo, escriba órdenes en lenguaje natural al copiloto en lugar de buscar opciones en los menús:
 
 - *«Prepare un cuestionario de 4 preguntas de opción múltiple sobre la fotosíntesis.»* El copiloto ejecuta el flujo `draft_quiz` → revisión del docente → `publish_quiz`, de modo que ningún cuestionario se publica sin su aprobación.
-- *«Cree 4 salas de grupo para 15 minutos.»*
+- *«Cree 4 salas de grupos durante 15 minutos.»*
 - *«Dibuje un diagrama etiquetado de una célula vegetal en la pizarra.»*
 - *«Inicie un temporizador de 5 minutos.»*
 
@@ -168,11 +168,11 @@ Al terminar la clase, descargue el archivo de subtítulos WebVTT (`SPEECH_TRANSC
 
 ### 3. Apuntes de clase y guías de estudio automáticos ([Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization))
 
-El resumen funciona incluso sin activar los subtítulos en vivo. Defina un `summarization_prompt` adaptado a la docencia, por ejemplo: *«Resuma la clase de hoy en definiciones clave, ejemplos resueltos que se trataron, preguntas del alumnado y tareas asignadas.»* El servidor genera entonces un artefacto `MEETING_SUMMARY` estructurado de forma automática al terminar la clase.
+El resumen funciona incluso sin activar los subtítulos en vivo. Defina un `summarization_prompt` adaptado a la docencia, por ejemplo: *«Resuma la clase de hoy en definiciones clave, ejemplos prácticos desarrollados, preguntas del alumnado y tareas asignadas.»* El servidor genera entonces un artefacto `MEETING_SUMMARY` estructurado de forma automática al terminar la clase.
 
 ## Consejos para una implantación exitosa
 
-1. **Empiece con una sola clase.** Pruebe las **Sesiones de grupo dirigidas por el docente** durante dos lecciones y, después, decida si desea ampliar su uso.
+1. **Empiece con una sola clase.** Pruebe las **Salas de grupo dirigidas por el docente** durante dos lecciones y, después, decida si desea ampliar su uso.
 2. **Defina un tema acotado.** Un tema específico y una lista corta de subtemas mantienen al agente centrado.
 3. **Revise los resúmenes cada semana.** Los patrones entre alumnos aportan más información que cualquier sesión aislada.
 4. **Explique a los alumnos qué es el agente.** Es un tutor de IA, no un docente humano, y no lo observa a través de la cámara.
@@ -180,7 +180,7 @@ El resumen funciona incluso sin activar los subtítulos en vivo. Defina un `summ
 
 ## Próximos pasos
 
-- [Descripción general e Insights](/docs/ai-agent/overview): cómo encaja el agente en una sala en vivo.
+- [Descripción general y conceptos](/docs/ai-agent/overview): cómo encaja el agente en una sala en vivo.
 - [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities): qué puede ver o hacer el agente y qué no.
 - [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat): el copiloto que permite al docente gestionar la clase desde el chat.
 - [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation): subtítulos multilingües, traducción hablada y transcripciones descargables.
