@@ -18,7 +18,7 @@ const jsonLd = {
   url: "https://www.plugnmeet.org/es/",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   featureList:
-    "Videorreuniones HD, pantalla compartida, pizarra, salas de grupo, encuestas, grabación, transmisión RTMP en directo, acceso telefónico SIP, subtítulos y traducción con IA, cifrado de extremo a extremo",
+    "Videorreuniones HD, pantalla compartida, pizarra, salas de grupo, encuestas, grabación, transmisión RTMP en directo, acceso telefónico SIP, subtítulos y traducción con IA, agente de IA con voz y avatar de video, cifrado de extremo a extremo",
 };
 
 export default function Home() {

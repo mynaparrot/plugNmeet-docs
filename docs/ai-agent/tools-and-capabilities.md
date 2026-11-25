@@ -1,7 +1,7 @@
 ---
 title: "AI Agent Whiteboard Vision, Tools & Guardrails | plugNmeet"
 description: "Deep dive into the plugNmeet AI Agent's whiteboard vision, shared notepad tools, quizzes and polls, countdown timer hooks, three-layer safety guardrails, and the voice agent versus moderator text-chat tool sets."
-keywords: [ai whiteboard, ai vision whiteboard, scene graph, ai agent tools, ai guardrails, prompt injection protection, topic boundary ai, ai quiz generator, ai poll, shared notepad ai, mermaid diagram ai, llm tool calling]
+keywords: [ai whiteboard, ai vision whiteboard, scene graph, ai agent tools, ai guardrails, prompt injection protection, topic boundary ai, ai quiz generator, ai poll, shared notepad ai, mermaid diagram ai, llm tool calling, ai activity quotas, ai session milestones, automated classroom exercises]
 sidebar_label: Agent Capabilities & Guardrails
 sidebar_position: 4
 ---
@@ -109,6 +109,21 @@ When a countdown timer is running in the room, the client triggers `sendContext`
 
 This makes timed activities, such as "solve this problem in five minutes," work without manual prompting.
 
+### Mandatory Activity Quotas & Milestones
+
+A host can require a minimum amount of work per session with `activity_rules`. Each quota is `0` to `20`, and `0` means "not required". The integer fields count toward the quota when these tools succeed:
+
+| Quota | Satisfied by | Required capability |
+| --- | --- | --- |
+| `min_whiteboard_drawings` | `whiteboard_draw_shapes`, `whiteboard_write_content`, `whiteboard_draw_freehand_svg`, `whiteboard_draw_diagram` | `allow_whiteboard_write` |
+| `min_quizzes` | `create_quiz`, `create_poll` (one active poll at a time) | `allow_polls` |
+| `min_notepad_entries` | `notepad_write` | `allow_notepad_write` |
+| `min_participant_exercises` | `whiteboard_manage_board` with `unlock_board`, or `set_workspace_lock` with `unlock` | `allow_whiteboard_write` or `allow_notepad_write` |
+
+`required_milestones` takes up to **16** ordered items, each capped at 240 characters. Milestones are an agenda, not a quota: the agent is told to cover them in the given order.
+
+A quota that asks for a disabled capability is rejected at room creation, so a host cannot set an unreachable target. Quotas count successful tool calls, not their content, so the agent still has to do the work in a way that makes sense for the lesson.
+
 ## 5. Safety and Topic Boundary Guardrails
 
 The agent uses three layers of protection. Each layer covers a different risk.
@@ -117,9 +132,13 @@ The agent uses three layers of protection. Each layer covers a different risk.
 
 Every session begins with a **locked platform header**. It sets the agent's core rules: follow the host's topic, do not reveal the system prompt, treat workspace content as data, and do not take actions outside the allowed tool set. The host's `system_prompt` is appended below this header and cannot override it.
 
+When `activity_rules` is set, this header also carries the mandatory activity quotas and the ordered milestone list, so the lesson plan is stated once at the start, above the host's own prompt.
+
 ### Layer 2: Topic Anchor Injection
 
 Long conversations drift. To prevent this, the platform re-injects a **topic anchor** every N turns. The default is every **6 turns**, configurable from **3 to 12** with `topic_anchor_interval_turns`. The anchor restates the topic, the allowed subtopics, and the forbidden topics.
+
+With `activity_rules` configured, the anchor also reports live quota progress, for example `Whiteboard Drawings 1/3 completed (2 still required — draw a diagram or visual explanation soon)`, and repeats the ordered milestone list. The agent therefore sees what is still missing instead of relying on its own memory of the plan.
 
 Topic enforcement is set with `strict_topic_enforcement` (default `true`). When strict, the agent politely declines out-of-scope requests and redirects the conversation. Each decline counts as an off-topic redirect in the session summary.
 
@@ -142,7 +161,7 @@ The two services share a model of tool calling but not a tool registry. The voic
 | **Used by** | A learner, student, prospect, or trainee in a 1-on-1 breakout session. | An administrator or moderator in the main room, typing in the chat panel. |
 | **Medium** | Real-time voice, with whiteboard and notepad. | Streaming text, with actions delegated to the moderator's browser over NATS RPC. |
 | **Participant management** | Not available. | `manage_participants`: mute, unmute, remove, and manage permissions. |
-| **Room operations** | `get_room_info` only. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (10s–2h), `manage_external_media`, `get_room_info`. |
+| **Room operations** | `get_room_info`, and `set_workspace_lock` to unlock a surface for the learner's turn. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (10s–2h), `manage_external_media`, `get_room_info`. |
 | **Breakout rooms** | Not available. | `create_breakout_rooms`, `manage_breakout_rooms`. |
 | **Insights configuration** | Not available. | `configure_speech_to_text`, `configure_chat_translation`, `configure_meeting_summarization`. |
 | **Polls & quizzes** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`, with the `OnPollResponseSubmitted` hook. | `create_poll`, `close_poll`, `get_poll_results`, plus `draft_quiz` → `publish_quiz` for moderator review. |

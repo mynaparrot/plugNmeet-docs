@@ -129,6 +129,7 @@ Your privacy and security are paramount. The interaction between AI features and
 
 *   **When E2EE is enabled with a self-provided key (`enabled_self_insert_encryption_key: true`), all audio-based AI features are automatically disabled.** This is a deliberate security design. The AI agent cannot decrypt the audio stream, and therefore cannot function.
 *   **Text-based features like Chat Translation and the AI Chat Assistant will continue to function.** This is because the text is sent to the AI provider *before* it is encrypted for transport over NATS.
+*   **A realtime avatar requires E2EE to be completely disabled.** The avatar provider is a third-party media bot that joins the room as an unencrypted participant, so it cannot operate in any E2EE mode. Also, your plugNmeet server must be reachable from outside your network.
 
 **Disclaimer for Operators:** You are the data controller. It is your responsibility to inform your users that when AI features are enabled, their audio and/or text data will be processed by third-party AI providers. You must ensure your terms of service and privacy policy are updated to reflect this data flow.
 
@@ -139,8 +140,9 @@ The AI Agent is a voice assistant that can join a 1-on-1 session. Its data handl
 *   **Whiteboard-only vision.** The agent sees the whiteboard and the shared notepad only. It does **not** capture or analyse webcams or screen shares. In automatic per-user modes, webcams and screen sharing are disabled room-wide.
 *   **Untrusted content fencing.** Whiteboard content, notepad content, fetched web pages, and participant AI chat messages are wrapped in explicit "untrusted data" markers. The agent is instructed not to follow instructions found inside this content. Element-level prompt-injection flags are attached to whiteboard data.
 *   **Read-only external tools with SSRF protection.** External MCP servers must use HTTPS on port 443. Connections to private, loopback, and other non-global addresses are refused. Only the tools you explicitly allow are offered to the agent, and the server enforces a read-only tool policy. Fetched web pages must use HTTPS and match an allow-list of URL prefixes.
-*   **BYOK isolation.** If a room supplies its own provider API key, the key is removed from room metadata before it is broadcast. It is stored only in Redis under a server-managed key with a TTL, and it is excluded from platform billing artifacts.
-*   **E2EE.** Rooms that use a self-inserted per-device E2EE key cannot enable the AI Agent, because the server cannot read the audio. Rooms with server-managed E2EE can use it.
+*   **BYOK isolation.** If a room supplies its own provider API key, the key is removed from room metadata before it is broadcast. It is stored only in Redis under a server-managed key with a TTL, and it is excluded from platform billing artifacts. A bring-your-own avatar key, endpoint, and auth header are handled the same way and stay in the server-side Redis record only.
+*   **Avatar providers are media bots.** A realtime avatar is rendered by a third-party provider (Beyond Presence, Anam, or Simli). The provider joins the plugNmeet room with a scoped participant token and streams video, so your plugNmeet server must be reachable from outside your network, and the room must run with E2EE completely disabled. The agent's audio is sent to that provider to drive the lip-sync.
+*   **E2EE.** Rooms that use a self-inserted per-device E2EE key cannot enable the AI Agent, because the server cannot read the audio. Rooms with server-managed E2EE can use it, except rooms that enable a realtime avatar.
 
 For configuration details, see [AI Agent Server & Provider Setup](/docs/ai-agent/configuration) and [Capabilities, Vision & Guardrails](/docs/ai-agent/tools-and-capabilities).
 

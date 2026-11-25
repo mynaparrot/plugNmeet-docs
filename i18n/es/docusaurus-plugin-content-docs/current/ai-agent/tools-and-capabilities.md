@@ -1,7 +1,7 @@
 ---
 title: "Visión de la pizarra, herramientas y límites del Agente de IA | plugNmeet"
 description: "Análisis detallado de la visión de la pizarra del Agente de IA de plugNmeet, las herramientas del bloc de notas compartido, los cuestionarios y encuestas, el temporizador de cuenta regresiva, las salvaguardas en tres capas y la diferencia entre las herramientas del agente de voz y las del copiloto de IA para moderadores."
-keywords: [ia para pizarra, visión de ia en pizarra, grafo de escena, herramientas del agente de ia, salvaguardas de ia, protección contra inyección de prompts, límite de tema en ia, generador de cuestionarios con ia, encuestas interactivas con ia, bloc de notas compartido con ia, diagramas mermaid con ia, llamada a herramientas de llm]
+keywords: [ia para pizarra, visión de ia en pizarra, descripción de escena, herramientas del agente de ia, salvaguardas de ia, protección contra inyección de prompts, límite de tema en ia, generador de cuestionarios con ia, encuestas interactivas con ia, bloc de notas compartido con ia, diagramas mermaid con ia, llamada a herramientas de llm, cuotas de actividad ia, hitos de sesion ia, ejercicios interactivos ia]
 sidebar_label: Capacidades y Límites del Agente
 sidebar_position: 4
 ---
@@ -109,6 +109,21 @@ Cuando hay un temporizador de cuenta regresiva en marcha en la sala, el cliente 
 
 Así, las actividades con tiempo limitado, como «resuelve este problema en cinco minutos», funcionan sin necesidad de indicaciones manuales.
 
+### Cuotas de actividad obligatorias e hitos
+
+El anfitrión puede exigir un mínimo de trabajo por sesión con `activity_rules`. Cada cuota va de `0` a `20`, y `0` significa «no obligatorio». Estos campos suman a la cuota cuando la herramienta correspondiente tiene éxito:
+
+| Cuota | Se cumple con | Capacidad requerida |
+| --- | --- | --- |
+| `min_whiteboard_drawings` | `whiteboard_draw_shapes`, `whiteboard_write_content`, `whiteboard_draw_freehand_svg`, `whiteboard_draw_diagram` | `allow_whiteboard_write` |
+| `min_quizzes` | `create_quiz`, `create_poll` (una encuesta activa a la vez) | `allow_polls` |
+| `min_notepad_entries` | `notepad_write` | `allow_notepad_write` |
+| `min_participant_exercises` | `whiteboard_manage_board` con `unlock_board`, o `set_workspace_lock` con `unlock` | `allow_whiteboard_write` o `allow_notepad_write` |
+
+`required_milestones` admite hasta **16** elementos ordenados, de 240 caracteres cada uno. Los hitos son una agenda, no una cuota: al agente se le indica que los cubra en el orden dado.
+
+Una cuota que exige una capacidad desactivada se rechaza al crear la sala, así que el anfitrión no puede fijar un objetivo inalcanzable. Las cuotas cuentan llamadas correctas a herramientas, no su contenido, de modo que el agente sigue teniendo que hacer el trabajo de forma coherente con la lección.
+
 ## 5. Salvaguardas de seguridad y de límites de tema
 
 El agente utiliza tres capas de protección. Cada capa cubre un riesgo distinto.
@@ -117,9 +132,13 @@ El agente utiliza tres capas de protección. Cada capa cubre un riesgo distinto.
 
 Cada sesión comienza con un **encabezado de plataforma bloqueado**. Define las reglas básicas del agente: seguir el tema del moderador, no revelar el prompt del sistema, tratar el contenido del espacio de trabajo como datos y no realizar acciones fuera del conjunto de herramientas permitido. El `system_prompt` del moderador se añade debajo de este encabezado y no puede anularlo.
 
+Cuando se define `activity_rules`, este encabezado incluye además las cuotas de actividad obligatorias y la lista ordenada de hitos, así que el plan de la lección queda fijado al inicio, por encima del prompt del anfitrión.
+
 ### Capa 2: inyección de anclaje de tema
 
 Las conversaciones largas tienden a desviarse. Para evitarlo, la plataforma vuelve a incluir un **anclaje de tema** cada N turnos. El valor predeterminado es cada **6 turnos**, configurable entre **3 y 12** con `topic_anchor_interval_turns`. El anclaje recuerda el tema, los subtemas permitidos y los temas prohibidos.
+
+Con `activity_rules` configurado, el recordatorio de tema informa además del progreso de las cuotas en vivo, por ejemplo `Whiteboard Drawings 1/3 completed (2 still required — draw a diagram or visual explanation soon)`, y repite la lista ordenada de hitos. Así el agente ve lo que aún falta en lugar de fiarse de su propia memoria del plan.
 
 La aplicación del tema se configura con `strict_topic_enforcement` (predeterminado `true`). En modo estricto, el agente declina con amabilidad las solicitudes fuera de alcance y reconduce la conversación. Cada negativa cuenta como una redirección fuera de tema en el resumen de la sesión.
 
@@ -142,7 +161,7 @@ Los dos servicios comparten la forma de invocar herramientas, pero no el catálo
 | **Quién lo usa** | Un alumno, estudiante, interesado o becario en una sesión individual en una sala para grupos pequeños. | Un administrador o moderador en la sala principal, escribiendo en el panel de chat. |
 | **Medio** | Voz en tiempo real, con pizarra interactiva y bloc de notas. | Texto en streaming, con acciones delegadas al navegador del moderador mediante RPC sobre NATS. |
 | **Gestión de participantes** | No disponible. | `manage_participants`: silenciar, reactivar el audio, expulsar y gestionar permisos. |
-| **Operaciones de la sala** | Solo `get_room_info`. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (de 10 s a 2 h), `manage_external_media`, `get_room_info`. |
+| **Operaciones de la sala** | `get_room_info`, y `set_workspace_lock` para desbloquear una superficie en el turno del alumno. | `set_workspace_lock`, `manage_recording`, `manage_countdown_timer` (de 10 s a 2 h), `manage_external_media`, `get_room_info`. |
 | **Salas para grupos pequeños** | No disponible. | `create_breakout_rooms`, `manage_breakout_rooms`. |
 | **Configuración de Insights** | No disponible. | `configure_speech_to_text`, `configure_chat_translation`, `configure_meeting_summarization`. |
 | **Encuestas y cuestionarios** | `create_quiz`, `create_poll`, `close_poll`, `get_poll_results`, con el evento `OnPollResponseSubmitted`. | `create_poll`, `close_poll`, `get_poll_results`, más `draft_quiz` → `publish_quiz` para la revisión del moderador. |

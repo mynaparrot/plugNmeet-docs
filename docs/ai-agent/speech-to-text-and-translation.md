@@ -16,7 +16,7 @@ The Insights platform turns a live room into a captioned, searchable, multilingu
 | --- | --- | --- |
 | `transcription` | Spawns a hidden `RoomAgent` participant that subscribes to the microphone tracks of allowed speakers and streams their speech to the provider. | `TRANSCRIPTION_OUTPUT_TEXT` pub/sub events with partial and final chunks. |
 | `translation` | Translates final caption chunks into each selected target language, and translates chat messages on demand. | Translated caption text and translated chat messages. |
-| `speech-synthesis` | For each allowed target language, spawns a TTS worker that speaks the translated caption chunks. | Synthesized audio tracks published into the LiveKit room. |
+| `speech-synthesis` | For each allowed target language, spawns a TTS worker that speaks the translated caption chunks. | Synthesized audio tracks published into the plugNmeet room. |
 
 ### 1. `transcription`
 
@@ -35,7 +35,7 @@ The two features are gated separately (`is_allow_translation` vs. `chat_translat
 
 ### 3. `speech-synthesis` (Spoken Translation / TTS)
 
-When `is_enabled_speech_synthesis` is on together with translation, the server creates one TTS worker per allowed target language. Each worker takes the translated caption chunks and synthesizes speech with the voice configured for that language (`voice-en`, `voice-es`, `voice-fr`, `voice-de`, `voice-bn`, and so on), then publishes the synthesized audio as a track in the LiveKit room.
+When `is_enabled_speech_synthesis` is on together with translation, the server creates one TTS worker per allowed target language. Each worker takes the translated caption chunks and synthesizes speech with the voice configured for that language (`voice-en`, `voice-es`, `voice-fr`, `voice-de`, `voice-bn`, and so on), then publishes the synthesized audio as a track in the plugNmeet room.
 
 Because the audio is published as a normal room track, participants subscribe to it like any other audio. When the room uses E2EE with a server-managed key, the synthesized track is encrypted consistently with the rest of the media.
 

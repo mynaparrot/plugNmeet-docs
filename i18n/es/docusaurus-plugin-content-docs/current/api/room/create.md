@@ -290,8 +290,10 @@ El Agente de IA es un asistente de voz 1 a 1 con una pizarra y un bloc de notas 
 | is_allow                   | boolean   | Sí                | Interruptor general del Agente de IA en esta sala. |
 | session_mode               | enum      | Sí                | `NORMAL_ROOM`, `CONTROLLED_USERS` u `OPEN_PER_USER`. |
 | auto_session_config        | object    | Depende del modo  | `allowed_participant_ids` (hasta 32) y `max_concurrent_sessions` (límite del servidor: 16). |
+| [avatar](/docs/ai-agent/developer-guide#avatar) | object | No | Avatar de video en tiempo real con sincronización labial: `is_enabled`, `provider` (`beyond_presence`, `anam`, `simli`), `avatar_id`, `max_avatar_minutes` (hasta 240) y, para BYOK, `api_key`, `endpoint` y `auth_header`. Requiere el E2EE desactivado. |
 | system_prompt              | string    | Sí, si `is_allow` | Instrucciones del moderador para el agente. |
 | topic                      | string    | Sí, si `is_allow` | Tema dentro del cual debe mantenerse el agente. |
+| [activity_rules](/docs/ai-agent/developer-guide#activity_rules) | object | No | Cuotas obligatorias `min_whiteboard_drawings`, `min_quizzes`, `min_notepad_entries` y `min_participant_exercises` (cada una de 0 a 20), más hasta 16 `required_milestones`. |
 | allow_web_fetch            | boolean   | No                | Permite consultar páginas HTTPS aprobadas. Predeterminado `false`. |
 | allowed_knowledge_urls     | string[]  | No                | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
 | [mcp_servers](/docs/ai-agent/developer-guide#servidores-mcp-externos-mcp_servers) | map | No | Hasta 2 servidores MCP externos. Cada uno tiene `url` (HTTPS), `headers`, `allowed_tools` (hasta 8, solo lectura) y un `scope` opcional. |

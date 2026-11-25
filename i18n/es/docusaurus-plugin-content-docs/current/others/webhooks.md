@@ -229,13 +229,15 @@ Para conocer la estructura de la carga útil, consulte la [definición de protob
 | `10` | `AI_AGENT_USAGE` | Metadatos | Uso de tokens y de audio de una sesión del Agente de IA, por rol y modalidad. |
 | `11` | `AI_AGENT_SESSION_SUMMARY` | Archivo (JSON) | Resumen estructurado de la sesión del Agente de IA. |
 | `12` | `AI_AGENT_TRANSCRIPT` | Archivo | Transcripción de una sesión del Agente de IA. |
+| `13` | `AI_AGENT_AVATAR_USAGE` | Metadatos | Duración del video del avatar en tiempo real, por minuto, con un costo estimado. |
 
 Notas:
 
-*   Los tipos de archivo (`1`, `2`, `4`, `11`, `12`) requieren `/auth/artifact/getDownloadToken` antes de la descarga. Los tipos de metadatos (`3`, `5`–`10`) llevan sus cifras en `room_artifact.metadata` y no tienen nada que descargar.
+*   Los tipos de archivo (`1`, `2`, `4`, `11`, `12`) requieren `/auth/artifact/getDownloadToken` antes de la descarga. Los tipos de metadatos (`3`, `5`–`10`, `13`) llevan sus cifras en `room_artifact.metadata` y no tienen nada que descargar.
 *   Los artefactos de uso enlazan con el archivo que facturan mediante `reference_artifact_id`.
 *   El uso procedente de una sala para grupos pequeños se atribuye a la sala principal.
 *   En `AI_AGENT_USAGE`, `metadata.breakdown` contiene una marca `custom_provider_<provider>` para las sesiones con BYOK, que quedan excluidas de la facturación de la plataforma.
+*   En `AI_AGENT_AVATAR_USAGE`, `metadata.duration_usage` contiene `duration_sec` y `duration_sec_estimated_cost`. La marca `custom_avatar_provider_<provider>` identifica un avatar BYOK, que registra la duración con costo cero.
 
 Consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing) para ver todos los esquemas y reglas de precios, y las guías de cada función para [subtítulos y traducción](/docs/ai-agent/speech-to-text-and-translation), [resumen de reuniones](/docs/ai-agent/meeting-summarization) y [chat de texto con IA](/docs/ai-agent/ai-text-chat).
 
@@ -282,6 +284,7 @@ const ArtifactType = {
   10: 'AI_AGENT_USAGE',
   11: 'AI_AGENT_SESSION_SUMMARY',
   12: 'AI_AGENT_TRANSCRIPT',
+  13: 'AI_AGENT_AVATAR_USAGE',
 };
 
 function handleWebhook(payload) {

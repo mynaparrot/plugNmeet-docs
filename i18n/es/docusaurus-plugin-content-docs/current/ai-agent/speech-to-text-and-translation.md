@@ -16,7 +16,7 @@ La plataforma Insights convierte una sala en vivo en una sesión con subtítulos
 | --- | --- | --- |
 | `transcription` | Inicia un participante `RoomAgent` oculto que se suscribe a las pistas de micrófono de los oradores autorizados y transmite su voz al proveedor. | Eventos pub/sub `TRANSCRIPTION_OUTPUT_TEXT` con fragmentos parciales y finales. |
 | `translation` | Traduce los fragmentos finales de los subtítulos a cada idioma de destino seleccionado y traduce mensajes de chat a petición. | Texto de subtítulos traducido y mensajes de chat traducidos. |
-| `speech-synthesis` | Para cada idioma de destino autorizado, inicia un proceso TTS que lee los fragmentos de subtítulos traducidos. | Pistas de audio sintetizadas publicadas en la sala de LiveKit. |
+| `speech-synthesis` | Para cada idioma de destino autorizado, inicia un proceso TTS que lee los fragmentos de subtítulos traducidos. | Pistas de audio sintetizadas publicadas en la sala de plugNmeet. |
 
 ### 1. `transcription`
 
@@ -35,7 +35,7 @@ Ambas funciones se habilitan por separado (`is_allow_translation` frente a `chat
 
 ### 3. `speech-synthesis` (traducción hablada / TTS)
 
-Cuando `is_enabled_speech_synthesis` está activo junto con la traducción, el servidor crea un proceso TTS por cada idioma de destino autorizado. Cada proceso toma los fragmentos de subtítulos traducidos, sintetiza la voz con la voz configurada para ese idioma (`voice-en`, `voice-es`, `voice-fr`, `voice-de`, `voice-bn`, etc.) y publica el audio resultante como una pista en la sala de LiveKit.
+Cuando `is_enabled_speech_synthesis` está activo junto con la traducción, el servidor crea un proceso TTS por cada idioma de destino autorizado. Cada proceso toma los fragmentos de subtítulos traducidos, sintetiza la voz con la voz configurada para ese idioma (`voice-en`, `voice-es`, `voice-fr`, `voice-de`, `voice-bn`, etc.) y publica el audio resultante como una pista en la sala de plugNmeet.
 
 Como el audio se publica como una pista normal de la sala, los participantes se suscriben a él igual que al resto del audio. Si la sala usa E2EE con una clave gestionada por el servidor, la pista sintetizada se cifra del mismo modo que el resto de los medios.
 

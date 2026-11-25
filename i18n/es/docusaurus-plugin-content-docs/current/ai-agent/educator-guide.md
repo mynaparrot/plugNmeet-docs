@@ -1,7 +1,7 @@
 ---
 title: "Profesor virtual con IA para clases en línea: guía para docentes y administradores escolares"
 description: "Guía práctica para docentes y administradores escolares que desean usar el profesor virtual con IA de plugNmeet: tutorías 1 a 1 y clases grupales en vivo con copiloto docente, subtítulos y traducción multilingües, apuntes de clase automáticos, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio."
-keywords: [profesor virtual con ia, tutor de ia para estudiantes, aula virtual multilingüe, subtítulos y traducción de clases en vivo, copiloto docente de ia, resumen automático de clases, software de tutorías en línea, sala de estudio con ia, videoconferencia escolar, informe de dominio del estudiante]
+keywords: [profesor virtual con ia, tutor de ia para estudiantes, aula virtual multilingüe, subtítulos y traducción de clases en vivo, copiloto docente de ia, resumen automático de clases, software de tutorías en línea, sala de estudio con ia, videoconferencia escolar, informe de dominio del estudiante, tutor de video ia, hitos de leccion obligatorios]
 sidebar_label: Educación y Profesor Virtual
 sidebar_position: 2
 ---
@@ -22,6 +22,7 @@ El motor del Agente de IA y sus API están en desarrollo activo. Las funciones d
 - **Comprueba la comprensión** con cuestionarios y encuestas, y explica de inmediato cada respuesta.
 - **Se mantiene en el tema.** Sigue el tema de la lección que usted define y reconduce con suavidad a los alumnos cuando se desvían.
 - **Informa.** Al terminar cada sesión, usted recibe un resumen de lo que el alumno dominó, de las dificultades que tuvo y de lo que debe repasar a continuación.
+- **Puede aparecer en cámara.** Con un avatar de video activado, el tutor se muestra como un presentador con sincronización labial mientras habla.
 
 **No** observa a los alumnos a través de sus cámaras web ni de las pantallas compartidas. El agente solo ve la pizarra y el bloc de notas compartido.
 
@@ -93,6 +94,57 @@ If the student scores below 60 percent on a quiz, go back to the weakest topic a
 ```
 
 Ajustes de sala sugeridos: `topic: "Causas de la Primera Guerra Mundial"`, `forbidden_topics: ["otras guerras", "acontecimientos políticos actuales"]`.
+
+## Cómo definir la lección: cuotas, hitos y tutor de video
+
+Los ajustes anteriores describen *de qué* trata la sesión. Dos bloques opcionales deciden *cuánto* trabajo contiene y si el tutor aparece en pantalla. Su equipo técnico los añade al objeto `ai_agent_features` de la sala.
+
+### Cuotas de actividad obligatorias e hitos de la lección (`activity_rules`)
+
+Use cuotas cuando una lección no deba terminar sin la práctica que planificó. Defina las que le importen y deje el resto en `0`.
+
+| Ajuste | Qué garantiza | Requiere |
+| --- | --- | --- |
+| `min_whiteboard_drawings` | Un número mínimo de dibujos o diagramas | Escritura en la pizarra habilitada |
+| `min_quizzes` | Un número mínimo de cuestionarios o encuestas, de uno en uno | Encuestas habilitadas |
+| `min_notepad_entries` | Un número mínimo de entradas en el bloc de notas compartido | Escritura en el bloc de notas habilitada |
+| `min_participant_exercises` | Un número mínimo de turnos en los que el alumno dibuja o escribe | Escritura en la pizarra o en el bloc de notas habilitada |
+| `required_milestones` | Hasta 16 pasos de la lección, cubiertos en el orden indicado | — |
+
+Cada cuota es un número entero de `0` a `20`. El contador solo sube cuando el agente completa de verdad esa acción, y durante toda la sesión el agente recuerda lo que aún falta. Una cuota que exige una capacidad desactivada se rechaza al crear la sala.
+
+```json
+"activity_rules": {
+  "min_whiteboard_drawings": 3,
+  "min_quizzes": 2,
+  "min_notepad_entries": 1,
+  "min_participant_exercises": 2,
+  "required_milestones": [
+    "Calentamiento: resolver juntos una ecuación de un paso",
+    "Ejemplo resuelto: ecuaciones de dos pasos",
+    "El alumno resuelve dos ecuaciones por su cuenta",
+    "Cuestionario final de problemas con enunciado"
+  ]
+}
+```
+
+Los hitos son la agenda de su lección: breves, ordenados y concretos. De tres a seis pasos funcionan mejor que una lista larga en una sesión de 20 minutos.
+
+### Tutor de video con avatar (`avatar`)
+
+Un avatar convierte la voz del tutor en video con sincronización labial, así que los alumnos ven a un presentador en lugar de solo oírlo. Resulta especialmente útil con alumnos pequeños, en salas de demostración y en lecciones grabadas.
+
+| Ajuste | Qué controla |
+| --- | --- |
+| `is_enabled` | Activa el avatar de video en la sala. |
+| `provider` | `beyond_presence`, `anam` o `simli`. De forma predeterminada, el proveedor configurado en su centro. |
+| `avatar_id` | La apariencia o el rostro del presentador que utiliza el proveedor. |
+| `max_avatar_minutes` | Límite de video de avatar para la sala, hasta `240`. |
+
+Dos puntos que conviene planificar:
+
+- **Sin cifrado de extremo a extremo.** El avatar es un participante de video externo, así que la sala debe crearse con el E2EE completamente desactivado.
+- **Costo aparte.** Los minutos de avatar se facturan por minuto de video, además del modelo de voz, y se informan en su propio artefacto `AI_AGENT_AVATAR_USAGE`. Mantenga `max_avatar_minutes` en línea con `max_audio_minutes` para que ambos presupuestos terminen a la vez.
 
 ## Controles dentro de la sala para docentes y alumnos
 

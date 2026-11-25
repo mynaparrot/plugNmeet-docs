@@ -1,21 +1,22 @@
 ---
 title: "Resúmenes de sesión y artefactos de uso de Insights: esquema JSON, facturación y BYOK"
-description: "Referencia completa de los 12 tipos de artefactos de Insights de plugNmeet, con el esquema JSON de AI_AGENT_SESSION_SUMMARY y AI_AGENT_USAGE: contabilidad de tokens y audio por rol y modalidad, atribución a la sala principal y supresión de la facturación en sesiones con clave propia (BYOK)."
-keywords: [json de resumen del agente de ia, informe de sesión de ia, tipos de artefactos de insights, facturación de uso de ia, artefacto de uso de tokens, seguimiento de costos de ia, artefactos de plugnmeet, esquema de resumen de sesión, facturación del agente de ia, facturación byok, analíticas de aprendizaje con ia, informe de ia para lms]
+description: "Referencia completa de los 13 tipos de artefactos de Insights de plugNmeet, con el esquema JSON de AI_AGENT_SESSION_SUMMARY, AI_AGENT_USAGE y AI_AGENT_AVATAR_USAGE: contabilidad de tokens y audio por rol y modalidad, atribución a la sala principal, supresión de la facturación en sesiones con clave propia (BYOK) y minutos de avatar."
+keywords: [json de resumen del agente de ia, informe de sesión de ia, tipos de artefactos de insights, facturación de uso de ia, artefacto de uso de tokens, seguimiento de costos de ia, artefactos de plugnmeet, esquema de resumen de sesión, facturación del agente de ia, facturación byok, analíticas de aprendizaje con ia, informe de ia para lms, facturacion avatar ia, uso de avatar ia]
 sidebar_label: Resúmenes y Artefactos de Uso
 sidebar_position: 11
 ---
 
 # Resúmenes y artefactos de uso del agente de IA
 
-Cada sesión del Agente de IA genera dos artefactos que se almacenan asociados a la **sala principal**:
+Cada sesión del Agente de IA genera dos artefactos, más un tercero cuando hay un avatar en tiempo real. Todos se almacenan asociados a la **sala principal**:
 
 | Artefacto | Valor de tipo | Finalidad |
 | --- | --- | --- |
 | `AI_AGENT_SESSION_SUMMARY` | `11` | Informe JSON estructurado de la sesión: qué se aprendió, qué se practicó, los resultados de los cuestionarios, la actividad en el espacio de trabajo y el contexto de continuación para la siguiente sesión. |
 | `AI_AGENT_USAGE` | `10` | Uso de tokens y de audio, desglosado por rol y modalidad, con los costos estimados. |
+| `AI_AGENT_AVATAR_USAGE` | `13` | Duración y costo del video de avatar, en las sesiones que usaron un avatar en tiempo real. |
 
-Esta página describe ambos artefactos, con los nombres de campo exactos que se utilizan en `plugnmeet_room_artifacts.proto`.
+Esta página describe los tres, con los nombres de campo exactos que se utilizan en `plugnmeet_room_artifacts.proto`.
 
 :::info En desarrollo activo
 **La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables**, y sus formatos de artefacto son estables. Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: los campos de sus artefactos, y los campos que aún no se documentan, pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado.
@@ -23,9 +24,9 @@ Esta página describe ambos artefactos, con los nombres de campo exactos que se 
 
 ## Cómo recibe los artefactos
 
-1. La sesión finaliza y el servidor escribe ambos artefactos en la sala principal.
+1. La sesión finaliza y el servidor escribe los artefactos en la sala principal.
 2. Su servidor recibe un webhook [`artifact_created`](/docs/others/webhooks#artifact-created) por cada artefacto.
-3. Su servidor obtiene el JSON con [`/auth/artifact/fetch`](/docs/api/artifact/fetch), filtrando por `type` (`AI_AGENT_SESSION_SUMMARY` o `AI_AGENT_USAGE`).
+3. Su servidor obtiene el JSON con [`/auth/artifact/fetch`](/docs/api/artifact/fetch), filtrando por `type` (`AI_AGENT_SESSION_SUMMARY`, `AI_AGENT_USAGE` o `AI_AGENT_AVATAR_USAGE`).
 
 :::tip Use el webhook como disparador
 No consulte los artefactos de forma periódica. Escuche `artifact_created`, compruebe `room_artifact.type` y obtenga después únicamente el artefacto que necesite.
@@ -33,7 +34,7 @@ No consulte los artefactos de forma periódica. Escuche `artifact_created`, comp
 
 ## Todos los tipos de artefactos de Insights
 
-`RoomArtifactType` cubre todos los artefactos que produce la plataforma Insights. Los tipos `1` a `9` provienen de los servicios de voz, resumen y chat de texto; los tipos `10` a `12` provienen del Agente de IA.
+`RoomArtifactType` cubre todos los artefactos que produce la plataforma Insights. Los tipos `1` a `9` provienen de los servicios de voz, resumen y chat de texto; los tipos `10` a `13` provienen del Agente de IA.
 
 | Tipo | Nombre | Formato | Modelo de precios | Guía de la función |
 | --- | --- | --- | --- | --- |
@@ -49,11 +50,12 @@ No consulte los artefactos de forma periódica. Escuche `artifact_created`, comp
 | `10` | `AI_AGENT_USAGE` | Metadatos de uso | Uso de tokens y de audio, por rol y modalidad. | Esta página |
 | `11` | `AI_AGENT_SESSION_SUMMARY` | Archivo descargable (JSON) | Ninguno. El registro facturable es el tipo `10`. | Esta página |
 | `12` | `AI_AGENT_TRANSCRIPT` | Archivo descargable | Ninguno. El registro facturable es el tipo `10`. | [Guía para desarrolladores y API](/docs/ai-agent/developer-guide) |
+| `13` | `AI_AGENT_AVATAR_USAGE` | Metadatos de uso | Duración (`duration_sec`, con la tarifa `avatar_model.price_per_minute`). | Esta página |
 
 En toda la tabla se aplican dos reglas:
 
 - **Artefactos de archivo** (`1`, `2`, `4`, `11`, `12`): su backend necesita un token de descarga de [`/auth/artifact/getDownloadToken`](/docs/api/artifact/download) antes de poder leerlos.
-- **Artefactos de uso** (`3`, `5`–`10`): llevan sus cifras en `room_artifact.metadata` y no tienen archivo que descargar. Su `reference_artifact_id` apunta al archivo que facturan, cuando existe.
+- **Artefactos de uso** (`3`, `5`–`10`, `13`): llevan sus cifras en `room_artifact.metadata` y no tienen archivo que descargar. Su `reference_artifact_id` apunta al archivo que facturan, cuando existe.
 
 El uso que se produce en una sala para grupos pequeños se atribuye a la sala principal en todos los tipos. La misma lista de tipos aparece en la [referencia de webhooks](/docs/others/webhooks#artifact-created).
 
@@ -76,6 +78,7 @@ El archivo de resumen es JSON y se genera con los nombres de campo del proto (sn
 | `continuation` | object | Contexto y enfoque para la siguiente sesión. |
 | `narrative_summary` | string | Un párrafo breve y legible para docentes, comerciales o notas del CRM. |
 | `usage` | map | Uso de tokens por rol: `session`, `delegation` y `summary`. Consulte [Uso por rol](#uso-por-rol). |
+| `avatar_usage` | object | Duración y costo del video de avatar. Solo aparece cuando la sesión usó un avatar en tiempo real. |
 
 :::note Versión del esquema
 El resumen no incluye un campo `schema_version`. Detecte los cambios por los nombres de campo de la tabla anterior y por el `metadata` del registro del artefacto.
@@ -181,6 +184,18 @@ El mapa `usage` tiene una entrada por rol:
 | `summary` | El modelo de texto que redactó el resumen al finalizar la sesión. |
 
 Cada entrada es un objeto de uso de tokens, descrito en la sección siguiente.
+
+El objeto opcional `avatar_usage` es un uso por duración, no un rol de tokens:
+
+```json
+"avatar_usage": {
+  "duration_sec": 1180,
+  "breakdown": {
+    "avatar_millis": "1180000"
+  },
+  "duration_sec_estimated_cost": 1.97
+}
+```
 
 ## Resumen de ejemplo
 
@@ -396,6 +411,30 @@ if (!isBYOK) {
 }
 ```
 
+## `AI_AGENT_AVATAR_USAGE`
+
+Solo se escribe en las sesiones que usaron un avatar en tiempo real. La carga es un `duration_usage`, porque el avatar se factura por minuto de video generado y no por token. Es un artefacto aparte para que el costo del avatar nunca se mezcle con los totales de tokens.
+
+| Campo de metadatos | Descripción |
+| --- | --- |
+| `duration_usage.duration_sec` | Duración del video de avatar en segundos. Redondeada a la baja, con un mínimo de `1` para una sesión iniciada. |
+| `duration_usage.breakdown` | `avatar_millis` contiene la duración exacta. |
+| `duration_usage.duration_sec_estimated_cost` | Costo estimado. Opcional. Se omite en los avatares BYOK. |
+| `reference_artifact_id` | Identificador del artefacto `AI_AGENT_SESSION_SUMMARY` correspondiente. |
+| `user_info`, `occurred_in_breakout_room`, `source_room_table_id` | El mismo significado que en `AI_AGENT_USAGE`. |
+
+Los precios provienen del bloque `pricing` de `ai_agent`. Un bloque con el nombre del proveedor, como `simli`, tiene prioridad sobre el bloque genérico `avatar_model`:
+
+```yaml
+pricing:
+  avatar_model:
+    price_per_minute: 0.10
+```
+
+**Avatares BYOK.** Cuando la sala aportó su propia clave de avatar, la duración se registra igual pero no se calcula ningún precio: el campo `*_estimated_cost` se omite y el desglose incluye `custom_avatar_provider_<provider>: 1`, por ejemplo `custom_avatar_provider_beyond_presence`.
+
+La duración del avatar se acumula entre reinicios dentro de la misma sala, así que `max_avatar_minutes` no se restablece al detener y volver a iniciar el agente. Una sala sin avatar no genera ningún artefacto de tipo `13`.
+
 ## Uso de los artefactos en sus sistemas
 
 | Objetivo | Campos que debe utilizar |
@@ -404,6 +443,7 @@ if (!isBYOK) {
 | Alimentar un CRM | `user_info.ex_user_id`, `session.duration_seconds`, `quiz_evaluation.accuracy_percent`, `narrative_summary` |
 | Continuar la siguiente sesión | `continuation.previous_session_context_prompt` |
 | Hacer seguimiento del costo de la plataforma | `AI_AGENT_USAGE`, `total_tokens_estimated_cost` y la ausencia de `custom_provider_*` |
+| Hacer seguimiento del costo del avatar | `AI_AGENT_AVATAR_USAGE`, `duration_sec_estimated_cost` y la ausencia de `custom_avatar_provider_*` |
 | Saber qué herramientas se utilizaron | `workspace_activity.tools_used` |
 
 Para conocer el flujo de continuidad, consulte [Continuidad entre sesiones](/docs/ai-agent/developer-guide#flujo-de-continuidad-entre-sesiones). Para configurar los precios, consulte [Tablas de precios](/docs/ai-agent/configuration#tablas-de-precios).

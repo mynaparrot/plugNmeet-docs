@@ -222,13 +222,15 @@ For the payload structure, refer to the [protobuf definition](https://github.com
 | `10` | `AI_AGENT_USAGE` | Metadata | Token and audio usage of an AI Agent session, per role and modality. |
 | `11` | `AI_AGENT_SESSION_SUMMARY` | File (JSON) | Structured AI Agent session summary. |
 | `12` | `AI_AGENT_TRANSCRIPT` | File | Transcript of an AI Agent session. |
+| `13` | `AI_AGENT_AVATAR_USAGE` | Metadata | Realtime avatar video duration, per minute, with an estimated cost. |
 
 Notes:
 
-*   File types (`1`, `2`, `4`, `11`, `12`) require `/auth/artifact/getDownloadToken` before download. Metadata types (`3`, `5`–`10`) carry their numbers in `room_artifact.metadata` and have nothing to download.
+*   File types (`1`, `2`, `4`, `11`, `12`) require `/auth/artifact/getDownloadToken` before download. Metadata types (`3`, `5`–`10`, `13`) carry their numbers in `room_artifact.metadata` and have nothing to download.
 *   Usage artifacts link to the file they bill for through `reference_artifact_id`.
 *   Usage from a breakout room is attributed to the parent room.
 *   For `AI_AGENT_USAGE`, `metadata.breakdown` contains a `custom_provider_<provider>` flag for BYOK sessions, which are excluded from platform billing.
+*   For `AI_AGENT_AVATAR_USAGE`, `metadata.duration_usage` holds `duration_sec` and `duration_sec_estimated_cost`. The `custom_avatar_provider_<provider>` flag marks a BYOK avatar, which records duration at zero cost.
 
 See [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing) for every schema and pricing rule, and the feature guides for [captions and translation](/docs/ai-agent/speech-to-text-and-translation), [meeting summarization](/docs/ai-agent/meeting-summarization), and [AI text chat](/docs/ai-agent/ai-text-chat).
 
@@ -275,6 +277,7 @@ const ArtifactType = {
   10: 'AI_AGENT_USAGE',
   11: 'AI_AGENT_SESSION_SUMMARY',
   12: 'AI_AGENT_TRANSCRIPT',
+  13: 'AI_AGENT_AVATAR_USAGE',
 };
 
 function handleWebhook(payload) {

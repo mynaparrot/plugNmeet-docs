@@ -46,7 +46,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '✨',
     title: 'AI meeting agent',
-    text: 'A voice AI agent that teaches, demos and onboards 1-on-1 on a shared whiteboard, plus live captions, summaries and chat — powered by your own AI provider.',
+    text: 'A voice & live video-avatar AI agent that teaches, demos and onboards 1-on-1 on a shared whiteboard, plus live captions, summaries and chat — powered by your own AI provider.',
     link: '/docs/ai-agent/overview',
     linkLabel: 'Explore the AI Agent',
     Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg').default,
@@ -129,8 +129,9 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-// All 12 original product screenshots, bundled via webpack so a missing
+// All 13 original product screenshots, bundled via webpack so a missing
 // file fails the build instead of rendering an empty gallery.
+import AiAgentDemo from '@site/static/img/ai-agent/ai-agent-product-demo.jpeg';
 import Whiteboard1 from '@site/static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '@site/static/img/slider/02-whiteboard2.png';
 import SharedNotepad from '@site/static/img/slider/03-SharedNotepad2.jpg';
@@ -145,6 +146,7 @@ import TranscriptionShot from '@site/static/img/slider/11-TranscriptionTranslati
 import PollShot from '@site/static/img/slider/12-Poll2.jpg';
 
 const ShowcaseSlides = [
+  { src: AiAgentDemo, title: 'AI Agent with live video avatar & interactive whiteboard', tag: 'AI' },
   { src: Whiteboard1, title: 'Interactive whiteboard for online teaching', tag: 'Collaborate' },
   { src: Whiteboard2, title: 'Whiteboard with PDF and Office file annotation', tag: 'Collaborate' },
   { src: SharedNotepad, title: 'Shared notepad for live meeting notes', tag: 'Collaborate' },
@@ -330,7 +332,7 @@ export default function HomepageFeatures(): JSX.Element {
             />
             <ul className="pnm-checklist">
               <li>✓ Annotate PDFs & Office files live</li>
-              <li>✓ 1-on-1 AI agent that speaks and draws on the whiteboard</li>
+              <li>✓ 1-on-1 AI agent with live video avatar &amp; whiteboard tools</li>
               <li>✓ AI summaries the moment you end</li>
               <li>✓ Stream to YouTube or bring in OBS</li>
             </ul>

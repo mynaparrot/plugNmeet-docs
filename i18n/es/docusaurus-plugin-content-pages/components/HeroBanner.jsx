@@ -37,10 +37,11 @@ const HeroBanner = () => {
             plugNmeet es un proyecto WebRTC gratuito y de código abierto que
             usted mismo aloja. Lea la documentación, ejecute un script de
             instalación y añada reuniones HD, pizarra, salas de grupos,
-            encuestas, grabación, transmisión RTMP y un agente de IA opcional que
-            enseña, hace demostraciones y acompaña el onboarding 1 a 1 en su
-            pizarra en vivo — sin cuentas, sin instalaciones para los invitados
-            y sin dependencia de proveedores.
+            encuestas, grabación, transmisión RTMP y un agente de IA opcional
+            (con avatar de video en vivo) que enseña, hace demostraciones y
+            acompaña el onboarding 1 a 1 en su pizarra en vivo — sin cuentas,
+            sin instalaciones para los invitados y sin dependencia de
+            proveedores.
           </p>
           <div className="pnm-cta-row">
             <Link className="pnm-btn pnm-btn--light" to="/docs/intro">

@@ -1,14 +1,16 @@
 ---
 title: "Autonomous AI Agent for Live Video Workspaces: Overview & Concepts"
 description: "Learn how the plugNmeet AI Agent works as a voice-first, whiteboard-aware assistant inside a live WebRTC room for virtual teaching, interactive product demos, and technical onboarding."
-keywords: [ai agent, agentic ai, ai tutor, virtual teacher, interactive product demo, ai whiteboard, voice ai, webrtc ai, self-hosted ai assistant, plugnmeet ai, sales enablement, customer onboarding]
+keywords: [ai agent, agentic ai, ai tutor, virtual teacher, interactive product demo, ai whiteboard, voice ai, webrtc ai, self-hosted ai assistant, plugnmeet ai, sales enablement, customer onboarding, ai video avatar, real-time ai avatar, interactive ai presenter]
 sidebar_label: Overview & Concepts
 sidebar_position: 1
 ---
 
 # Autonomous AI Agent for Live Video Workspaces
 
-The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
+The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, either by voice alone or on camera as a lip-synced video avatar. It reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
+
+![A plugNmeet AI Agent video avatar presenting and drawing on the shared whiteboard during a live WebRTC session](/img/ai-agent/ai-agent-product-demo.jpeg)
 
 :::info Under Active Development
 **Live transcription (STT), translation, speech synthesis (TTS), AI Text Chat, and meeting summarization are stable production features.** Only the Voice AI Agent (`ai_agent`) and the newer agentic MCP tool-calling capabilities are under active development: field names, defaults, and behavior may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the agent is finalized and released. Until then, the agent is configured through the plugNmeet API.
@@ -29,8 +31,19 @@ The AI Agent is one of six services in the server-side **Insights** platform. Al
 
 Two properties hold across the framework:
 
-- **Per-service provider mapping.** Each service points at its own provider account and models, so Azure can handle speech while Gemini handles summarization. Google Gemini and OpenAI (including OpenAI-compatible and self-hosted servers) implement all six services; native Azure implements the three speech services, with Azure OpenAI covering the rest. See the [provider capability matrix](/docs/ai-agent/configuration#provider-capability-matrix) and the [Google Gemini](/docs/ai-agent/providers/google), [OpenAI & Self-Hosted](/docs/ai-agent/providers/openai), and [Microsoft Azure](/docs/ai-agent/providers/azure) guides.
+- **Per-service provider mapping.** Each service points at its own provider account and models, so Azure can handle speech while Gemini handles summarization. Google Gemini and OpenAI (including OpenAI-compatible and self-hosted servers) implement all six services; native Azure implements the three speech services, with Azure OpenAI covering the rest. See the [provider capability matrix](/docs/ai-agent/configuration#provider-capability-matrix) and the [Google Gemini](/docs/ai-agent/providers/google), [OpenAI & Self-Hosted](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure), and [Avatar Providers](/docs/ai-agent/providers/avatar) guides.
 - **One artifact model.** Files and usage records are delivered through the same [`artifact_created`](/docs/others/webhooks#artifact-created) webhook, with usage attributed to the parent room.
+
+## Real-Time Video Avatar (Optional)
+
+An avatar gives the voice agent a face on camera. `beyond_presence`, `anam`, or `simli` render the agent's speech as lip-synced video, which helps young learners stay engaged, makes an interactive product demo feel like a real presenter, and puts a host on screen for onboarding.
+
+1. **Voice and video are separate.** Your LLM provider (Google Gemini or OpenAI) generates the agent's speech and tool calls. The avatar provider only turns that audio stream into live, lip-synced video.
+2. **The avatar joins as a room participant.** When the session starts, the server invites the avatar provider into the plugNmeet room with a scoped token. With an avatar active, the provider streams the synchronized video and audio, and supports instant barge-in when the user interrupts.
+3. **Server default or per-room BYOK.** Set a default avatar on the server, or let hosts pass their own provider, `avatar_id`, `max_avatar_minutes`, and BYOK `api_key` per room. Room secrets are stripped from the metadata published to NATS and kept in Redis only.
+4. **Separate duration billing and an E2EE rule.** Avatar minutes are billed in a dedicated `AI_AGENT_AVATAR_USAGE` artifact and never mixed with token costs. Because the provider joins as an external media participant, **E2EE must be completely disabled**, and your plugNmeet server must be reachable by the provider.
+
+Configuration, provider endpoints, and BYOK fields are in the [Avatar Providers](/docs/ai-agent/providers/avatar) guide.
 
 ## Who It Is For
 
@@ -77,6 +90,7 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 | --- | --- | --- |
 | **Conversation** | Hold a live spoken conversation, respond to barge-in, speak in a configured language and voice rate, and stay within the host-defined topic. | Discuss topics outside the configured topic boundary, or continue after its session ends or budget is exhausted. |
 | **Vision** | See the **whiteboard** and the **shared notepad** as image snapshots and a structured scene description. | See webcams, screen shares, or any other video. The agent never captures camera or screen content. |
+| **Avatar / video presence** | Show a real-time, lip-synced video avatar of itself, driven by its own voice, through Beyond Presence, Anam, or Simli. | Run in a room with end-to-end encryption, or with a provider you have not configured. An avatar requires E2EE to be completely disabled. |
 | **Whiteboard** | Draw shapes, add text, draw freehand SVG, render Mermaid diagrams, use a laser pointer, switch pages or Office/PDF files, zoom, and clear the board. Undo its own last 20 actions. | Erase or change work that participants made, beyond the agent's own undoable actions. |
 | **Shared notepad** | Read the notepad and write block-level updates. Opens the notepad automatically when it writes. | Edit the notepad when the host has disabled notepad writes. |
 | **Assessment** | Create quizzes and polls, close polls, read results, and react immediately to each answer. | Grade work that was never placed on the board, notepad, or in conversation. |
@@ -90,7 +104,7 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 2. **Route.** In automatic per-user modes, each learner or visitor is routed to an isolated 1-on-1 breakout room named `<Name> (AI Session)`. The main room acts as a lobby.
 3. **Converse and work.** The agent speaks with the participant and uses the whiteboard, notepad, quizzes, and polls. Vision updates are sent when the board or notepad changes.
 4. **Guard.** Guardrails keep the agent on topic. Repeated off-topic requests lock side-effect tools for the session.
-5. **Close.** When the session ends, the server writes an `AI_AGENT_SESSION_SUMMARY` artifact and an `AI_AGENT_USAGE` artifact to the parent room. Your backend receives an `artifact_created` webhook.
+5. **Close.** When the session ends, the server writes an `AI_AGENT_SESSION_SUMMARY` artifact and an `AI_AGENT_USAGE` artifact to the parent room, plus an `AI_AGENT_AVATAR_USAGE` artifact when a realtime avatar ran. Your backend receives an `artifact_created` webhook.
 6. **Continue.** Your system fetches the summary and passes it into the next session as `user_metadata.previous_session_context`.
 
 ## Where to Go Next
@@ -106,6 +120,7 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 | Generate post-meeting notes from audio | [AI Meeting Summarization](/docs/ai-agent/meeting-summarization) |
 | Add live captions, translation, or spoken translation | [Live Captions, STT & Translation](/docs/ai-agent/speech-to-text-and-translation) |
 | Configure providers, models, and pricing | [Server & Provider Setup](/docs/ai-agent/configuration) |
+| Put the agent on camera as a lip-synced video avatar | [Avatar Providers](/docs/ai-agent/providers/avatar) |
 | Deploy on a specific cloud or local stack | [Google Gemini](/docs/ai-agent/providers/google), [OpenAI & Self-Hosted](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) |
 | Read summary JSON, usage fields, and cost rules | [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing) |
 

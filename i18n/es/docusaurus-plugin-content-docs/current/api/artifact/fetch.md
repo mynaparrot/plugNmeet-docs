@@ -67,6 +67,7 @@ Artefactos de sesiones del Agente de IA (se crean al finalizar una sesión del A
 
 *   `AI_AGENT_SESSION_SUMMARY` (valor `11`): resumen estructurado en JSON de la sesión, que incluye evaluación, resultados de cuestionarios y contexto para continuarla.
 *   `AI_AGENT_USAGE` (valor `10`): uso de tokens y audio por rol y modalidad, con costos estimados. Si los costos no aparecen, la sesión es BYOK.
+*   `AI_AGENT_AVATAR_USAGE` (valor `13`): duración del video del avatar en tiempo real y costo estimado. Solo se crea cuando hubo un avatar. Si el costo no aparece, el avatar es BYOK.
 
 Consulte [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing) para ver el esquema completo.
 

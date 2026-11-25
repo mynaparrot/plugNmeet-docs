@@ -1,7 +1,7 @@
 ---
 title: "AI Virtual Teacher for Online Classes: Guide for Educators & School Admins"
 description: "A practical guide for teachers, coaches, and school administrators to run AI tutoring in plugNmeet: 1-on-1 AI virtual teacher sessions plus live classroom Insights, including a teacher copilot, multilingual captions and translation, automated lecture notes, assigned student rosters, and mastery reports."
-keywords: [ai virtual teacher, ai tutor for students, multilingual virtual classroom, live lecture captions and translation, ai teacher copilot, automated lecture summary, virtual classroom ai, ai study room, online tutoring software, school video conferencing, student mastery report]
+keywords: [ai virtual teacher, ai tutor for students, multilingual virtual classroom, live lecture captions and translation, ai teacher copilot, automated lecture summary, virtual classroom ai, ai study room, online tutoring software, school video conferencing, student mastery report, ai video tutor, mandatory lesson milestones]
 sidebar_label: Education & Virtual Teacher
 sidebar_position: 2
 ---
@@ -22,6 +22,7 @@ The AI Agent engine and its APIs are under active development. Features describe
 - **Checks understanding** with quizzes and polls, then explains each answer immediately.
 - **Stays on topic.** It follows the lesson topic you define and gently steers students back when they go off track.
 - **Reports back.** After each session, you get a summary of what the student mastered, what they struggled with, and what to review next.
+- **Can appear on camera.** With a video avatar enabled, the tutor is shown as a lip-synced presenter while it speaks.
 
 It does **not** watch students through their webcams or screen shares. The agent sees only the whiteboard and the shared notepad.
 
@@ -93,6 +94,57 @@ If the student scores below 60 percent on a quiz, go back to the weakest topic a
 ```
 
 Suggested room settings: `topic: "Causes of World War I"`, `forbidden_topics: ["other wars", "current political events"]`.
+
+## Shaping the Lesson: Quotas, Milestones & a Video Tutor
+
+The settings above describe *what* the session is about. Two optional blocks decide *how much* work it contains, and whether the tutor appears on camera. Your technical team adds them to the room's `ai_agent_features`.
+
+### Mandatory Activity Quotas & Lesson Milestones (`activity_rules`)
+
+Use quotas when a lesson must not end without the practice you planned. Set the ones you care about; leave the rest at `0`.
+
+| Setting | What it guarantees | Needs |
+| --- | --- | --- |
+| `min_whiteboard_drawings` | A minimum number of drawings or diagrams | Whiteboard writing allowed |
+| `min_quizzes` | A minimum number of quizzes or polls, one at a time | Polls allowed |
+| `min_notepad_entries` | A minimum number of shared-notepad entries | Notepad writing allowed |
+| `min_participant_exercises` | A minimum number of turns where the student draws or writes | Whiteboard or notepad writing allowed |
+| `required_milestones` | Up to 16 lesson steps, covered in the order you list | — |
+
+Each quota is a whole number from `0` to `20`. A count only rises when the agent actually completes that action, and the agent is reminded of what is still missing throughout the session. A quota that needs a capability you turned off is rejected when the room is created.
+
+```json
+"activity_rules": {
+  "min_whiteboard_drawings": 3,
+  "min_quizzes": 2,
+  "min_notepad_entries": 1,
+  "min_participant_exercises": 2,
+  "required_milestones": [
+    "Warm-up: solve one one-step equation together",
+    "Worked example: two-step equations",
+    "Student solves two equations alone",
+    "Exit quiz on word problems"
+  ]
+}
+```
+
+Milestones are your lesson agenda: keep them short, ordered, and concrete. Three to six steps suit a 20-minute session better than a long list.
+
+### A Video Avatar Tutor (`avatar`)
+
+An avatar turns the tutor's voice into lip-synced video, so students see a presenter instead of only hearing one. It is most useful for young learners, demo rooms, and recorded-style lessons.
+
+| Setting | What it controls |
+| --- | --- |
+| `is_enabled` | Turns the video avatar on for the room. |
+| `provider` | `beyond_presence`, `anam`, or `simli`. Defaults to your school's configured provider. |
+| `avatar_id` | Which presenter look or face the provider uses. |
+| `max_avatar_minutes` | An upper limit on avatar video for the room, up to `240`. |
+
+Two things to plan for:
+
+- **No end-to-end encryption.** The avatar is a third-party video participant, so the room must be created with E2EE completely disabled.
+- **Separate cost.** Avatar minutes are billed per minute of video on top of the voice model, and are reported in their own `AI_AGENT_AVATAR_USAGE` artifact. Keep `max_avatar_minutes` in line with `max_audio_minutes` so the two budgets end together.
 
 ## In-Room Controls for Teachers and Students
 

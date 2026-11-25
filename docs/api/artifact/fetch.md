@@ -67,6 +67,7 @@ AI Agent artifacts (created when an AI Agent session ends, attributed to the par
 
 *   `AI_AGENT_SESSION_SUMMARY` (value `11`): a structured JSON summary of the session, including evaluation, quiz results, and continuation context.
 *   `AI_AGENT_USAGE` (value `10`): token and audio usage by role and modality, with estimated costs. Omitted costs indicate a BYOK session.
+*   `AI_AGENT_AVATAR_USAGE` (value `13`): realtime avatar video duration and estimated cost. Created only when an avatar ran. Omitted costs indicate a BYOK avatar.
 
 See [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing) for the full schema.
 

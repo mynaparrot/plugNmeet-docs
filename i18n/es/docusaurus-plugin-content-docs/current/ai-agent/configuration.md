@@ -1,7 +1,7 @@
 ---
 title: "Configuración del servidor de Insights: config.yaml, proveedores, modelos y precios"
 description: "Referencia completa para configurar la plataforma Insights de plugNmeet en su servidor: cuentas de proveedor de Azure, Google y OpenAI, los seis servicios, límites de idiomas, tablas de precios, artifacts_settings y BYOK por sala."
-keywords: [configuración de plugnmeet, proveedores de insights, configuración de transcripción, configuración de traducción, configuración de síntesis de voz, configuración de openai realtime, configuración de gemini live, configuración de azure cognitive services, precios del agente de ia, artifacts settings, byok proveedor de ia, servidor de ia autoalojado]
+keywords: [configuración de plugnmeet, proveedores de insights, configuración de transcripción, configuración de traducción, configuración de síntesis de voz, configuración de openai realtime, configuración de gemini live, configuración de azure cognitive services, precios del agente de ia, artifacts settings, byok proveedor de ia, servidor de ia autoalojado, avatar beyond presence, avatar ia anam, avatar simli, configuracion avatar ia]
 sidebar_label: Configuración del Servidor y Proveedores
 sidebar_position: 9
 ---
@@ -112,11 +112,39 @@ Sustituya los nombres de modelo y los identificadores de voz por valores a los q
 
 | Clave | Tipo | Obligatoria | Descripción |
 | --- | --- | --- | --- |
-| `providers.<type>` | lista | Sí | Tipo de proveedor: `azure`, `google` u `openai`. |
+| `providers.<type>` | lista | Sí | Tipo de proveedor: `azure`, `google`, `openai` o un proveedor de avatar (`beyond_presence`, `anam`, `simli`). |
 | `id` | string | Sí | Nombre único de esta cuenta. Los servicios lo referencian. |
 | `credentials.api_key` | string | Sí | Clave de API del proveedor. |
 | `credentials.region` | string | Solo Azure | Región de Azure para los recursos de voz y de traducción. |
-| `options.endpoint` | string | No | URL base personalizada. Se usa para el endpoint global del traductor de Azure, para pasarelas compatibles con OpenAI y para servidores autoalojados. |
+| `options.endpoint` | string | No | URL base personalizada. Se usa para el endpoint global del traductor de Azure, para pasarelas compatibles con OpenAI, para servidores autoalojados y para pasarelas de avatar. |
+| `options.avatar_id` | string | Solo proveedores de avatar | Avatar o rostro predeterminado de la cuenta. Se usa cuando la sala no define `avatar_id`. |
+| `options.auth_header` | string | Solo proveedores de avatar | Encabezado que transporta la clave en una pasarela propia, por ejemplo `x-api-key`. |
+
+Los avatares se configuran como cuentas propias dentro de `insights.providers`, separadas de las cuentas de LLM:
+
+```yaml
+providers:
+  beyond_presence:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_BEYOND_PRESENCE_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  anam:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_ANAM_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  simli:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_SIMLI_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+```
+
+Una cuenta de avatar solo se usa cuando se define `ai_agent.options.avatar_provider` o cuando la sala pide un avatar. La sala puede aportar su propia clave y su propio endpoint. Consulte la guía de [Proveedores de Avatar](/docs/ai-agent/providers/avatar) para ver los endpoints, los encabezados de autenticación y el BYOK por sala.
 
 Guarde las claves de API en un lugar seguro y restrinja los permisos de archivo de `config.yaml`.
 
@@ -276,7 +304,10 @@ Aquí suele bastar con un `summarize_model` más económico, porque solo comprim
 | `options.turn_detection` | string | Solo OpenAI Realtime. `semantic_vad` (predeterminado), `server_vad` o `none`. Los servidores autoalojados suelen necesitar `server_vad` o `none`. |
 | `options.input_transcription_model` | string | Solo OpenAI Realtime. Modelo de transcripción de la voz del alumno. Use `none` para desactivar la transcripción de entrada. |
 | `options.realtime_auth_header` | string | Solo OpenAI Realtime. Nombre del encabezado de la clave de API, por ejemplo `api-key` en algunas pasarelas. |
-| `pricing` | mapa | Tabla de precios por modelo usada para las estimaciones de costo en `AI_AGENT_USAGE`. Vea a continuación. |
+| `options.avatar_provider` | string | Avatar en tiempo real predeterminado: `beyond_presence`, `anam` o `simli`. Las salas pueden sustituirlo. |
+| `options.avatar_id` | string | Avatar o rostro predeterminado de `avatar_provider`. |
+| `options.avatar_account_id` | string | `id` de la cuenta en `providers.<avatar_provider>` de la que se toma la clave. |
+| `pricing` | mapa | Tabla de precios por modelo usada para las estimaciones de costo en `AI_AGENT_USAGE` y `AI_AGENT_AVATAR_USAGE`. Vea a continuación. |
 
 #### Cómo elegir Google u OpenAI para el agente de voz
 
@@ -325,6 +356,18 @@ pricing:
     output_price_per_million_tokens: 2.00
 ```
 
+El avatar en tiempo real se factura por minuto de video generado:
+
+```yaml
+pricing:
+  avatar_model:
+    price_per_minute: 0.10
+  # Opcional: precio distinto para cada proveedor de avatar. Un bloque
+  # con el nombre del proveedor tiene prioridad sobre avatar_model.
+  simli:
+    price_per_minute: 0.08
+```
+
 Las tarifas de caché y de escritura de caché son opcionales. Sin ellas, los tokens en caché se facturan como entrada no cacheada en la estimación. El conjunto completo de campos de uso se describe en [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing).
 
 ## `artifacts_settings`
@@ -352,7 +395,7 @@ Los valores predeterminados y las unidades se definen en el `config_sample.yaml`
 
 ## Clave propia por sala (BYOK)
 
-Un anfitrión puede aportar su propia cuenta de proveedor para una sala en lugar de usar la cuenta del servidor. Se configura en el objeto `ai_agent_features.custom_provider` de la sala. Consulte la [Guía para desarrolladores y API](/docs/ai-agent/developer-guide#custom_provider-byok) para ver los nombres de los campos y un ejemplo de solicitud.
+Un anfitrión puede aportar su propia cuenta de proveedor para una sala en lugar de usar la cuenta del servidor. Se configura en el objeto `ai_agent_features.custom_provider` de la sala. Una clave de avatar se aporta de la misma forma, mediante `ai_agent_features.avatar`. Consulte la [Guía para desarrolladores y API](/docs/ai-agent/developer-guide#custom_provider-byok) para ver los nombres de los campos y un ejemplo de solicitud.
 
 ### Qué hace BYOK
 
@@ -365,8 +408,8 @@ Un anfitrión puede aportar su propia cuenta de proveedor para una sala en lugar
 La clave de API se trata como un secreto desde el momento en que llega:
 
 1. **Se recibe en la solicitud de creación de la sala.** La clave llega en la solicitud a `/auth/room/create`, como parte de `ai_agent_features.custom_provider`.
-2. **Se elimina antes de la difusión.** Antes de guardar los metadatos de la sala en NATS o de enviarlos a los participantes, el servidor elimina el objeto `custom_provider`. Los participantes nunca reciben la clave.
-3. **Se guarda solo en Redis.** La clave se almacena en `pnm:ai_agent:<roomId>:provider_config`, con un TTL definido por el servidor. No se escribe en la base de datos.
+2. **Se elimina antes de publicar los metadatos.** Antes de guardar los metadatos de la sala en NATS o de enviarlos a los participantes, el servidor elimina el objeto `custom_provider`, además de `avatar.api_key`, `avatar.endpoint` y `avatar.auth_header`. Los participantes nunca los reciben.
+3. **Se guarda solo en Redis.** La clave se almacena en `pnm:ai_agent:<roomId>:provider_config`, con un TTL definido por el servidor. No se escribe en la base de datos. El proveedor de avatar y la clave de la sala comparten ese registro.
 4. **La heredan las salas para grupos pequeños.** Cuando se inicia una sala secundaria 1 a 1, la configuración del proveedor se copia a esa sala con el mismo TTL, de modo que la sesión puede ejecutarse sin reenviar la clave de la sala principal.
 5. **Desaparece con la sala.** Cuando caducan los datos de Redis de la sala o la sala termina, la clave ya no existe.
 
@@ -382,6 +425,9 @@ El servidor rellena los valores predeterminados de los campos que el anfitrión 
 | --- | --- | --- | --- |
 | `max_session_seconds` | `1800` (30 min) | `60` a `7200` | Límite máximo por sesión del Agente de IA. |
 | `max_audio_minutes` | `120` | Hasta `240` | `0` significa usar el valor predeterminado del servidor. |
+| `max_avatar_minutes` | `0` | Hasta `240` | `0` significa usar el valor predeterminado del servidor. Limita el video de avatar facturable de la sala. |
+| Cuotas de `activity_rules` | `0` | `0` a `20` | Cada una de las cuatro cuotas de actividad mínima. `0` desactiva esa cuota. |
+| `activity_rules.required_milestones` | Ninguno | Hasta `16` elementos | Cada hito se limita a 240 caracteres. Se conserva el orden. |
 | `vision_debounce_ms` | `1200` | `500` a `5000` | Tiempo mínimo entre instantáneas de la pizarra. El cliente aplica además un mínimo de 4 segundos. |
 | `vision_max_edge_px` | `1024` | `512` a `1600` | Borde más largo de la instantánea WebP. |
 | `topic_anchor_interval_turns` | `6` | `3` a `12` | Frecuencia con la que se vuelve a inyectar el anclaje de tema. |
@@ -406,6 +452,7 @@ Los servicios de voz del servidor y el Agente de IA necesitan escuchar el audio,
 | **E2EE desactivado** | Compatible | Voz, subtítulos, pizarra, bloc de notas y herramientas completos. |
 | **E2EE activado con una clave gestionada por el servidor** | Compatible | El servidor tiene la clave, así que puede descifrar el audio y publicar pistas sintetizadas. |
 | **E2EE activado con una clave insertada por dispositivo** (`enabled_self_insert_encryption_key: true`) | **No compatible** | El servidor no puede leer la clave, así que la transcripción en el servidor no puede descifrar el audio y la creación de salas del Agente de IA se rechaza con un error de E2EE no compatible. |
+| **Cualquier E2EE, con `avatar.is_enabled`** | **No compatible** | El proveedor de avatar es un bot de medios externo: debe unirse a la sala sin cifrado, así que una sala con avatar se rechaza salvo que el E2EE esté completamente desactivado. |
 
 Las funciones basadas en texto, como la traducción del chat y el chat de texto con IA, no se ven afectadas por esta tabla. Las reglas se describen en el [Resumen de seguridad](/docs/security-overview#53-el-impacto-del-cifrado-de-extremo-a-extremo-e2ee).
 

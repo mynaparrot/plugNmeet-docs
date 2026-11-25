@@ -46,7 +46,7 @@ const FeatureList: FeatureItem[] = [
   {
     icon: '✨',
     title: 'Agente de reuniones con IA',
-    text: 'Un agente de voz con IA que enseña, hace demostraciones y acompaña el onboarding 1 a 1 en una pizarra compartida, además de subtítulos en vivo, resúmenes y chat — con su propio proveedor de IA.',
+    text: 'Un agente de IA con voz y avatar de video en vivo que enseña, hace demostraciones y acompaña el onboarding 1 a 1 en una pizarra compartida, además de subtítulos en vivo, resúmenes y chat — con su propio proveedor de IA.',
     link: '/docs/ai-agent/overview',
     linkLabel: 'Explorar el Agente de IA',
     Svg: require('@site/static/img/features/artificial-intelligence-ai-svgrepo-com.svg').default,
@@ -129,8 +129,9 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-// Las 12 capturas originales, empaquetadas vía webpack para que un
+// Las 13 capturas originales, empaquetadas vía webpack para que un
 // archivo ausente falle la compilación en lugar de mostrar una galería vacía.
+import AiAgentDemo from '@site/static/img/ai-agent/ai-agent-product-demo.jpeg';
 import Whiteboard1 from '@site/static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '@site/static/img/slider/02-whiteboard2.png';
 import SharedNotepad from '@site/static/img/slider/03-SharedNotepad2.jpg';
@@ -145,6 +146,7 @@ import TranscriptionShot from '@site/static/img/slider/11-TranscriptionTranslati
 import PollShot from '@site/static/img/slider/12-Poll2.jpg';
 
 const ShowcaseSlides = [
+  { src: AiAgentDemo, title: 'Agente de IA con avatar de video en vivo y pizarra interactiva', tag: 'IA' },
   { src: Whiteboard1, title: 'Pizarra interactiva para la enseñanza en línea', tag: 'Colaborar' },
   { src: Whiteboard2, title: 'Pizarra con anotación de PDF y Office', tag: 'Colaborar' },
   { src: SharedNotepad, title: 'Bloc compartido para notas de reuniones en vivo', tag: 'Colaborar' },
@@ -327,6 +329,7 @@ export default function HomepageFeatures(): JSX.Element {
             />
             <ul className="pnm-checklist">
               <li>✓ Anote PDF y archivos de Office en vivo</li>
+              <li>✓ Agente de IA 1 a 1 con avatar de video en vivo y herramientas de pizarra</li>
               <li>✓ Resúmenes con IA al finalizar la reunión</li>
               <li>✓ Transmita a YouTube o integre OBS</li>
             </ul>

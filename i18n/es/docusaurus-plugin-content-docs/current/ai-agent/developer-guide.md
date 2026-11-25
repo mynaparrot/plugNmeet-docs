@@ -1,7 +1,7 @@
 ---
 title: "Guía para desarrolladores y API del Agente de IA: ai_agent_features, endpoints y ejemplos"
 description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas para grupos pequeños, continuidad entre sesiones, endpoints /api/insights/* en tiempo de ejecución y endpoints protobuf dentro de la sala."
-keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas para grupos pequeños, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, endpoints api insights, aiAgent start stop status]
+keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas para grupos pequeños, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, endpoints api insights, aiAgent start stop status, api avatar ia, avatar ia byok, hitos de clase ia]
 sidebar_label: Guía para Desarrolladores y API
 sidebar_position: 5
 ---
@@ -25,6 +25,8 @@ metadata
         ├── is_allow
         └── ai_agent_features     ← this guide
             ├── auto_session_config
+            ├── avatar
+            ├── activity_rules
             ├── mcp_servers
             └── custom_provider   (BYOK)
 ```
@@ -33,7 +35,7 @@ Antes de que una sala pueda utilizar el agente, su servidor debe incluir una ent
 
 ## Referencia de campos de `ai_agent_features`
 
-La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create_room_insights.proto`, además de los mensajes anidados `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig` e `InsightsAIAgentCustomProvider`.
+La tabla enumera los 33 campos de `InsightsAIAgentFeatures` en `plugnmeet_create_room_insights.proto`, además de los mensajes anidados `AIAgentAutoSessionConfig`, `InsightsAIAgentAvatarConfig`, `InsightsAIAgentActivityRules`, `ExternalMCPServerConfig` e `InsightsAIAgentCustomProvider`.
 
 <div className="pnm-fit-table pnm-fit-table--fields">
 
@@ -42,6 +44,7 @@ La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `is_allow` | bool | Sí | Interruptor general del Agente de IA en esta sala. |
 | `session_mode` | enum | Sí | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1) o `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
 | `auto_session_config` | object | Según el modo | Ajustes de enrutamiento para las sesiones 1 a 1 automáticas. Consulte [`auto_session_config`](#auto_session_config). |
+| `avatar` | object | No | Avatar de video en tiempo real, con sincronización labial, para la voz del agente. Consulte [`avatar`](#avatar). |
 | `agent_display_name` | string | No | Nombre con el que se muestra el agente. Predeterminado: `AI Assistant`. |
 | `system_prompt` | string | Sí, cuando `is_allow` está activo | Instrucciones del moderador sobre la personalidad y el comportamiento del agente. |
 | `topic` | string | Sí, cuando `is_allow` está activo | La lección, demostración o formación sobre la que debe mantenerse el agente. |
@@ -49,6 +52,7 @@ La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `forbidden_topics` | string[] | No | Hasta 32 temas que el agente debe rechazar. |
 | `strict_topic_enforcement` | bool | No | Rechazar las solicitudes fuera del tema. Predeterminado: `true`. |
 | `topic_anchor_interval_turns` | uint32 | No | Vuelve a insertar el anclaje del tema cada N turnos. Predeterminado `6`, rango de `3` a `12`. |
+| `activity_rules` | object | No | Cuotas de actividad obligatorias e hitos ordenados de la lección. Consulte [`activity_rules`](#activity_rules). |
 | `spoken_lang` | string (BCP-47) | No | Idioma del alumno o del visitante, por ejemplo `en-US`. |
 | `target_lang` | string (BCP-47) | No | Idioma que se está aprendiendo. Déjelo vacío para temas que no sean de idiomas. |
 | `instruction_lang` | string (BCP-47) | No | Idioma en el que el agente explica. Si está vacío, se usa `spoken_lang`. |
@@ -81,6 +85,36 @@ La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `max_concurrent_sessions` | uint32 | Se usa en `OPEN_PER_USER`. El servidor limita este valor a **16**. |
 | `auto_start_agent` | bool | Opcional. Controla si el agente se inicia automáticamente en las sesiones enrutadas. |
 
+### `avatar`
+
+Un avatar en tiempo real convierte la voz del agente en video con sincronización labial. El proveedor se une a la sala de plugNmeet como participante de medios, emite el video y se marcha con el agente. Necesita un servidor de plugNmeet accesible desde internet y el E2EE completamente desactivado; las salas creadas con E2EE y `avatar.is_enabled` se rechazan.
+
+| Campo | Tipo | Obligatorio | Descripción |
+| --- | --- | --- | --- |
+| `is_enabled` | bool | Sí | Activa el avatar en esta sala. |
+| `provider` | string | No | `beyond_presence`, `anam` o `simli`. Predeterminado: el `avatar_provider` del servidor. |
+| `avatar_id` | string | No | Identificador de avatar o de rostro del proveedor, hasta 256 caracteres. Predeterminado: el `avatar_id` del servidor. |
+| `max_avatar_minutes` | uint32 | No | Límite de video de avatar facturable, hasta `240`. `0` usa el valor predeterminado del servidor. |
+| `api_key` | string | No | Clave de avatar BYOK, hasta 512 caracteres. Nunca se envía a los participantes. |
+| `endpoint` | string | No | URL base HTTPS de una puerta de enlace o de un endpoint de avatar autoalojado, hasta 512 caracteres. |
+| `auth_header` | string | No | Encabezado que transporta la clave, por ejemplo `x-api-key` o `Authorization`, hasta 128 caracteres. |
+
+El avatar se resuelve al iniciar: o la solicitud incluye proveedor, identificador de avatar y clave, o los aportan las opciones `ai_agent` del servidor y la cuenta de avatar. Una sesión con avatar informa del proveedor en `AIAgentStateMsg.avatar_provider`.
+
+### `activity_rules`
+
+Actividades obligatorias que el agente debe completar durante la sesión. Todo valor `0` significa «no obligatorio». Se rechaza una cuota que exija una capacidad que el anfitrión haya desactivado.
+
+| Campo | Tipo | Obligatorio | Descripción |
+| --- | --- | --- | --- |
+| `min_whiteboard_drawings` | uint32 | No | De `0` a `20` dibujos o diagramas. Requiere `allow_whiteboard_write`. |
+| `min_quizzes` | uint32 | No | De `0` a `20` cuestionarios o encuestas, de uno en uno. Requiere `allow_polls`. |
+| `min_notepad_entries` | uint32 | No | De `0` a `20` entradas en el bloc de notas compartido. Requiere `allow_notepad_write`. |
+| `min_participant_exercises` | uint32 | No | De `0` a `20` ejercicios prácticos que desbloquean la pizarra o el bloc de notas para el alumno. Requiere una de esas dos escrituras. |
+| `required_milestones` | string[] | No | Hasta `16` hitos ordenados, de 240 caracteres cada uno. |
+
+Las cuotas se incluyen en la instrucción de sistema bloqueada y el progreso en vivo (`X/Y completado`) se añade al recordatorio periódico del tema. Consulte [Cuotas de actividad obligatorias e hitos](/docs/ai-agent/tools-and-capabilities#cuotas-de-actividad-obligatorias-e-hitos).
+
 ### `ExternalMCPServerConfig`
 
 | Campo | Tipo | Descripción |
@@ -101,6 +135,8 @@ La tabla enumera los 31 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `realtime_model` | string | No | Sustituye el modelo en tiempo real. |
 | `delegation_model` | string | No | Sustituye el modelo de delegación. |
 | `summarize_model` | string | No | Sustituye el modelo de resumen. |
+
+Los secretos del avatar siguen el mismo ciclo de vida. `avatar.api_key`, `avatar.endpoint` y `avatar.auth_header` se eliminan de los metadatos de la sala que se publican en NATS y se conservan solo en el registro de Redis de la sala (el mismo que guarda `custom_provider`). Las salas para grupos pequeños 1 a 1 heredan ese registro, así que la sesión hija arranca sin reenviar la clave. Una sala puede aportar una clave de avatar sin aportar una clave de LLM, y al contrario.
 
 ## Modos de sesión
 

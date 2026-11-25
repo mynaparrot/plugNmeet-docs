@@ -1,7 +1,7 @@
 ---
 title: "Insights Server Configuration: config.yaml, Providers, Models & Pricing"
 description: "Complete reference for configuring the plugNmeet Insights platform on your server: Azure, Google and OpenAI provider accounts, all six services, language limits, pricing tables, artifacts_settings, and per-room BYOK."
-keywords: [plugnmeet config, insights providers, transcription config yaml, translation config yaml, speech synthesis config, openai realtime config, gemini live config, azure cognitive services config, ai agent pricing, artifacts settings, byok ai provider, self-hosted ai server]
+keywords: [plugnmeet config, insights providers, transcription config yaml, translation config yaml, speech synthesis config, openai realtime config, gemini live config, azure cognitive services config, ai agent pricing, artifacts settings, byok ai provider, self-hosted ai server, beyond presence avatar, anam ai avatar, simli avatar, ai avatar configuration]
 sidebar_label: Server & Provider Setup
 sidebar_position: 9
 ---
@@ -115,11 +115,39 @@ Replace model names and voice IDs with values your provider account can access. 
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `providers.<type>` | list | Yes | Provider type: `azure`, `google`, or `openai`. |
+| `providers.<type>` | list | Yes | Provider type: `azure`, `google`, `openai`, or an avatar provider (`beyond_presence`, `anam`, `simli`). |
 | `id` | string | Yes | A unique name for this account. Services refer to it. |
 | `credentials.api_key` | string | Yes | The provider API key. |
 | `credentials.region` | string | Azure only | Azure region for speech and translator resources. |
-| `options.endpoint` | string | No | Custom base URL. Used for Azure's global translator endpoint, OpenAI-compatible gateways, and self-hosted servers. |
+| `options.endpoint` | string | No | Custom base URL. Used for Azure's global translator endpoint, OpenAI-compatible gateways, self-hosted servers, and avatar gateways. |
+| `options.avatar_id` | string | Avatar providers only | Default avatar or face ID of the account. Used when the room sets no `avatar_id`. |
+| `options.auth_header` | string | Avatar providers only | Header that carries the key for a custom gateway, for example `x-api-key`. |
+
+Avatars are configured as their own accounts under `insights.providers`, separate from the LLM accounts:
+
+```yaml
+providers:
+  beyond_presence:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_BEYOND_PRESENCE_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  anam:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_ANAM_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  simli:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_SIMLI_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+```
+
+An avatar account is used only when `ai_agent.options.avatar_provider` is set or a room asks for an avatar. A room may supply its own key and endpoint instead. See the [Avatar Providers](/docs/ai-agent/providers/avatar) guide for provider endpoints, auth headers, and per-room BYOK.
 
 Store API keys in a secure location, and restrict file permissions on `config.yaml`.
 
@@ -279,7 +307,10 @@ A cheaper `summarize_model` is usually enough here, because it only compresses h
 | `options.turn_detection` | string | OpenAI Realtime only. `semantic_vad` (default), `server_vad`, or `none`. Self-hosted servers often need `server_vad` or `none`. |
 | `options.input_transcription_model` | string | OpenAI Realtime only. Transcription model for the learner's speech. Set to `none` to disable input transcription. |
 | `options.realtime_auth_header` | string | OpenAI Realtime only. Header name for the API key, for example `api-key` on some gateways. |
-| `pricing` | map | Per-model price table used for cost estimates in `AI_AGENT_USAGE`. See below. |
+| `options.avatar_provider` | string | Default realtime avatar: `beyond_presence`, `anam`, or `simli`. Rooms may override it. |
+| `options.avatar_id` | string | Default avatar or face ID for `avatar_provider`. |
+| `options.avatar_account_id` | string | Account `id` under `providers.<avatar_provider>` to take the key from. |
+| `pricing` | map | Per-model price table used for cost estimates in `AI_AGENT_USAGE` and `AI_AGENT_AVATAR_USAGE`. See below. |
 
 #### Choosing Google or OpenAI for the voice agent
 
@@ -328,6 +359,18 @@ pricing:
     output_price_per_million_tokens: 2.00
 ```
 
+The realtime avatar is billed per minute of generated video:
+
+```yaml
+pricing:
+  avatar_model:
+    price_per_minute: 0.10
+  # Optional: price each avatar provider apart. A provider-named block
+  # takes precedence over avatar_model.
+  simli:
+    price_per_minute: 0.08
+```
+
 Cached and cache-write rates are optional. Without them, cached tokens are billed as uncached input in the estimate. The full set of usage fields is described in [Summaries & Usage Artifacts](/docs/ai-agent/artifacts-and-billing).
 
 ## `artifacts_settings`
@@ -355,7 +398,7 @@ Defaults and units are defined in the `config_sample.yaml` shipped with your ser
 
 ## Per-Room Bring-Your-Own-Key (BYOK)
 
-A host can supply their own provider account for one room, instead of using the server's account. This is set in the room's `ai_agent_features.custom_provider` object. See the [Developer & API Guide](/docs/ai-agent/developer-guide#custom_provider-byok) for field names and a request example.
+A host can supply their own provider account for one room, instead of using the server's account. This is set in the room's `ai_agent_features.custom_provider` object. An avatar key can be supplied the same way, through `ai_agent_features.avatar`. See the [Developer & API Guide](/docs/ai-agent/developer-guide#custom_provider-byok) for field names and a request example.
 
 ### What BYOK Does
 
@@ -368,8 +411,8 @@ A host can supply their own provider account for one room, instead of using the 
 The API key is handled as a secret from the moment it arrives:
 
 1. **Accepted in the room creation request.** The key arrives in the `/auth/room/create` request, as part of `ai_agent_features.custom_provider`.
-2. **Stripped before broadcast.** Before room metadata is saved to NATS or sent to participants, the server removes the `custom_provider` object. Participants never receive the key.
-3. **Stored only in Redis.** The key is saved under `pnm:ai_agent:<roomId>:provider_config`, with a TTL set by the server. It is not written to the database.
+2. **Stripped before broadcast.** Before room metadata is saved to NATS or sent to participants, the server removes the `custom_provider` object, plus `avatar.api_key`, `avatar.endpoint`, and `avatar.auth_header`. Participants never receive them.
+3. **Stored only in Redis.** The key is saved under `pnm:ai_agent:<roomId>:provider_config`, with a TTL set by the server. It is not written to the database. The room's avatar provider and key share that record.
 4. **Inherited by breakout rooms.** When a 1-on-1 child room starts, the provider configuration is copied to the child room with the same TTL, so the session can run without the parent room's key being sent again.
 5. **Removed with the room.** When the room's Redis data expires or the room ends, the key is gone.
 
@@ -385,6 +428,9 @@ The server fills in defaults for any field the host leaves unset, and clamps val
 | --- | --- | --- | --- |
 | `max_session_seconds` | `1800` (30 min) | `60` to `7200` | Hard cap per AI Agent session. |
 | `max_audio_minutes` | `120` | Up to `240` | `0` means use the server default. |
+| `max_avatar_minutes` | `0` | Up to `240` | `0` means use the server default. Caps billable avatar video for the room. |
+| `activity_rules` quotas | `0` | `0` to `20` | Each of the four minimum-activity quotas. `0` disables that quota. |
+| `activity_rules.required_milestones` | None | Up to `16` items | Each milestone is capped at 240 characters. Order is preserved. |
 | `vision_debounce_ms` | `1200` | `500` to `5000` | Minimum time between whiteboard snapshots. The client also applies a 4-second floor. |
 | `vision_max_edge_px` | `1024` | `512` to `1600` | Longest edge of the WebP snapshot. |
 | `topic_anchor_interval_turns` | `6` | `3` to `12` | How often the topic anchor is re-injected. |
@@ -409,6 +455,7 @@ Server-side speech services and the AI Agent need to hear audio, and the agent n
 | **E2EE disabled** | Supported | Full voice, captions, whiteboard, notepad, and tools. |
 | **E2EE enabled with a server-managed key** | Supported | The server holds the key, so it can decrypt audio and publish synthesized tracks. |
 | **E2EE enabled with a self-inserted per-device key** (`enabled_self_insert_encryption_key: true`) | **Not supported** | The server cannot read the key, so server-side transcription cannot decrypt raw audio and AI Agent room creation is rejected with an E2EE-unsupported error. |
+| **Any E2EE, with `avatar.is_enabled`** | **Not supported** | The avatar provider is a third-party media bot: it must join the room unencrypted, so an avatar room is rejected unless E2EE is completely disabled. |
 
 Text-based features, such as chat translation and AI text chat, are not affected by this table. The rules are described in the [Security Overview](/docs/security-overview#53-the-impact-of-end-to-end-encryption-e2ee).
 

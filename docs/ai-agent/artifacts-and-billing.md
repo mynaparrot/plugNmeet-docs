@@ -1,21 +1,22 @@
 ---
 title: "AI Agent Session Summary & Usage Artifacts: JSON Schema, Billing & BYOK"
 description: "Full reference for the plugNmeet AI_AGENT_SESSION_SUMMARY and AI_AGENT_USAGE artifacts, including the summary JSON schema, per-role and per-modality token and audio cost accounting, parent-room attribution, and billing suppression for bring-your-own-key sessions."
-keywords: [ai agent summary json, ai session report, ai usage billing, token usage artifact, ai cost tracking, plugnmeet artifacts, session summary schema, ai agent billing, byok billing, learning analytics ai, lms ai report]
+keywords: [ai agent summary json, ai session report, ai usage billing, token usage artifact, ai cost tracking, plugnmeet artifacts, session summary schema, ai agent billing, byok billing, learning analytics ai, lms ai report, ai avatar billing, ai avatar usage tracking]
 sidebar_label: Summaries & Usage Artifacts
 sidebar_position: 11
 ---
 
 # AI Agent Summaries & Usage Artifacts
 
-Every AI Agent session produces two artifacts, stored against the **parent room**:
+Every AI Agent session produces two artifacts, plus a third when a realtime avatar runs. All are stored against the **parent room**:
 
 | Artifact | Type value | Purpose |
 | --- | --- | --- |
 | `AI_AGENT_SESSION_SUMMARY` | `11` | A structured JSON report of the session: what was learned, what was practised, quiz results, workspace activity, and the continuation context for the next session. |
 | `AI_AGENT_USAGE` | `10` | Token and audio usage, broken down by role and modality, with estimated costs. |
+| `AI_AGENT_AVATAR_USAGE` | `13` | Avatar video duration and cost, for sessions that ran a realtime avatar. |
 
-This page describes both, with the exact field names used in `plugnmeet_room_artifacts.proto`.
+This page describes all three, with the exact field names used in `plugnmeet_room_artifacts.proto`.
 
 :::info Under Active Development
 **Live transcription (STT), translation, speech synthesis (TTS), AI Text Chat, and meeting summarization are stable production features**, and their artifact formats are stable. Only the Voice AI Agent (`ai_agent`) and the newer agentic MCP tool-calling capabilities are under active development: their artifact fields, and fields not yet listed here, may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the agent is finalized and released.
@@ -23,9 +24,9 @@ This page describes both, with the exact field names used in `plugnmeet_room_art
 
 ## How You Receive Artifacts
 
-1. The session ends, and the server writes both artifacts to the parent room.
+1. The session ends, and the server writes the artifacts to the parent room.
 2. Your server receives an [`artifact_created`](/docs/others/webhooks#artifact-created) webhook for each artifact.
-3. Your server retrieves the JSON with [`/auth/artifact/fetch`](/docs/api/artifact/fetch), filtering by `type` (`AI_AGENT_SESSION_SUMMARY` or `AI_AGENT_USAGE`).
+3. Your server retrieves the JSON with [`/auth/artifact/fetch`](/docs/api/artifact/fetch), filtering by `type` (`AI_AGENT_SESSION_SUMMARY`, `AI_AGENT_USAGE`, or `AI_AGENT_AVATAR_USAGE`).
 
 :::tip Use the Webhook as the Trigger
 Do not poll for artifacts. Listen for `artifact_created`, check `room_artifact.type`, and then fetch only the artifact you need.
@@ -33,7 +34,7 @@ Do not poll for artifacts. Listen for `artifact_created`, check `room_artifact.t
 
 ## All Insights Artifact Types
 
-`RoomArtifactType` covers every artifact the Insights platform produces. Types `1` through `9` come from the speech, summarization, and text-chat services; types `10` through `12` come from the AI Agent.
+`RoomArtifactType` covers every artifact the Insights platform produces. Types `1` through `9` come from the speech, summarization, and text-chat services; types `10` through `13` come from the AI Agent.
 
 | Type | Name | Form | Pricing model | Feature guide |
 | --- | --- | --- | --- | --- |
@@ -49,11 +50,12 @@ Do not poll for artifacts. Listen for `artifact_created`, check `room_artifact.t
 | `10` | `AI_AGENT_USAGE` | Usage metadata | Token and audio usage, per role and modality. | This page |
 | `11` | `AI_AGENT_SESSION_SUMMARY` | Downloadable file (JSON) | None. The billable record is type `10`. | This page |
 | `12` | `AI_AGENT_TRANSCRIPT` | Downloadable file | None. The billable record is type `10`. | [Developer & API Guide](/docs/ai-agent/developer-guide) |
+| `13` | `AI_AGENT_AVATAR_USAGE` | Usage metadata | Duration (`duration_sec`, priced with `avatar_model.price_per_minute`). | This page |
 
 Two rules apply across the table:
 
 - **File artifacts** (`1`, `2`, `4`, `11`, `12`) need a download token from [`/auth/artifact/getDownloadToken`](/docs/api/artifact/download) before your backend can read them.
-- **Usage artifacts** (`3`, `5`–`10`) carry their numbers in `room_artifact.metadata` and have no file to download. Their `reference_artifact_id` points at the file they bill for, when one exists.
+- **Usage artifacts** (`3`, `5`–`10`, `13`) carry their numbers in `room_artifact.metadata` and have no file to download. Their `reference_artifact_id` points at the file they bill for, when one exists.
 
 Usage that occurs in a breakout room is attributed to the parent room for every type. The list of types also appears in the [webhook reference](/docs/others/webhooks#artifact-created).
 
@@ -76,6 +78,7 @@ The summary file is JSON, generated with the proto field names (snake_case). Emp
 | `continuation` | object | Context and focus for the next session. |
 | `narrative_summary` | string | A short, human-readable paragraph for teachers, sales reps, or CRM notes. |
 | `usage` | map | Token usage per role: `session`, `delegation`, and `summary`. See [`usage`](#usage-by-role). |
+| `avatar_usage` | object | Avatar video duration and cost. Present only when the session ran a realtime avatar. |
 
 :::note Schema Version
 The summary does not include a `schema_version` field. Detect changes by the field names in the table above, and by the artifact's `metadata` in the artifact record.
@@ -181,6 +184,18 @@ The `usage` map has one entry per role:
 | `summary` | The text model that wrote the end-of-session summary. |
 
 Each entry is a token usage object, described in the next section.
+
+The optional `avatar_usage` object is a duration usage, not a token role:
+
+```json
+"avatar_usage": {
+  "duration_sec": 1180,
+  "breakdown": {
+    "avatar_millis": "1180000"
+  },
+  "duration_sec_estimated_cost": 1.97
+}
+```
 
 ## Example Summary
 
@@ -396,6 +411,30 @@ if (!isBYOK) {
 }
 ```
 
+## `AI_AGENT_AVATAR_USAGE`
+
+Written only for sessions that ran a realtime avatar. The payload is a `duration_usage`, because an avatar is billed per minute of generated video, not per token. It is a separate artifact so avatar cost is never mixed into token totals.
+
+| Metadata field | Description |
+| --- | --- |
+| `duration_usage.duration_sec` | Avatar video duration in seconds. Rounded down, with a floor of `1` for a started session. |
+| `duration_usage.breakdown` | `avatar_millis` holds the exact duration. |
+| `duration_usage.duration_sec_estimated_cost` | Estimated cost. Optional. Omitted for BYOK avatars. |
+| `reference_artifact_id` | The artifact ID of the matching `AI_AGENT_SESSION_SUMMARY`. |
+| `user_info`, `occurred_in_breakout_room`, `source_room_table_id` | Same meaning as in `AI_AGENT_USAGE`. |
+
+Pricing comes from the `ai_agent` pricing block. A provider-named block, such as `simli`, takes precedence over the generic `avatar_model` block:
+
+```yaml
+pricing:
+  avatar_model:
+    price_per_minute: 0.10
+```
+
+**BYOK avatars.** When the room brought its own avatar key, the duration is still recorded but nothing is priced: the `*_estimated_cost` field is omitted and the breakdown carries `custom_avatar_provider_<provider>: 1`, for example `custom_avatar_provider_beyond_presence`.
+
+Avatar duration accumulates across restarts within the same room, so `max_avatar_minutes` cannot be reset by stopping and starting the agent. A room with no avatar produces no type `13` artifact.
+
 ## Using Artifacts in Your Systems
 
 | Goal | Fields to use |
@@ -404,6 +443,7 @@ if (!isBYOK) {
 | Feed a CRM | `user_info.ex_user_id`, `session.duration_seconds`, `quiz_evaluation.accuracy_percent`, `narrative_summary` |
 | Continue the next session | `continuation.previous_session_context_prompt` |
 | Track platform cost | `AI_AGENT_USAGE`, `total_tokens_estimated_cost`, and the absence of `custom_provider_*` |
+| Track avatar cost | `AI_AGENT_AVATAR_USAGE`, `duration_sec_estimated_cost`, and the absence of `custom_avatar_provider_*` |
 | Find which tools were used | `workspace_activity.tools_used` |
 
 For the continuity flow, see [Multi-Session Continuity](/docs/ai-agent/developer-guide#multi-session-continuity-flow). For configuring prices, see [Pricing Tables](/docs/ai-agent/configuration#pricing-tables).

@@ -18,7 +18,7 @@ const jsonLd = {
   url: "https://www.plugnmeet.org/",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   featureList:
-    "HD video meetings, screen sharing, whiteboard, breakout rooms, polls, recording, RTMP live streaming, SIP dial-in, AI captions and translation, end-to-end encryption",
+    "HD video meetings, screen sharing, whiteboard, breakout rooms, polls, recording, RTMP live streaming, SIP dial-in, AI captions and translation, AI voice & video avatar agent, end-to-end encryption",
 };
 
 export default function Home() {

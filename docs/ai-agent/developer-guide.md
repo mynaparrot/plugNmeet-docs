@@ -1,7 +1,7 @@
 ---
 title: "AI Agent API Developer Guide: ai_agent_features Reference & Examples"
 description: "Developer reference for the plugNmeet AI Agent API, covering every ai_agent_features field, JSON examples for NORMAL_ROOM, CONTROLLED_USERS and OPEN_PER_USER rooms, BYOK and MCP configuration, breakout room creation, multi-session continuity, and in-room protobuf endpoints."
-keywords: [plugnmeet api, ai_agent_features, create room api, ai agent api, breakout room ai, mcp servers config, byok ai provider api, artifact_created webhook, previous_session_context, protobuf api, aiAgent start stop status]
+keywords: [plugnmeet api, ai_agent_features, create room api, ai agent api, breakout room ai, mcp servers config, byok ai provider api, artifact_created webhook, previous_session_context, protobuf api, aiAgent start stop status, ai avatar api, byok ai avatar, ai lesson milestones]
 sidebar_label: Developer & API Guide
 sidebar_position: 5
 ---
@@ -25,6 +25,8 @@ metadata
         ├── is_allow
         └── ai_agent_features     ← this guide
             ├── auto_session_config
+            ├── avatar
+            ├── activity_rules
             ├── mcp_servers
             └── custom_provider   (BYOK)
 ```
@@ -33,7 +35,7 @@ Before any room can use the agent, your server must have an `insights.services.a
 
 ## `ai_agent_features` Field Reference
 
-The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_room_insights.proto`, plus the nested `AIAgentAutoSessionConfig`, `ExternalMCPServerConfig`, and `InsightsAIAgentCustomProvider` messages.
+The table lists all 33 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_room_insights.proto`, plus the nested `AIAgentAutoSessionConfig`, `InsightsAIAgentAvatarConfig`, `InsightsAIAgentActivityRules`, `ExternalMCPServerConfig`, and `InsightsAIAgentCustomProvider` messages.
 
 <div className="pnm-fit-table pnm-fit-table--fields">
 
@@ -42,6 +44,7 @@ The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `is_allow` | bool | Yes | Master switch for the AI Agent in this room. |
 | `session_mode` | enum | Yes | `AI_AGENT_SESSION_MODE_NORMAL_ROOM` (0), `AI_AGENT_SESSION_MODE_CONTROLLED_USERS` (1), or `AI_AGENT_SESSION_MODE_OPEN_PER_USER` (2). |
 | `auto_session_config` | object | Depends on mode | Routing settings for automatic 1-on-1 sessions. See [`auto_session_config`](#auto_session_config). |
+| `avatar` | object | No | Realtime lip-synced video avatar for the agent's voice. See [`avatar`](#avatar). |
 | `agent_display_name` | string | No | Name shown for the agent. Default: `AI Assistant`. |
 | `system_prompt` | string | Yes, when `is_allow` | Host instructions for the agent's persona and behavior. |
 | `topic` | string | Yes, when `is_allow` | The lesson, demo, or training topic the agent stays within. |
@@ -49,6 +52,7 @@ The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `forbidden_topics` | string[] | No | Up to 32 topics the agent must decline. |
 | `strict_topic_enforcement` | bool | No | Decline out-of-topic requests. Default: `true`. |
 | `topic_anchor_interval_turns` | uint32 | No | Re-inject the topic anchor every N turns. Default `6`, range `3` to `12`. |
+| `activity_rules` | object | No | Mandatory activity quotas and ordered lesson milestones. See [`activity_rules`](#activity_rules). |
 | `spoken_lang` | string (BCP-47) | No | The learner's or visitor's language, for example `en-US`. |
 | `target_lang` | string (BCP-47) | No | Language being learned. Leave empty for non-language topics. |
 | `instruction_lang` | string (BCP-47) | No | Language the agent explains in. If empty, `spoken_lang` is used. |
@@ -81,6 +85,36 @@ The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `max_concurrent_sessions` | uint32 | Used in `OPEN_PER_USER`. The server caps this at **16**. |
 | `auto_start_agent` | bool | Optional. Controls whether the agent starts automatically for routed sessions. |
 
+### `avatar`
+
+A realtime avatar renders the agent's voice as lip-synced video. The provider joins the plugNmeet room as a media participant, streams the video, and leaves with the agent. It needs a publicly reachable plugNmeet server and E2EE completely disabled; rooms created with E2EE enabled and `avatar.is_enabled` are rejected.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `is_enabled` | bool | Yes | Turn the avatar on for this room. |
+| `provider` | string | No | `beyond_presence`, `anam`, or `simli`. Defaults to the server's `avatar_provider`. |
+| `avatar_id` | string | No | Provider avatar or face ID, up to 256 characters. Defaults to the server's `avatar_id`. |
+| `max_avatar_minutes` | uint32 | No | Cap on billable avatar video, up to `240`. `0` uses the server default. |
+| `api_key` | string | No | BYOK avatar key, up to 512 characters. Never broadcast. |
+| `endpoint` | string | No | HTTPS base URL for a gateway or self-hosted avatar endpoint, up to 512 characters. |
+| `auth_header` | string | No | Header that carries the key, for example `x-api-key` or `Authorization`, up to 128 characters. |
+
+The avatar is resolved at start: either the request carries a provider, avatar ID, and key, or the server's `ai_agent` options and avatar account supply them. A session with an avatar reports the provider in `AIAgentStateMsg.avatar_provider`.
+
+### `activity_rules`
+
+Mandatory activities the agent must complete during the session. Every `0` value means "not required". A quota that asks for a capability the host disabled is rejected.
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `min_whiteboard_drawings` | uint32 | No | `0` to `20` drawings or diagrams. Requires `allow_whiteboard_write`. |
+| `min_quizzes` | uint32 | No | `0` to `20` quizzes or polls, one at a time. Requires `allow_polls`. |
+| `min_notepad_entries` | uint32 | No | `0` to `20` shared-notepad entries. Requires `allow_notepad_write`. |
+| `min_participant_exercises` | uint32 | No | `0` to `20` hands-on exercises that unlock the whiteboard or notepad for the learner. Requires one of those two writes. |
+| `required_milestones` | string[] | No | Up to `16` ordered milestones, 240 characters each. |
+
+Quotas are injected into the locked system instruction, and live progress (`X/Y completed`) is added to the periodic topic anchor. See [Mandatory Activity Quotas & Milestones](/docs/ai-agent/tools-and-capabilities#mandatory-activity-quotas--milestones).
+
 ### `ExternalMCPServerConfig`
 
 | Field | Type | Description |
@@ -101,6 +135,8 @@ The table lists all 31 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `realtime_model` | string | No | Overrides the realtime model. |
 | `delegation_model` | string | No | Overrides the delegation model. |
 | `summarize_model` | string | No | Overrides the summary model. |
+
+Avatar secrets follow the same lifecycle. `avatar.api_key`, `avatar.endpoint`, and `avatar.auth_header` are stripped from the room metadata that is published to NATS, and kept only in the room-scoped Redis record (the same record that holds `custom_provider`). 1-on-1 breakout rooms inherit that record, so a child session starts without resending the key. A room may bring an avatar key without bringing an LLM key, and the reverse.
 
 ## Session Modes
 
