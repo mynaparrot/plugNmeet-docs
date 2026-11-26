@@ -129,9 +129,12 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-// Las 13 capturas originales, empaquetadas vía webpack para que un
+// Las 16 capturas originales, empaquetadas vía webpack para que un
 // archivo ausente falle la compilación en lugar de mostrar una galería vacía.
 import AiAgentDemo from '@site/static/img/ai-agent/ai-agent-product-demo.jpeg';
+import AiAgentNotepad from '@site/static/img/ai-agent/whitebaord_with_shared_notepad.png';
+import AiAgentTimer from '@site/static/img/ai-agent/timer_with_whiteboard.png';
+import AiAgentPoll from '@site/static/img/ai-agent/poll.png';
 import Whiteboard1 from '@site/static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '@site/static/img/slider/02-whiteboard2.png';
 import SharedNotepad from '@site/static/img/slider/03-SharedNotepad2.jpg';
@@ -147,6 +150,9 @@ import PollShot from '@site/static/img/slider/12-Poll2.jpg';
 
 const ShowcaseSlides = [
   { src: AiAgentDemo, title: 'Agente de IA con avatar de video en vivo y pizarra interactiva', tag: 'IA' },
+  { src: AiAgentNotepad, title: 'Espacio del Agente de IA: pizarra interactiva y bloc compartido', tag: 'IA' },
+  { src: AiAgentTimer, title: 'Ejercicio práctico en la pizarra con temporizador en vivo', tag: 'IA' },
+  { src: AiAgentPoll, title: 'Evaluación en vivo con cuestionarios y encuestas en la sesión de IA', tag: 'IA' },
   { src: Whiteboard1, title: 'Pizarra interactiva para la enseñanza en línea', tag: 'Colaborar' },
   { src: Whiteboard2, title: 'Pizarra con anotación de PDF y Office', tag: 'Colaborar' },
   { src: SharedNotepad, title: 'Bloc compartido para notas de reuniones en vivo', tag: 'Colaborar' },

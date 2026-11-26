@@ -6,11 +6,13 @@ sidebar_label: Descripción General y Conceptos
 sidebar_position: 1
 ---
 
+import AiAgentShowcase from '@site/src/components/AiAgentShowcase';
+
 # Agente de IA autónomo para salas de video en vivo
 
 El Agente de IA de plugNmeet es un **asistente agéntico con prioridad en la voz** que se une a una sala de video en vivo como un participante más. Conversa con las personas en tiempo real, solo con voz o en cámara como avatar de video con sincronización labial. Lee y dibuja en la pizarra compartida, escribe en el bloc de notas compartido, realiza cuestionarios y encuestas, y al final deja un resumen estructurado. Está pensado para la enseñanza, las demostraciones guiadas de producto y el onboarding de nuevos clientes o alumnos, situaciones en las que la conversación se beneficia de un trabajo visual.
 
-![Agente de IA de plugNmeet representado por un avatar de video que presenta y dibuja en la pizarra compartida durante una sesión WebRTC en vivo](/img/ai-agent/ai-agent-product-demo.jpeg)
+<AiAgentShowcase locale="es" />
 
 :::info En desarrollo activo
 **La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables.** Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: los nombres de los campos, los valores predeterminados y el comportamiento pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado. Mientras tanto, el agente se configura mediante la API de plugNmeet.

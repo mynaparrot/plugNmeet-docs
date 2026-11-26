@@ -284,6 +284,18 @@ main .pnm-section:nth-of-type(odd) { background: var(--pnm-bg); }
 .pnm-thumb img { display: block; width: 100%; height: 44px; object-fit: cover; }
 .pnm-thumb--active { border-color: var(--pnm-sky); box-shadow: 0 0 0 2px rgba(36,174,247,0.35); }
 
+/* docs showcase slider — full screenshots, caption below the image */
+.pnm-shot--doc { margin: 1.5rem 0 2rem; }
+.pnm-shot--doc .pnm-main { padding: 14px; }
+.pnm-shot--doc .pnm-main img { aspect-ratio: auto; height: auto; object-fit: contain; }
+.pnm-shot--doc .pnm-caption {
+  position: static; transform: none; display: block; margin: 12px auto 0;
+  max-width: 100%; white-space: normal; text-align: center; line-height: 1.45;
+}
+.pnm-thumbs--4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.pnm-shot--doc .pnm-thumbs { grid-template-columns: repeat(4, minmax(0,1fr)); }
+.pnm-shot--doc .pnm-thumb img { height: 60px; object-fit: cover; }
+
 /* use cases */
 .pnm-use-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
 .pnm-use {

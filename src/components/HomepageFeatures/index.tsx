@@ -129,9 +129,12 @@ const FeatureList: FeatureItem[] = [
   },
 ];
 
-// All 13 original product screenshots, bundled via webpack so a missing
+// All 16 original product screenshots, bundled via webpack so a missing
 // file fails the build instead of rendering an empty gallery.
 import AiAgentDemo from '@site/static/img/ai-agent/ai-agent-product-demo.jpeg';
+import AiAgentNotepad from '@site/static/img/ai-agent/whitebaord_with_shared_notepad.png';
+import AiAgentTimer from '@site/static/img/ai-agent/timer_with_whiteboard.png';
+import AiAgentPoll from '@site/static/img/ai-agent/poll.png';
 import Whiteboard1 from '@site/static/img/slider/01-whiteboard-1.jpg';
 import Whiteboard2 from '@site/static/img/slider/02-whiteboard2.png';
 import SharedNotepad from '@site/static/img/slider/03-SharedNotepad2.jpg';
@@ -147,6 +150,9 @@ import PollShot from '@site/static/img/slider/12-Poll2.jpg';
 
 const ShowcaseSlides = [
   { src: AiAgentDemo, title: 'AI Agent with live video avatar & interactive whiteboard', tag: 'AI' },
+  { src: AiAgentNotepad, title: 'AI Agent workspace: interactive whiteboard & shared notepad', tag: 'AI' },
+  { src: AiAgentTimer, title: 'Timed whiteboard exercise with live countdown timer', tag: 'AI' },
+  { src: AiAgentPoll, title: 'Live quiz & poll assessment during an AI session', tag: 'AI' },
   { src: Whiteboard1, title: 'Interactive whiteboard for online teaching', tag: 'Collaborate' },
   { src: Whiteboard2, title: 'Whiteboard with PDF and Office file annotation', tag: 'Collaborate' },
   { src: SharedNotepad, title: 'Shared notepad for live meeting notes', tag: 'Collaborate' },

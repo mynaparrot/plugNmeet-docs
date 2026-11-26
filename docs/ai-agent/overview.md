@@ -6,11 +6,13 @@ sidebar_label: Overview & Concepts
 sidebar_position: 1
 ---
 
+import AiAgentShowcase from '@site/src/components/AiAgentShowcase';
+
 # Autonomous AI Agent for Live Video Workspaces
 
 The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, either by voice alone or on camera as a lip-synced video avatar. It reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
 
-![A plugNmeet AI Agent video avatar presenting and drawing on the shared whiteboard during a live WebRTC session](/img/ai-agent/ai-agent-product-demo.jpeg)
+<AiAgentShowcase />
 
 :::info Under Active Development
 **Live transcription (STT), translation, speech synthesis (TTS), AI Text Chat, and meeting summarization are stable production features.** Only the Voice AI Agent (`ai_agent`) and the newer agentic MCP tool-calling capabilities are under active development: field names, defaults, and behavior may change before general release. One-click UI integration for **Moodle, WordPress, and Joomla plugins** is planned once the agent is finalized and released. Until then, the agent is configured through the plugNmeet API.
