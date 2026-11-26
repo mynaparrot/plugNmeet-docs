@@ -4,12 +4,15 @@ slug: ai-agent-for-meetings-in-the-room
 authors: [bob]
 tags: [agente-de-ia, asistente-de-reuniones, moderador-de-ia, productividad, aula-virtual, ia-para-educación, autoalojado]
 description: "Un agente de IA para reuniones entra en la sala como un participante: habla, dibuja en la pizarra compartida y escribe en el bloc de notas. Qué hace, qué ve y qué sigue en desarrollo."
-keywords: ["agente de IA para reuniones", "moderador de IA para reuniones", "copiloto para moderadores", "asistente de IA en la sala", "agente de voz para reuniones", "agente de IA para el aula virtual", "asistente de reuniones de código abierto"]
+keywords: ["agente de IA para reuniones", "moderador de IA para reuniones", "copiloto para moderadores", "asistente de IA en la sala", "agente de voz para reuniones", "avatar de video con ia", "agente de IA para el aula virtual", "asistente de reuniones de código abierto"]
+image: /img/ai-agent/ai-agent-product-demo.jpeg
 ---
 
 Muchos asistentes de reuniones se centran en una sola cosa: un bot escucha la llamada y envía notas al terminar. plugNmeet también lo hace, y a muchos equipos les basta. Este artículo trata de otra función: un asistente que entra en la sala como un participante más, conversa con las personas, dibuja en la pizarra compartida, escribe en el bloc de notas compartido y deja un resumen al final. Una parte ya está en producción y otra sigue en desarrollo. Las secciones siguientes separan las dos.
 
 <!--truncate-->
+
+![Agente de IA en cámara como avatar de video en tiempo real, presentando y dibujando en la pizarra compartida durante una sesión en vivo](/img/ai-agent/ai-agent-product-demo.jpeg)
 
 ---
 
@@ -30,11 +33,19 @@ Imagine una clase en vivo. Una persona dice que el diagrama de la pizarra no le 
 
 Ese es el patrón: un participante, no un observador. En una sesión el agente puede:
 
-- **Hablar y escuchar** en el idioma y con la voz que defina el anfitrión. Se le puede interrumpir a mitad de una frase.
+- **Hablar y escuchar** en el idioma y con la voz que defina el anfitrión. Se le puede interrumpir a mitad de una frase. El agente puede hablar solo con voz o aparecer en cámara como un avatar de video en tiempo real con sincronización labial, mediante los [proveedores de avatar](/docs/ai-agent/providers/avatar).
 - **Dibujar en la pizarra compartida**: formas, etiquetas, trazos a mano alzada, diagramas generados a partir de una frase y un puntero para señalar algo sin tocar el dibujo.
 - **Escribir en el bloc de notas compartido**, bloque a bloque, y abrir el bloc cuando escribe.
 - **Preguntar y reaccionar.** Puede lanzar una prueba corta o una encuesta y recibe las respuestas a medida que llegan, así que confirma, explica o repregunta.
 - **Dejar un resumen estructurado** que su plataforma puede recuperar y volver a usar cuando regrese la misma persona.
+
+![La pizarra interactiva con el dibujo del agente junto al bloc de notas compartido, donde escribe paso a paso](/img/ai-agent/whitebaord_with_shared_notepad.png)
+
+La explicación se convierte en práctica en el mismo lugar. El agente propone un ejercicio cronometrado en la pizarra y mantiene la cuenta atrás a la vista; después lo evalúa al momento con una prueba o encuesta en vivo y reacciona en cuanto se envía una respuesta.
+
+![Un ejercicio cronometrado en la pizarra con la cuenta atrás visible durante la sesión](/img/ai-agent/timer_with_whiteboard.png)
+
+![Una prueba o encuesta en vivo en la que el agente ve cada respuesta enviada y reacciona ante ella](/img/ai-agent/poll.png)
 
 Un límite que conviene saber de entrada: hoy el agente de voz trabaja con una persona a la vez en una sesión privada, normalmente una sala de grupo para un solo estudiante o cliente potencial. Es un tutor en una sala aparte, no una voz que habla por encima de su clase principal.
 
@@ -71,6 +82,7 @@ Cuando compare herramientas, incluida la nuestra, pregunte las mismas tres cosas
 - [Guía para docentes](/docs/ai-agent/educator-guide) — flujos de clase e instrucciones
 - [Capacidades y límites](/docs/ai-agent/tools-and-capabilities) — qué puede ver y ejecutar
 - [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat) — el copiloto para moderadores, con ejemplos
+- [Proveedores de avatar](/docs/ai-agent/providers/avatar) — cómo dar al agente de voz un rostro de video en tiempo real en cámara
 
 Lecturas relacionadas: [5 formas en que un asistente de IA transforma su aula virtual](/blog/ai-transforms-virtual-classroom), [el asistente de IA que escribe sus notas](/blog/ai-meeting-assistant-automated-summaries) y, para quien desarrolla, [cómo añadir funciones de asistente de reuniones con IA](/blog/how-to-add-ai-meeting-assistant-features).
 

@@ -10,7 +10,7 @@ import AiAgentShowcase from '@site/src/components/AiAgentShowcase';
 
 # Autonomous AI Agent for Live Video Workspaces
 
-The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, either by voice alone or on camera as a lip-synced video avatar. It reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
+The plugNmeet AI Agent is a **voice-first, agentic assistant** that joins a live video room as a participant. It talks with people in real time, either by voice alone or **on camera as a lip-synced video avatar**. It reads and draws on the shared whiteboard, writes into the shared notepad, runs quizzes and polls, and then leaves a structured summary behind. It is built for teaching, guided product demos, and onboarding, where a conversation needs to be backed by visual work.
 
 <AiAgentShowcase />
 
@@ -132,3 +132,4 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 - [How AI Transforms the Virtual Classroom](/blog/ai-transforms-virtual-classroom)
 - [Self-Hosted Video Conferencing with OpenAI](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet)
 - [Security Overview](/docs/security-overview): how AI data flows and E2EE interact.
+- [Mobile & Desktop App Integration](/docs/developer-guide/mobile-app-integration): build interactive AI mobile or desktop apps (iOS, Android, Flutter, React Native, Electron) using native media and WebView.

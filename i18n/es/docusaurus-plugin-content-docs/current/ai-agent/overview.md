@@ -10,7 +10,7 @@ import AiAgentShowcase from '@site/src/components/AiAgentShowcase';
 
 # Agente de IA autónomo para salas de video en vivo
 
-El Agente de IA de plugNmeet es un **asistente agéntico con prioridad en la voz** que se une a una sala de video en vivo como un participante más. Conversa con las personas en tiempo real, solo con voz o en cámara como avatar de video con sincronización labial. Lee y dibuja en la pizarra compartida, escribe en el bloc de notas compartido, realiza cuestionarios y encuestas, y al final deja un resumen estructurado. Está pensado para la enseñanza, las demostraciones guiadas de producto y el onboarding de nuevos clientes o alumnos, situaciones en las que la conversación se beneficia de un trabajo visual.
+El Agente de IA de plugNmeet es un **asistente agéntico con prioridad en la voz** que se une a una sala de video en vivo como un participante más. Conversa con las personas en tiempo real, solo con voz o **en cámara como avatar de video con sincronización labial**. Lee y dibuja en la pizarra compartida, escribe en el bloc de notas compartido, realiza cuestionarios y encuestas, y al final deja un resumen estructurado. Está pensado para la enseñanza, las demostraciones guiadas de producto y el onboarding de nuevos clientes o alumnos, situaciones en las que la conversación se beneficia de un trabajo visual.
 
 <AiAgentShowcase locale="es" />
 
@@ -132,3 +132,4 @@ Consulte [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business
 - [Cómo la IA transforma el aula virtual](/blog/ai-transforms-virtual-classroom)
 - [Videoconferencia autoalojada con OpenAI](/blog/2026/07/13/self-hosted-video-conferencing-ai-openai-plugnmeet)
 - [Resumen de seguridad](/docs/security-overview): cómo interactúan los flujos de datos de IA y E2EE.
+- [Integración en aplicaciones móviles y de escritorio](/docs/developer-guide/mobile-app-integration): cree aplicaciones móviles o de escritorio interactivas con IA (iOS, Android, Flutter, React Native, Electron) combinando medios nativos y WebView.

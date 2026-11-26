@@ -4,13 +4,16 @@ slug: ai-agent-for-meetings-in-the-room
 authors: [bob]
 tags: [ai-agent, ai-meeting-assistant, ai-moderator, meeting-productivity, virtual-classroom, ai-for-education, self-hosted]
 description: "An AI agent for meetings joins the room as a participant: it speaks, draws on the shared whiteboard and writes in the notepad. What it does, what it sees, and what is still in development."
-keywords: ["ai agent for meetings", "ai meeting moderator", "ai copilot for meetings", "in-room ai assistant", "voice ai agent for meetings", "ai agent virtual classroom", "open source ai meeting assistant"]
+keywords: ["ai agent for meetings", "ai meeting moderator", "ai copilot for meetings", "in-room ai assistant", "voice ai agent for meetings", "ai video avatar", "ai agent virtual classroom", "open source ai meeting assistant"]
+image: /img/ai-agent/ai-agent-product-demo.jpeg
 date: 2026-10-17
 ---
 
 Many meeting assistants focus on one job: a bot listens to the call and sends notes when it ends. plugNmeet does that too, and for many teams it is enough. This post is about a different feature — an assistant that joins the room as a participant, talks with people, draws on the shared whiteboard, writes in the shared notepad, and leaves a summary behind. Part of that is in production today and part is still in development. The sections below keep the two apart.
 
 <!--truncate-->
+
+![AI agent on camera as a real-time video avatar, presenting and drawing on the shared whiteboard during a live session](/img/ai-agent/ai-agent-product-demo.jpeg)
 
 ---
 
@@ -31,11 +34,19 @@ Imagine a live class. A participant says the diagram on the board does not make 
 
 That is the pattern: a participant, not an observer. In a live session the agent can:
 
-- **Talk and listen**, in the language and voice the host sets. You can cut in mid-sentence.
+- **Talk and listen**, in the language and voice the host sets. You can cut in mid-sentence. The agent can speak by voice alone, or appear on camera as a real-time, lip-synced video avatar through the [avatar providers](/docs/ai-agent/providers/avatar).
 - **Draw on the shared whiteboard**: shapes, labels, freehand sketches, diagrams generated from a sentence, and a pointer for pointing at something without changing the drawing.
 - **Write in the shared notepad**, one block at a time, and open the notepad when it writes.
 - **Ask, then react.** It can run a short quiz or poll and receives answers as they arrive, so it can confirm, explain or follow up.
 - **Leave a structured summary** that your platform can collect and pass back when the same learner returns.
+
+![The interactive whiteboard with the agent's drawing next to the shared notepad where it writes step by step](/img/ai-agent/whitebaord_with_shared_notepad.png)
+
+Explanation turns into practice in the same place. The agent sets a timed whiteboard exercise and keeps the countdown in view, then assesses it on the spot with a live quiz or poll, reacting as soon as an answer is submitted.
+
+![A timed whiteboard exercise with the live countdown timer running during the session](/img/ai-agent/timer_with_whiteboard.png)
+
+![A live quiz or poll in the session where the agent sees each submitted answer and responds to it](/img/ai-agent/poll.png)
 
 One limit up front: the voice agent currently works with one person at a time in a private session, usually a breakout room for a single learner or prospect. It is a tutor in a side room, not a voice that talks over your main class.
 
@@ -72,6 +83,7 @@ When you compare tools, ours included, ask the same three things: does it join a
 - [Educator guide](/docs/ai-agent/educator-guide) — classroom workflows and prompts
 - [Capabilities and guardrails](/docs/ai-agent/tools-and-capabilities) — what it can see and call
 - [AI text chat](/docs/ai-agent/ai-text-chat) — the moderator copilot, with example prompts
+- [Avatar providers](/docs/ai-agent/providers/avatar) — giving the voice agent a real-time video face on camera
 
 Related reading: [5 ways an AI assistant can transform your virtual classroom](/blog/ai-transforms-virtual-classroom), [the AI meeting assistant that writes your notes](/blog/ai-meeting-assistant-automated-summaries), and for developers, [how to add AI meeting assistant features](/blog/how-to-add-ai-meeting-assistant-features).
 
