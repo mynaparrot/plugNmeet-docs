@@ -2,7 +2,7 @@
 title: "Resúmenes de sesión y artefactos de uso de Insights: esquema JSON, facturación y BYOK"
 description: "Referencia completa de los 13 tipos de artefactos de Insights de plugNmeet, con el esquema JSON de AI_AGENT_SESSION_SUMMARY, AI_AGENT_USAGE y AI_AGENT_AVATAR_USAGE: contabilidad de tokens y audio por rol y modalidad, atribución a la sala principal, supresión de la facturación en sesiones con clave propia (BYOK) y minutos de avatar."
 keywords: [json de resumen del agente de ia, informe de sesión de ia, tipos de artefactos de insights, facturación de uso de ia, artefacto de uso de tokens, seguimiento de costos de ia, artefactos de plugnmeet, esquema de resumen de sesión, facturación del agente de ia, facturación byok, analíticas de aprendizaje con ia, informe de ia para lms, facturacion avatar ia, uso de avatar ia]
-sidebar_label: Resúmenes y Artefactos de Uso
+sidebar_label: Resúmenes y artefactos de uso
 sidebar_position: 11
 ---
 
@@ -19,7 +19,7 @@ Cada sesión del Agente de IA genera dos artefactos, más un tercero cuando hay 
 Esta página describe los tres, con los nombres de campo exactos que se utilizan en `plugnmeet_room_artifacts.proto`.
 
 :::info En desarrollo activo
-**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables**, y sus formatos de artefacto son estables. Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: los campos de sus artefactos, y los campos que aún no se documentan, pueden cambiar antes de la publicación general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado.
+**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones estables de producción**, y sus formatos de artefacto no están sujetos a cambios. Solo el Agente de IA por voz (`ai_agent`) y la invocación de herramientas MCP por parte del agente siguen en desarrollo activo; los campos de sus artefactos y otros detalles pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista para cuando el agente esté terminado y publicado.
 :::
 
 ## Cómo recibe los artefactos

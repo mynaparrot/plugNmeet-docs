@@ -2,7 +2,7 @@
 title: "Chat de IA en la reunión: copiloto para moderadores, asistente de alumnos y gestión de salas con IA"
 description: "Referencia del chat de texto con IA de plugNmeet: un copiloto de IA para moderadores que ejecuta la gestión de salas con IA mediante herramientas MCP, un asistente de chat con IA en la reunión para participantes, IA integrada en el bloc de notas, la pizarra y las encuestas, memoria de conversación y artefactos de uso."
 keywords: [chat de ia en la reunión, copiloto de ia para moderadores, asistente de chat con ia, gestión de salas con ia, asistente de ia para alumnos, ia en el bloc de notas, generador de encuestas con ia, generador de cuestionarios con ia, herramientas mcp para salas, chat de ia autoalojado, asistente de ia en videoconferencia, plugnmeet chat de ia]
-sidebar_label: Chat de IA y Copiloto de Sala
+sidebar_label: Chat de IA y copiloto de sala
 sidebar_position: 6
 ---
 
@@ -12,13 +12,13 @@ El servicio `ai_text_chat` incorpora un asistente al panel de chat de la sala. C
 
 ## Dos funciones en un mismo servicio
 
-### 1. Copiloto agéntico para moderadores
+### 1. Copiloto con herramientas para moderadores
 
 Cuando un administrador o un moderador conversa con el chat de texto con IA desde el panel de chat, las solicitudes llevan `request_from: CHAT` y el servidor ejecuta el modelo mediante `AITextChatStreamWithTools`. El asistente del moderador está conectado al catálogo de herramientas MCP de la sala, por lo que puede actuar en lugar de limitarse a indicar qué hacer.
 
 Las acciones que deben ocurrir en el navegador del moderador, como cambiar un bloqueo o abrir el cuadro de grabación, se delegan al cliente conectado del administrador mediante RPC sobre NATS. El moderador ve el resultado en la sala y el asistente informa de lo que ha hecho.
 
-El chat de texto con IA básico —el asistente de preguntas y respuestas para participantes y los asistentes integrados en el bloc de notas, la pizarra y las encuestas— es una función de producción estable. La invocación de herramientas MCP para la gestión de salas forma parte de la expansión agéntica más reciente, por lo que los nombres de las herramientas, los límites y las superficies de la interfaz pueden cambiar.
+El chat de texto con IA básico —el asistente de preguntas y respuestas para participantes y los asistentes integrados en el bloc de notas, la pizarra y las encuestas— es una función de producción estable. Las nuevas capacidades de invocación de herramientas MCP para gestionar salas aún están en expansión, por lo que los nombres de las herramientas, los límites y las áreas de la interfaz pueden cambiar.
 
 ### 2. Asistente de aprendizaje y de reunión para participantes
 

@@ -2,7 +2,7 @@
 title: "Resumen automático de reuniones con IA: actas, webhooks y artefactos"
 description: "Cómo genera plugNmeet actas y notas de reunión con IA en salas WebRTC autoalojadas: captura independiente de audio mezclado, proveedores Gemini y OpenAI, prompts personalizados, trabajos por lotes con JetStream y descarga de artefactos."
 keywords: [resumen automático de reuniones con ia, actas y notas de reunión con ia, resumen de reunión con webhook, generador de actas automáticas, resumen de clases con ia, resumen de llamadas de ventas, resumen de audio con gemini, resumen de reunión con openai, notas de aula virtual, transcripción de reuniones, plugnmeet insights, artefacto de resumen de reunión]
-sidebar_label: Resumen de Reuniones con IA
+sidebar_label: Resumen de reuniones con IA
 sidebar_position: 7
 ---
 

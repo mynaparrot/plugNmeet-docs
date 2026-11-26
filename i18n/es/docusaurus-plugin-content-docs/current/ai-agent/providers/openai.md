@@ -2,7 +2,7 @@
 title: "Guía del proveedor OpenAI y autoalojados: agente de voz realtime, Whisper, TTS y LLM locales"
 description: "Configure OpenAI y endpoints compatibles con OpenAI en plugNmeet: transcripción con el SDK Realtime, traducción de chat, síntesis de voz, llamadas a herramientas MCP, resumen de reuniones por bloques y dos arquitecturas de agente, incluida una pila autoalojada Live más delegación sobre vLLM, Ollama o LiteLLM."
 keywords: [agente de voz openai realtime, llm autoalojado videoconferencia, api realtime de openai, openai live sdk delegación, vllm ollama whisper kokoro tts, configuración de precios openai plugnmeet, transcripción con whisper, tts compatible con openai, endpoint compatible con openai, enrutamiento de varias cuentas, agente de voz autoalojado, gpt realtime en reuniones]
-sidebar_label: OpenAI y Autoalojados
+sidebar_label: OpenAI y autoalojados
 sidebar_position: 2
 ---
 

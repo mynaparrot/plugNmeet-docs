@@ -2,7 +2,7 @@
 title: "Guía de proveedores de avatar: avatar de video con IA en tiempo real para el agente de voz"
 description: "Añada al agente de voz de plugNmeet un avatar de video con IA en tiempo real con Beyond Presence, Anam o Simli, con BYOK por sala y facturación por minuto."
 keywords: [avatar beyond presence, avatar ia anam, avatar simli, avatar de video con ia en tiempo real, agente avatar plugnmeet, avatar ia byok, proveedores de avatar plugnmeet, presentador virtual con ia, avatar con sincronizacion labial, participante de medios avatar, precio por minuto avatar, avatar de video para tutor ia]
-sidebar_label: Proveedores de Avatar
+sidebar_label: Proveedores de avatar
 sidebar_position: 4
 ---
 
@@ -15,7 +15,7 @@ Google Gemini, OpenAI y Azure determinan lo que el agente **dice y sabe**. Un pr
 1. `ai_agent` gestiona la sesión de voz, las llamadas a herramientas y el trabajo en la pizarra con su proveedor de LLM.
 2. Al iniciar la sesión, el servidor invita al proveedor de avatar a la sala de plugNmeet con un token de participante acotado.
 3. El proveedor se une como participante de medios, convierte el audio del agente en video con sincronización labial y publica audio y video en la sala.
-4. La interrupción se mantiene: cuando un participante toma la palabra, el agente deja de hablar y el avatar le sigue.
+4. La interrupción es inmediata: cuando alguien toma la palabra, el agente deja de hablar y el avatar también se detiene.
 5. Al terminar la sesión, el proveedor abandona la sala.
 
 El proveedor de avatar solo recibe el audio de la sala. Nunca ve sus credenciales de LLM ni sus instrucciones.

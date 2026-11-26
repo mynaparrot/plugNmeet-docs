@@ -1,8 +1,8 @@
 ---
-title: "Agente de IA para demostraciones de ventas y onboarding: flujos de trabajo para SaaS, ventas y soporte"
-description: "Flujos de trabajo prácticos para usar el Agente de IA de plugNmeet como demostración interactiva de producto disponible las 24 horas, asistente de onboarding técnico, coach de formación y asistente de calificación de leads con envío de datos al CRM, junto con copiloto para el anfitrión, traducción multilingüe de llamadas y notas automáticas de reuniones en llamadas con clientes y webinars."
-keywords: [demo de ventas con ia, demostración interactiva de producto, ingeniero de ventas con ia, onboarding saas con ia, traducción multilingüe de llamadas de ventas, copiloto de ia para anfitriones de reuniones, notas automáticas de reuniones para el crm, calificación de leads con ia, webhook de crm, automatización del onboarding de clientes]
-sidebar_label: Demos de Producto, Ventas y Negocios
+title: "Agente de IA para demostraciones de ventas e incorporación: flujos de trabajo para SaaS, ventas y soporte"
+description: "Flujos de trabajo prácticos para usar el Agente de IA de plugNmeet como demostración interactiva de producto disponible las 24 horas, asistente de incorporación técnica, coach de formación y asistente de calificación de leads con envío de datos al CRM, junto con un copiloto para el anfitrión, traducción multilingüe de llamadas y notas automáticas de reuniones con clientes y en webinars."
+keywords: [demo de ventas con ia, demostración interactiva de producto, ingeniero de ventas con ia, incorporación de clientes saas con ia, traducción multilingüe de llamadas de ventas, copiloto de ia para anfitriones de reuniones, notas automáticas de reuniones para el crm, calificación de leads con ia, webhook de crm, automatización de la incorporación de clientes]
+sidebar_label: Demos de producto, ventas y negocios
 sidebar_position: 3
 ---
 
@@ -73,11 +73,11 @@ Never discuss pricing details or promise delivery dates. Offer to connect the vi
 
 Tema sugerido: `"Demostración de producto de Acme Analytics"`. `forbidden_topics` sugeridos: `["negociación de precios", "críticas a la competencia", "términos legales"]`.
 
-## Flujo de trabajo 2: asistente de documentación interactiva y onboarding técnico
+## Flujo de trabajo 2: asistente de documentación interactiva e incorporación técnica
 
 **Objetivo:** Convertir una llamada de configuración en una lista de verificación y un diagrama que el cliente pueda conservar.
 
-**Configuración:** Use `NORMAL_ROOM` para que su ingeniero de onboarding pueda abrir una sesión de IA 1 a 1 desde el panel Breakout Rooms, o use `OPEN_PER_USER` para el onboarding de autoservicio.
+**Configuración:** Use `NORMAL_ROOM` para que su especialista en incorporación pueda abrir una sesión de IA individual desde el panel Breakout Rooms, o use `OPEN_PER_USER` para ofrecer una experiencia de incorporación de autoservicio.
 
 **Lo que hace el agente:**
 
@@ -85,7 +85,7 @@ Tema sugerido: `"Demostración de producto de Acme Analytics"`. `forbidden_topic
 - **Esboza flujos en la pizarra.** Dibuja el flujo de autenticación o el flujo de datos mientras explica cada paso.
 - **Consulta documentación en directo.** Cuando `allow_web_fetch` está habilitado, lee la página de documentación exacta que corresponde a la pregunta del cliente.
 
-**Plantilla de prompt: asistente de onboarding técnico**
+**Plantilla de prompt: asistente de incorporación técnica**
 
 ```text
 You are a technical onboarding assistant for the Acme API. Guide the engineer through connecting their application.
@@ -96,9 +96,9 @@ Do not ask for API keys or secrets in the conversation. Tell the engineer to set
 Finish by writing a short "next steps" list in the notepad.
 ```
 
-Tema sugerido: `"Onboarding de la API de Acme: autenticación, webhooks y primera solicitud"`.
+Tema sugerido: `"Incorporación a la API de Acme: autenticación, webhooks y primera solicitud"`.
 
-## Flujo de trabajo 3: onboarding de empleados, coaching de presentaciones de ventas y verificación de cumplimiento
+## Flujo de trabajo 3: incorporación de empleados, preparación de presentaciones de ventas y verificación de cumplimiento
 
 **Objetivo:** Practicar, evaluar y documentar la comprensión sin asignar a un formador para cada sesión.
 
@@ -189,7 +189,7 @@ Cuando termina la llamada, el servidor emite el artefacto `MEETING_SUMMARY` medi
 | Objetivo | Modo recomendado | Motivo |
 | --- | --- | --- |
 | Demostración pública de producto en su sitio web | `OPEN_PER_USER` | Cada visitante recibe una sesión automáticamente, las 24 horas. |
-| Onboarding de un cliente identificado | `NORMAL_ROOM` | Su ingeniero decide cuándo iniciar la sesión. |
+| Incorporación de un cliente identificado | `NORMAL_ROOM` | Su especialista decide cuándo iniciar la sesión. |
 | Formación de un grupo fijo de personal | `CONTROLLED_USERS` | Solo las personas de la lista pueden iniciar sesiones. |
 
 ## Salvaguardas empresariales que debe configurar
@@ -204,7 +204,7 @@ Cuando termina la llamada, el servidor emite el artefacto `MEETING_SUMMARY` medi
 - [Descripción general e Insights](/docs/ai-agent/overview)
 - [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities)
 - [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat): copiloto para moderadores con herramientas de gestión de sala.
-- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization): actas automáticas para llamadas de ventas y onboarding.
+- [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization): actas automáticas para llamadas de ventas y procesos de incorporación.
 - [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation): subtítulos, traducción hablada y transcripciones para llamadas y webinars multilingües.
 - [Configuración del servidor y proveedores](/docs/ai-agent/configuration)
 - [Resúmenes y artefactos de uso](/docs/ai-agent/artifacts-and-billing)

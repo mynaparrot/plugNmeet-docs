@@ -2,7 +2,7 @@
 title: "Profesor virtual con IA para clases en línea: guía para docentes y administradores escolares"
 description: "Guía práctica para docentes y administradores escolares que desean usar el profesor virtual con IA de plugNmeet: tutorías 1 a 1 y clases grupales en vivo con copiloto docente, subtítulos y traducción multilingües, apuntes de clase automáticos, listas de alumnos asignados, salas de estudio disponibles las 24 horas e informes de dominio."
 keywords: [profesor virtual con ia, tutor de ia para estudiantes, aula virtual multilingüe, subtítulos y traducción de clases en vivo, copiloto docente de ia, resumen automático de clases, software de tutorías en línea, sala de estudio con ia, videoconferencia escolar, informe de dominio del estudiante, tutor de video ia, hitos de leccion obligatorios]
-sidebar_label: Educación y Profesor Virtual
+sidebar_label: Educación y profesor virtual
 sidebar_position: 2
 ---
 
@@ -137,7 +137,7 @@ Un avatar convierte la voz del tutor en video con sincronización labial, así q
 | Ajuste | Qué controla |
 | --- | --- |
 | `is_enabled` | Activa el avatar de video en la sala. |
-| `provider` | `beyond_presence`, `anam` o `simli`. De forma predeterminada, el proveedor configurado en su centro. |
+| `provider` | `beyond_presence`, `anam` o `simli`. De forma predeterminada, se usa el proveedor configurado en su servidor. |
 | `avatar_id` | La apariencia o el rostro del presentador que utiliza el proveedor. |
 | `max_avatar_minutes` | Límite de video de avatar para la sala, hasta `240`. |
 

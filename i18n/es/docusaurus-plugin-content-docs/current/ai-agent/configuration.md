@@ -2,7 +2,7 @@
 title: "Configuración del servidor de Insights: config.yaml, proveedores, modelos y precios"
 description: "Referencia completa para configurar la plataforma Insights de plugNmeet en su servidor: cuentas de proveedor de Azure, Google y OpenAI, los seis servicios, límites de idiomas, tablas de precios, artifacts_settings y BYOK por sala."
 keywords: [configuración de plugnmeet, proveedores de insights, configuración de transcripción, configuración de traducción, configuración de síntesis de voz, configuración de openai realtime, configuración de gemini live, configuración de azure cognitive services, precios del agente de ia, artifacts settings, byok proveedor de ia, servidor de ia autoalojado, avatar beyond presence, avatar ia anam, avatar simli, configuracion avatar ia]
-sidebar_label: Configuración del Servidor y Proveedores
+sidebar_label: Configuración del servidor y proveedores
 sidebar_position: 9
 ---
 
@@ -11,7 +11,7 @@ sidebar_position: 9
 Esta página es la referencia para los administradores del servidor. Explica cómo definir cuentas de proveedor de IA en `config.yaml`, cómo asignar cada servicio de Insights a un proveedor y a un modelo, cómo se declaran los precios, dónde se almacenan los artefactos y qué límites aplica el servidor.
 
 :::info En desarrollo activo
-**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables**, y sus claves de configuración se documentan a continuación. Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: las claves, los valores predeterminados y los proveedores compatibles del agente pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado; hasta entonces, el agente se habilita y se configura mediante la API de plugNmeet.
+**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones estables de producción**, y sus claves de configuración se documentan a continuación. Solo el Agente de IA por voz (`ai_agent`) y la invocación de herramientas MCP por parte del agente siguen en desarrollo activo; sus claves, valores predeterminados y proveedores compatibles pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista para cuando el agente esté terminado y publicado; mientras tanto, se configura mediante la API de plugNmeet.
 :::
 
 ## Cómo se estructura la configuración

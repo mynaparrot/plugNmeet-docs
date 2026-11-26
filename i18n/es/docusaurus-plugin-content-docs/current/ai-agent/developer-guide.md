@@ -2,7 +2,7 @@
 title: "Guía para desarrolladores y API del Agente de IA: ai_agent_features, endpoints y ejemplos"
 description: "Referencia para desarrolladores de la API del Agente de IA de plugNmeet: todos los campos de ai_agent_features, ejemplos JSON para salas NORMAL_ROOM, CONTROLLED_USERS y OPEN_PER_USER, configuración de BYOK y de servidores MCP, creación de salas para grupos pequeños, continuidad entre sesiones, endpoints /api/insights/* en tiempo de ejecución y endpoints protobuf dentro de la sala."
 keywords: [api de plugnmeet, ai_agent_features, api para crear sala, api del agente de ia, ia en salas para grupos pequeños, configuración de servidores mcp, api de proveedor de ia con byok, webhook artifact_created, previous_session_context, api protobuf, endpoints api insights, aiAgent start stop status, api avatar ia, avatar ia byok, hitos de clase ia]
-sidebar_label: Guía para Desarrolladores y API
+sidebar_label: Guía para desarrolladores y API
 sidebar_position: 5
 ---
 
@@ -23,7 +23,7 @@ metadata
 └── room_features
     └── insights_features
         ├── is_allow
-        └── ai_agent_features     ← this guide
+        └── ai_agent_features     ← esta guía
             ├── auto_session_config
             ├── avatar
             ├── activity_rules
@@ -143,7 +143,7 @@ Los secretos del avatar siguen el mismo ciclo de vida. `avatar.api_key`, `avatar
 | Modo | Quién inicia la sesión | Enrutamiento | Cámaras web y compartición de pantalla | Uso habitual |
 | --- | --- | --- | --- | --- |
 | `NORMAL_ROOM` | Un moderador, desde el panel de salas de grupo | Salas de grupo 1 a 1 manuales | Sin cambios | Práctica dirigida por el docente, demostraciones guiadas por ventas |
-| `CONTROLLED_USERS` | Automático, para los participantes indicados | Cada participante autorizado recibe `<Name> (AI Session)` | Desactivadas en toda la sala | Listas de alumnos asignados, grupos de onboarding |
+| `CONTROLLED_USERS` | Automático, para los participantes indicados | Cada participante autorizado recibe `<Name> (AI Session)` | Desactivadas en toda la sala | Listas de alumnos asignados, grupos de incorporación |
 | `OPEN_PER_USER` | Automático, para cualquier visitante | Cada visitante recibe una sesión aislada, hasta `max_concurrent_sessions` | Desactivadas en toda la sala | Salas de estudio 24/7, enlaces de demostración de producto |
 
 En los modos automáticos, la sala principal funciona como sala de espera. Los participantes que no están autorizados permanecen en ella.

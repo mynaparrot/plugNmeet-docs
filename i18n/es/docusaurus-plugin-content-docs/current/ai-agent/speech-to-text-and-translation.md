@@ -2,7 +2,7 @@
 title: "Transcripción de voz a texto en tiempo real, subtítulos en vivo y traducción simultánea"
 description: "Configure la transcripción de voz a texto en tiempo real, los subtítulos en vivo y la síntesis de voz (TTS) de plugNmeet: captura oculta con RoomAgent, proveedores Azure y OpenAI, opciones de creación de sala, controles del moderador, archivos WebVTT y artefactos de uso."
 keywords: [transcripción de voz a texto en tiempo real, subtítulos en vivo, traducción simultánea de voz, transcripción automática de reuniones, síntesis de voz tts, traducción de chat en vivo, videoconferencia multilingüe, transcripción autohospedada, azure speech to text, transcripción con openai, descargar transcripción webvtt, subtítulos para aula virtual]
-sidebar_label: Subtítulos en Vivo, STT y Traducción
+sidebar_label: Subtítulos en vivo, STT y traducción
 sidebar_position: 8
 ---
 

@@ -2,7 +2,7 @@
 title: "Visión de la pizarra, herramientas y límites del Agente de IA | plugNmeet"
 description: "Análisis detallado de la visión de la pizarra del Agente de IA de plugNmeet, las herramientas del bloc de notas compartido, los cuestionarios y encuestas, el temporizador de cuenta regresiva, las salvaguardas en tres capas y la diferencia entre las herramientas del agente de voz y las del copiloto de IA para moderadores."
 keywords: [ia para pizarra, visión de ia en pizarra, descripción de escena, herramientas del agente de ia, salvaguardas de ia, protección contra inyección de prompts, límite de tema en ia, generador de cuestionarios con ia, encuestas interactivas con ia, bloc de notas compartido con ia, diagramas mermaid con ia, llamada a herramientas de llm, cuotas de actividad ia, hitos de sesion ia, ejercicios interactivos ia]
-sidebar_label: Capacidades y Límites del Agente
+sidebar_label: Capacidades y límites del agente
 sidebar_position: 4
 ---
 

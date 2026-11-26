@@ -1,8 +1,8 @@
 ---
 title: "Agente de IA para videoconferencia en vivo: descripción general y marco de Insights"
 description: "Descubra cómo funciona el Agente de IA de plugNmeet como asistente de voz con visión de la pizarra en una sala WebRTC en vivo, y cómo los seis servicios de la plataforma Insights cubren subtítulos en vivo, resumen de reuniones con IA y chat de IA en la reunión."
-keywords: [agente de ia, ia agéntica, marco de insights, subtítulos en vivo, transcripción de voz a texto en tiempo real, resumen automático de reuniones con ia, asistente de chat con ia, aula virtual con ia, asistente de ia autoalojado, videoconferencia webrtc con ia, demostración interactiva de producto, plugnmeet ia, avatar de video ia, avatar ia en tiempo real, presentador virtual ia]
-sidebar_label: Descripción General y Conceptos
+keywords: [agente de ia, asistente de ia con herramientas, marco de insights, subtítulos en vivo, transcripción de voz a texto en tiempo real, resumen automático de reuniones con ia, asistente de chat con ia, aula virtual con ia, asistente de ia autoalojado, videoconferencia webrtc con ia, demostración interactiva de producto, plugnmeet ia, avatar de video ia, avatar ia en tiempo real, presentador virtual ia]
+sidebar_label: Descripción general y conceptos
 sidebar_position: 1
 ---
 
@@ -10,15 +10,15 @@ import AiAgentShowcase from '@site/src/components/AiAgentShowcase';
 
 # Agente de IA autónomo para salas de video en vivo
 
-El Agente de IA de plugNmeet es un **asistente agéntico con prioridad en la voz** que se une a una sala de video en vivo como un participante más. Conversa con las personas en tiempo real, solo con voz o **en cámara como avatar de video con sincronización labial**. Lee y dibuja en la pizarra compartida, escribe en el bloc de notas compartido, realiza cuestionarios y encuestas, y al final deja un resumen estructurado. Está pensado para la enseñanza, las demostraciones guiadas de producto y el onboarding de nuevos clientes o alumnos, situaciones en las que la conversación se beneficia de un trabajo visual.
+El Agente de IA de plugNmeet es un **asistente interactivo centrado en la voz** que se une a una sala de video en vivo como un participante más. Conversa con las personas en tiempo real, solo con voz o **con un avatar de video con sincronización labial**. Lee y dibuja en la pizarra compartida, escribe en el bloc de notas compartido, plantea cuestionarios y encuestas y, al final, genera un resumen estructurado. Está pensado para la enseñanza, las demostraciones guiadas de producto y la incorporación de nuevos clientes o alumnos, situaciones en las que la conversación se beneficia del apoyo visual.
 
 <AiAgentShowcase locale="es" />
 
 :::info En desarrollo activo
-**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones de producción estables.** Solo el Agente de IA por voz (`ai_agent`) y las nuevas capacidades agénticas de invocación de herramientas MCP están en desarrollo activo: los nombres de los campos, los valores predeterminados y el comportamiento pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista una vez que el agente esté terminado y publicado. Mientras tanto, el agente se configura mediante la API de plugNmeet.
+**La transcripción en vivo (STT), la traducción, la síntesis de voz (TTS), el chat de texto con IA y el resumen de reuniones son funciones estables de producción.** Solo el Agente de IA por voz (`ai_agent`) y la invocación de herramientas MCP por parte del agente siguen en desarrollo activo; sus campos, valores predeterminados y comportamiento pueden cambiar antes del lanzamiento general. La integración con un solo clic en los plugins de **Moodle, WordPress y Joomla** está prevista para cuando el agente esté terminado y publicado. Mientras tanto, puede configurarlo mediante la API de plugNmeet.
 :::
 
-## El marco Insights y de IA agéntica
+## La plataforma Insights y las capacidades del agente de IA
 
 El Agente de IA es uno de los seis servicios de la plataforma **Insights**, que se ejecuta en el servidor. Los seis se configuran en `config.yaml` dentro de `insights`, se habilitan por sala en `insights_features` y se facturan a través del mismo flujo de artefactos. El agente es el único que habla; los demás escuchan, traducen, escriben y toman notas de lo que ocurre.
 
@@ -29,23 +29,23 @@ El Agente de IA es uno de los seis servicios de la plataforma **Insights**, que 
 | `speech-synthesis` | Traducción hablada: los subtítulos traducidos se sintetizan como pistas de audio en la sala | Un proceso TTS por cada idioma de destino autorizado | [Subtítulos en vivo, STT y traducción](/docs/ai-agent/speech-to-text-and-translation) |
 | `meeting_summarizing` | Resumen escrito posterior a la reunión a partir de una captura de audio mezclado, con un prompt personalizado | Trabajo por lotes al terminar la sala | [Resumen de reuniones con IA](/docs/ai-agent/meeting-summarization) |
 | `ai_text_chat` | Copiloto para moderadores con herramientas de sala, preguntas y respuestas para participantes y asistentes integrados en el bloc de notas, la pizarra y las encuestas | Texto en streaming con memoria en Redis | [Chat de IA en la reunión](/docs/ai-agent/ai-text-chat) |
-| `ai_agent` | Profesor particular 1 a 1 con prioridad en la voz, presentador de demostraciones y guía de onboarding sobre una pizarra compartida | Sesión de voz en tiempo real en una sala para grupos pequeños | [Guía para desarrolladores y API](/docs/ai-agent/developer-guide) |
+| `ai_agent` | Tutor individual centrado en la voz, presentador de demostraciones y guía de incorporación sobre una pizarra compartida | Sesión de voz en tiempo real en una sala para grupos pequeños | [Guía para desarrolladores y API](/docs/ai-agent/developer-guide) |
 
 Dos propiedades se mantienen en todo el marco:
 
-- **Asignación de proveedor por servicio.** Cada servicio apunta a su propia cuenta de proveedor y a sus modelos, de modo que Azure puede gestionar la voz mientras Gemini se encarga del resumen. Google Gemini y OpenAI (incluidos los servidores compatibles con OpenAI y los autoalojados) implementan los seis servicios; Azure nativo implementa los tres servicios de voz y Azure OpenAI cubre el resto. Consulte la [matriz de capacidades por proveedor](/docs/ai-agent/configuration#matriz-de-capacidades-por-proveedor) y las guías de [Google Gemini](/docs/ai-agent/providers/google), [OpenAI y autoalojados](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) y [Proveedores de Avatar](/docs/ai-agent/providers/avatar).
+- **Asignación de proveedor por servicio.** Cada servicio apunta a su propia cuenta de proveedor y a sus modelos, de modo que Azure puede gestionar la voz mientras Gemini se encarga del resumen. Google Gemini y OpenAI (incluidos los servidores compatibles con OpenAI y los autoalojados) implementan los seis servicios; Azure nativo implementa los tres servicios de voz y Azure OpenAI cubre el resto. Consulte la [matriz de capacidades por proveedor](/docs/ai-agent/configuration#matriz-de-capacidades-por-proveedor) y las guías de [Google Gemini](/docs/ai-agent/providers/google), [OpenAI y autoalojados](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) y [Proveedores de avatar](/docs/ai-agent/providers/avatar).
 - **Un único modelo de artefactos.** Los archivos y los registros de uso se entregan mediante el mismo webhook [`artifact_created`](/docs/others/webhooks#artifact-created), con el uso atribuido a la sala principal.
 
 ## Avatar de video en tiempo real (opcional)
 
-Un avatar le pone rostro al agente de voz. `beyond_presence`, `anam` o `simli` convierten el habla del agente en video con sincronización labial: ayuda a mantener la atención de los alumnos pequeños, hace que una demostración de producto parezca la de un presentador real y muestra a un anfitrión en pantalla durante el onboarding.
+Un avatar le pone rostro al agente de voz. `beyond_presence`, `anam` o `simli` convierten el habla del agente en video con sincronización labial: esto ayuda a mantener la atención de los alumnos más pequeños, hace que una demostración de producto parezca una presentación en vivo y permite mostrar a un anfitrión en pantalla durante la incorporación.
 
 1. **La voz y el video son independientes.** Su proveedor de LLM (Google Gemini u OpenAI) genera el habla y las llamadas a herramientas del agente. El proveedor de avatar solo convierte ese flujo de audio en video en vivo con sincronización labial.
 2. **El avatar se une como participante de la sala.** Al iniciar la sesión, el servidor invita al proveedor de avatar a la sala de plugNmeet con un token acotado. Con un avatar activo, el proveedor transmite el video y el audio sincronizados y admite la interrupción inmediata cuando el usuario toma la palabra.
 3. **Valor predeterminado del servidor o BYOK por sala.** Defina un avatar predeterminado en el servidor, o permita que los anfitriones aporten su proveedor, `avatar_id`, `max_avatar_minutes` y `api_key` BYOK por sala. Los secretos de la sala se eliminan de los metadatos que se publican en NATS y se conservan solo en Redis.
 4. **Facturación por duración aparte y regla de E2EE.** Los minutos de avatar se facturan en un artefacto exclusivo `AI_AGENT_AVATAR_USAGE` y nunca se mezclan con los costos de tokens. Como el proveedor se une como participante de medios externo, el **E2EE debe estar completamente desactivado** y su servidor de plugNmeet debe ser accesible para el proveedor.
 
-La configuración, los endpoints de cada proveedor y los campos BYOK están en la guía de [Proveedores de Avatar](/docs/ai-agent/providers/avatar).
+La configuración, los endpoints de cada proveedor y los campos BYOK están en la guía de [Proveedores de avatar](/docs/ai-agent/providers/avatar).
 
 ## Para quién está pensado
 
@@ -71,7 +71,7 @@ Un interesado abre un enlace embebido y el agente presenta un PDF o una presenta
 
 Consulte [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business-and-use-cases).
 
-### 3. Documentación técnica y onboarding de clientes
+### 3. Documentación técnica e incorporación de clientes
 
 Para ingenieros y equipos de soporte que se incorporan, el agente escribe listas de verificación de configuración en el bloc de notas compartido, dibuja flujos de datos en la pizarra y puede leer páginas de documentación aprobadas en vivo por HTTPS. El cliente se lleva la lista de verificación y el diagrama construidos durante la llamada.
 
@@ -113,17 +113,17 @@ Consulte [Demostraciones de producto, ventas y negocios](/docs/ai-agent/business
 
 | Si quiere… | Empiece por |
 | --- | --- |
-| Entender los seis servicios y cómo encajan | [Descripción General y Conceptos](/docs/ai-agent/overview) (esta página) |
-| Ofrecer tutorías con IA 1 a 1 en una clase | [Educación y Profesor Virtual](/docs/ai-agent/educator-guide) |
-| Crear una demostración interactiva o un flujo de onboarding | [Demos de Producto, Ventas y Negocios](/docs/ai-agent/business-and-use-cases) |
-| Saber qué puede ver, invocar y rechazar el agente | [Capacidades y Límites del Agente](/docs/ai-agent/tools-and-capabilities) |
+| Entender los seis servicios y cómo encajan | [Descripción general y conceptos](/docs/ai-agent/overview) (esta página) |
+| Ofrecer tutorías con IA 1 a 1 en una clase | [Educación y profesor virtual](/docs/ai-agent/educator-guide) |
+| Crear una demostración interactiva o un flujo de incorporación | [Demos de producto, ventas y negocios](/docs/ai-agent/business-and-use-cases) |
+| Saber qué puede ver, invocar y rechazar el agente | [Capacidades y límites del agente](/docs/ai-agent/tools-and-capabilities) |
 | Integrar la API, los webhooks y los endpoints dentro de la sala | [Guía para Desarrolladores y API](/docs/ai-agent/developer-guide) |
 | Dar a los moderadores un copiloto y a los participantes un asistente con IA | [Chat de IA y Copiloto de Sala](/docs/ai-agent/ai-text-chat) |
 | Generar actas y notas de reunión con IA a partir del audio | [Resumen de Reuniones con IA](/docs/ai-agent/meeting-summarization) |
 | Añadir subtítulos en vivo, traducción o traducción hablada | [Subtítulos en Vivo, STT y Traducción](/docs/ai-agent/speech-to-text-and-translation) |
-| Configurar proveedores, modelos y precios | [Configuración del Servidor y Proveedores](/docs/ai-agent/configuration) |
-| Mostrar al agente en cámara como avatar de video con sincronización labial | [Proveedores de Avatar](/docs/ai-agent/providers/avatar) |
-| Desplegar en una nube concreta o en una pila local | [Google Gemini](/docs/ai-agent/providers/google), [OpenAI y Autoalojados](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) |
+| Configurar proveedores, modelos y precios | [Configuración del servidor y proveedores](/docs/ai-agent/configuration) |
+| Mostrar al agente mediante un avatar de video con sincronización labial | [Proveedores de avatar](/docs/ai-agent/providers/avatar) |
+| Desplegar en una nube concreta o en una pila local | [Google Gemini](/docs/ai-agent/providers/google), [OpenAI y autoalojados](/docs/ai-agent/providers/openai), [Microsoft Azure](/docs/ai-agent/providers/azure) |
 | Leer el JSON del resumen, los campos de uso y las reglas de costo | [Resúmenes y Artefactos de Uso](/docs/ai-agent/artifacts-and-billing) |
 
 ## Lecturas relacionadas
