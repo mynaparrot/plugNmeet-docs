@@ -1,7 +1,7 @@
 ---
 title: "Insights Server Configuration: config.yaml, Providers, Models & Pricing"
 description: "Complete reference for configuring the plugNmeet Insights platform on your server: Azure, Google and OpenAI provider accounts, all six services, language limits, pricing tables, artifacts_settings, and per-room BYOK."
-keywords: [plugnmeet config, insights providers, transcription config yaml, translation config yaml, speech synthesis config, openai realtime config, gemini live config, azure cognitive services config, ai agent pricing, artifacts settings, byok ai provider, self-hosted ai server, beyond presence avatar, anam ai avatar, simli avatar, ai avatar configuration]
+keywords: [plugnmeet config, insights providers, transcription config yaml, translation config yaml, speech synthesis config, openai realtime config, gemini live config, azure cognitive services config, ai agent pricing, artifacts settings, byok ai provider, self-hosted ai server, beyond presence avatar, anam ai avatar, simli avatar, tavus avatar, heygen avatar, livekit datastream avatar, websocket avatar server, ai avatar configuration]
 sidebar_label: Server & Provider Setup
 sidebar_position: 9
 ---
@@ -115,11 +115,11 @@ Replace model names and voice IDs with values your provider account can access. 
 
 | Key | Type | Required | Description |
 | --- | --- | --- | --- |
-| `providers.<type>` | list | Yes | Provider type: `azure`, `google`, `openai`, or an avatar provider (`beyond_presence`, `anam`, `simli`). |
+| `providers.<type>` | list | Yes | Provider type: `azure`, `google`, `openai`, or an avatar provider (`beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, `websocket`). |
 | `id` | string | Yes | A unique name for this account. Services refer to it. |
 | `credentials.api_key` | string | Yes | The provider API key. |
 | `credentials.region` | string | Azure only | Azure region for speech and translator resources. |
-| `options.endpoint` | string | No | Custom base URL. Used for Azure's global translator endpoint, OpenAI-compatible gateways, self-hosted servers, and avatar gateways. |
+| `options.endpoint` | string | No | Custom base URL. Used for Azure's global translator endpoint, OpenAI-compatible gateways, self-hosted servers, and avatar gateways. It must be public HTTPS or WSS, so private hosts, query strings, and fragments are refused. A Tavus override must keep the `/v2` path segment, and a HeyGen override the `/v1/sessions` segment. It is required for `livekit_datastream` and `websocket`. |
 | `options.avatar_id` | string | Avatar providers only | Default avatar or face ID of the account. Used when the room sets no `avatar_id`. |
 | `options.auth_header` | string | Avatar providers only | Header that carries the key for a custom gateway, for example `x-api-key`. |
 
@@ -144,6 +144,32 @@ providers:
       credentials:
         api_key: "YOUR_SIMLI_API_KEY"
       options:
+        avatar_id: "your-avatar-id"
+  tavus:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_TAVUS_API_KEY"
+      options:
+        avatar_id: "your-face-id/your-pal-id"
+  heygen:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_HEYGEN_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  livekit_datastream:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_AVATAR_SERVER_KEY"
+      options:
+        endpoint: "https://avatar.example.com/v1/session"
+        avatar_id: "your-avatar-id"
+  websocket:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_AVATAR_SERVER_KEY"
+      options:
+        endpoint: "wss://avatar.example.com/session"
         avatar_id: "your-avatar-id"
 ```
 
@@ -307,7 +333,7 @@ A cheaper `summarize_model` is usually enough here, because it only compresses h
 | `options.turn_detection` | string | OpenAI Realtime only. `semantic_vad` (default), `server_vad`, or `none`. Self-hosted servers often need `server_vad` or `none`. |
 | `options.input_transcription_model` | string | OpenAI Realtime only. Transcription model for the learner's speech. Set to `none` to disable input transcription. |
 | `options.realtime_auth_header` | string | OpenAI Realtime only. Header name for the API key, for example `api-key` on some gateways. |
-| `options.avatar_provider` | string | Default realtime avatar: `beyond_presence`, `anam`, or `simli`. Rooms may override it. |
+| `options.avatar_provider` | string | Default realtime avatar: `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, or `websocket`. Rooms may override it. |
 | `options.avatar_id` | string | Default avatar or face ID for `avatar_provider`. |
 | `options.avatar_account_id` | string | Account `id` under `providers.<avatar_provider>` to take the key from. |
 | `pricing` | map | Per-model price table used for cost estimates in `AI_AGENT_USAGE` and `AI_AGENT_AVATAR_USAGE`. See below. |
@@ -443,8 +469,24 @@ The server fills in defaults for any field the host leaves unset, and clamps val
 | `allowed_participant_ids` (`CONTROLLED_USERS`) | Host-set | Up to `32` | Pre-authorized participants. |
 | `mcp_servers` | None | Max `2` per room | See [External MCP Servers](/docs/ai-agent/developer-guide#external-mcp-servers-mcp_servers). |
 | `allowed_tools` per MCP server | None | Max `8` | Read-only tools only. |
-| `allowed_knowledge_urls` | None | Max `32` entries | HTTPS only. |
+| `allowed_knowledge_urls` | None | Max `20` entries | HTTPS only, each up to 1024 characters. |
 | `strict_topic_enforcement` | `true` | | Declines out-of-topic requests. |
+
+## External URL Hook (`hooks.external_url_hook`)
+
+External knowledge pages and external MCP servers are protected by built-in checks. To take part in that flow, configure a hook on the server:
+
+```yaml
+hooks:
+  external_url_hook:
+    pool_size: 1        # Parallel hook pipelines. Default: 1.
+    hook_timeout: 5m    # Timeout per request. Default: 5m.
+    scripts:
+      - script: "/path/to/external_url_hook.sh"
+        is_one_shot: false
+```
+
+The hook sees each accepted knowledge prefix and each MCP server key when a room is created, and each fetch afterwards. It may also return the page content itself, so no outbound request is made, or rewrite the target URL. It is called once per request and never retried, and it cannot relax the built-in HTTPS and public-host checks, the port 443 requirement for MCP endpoints, or the fetch-size limits. A rewritten knowledge `target_url` still has to be HTTPS on a public host, but it is not pinned to port 443 and need not match the room's allow-list. The payload, stages, and limits are documented in [Hooks](/docs/others/hooks#external-url-hook-server).
 
 ## E2EE Compatibility
 

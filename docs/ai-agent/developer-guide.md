@@ -66,7 +66,7 @@ The table lists all 33 fields of `InsightsAIAgentFeatures` in `plugnmeet_create_
 | `allow_chat_message` | bool | No | Allow the agent to post in the AI chat. Default `true`. |
 | `allow_notepad_write` | bool | No | Allow the agent to write to the shared notepad. Default `true`. |
 | `allow_web_fetch` | bool | No | Allow the agent to fetch approved HTTPS pages. Default `false`. |
-| `allowed_knowledge_urls` | string[] | Recommended when `allow_web_fetch` is `true` | Up to 32 HTTPS URL prefixes the agent may fetch. |
+| `allowed_knowledge_urls` | string[] | Recommended when `allow_web_fetch` is `true` | Up to 20 HTTPS URL prefixes the agent may fetch, each up to 1024 characters. |
 | `knowledge_cache_ttl_seconds` | uint32 | No | Cache time for fetched pages. Default `3600`, range `60` to `86400`. |
 | `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Up to 2 external MCP servers. See [External MCP Servers](#external-mcp-servers-mcp_servers). |
 | `max_session_seconds` | uint32 | No | Session length cap, `60` to `7200`. Default `1800` when unset. |
@@ -92,11 +92,11 @@ A realtime avatar renders the agent's voice as lip-synced video. The provider jo
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `is_enabled` | bool | Yes | Turn the avatar on for this room. |
-| `provider` | string | No | `beyond_presence`, `anam`, or `simli`. Defaults to the server's `avatar_provider`. |
-| `avatar_id` | string | No | Provider avatar or face ID, up to 256 characters. Defaults to the server's `avatar_id`. |
+| `provider` | string | No | `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, or `websocket`. Defaults to the server's `avatar_provider`. |
+| `avatar_id` | string | No | Provider avatar or face ID, up to 256 characters. For Tavus: `face_id`, `face_id/pal_id`, or `/pal_id`. Defaults to the server's `avatar_id`. |
 | `max_avatar_minutes` | uint32 | No | Cap on billable avatar video, up to `240`. `0` uses the server default. |
 | `api_key` | string | No | BYOK avatar key, up to 512 characters. Never broadcast. |
-| `endpoint` | string | No | HTTPS base URL for a gateway or self-hosted avatar endpoint, up to 512 characters. |
+| `endpoint` | string | No | HTTPS or WSS base URL for a gateway or self-hosted avatar endpoint, up to 512 characters. It must be public, without credentials, query, or fragment. A Tavus override must include the `/v2` path and a HeyGen override the `/v1/sessions` path. Required for `livekit_datastream` and `websocket`. |
 | `auth_header` | string | No | Header that carries the key, for example `x-api-key` or `Authorization`, up to 128 characters. |
 
 The avatar is resolved at start: either the request carries a provider, avatar ID, and key, or the server's `ai_agent` options and avatar account supply them. A session with an avatar reports the provider in `AIAgentStateMsg.avatar_provider`.
@@ -379,7 +379,8 @@ External access is the highest-risk part of the agent's configuration. The rules
 
 - Disabled by default. Set `allow_web_fetch: true` only when you need it.
 - **HTTPS only.** Plain `http://` URLs are refused.
-- **Allow-list required.** The agent may fetch only URLs that start with an entry in `allowed_knowledge_urls` (up to 32 prefixes). Use a trailing path, such as `https://docs.example.com/api/`, to limit scope.
+- **Allow-list required.** The agent may fetch only URLs that start with an entry in `allowed_knowledge_urls` (up to 20 prefixes, each up to 1024 characters). Use a trailing path, such as `https://docs.example.com/api/`, to limit scope.
+- **Prefixes are screened at room creation.** Each prefix must be HTTPS on port 443, with no credentials, fragment, raw IP, or internal host, and a query string must match exactly. A malformed prefix refuses the room.
 - **Cached.** Fetched pages are cached for `knowledge_cache_ttl_seconds`, which limits repeated requests.
 - **Content is untrusted.** Fetched text is wrapped as data. It cannot change the agent's rules.
 
@@ -395,6 +396,12 @@ External access is the highest-risk part of the agent's configuration. The rules
 :::caution Do Not Point MCP at Internal Services
 Even with SSRF protection, connect MCP servers only to services you intend to expose to the AI agent and its visitors. Use a dedicated read-only MCP endpoint, not your internal admin API.
 :::
+
+### Overriding External URLs (`external_url_hook`)
+
+If you need your own source for these URLs, configure the [`external_url_hook`](/docs/others/hooks#external-url-hook-server) on the server. After the built-in checks, it can approve or refuse each accepted knowledge prefix and MCP server key when the room is created, and at fetch time it can rewrite the URL or supply the content itself, so plugNmeet makes no outbound request.
+
+The hook runs on top of the built-in rules above, which still apply. It is called once per request with no retries, and the request is refused only when the script fails: a returned `error`, a failed execution, or a timeout. Malformed JSON is logged and ignored, so emit valid JSON and deny with `error`.
 
 ## Multi-Session Continuity Flow
 

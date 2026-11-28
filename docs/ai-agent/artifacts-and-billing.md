@@ -423,7 +423,7 @@ Written only for sessions that ran a realtime avatar. The payload is a `duration
 | `reference_artifact_id` | The artifact ID of the matching `AI_AGENT_SESSION_SUMMARY`. |
 | `user_info`, `occurred_in_breakout_room`, `source_room_table_id` | Same meaning as in `AI_AGENT_USAGE`. |
 
-Pricing comes from the `ai_agent` pricing block. A provider-named block, such as `simli`, takes precedence over the generic `avatar_model` block:
+Pricing comes from the `ai_agent` pricing block. A provider-named block, such as `simli`, `tavus`, or `heygen`, takes precedence over the generic `avatar_model` block:
 
 ```yaml
 pricing:

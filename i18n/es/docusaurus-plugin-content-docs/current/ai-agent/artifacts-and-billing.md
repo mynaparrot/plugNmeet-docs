@@ -423,7 +423,7 @@ Solo se escribe en las sesiones que usaron un avatar en tiempo real. La carga es
 | `reference_artifact_id` | Identificador del artefacto `AI_AGENT_SESSION_SUMMARY` correspondiente. |
 | `user_info`, `occurred_in_breakout_room`, `source_room_table_id` | El mismo significado que en `AI_AGENT_USAGE`. |
 
-Los precios provienen del bloque `pricing` de `ai_agent`. Un bloque con el nombre del proveedor, como `simli`, tiene prioridad sobre el bloque genérico `avatar_model`:
+Los precios provienen del bloque `pricing` de `ai_agent`. Un bloque con el nombre del proveedor, como `simli`, `tavus` o `heygen`, tiene prioridad sobre el bloque genérico `avatar_model`:
 
 ```yaml
 pricing:

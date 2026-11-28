@@ -1,7 +1,7 @@
 ---
 title: "Configuración del servidor de Insights: config.yaml, proveedores, modelos y precios"
 description: "Referencia completa para configurar la plataforma Insights de plugNmeet en su servidor: cuentas de proveedor de Azure, Google y OpenAI, los seis servicios, límites de idiomas, tablas de precios, artifacts_settings y BYOK por sala."
-keywords: [configuración de plugnmeet, proveedores de insights, configuración de transcripción, configuración de traducción, configuración de síntesis de voz, configuración de openai realtime, configuración de gemini live, configuración de azure cognitive services, precios del agente de ia, artifacts settings, byok proveedor de ia, servidor de ia autoalojado, avatar beyond presence, avatar ia anam, avatar simli, configuracion avatar ia]
+keywords: [configuración de plugnmeet, proveedores de insights, configuración de transcripción, configuración de traducción, configuración de síntesis de voz, configuración de openai realtime, configuración de gemini live, configuración de azure cognitive services, precios del agente de ia, artifacts settings, byok proveedor de ia, servidor de ia autoalojado, avatar beyond presence, avatar ia anam, avatar simli, avatar tavus, avatar heygen, avatar livekit datastream, servidor de avatar websocket, configuracion avatar ia]
 sidebar_label: Configuración del servidor y proveedores
 sidebar_position: 9
 ---
@@ -112,11 +112,11 @@ Sustituya los nombres de modelo y los identificadores de voz por valores a los q
 
 | Clave | Tipo | Obligatoria | Descripción |
 | --- | --- | --- | --- |
-| `providers.<type>` | lista | Sí | Tipo de proveedor: `azure`, `google`, `openai` o un proveedor de avatar (`beyond_presence`, `anam`, `simli`). |
+| `providers.<type>` | lista | Sí | Tipo de proveedor: `azure`, `google`, `openai` o un proveedor de avatar (`beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, `websocket`). |
 | `id` | string | Sí | Nombre único de esta cuenta. Los servicios lo referencian. |
 | `credentials.api_key` | string | Sí | Clave de API del proveedor. |
 | `credentials.region` | string | Solo Azure | Región de Azure para los recursos de voz y de traducción. |
-| `options.endpoint` | string | No | URL base personalizada. Se usa para el endpoint global del traductor de Azure, para pasarelas compatibles con OpenAI, para servidores autoalojados y para pasarelas de avatar. |
+| `options.endpoint` | string | No | URL base personalizada. Se usa para el endpoint global del traductor de Azure, para pasarelas compatibles con OpenAI, para servidores autoalojados y para pasarelas de avatar. Debe ser una URL HTTPS o WSS pública; se rechazan los hosts privados, las cadenas de consulta y los fragmentos. Si sustituye el endpoint de Tavus, debe conservar el segmento de ruta `/v2`; si sustituye el de HeyGen, el segmento `/v1/sessions`. Es obligatorio en `livekit_datastream` y `websocket`. |
 | `options.avatar_id` | string | Solo proveedores de avatar | Avatar o rostro predeterminado de la cuenta. Se usa cuando la sala no define `avatar_id`. |
 | `options.auth_header` | string | Solo proveedores de avatar | Encabezado que transporta la clave en una pasarela propia, por ejemplo `x-api-key`. |
 
@@ -141,6 +141,32 @@ providers:
       credentials:
         api_key: "YOUR_SIMLI_API_KEY"
       options:
+        avatar_id: "your-avatar-id"
+  tavus:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_TAVUS_API_KEY"
+      options:
+        avatar_id: "your-face-id/your-pal-id"
+  heygen:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_HEYGEN_API_KEY"
+      options:
+        avatar_id: "your-avatar-id"
+  livekit_datastream:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_AVATAR_SERVER_KEY"
+      options:
+        endpoint: "https://avatar.example.com/v1/session"
+        avatar_id: "your-avatar-id"
+  websocket:
+    - id: "default-avatar"
+      credentials:
+        api_key: "YOUR_AVATAR_SERVER_KEY"
+      options:
+        endpoint: "wss://avatar.example.com/session"
         avatar_id: "your-avatar-id"
 ```
 
@@ -304,7 +330,7 @@ Aquí suele bastar con un `summarize_model` más económico, porque solo comprim
 | `options.turn_detection` | string | Solo OpenAI Realtime. `semantic_vad` (predeterminado), `server_vad` o `none`. Los servidores autoalojados suelen necesitar `server_vad` o `none`. |
 | `options.input_transcription_model` | string | Solo OpenAI Realtime. Modelo de transcripción de la voz del alumno. Use `none` para desactivar la transcripción de entrada. |
 | `options.realtime_auth_header` | string | Solo OpenAI Realtime. Nombre del encabezado de la clave de API, por ejemplo `api-key` en algunas pasarelas. |
-| `options.avatar_provider` | string | Avatar en tiempo real predeterminado: `beyond_presence`, `anam` o `simli`. Las salas pueden sustituirlo. |
+| `options.avatar_provider` | string | Avatar en tiempo real predeterminado: `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream` o `websocket`. Las salas pueden sustituirlo. |
 | `options.avatar_id` | string | Avatar o rostro predeterminado de `avatar_provider`. |
 | `options.avatar_account_id` | string | `id` de la cuenta en `providers.<avatar_provider>` de la que se toma la clave. |
 | `pricing` | mapa | Tabla de precios por modelo usada para las estimaciones de costo en `AI_AGENT_USAGE` y `AI_AGENT_AVATAR_USAGE`. Vea a continuación. |
@@ -440,8 +466,24 @@ El servidor rellena los valores predeterminados de los campos que el anfitrión 
 | `allowed_participant_ids` (`CONTROLLED_USERS`) | Lo define el anfitrión | Hasta `32` | Participantes preautorizados. |
 | `mcp_servers` | Ninguno | Máximo `2` por sala | Consulte [Servidores MCP externos](/docs/ai-agent/developer-guide#servidores-mcp-externos-mcp_servers). |
 | `allowed_tools` por servidor MCP | Ninguno | Máximo `8` | Solo herramientas de solo lectura. |
-| `allowed_knowledge_urls` | Ninguno | Máximo `32` entradas | Solo HTTPS. |
+| `allowed_knowledge_urls` | Ninguno | Máximo `20` entradas | Solo HTTPS, de hasta 1024 caracteres cada una. |
 | `strict_topic_enforcement` | `true` | | Rechaza las peticiones fuera de tema. |
+
+## Hook de URL externa (`hooks.external_url_hook`)
+
+Las páginas de conocimiento externas y los servidores MCP externos están protegidos por comprobaciones integradas. Para participar en ese flujo, configure un hook en el servidor:
+
+```yaml
+hooks:
+  external_url_hook:
+    pool_size: 1        # Tuberías de hook en paralelo. Predeterminado: 1.
+    hook_timeout: 5m    # Tiempo de espera por solicitud. Predeterminado: 5m.
+    scripts:
+      - script: "/ruta/a/external_url_hook.sh"
+        is_one_shot: false
+```
+
+El hook ve cada prefijo de conocimiento aceptado y cada clave de servidor MCP al crear la sala y cada descarga después. También puede devolver el contenido de la página por su cuenta, de modo que no se realice ninguna solicitud saliente, o reescribir la URL de destino. Se invoca una sola vez por solicitud y nunca se reintenta, y no puede relajar las comprobaciones integradas de HTTPS y de host público, el requisito del puerto 443 para los endpoints MCP ni los límites de tamaño de descarga. Un `target_url` de conocimiento reescrito sigue teniendo que usar HTTPS en un host público, pero no está fijado al puerto 443 ni tiene que coincidir con la lista de permitidos de la sala. La carga de datos, las etapas y los límites se documentan en [Hooks](/docs/others/hooks#hook-de-url-externa-server).
 
 ## Compatibilidad con E2EE
 

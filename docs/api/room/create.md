@@ -286,15 +286,19 @@ The AI Agent is a 1-on-1 voice assistant with a shared whiteboard and notepad. I
 | is_allow | boolean | Yes | Master switch for the AI agent in this room. |
 | session_mode | enum | Yes | `NORMAL_ROOM`, `CONTROLLED_USERS`, or `OPEN_PER_USER`. |
 | auto_session_config | object | Depends on mode | `allowed_participant_ids` (up to 32) and `max_concurrent_sessions` (server cap 16). |
-| [avatar](/docs/ai-agent/developer-guide#avatar) | object | No | Realtime lip-synced video avatar: `is_enabled`, `provider` (`beyond_presence`, `anam`, `simli`), `avatar_id`, `max_avatar_minutes` (up to 240), and BYOK `api_key`, `endpoint`, `auth_header`. Requires E2EE disabled. |
+| [avatar](/docs/ai-agent/developer-guide#avatar) | object | No | Realtime lip-synced video avatar: `is_enabled`, `provider` (`beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, `websocket`), `avatar_id`, `max_avatar_minutes` (up to 240), and BYOK `api_key`, `endpoint`, `auth_header`. Requires E2EE disabled. |
 | system_prompt | string | Yes, when `is_allow` | Host instructions for the agent. |
 | topic | string | Yes, when `is_allow` | The topic the agent stays within. |
 | [activity_rules](/docs/ai-agent/developer-guide#activity_rules) | object | No | Mandatory quotas `min_whiteboard_drawings`, `min_quizzes`, `min_notepad_entries`, `min_participant_exercises` (each 0–20), plus up to 16 `required_milestones`. |
 | allow_web_fetch | boolean | No | Allow fetching approved HTTPS pages. Default `false`. |
-| allowed_knowledge_urls | string[] | No | Up to 32 HTTPS URL prefixes the agent may fetch. |
+| allowed_knowledge_urls | string[] | No | Up to 20 HTTPS URL prefixes the agent may fetch, each up to 1024 characters. |
 | [mcp_servers](/docs/ai-agent/developer-guide#external-mcp-servers-mcp_servers) | map | No | Up to 2 external MCP servers. Each has `url` (HTTPS), `headers`, `allowed_tools` (up to 8, read-only), and an optional `scope`. |
 | max_session_seconds | integer | No | Session cap, `60` to `7200`. Default `1800`. |
 | custom_provider | object | No | Per-room BYOK: `provider`, `api_key`, `endpoint`, `auth_header`, and model overrides. Never broadcast; stored only in Redis. |
+
+:::note External URL Hook
+If the server configures an [`external_url_hook`](/docs/others/hooks#external-url-hook-server), it is called once for each `allowed_knowledge_urls` prefix and each `mcp_servers` key. A refusal returns the hook's message and no room is created.
+:::
 
 </details>
 

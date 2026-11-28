@@ -66,7 +66,7 @@ La tabla enumera los 33 campos de `InsightsAIAgentFeatures` en `plugnmeet_create
 | `allow_chat_message` | bool | No | Permite que el agente publique en el chat de IA. Predeterminado `true`. |
 | `allow_notepad_write` | bool | No | Permite que el agente escriba en el bloc de notas compartido. Predeterminado `true`. |
 | `allow_web_fetch` | bool | No | Permite que el agente consulte páginas HTTPS aprobadas. Predeterminado `false`. |
-| `allowed_knowledge_urls` | string[] | Recomendado cuando `allow_web_fetch` es `true` | Hasta 32 prefijos de URL HTTPS que el agente puede consultar. |
+| `allowed_knowledge_urls` | string[] | Recomendado cuando `allow_web_fetch` es `true` | Hasta 20 prefijos de URL HTTPS que el agente puede consultar, de hasta 1024 caracteres cada uno. |
 | `knowledge_cache_ttl_seconds` | uint32 | No | Tiempo de caché de las páginas consultadas. Predeterminado `3600`, rango de `60` a `86400`. |
 | `mcp_servers` | map&lt;string, ExternalMCPServerConfig&gt; | No | Hasta 2 servidores MCP externos. Consulte [Servidores MCP externos](#servidores-mcp-externos-mcp_servers). |
 | `max_session_seconds` | uint32 | No | Límite de duración de la sesión, de `60` a `7200`. Si no se indica, el valor predeterminado es `1800`. |
@@ -92,11 +92,11 @@ Un avatar en tiempo real convierte la voz del agente en video con sincronizació
 | Campo | Tipo | Obligatorio | Descripción |
 | --- | --- | --- | --- |
 | `is_enabled` | bool | Sí | Activa el avatar en esta sala. |
-| `provider` | string | No | `beyond_presence`, `anam` o `simli`. Predeterminado: el `avatar_provider` del servidor. |
-| `avatar_id` | string | No | Identificador de avatar o de rostro del proveedor, hasta 256 caracteres. Predeterminado: el `avatar_id` del servidor. |
+| `provider` | string | No | `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream` o `websocket`. Predeterminado: el `avatar_provider` del servidor. |
+| `avatar_id` | string | No | Identificador de avatar o de rostro del proveedor, hasta 256 caracteres. En Tavus: `face_id`, `face_id/pal_id` o `/pal_id`. Predeterminado: el `avatar_id` del servidor. |
 | `max_avatar_minutes` | uint32 | No | Límite de video de avatar facturable, hasta `240`. `0` usa el valor predeterminado del servidor. |
 | `api_key` | string | No | Clave de avatar BYOK, hasta 512 caracteres. Nunca se envía a los participantes. |
-| `endpoint` | string | No | URL base HTTPS de una puerta de enlace o de un endpoint de avatar autoalojado, hasta 512 caracteres. |
+| `endpoint` | string | No | URL base HTTPS o WSS de una puerta de enlace o de un endpoint de avatar autoalojado, hasta 512 caracteres. Debe ser pública, sin credenciales, cadena de consulta ni fragmento. Si sustituye el endpoint de Tavus, debe incluir la ruta `/v2`, y si sustituye el de HeyGen, la ruta `/v1/sessions`. Es obligatorio en `livekit_datastream` y `websocket`. |
 | `auth_header` | string | No | Encabezado que transporta la clave, por ejemplo `x-api-key` o `Authorization`, hasta 128 caracteres. |
 
 El avatar se resuelve al iniciar: o la solicitud incluye proveedor, identificador de avatar y clave, o los aportan las opciones `ai_agent` del servidor y la cuenta de avatar. Una sesión con avatar informa del proveedor en `AIAgentStateMsg.avatar_provider`.
@@ -379,7 +379,8 @@ El acceso externo es la parte de mayor riesgo en la configuración del agente. E
 
 - Desactivado de forma predeterminada. Establezca `allow_web_fetch: true` solo cuando lo necesite.
 - **Solo HTTPS.** Las URL con `http://` sin cifrar se rechazan.
-- **Lista de permitidos obligatoria.** El agente solo puede consultar las URL que empiecen por alguna entrada de `allowed_knowledge_urls` (hasta 32 prefijos). Utilice una ruta final, como `https://docs.example.com/api/`, para limitar el alcance.
+- **Lista de permitidos obligatoria.** El agente solo puede consultar las URL que empiecen por alguna entrada de `allowed_knowledge_urls` (hasta 20 prefijos, de hasta 1024 caracteres cada uno). Utilice una ruta final, como `https://docs.example.com/api/`, para limitar el alcance.
+- **Los prefijos se validan al crear la sala.** Cada prefijo debe usar HTTPS en el puerto 443, sin credenciales, fragmento, dirección IP literal ni host interno, y cualquier cadena de consulta debe coincidir exactamente. Un prefijo mal formado hace que se rechace la sala.
 - **Con caché.** Las páginas consultadas se almacenan en caché durante `knowledge_cache_ttl_seconds`, lo que limita las solicitudes repetidas.
 - **El contenido no es de confianza.** El texto consultado se encapsula como datos. No puede modificar las reglas del agente.
 
@@ -395,6 +396,12 @@ El acceso externo es la parte de mayor riesgo en la configuración del agente. E
 :::caution No apunte los servidores MCP a servicios internos
 Aunque exista protección SSRF, conecte los servidores MCP únicamente a servicios que tenga previsto exponer al Agente de IA y a sus visitantes. Utilice un endpoint MCP dedicado de solo lectura, no su API interna de administración.
 :::
+
+### Sustitución de URL externas (`external_url_hook`)
+
+Si necesita su propia fuente para estas URL, configure el [`external_url_hook`](/docs/others/hooks#hook-de-url-externa-server) en el servidor. Después de las comprobaciones integradas, puede aprobar o rechazar cada prefijo de conocimiento aceptado y cada clave de servidor MCP cuando se crea la sala y, en el momento de la descarga, puede reescribir la URL o proporcionar el contenido por su cuenta, de modo que plugNmeet no realice ninguna solicitud saliente.
+
+El hook funciona por encima de las reglas integradas descritas arriba, que se siguen aplicando. Se invoca una sola vez por solicitud y sin reintentos, y la solicitud se rechaza solo cuando el script falla: un `error` devuelto, una ejecución fallida o un tiempo de espera agotado. El JSON mal formado se registra y se ignora, así que devuelva JSON válido y deniegue con `error`.
 
 ## Flujo de continuidad entre sesiones
 

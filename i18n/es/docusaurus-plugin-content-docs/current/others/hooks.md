@@ -1,7 +1,7 @@
 ---
 title: Hooks de Scripting y Almacenamiento
 description: Aprende a usar hooks de scripting en el grabador y el servidor para automatizar flujos de trabajo de medios e integrarte con proveedores de almacenamiento externos.
-keywords: [hooks, scripting, almacenamiento, grabador, servidor, automatización, s3, almacenamiento personalizado, nodejs, bash, long-lived]
+keywords: [hooks, scripting, almacenamiento, grabador, servidor, automatización, s3, almacenamiento personalizado, nodejs, bash, long-lived, external_url_hook, hook de url externa, conocimiento del agente de ia, hook de servidor mcp]
 sidebar_position: 4
 sidebar_label: Hooks
 ---
@@ -186,6 +186,113 @@ hooks:
     }
     ```
 *   **Tarea del Script**: Realizar la limpieza y devolver un mensaje de confirmación.
+
+---
+
+## Hook de URL externa (`server`)
+
+`external_url_hook` permite que su script participe en el tratamiento de URL externas del Agente de IA. El servidor le pide que apruebe una URL y, si lo desea, que proporcione el contenido en lugar de que plugNmeet lo descargue. Cubre las dos fuentes externas: las páginas de conocimiento (cuando una sala establece `allow_web_fetch`) y los servidores MCP externos.
+
+**Configuración en `server/config.yaml`:**
+```yaml
+hooks:
+  # 'pool_size' controla la ejecución en paralelo. Predeterminado: 1.
+  # 'hook_timeout' establece un tiempo de espera. Predeterminado: 5m.
+  external_url_hook:
+    pool_size: 1
+    hook_timeout: 5m
+    scripts:
+      - script: "/ruta/a/su/script_de_url_externa.sh"
+        is_one_shot: false
+```
+
+El hook utiliza los mismos [modelos de ejecución](#modelos-de-ejecución), el mismo [protocolo de comunicación](#protocolo-de-comunicación) y el mismo [modelo de tubería](#el-modelo-de-tubería-pipeline) que los demás hooks. Se invoca **una sola vez por solicitud y sin reintentos**. La solicitud se rechaza solo cuando el script falla: un `error` no vacío en su respuesta, una ejecución fallida o un tiempo de espera agotado. Una respuesta que no sea JSON válido se registra como advertencia y se descarta, de modo que la solicitud continúa con la carga útil que ya tenía. Devuelva siempre JSON válido y use `error` para denegar una solicitud.
+
+### Entrada: `ExternalUrlHookData`
+
+```json
+{
+  "stage": "validate",
+  "type": "knowledge",
+  "room_id": "sala01",
+  "url": "https://docs.example.com/api/auth",
+  "allowed_urls": ["https://docs.example.com/api/"]
+}
+```
+
+```json
+{
+  "stage": "fetch",
+  "type": "mcp",
+  "room_id": "sala01",
+  "url": "https://mcp.example.com/mcp",
+  "server_key": "acme-docs"
+}
+```
+
+| Campo | Tipo | Descripción |
+| --- | --- | --- |
+| `stage` | string | `validate` o `fetch`. |
+| `type` | string | `knowledge` para una página de conocimiento externa, `mcp` para un servidor MCP externo. |
+| `room_id` | string | La sala a la que pertenece la solicitud. |
+| `room_sid` | string | Reservado. El servidor aún no lo rellena, por lo que el campo se omite. |
+| `url` | string | La URL que se comprueba o se descarga: en `validate`, un prefijo de conocimiento o un endpoint MCP tomado de la solicitud de la sala; en `fetch`, la página o el endpoint al que plugNmeet está a punto de conectarse. |
+| `server_key` | string | Solo con `type: "mcp"`. La clave del servidor en `mcp_servers`, por ejemplo `acme-docs`. |
+| `allowed_urls` | string[] | Solo con `type: "knowledge"`. Los prefijos de `allowed_knowledge_urls` de la sala. |
+
+### Salida
+
+Devuelva el objeto JSON con los campos que desee establecer:
+
+| Campo | Descripción |
+| --- | --- |
+| `error` | Un valor no vacío rechaza la solicitud. El mensaje se devuelve a quien la realizó. |
+| `action` | `allow_fetch` para que plugNmeet descargue la URL por su cuenta, o `provide_content` para devolver su propio `content`. |
+| `target_url` | URL de reemplazo que se usará en lugar de `url`. |
+| `content` | Cuerpo de la respuesta, usado con `provide_content`. |
+| `mime_type` | Tipo de medio de `content`. |
+
+Con `action: "provide_content"` en una URL de conocimiento, plugNmeet usa su `content` y no realiza ninguna solicitud saliente, lo que resulta útil cuando la página está detrás de su propia pasarela o debe generarse a partir de un índice local.
+
+:::warning Deniegue con `error`, no con una salida mal formada
+Una salida mal formada o vacía **no** es un rechazo. El ejecutor la registra, la descarta y deja pasar la carga útil anterior, por lo que la solicitud se trata como aprobada. Solo un `error` no vacío, una ejecución fallida o un tiempo de espera agotado rechazan la solicitud.
+:::
+
+### Etapas
+
+#### `validate`
+
+Se ejecuta **al crear la sala**, después de que las comprobaciones integradas de funciones y de URL hayan aceptado la solicitud, y antes de que la sala comience. El hook solo ve las entradas que superaron esas comprobaciones:
+
+*   una vez por cada prefijo aceptado en `allowed_knowledge_urls` del Agente de IA, y
+*   una vez por cada clave de `mcp_servers` del Agente de IA y del chat de texto con IA.
+
+Un prefijo mal formado, que no use HTTPS, que no sea público o que no use el puerto 443 lo rechaza primero la comprobación integrada, así que el hook nunca lo ve. Los prefijos de conocimiento solo se comprueban cuando el Agente de IA está habilitado, y las claves MCP cuando lo está el Agente de IA o el chat de texto con IA. Las salas de grupos (breakout) se omiten, porque heredan endpoints que la sala principal ya tenía verificados.
+
+Devuelva un `error` para rechazar la entrada. En ese caso plugNmeet cancela la creación de la sala y devuelve su mensaje a quien la solicitó.
+
+#### `fetch`
+
+Se ejecuta en lugares distintos según `type`:
+
+*   **`knowledge`**: solo cuando no hay caché. Una página servida desde la caché de conocimiento nunca llega al hook.
+*   **`mcp`**: antes de contactar con el servidor durante el descubrimiento y el precalentamiento, y antes de cada llamada a una herramienta, de modo que un resultado en caché no omita el hook.
+
+Devuelva un `error` para rechazar la solicitud.
+
+### Lo que el hook no puede modificar
+
+El hook funciona por encima de las protecciones integradas y no puede debilitarlas:
+
+*   Un destino MCP sigue teniendo que ser un endpoint HTTPS público en el puerto 443 y, en el caso de MCP, solo se respeta `target_url`: `content` se ignora.
+*   Un `target_url` reescrito para una página de conocimiento se vuelve a comprobar con las reglas integradas de HTTPS y de host público no interno, pero no está fijado al puerto 443 ni tiene que coincidir con la lista de permitidos de la sala.
+*   Los límites de ejecución siguen aplicándose a cualquier descarga que haga plugNmeet: una lista de tipos de contenido permitidos, un cuerpo de 256 KiB, un máximo de 12.000 caracteres entregados al modelo y un máximo de 3 redirecciones.
+
+:::info Reglas de los prefijos de conocimiento
+Una sala puede declarar como máximo 20 prefijos, de hasta 1024 caracteres cada uno. Cada prefijo debe usar HTTPS en el puerto 443, sin credenciales, fragmento, dirección IP literal ni host interno, y cualquier cadena de consulta debe coincidir exactamente.
+:::
+
+Para conocer las reglas subyacentes, consulte [Seguridad del conocimiento externo y de los servidores MCP externos](/docs/ai-agent/developer-guide#seguridad-del-conocimiento-externo-y-de-los-servidores-mcp-externos) y el [Resumen de seguridad](/docs/security-overview#5-servicios-de-ia-y-privacidad-de-datos-plataforma-de-análisis).
 
 ---
 

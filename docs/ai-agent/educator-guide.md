@@ -137,7 +137,7 @@ An avatar turns the tutor's voice into lip-synced video, so students see a prese
 | Setting | What it controls |
 | --- | --- |
 | `is_enabled` | Turns the video avatar on for the room. |
-| `provider` | `beyond_presence`, `anam`, or `simli`. Defaults to your school's configured provider. |
+| `provider` | `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream`, or `websocket`. Defaults to your school's configured provider. |
 | `avatar_id` | Which presenter look or face the provider uses. |
 | `max_avatar_minutes` | An upper limit on avatar video for the room, up to `240`. |
 

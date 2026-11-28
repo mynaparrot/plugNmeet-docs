@@ -137,7 +137,7 @@ Un avatar convierte la voz del tutor en video con sincronización labial, así q
 | Ajuste | Qué controla |
 | --- | --- |
 | `is_enabled` | Activa el avatar de video en la sala. |
-| `provider` | `beyond_presence`, `anam` o `simli`. De forma predeterminada, se usa el proveedor configurado en su servidor. |
+| `provider` | `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, `livekit_datastream` o `websocket`. De forma predeterminada, se usa el proveedor configurado en su servidor. |
 | `avatar_id` | La apariencia o el rostro del presentador que utiliza el proveedor. |
 | `max_avatar_minutes` | Límite de video de avatar para la sala, hasta `240`. |
 

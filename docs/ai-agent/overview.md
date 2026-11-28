@@ -38,7 +38,7 @@ Two properties hold across the framework:
 
 ## Real-Time Video Avatar (Optional)
 
-An avatar gives the voice agent a face on camera. `beyond_presence`, `anam`, or `simli` render the agent's speech as lip-synced video, which helps young learners stay engaged, makes an interactive product demo feel like a real presenter, and puts a host on screen for onboarding.
+An avatar gives the voice agent a face on camera. Seven providers render the agent's speech as lip-synced video: `beyond_presence`, `anam`, `simli`, `tavus`, `heygen`, and your own avatar server through `livekit_datastream` or `websocket`. That helps young learners stay engaged, makes an interactive product demo feel like a real presenter, and puts a host on screen for onboarding.
 
 1. **Voice and video are separate.** Your LLM provider (Google Gemini or OpenAI) generates the agent's speech and tool calls. The avatar provider only turns that audio stream into live, lip-synced video.
 2. **The avatar joins as a room participant.** When the session starts, the server invites the avatar provider into the plugNmeet room with a scoped token. With an avatar active, the provider streams the synchronized video and audio, and supports instant barge-in when the user interrupts.
@@ -92,7 +92,7 @@ See [Product Demos, Sales & Business](/docs/ai-agent/business-and-use-cases).
 | --- | --- | --- |
 | **Conversation** | Hold a live spoken conversation, respond to barge-in, speak in a configured language and voice rate, and stay within the host-defined topic. | Discuss topics outside the configured topic boundary, or continue after its session ends or budget is exhausted. |
 | **Vision** | See the **whiteboard** and the **shared notepad** as image snapshots and a structured scene description. | See webcams, screen shares, or any other video. The agent never captures camera or screen content. |
-| **Avatar / video presence** | Show a real-time, lip-synced video avatar of itself, driven by its own voice, through Beyond Presence, Anam, or Simli. | Run in a room with end-to-end encryption, or with a provider you have not configured. An avatar requires E2EE to be completely disabled. |
+| **Avatar / video presence** | Show a real-time, lip-synced video avatar of itself, driven by its own voice, through Beyond Presence, Anam, Simli, Tavus, HeyGen, or a self-hosted avatar server. | Run in a room with end-to-end encryption, or with a provider you have not configured. An avatar requires E2EE to be completely disabled. |
 | **Whiteboard** | Draw shapes, add text, draw freehand SVG, render Mermaid diagrams, use a laser pointer, switch pages or Office/PDF files, zoom, and clear the board. Undo its own last 20 actions. | Erase or change work that participants made, beyond the agent's own undoable actions. |
 | **Shared notepad** | Read the notepad and write block-level updates. Opens the notepad automatically when it writes. | Edit the notepad when the host has disabled notepad writes. |
 | **Assessment** | Create quizzes and polls, close polls, read results, and react immediately to each answer. | Grade work that was never placed on the board, notepad, or in conversation. |

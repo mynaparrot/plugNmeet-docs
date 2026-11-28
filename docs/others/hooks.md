@@ -1,7 +1,7 @@
 ---
 title: Scripting & Storage Hooks
 description: Learn how to use scripting hooks in the recorder and server for automating media workflows and integrating with external storage providers.
-keywords: [hooks, scripting, storage, recorder, server, automation, s3, custom storage, nodejs, bash, long-lived]
+keywords: [hooks, scripting, storage, recorder, server, automation, s3, custom storage, nodejs, bash, long-lived, external_url_hook, external url hook, ai agent knowledge, mcp server hook]
 sidebar_position: 4
 sidebar_label: Hooks
 ---
@@ -187,6 +187,113 @@ hooks:
     }
     ```
 *   **Script's Job**: Perform cleanup and return a confirmation message.
+
+---
+
+## External URL Hook (`server`)
+
+`external_url_hook` lets your script take part in the AI Agent's external URL handling. It is asked to approve a URL and, when you want, to supply the content instead of letting plugNmeet fetch it. It covers the two external sources: knowledge pages (when a room sets `allow_web_fetch`) and external MCP servers.
+
+**Configuration in `server/config.yaml`:**
+```yaml
+hooks:
+  # 'pool_size' controls parallel execution. Default: 1.
+  # 'hook_timeout' sets a timeout. Default: 5m.
+  external_url_hook:
+    pool_size: 1
+    hook_timeout: 5m
+    scripts:
+      - script: "/path/to/your/external_url_hook.sh"
+        is_one_shot: false
+```
+
+The hook uses the same [execution models](#execution-models), [communication protocol](#communication-protocol), and [pipeline model](#the-pipeline-model) as every other hook. It is called **once per request, with no retries**. The request is refused only when the script fails: a non-empty `error` in its response, a failed execution, or a timeout. A response that is not valid JSON is logged as a warning and discarded, so the request continues with the payload it already had. Emit valid JSON in every response, and use `error` to deny a request.
+
+### Input: `ExternalUrlHookData`
+
+```json
+{
+  "stage": "validate",
+  "type": "knowledge",
+  "room_id": "room01",
+  "url": "https://docs.example.com/api/auth",
+  "allowed_urls": ["https://docs.example.com/api/"]
+}
+```
+
+```json
+{
+  "stage": "fetch",
+  "type": "mcp",
+  "room_id": "room01",
+  "url": "https://mcp.example.com/mcp",
+  "server_key": "acme-docs"
+}
+```
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `stage` | string | `validate` or `fetch`. |
+| `type` | string | `knowledge` for an external knowledge page, `mcp` for an external MCP server. |
+| `room_id` | string | The room the request belongs to. |
+| `room_sid` | string | Reserved. The server does not populate it yet, so the field is omitted. |
+| `url` | string | The URL being checked or fetched: at `validate`, a knowledge prefix or an MCP endpoint taken from the room request; at `fetch`, the page or endpoint plugNmeet is about to dial. |
+| `server_key` | string | `type: "mcp"` only. The `mcp_servers` key of the server, for example `acme-docs`. |
+| `allowed_urls` | string[] | `type: "knowledge"` only. The room's `allowed_knowledge_urls` prefixes. |
+
+### Output
+
+Return the JSON object with the fields you want to set:
+
+| Field | Description |
+| --- | --- |
+| `error` | A non-empty value refuses the request. The message is reported back to the caller. |
+| `action` | `allow_fetch` to let plugNmeet fetch the URL itself, or `provide_content` to return your own `content`. |
+| `target_url` | Replacement URL to use instead of `url`. |
+| `content` | Response body, used with `provide_content`. |
+| `mime_type` | Media type of `content`. |
+
+With `action: "provide_content"` on a knowledge URL, plugNmeet uses your `content` and makes no outbound request at all, which is useful when the page lives behind your own gateway or must be rendered from a local index.
+
+:::warning Deny with `error`, not with malformed output
+Malformed or empty output is **not** a refusal. The runner logs it, drops it, and passes the previous payload through, so the request is treated as approved. Only a non-empty `error`, a failed execution, or a timeout refuses the request.
+:::
+
+### Stages
+
+#### `validate`
+
+Runs **at room creation**, after the built-in feature and URL checks have accepted the request and before the room starts. The hook sees only entries that passed those checks:
+
+*   once for each accepted prefix in the AI Agent's `allowed_knowledge_urls`, and
+*   once for each `mcp_servers` key of the AI Agent and of the AI text chat.
+
+A malformed, non-HTTPS, non-public, or non-443 prefix is refused by the built-in check first, so the hook never sees it. Knowledge prefixes are checked only when the AI Agent is enabled, and MCP keys when the AI Agent or the AI text chat is enabled. Breakout rooms are skipped, because they inherit endpoints the parent room already had vetted.
+
+Return an `error` to refuse the entry. plugNmeet then aborts room creation and returns your message to the caller.
+
+#### `fetch`
+
+Runs in different places, depending on `type`:
+
+*   **`knowledge`**: only on a cache miss. A page served from the knowledge cache is never sent to the hook.
+*   **`mcp`**: before the server is contacted at discovery and warm-up, and before every tool call, so a cached tool result does not skip the hook.
+
+Return an `error` to refuse the request.
+
+### What the Hook Cannot Change
+
+The hook runs on top of the built-in protections and cannot weaken them:
+
+*   An MCP target still has to be a public HTTPS endpoint on port 443, and for MCP only `target_url` is honoured: `content` is ignored.
+*   A rewritten `target_url` for a knowledge page is re-checked against the built-in HTTPS and public non-internal host rules, but it is not pinned to port 443 and does not have to match the room's allow-list.
+*   Runtime limits still apply to any fetch plugNmeet performs: an allow-list of content types, a 256 KiB body, at most 12,000 characters passed to the model, and at most 3 redirects.
+
+:::info Knowledge Prefix Rules
+A room may declare at most 20 prefixes, each up to 1024 characters. A prefix must be HTTPS on port 443, without credentials, fragment, raw IP, or internal host, and any query string must match exactly.
+:::
+
+For the underlying rules, see [External Knowledge & External MCP Security](/docs/ai-agent/developer-guide#external-knowledge--external-mcp-security) and the [Security Overview](/docs/security-overview#5-ai-services--data-privacy-the-insights-platform).
 
 ---
 
